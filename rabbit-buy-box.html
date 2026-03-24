@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rabbit Toy Buy Box</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Helvetica Neue', Arial, sans-serif; background: #f5f5f5; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; }
+
+  /* ── BUY BOX WRAPPER ── */
+  .buy-box-wrap { width: 100%; max-width: 680px; }
+
+  /* ── DASHED BORDER BOX ── */
+  .buy-box {
+    background: #fffdf5;
+    border: 2.5px dashed #b0b0b0;
+    border-radius: 12px;
+    padding: 28px 28px 24px;
+  }
+
+  /* ── HEADLINE ── */
+  .bb-headline {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 900;
+    color: #111;
+    letter-spacing: -0.3px;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+
+  /* ── COUNTDOWN ── */
+  .bb-timer-row {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 6px;
+  }
+  .bb-timer-row span.time {
+    font-weight: 800;
+    font-size: 16px;
+    color: #111;
+    letter-spacing: 1px;
+  }
+
+  /* ── SUBTITLE ── */
+  .bb-subtitle {
+    text-align: center;
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+
+  /* ── DIVIDER ── */
+  .bb-divider {
+    border: none;
+    border-top: 1px solid #e0e0e0;
+    margin-bottom: 20px;
+  }
+
+  /* ── BODY: IMAGE + FEATURES ── */
+  .bb-body {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .bb-image {
+    flex: 0 0 220px;
+    max-width: 220px;
+  }
+  .bb-image img {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+  }
+
+  .bb-features {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* ── BULLETS ── */
+  .bb-bullet {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 9px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14.5px;
+    font-weight: 600;
+    color: #222;
+    line-height: 1.4;
+  }
+  .bb-bullet:last-of-type { border-bottom: none; }
+  .bb-bullet svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: #2d7dd2;
+  }
+
+  /* ── CTA BUTTON ── */
+  .bb-btn {
+    display: block;
+    width: 100%;
+    background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #1a237e 100%);
+    color: #fff;
+    font-size: 17px;
+    font-weight: 800;
+    text-align: center;
+    border: none;
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin-top: 16px;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.15s;
+    box-shadow: 0 4px 18px rgba(26,35,126,0.35);
+  }
+  .bb-btn:hover { opacity: 0.92; transform: translateY(-1px); }
+
+  /* ── BOTTOM META ROW ── */
+  .bb-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #555;
+  }
+  .bb-meta .risk { color: #333; }
+  .bb-meta .risk span { color: #e53935; }
+
+  /* ── BELOW-BOX FOOTNOTE ── */
+  .bb-warranty {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    margin-top: 10px;
+    margin-bottom: 18px;
+  }
+  .bb-warranty strong { color: #111; }
+
+  /* ── SECOND FULL-WIDTH CTA ── */
+  .bb-btn-secondary {
+    display: block;
+    width: 100%;
+    background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #1a237e 100%);
+    color: #fff;
+    font-size: 17px;
+    font-weight: 800;
+    text-align: center;
+    border: none;
+    border-radius: 8px;
+    padding: 16px 20px;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.15s;
+    box-shadow: 0 4px 18px rgba(26,35,126,0.35);
+  }
+  .bb-btn-secondary:hover { opacity: 0.92; transform: translateY(-1px); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 560px) {
+    .bb-body { flex-direction: column; }
+    .bb-image { flex: unset; max-width: 100%; width: 100%; }
+    .bb-headline { font-size: 22px; }
+    .buy-box { padding: 20px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="buy-box-wrap">
+
+  <!-- ── DASHED BOX ── -->
+  <div class="buy-box">
+
+    <div class="bb-headline">🎉 GET 50% OFF TODAY! 🎉</div>
+
+    <div class="bb-timer-row">
+      Sale Ends In <span class="time" id="bb-timer">00:00:00</span>
+    </div>
+
+    <div class="bb-subtitle">
+      India's #1 Walking &amp; Talking Rabbit Toy — The toy that talks, moves &amp; makes kids giggle!
+    </div>
+
+    <hr class="bb-divider">
+
+    <div class="bb-body">
+      <div class="bb-image">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0808/0752/6593/files/2_29254223-ed8f-48ac-80ce-a58038e47573.png?v=1774213485"
+          alt="Walking and Talking Rabbit Toy"
+        >
+      </div>
+
+      <div class="bb-features">
+        <div class="bb-bullet">
+          <svg width="18" height="18" fill="#2d7dd2" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>
+          100% Child-Safe Premium Materials
+        </div>
+        <div class="bb-bullet">
+          <svg width="18" height="18" fill="#2d7dd2" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>
+          FREE Shipping Across India
+        </div>
+        <div class="bb-bullet">
+          <svg width="18" height="18" fill="#2d7dd2" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>
+          RBI-Approved Secure Payments
+        </div>
+        <div class="bb-bullet">
+          <svg width="18" height="18" fill="#2d7dd2" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>
+          Extra 10% OFF for Online Payment
+        </div>
+
+        <a class="bb-btn" href="https://www.desi-store.in/products/walking-rabbit-toy">
+          GET 50% OFF NOW
+        </a>
+
+        <div class="bb-meta">
+          <div class="risk">SELL-OUT RISK: <span>HIGH</span></div>
+          <div>FREE SHIPPING</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.buy-box -->
+
+  <div class="bb-warranty">
+    Try it today with a <strong>90-Day Warranty!</strong>
+  </div>
+
+  <a class="bb-btn-secondary" href="https://www.desi-store.in/products/walking-rabbit-toy">
+    GET 50% OFF NOW
+  </a>
+
+</div><!-- /.buy-box-wrap -->
+
+<script>
+  // Live 24-hour countdown (resets each day)
+  (function () {
+    function getEndOfDay() {
+      var now = new Date();
+      return new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999);
+    }
+    function pad(n) { return String(n).padStart(2, '0'); }
+    function tick() {
+      var diff = getEndOfDay() - Date.now();
+      if (diff < 0) diff = 0;
+      var h = Math.floor(diff / 3600000);
+      var m = Math.floor((diff % 3600000) / 60000);
+      var s = Math.floor((diff % 60000) / 1000);
+      document.getElementById('bb-timer').textContent = pad(h) + ':' + pad(m) + ':' + pad(s);
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+</script>
+
+</body>
+</html>
