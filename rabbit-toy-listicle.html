@@ -152,7 +152,8 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap');
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  .buy-box-wrap { width: 100%; max-width: 680px; margin: 0 auto; font-family: 'Helvetica Neue', Arial, sans-serif; }
+  .buy-box-wrap { width: 100%; max-width: 100%; margin: 0 auto; font-family: 'Helvetica Neue', Arial, sans-serif; }
+  @media (max-width: 560px) { .buy-box-wrap { max-width: 680px; } }
   .buy-box { background: #fffdf5; border: 2.5px dashed #b0b0b0; border-radius: 12px; padding: 28px 28px 24px; }
   .bb-headline { text-align: center; font-size: 24px; font-weight: 900; color: #111; letter-spacing: -0.3px; margin-bottom: 10px; line-height: 1.2; }
   .bb-timer-row { text-align: center; font-size: 14px; font-weight: 600; color: #444; margin-bottom: 6px; }
@@ -170,7 +171,7 @@
   .bb-meta .risk span { color: #e53935; }
   .bb-warranty { text-align: center; font-size: 13px; color: #666; margin-top: 10px; margin-bottom: 0; }
   .bb-warranty strong { color: #111; }
-  .bb-btn-secondary { display: block; width: 100%; background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 50%, #1b5e20 100%); color: #fff; font-size: 16px; font-weight: 800; text-align: center; border: none; border-radius: 8px; padding: 15px 20px; cursor: pointer; letter-spacing: 0.3px; text-decoration: none; box-shadow: 0 4px 18px rgba(27,94,32,0.4); margin-top: 12px; }
+  .bb-btn-secondary { display: block; width: 100%; background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 50%, #1b5e20 100%); color: #fff; font-size: 16px; font-weight: 800; text-align: center; border: none; border-radius: 8px; padding: 15px 20px; cursor: pointer; letter-spacing: 0.3px; text-decoration: none; box-shadow: 0 4px 18px rgba(27,94,32,0.4); margin-top: 12px; margin-bottom: 24px; }
   /* AWARD BADGE */
   .badge-wrap { display: block; width: 100%; margin-bottom: 16px; }
   .badge { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%); border: 2px solid #c9a84c; border-radius: 8px; padding: 10px 16px; display: flex; align-items: center; gap: 12px; position: relative; overflow: hidden; width: fit-content; margin: 0 auto; animation: borderPulse 3s ease-in-out infinite, floatUp 4s ease-in-out infinite; }
@@ -215,7 +216,7 @@
     .buy-box { padding: 16px; }
   }
 </style>
-<div style="padding: 40px 16px 0;">
+<div style="padding: 16px 16px 0;">
 <div class="buy-box-wrap">
   <div class="buy-box">
     <div class="bb-headline">🎉 GET 50% OFF TODAY! 🎉</div>
