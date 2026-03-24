@@ -208,8 +208,12 @@
   @keyframes sp-bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
   /* KILL SECTION BOTTOM PADDING SO BUY BOX SITS FLUSH */
   .r-xg43no { padding-bottom: 0 !important; }
-  /* NO TOP PADDING ON REVIEWS */
-  .r-bl3bvi { padding-top: 0 !important; }
+  /* REVIEWS: keep internal top padding but sit flush after buy box */
+  .r-bl3bvi { padding-top: 32px !important; }
+  /* FIX mobile headline line-height (Replo sets 26px < 32px font = overlap) */
+  @media (max-width: 640px) {
+    .r-1nare7v { line-height: 1.25 !important; }
+  }
   @media (max-width: 560px) {
     .bb-body { flex-direction: column; }
     .bb-image { flex: unset; max-width: 100%; width: 100%; }
@@ -217,7 +221,7 @@
     .buy-box { padding: 16px; }
   }
 </style>
-<div style="padding: 0; max-width: 720px; margin: 0 auto;">
+<div style="padding: 20px 0 0; max-width: 720px; margin: 0 auto;">
 <div class="buy-box-wrap">
   <div class="buy-box">
     <div class="bb-headline">🎉 GET 50% OFF TODAY! 🎉</div>
