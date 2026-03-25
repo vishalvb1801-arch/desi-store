@@ -1,0 +1,176 @@
+<!-- PRODUCT VARIABLES
+  - Product name / bb-subtitle: "Walking & Talking Rabbit Toy — The Toy That Talks, Moves & Makes Kids Giggle!"
+      → Change the <div class="bb-subtitle"> text
+  - Product image URL: https://cdn.shopify.com/s/files/1/0808/0752/6593/files/2_29254223-ed8f-48ac-80ce-a58038e47573.png?v=1774213485
+      → Change src on <img> inside .bb-image
+  - Feature bullets (4 items, each inside <div class="bb-bullet">):
+      1. "100% Child-Safe Premium Materials"
+      2. "FREE Shipping Across India"
+      3. "RBI-Approved Secure Payments"
+      4. "Extra 10% OFF for Online Payment"
+  - CTA button URL (2 places):
+      1. <a class="bb-btn" href="..."> → https://www.desi-store.in/products/walking-rabbit-toy
+      2. <a class="bb-btn-secondary" href="..."> → https://www.desi-store.in/products/walking-rabbit-toy
+  - Award badge label: "MomJunction Awards" → change <div class="bb-badge-label">
+  - Award badge title: "Rated #1 Indian Kids Brand" → change <div class="bb-badge-title">
+  - Social proof count target: 36000 → change `var target = 36000` in the script
+  - Warranty text: "Try it today with a <strong>90-Day Warranty!</strong>" → change <div class="bb-warranty">
+-->
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .buy-box-wrap { width: 100%; max-width: 720px; margin: 0 auto; font-family: 'Helvetica Neue', Arial, sans-serif; }
+  .buy-box { background: #fffdf5; border: 2.5px dashed #b0b0b0; border-radius: 12px; padding: 28px 28px 24px; }
+  .bb-headline { text-align: center; font-size: 24px; font-weight: 900; color: #111; letter-spacing: -0.3px; margin-bottom: 10px; line-height: 1.2; }
+  .bb-timer-row { text-align: center; font-size: 14px; font-weight: 600; color: #444; margin-bottom: 6px; }
+  .bb-timer-row span.time { font-weight: 800; font-size: 16px; color: #111; letter-spacing: 1px; }
+  .bb-subtitle { text-align: center; font-size: 14px; color: #555; margin-bottom: 16px; line-height: 1.5; }
+  .bb-divider { border: none; border-top: 1px solid #e0e0e0; margin-bottom: 16px; }
+  .bb-body { display: flex; gap: 24px; align-items: center; }
+  .bb-image { flex: 0 0 200px; max-width: 200px; }
+  .bb-image img { width: 100%; border-radius: 8px; display: block; }
+  .bb-features { flex: 1; display: flex; flex-direction: column; gap: 0; }
+  .bb-bullet { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid #f0f0f0; font-size: 13.5px; font-weight: 600; color: #222; line-height: 1.4; }
+  .bb-bullet:last-of-type { border-bottom: none; }
+  .bb-btn { display: block; width: 100%; background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 50%, #1b5e20 100%); color: #fff; font-size: 16px; font-weight: 800; text-align: center; border: none; border-radius: 8px; padding: 14px 20px; margin-top: 14px; cursor: pointer; letter-spacing: 0.3px; text-decoration: none; box-shadow: 0 4px 18px rgba(27,94,32,0.4); }
+  .bb-meta { display: flex; align-items: center; justify-content: center; gap: 24px; margin-top: 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: #555; }
+  .bb-meta .risk span { color: #e53935; }
+  .bb-warranty { text-align: center; font-size: 13px; color: #666; margin-top: 10px; margin-bottom: 0; }
+  .bb-warranty strong { color: #111; }
+  .bb-btn-secondary { display: block; width: 100%; background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 50%, #1b5e20 100%); color: #fff; font-size: 16px; font-weight: 800; text-align: center; border: none; border-radius: 8px; padding: 15px 20px; cursor: pointer; letter-spacing: 0.3px; text-decoration: none; box-shadow: 0 4px 18px rgba(27,94,32,0.4); margin-top: 12px; margin-bottom: 24px; }
+  /* AWARD BADGE */
+  .badge-wrap { display: block; width: 100%; margin-bottom: 16px; }
+  .badge { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%); border: 2px solid #c9a84c; border-radius: 8px; padding: 10px 16px; display: flex; align-items: center; gap: 12px; position: relative; overflow: hidden; width: fit-content; margin: 0 auto; animation: borderPulse 3s ease-in-out infinite, floatUp 4s ease-in-out infinite; }
+  @keyframes borderPulse { 0%,100%{box-shadow:0 4px 20px rgba(201,168,76,0.25)} 50%{box-shadow:0 4px 30px rgba(201,168,76,0.5),0 0 16px 2px rgba(201,168,76,0.2)} }
+  @keyframes floatUp { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-3px)} }
+  .bb-shine { position:absolute; top:0; left:-60%; width:40%; height:100%; background:linear-gradient(90deg,transparent,rgba(201,168,76,0.25),transparent); pointer-events:none; animation:bbshine 2.5s ease-in-out infinite; }
+  @keyframes bbshine { 0%,60%,100%{left:-60%;opacity:0} 10%{opacity:1} 45%{left:120%;opacity:1} 50%{opacity:0} }
+  .bb-particles { position:absolute; top:0; left:0; right:0; bottom:0; pointer-events:none; overflow:hidden; }
+  .bb-particle { position:absolute; width:2px; height:2px; border-radius:50%; background:#c9a84c; opacity:0; animation:bbparticle 4s ease-in-out infinite; }
+  .bb-particle:nth-child(1){left:15%;animation-delay:0s} .bb-particle:nth-child(2){left:35%;animation-delay:0.8s} .bb-particle:nth-child(3){left:55%;animation-delay:1.6s} .bb-particle:nth-child(4){left:75%;animation-delay:2.4s} .bb-particle:nth-child(5){left:90%;animation-delay:3.2s}
+  @keyframes bbparticle { 0%{bottom:-4px;opacity:0} 20%{opacity:0.8} 80%{opacity:0.4} 100%{bottom:110%;opacity:0} }
+  .bb-trophy { font-size:24px; flex-shrink:0; filter:drop-shadow(0 0 10px rgba(201,168,76,0.7)); animation:bbtrophy 3s ease-in-out infinite; }
+  @keyframes bbtrophy { 0%,100%{transform:scale(1) rotate(0deg)} 20%{transform:scale(1.15) rotate(-8deg)} 40%{transform:scale(1.1) rotate(6deg)} 60%{transform:scale(1.05) rotate(-3deg)} 80%{transform:scale(1) rotate(0deg)} }
+  .bb-bdivider { width:1px; height:28px; flex-shrink:0; background:linear-gradient(to bottom,transparent,#c9a84c,transparent); animation:bbdivglow 2s ease-in-out infinite; }
+  @keyframes bbdivglow { 0%,100%{opacity:0.6} 50%{opacity:1;box-shadow:0 0 6px #c9a84c} }
+  .bb-btext { display:flex; flex-direction:column; gap:2px; text-align:left; }
+  .bb-badge-label { color:#c9a84c; font-size:8px; font-weight:700; letter-spacing:2px; text-transform:uppercase; white-space:nowrap; font-family:'Manrope',sans-serif; }
+  .bb-badge-title { color:#fff; font-size:12px; font-weight:800; letter-spacing:0.2px; line-height:1.2; white-space:nowrap; font-family:'Manrope',sans-serif; }
+  .bb-star-tl { position:absolute; top:5px; left:7px; color:#c9a84c; font-size:6px; opacity:0.4; animation:bbspin 6s linear infinite reverse; }
+  .bb-star-tr { position:absolute; top:5px; right:7px; color:#c9a84c; font-size:8px; opacity:0.6; animation:bbspin 8s linear infinite; }
+  @keyframes bbspin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+  /* SOCIAL PROOF */
+  .sp-wrap { width:100%; padding:10px 0 4px; font-family:'Manrope',sans-serif; display:flex; justify-content:center; }
+  .sp-row { display:inline-flex; align-items:center; gap:8px; white-space:nowrap; flex-wrap:nowrap; }
+  .sp-avatars { display:flex; align-items:center; flex-shrink:0; }
+  .sp-avatars img { width:28px; height:28px; border-radius:50%; border:2px solid #E8740C; object-fit:cover; margin-left:-8px; }
+  .sp-avatars img:first-child { margin-left:0; }
+  .sp-text { display:inline-flex; align-items:center; gap:4px; font-size:11px; font-weight:600; color:#333; white-space:nowrap; }
+  .sp-count { font-weight:800; color:#E8740C; font-size:12px; }
+  .sp-divider-dot { color:#ccc; font-size:11px; }
+  .sp-stars { display:inline-flex; align-items:center; gap:1px; }
+  .sp-star { color:#f5c518; font-size:12px; line-height:1; }
+  .sp-rating { font-weight:700; color:#333; font-size:11px; }
+  .sp-arrow { display:block; margin:4px auto 0; animation:sp-bounce 1.5s ease-in-out infinite; }
+  @keyframes sp-bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+  @media (max-width: 560px) {
+    .bb-body { flex-direction: column; }
+    .bb-image { flex: unset; max-width: 100%; width: 100%; }
+    .bb-headline { font-size: 20px; }
+    .buy-box { padding: 16px; }
+  }
+</style>
+<div class="buy-box-wrap">
+  <div class="buy-box">
+    <div class="bb-headline">🎉 GET 50% OFF TODAY! 🎉</div>
+    <!-- AWARD BADGE -->
+    <div class="badge-wrap">
+      <div class="badge">
+        <div class="bb-shine"></div>
+        <div class="bb-particles">
+          <div class="bb-particle"></div><div class="bb-particle"></div>
+          <div class="bb-particle"></div><div class="bb-particle"></div><div class="bb-particle"></div>
+        </div>
+        <div class="bb-star-tl">✦</div>
+        <div class="bb-star-tr">✦</div>
+        <div class="bb-trophy">🏆</div>
+        <div class="bb-bdivider"></div>
+        <div class="bb-btext">
+          <div class="bb-badge-label">MomJunction Awards</div>
+          <div class="bb-badge-title">Rated #1 Indian Kids Brand</div>
+        </div>
+      </div>
+    </div>
+    <div class="bb-timer-row">Sale Ends In <span class="time" id="bb-timer">00:00:00</span></div>
+    <div class="bb-subtitle">Walking &amp; Talking Rabbit Toy — The Toy That Talks, Moves &amp; Makes Kids Giggle!</div>
+    <hr class="bb-divider">
+    <div class="bb-body">
+      <div class="bb-image">
+        <img src="https://cdn.shopify.com/s/files/1/0808/0752/6593/files/2_29254223-ed8f-48ac-80ce-a58038e47573.png?v=1774213485" alt="Walking and Talking Rabbit Toy">
+      </div>
+      <div class="bb-features">
+        <div class="bb-bullet"><svg width="18" height="18" fill="#2d7dd2" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>100% Child-Safe Premium Materials</div>
+        <div class="bb-bullet"><svg width="18" height="18" fill="#2d7dd2" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>FREE Shipping Across India</div>
+        <div class="bb-bullet"><svg width="18" height="18" fill="#2d7dd2" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>RBI-Approved Secure Payments</div>
+        <div class="bb-bullet"><svg width="18" height="18" fill="#2d7dd2" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>Extra 10% OFF for Online Payment</div>
+        <!-- SOCIAL PROOF -->
+        <div class="sp-wrap">
+          <div class="sp-row">
+            <div class="sp-avatars">
+              <img src="https://cdn.shopify.com/s/files/1/0808/0752/6593/files/Untitled_design_12.png" alt="">
+              <img src="https://cdn.shopify.com/s/files/1/0808/0752/6593/files/10_e48cfbcb-69a7-4de4-b54f-b95b129c4111.png?v=1769903735" alt="">
+              <img src="https://cdn.shopify.com/s/files/1/0808/0752/6593/files/Untitled_design_13.png" alt="">
+            </div>
+            <div class="sp-text">
+              <span class="sp-count" id="sp-counter-desk">0</span>
+              <span>+ Happy Customers</span>
+              <span class="sp-divider-dot">•</span>
+              <span class="sp-stars"><span class="sp-star">★</span><span class="sp-star">★</span><span class="sp-star">★</span><span class="sp-star">★</span><span class="sp-star">★</span></span>
+              <span class="sp-rating">4.9/5</span>
+            </div>
+          </div>
+        </div>
+        <svg class="sp-arrow" width="20" height="34" viewBox="0 0 24 40" fill="none">
+          <path d="M12 38V6" stroke="#E8740C" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M4 14L12 4L20 14" stroke="#E8740C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <a class="bb-btn" href="https://www.desi-store.in/products/walking-rabbit-toy">GET 50% OFF NOW</a>
+        <div class="bb-meta">
+          <div class="risk">SELL-OUT RISK: <span>HIGH</span></div>
+          <div>FREE SHIPPING</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bb-warranty">Try it today with a <strong>90-Day Warranty!</strong></div>
+  <a class="bb-btn-secondary" href="https://www.desi-store.in/products/walking-rabbit-toy">GET 50% OFF NOW</a>
+</div>
+<script>
+(function() {
+  function getEndOfDay() { var now = new Date(); return new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999); }
+  function pad(n) { return String(n).padStart(2, '0'); }
+  function tick() {
+    var diff = getEndOfDay() - Date.now(); if (diff < 0) diff = 0;
+    document.getElementById('bb-timer').textContent = pad(Math.floor(diff/3600000)) + ':' + pad(Math.floor((diff%3600000)/60000)) + ':' + pad(Math.floor((diff%60000)/1000));
+  }
+  tick(); setInterval(tick, 1000);
+})();
+(function() {
+  var target = 36000; var countDuration = 2000; var pauseDuration = 10000;
+  function easeOutExpo(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
+  function animateCount() {
+    var counter = document.getElementById('sp-counter-desk');
+    if (!counter) return;
+    var startTime = performance.now();
+    function update(now) {
+      var progress = Math.min((now - startTime) / countDuration, 1);
+      counter.textContent = Math.floor(easeOutExpo(progress) * target).toLocaleString('en-US');
+      if (progress < 1) requestAnimationFrame(update);
+      else setTimeout(animateCount, pauseDuration);
+    }
+    requestAnimationFrame(update);
+  }
+  setTimeout(animateCount, 500);
+})();
+</script>
