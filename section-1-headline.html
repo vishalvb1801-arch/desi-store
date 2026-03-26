@@ -1,96 +1,71 @@
 <!-- PRODUCT VARIABLES
-  - Headline text: Change the <p> inside .r-10w10ny (currently: "7 Reasons Why This Walking & Talking Rabbit Toy...")
-  - Alert box text: Change the <p> inside .desi-alert-box
-  - Author name: Change .desi-author-name text (currently: "Tania M.")
-  - Author photo URL: Change src on <img class="desi-author-img"> (currently: Shopify CDN portrait)
-  - Author credentials: Change .desi-author-creds text (currently: "Parenting & Child Development Writer | Desi Store")
+  - Headline text: Change the <p> inside .s1-headline (currently: "7 Reasons Why This Walking & Talking Rabbit Toy...")
+  - Alert box text: Change the <p> inside .s1-alert-box
+  - Author name: Change .s1-author-name text (currently: "Tania M.")
+  - Author photo URL: Change src on <img class="s1-author-img"> (currently: Shopify CDN portrait)
+  - Author credentials: Change .s1-author-creds text
 -->
 
 <style>
-/* ---- Replo classes (extracted, no specificity hacks needed) ---- */
-.r-arb2v2 {
-  display: flex;
-  position: relative;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+
+.s1-outer {
   width: 100%;
   max-width: 1024px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   padding: 40px 24px;
   box-sizing: border-box;
-  flex-basis: auto;
-  min-height: 1px;
-  align-items: center;
-  flex-shrink: 0;
-  flex-direction: column;
-  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
 }
-@media (max-width: 640px) {
-  .r-arb2v2 { padding: 32px 16px; }
-}
-
-.r-10w10ny {
+.s1-headline {
   color: #000;
   font-size: 52px;
-  align-self: stretch;
   text-align: center;
   font-weight: 700;
-  line-height: 62px;
+  line-height: 1.2;
   overflow-wrap: break-word;
   letter-spacing: -1px;
   margin-bottom: 24px;
 }
+.s1-alert-box {
+  background: #fff8e7;
+  border-left: 4px solid #FF8F65;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  border-radius: 2px;
+}
+.s1-alert-box p { font-size: 16px; font-weight: 700; color: #111; margin: 0; line-height: 1.5; }
+.s1-author-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.s1-author-img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.s1-author-info { display: flex; flex-direction: column; gap: 2px; }
+.s1-author-name { font-size: 15px; font-weight: 700; color: #111; margin: 0; }
+.s1-author-creds { font-size: 13px; font-weight: 400; color: #555; margin: 0; line-height: 1.5; }
+.s1-last-updated { font-size: 13px; color: #555; font-weight: 400; margin-top: 6px; margin-bottom: 0; }
+.s1-divider { border: none; border-top: 2px solid #111; margin-top: 16px; width: 100%; }
+
 @media (max-width: 640px) {
-  .r-10w10ny {
-    font-size: 32px;
-    line-height: 42px;
-    letter-spacing: -0.5px;
-  }
+  .s1-outer { padding: 32px 16px; }
+  .s1-headline { font-size: 28px; letter-spacing: -0.5px; }
 }
 @media (min-width: 641px) and (max-width: 1024px) {
-  .r-10w10ny {
-    font-size: 42px;
-    line-height: 52px;
-  }
+  .s1-headline { font-size: 40px; }
 }
-
-.r-1ybggk {
-  display: flex;
-  align-self: stretch;
-  align-items: flex-start;
-  flex-shrink: 0;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-/* ---- Custom Desi Store CSS ---- */
-.desi-article-header { font-family: 'Montserrat', sans-serif; width: 100%; }
-.desi-alert-box { background: #fff8e7; border-left: 4px solid #FF8F65; padding: 14px 18px; margin-bottom: 20px; border-radius: 2px; }
-.desi-alert-box p { font-size: 16px; font-weight: 700; color: #111; margin: 0; line-height: 1.5; }
-.desi-author-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
-.desi-author-img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
-.desi-author-info { display: flex; flex-direction: column; gap: 2px; }
-.desi-author-name { font-size: 15px; font-weight: 700; color: #111; margin: 0; }
-.desi-author-creds { font-size: 13px; font-weight: 400; color: #555; margin: 0; line-height: 1.5; }
-.desi-last-updated { font-size: 13px; color: #555; font-weight: 400; margin-top: 6px; }
-.desi-divider { border: none; border-top: 2px solid #111; margin-top: 16px; width: 100%; }
 </style>
 
-  <div data-rid="desi-title-wrapper" class="r-arb2v2">
-    <div data-rid="desi-title" class="r-10w10ny alchemy-rte"><span style="width:100%"><p>7 Reasons Why This Walking &amp; Talking Rabbit Toy Is Taking the Parenting World by Storm in 2026 👇</p></span></div>
-    <div data-rid="desi-author" class="r-1ybggk">
-      <div class="desi-article-header">
-        <div class="desi-alert-box">
-          <p>Indian parents are calling it "worth more than 10 regular toys combined." Desi Store presents India's first interactive walking rabbit toy — the only toy that moves, talks, and brings instant joy to your child. We expose 7 reasons why it's the most wished-for toy of 2026.</p>
-        </div>
-        <div class="desi-author-row">
-          <img class="desi-author-img" src="https://cdn.shopify.com/s/files/1/0808/0752/6593/files/gempages_543481807820030814-788fec31-38b0-47e7-8578-44fb4ee6ef2b.jpg" alt="Tania M.">
-          <div class="desi-author-info">
-            <p class="desi-author-name">Tania M.</p>
-            <p class="desi-author-creds">Parenting &amp; Child Development Writer | Desi Store</p>
-          </div>
-        </div>
-        <p class="desi-last-updated">Last Updated: <span id="desi-date-val">March 23, 2026</span></p>
-<script>(function(){function setDate(){var el=document.getElementById("desi-date-val");if(!el)return;var d=new Date();d.setDate(d.getDate()-1);var m=["January","February","March","April","May","June","July","August","September","October","November","December"];el.textContent=m[d.getMonth()]+" "+d.getDate()+", "+d.getFullYear();}if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",setDate);}else{setDate();}})();</script>
-        <hr class="desi-divider">
-      </div>
+<div class="s1-outer">
+  <p class="s1-headline">7 Reasons Why This Walking &amp; Talking Rabbit Toy Is Taking the Parenting World by Storm in 2026 👇</p>
+  <div class="s1-alert-box">
+    <p>Indian parents are calling it "worth more than 10 regular toys combined." Desi Store presents India's first interactive walking rabbit toy — the only toy that moves, talks, and brings instant joy to your child. We expose 7 reasons why it's the most wished-for toy of 2026.</p>
+  </div>
+  <div class="s1-author-row">
+    <img class="s1-author-img" src="https://cdn.shopify.com/s/files/1/0808/0752/6593/files/gempages_543481807820030814-788fec31-38b0-47e7-8578-44fb4ee6ef2b.jpg" alt="Tania M.">
+    <div class="s1-author-info">
+      <p class="s1-author-name">Tania M.</p>
+      <p class="s1-author-creds">Parenting &amp; Child Development Writer | Desi Store</p>
     </div>
   </div>
+  <p class="s1-last-updated">Last Updated: <span id="s1-date-val">March 25, 2026</span></p>
+  <script>(function(){function setDate(){var el=document.getElementById("s1-date-val");if(!el)return;var d=new Date();d.setDate(d.getDate()-1);var m=["January","February","March","April","May","June","July","August","September","October","November","December"];el.textContent=m[d.getMonth()]+" "+d.getDate()+", "+d.getFullYear();}if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",setDate);}else{setDate();}})();</script>
+  <hr class="s1-divider">
+</div>
