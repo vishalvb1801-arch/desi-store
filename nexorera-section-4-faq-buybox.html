@@ -1,0 +1,64 @@
+<!-- Nexorera Section 4: FAQ (Buy Box Area) -->
+<style>
+  .nexo-faq1 { font-family: sans-serif; background: #fff; padding: 24px 16px; max-width: 700px; margin: 0 auto; }
+  .nexo-faq1-title { font-size: 14px; font-weight: 700; color: #1B3854; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+  .nexo-faq1-item { border-bottom: 1px solid #eee; }
+  .nexo-faq1-q { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; cursor: pointer; font-size: 14px; font-weight: 600; color: #1B3854; gap: 12px; }
+  .nexo-faq1-q .nexo-faq1-icon { flex-shrink: 0; font-size: 18px; color: #E8740C; transition: transform 0.25s; }
+  .nexo-faq1-a { font-size: 13px; color: #555; line-height: 1.6; overflow: hidden; max-height: 0; transition: max-height 0.3s ease, padding 0.3s ease; padding: 0; }
+  .nexo-faq1-item.open .nexo-faq1-a { max-height: 300px; padding-bottom: 14px; }
+  .nexo-faq1-item.open .nexo-faq1-icon { transform: rotate(45deg); }
+</style>
+
+<div class="nexo-faq1">
+  <div class="nexo-faq1-title">Frequently Asked Questions</div>
+
+  <div class="nexo-faq1-item">
+    <div class="nexo-faq1-q" onclick="nexoToggleFaq1(this)">
+      How does Nexorera work?
+      <span class="nexo-faq1-icon">+</span>
+    </div>
+    <div class="nexo-faq1-a">
+      Nexorera uses a blend of clinically-studied natural ingredients — including Ashwagandha, Tongkat Ali, and Tribulus Terrestris — to support your body's natural testosterone production. Rather than introducing synthetic hormones, our formula works with your body's own endocrine system to help optimize hormone levels safely and naturally.
+    </div>
+  </div>
+
+  <div class="nexo-faq1-item">
+    <div class="nexo-faq1-q" onclick="nexoToggleFaq1(this)">
+      How does the 30 day trial work?
+      <span class="nexo-faq1-icon">+</span>
+    </div>
+    <div class="nexo-faq1-a">
+      Try Nexorera completely risk-free for 30 days. If you're not 100% satisfied with your results, simply contact our support team within 30 days of your purchase for a full refund — no questions asked. You keep the product and we process your refund promptly.
+    </div>
+  </div>
+
+  <div class="nexo-faq1-item">
+    <div class="nexo-faq1-q" onclick="nexoToggleFaq1(this)">
+      How does the subscription work?
+      <span class="nexo-faq1-icon">+</span>
+    </div>
+    <div class="nexo-faq1-a">
+      Subscribe and save 50% on every order. Your supply ships automatically each month so you never run out. You can pause, skip, or cancel your subscription at any time with no fees or penalties — just log into your account or email us.
+    </div>
+  </div>
+
+  <div class="nexo-faq1-item">
+    <div class="nexo-faq1-q" onclick="nexoToggleFaq1(this)">
+      Is it worth subscribing?
+      <span class="nexo-faq1-icon">+</span>
+    </div>
+    <div class="nexo-faq1-a">
+      Absolutely. Testosterone optimization is a long-term commitment — most customers see their best results after 60–90 days of consistent use. The subscription saves you 50% versus one-time pricing, ensures you never miss a dose, and gives you free priority shipping. It's the smart choice for long-term results.
+    </div>
+  </div>
+</div>
+
+<script>
+window.nexoToggleFaq1 = function(el) {
+  var item = el.parentElement;
+  var isOpen = item.classList.contains('open');
+  document.querySelectorAll('.nexo-faq1-item').forEach(function(i) { i.classList.remove('open'); });
+  if (!isOpen) item.classList.add('open');
+};
+</script>

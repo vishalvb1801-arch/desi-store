@@ -1,0 +1,198 @@
+<!-- Nexorera Section 2: Buy Box -->
+<style>
+  .nexo-buybox * { box-sizing: border-box; }
+  .nexo-buybox { font-family: sans-serif; background: #fff; padding: 24px 16px; max-width: 1100px; margin: 0 auto; }
+  .nexo-buybox-grid { display: flex; gap: 32px; align-items: flex-start; }
+  .nexo-carousel-col { flex: 0 0 48%; max-width: 48%; }
+  .nexo-info-col { flex: 1; }
+
+  /* Carousel */
+  .nexo-main-img-wrap { position: relative; overflow: hidden; border-radius: 12px; background: #f5f5f5; }
+  .nexo-main-img-wrap img { width: 100%; display: block; border-radius: 12px; }
+  .nexo-carousel-nav { display: flex; gap: 8px; margin-top: 10px; overflow-x: auto; padding-bottom: 4px; }
+  .nexo-carousel-nav img { width: 72px; height: 72px; object-fit: cover; border-radius: 8px; cursor: pointer; border: 2px solid transparent; flex-shrink: 0; }
+  .nexo-carousel-nav img.active { border-color: #E8740C; }
+  .nexo-carousel-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.85); border: none; border-radius: 50%; width: 36px; height: 36px; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+  .nexo-carousel-arrow.prev { left: 8px; }
+  .nexo-carousel-arrow.next { right: 8px; }
+
+  /* Info col */
+  .nexo-rating-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .nexo-stars { color: #E8740C; font-size: 18px; }
+  .nexo-rating-text { font-size: 13px; color: #555; }
+  .nexo-title { font-size: 26px; font-weight: 800; color: #1B3854; margin: 0 0 10px; line-height: 1.2; }
+  .nexo-badge { display: inline-flex; align-items: center; gap: 6px; background: #eef6ff; color: #1B3854; border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 600; margin-bottom: 14px; }
+  .nexo-bullets { list-style: none; padding: 0; margin: 0 0 18px; }
+  .nexo-bullets li { display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #333; margin-bottom: 8px; }
+  .nexo-bullets li::before { content: "✓"; color: #E8740C; font-weight: 700; flex-shrink: 0; }
+
+  /* Bundle picker */
+  .nexo-bundle-label { font-size: 13px; font-weight: 700; color: #1B3854; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .nexo-bundle-options { display: flex; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; }
+  .nexo-bundle-btn { flex: 1; min-width: 90px; border: 2px solid #ddd; border-radius: 8px; padding: 10px 8px; text-align: center; cursor: pointer; transition: all 0.2s; background: #fff; }
+  .nexo-bundle-btn.selected { border-color: #E8740C; background: #fff8f3; }
+  .nexo-bundle-btn .qty { font-size: 15px; font-weight: 700; color: #1B3854; }
+  .nexo-bundle-btn .bottles { font-size: 11px; color: #888; }
+  .nexo-bundle-btn .price { font-size: 13px; font-weight: 600; color: #E8740C; margin-top: 2px; }
+
+  /* Subscribe toggle */
+  .nexo-sub-toggle { display: flex; gap: 0; margin-bottom: 18px; border: 2px solid #1B3854; border-radius: 8px; overflow: hidden; }
+  .nexo-sub-btn { flex: 1; padding: 10px 8px; text-align: center; font-size: 13px; font-weight: 600; cursor: pointer; background: #fff; color: #1B3854; border: none; }
+  .nexo-sub-btn.active { background: #1B3854; color: #fff; }
+
+  /* Price + ATC */
+  .nexo-price-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 14px; }
+  .nexo-price-sale { font-size: 28px; font-weight: 800; color: #1B3854; }
+  .nexo-price-orig { font-size: 18px; color: #aaa; text-decoration: line-through; }
+  .nexo-price-save { font-size: 13px; font-weight: 700; color: #fff; background: #E8740C; border-radius: 4px; padding: 2px 7px; }
+  .nexo-atc-btn { display: block; width: 100%; background: #E8740C; color: #fff; border: none; border-radius: 50px; padding: 16px 24px; font-size: 17px; font-weight: 800; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+  .nexo-guarantee { text-align: center; font-size: 12px; color: #888; margin-bottom: 14px; }
+  .nexo-payment-icons { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
+  .nexo-payment-icons img { height: 24px; border-radius: 3px; }
+
+  @media (max-width: 768px) {
+    .nexo-buybox-grid { flex-direction: column; }
+    .nexo-carousel-col { flex: unset; max-width: 100%; width: 100%; }
+    .nexo-title { font-size: 22px; }
+  }
+</style>
+
+<div class="nexo-buybox">
+  <div class="nexo-buybox-grid">
+    <!-- Image Carousel -->
+    <div class="nexo-carousel-col">
+      <div class="nexo-main-img-wrap" id="nexo-main-wrap">
+        <button class="nexo-carousel-arrow prev" onclick="nexoCarousel(-1)">&#8249;</button>
+        <img id="nexo-main-img" src="//www.nexorera.com/cdn/shop/files/1.png" alt="Nexorera Testosterone Booster">
+        <button class="nexo-carousel-arrow next" onclick="nexoCarousel(1)">&#8250;</button>
+      </div>
+      <div class="nexo-carousel-nav" id="nexo-thumbs">
+        <img src="//www.nexorera.com/cdn/shop/files/1.png" alt="Image 1" class="active" onclick="nexoGoTo(0)">
+        <img src="//www.nexorera.com/cdn/shop/files/2.png" alt="Image 2" onclick="nexoGoTo(1)">
+        <img src="//www.nexorera.com/cdn/shop/files/3.png" alt="Image 3" onclick="nexoGoTo(2)">
+        <img src="//www.nexorera.com/cdn/shop/files/4.png" alt="Image 4" onclick="nexoGoTo(3)">
+        <img src="//www.nexorera.com/cdn/shop/files/5.png" alt="Image 5" onclick="nexoGoTo(4)">
+        <img src="//www.nexorera.com/cdn/shop/files/6.png" alt="Image 6" onclick="nexoGoTo(5)">
+        <img src="//www.nexorera.com/cdn/shop/files/7.png" alt="Image 7" onclick="nexoGoTo(6)">
+        <img src="//www.nexorera.com/cdn/shop/files/8.png" alt="Image 8" onclick="nexoGoTo(7)">
+      </div>
+    </div>
+
+    <!-- Product Info -->
+    <div class="nexo-info-col">
+      <div class="nexo-rating-row">
+        <span class="nexo-stars">★★★★★</span>
+        <span class="nexo-rating-text">4.9/5 from 20,323 Reviews</span>
+      </div>
+      <h1 class="nexo-title">Nexorera Testostrone Booster</h1>
+      <div class="nexo-badge">
+        <span>🏆</span>
+        <span>Doctors' Choice Formula</span>
+      </div>
+      <ul class="nexo-bullets">
+        <li>Naturally boosts testosterone levels</li>
+        <li>Increases energy, strength & stamina</li>
+        <li>Enhances mood & mental clarity</li>
+        <li>Third-party tested for purity & potency</li>
+      </ul>
+
+      <!-- Bundle Picker -->
+      <div class="nexo-bundle-label">Choose Your Bundle:</div>
+      <div class="nexo-bundle-options">
+        <div class="nexo-bundle-btn" onclick="nexoSelectBundle(this, '53286446596462', 49.99)" data-variant="53286446596462">
+          <div class="qty">1 Bottle</div>
+          <div class="bottles">30-day supply</div>
+          <div class="price">$49.99</div>
+        </div>
+        <div class="nexo-bundle-btn selected" onclick="nexoSelectBundle(this, '53286446596462', 89.99)" data-variant="53286446596462">
+          <div class="qty">2 Bottles</div>
+          <div class="bottles">60-day supply</div>
+          <div class="price">$89.99</div>
+        </div>
+        <div class="nexo-bundle-btn" onclick="nexoSelectBundle(this, '53286446596462', 119.99)" data-variant="53286446596462">
+          <div class="qty">3 Bottles</div>
+          <div class="bottles">90-day supply</div>
+          <div class="price">$119.99</div>
+        </div>
+      </div>
+
+      <!-- Subscribe Toggle -->
+      <div class="nexo-sub-toggle">
+        <button class="nexo-sub-btn active" onclick="nexoToggleSub(this, 'subscribe')">Subscribe & Save 50%</button>
+        <button class="nexo-sub-btn" onclick="nexoToggleSub(this, 'one-time')">One-Time Purchase</button>
+      </div>
+
+      <!-- Price -->
+      <div class="nexo-price-row">
+        <span class="nexo-price-sale" id="nexo-sale-price">$49.99</span>
+        <span class="nexo-price-orig">$99.99</span>
+        <span class="nexo-price-save">Save 50%</span>
+      </div>
+
+      <!-- ATC -->
+      <button class="nexo-atc-btn" onclick="nexoAddToCart()">Add to Cart — $49.99</button>
+      <div class="nexo-guarantee">🔒 30-Day Money-Back Guarantee &nbsp;|&nbsp; Free Shipping on Subscriptions</div>
+      <div class="nexo-payment-icons">
+        <img src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/visa.sRGbZAM_.svg" alt="Visa">
+        <img src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/master.BMsyNUaO.svg" alt="Mastercard">
+        <img src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/amex.CIOWRpGg.svg" alt="Amex">
+        <img src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/paypal.Bj6tGPRL.svg" alt="PayPal">
+        <img src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/shopPay.BFYhmRIk.svg" alt="Shop Pay">
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var nexoImages = [
+    '//www.nexorera.com/cdn/shop/files/1.png',
+    '//www.nexorera.com/cdn/shop/files/2.png',
+    '//www.nexorera.com/cdn/shop/files/3.png',
+    '//www.nexorera.com/cdn/shop/files/4.png',
+    '//www.nexorera.com/cdn/shop/files/5.png',
+    '//www.nexorera.com/cdn/shop/files/6.png',
+    '//www.nexorera.com/cdn/shop/files/7.png',
+    '//www.nexorera.com/cdn/shop/files/8.png'
+  ];
+  var nexoCurrentImg = 0;
+
+  window.nexoGoTo = function(idx) {
+    nexoCurrentImg = idx;
+    document.getElementById('nexo-main-img').src = nexoImages[idx];
+    var thumbs = document.querySelectorAll('#nexo-thumbs img');
+    thumbs.forEach(function(t, i) { t.classList.toggle('active', i === idx); });
+  };
+
+  window.nexoCarousel = function(dir) {
+    nexoCurrentImg = (nexoCurrentImg + dir + nexoImages.length) % nexoImages.length;
+    nexoGoTo(nexoCurrentImg);
+  };
+
+  window.nexoSelectBundle = function(el, variantId, price) {
+    document.querySelectorAll('.nexo-bundle-btn').forEach(function(b) { b.classList.remove('selected'); });
+    el.classList.add('selected');
+    document.getElementById('nexo-sale-price').textContent = '$' + price.toFixed(2);
+    document.querySelector('.nexo-atc-btn').textContent = 'Add to Cart — $' + price.toFixed(2);
+  };
+
+  window.nexoToggleSub = function(el, type) {
+    document.querySelectorAll('.nexo-sub-btn').forEach(function(b) { b.classList.remove('active'); });
+    el.classList.add('active');
+  };
+
+  window.nexoAddToCart = function() {
+    var active = document.querySelector('.nexo-bundle-btn.selected');
+    var variantId = active ? active.dataset.variant : '53286446596462';
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: variantId, quantity: 1 })
+    }).then(function() {
+      window.location.href = '/cart';
+    }).catch(function() {
+      window.location.href = '/cart';
+    });
+  };
+})();
+</script>

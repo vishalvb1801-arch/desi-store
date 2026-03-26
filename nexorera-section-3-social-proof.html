@@ -1,0 +1,80 @@
+<!-- Nexorera Section 3: Social Proof Inline -->
+<style>
+  .nexo-sp { font-family: sans-serif; background: #fff; padding: 16px; max-width: 1100px; margin: 0 auto; }
+  .nexo-sp-grid { display: flex; gap: 12px; flex-wrap: wrap; align-items: stretch; }
+  .nexo-sp-item { flex: 1; min-width: 200px; background: #f9f9f9; border-radius: 10px; padding: 14px 16px; display: flex; align-items: center; gap: 12px; }
+  .nexo-sp-icon { font-size: 28px; flex-shrink: 0; }
+  .nexo-sp-text { font-size: 13px; color: #333; line-height: 1.4; }
+  .nexo-sp-text strong { display: block; font-size: 15px; color: #1B3854; font-weight: 700; }
+  .nexo-counter { font-size: 22px; font-weight: 800; color: #E8740C; }
+
+  /* Low stock */
+  .nexo-lowstock { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #c0392b; font-weight: 600; }
+  .nexo-stock-dot { width: 10px; height: 10px; border-radius: 50%; background: #c0392b; flex-shrink: 0; animation: nexo-pulse 1.2s infinite; }
+  @keyframes nexo-pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.5;transform:scale(1.4);} }
+
+  /* Warning box */
+  .nexo-warning { background: #fff8e1; border: 1.5px solid #f0c040; border-radius: 10px; padding: 14px 16px; margin-top: 12px; display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: #7d5a00; }
+  .nexo-warning-icon { font-size: 20px; flex-shrink: 0; }
+
+  @media (max-width: 640px) {
+    .nexo-sp-item { min-width: 100%; }
+  }
+</style>
+
+<div class="nexo-sp">
+  <div class="nexo-sp-grid">
+    <!-- Counter -->
+    <div class="nexo-sp-item">
+      <div class="nexo-sp-icon">👥</div>
+      <div class="nexo-sp-text">
+        <strong><span class="nexo-counter" id="nexo-customer-count">13,247</span>+ Happy Customers</strong>
+        And counting — join the wolf pack today
+      </div>
+    </div>
+
+    <!-- Low stock -->
+    <div class="nexo-sp-item">
+      <div class="nexo-lowstock">
+        <span class="nexo-stock-dot"></span>
+        <span>Low Stock — Only <strong style="color:#c0392b;">&nbsp;11&nbsp;</strong> left</span>
+      </div>
+    </div>
+
+    <!-- Delivery -->
+    <div class="nexo-sp-item">
+      <div class="nexo-sp-icon">🚚</div>
+      <div class="nexo-sp-text">
+        <strong>Fast Free Shipping</strong>
+        Order today — estimated delivery in 3–5 business days
+      </div>
+    </div>
+  </div>
+
+  <!-- Fake Seller Warning -->
+  <div class="nexo-warning">
+    <span class="nexo-warning-icon">⚠️</span>
+    <div>
+      <strong style="display:block;margin-bottom:4px;color:#7d5a00;">Warning: Fake Sellers</strong>
+      Nexorera is <strong>only sold on this official website</strong>. Beware of unauthorized third-party sellers on Amazon, eBay, or other marketplaces — we cannot guarantee the authenticity or quality of products sold elsewhere.
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  // Animate counter from a seed to 13,340+
+  var target = 13340;
+  var current = 13247;
+  var el = document.getElementById('nexo-customer-count');
+  function animateCounter() {
+    if (current < target) {
+      current += Math.ceil(Math.random() * 3);
+      if (current > target) current = target;
+      el.textContent = current.toLocaleString();
+      setTimeout(animateCounter, 800 + Math.random() * 1200);
+    }
+  }
+  setTimeout(animateCounter, 2000);
+})();
+</script>

@@ -1,0 +1,57 @@
+<!-- Nexorera Section 1: Announcement Bar -->
+<div style="background-color:#1B3854;width:100%;padding:10px 16px;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;">
+  <div style="color:#ffffff;font-size:15px;font-weight:400;font-family:sans-serif;text-align:center;">
+    <strong style="font-weight:700;">Get 50%</strong> off on subscriptions
+  </div>
+  <div style="display:flex;align-items:center;gap:4px;font-family:monospace;">
+    <div style="background-color:rgba(255,255,255,0.1);border-radius:4px;padding:4px 8px;min-width:36px;text-align:center;">
+      <span id="nexo-timer-hours" style="color:#E8740C;font-size:16px;font-weight:700;">00</span>
+    </div>
+    <span style="color:#E8740C;font-size:16px;font-weight:700;">:</span>
+    <div style="background-color:rgba(255,255,255,0.1);border-radius:4px;padding:4px 8px;min-width:36px;text-align:center;">
+      <span id="nexo-timer-minutes" style="color:#E8740C;font-size:16px;font-weight:700;">00</span>
+    </div>
+    <span style="color:#E8740C;font-size:16px;font-weight:700;">:</span>
+    <div style="background-color:rgba(255,255,255,0.1);border-radius:4px;padding:4px 8px;min-width:36px;text-align:center;">
+      <span id="nexo-timer-seconds" style="color:#E8740C;font-size:16px;font-weight:700;">00</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  @media (max-width: 640px) {
+    #nexo-announcement-bar { flex-direction: column; gap: 8px; padding: 8px 12px; }
+  }
+</style>
+
+<script>
+(function() {
+  function getNexoCountdown() {
+    var now = new Date();
+    var midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0);
+    var diff = Math.floor((midnight - now) / 1000);
+    if (diff < 0) diff = 0;
+    var h = Math.floor(diff / 3600);
+    var m = Math.floor((diff % 3600) / 60);
+    var s = diff % 60;
+    return {
+      h: String(h).padStart(2, '0'),
+      m: String(m).padStart(2, '0'),
+      s: String(s).padStart(2, '0')
+    };
+  }
+
+  function updateNexoTimer() {
+    var t = getNexoCountdown();
+    var elH = document.getElementById('nexo-timer-hours');
+    var elM = document.getElementById('nexo-timer-minutes');
+    var elS = document.getElementById('nexo-timer-seconds');
+    if (elH) elH.textContent = t.h;
+    if (elM) elM.textContent = t.m;
+    if (elS) elS.textContent = t.s;
+  }
+
+  updateNexoTimer();
+  setInterval(updateNexoTimer, 1000);
+})();
+</script>
