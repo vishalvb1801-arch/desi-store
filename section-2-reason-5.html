@@ -1,38 +1,40 @@
 <!-- PRODUCT VARIABLES
   - Image URL: src on <img> below
   - Reason title: text inside the title <p>
-  - Body paragraphs: 3x <p> inside the body <div>
+  - Body paragraphs: 3x <p> inside the body <td>
 -->
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 @media (max-width: 640px) {
-  .s2r-outer { padding: 32px 16px !important; }
-  .s2r-item { flex-direction: column !important; gap: 20px !important; }
-  .s2r-imgw { flex: unset !important; max-width: 100% !important; width: 100% !important; }
+  .s2r-wrap { padding: 32px 16px !important; }
+  .s2r-tbl, .s2r-tr, .s2r-td-img, .s2r-td-txt { display: block !important; width: 100% !important; }
+  .s2r-td-img { padding-right: 0 !important; padding-bottom: 20px !important; }
+  .s2r-td-img img { width: 100% !important; }
   .s2r-title { font-size: 22px !important; }
   .s2r-body { font-size: 15px !important; }
 }
 @media (min-width: 641px) and (max-width: 1024px) {
-  .s2r-item { gap: 40px !important; }
-  .s2r-imgw { flex: 0 0 260px !important; max-width: 260px !important; }
+  .s2r-td-img { width: 260px !important; padding-right: 40px !important; }
   .s2r-title { font-size: 26px !important; }
 }
 </style>
 
-<div class="s2r-outer" style="font-family:'Montserrat',sans-serif;padding:40px 24px;box-sizing:border-box;width:100%;">
-  <div class="s2r-item" style="display:flex;align-items:center;gap:60px;max-width:1024px;margin:0 auto;">
-    <div class="s2r-imgw" style="flex:0 0 320px;max-width:320px;">
-      <img src="https://cdn.shopify.com/s/files/1/0808/0752/6593/files/12_4481e6f8-935a-44a7-b5cd-5be9d351f6b5.png?v=1774213485" loading="eager" alt="Develops Your Child's Brain Through Motion Play" style="width:100%;height:auto;display:block;border-radius:8px;object-fit:cover;">
-    </div>
-    <div style="flex:1;display:flex;flex-direction:column;gap:12px;">
-      <p class="s2r-title" style="color:#000;font-size:30px;font-weight:700;line-height:1.3;letter-spacing:-0.5px;margin:0;font-family:'Montserrat',sans-serif;">5. Develops Your Child's Brain Through Motion Play</p>
-      <div class="s2r-body" style="color:#000;font-size:17px;font-weight:500;line-height:1.7;margin:0;font-family:'Montserrat',sans-serif;">
-        <p style="margin:0 0 10px 0;">This walking rabbit is the only toy that stimulates visual tracking, motor coordination, and cognitive development simultaneously as kids follow its movements.</p>
-        <p style="margin:0 0 10px 0;">The realistic walking motion improves hand-eye coordination while talking sounds enhance language skills. Child development experts recommend motion-based toys for faster learning.</p>
-        <p style="margin:0;">Watch your child's confidence soar as they interact with this smart companion that teaches through play – something static toys simply cannot achieve.</p>
-      </div>
-    </div>
-  </div>
+<div class="s2r-wrap" style="padding:40px 24px;box-sizing:border-box;width:100%;font-family:'Montserrat',sans-serif;">
+  <table class="s2r-tbl" style="width:100%;max-width:1024px;margin:0 auto;border-collapse:collapse;border-spacing:0;" cellpadding="0" cellspacing="0">
+    <tr class="s2r-tr">
+      <td class="s2r-td-img" style="width:320px;padding-right:60px;vertical-align:middle;">
+        <img src="https://cdn.shopify.com/s/files/1/0808/0752/6593/files/12_4481e6f8-935a-44a7-b5cd-5be9d351f6b5.png?v=1774213485" loading="eager" alt="Develops Your Child's Brain Through Motion Play" style="width:320px;max-width:100%;height:auto;display:block;border-radius:8px;object-fit:cover;">
+      </td>
+      <td class="s2r-td-txt" style="vertical-align:middle;padding:0;">
+        <p class="s2r-title" style="color:#000;font-size:30px;font-weight:700;line-height:1.3;letter-spacing:-0.5px;margin:0 0 12px 0;font-family:'Montserrat',sans-serif;">5. Develops Your Child's Brain Through Motion Play</p>
+        <div class="s2r-body" style="color:#000;font-size:17px;font-weight:500;line-height:1.7;margin:0;font-family:'Montserrat',sans-serif;">
+          <p style="margin:0 0 10px 0;">This walking rabbit is the only toy that stimulates visual tracking, motor coordination, and cognitive development simultaneously as kids follow its movements.</p>
+          <p style="margin:0 0 10px 0;">The realistic walking motion improves hand-eye coordination while talking sounds enhance language skills. Child development experts recommend motion-based toys for faster learning.</p>
+          <p style="margin:0;">Watch your child's confidence soar as they interact with this smart companion that teaches through play – something static toys simply cannot achieve.</p>
+        </div>
+      </td>
+    </tr>
+  </table>
 </div>
