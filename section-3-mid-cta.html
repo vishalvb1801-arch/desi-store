@@ -1,80 +1,71 @@
 <!-- PRODUCT VARIABLES
-  - Big headline: Change <p> inside .r-avz6cj (currently: "If you made it this far, it means one thing:")
-  - Italic subheadline: Change <em> text inside .r-124z6tv
-    (currently: "You're a parent who refuses to settle for ordinary toys — and your child deserves extraordinary joy.")
-  - Body paragraph text: Change content inside .r-n4zdq5 (currently: 4 paragraphs about screen time, India parents, 50% OFF, Desi Store warranty)
+  - Big headline: text inside <p class="s3-headline"> (currently: "If you made it this far, it means one thing:")
+  - Italic subheadline: text inside <p class="s3-sub"> (currently: "You're a parent who refuses to settle...")
+  - Body paragraphs: inside <div class="s3-body"> (currently: 4 paragraphs)
+  - Background color: --s3-bg in :root (currently: #FFF6E7)
 -->
 
 <style>
-/* ---- Replo classes (extracted, no specificity hacks needed) ---- */
-.r-1m54jnp {
-  display: flex;
-  row-gap: 24px;
-  max-width: 100%;
-  align-self: stretch;
-  align-items: center;
-  flex-shrink: 0;
-  padding: 40px 80px;
-  flex-direction: column;
-  justify-content: center;
-  background-color: #FFF6E7FF;
-}
-@media (max-width: 640px) {
-  .r-1m54jnp {
-    row-gap: 8px;
-    padding: 32px 16px;
-  }
-}
-@media (min-width: 641px) and (max-width: 1024px) {
-  .r-1m54jnp {
-    padding: 40px 24px;
-  }
-}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
 
-.r-avz6cj {
+.s3-outer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  padding: 40px 80px;
+  box-sizing: border-box;
+  background-color: #FFF6E7;
+  font-family: 'Montserrat', sans-serif;
+}
+.s3-headline {
   font-size: 56px;
-  align-self: stretch;
-  text-align: center;
   font-weight: 700;
   line-height: 66px;
-  overflow-wrap: break-word;
-}
-@media (max-width: 640px) {
-  .r-avz6cj {
-    font-size: 36px;
-    line-height: 44px;
-  }
-}
-
-.r-124z6tv,
-.r-n4zdq5 {
-  flex-grow: 1;
-  font-size: 20px;
-  max-width: 1440px;
   text-align: center;
-  flex-shrink: 1;
-  line-height: 28px;
   overflow-wrap: break-word;
+  margin: 0;
+  width: 100%;
 }
+.s3-sub {
+  font-size: 20px;
+  font-style: italic;
+  line-height: 28px;
+  text-align: center;
+  overflow-wrap: break-word;
+  margin: 0;
+  max-width: 1440px;
+}
+.s3-body {
+  font-size: 20px;
+  line-height: 28px;
+  text-align: center;
+  overflow-wrap: break-word;
+  max-width: 1440px;
+}
+.s3-body p { margin: 0 0 8px 0; }
+.s3-body p:last-child { margin-bottom: 0; }
+
 @media (max-width: 640px) {
-  .r-124z6tv,
-  .r-n4zdq5 {
-    font-size: 17px;
-    line-height: 24px;
-  }
+  .s3-outer { padding: 32px 16px; gap: 8px; }
+  .s3-headline { font-size: 36px; line-height: 44px; }
+  .s3-sub { font-size: 17px; line-height: 24px; }
+  .s3-body { font-size: 17px; line-height: 24px; }
+}
+@media (min-width: 641px) and (max-width: 1024px) {
+  .s3-outer { padding: 40px 24px; }
 }
 </style>
 
-  <!-- MID-PAGE CTA TEXT -->
-  <div data-rid="desi-mid-cta" class="r-1m54jnp">
-    <div class="r-avz6cj alchemy-rte"><span style="width:100%"><p>If you made it this far, it means one thing:</p></span></div>
-    <div class="r-124z6tv alchemy-rte"><span style="width:100%"><p><em>You're a parent who refuses to settle for ordinary toys — and your child deserves extraordinary joy.</em></p></span></div>
-    <div class="r-n4zdq5 alchemy-rte"><span style="width:100%">
-      <p>Most parents scroll past toys that look the same. But this one is different — it walks, talks, and builds a real connection with your child.</p>
-      <p>The longer your child waits, the more screen time replaces real play.</p>
-      <br>
-      <p>That's why parents across India are choosing this interactive rabbit. Limited stock means this offer won't last forever.</p>
-      <p>That's why we made it available exclusively at Desi Store — with 50% OFF and a full warranty for peace of mind.</p>
-    </span></div>
-
+<div class="s3-outer">
+  <p class="s3-headline">If you made it this far, it means one thing:</p>
+  <p class="s3-sub"><em>You're a parent who refuses to settle for ordinary toys — and your child deserves extraordinary joy.</em></p>
+  <div class="s3-body">
+    <p>Most parents scroll past toys that look the same. But this one is different — it walks, talks, and builds a real connection with your child.</p>
+    <p>The longer your child waits, the more screen time replaces real play.</p>
+    <br>
+    <p>That's why parents across India are choosing this interactive rabbit. Limited stock means this offer won't last forever.</p>
+    <p>That's why we made it available exclusively at Desi Store — with 50% OFF and a full warranty for peace of mind.</p>
   </div>
+</div>
