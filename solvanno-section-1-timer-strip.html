@@ -28,9 +28,10 @@
   .timer-strip__item {
     display: flex;
     align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
+    gap: 12px;
+    flex-wrap: nowrap;
     justify-content: center;
+    white-space: nowrap;
   }
   .timer-strip__item-title {
     font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
@@ -40,21 +41,32 @@
     margin: 0;
     letter-spacing: 0.2px;
     white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .timer-strip__item-title .ts-emoji {
+    font-size: 22px;
+    vertical-align: middle;
+    line-height: 1;
   }
   .timer-strip__inner-container {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
+    flex-shrink: 0;
   }
+  /* White pill: value + unit side by side */
   .timer-strip__cell {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    min-width: 34px;
+    gap: 4px;
+    background: #fff;
+    border-radius: 5px;
+    padding: 4px 9px;
   }
   .timer-strip__cell-value {
     font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 800;
     color: #1a1a1a;
     line-height: 1;
@@ -62,19 +74,23 @@
   .timer-strip__cell-unit {
     font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
     font-size: 10px;
-    font-weight: 600;
+    font-weight: 700;
     color: #1a1a1a;
-    text-transform: lowercase;
-    letter-spacing: 0.3px;
-    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1;
   }
   .timer-strip__separator {
-    font-size: 18px;
-    font-weight: 800;
-    color: #1a1a1a;
-    line-height: 1;
-    align-self: flex-start;
-    padding-top: 1px;
+    display: none;
+  }
+  @media screen and (max-width: 480px) {
+    .timer-strip__container { padding: 0 8px; }
+    .timer-strip__item { gap: 8px; }
+    .timer-strip__item-title { font-size: 12px; }
+    .timer-strip__item-title .ts-emoji { font-size: 18px; }
+    .timer-strip__cell { padding: 3px 7px; }
+    .timer-strip__cell-value { font-size: 13px; }
+    .timer-strip__cell-unit { font-size: 9px; }
   }
 </style>
 
@@ -86,7 +102,7 @@
            data-minutes="29"
            data-reference="July 4, 2025 11:00:00">
         <div class="timer-strip__item offer-timer">
-          <p class="timer-strip__item-title">🐣 EASTER SALE ENDS TONGIHT!</p>
+          <p class="timer-strip__item-title"><span class="ts-emoji">🐣</span> EASTER SALE ENDS TONGIHT!</p>
           <div class="timer-strip__inner-container">
             <div class="timer-strip__cell">
               <div class="timer-strip__cell-value" id="ts-hours">02</div>
