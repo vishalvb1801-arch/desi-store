@@ -1,12 +1,10 @@
 <!-- TIMER STRIP
   VARIABLES:
   - Sale label text:   change text in the <span> after the emoji
-  - Countdown target:  change data-reference="July 4, 2025 11:00:00"
   - Brand color:       change background-color on the outer div (#9cae01)
 -->
 
-<div id="ts-clock"
-     data-hours="2" data-minutes="29" data-reference="July 4, 2025 11:00:00"
+<div data-sv-timer
      style="background-color:#9cae01;width:100%;box-sizing:border-box;padding:clamp(7px,1.5vw,9px) clamp(8px,2vw,16px);">
   <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:clamp(6px,2vw,12px);flex-wrap:nowrap;">
 
@@ -20,17 +18,17 @@
     <div style="display:flex;align-items:center;gap:clamp(3px,1vw,5px);flex-shrink:0;">
 
       <div style="background:#fff;border-radius:5px;padding:clamp(3px,0.8vw,4px) clamp(5px,1.8vw,9px);display:flex;align-items:center;gap:clamp(2px,0.8vw,4px);">
-        <span id="ts-hours" style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:clamp(12px,3.2vw,15px);font-weight:800;color:#1a1a1a;line-height:1;">02</span>
+        <span class="sv-h" style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:clamp(12px,3.2vw,15px);font-weight:800;color:#1a1a1a;line-height:1;">00</span>
         <span style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:clamp(8px,2vw,10px);font-weight:700;color:#1a1a1a;text-transform:uppercase;letter-spacing:0.5px;line-height:1;">HRS</span>
       </div>
 
       <div style="background:#fff;border-radius:5px;padding:clamp(3px,0.8vw,4px) clamp(5px,1.8vw,9px);display:flex;align-items:center;gap:clamp(2px,0.8vw,4px);">
-        <span id="ts-minutes" style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:clamp(12px,3.2vw,15px);font-weight:800;color:#1a1a1a;line-height:1;">28</span>
+        <span class="sv-m" style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:clamp(12px,3.2vw,15px);font-weight:800;color:#1a1a1a;line-height:1;">00</span>
         <span style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:clamp(8px,2vw,10px);font-weight:700;color:#1a1a1a;text-transform:uppercase;letter-spacing:0.5px;line-height:1;">MIN</span>
       </div>
 
       <div style="background:#fff;border-radius:5px;padding:clamp(3px,0.8vw,4px) clamp(5px,1.8vw,9px);display:flex;align-items:center;gap:clamp(2px,0.8vw,4px);">
-        <span id="ts-seconds" style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:clamp(12px,3.2vw,15px);font-weight:800;color:#1a1a1a;line-height:1;">38</span>
+        <span class="sv-s" style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:clamp(12px,3.2vw,15px);font-weight:800;color:#1a1a1a;line-height:1;">00</span>
         <span style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:clamp(8px,2vw,10px);font-weight:700;color:#1a1a1a;text-transform:uppercase;letter-spacing:0.5px;line-height:1;">SEC</span>
       </div>
 
@@ -40,16 +38,32 @@
 
 <script>
 (function() {
-  if (window._svTimerInterval) { clearInterval(window._svTimerInterval); }
   function pad(n) { return String(n).padStart(2, '0'); }
-  function getEnd() { var now = new Date(); return new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999); }
-  function tick() {
-    var diff = getEnd() - Date.now(); if (diff < 0) diff = 0;
-    document.getElementById('ts-hours').textContent   = pad(Math.floor(diff / 3600000));
-    document.getElementById('ts-minutes').textContent = pad(Math.floor((diff % 3600000) / 60000));
-    document.getElementById('ts-seconds').textContent = pad(Math.floor((diff % 60000) / 1000));
+  function getEnd() {
+    var now = new Date();
+    return new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999).getTime();
   }
-  tick();
-  window._svTimerInterval = setInterval(tick, 1000);
+
+  /* Find every instance of this section in the DOM and init each independently */
+  var containers = document.querySelectorAll('[data-sv-timer]');
+  containers.forEach(function(c) {
+    if (c._svInit) return; /* already running — skip */
+    c._svInit = true;
+
+    var elH = c.querySelector('.sv-h');
+    var elM = c.querySelector('.sv-m');
+    var elS = c.querySelector('.sv-s');
+    if (!elH || !elM || !elS) return;
+
+    function tick() {
+      var diff = Math.max(0, getEnd() - Date.now());
+      elH.textContent = pad(Math.floor(diff / 3600000));
+      elM.textContent = pad(Math.floor((diff % 3600000) / 60000));
+      elS.textContent = pad(Math.floor((diff % 60000) / 1000));
+    }
+
+    tick();
+    c._svInterval = setInterval(tick, 1000);
+  });
 })();
 </script>
