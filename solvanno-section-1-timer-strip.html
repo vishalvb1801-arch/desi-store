@@ -1,0 +1,147 @@
+<!-- TIMER STRIP
+  Exact replica of competitor timer strip.
+  VARIABLES:
+  - Sale label text:    change the <p class="timer-strip__item-title"> text
+  - Countdown target:   change data-reference="July 4, 2025 11:00:00" to your end date/time
+  - Background colour:  .timer-strip__wrapper bg (currently #b4d014)
+-->
+
+<style>
+  .timer-strip__wrapper {
+    background-color: #b4d014;
+    padding-top: 9px;
+    padding-bottom: 9px;
+  }
+  @media screen and (max-width: 980px) {
+    .timer-strip__wrapper {
+      padding-top: 7px;
+      padding-bottom: 7px;
+    }
+  }
+  .timer-strip__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    justify-content: center;
+  }
+  .timer-strip__item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .timer-strip__item-title {
+    font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+  }
+  .timer-strip__inner-container {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .timer-strip__cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 34px;
+  }
+  .timer-strip__cell-value {
+    font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: #1a1a1a;
+    line-height: 1;
+  }
+  .timer-strip__cell-unit {
+    font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    color: #1a1a1a;
+    text-transform: lowercase;
+    letter-spacing: 0.3px;
+    line-height: 1.2;
+  }
+  .timer-strip__separator {
+    font-size: 18px;
+    font-weight: 800;
+    color: #1a1a1a;
+    line-height: 1;
+    align-self: flex-start;
+    padding-top: 1px;
+  }
+</style>
+
+<section class="timer-strip">
+  <div class="timer-strip__wrapper">
+    <div class="timer-strip__container">
+      <div class="timer-strip__clock"
+           data-hours="2"
+           data-minutes="29"
+           data-reference="July 4, 2025 11:00:00">
+        <div class="timer-strip__item offer-timer">
+          <p class="timer-strip__item-title">🐣 EASTER SALE ENDS TONGIHT!</p>
+          <div class="timer-strip__inner-container">
+            <div class="timer-strip__cell">
+              <div class="timer-strip__cell-value" id="ts-hours">02</div>
+              <div class="timer-strip__cell-unit">hrs</div>
+            </div>
+            <span class="timer-strip__separator">:</span>
+            <div class="timer-strip__cell">
+              <div class="timer-strip__cell-value" id="ts-minutes">28</div>
+              <div class="timer-strip__cell-unit">min</div>
+            </div>
+            <span class="timer-strip__separator">:</span>
+            <div class="timer-strip__cell">
+              <div class="timer-strip__cell-value" id="ts-seconds">38</div>
+              <div class="timer-strip__cell-unit">sec</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  var clock   = document.querySelector('.timer-strip__clock');
+  var refStr  = clock ? clock.getAttribute('data-reference') : null;
+  var end     = refStr ? new Date(refStr).getTime() : 0;
+
+  /* Fallback: if reference date has passed, count down from now by data-hours */
+  if (!end || end < Date.now()) {
+    var fallbackHours = parseInt(clock && clock.getAttribute('data-hours') || '2', 10);
+    var KEY = 'ts_end';
+    end = parseInt(sessionStorage.getItem(KEY) || '0', 10);
+    if (!end || end < Date.now()) {
+      end = Date.now() + fallbackHours * 3600 * 1000;
+      sessionStorage.setItem(KEY, end);
+    }
+  }
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function tick() {
+    var diff = Math.max(0, end - Date.now());
+    var h = Math.floor(diff / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+    var elH = document.getElementById('ts-hours');
+    var elM = document.getElementById('ts-minutes');
+    var elS = document.getElementById('ts-seconds');
+    if (elH) elH.textContent = pad(h);
+    if (elM) elM.textContent = pad(m);
+    if (elS) elS.textContent = pad(s);
+  }
+
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>
