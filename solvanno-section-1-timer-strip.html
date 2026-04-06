@@ -38,16 +38,25 @@
 
 <script>
 (function() {
-  function pad(n) { return String(n).padStart(2, '0'); }
-  function getEnd() {
-    var now = new Date();
-    return new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999).getTime();
+  var HOURS = 2; /* ← change this to set countdown duration */
+  var KEY   = 'sv_timer_end';
+
+  var end;
+  try {
+    end = parseInt(localStorage.getItem(KEY) || '0', 10);
+    if (!end || end < Date.now()) {
+      end = Date.now() + HOURS * 3600000;
+      localStorage.setItem(KEY, end);
+    }
+  } catch(e) {
+    end = Date.now() + HOURS * 3600000;
   }
 
-  /* Find every instance of this section in the DOM and init each independently */
+  function pad(n) { return String(n).padStart(2, '0'); }
+
   var containers = document.querySelectorAll('[data-sv-timer]');
   containers.forEach(function(c) {
-    if (c._svInit) return; /* already running — skip */
+    if (c._svInit) return;
     c._svInit = true;
 
     var elH = c.querySelector('.sv-h');
@@ -56,7 +65,7 @@
     if (!elH || !elM || !elS) return;
 
     function tick() {
-      var diff = Math.max(0, getEnd() - Date.now());
+      var diff = Math.max(0, end - Date.now());
       elH.textContent = pad(Math.floor(diff / 3600000));
       elM.textContent = pad(Math.floor((diff % 3600000) / 60000));
       elS.textContent = pad(Math.floor((diff % 60000) / 1000));
