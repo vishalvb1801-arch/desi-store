@@ -1,144 +1,55 @@
 <!-- TIMER STRIP
-  Exact replica of competitor timer strip.
   VARIABLES:
-  - Sale label text:    change the <p class="timer-strip__item-title"> text
-  - Countdown target:   change data-reference="July 4, 2025 11:00:00" to your end date/time
-  - Background colour:  .timer-strip__wrapper bg (currently #b4d014)
+  - Sale label text:   change the text inside the <span> after the emoji
+  - Countdown target:  change data-reference="July 4, 2025 11:00:00"
+  - Brand color:       change background-color on the outer wrapper div (#9cae01)
 -->
 
-<style>
-  .timer-strip__wrapper {
-    background-color: #9cae01;
-    padding-top: 9px;
-    padding-bottom: 9px;
-  }
-  @media screen and (max-width: 980px) {
-    .timer-strip__wrapper {
-      padding-top: 7px;
-      padding-bottom: 7px;
-    }
-  }
-  .timer-strip__container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 16px;
-    display: flex;
-    justify-content: center;
-  }
-  .timer-strip__item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: nowrap;
-    justify-content: center;
-    white-space: nowrap;
-  }
-  .timer-strip__item-title {
-    font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    color: #1a1a1a;
-    margin: 0;
-    letter-spacing: 0.2px;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-  .timer-strip__item-title .ts-emoji {
-    font-size: 22px;
-    vertical-align: middle;
-    line-height: 1;
-  }
-  .timer-strip__inner-container {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    flex-shrink: 0;
-  }
-  /* White pill: value + unit side by side */
-  .timer-strip__cell {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 4px;
-    background: #fff;
-    border-radius: 5px;
-    padding: 4px 9px;
-  }
-  .timer-strip__cell-value {
-    font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
-    font-size: 15px;
-    font-weight: 800;
-    color: #1a1a1a;
-    line-height: 1;
-  }
-  .timer-strip__cell-unit {
-    font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    color: #1a1a1a;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    line-height: 1;
-  }
-  .timer-strip__separator {
-    display: none;
-  }
-  @media screen and (max-width: 480px) {
-    .timer-strip__container { padding: 0 8px; }
-    .timer-strip__item { gap: 8px; }
-    .timer-strip__item-title { font-size: 12px; }
-    .timer-strip__item-title .ts-emoji { font-size: 18px; }
-    .timer-strip__cell { padding: 3px 7px; }
-    .timer-strip__cell-value { font-size: 13px; }
-    .timer-strip__cell-unit { font-size: 9px; }
-  }
-</style>
+<div style="background-color:#9cae01;padding:9px 16px 8px;width:100%;box-sizing:border-box;"
+     data-hours="2" data-minutes="29" data-reference="July 4, 2025 11:00:00" id="ts-clock">
+  <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:nowrap;white-space:nowrap;overflow:hidden;">
 
-<section class="timer-strip">
-  <div class="timer-strip__wrapper">
-    <div class="timer-strip__container">
-      <div class="timer-strip__clock"
-           data-hours="2"
-           data-minutes="29"
-           data-reference="July 4, 2025 11:00:00">
-        <div class="timer-strip__item offer-timer">
-          <p class="timer-strip__item-title"><span class="ts-emoji">🐣</span> EASTER SALE ENDS TONGIHT!</p>
-          <div class="timer-strip__inner-container">
-            <div class="timer-strip__cell">
-              <div class="timer-strip__cell-value" id="ts-hours">02</div>
-              <div class="timer-strip__cell-unit">hrs</div>
-            </div>
-            <span class="timer-strip__separator">:</span>
-            <div class="timer-strip__cell">
-              <div class="timer-strip__cell-value" id="ts-minutes">28</div>
-              <div class="timer-strip__cell-unit">min</div>
-            </div>
-            <span class="timer-strip__separator">:</span>
-            <div class="timer-strip__cell">
-              <div class="timer-strip__cell-value" id="ts-seconds">38</div>
-              <div class="timer-strip__cell-unit">sec</div>
-            </div>
-          </div>
-        </div>
+    <!-- Label -->
+    <p style="margin:0;font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:14px;font-weight:700;color:#1a1a1a;white-space:nowrap;flex-shrink:0;display:flex;align-items:center;gap:5px;">
+      <span style="font-size:22px;line-height:1;vertical-align:middle;">🐣</span>
+      <span>EASTER SALE ENDS TONGIHT!</span>
+    </p>
+
+    <!-- Timer cells -->
+    <div style="display:flex;align-items:center;gap:5px;flex-shrink:0;">
+
+      <div style="background:#fff;border-radius:5px;padding:4px 9px;display:flex;align-items:center;gap:4px;">
+        <span id="ts-hours" style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:800;color:#1a1a1a;line-height:1;">02</span>
+        <span style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:10px;font-weight:700;color:#1a1a1a;text-transform:uppercase;letter-spacing:0.5px;line-height:1;">HRS</span>
       </div>
+
+      <div style="background:#fff;border-radius:5px;padding:4px 9px;display:flex;align-items:center;gap:4px;">
+        <span id="ts-minutes" style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:800;color:#1a1a1a;line-height:1;">28</span>
+        <span style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:10px;font-weight:700;color:#1a1a1a;text-transform:uppercase;letter-spacing:0.5px;line-height:1;">MIN</span>
+      </div>
+
+      <div style="background:#fff;border-radius:5px;padding:4px 9px;display:flex;align-items:center;gap:4px;">
+        <span id="ts-seconds" style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:800;color:#1a1a1a;line-height:1;">38</span>
+        <span style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:10px;font-weight:700;color:#1a1a1a;text-transform:uppercase;letter-spacing:0.5px;line-height:1;">SEC</span>
+      </div>
+
     </div>
   </div>
-</section>
+</div>
 
 <script>
 (function () {
-  var clock   = document.querySelector('.timer-strip__clock');
-  var refStr  = clock ? clock.getAttribute('data-reference') : null;
-  var end     = refStr ? new Date(refStr).getTime() : 0;
+  var clock  = document.getElementById('ts-clock');
+  var refStr = clock ? clock.getAttribute('data-reference') : null;
+  var end    = refStr ? new Date(refStr).getTime() : 0;
 
-  /* Fallback: if reference date has passed, count down from now by data-hours */
   if (!end || end < Date.now()) {
-    var fallbackHours = parseInt(clock && clock.getAttribute('data-hours') || '2', 10);
-    var KEY = 'ts_end';
+    var fallbackHours = parseInt((clock && clock.getAttribute('data-hours')) || '2', 10);
+    var KEY = 'ts_end_sv';
     end = parseInt(sessionStorage.getItem(KEY) || '0', 10);
     if (!end || end < Date.now()) {
       end = Date.now() + fallbackHours * 3600 * 1000;
-      sessionStorage.setItem(KEY, end);
+      sessionStorage.setItem(KEY, String(end));
     }
   }
 
@@ -146,15 +57,12 @@
 
   function tick() {
     var diff = Math.max(0, end - Date.now());
-    var h = Math.floor(diff / 3600000);
-    var m = Math.floor((diff % 3600000) / 60000);
-    var s = Math.floor((diff % 60000) / 1000);
     var elH = document.getElementById('ts-hours');
     var elM = document.getElementById('ts-minutes');
     var elS = document.getElementById('ts-seconds');
-    if (elH) elH.textContent = pad(h);
-    if (elM) elM.textContent = pad(m);
-    if (elS) elS.textContent = pad(s);
+    if (elH) elH.textContent = pad(Math.floor(diff / 3600000));
+    if (elM) elM.textContent = pad(Math.floor((diff % 3600000) / 60000));
+    if (elS) elS.textContent = pad(Math.floor((diff % 60000) / 1000));
   }
 
   tick();
