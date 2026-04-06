@@ -38,29 +38,22 @@
 
 <script>
 (function() {
-  var WINDOW_HOURS = 4; /* timer cycles every N hours — change this */
-  var ms  = WINDOW_HOURS * 3600000;
-  var end = Math.ceil(Date.now() / ms) * ms; /* end of current window */
-
+  var end = Date.now() + 2 * 3600000;
   function pad(n) { return String(n).padStart(2, '0'); }
-
   var containers = document.querySelectorAll('[data-sv-timer]');
   containers.forEach(function(c) {
     if (c._svInit) return;
     c._svInit = true;
-
     var elH = c.querySelector('.sv-h');
     var elM = c.querySelector('.sv-m');
     var elS = c.querySelector('.sv-s');
     if (!elH || !elM || !elS) return;
-
     function tick() {
       var diff = Math.max(0, end - Date.now());
       elH.textContent = pad(Math.floor(diff / 3600000));
       elM.textContent = pad(Math.floor((diff % 3600000) / 60000));
       elS.textContent = pad(Math.floor((diff % 60000) / 1000));
     }
-
     tick();
     c._svInterval = setInterval(tick, 1000);
   });
