@@ -39,36 +39,15 @@
 </div>
 
 <script>
-(function () {
-  var HOURS = 2; /* countdown duration in hours — change this */
-  var STORAGE_KEY = 'solvanno_ts_end';
-  var end;
-
-  /* Try localStorage first, fall back to sessionStorage, fall back to memory */
-  try {
-    end = parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
-    if (!end || end < Date.now()) {
-      end = Date.now() + HOURS * 3600 * 1000;
-      localStorage.setItem(STORAGE_KEY, String(end));
-    }
-  } catch (e) {
-    /* Storage blocked — just count from now, resets on each page load */
-    end = Date.now() + HOURS * 3600 * 1000;
-  }
-
+(function() {
   function pad(n) { return String(n).padStart(2, '0'); }
-
+  function getEnd() { var now = new Date(); return new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999); }
   function tick() {
-    var diff = Math.max(0, end - Date.now());
-    var elH = document.getElementById('ts-hours');
-    var elM = document.getElementById('ts-minutes');
-    var elS = document.getElementById('ts-seconds');
-    if (elH) elH.textContent = pad(Math.floor(diff / 3600000));
-    if (elM) elM.textContent = pad(Math.floor((diff % 3600000) / 60000));
-    if (elS) elS.textContent = pad(Math.floor((diff % 60000) / 1000));
+    var diff = getEnd() - Date.now(); if (diff < 0) diff = 0;
+    document.getElementById('ts-hours').textContent   = pad(Math.floor(diff / 3600000));
+    document.getElementById('ts-minutes').textContent = pad(Math.floor((diff % 3600000) / 60000));
+    document.getElementById('ts-seconds').textContent = pad(Math.floor((diff % 60000) / 1000));
   }
-
-  /* Small delay ensures GemPages has finished injecting the DOM */
-  setTimeout(function () { tick(); setInterval(tick, 1000); }, 100);
+  tick(); setInterval(tick, 1000);
 })();
 </script>
