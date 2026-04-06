@@ -40,6 +40,7 @@
 
 <script>
 (function() {
+  if (window._svTimerInterval) { clearInterval(window._svTimerInterval); }
   function pad(n) { return String(n).padStart(2, '0'); }
   function getEnd() { var now = new Date(); return new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999); }
   function tick() {
@@ -48,6 +49,7 @@
     document.getElementById('ts-minutes').textContent = pad(Math.floor((diff % 3600000) / 60000));
     document.getElementById('ts-seconds').textContent = pad(Math.floor((diff % 60000) / 1000));
   }
-  tick(); setInterval(tick, 1000);
+  tick();
+  window._svTimerInterval = setInterval(tick, 1000);
 })();
 </script>
