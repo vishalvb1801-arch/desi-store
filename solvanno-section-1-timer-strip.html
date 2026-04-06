@@ -38,19 +38,9 @@
 
 <script>
 (function() {
-  var HOURS = 2; /* ← change this to set countdown duration */
-  var KEY   = 'sv_timer_end';
-
-  var end;
-  try {
-    end = parseInt(localStorage.getItem(KEY) || '0', 10);
-    if (!end || end < Date.now()) {
-      end = Date.now() + HOURS * 3600000;
-      localStorage.setItem(KEY, end);
-    }
-  } catch(e) {
-    end = Date.now() + HOURS * 3600000;
-  }
+  var WINDOW_HOURS = 4; /* timer cycles every N hours — change this */
+  var ms  = WINDOW_HOURS * 3600000;
+  var end = Math.ceil(Date.now() / ms) * ms; /* end of current window */
 
   function pad(n) { return String(n).padStart(2, '0'); }
 
