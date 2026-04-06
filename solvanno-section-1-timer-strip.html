@@ -1,36 +1,48 @@
 <!-- TIMER STRIP
   VARIABLES:
-  - Sale label text:   change the text inside the <span> after the emoji
+  - Sale label text:   change the text inside #ts-label
   - Countdown target:  change data-reference="July 4, 2025 11:00:00"
-  - Brand color:       change background-color on the outer wrapper div (#9cae01)
+  - Brand color:       change background-color on #ts-clock (#9cae01)
 -->
 
-<div style="background-color:#9cae01;padding:9px 16px 8px;width:100%;box-sizing:border-box;"
-     data-hours="2" data-minutes="29" data-reference="July 4, 2025 11:00:00" id="ts-clock">
-  <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:nowrap;white-space:nowrap;overflow:hidden;">
+<style>
+  @media screen and (max-width: 480px) {
+    #ts-label      { font-size: 11px !important; gap: 3px !important; }
+    #ts-label-emoji { font-size: 17px !important; }
+    #ts-cells      { gap: 4px !important; }
+    .ts-cell       { padding: 3px 6px !important; }
+    .ts-cell-val   { font-size: 13px !important; }
+    .ts-cell-unit  { font-size: 9px !important; }
+  }
+</style>
+
+<div id="ts-clock"
+     style="background-color:#9cae01;padding:9px 12px 8px;width:100%;box-sizing:border-box;"
+     data-hours="2" data-minutes="29" data-reference="July 4, 2025 11:00:00">
+  <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:nowrap;">
 
     <!-- Label -->
-    <p style="margin:0;font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:14px;font-weight:700;color:#1a1a1a;white-space:nowrap;flex-shrink:0;display:flex;align-items:center;gap:5px;">
-      <span style="font-size:22px;line-height:1;vertical-align:middle;">🐣</span>
-      <span>EASTER SALE ENDS TONGIHT!</span>
+    <p id="ts-label" style="margin:0;font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:14px;font-weight:700;color:#1a1a1a;white-space:nowrap;flex-shrink:1;min-width:0;display:flex;align-items:center;gap:5px;">
+      <span id="ts-label-emoji" style="font-size:22px;line-height:1;flex-shrink:0;">🐣</span>
+      <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">EASTER SALE ENDS TONGIHT!</span>
     </p>
 
     <!-- Timer cells -->
-    <div style="display:flex;align-items:center;gap:5px;flex-shrink:0;">
+    <div id="ts-cells" style="display:flex;align-items:center;gap:5px;flex-shrink:0;">
 
-      <div style="background:#fff;border-radius:5px;padding:4px 9px;display:flex;align-items:center;gap:4px;">
-        <span id="ts-hours" style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:800;color:#1a1a1a;line-height:1;">02</span>
-        <span style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:10px;font-weight:700;color:#1a1a1a;text-transform:uppercase;letter-spacing:0.5px;line-height:1;">HRS</span>
+      <div class="ts-cell" style="background:#fff;border-radius:5px;padding:4px 9px;display:flex;align-items:center;gap:4px;">
+        <span id="ts-hours" class="ts-cell-val" style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:800;color:#1a1a1a;line-height:1;">02</span>
+        <span class="ts-cell-unit" style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:10px;font-weight:700;color:#1a1a1a;text-transform:uppercase;letter-spacing:0.5px;line-height:1;">HRS</span>
       </div>
 
-      <div style="background:#fff;border-radius:5px;padding:4px 9px;display:flex;align-items:center;gap:4px;">
-        <span id="ts-minutes" style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:800;color:#1a1a1a;line-height:1;">28</span>
-        <span style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:10px;font-weight:700;color:#1a1a1a;text-transform:uppercase;letter-spacing:0.5px;line-height:1;">MIN</span>
+      <div class="ts-cell" style="background:#fff;border-radius:5px;padding:4px 9px;display:flex;align-items:center;gap:4px;">
+        <span id="ts-minutes" class="ts-cell-val" style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:800;color:#1a1a1a;line-height:1;">28</span>
+        <span class="ts-cell-unit" style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:10px;font-weight:700;color:#1a1a1a;text-transform:uppercase;letter-spacing:0.5px;line-height:1;">MIN</span>
       </div>
 
-      <div style="background:#fff;border-radius:5px;padding:4px 9px;display:flex;align-items:center;gap:4px;">
-        <span id="ts-seconds" style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:800;color:#1a1a1a;line-height:1;">38</span>
-        <span style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:10px;font-weight:700;color:#1a1a1a;text-transform:uppercase;letter-spacing:0.5px;line-height:1;">SEC</span>
+      <div class="ts-cell" style="background:#fff;border-radius:5px;padding:4px 9px;display:flex;align-items:center;gap:4px;">
+        <span id="ts-seconds" class="ts-cell-val" style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:800;color:#1a1a1a;line-height:1;">38</span>
+        <span class="ts-cell-unit" style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:10px;font-weight:700;color:#1a1a1a;text-transform:uppercase;letter-spacing:0.5px;line-height:1;">SEC</span>
       </div>
 
     </div>
