@@ -40,21 +40,24 @@
 
 <script>
 (function () {
-  var clock  = document.getElementById('ts-clock');
-  var refStr = clock ? clock.getAttribute('data-reference') : null;
-  var end    = refStr ? new Date(refStr).getTime() : 0;
+  var HOURS = 2; /* countdown duration in hours — change this */
+  var STORAGE_KEY = 'solvanno_ts_end';
+  var end;
 
-  if (!end || end < Date.now()) {
-    var fallbackHours = parseInt((clock && clock.getAttribute('data-hours')) || '2', 10);
-    var KEY = 'ts_end_sv';
-    end = parseInt(sessionStorage.getItem(KEY) || '0', 10);
+  /* Try localStorage first, fall back to sessionStorage, fall back to memory */
+  try {
+    end = parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
     if (!end || end < Date.now()) {
-      end = Date.now() + fallbackHours * 3600 * 1000;
-      sessionStorage.setItem(KEY, String(end));
+      end = Date.now() + HOURS * 3600 * 1000;
+      localStorage.setItem(STORAGE_KEY, String(end));
     }
+  } catch (e) {
+    /* Storage blocked — just count from now, resets on each page load */
+    end = Date.now() + HOURS * 3600 * 1000;
   }
 
   function pad(n) { return String(n).padStart(2, '0'); }
+
   function tick() {
     var diff = Math.max(0, end - Date.now());
     var elH = document.getElementById('ts-hours');
@@ -64,7 +67,8 @@
     if (elM) elM.textContent = pad(Math.floor((diff % 3600000) / 60000));
     if (elS) elS.textContent = pad(Math.floor((diff % 60000) / 1000));
   }
-  tick();
-  setInterval(tick, 1000);
+
+  /* Small delay ensures GemPages has finished injecting the DOM */
+  setTimeout(function () { tick(); setInterval(tick, 1000); }, 100);
 })();
 </script>
