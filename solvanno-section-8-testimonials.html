@@ -1,0 +1,313 @@
+<!-- SECTION 8 — TESTIMONIAL SLIDER
+  Exact replica of Uvora review-slider section.
+  VARIABLES:
+  - Section heading:  change the <h2> text
+  - Review cards:     edit quote, name, tags inside each .sv-card
+  - Profile photos:   change src on each .sv-avatar img
+  - Brand color:      #9cae01 used on tags + verified badge
+  - Background:       #f4f3e8 on outer wrapper
+-->
+
+<style>
+  /* Hide scrollbar cross-browser */
+  #sv-slider-track::-webkit-scrollbar { display: none; }
+  #sv-slider-track { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
+
+<!-- WRAPPER -->
+<div style="background-color:#f4f3e8;width:100%;box-sizing:border-box;padding:60px 0 120px;">
+
+  <!-- Heading row -->
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px;box-sizing:border-box;">
+
+    <!-- Decorative star row above heading -->
+    <div style="display:flex;align-items:center;justify-content:center;gap:4px;margin-bottom:12px;">
+      <svg width="100" height="16" viewBox="0 0 120 16" fill="#9cae01" xmlns="http://www.w3.org/2000/svg">
+        <text x="0" y="14" font-size="16" font-family="serif">★★★★★</text>
+      </svg>
+    </div>
+
+    <h2 style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:clamp(26px,4vw,40px);font-weight:800;color:#1c1c1a;text-align:center;margin:0 0 48px;line-height:1.2;letter-spacing:-0.5px;">
+      Customers Keep Choosing Solvanno
+    </h2>
+
+  </div>
+
+  <!-- Slider outer (controls overflow) -->
+  <div style="position:relative;">
+
+    <!-- Prev arrow -->
+    <button id="sv-prev" aria-label="Previous" onclick="svSlide(-1)"
+      style="position:absolute;left:16px;top:50%;transform:translateY(-50%);z-index:10;background:#fff;border:1.5px solid #e0e0e0;border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+      <svg width="16" height="16" fill="none" stroke="#1c1c1a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+
+    <!-- Next arrow -->
+    <button id="sv-next" aria-label="Next" onclick="svSlide(1)"
+      style="position:absolute;right:16px;top:50%;transform:translateY(-50%);z-index:10;background:#fff;border:1.5px solid #e0e0e0;border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+      <svg width="16" height="16" fill="none" stroke="#1c1c1a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+
+    <!-- Scrollable track -->
+    <div id="sv-slider-track"
+      style="display:flex;gap:16px;overflow-x:auto;scroll-behavior:smooth;scroll-snap-type:x mandatory;padding:8px 60px 16px;box-sizing:border-box;cursor:grab;">
+
+      <!-- ── CARD 1 — David Z ── -->
+      <div class="sv-card" style="flex:0 0 300px;background:#fff;border-radius:16px;padding:24px;box-sizing:border-box;scroll-snap-align:start;display:flex;flex-direction:column;gap:14px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="57" height="23" viewBox="0 0 57 23" fill="none"><path d="M12.6562 0L8.53125 22.9219H0L6.84375 0H12.6562ZM26.9531 0L22.8281 22.9219H14.2969L21.1406 0H26.9531ZM29.8125 22.9219L33.9375 0H42.4688L35.625 22.9219H29.8125ZM44.1094 22.9219L48.2344 0H56.7656L49.9219 22.9219H44.1094Z" fill="#1C1C1A"/></svg>
+        <div style="display:flex;gap:2px;">
+          <span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span>
+        </div>
+        <p style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:14px;color:#333;line-height:1.65;margin:0;flex:1;">Great company. Stand behind their product and very easy to get in touch with. They handled all my needs quickly and to my satisfaction! A+++ company</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="sv-avatar" style="width:40px;height:40px;border-radius:50%;overflow:hidden;flex-shrink:0;">
+              <img src="https://www.solvanno.com/cdn/shop/files/freepik__a-grainy-handheld-smartphone-photo-taken-in-a-diml__5217.png?v=1765742844&width=1420" alt="David Z" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+            </div>
+            <span style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:13px;font-weight:700;color:#1c1c1a;">David Z</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:5px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M7 14C10.866 14 14 10.866 14 7C14 3.13401 10.866 0 7 0C3.13401 0 0 3.13401 0 7C0 10.866 3.13401 14 7 14ZM10.207 5.457a1 1 0 0 0-1.414-1.414L6 6.836 5.207 6.043a1 1 0 0 0-1.414 1.414L6 9.664l4.207-4.207Z" fill="#9cae01"/></svg>
+            <span style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:11px;font-weight:600;color:#666;">Verified</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="background:#f0f4e0;color:#5a6e00;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;">Great Customer Service</span>
+          <span style="background:#f0f4e0;color:#5a6e00;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;">Trustworthy</span>
+        </div>
+      </div>
+
+      <!-- ── CARD 2 — Rita L ── -->
+      <div class="sv-card" style="flex:0 0 300px;background:#fff;border-radius:16px;padding:24px;box-sizing:border-box;scroll-snap-align:start;display:flex;flex-direction:column;gap:14px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="57" height="23" viewBox="0 0 57 23" fill="none"><path d="M12.6562 0L8.53125 22.9219H0L6.84375 0H12.6562ZM26.9531 0L22.8281 22.9219H14.2969L21.1406 0H26.9531ZM29.8125 22.9219L33.9375 0H42.4688L35.625 22.9219H29.8125ZM44.1094 22.9219L48.2344 0H56.7656L49.9219 22.9219H44.1094Z" fill="#1C1C1A"/></svg>
+        <div style="display:flex;gap:2px;">
+          <span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span>
+        </div>
+        <p style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:14px;color:#333;line-height:1.65;margin:0;flex:1;">"My bloating has been significantly reduced and my whole digestive system feels relieved. I do recommend this formula."</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="sv-avatar" style="width:40px;height:40px;border-radius:50%;overflow:hidden;flex-shrink:0;">
+              <img src="https://www.solvanno.com/cdn/shop/files/freepik__a-candid-smartphone-mirror-selfie-taken-in-a-sligh__5219.png?v=1765742938&width=1420" alt="Rita L" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+            </div>
+            <span style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:13px;font-weight:700;color:#1c1c1a;">Rita L</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:5px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M7 14C10.866 14 14 10.866 14 7C14 3.13401 10.866 0 7 0C3.13401 0 0 3.13401 0 7C0 10.866 3.13401 14 7 14ZM10.207 5.457a1 1 0 0 0-1.414-1.414L6 6.836 5.207 6.043a1 1 0 0 0-1.414 1.414L6 9.664l4.207-4.207Z" fill="#9cae01"/></svg>
+            <span style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:11px;font-weight:600;color:#666;">Verified</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="background:#f0f4e0;color:#5a6e00;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;">Less Bloating</span>
+          <span style="background:#f0f4e0;color:#5a6e00;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;">Feel Lighter</span>
+        </div>
+      </div>
+
+      <!-- ── CARD 3 — Hannah R ── -->
+      <div class="sv-card" style="flex:0 0 300px;background:#fff;border-radius:16px;padding:24px;box-sizing:border-box;scroll-snap-align:start;display:flex;flex-direction:column;gap:14px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="57" height="23" viewBox="0 0 57 23" fill="none"><path d="M12.6562 0L8.53125 22.9219H0L6.84375 0H12.6562ZM26.9531 0L22.8281 22.9219H14.2969L21.1406 0H26.9531ZM29.8125 22.9219L33.9375 0H42.4688L35.625 22.9219H29.8125ZM44.1094 22.9219L48.2344 0H56.7656L49.9219 22.9219H44.1094Z" fill="#1C1C1A"/></svg>
+        <div style="display:flex;gap:2px;">
+          <span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span>
+        </div>
+        <p style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:14px;color:#333;line-height:1.65;margin:0;flex:1;">"Less bloating and more regular digestion. I've been feeling lighter and more energised every day."</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="sv-avatar" style="width:40px;height:40px;border-radius:50%;overflow:hidden;flex-shrink:0;">
+              <img src="https://www.solvanno.com/cdn/shop/files/freepik__a-candid-smartphone-selfie-photo-taken-indoors-a-w__5218.png?v=1765742843&width=1420" alt="Hannah R" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+            </div>
+            <span style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:13px;font-weight:700;color:#1c1c1a;">Hannah R</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:5px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M7 14C10.866 14 14 10.866 14 7C14 3.13401 10.866 0 7 0C3.13401 0 0 3.13401 0 7C0 10.866 3.13401 14 7 14ZM10.207 5.457a1 1 0 0 0-1.414-1.414L6 6.836 5.207 6.043a1 1 0 0 0-1.414 1.414L6 9.664l4.207-4.207Z" fill="#9cae01"/></svg>
+            <span style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:11px;font-weight:600;color:#666;">Verified</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="background:#f0f4e0;color:#5a6e00;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;">More Energy</span>
+          <span style="background:#f0f4e0;color:#5a6e00;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;">Reduced Bloating</span>
+        </div>
+      </div>
+
+      <!-- ── CARD 4 — Mark T ── -->
+      <div class="sv-card" style="flex:0 0 300px;background:#fff;border-radius:16px;padding:24px;box-sizing:border-box;scroll-snap-align:start;display:flex;flex-direction:column;gap:14px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="57" height="23" viewBox="0 0 57 23" fill="none"><path d="M12.6562 0L8.53125 22.9219H0L6.84375 0H12.6562ZM26.9531 0L22.8281 22.9219H14.2969L21.1406 0H26.9531ZM29.8125 22.9219L33.9375 0H42.4688L35.625 22.9219H29.8125ZM44.1094 22.9219L48.2344 0H56.7656L49.9219 22.9219H44.1094Z" fill="#1C1C1A"/></svg>
+        <div style="display:flex;gap:2px;">
+          <span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span>
+        </div>
+        <p style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:14px;color:#333;line-height:1.65;margin:0;flex:1;">"My energy is so much better. I used to crash every afternoon and now I actually make it through the day without feeling like a zombie."</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="sv-avatar" style="width:40px;height:40px;border-radius:50%;overflow:hidden;flex-shrink:0;">
+              <img src="https://www.solvanno.com/cdn/shop/files/freepik__a-grainy-handheld-smartphone-photo-taken-in-a-diml__5217.png?v=1765742844&width=1420" alt="Mark T" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+            </div>
+            <span style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:13px;font-weight:700;color:#1c1c1a;">Mark T</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:5px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M7 14C10.866 14 14 10.866 14 7C14 3.13401 10.866 0 7 0C3.13401 0 0 3.13401 0 7C0 10.866 3.13401 14 7 14ZM10.207 5.457a1 1 0 0 0-1.414-1.414L6 6.836 5.207 6.043a1 1 0 0 0-1.414 1.414L6 9.664l4.207-4.207Z" fill="#9cae01"/></svg>
+            <span style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:11px;font-weight:600;color:#666;">Verified</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="background:#f0f4e0;color:#5a6e00;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;">Steady Energy</span>
+          <span style="background:#f0f4e0;color:#5a6e00;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;">No More Crashes</span>
+        </div>
+      </div>
+
+      <!-- ── CARD 5 — James R ── -->
+      <div class="sv-card" style="flex:0 0 300px;background:#fff;border-radius:16px;padding:24px;box-sizing:border-box;scroll-snap-align:start;display:flex;flex-direction:column;gap:14px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="57" height="23" viewBox="0 0 57 23" fill="none"><path d="M12.6562 0L8.53125 22.9219H0L6.84375 0H12.6562ZM26.9531 0L22.8281 22.9219H14.2969L21.1406 0H26.9531ZM29.8125 22.9219L33.9375 0H42.4688L35.625 22.9219H29.8125ZM44.1094 22.9219L48.2344 0H56.7656L49.9219 22.9219H44.1094Z" fill="#1C1C1A"/></svg>
+        <div style="display:flex;gap:2px;">
+          <span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span>
+        </div>
+        <p style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:14px;color:#333;line-height:1.65;margin:0;flex:1;">"I've been drinking for 20 years and my gut was a mess. Two months in and my digestion is smoother than it's been in years."</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="sv-avatar" style="width:40px;height:40px;border-radius:50%;overflow:hidden;flex-shrink:0;">
+              <img src="https://www.solvanno.com/cdn/shop/files/freepik__a-grainy-handheld-smartphone-photo-taken-in-a-diml__5217.png?v=1765742844&width=1420" alt="James R" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+            </div>
+            <span style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:13px;font-weight:700;color:#1c1c1a;">James R</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:5px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M7 14C10.866 14 14 10.866 14 7C14 3.13401 10.866 0 7 0C3.13401 0 0 3.13401 0 7C0 10.866 3.13401 14 7 14ZM10.207 5.457a1 1 0 0 0-1.414-1.414L6 6.836 5.207 6.043a1 1 0 0 0-1.414 1.414L6 9.664l4.207-4.207Z" fill="#9cae01"/></svg>
+            <span style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:11px;font-weight:600;color:#666;">Verified</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="background:#f0f4e0;color:#5a6e00;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;">Better Digestion</span>
+          <span style="background:#f0f4e0;color:#5a6e00;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;">Long-Term User</span>
+        </div>
+      </div>
+
+      <!-- ── CARD 6 — Sarah M ── -->
+      <div class="sv-card" style="flex:0 0 300px;background:#fff;border-radius:16px;padding:24px;box-sizing:border-box;scroll-snap-align:start;display:flex;flex-direction:column;gap:14px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="57" height="23" viewBox="0 0 57 23" fill="none"><path d="M12.6562 0L8.53125 22.9219H0L6.84375 0H12.6562ZM26.9531 0L22.8281 22.9219H14.2969L21.1406 0H26.9531ZM29.8125 22.9219L33.9375 0H42.4688L35.625 22.9219H29.8125ZM44.1094 22.9219L48.2344 0H56.7656L49.9219 22.9219H44.1094Z" fill="#1C1C1A"/></svg>
+        <div style="display:flex;gap:2px;">
+          <span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span>
+        </div>
+        <p style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:14px;color:#333;line-height:1.65;margin:0;flex:1;">"The bloating after meals is basically gone. I don't look six months pregnant by dinner anymore. That alone was worth it."</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="sv-avatar" style="width:40px;height:40px;border-radius:50%;overflow:hidden;flex-shrink:0;">
+              <img src="https://www.solvanno.com/cdn/shop/files/freepik__a-candid-smartphone-mirror-selfie-taken-in-a-sligh__5219.png?v=1765742938&width=1420" alt="Sarah M" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+            </div>
+            <span style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:13px;font-weight:700;color:#1c1c1a;">Sarah M</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:5px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M7 14C10.866 14 14 10.866 14 7C14 3.13401 10.866 0 7 0C3.13401 0 0 3.13401 0 7C0 10.866 3.13401 14 7 14ZM10.207 5.457a1 1 0 0 0-1.414-1.414L6 6.836 5.207 6.043a1 1 0 0 0-1.414 1.414L6 9.664l4.207-4.207Z" fill="#9cae01"/></svg>
+            <span style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:11px;font-weight:600;color:#666;">Verified</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="background:#f0f4e0;color:#5a6e00;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;">Reduced Bloating</span>
+          <span style="background:#f0f4e0;color:#5a6e00;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;">Feels Lighter</span>
+        </div>
+      </div>
+
+      <!-- ── CARD 7 — Kevin L ── -->
+      <div class="sv-card" style="flex:0 0 300px;background:#fff;border-radius:16px;padding:24px;box-sizing:border-box;scroll-snap-align:start;display:flex;flex-direction:column;gap:14px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="57" height="23" viewBox="0 0 57 23" fill="none"><path d="M12.6562 0L8.53125 22.9219H0L6.84375 0H12.6562ZM26.9531 0L22.8281 22.9219H14.2969L21.1406 0H26.9531ZM29.8125 22.9219L33.9375 0H42.4688L35.625 22.9219H29.8125ZM44.1094 22.9219L48.2344 0H56.7656L49.9219 22.9219H44.1094Z" fill="#1C1C1A"/></svg>
+        <div style="display:flex;gap:2px;">
+          <span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span>
+        </div>
+        <p style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:14px;color:#333;line-height:1.65;margin:0;flex:1;">"My doctor noticed my liver numbers improved at my last checkup. I genuinely believe Solvanno played a part in that."</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="sv-avatar" style="width:40px;height:40px;border-radius:50%;overflow:hidden;flex-shrink:0;">
+              <img src="https://www.solvanno.com/cdn/shop/files/freepik__a-grainy-handheld-smartphone-photo-taken-in-a-diml__5217.png?v=1765742844&width=1420" alt="Kevin L" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+            </div>
+            <span style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:13px;font-weight:700;color:#1c1c1a;">Kevin L</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:5px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M7 14C10.866 14 14 10.866 14 7C14 3.13401 10.866 0 7 0C3.13401 0 0 3.13401 0 7C0 10.866 3.13401 14 7 14ZM10.207 5.457a1 1 0 0 0-1.414-1.414L6 6.836 5.207 6.043a1 1 0 0 0-1.414 1.414L6 9.664l4.207-4.207Z" fill="#9cae01"/></svg>
+            <span style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:11px;font-weight:600;color:#666;">Verified</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="background:#f0f4e0;color:#5a6e00;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;">Improved Levels</span>
+          <span style="background:#f0f4e0;color:#5a6e00;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;">Doctor Approved</span>
+        </div>
+      </div>
+
+      <!-- ── CARD 8 — Rachel D ── -->
+      <div class="sv-card" style="flex:0 0 300px;background:#fff;border-radius:16px;padding:24px;box-sizing:border-box;scroll-snap-align:start;display:flex;flex-direction:column;gap:14px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="57" height="23" viewBox="0 0 57 23" fill="none"><path d="M12.6562 0L8.53125 22.9219H0L6.84375 0H12.6562ZM26.9531 0L22.8281 22.9219H14.2969L21.1406 0H26.9531ZM29.8125 22.9219L33.9375 0H42.4688L35.625 22.9219H29.8125ZM44.1094 22.9219L48.2344 0H56.7656L49.9219 22.9219H44.1094Z" fill="#1C1C1A"/></svg>
+        <div style="display:flex;gap:2px;">
+          <span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span>
+        </div>
+        <p style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:14px;color:#333;line-height:1.65;margin:0;flex:1;">"I was skeptical but my brain fog has cleared up noticeably. I can actually focus at work again without five coffees."</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="sv-avatar" style="width:40px;height:40px;border-radius:50%;overflow:hidden;flex-shrink:0;">
+              <img src="https://www.solvanno.com/cdn/shop/files/freepik__a-candid-smartphone-selfie-photo-taken-indoors-a-w__5218.png?v=1765742843&width=1420" alt="Rachel D" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+            </div>
+            <span style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:13px;font-weight:700;color:#1c1c1a;">Rachel D</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:5px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M7 14C10.866 14 14 10.866 14 7C14 3.13401 10.866 0 7 0C3.13401 0 0 3.13401 0 7C0 10.866 3.13401 14 7 14ZM10.207 5.457a1 1 0 0 0-1.414-1.414L6 6.836 5.207 6.043a1 1 0 0 0-1.414 1.414L6 9.664l4.207-4.207Z" fill="#9cae01"/></svg>
+            <span style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:11px;font-weight:600;color:#666;">Verified</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="background:#f0f4e0;color:#5a6e00;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;">Mental Clarity</span>
+          <span style="background:#f0f4e0;color:#5a6e00;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;">Less Brain Fog</span>
+        </div>
+      </div>
+
+      <!-- ── CARD 9 — Paul W ── -->
+      <div class="sv-card" style="flex:0 0 300px;background:#fff;border-radius:16px;padding:24px;box-sizing:border-box;scroll-snap-align:start;display:flex;flex-direction:column;gap:14px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="57" height="23" viewBox="0 0 57 23" fill="none"><path d="M12.6562 0L8.53125 22.9219H0L6.84375 0H12.6562ZM26.9531 0L22.8281 22.9219H14.2969L21.1406 0H26.9531ZM29.8125 22.9219L33.9375 0H42.4688L35.625 22.9219H29.8125ZM44.1094 22.9219L48.2344 0H56.7656L49.9219 22.9219H44.1094Z" fill="#1C1C1A"/></svg>
+        <div style="display:flex;gap:2px;">
+          <span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span><span style="color:#f5a623;font-size:16px;">★</span>
+        </div>
+        <p style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:14px;color:#333;line-height:1.65;margin:0;flex:1;">"I sleep so much better now. I used to wake up 3 or 4 times a night. Now I'm down to maybe once. Life changing."</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="sv-avatar" style="width:40px;height:40px;border-radius:50%;overflow:hidden;flex-shrink:0;">
+              <img src="https://www.solvanno.com/cdn/shop/files/freepik__a-grainy-handheld-smartphone-photo-taken-in-a-diml__5217.png?v=1765742844&width=1420" alt="Paul W" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+            </div>
+            <span style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:13px;font-weight:700;color:#1c1c1a;">Paul W</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:5px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M7 14C10.866 14 14 10.866 14 7C14 3.13401 10.866 0 7 0C3.13401 0 0 3.13401 0 7C0 10.866 3.13401 14 7 14ZM10.207 5.457a1 1 0 0 0-1.414-1.414L6 6.836 5.207 6.043a1 1 0 0 0-1.414 1.414L6 9.664l4.207-4.207Z" fill="#9cae01"/></svg>
+            <span style="font-family:'DM Sans','Helvetica Neue',Arial,sans-serif;font-size:11px;font-weight:600;color:#666;">Verified</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="background:#f0f4e0;color:#5a6e00;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;">Better Sleep</span>
+          <span style="background:#f0f4e0;color:#5a6e00;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;">Life Changing</span>
+        </div>
+      </div>
+
+    </div><!-- /track -->
+  </div><!-- /slider outer -->
+</div><!-- /wrapper -->
+
+<script>
+(function() {
+  var track = document.getElementById('sv-slider-track');
+  if (!track) return;
+
+  /* ── Arrow navigation ── */
+  window.svSlide = function(dir) {
+    var card = track.querySelector('.sv-card');
+    var cardW = card ? card.offsetWidth + 16 : 316;
+    track.scrollBy({ left: dir * cardW, behavior: 'smooth' });
+  };
+
+  /* ── Drag to scroll ── */
+  var isDown = false, startX, scrollLeft;
+  track.addEventListener('mousedown', function(e) {
+    isDown = true;
+    track.style.cursor = 'grabbing';
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+  });
+  track.addEventListener('mouseleave', function() { isDown = false; track.style.cursor = 'grab'; });
+  track.addEventListener('mouseup',    function() { isDown = false; track.style.cursor = 'grab'; });
+  track.addEventListener('mousemove',  function(e) {
+    if (!isDown) return;
+    e.preventDefault();
+    var x = e.pageX - track.offsetLeft;
+    track.scrollLeft = scrollLeft - (x - startX);
+  });
+})();
+</script>
