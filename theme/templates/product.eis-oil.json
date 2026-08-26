@@ -572,15 +572,6 @@
             "us": true,
             "them": false
           }
-        },
-        "row-8": {
-          "type": "row",
-          "settings": {
-            "icon": "discount",
-            "label": "7-day money-back promise",
-            "us": true,
-            "them": false
-          }
         }
       },
       "block_order": [
@@ -590,8 +581,7 @@
         "row-4",
         "row-5",
         "row-6",
-        "row-7",
-        "row-8"
+        "row-7"
       ],
       "settings": {
         "bottle_image": "shopify://shop_images/eis-bottle-cutout.png"

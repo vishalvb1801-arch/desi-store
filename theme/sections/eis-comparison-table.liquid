@@ -29,7 +29,7 @@
     grid-column: 1;
     display: flex;
     align-items: flex-end;
-    padding: 0 4px 10px 0;
+    padding: 0 4px 20px 0;
     min-height: {{ section.settings.bottle_size | minus: 6 }}px;
   }
   .eis-cmp__spacer { min-height: {{ section.settings.bottle_size | minus: 6 }}px; }
@@ -209,7 +209,7 @@
     }
     .eis-cmp__lede,
     .eis-cmp__spacer { min-height: {{ section.settings.bottle_size | times: 150 | divided_by: 100 | minus: 6 }}px; }
-    .eis-cmp__lede { padding-bottom: 14px; }
+    .eis-cmp__lede { padding-bottom: 26px; }
     .eis-cmp__bottle { height: {{ section.settings.bottle_size | times: 150 | divided_by: 100 }}px; }
     .eis-cmp__title { font-size: {{ section.settings.heading_size | times: 125 | divided_by: 100 }}px; }
     .eis-cmp__head { font-size: 14px; padding: 14px 10px; }
@@ -531,8 +531,7 @@
         { "type": "row", "settings": { "icon": "clock", "label": "Relief that lasts the night" } },
         { "type": "row", "settings": { "icon": "shield", "label": "No burning, no numbing" } },
         { "type": "row", "settings": { "icon": "families", "label": "Gentle for nightly use" } },
-        { "type": "row", "settings": { "icon": "flask", "label": "Lab tested, GMP certified" } },
-        { "type": "row", "settings": { "icon": "discount", "label": "7-day money-back promise" } }
+        { "type": "row", "settings": { "icon": "flask", "label": "Lab tested, GMP certified" } }
       ]
     }
   ]
