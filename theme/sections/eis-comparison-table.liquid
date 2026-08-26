@@ -1,0 +1,466 @@
+{%- comment -%}
+  EIS — Comparison table
+  ------------------------------------------------------------------
+  Us against the rest of the shelf. One grid drives both breakpoints:
+  every row contributes three cells (feature, us, them) and the columns
+  read as continuous bands because the cells sit flush against each other.
+  The bottle hangs over the top of our column.
+{%- endcomment -%}
+
+{% render 'eis-fonts' %}
+
+{% style %}
+  {% render 'eis-tokens', id: section.id, s: section.settings %}
+
+  .eis-cmp {
+    background: var(--eis-cream);
+    font-family: var(--eis-sans);
+    color: var(--eis-ink);
+  }
+  .eis-cmp__inner {
+    max-width: var(--eis-max);
+    margin: 0 auto;
+    padding: {{ section.settings.padding_top }}px 16px {{ section.settings.padding_bottom }}px;
+  }
+  .eis-cmp__title {
+    font-family: var(--eis-serif);
+    font-size: {{ section.settings.heading_size }}px;
+    font-weight: 600;
+    line-height: 1.06;
+    text-transform: uppercase;
+    color: var(--eis-maroon);
+    text-align: center;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+
+  .eis-cmp__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) {{ section.settings.col_width }}px {{ section.settings.col_width }}px;
+    column-gap: 9px;
+    /* headroom for the bottle, which hangs over our column */
+    padding-top: {{ section.settings.bottle_size | minus: 6 }}px;
+  }
+
+  .eis-cmp__head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 11px 6px;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    border-radius: 13px 13px 0 0;
+  }
+  .eis-cmp__head--feat {
+    background: {{ section.settings.color_card }};
+    border: 1px solid var(--eis-line);
+    border-bottom: 0;
+    color: var(--eis-soft);
+  }
+  .eis-cmp__head--brand {
+    background: var(--eis-maroon);
+    color: var(--eis-cream-light);
+    position: relative;
+  }
+  .eis-cmp__head--other {
+    background: {{ section.settings.color_tint }};
+    color: var(--eis-muted);
+  }
+  .eis-cmp__bottle {
+    position: absolute;
+    left: 50%;
+    /* stands above the header and dips 10px into it, which is enough overlap
+       to read as attached without covering the column's own label */
+    bottom: calc(100% - 10px);
+    transform: translateX(-50%);
+    /* sized by height: the bottle is roughly 1:3, so setting a width would
+       swamp a narrow phone column */
+    height: {{ section.settings.bottle_size }}px;
+    width: auto;
+    max-width: none;
+    filter: drop-shadow(0 10px 16px rgba(0, 0, 0, .45));
+    pointer-events: none;
+  }
+
+  .eis-cmp__feat {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 12px 13px;
+    background: {{ section.settings.color_card }};
+    border-left: 1px solid var(--eis-line);
+    border-right: 1px solid var(--eis-line);
+    border-bottom: 1px solid var(--eis-line);
+  }
+  .eis-cmp__grid > .eis-cmp__feat:nth-last-child(3) { border-radius: 0 0 13px 13px; }
+  .eis-cmp__ic {
+    flex: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    border: 1.4px solid var(--eis-maroon);
+    color: var(--eis-maroon);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+  }
+  .eis-cmp__ic .eis-icon { width: 1em; height: 1em; display: block; }
+  .eis-cmp__lbl { font-size: 13.5px; font-weight: 600; line-height: 1.3; }
+
+  .eis-cmp__cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 6px;
+  }
+  .eis-cmp__cell--brand { background: var(--eis-maroon); }
+  .eis-cmp__cell--brand + .eis-cmp__cell--other { background: {{ section.settings.color_tint }}; }
+  .eis-cmp__grid > .eis-cmp__cell--brand { border-bottom: 1px solid rgba(255, 255, 255, .28); }
+  .eis-cmp__grid > .eis-cmp__cell--other { border-bottom: 1px solid var(--eis-line); }
+  .eis-cmp__grid > .eis-cmp__cell:nth-last-child(2) { border-bottom: 0; border-radius: 0 0 13px 13px; }
+  .eis-cmp__grid > .eis-cmp__cell:last-child { border-bottom: 0; border-radius: 0 0 13px 13px; }
+
+  .eis-cmp__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .eis-cmp__yes { width: 30px; height: 30px; display: block; }
+  .eis-cmp__no { width: 19px; height: 19px; display: block; }
+
+  .eis-cmp__note {
+    font-size: 12px;
+    line-height: 1.55;
+    color: var(--eis-soft);
+    text-align: center;
+    margin: 16px 0 0;
+  }
+
+  /* The PDP runs to a 480px column throughout, so desktop is a gentle step up
+     from the phone layout rather than the wide three-panel version. */
+  @media (min-width: 750px) {
+    .eis-cmp__grid {
+      grid-template-columns:
+        minmax(0, 1fr)
+        {{ section.settings.col_width | times: 140 | divided_by: 100 }}px
+        {{ section.settings.col_width | times: 140 | divided_by: 100 }}px;
+      column-gap: 13px;
+      padding-top: {{ section.settings.bottle_size | times: 150 | divided_by: 100 | minus: 6 }}px;
+    }
+    .eis-cmp__bottle { height: {{ section.settings.bottle_size | times: 150 | divided_by: 100 }}px; }
+    .eis-cmp__title { font-size: {{ section.settings.heading_size | times: 145 | divided_by: 100 }}px; }
+    .eis-cmp__head { font-size: 14px; padding: 14px 10px; }
+    .eis-cmp__feat { padding: 16px 20px; gap: 15px; }
+    .eis-cmp__ic { width: 46px; height: 46px; font-size: 23px; }
+    .eis-cmp__lbl { font-size: 16px; }
+    .eis-cmp__cell { padding: 16px; }
+    .eis-cmp__yes { width: 38px; height: 38px; }
+    .eis-cmp__no { width: 24px; height: 24px; }
+  }
+{% endstyle %}
+
+<div class="eis-cmp">
+  <div class="eis-cmp__inner">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="eis-cmp__title">{{ section.settings.heading | newline_to_br }}</h2>
+    {%- endif -%}
+
+    <div class="eis-cmp__grid">
+      <div class="eis-cmp__head eis-cmp__head--feat">{{ section.settings.compare_label }}</div>
+      <div class="eis-cmp__head eis-cmp__head--brand">
+        {%- if section.settings.bottle_image != blank -%}
+          {{
+            section.settings.bottle_image
+            | image_url: width: 320
+            | image_tag: widths: '80, 120, 180, 320', sizes: '70px', loading: 'lazy', class: 'eis-cmp__bottle', alt: ''
+          }}
+        {%- endif -%}
+        {{ section.settings.brand_label }}
+      </div>
+      <div class="eis-cmp__head eis-cmp__head--other">{{ section.settings.other_label }}</div>
+
+      {%- for block in section.blocks -%}
+        <div class="eis-cmp__feat" {{ block.shopify_attributes }}>
+          <span class="eis-cmp__ic" aria-hidden="true">
+            {% render 'eis-icon', name: block.settings.icon %}
+          </span>
+          <span class="eis-cmp__lbl">{{ block.settings.label }}</span>
+        </div>
+
+        <div class="eis-cmp__cell eis-cmp__cell--brand">
+          {%- if block.settings.us -%}
+            <svg class="eis-cmp__yes" viewBox="0 0 44 44" aria-hidden="true" focusable="false">
+              <path fill="{{ section.settings.color_cream_light }}" d="M22 3.3Q28-.41 31.35 5.81Q38.4 5.6 38.19 12.65Q44.41 16 40.7 22Q44.41 28 38.19 31.35Q38.4 38.4 31.35 38.19Q28 44.41 22 40.7Q16 44.41 12.65 38.19Q5.6 38.4 5.81 31.35Q-.41 28 3.3 22Q-.41 16 5.81 12.65Q5.6 5.6 12.65 5.81Q16-.41 22 3.3Z"/>
+              <path d="M14.8 22.3l5 5 9.4-10.1" fill="none" stroke="{{ section.settings.color_maroon }}" stroke-width="3.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          {%- else -%}
+            <svg class="eis-cmp__no" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M5.5 5.5l13 13M18.5 5.5l-13 13" fill="none" stroke="{{ section.settings.color_cream_light }}" stroke-width="1.9" stroke-linecap="round"/>
+            </svg>
+          {%- endif -%}
+          <span class="eis-cmp__sr">{% if block.settings.us %}Yes{% else %}No{% endif %}</span>
+        </div>
+
+        <div class="eis-cmp__cell eis-cmp__cell--other">
+          {%- if block.settings.them -%}
+            <svg class="eis-cmp__yes" viewBox="0 0 44 44" aria-hidden="true" focusable="false">
+              <path fill="{{ section.settings.color_maroon }}" d="M22 3.3Q28-.41 31.35 5.81Q38.4 5.6 38.19 12.65Q44.41 16 40.7 22Q44.41 28 38.19 31.35Q38.4 38.4 31.35 38.19Q28 44.41 22 40.7Q16 44.41 12.65 38.19Q5.6 38.4 5.81 31.35Q-.41 28 3.3 22Q-.41 16 5.81 12.65Q5.6 5.6 12.65 5.81Q16-.41 22 3.3Z"/>
+              <path d="M14.8 22.3l5 5 9.4-10.1" fill="none" stroke="{{ section.settings.color_cream_light }}" stroke-width="3.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          {%- else -%}
+            <svg class="eis-cmp__no" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M5.5 5.5l13 13M18.5 5.5l-13 13" fill="none" stroke="{{ section.settings.color_muted }}" stroke-width="1.9" stroke-linecap="round"/>
+            </svg>
+          {%- endif -%}
+          <span class="eis-cmp__sr">{% if block.settings.them %}Yes{% else %}No{% endif %}</span>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.note != blank -%}
+      <p class="eis-cmp__note">{{ section.settings.note }}</p>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "EIS — Comparison table",
+  "tag": "section",
+  "class": "eis-section eis-section--compare",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Line breaks are kept. Shown in capitals.",
+      "default": "Why Our Oil Outlasts\nSprays & Balms"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "info": "Scales up by half again on desktop.",
+      "min": 20,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "text",
+      "id": "compare_label",
+      "label": "Feature column header",
+      "default": "Compare"
+    },
+    {
+      "type": "text",
+      "id": "brand_label",
+      "label": "Our column header",
+      "default": "EIS Oil"
+    },
+    {
+      "type": "text",
+      "id": "other_label",
+      "label": "Their column header",
+      "default": "Sprays, Balms & Gels"
+    },
+    {
+      "type": "text",
+      "id": "note",
+      "label": "Closing note"
+    },
+    {
+      "type": "header",
+      "content": "Bottle"
+    },
+    {
+      "type": "image_picker",
+      "id": "bottle_image",
+      "label": "Bottle cut-out",
+      "info": "Transparent PNG. Hangs over the top of our column."
+    },
+    {
+      "type": "range",
+      "id": "bottle_size",
+      "label": "Bottle height",
+      "info": "Phone height; desktop scales to 150% of it.",
+      "min": 70,
+      "max": 220,
+      "step": 5,
+      "unit": "px",
+      "default": 130
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color",
+      "id": "color_cream",
+      "label": "Background",
+      "default": "#FBF3E7"
+    },
+    {
+      "type": "color",
+      "id": "color_card",
+      "label": "Feature card",
+      "default": "#FFFDF8"
+    },
+    {
+      "type": "color",
+      "id": "color_maroon",
+      "label": "Heading & our column",
+      "default": "#7B1315"
+    },
+    {
+      "type": "color",
+      "id": "color_tint",
+      "label": "Their column",
+      "default": "#F4E7DA"
+    },
+    {
+      "type": "color",
+      "id": "color_cream_light",
+      "label": "Tick",
+      "default": "#F6E7C8"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Feature text",
+      "default": "#2A1C18"
+    },
+    {
+      "type": "color",
+      "id": "color_soft",
+      "label": "Muted labels",
+      "default": "#8A7A63"
+    },
+    {
+      "type": "color",
+      "id": "color_muted",
+      "label": "Crosses",
+      "default": "#9A8F82"
+    },
+    {
+      "type": "color",
+      "id": "color_border",
+      "label": "Hairlines",
+      "default": "#E7D9C3"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "col_width",
+      "label": "Comparison column width",
+      "info": "Desktop steps up to 140% of this.",
+      "min": 60,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 78
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "Content width",
+      "min": 400,
+      "max": 1180,
+      "step": 20,
+      "unit": "px",
+      "default": 480
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 34
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 34
+    }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Feature",
+          "default": "15+ Ayurvedic herbs, no chemicals"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "spark", "label": "Spark" },
+            { "value": "clock", "label": "Clock" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "families", "label": "Family" },
+            { "value": "truck", "label": "Delivery" },
+            { "value": "discount", "label": "Discount" }
+          ],
+          "default": "leaf"
+        },
+        {
+          "type": "checkbox",
+          "id": "us",
+          "label": "We have it",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "them",
+          "label": "They have it",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "EIS — Comparison table",
+      "blocks": [
+        { "type": "row", "settings": { "icon": "leaf", "label": "15+ Ayurvedic herbs, no chemicals" } },
+        { "type": "row", "settings": { "icon": "spark", "label": "Absorbs into the muscle and joint" } },
+        { "type": "row", "settings": { "icon": "clock", "label": "Relief that lasts the night" } },
+        { "type": "row", "settings": { "icon": "heart", "label": "No burning, no numbing" } },
+        { "type": "row", "settings": { "icon": "families", "label": "Gentle enough for nightly use" } },
+        { "type": "row", "settings": { "icon": "shield", "label": "Lab tested, GMP certified" } },
+        { "type": "row", "settings": { "icon": "truck", "label": "Free delivery in 3–5 days" } },
+        { "type": "row", "settings": { "icon": "discount", "label": "7-day money-back guarantee" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

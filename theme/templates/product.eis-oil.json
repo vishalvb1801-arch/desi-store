@@ -513,41 +513,73 @@
         "row-1": {
           "type": "row",
           "settings": {
-            "label": "HERBS",
-            "us_value": "15+ Ayurvedic herbs, full-spectrum",
-            "them_value": "1–2 synthetic actives"
+            "icon": "leaf",
+            "label": "15+ Ayurvedic herbs, no chemicals",
+            "us": true,
+            "them": false
           }
         },
         "row-2": {
           "type": "row",
           "settings": {
-            "label": "ACTION",
-            "us_value": "Absorbs into muscle & joint",
-            "them_value": "Sits on skin, wears off in an hour"
+            "icon": "spark",
+            "label": "Absorbs into the muscle and joint",
+            "us": true,
+            "them": false
           }
         },
         "row-3": {
           "type": "row",
           "settings": {
-            "label": "BASE",
-            "us_value": "Sesame & Mahanarayan oil",
-            "them_value": "Chemical gel / menthol"
+            "icon": "clock",
+            "label": "Relief that lasts the night",
+            "us": true,
+            "them": false
           }
         },
         "row-4": {
           "type": "row",
           "settings": {
-            "label": "TESTING",
-            "us_value": "Lab tested every batch",
-            "them_value": "Scattered verification"
+            "icon": "heart",
+            "label": "No burning, no numbing",
+            "us": true,
+            "them": false
           }
         },
         "row-5": {
           "type": "row",
           "settings": {
-            "label": "GUARANTEE",
-            "us_value": "7-day money back",
-            "them_value": "None"
+            "icon": "families",
+            "label": "Gentle enough for nightly use",
+            "us": true,
+            "them": false
+          }
+        },
+        "row-6": {
+          "type": "row",
+          "settings": {
+            "icon": "shield",
+            "label": "Lab tested, GMP certified",
+            "us": true,
+            "them": false
+          }
+        },
+        "row-7": {
+          "type": "row",
+          "settings": {
+            "icon": "truck",
+            "label": "Free delivery in 3–5 days",
+            "us": true,
+            "them": false
+          }
+        },
+        "row-8": {
+          "type": "row",
+          "settings": {
+            "icon": "discount",
+            "label": "7-day money-back guarantee",
+            "us": true,
+            "them": false
           }
         }
       },
@@ -556,9 +588,14 @@
         "row-2",
         "row-3",
         "row-4",
-        "row-5"
+        "row-5",
+        "row-6",
+        "row-7",
+        "row-8"
       ],
-      "settings": {}
+      "settings": {
+        "bottle_image": "shopify://shop_images/eis-bottle-cutout.png"
+      }
     },
     "offer-repeat": {
       "type": "eis-offer-repeat",
