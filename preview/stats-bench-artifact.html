@@ -90,7 +90,7 @@
   .eis-stats__fill{height:2px;background:var(--eis-gold);border-radius:2px;width:var(--pct)}
   .eis-stats__knob{position:absolute;top:-9px;left:var(--pct);transform:translateX(-50%);width:20px;height:20px;border-radius:999px;background:var(--eis-gold);color:var(--eis-maroon);font-size:10px;display:flex;align-items:center;justify-content:center}
   .eis-stats__foot{font-family:var(--eis-serif);font-style:italic;font-size:12px;color:#C4AE86}
-  .eis-stats__curve{display:block;width:100%;height:56px;margin-bottom:-1px}
+  .eis-stats__curve{display:block;width:100%;height:48px;margin-bottom:-1px}
 
   /* ---------- section 2: ingredients ---------- */
   .eis-herbs{background:#FFFFFF;font-family:var(--eis-sans);color:#2A1C18;overflow:hidden}
@@ -100,17 +100,17 @@
   .eis-herbs__title{
     font-family:var(--eis-serif);font-size:29px;font-weight:600;color:var(--eis-maroon-mid);
     text-align:center;margin:0;line-height:1.15;
-    padding-left:14%;padding-right:14%;position:relative;z-index:1;
+    padding-left:16%;padding-right:16%;position:relative;z-index:1;
   }
   .eis-herbs__bottle{
-    display:block;position:absolute;top:50%;margin-top:-40px;width:22%;
+    display:block;position:absolute;top:50%;margin-top:-36px;width:26%;
     pointer-events:none;
-    filter:drop-shadow(0 10px 14px rgba(0,0,0,.25));
+    filter:drop-shadow(0 10px 14px rgba(0,0,0,.65));
   }
   .eis-herbs__bottle > *{display:block;width:100%;height:auto;max-width:none}
-  .eis-herbs__bottle--l{left:-88px;transform:translateY(-50%)}
+  .eis-herbs__bottle--l{left:-116px;transform:translateY(-50%)}
   .eis-herbs__bottle--l > *{transform:rotate(45deg)}
-  .eis-herbs__bottle--r{right:-88px;transform:translateY(-50%)}
+  .eis-herbs__bottle--r{right:-116px;transform:translateY(-50%)}
   .eis-herbs__bottle--r > *{transform:rotate(-45deg)}
   .eis-herbs__intro{font-size:13px;line-height:1.55;color:var(--eis-muted);text-align:center;margin:12px 0 20px}
   .eis-herbs__intro strong{color:#2A1C18}
@@ -261,8 +261,8 @@
           <button type="button" data-edge="none" aria-pressed="false">Straight</button>
         </div>
         <div class="field">
-          <div class="row"><label for="curveH">Curve depth</label><span class="val" id="vCurve">56px</span></div>
-          <input type="range" id="curveH" min="16" max="120" step="4" value="56">
+          <div class="row"><label for="curveH">Curve depth</label><span class="val" id="vCurve">48px</span></div>
+          <input type="range" id="curveH" min="16" max="120" step="4" value="48">
         </div>
       </section>
 
@@ -279,12 +279,12 @@
           <p class="why">Both lean inward — left clockwise, right anticlockwise.</p>
         </div>
         <div class="field">
-          <div class="row"><label for="bw">Bottle width</label><span class="val" id="vW">24%</span></div>
-          <input type="range" id="bw" min="14" max="48" step="2" value="22">
+          <div class="row"><label for="bw">Bottle width</label><span class="val" id="vW">26%</span></div>
+          <input type="range" id="bw" min="14" max="48" step="2" value="26">
         </div>
         <div class="field">
-          <div class="row"><label for="bb">Bleed past the edge</label><span class="val" id="vB">88px</span></div>
-          <input type="range" id="bb" min="0" max="240" step="4" value="88">
+          <div class="row"><label for="bb">Bleed past the edge</label><span class="val" id="vB">116px</span></div>
+          <input type="range" id="bb" min="0" max="240" step="4" value="116">
           <p class="why">A tall bottle laid at 45° sweeps wide — most of its length is meant to run off the screen.</p>
         </div>
         <div class="field">
@@ -292,18 +292,18 @@
           <input type="range" id="bh" min="100" max="420" step="10" value="150">
         </div>
         <div class="field">
-          <div class="row"><label for="oy">Nudge up or down</label><span class="val" id="vY">-40px</span></div>
-          <input type="range" id="oy" min="-140" max="60" step="4" value="-40">
-          <p class="why" id="clipWarn">Negative lifts them over the curve. Far enough and they cover the stats text.</p>
+          <div class="row"><label for="oy">Nudge up or down</label><span class="val" id="vY">-36px</span></div>
+          <input type="range" id="oy" min="-140" max="60" step="4" value="-36">
+          <p class="why" id="clipWarn">Negative lifts them over the curve, which is the idea. Far enough and they reach the stats copy.</p>
         </div>
         <div class="field">
-          <div class="row"><label for="hg">Space kept clear for the heading</label><span class="val" id="vG">14%</span></div>
-          <input type="range" id="hg" min="0" max="34" step="2" value="14">
-          <p class="why" id="wrapWarn">Two rows. Raise this if the heading breaks onto a third.</p>
+          <div class="row"><label for="hg">Space kept clear for the heading</label><span class="val" id="vG">16%</span></div>
+          <input type="range" id="hg" min="0" max="34" step="2" value="16">
+          <p class="why" id="wrapWarn">Two rows. This is padding, so <em>lower</em> it if the heading breaks onto a third.</p>
         </div>
         <div class="field">
-          <div class="row"><label for="bs">Shadow strength</label><span class="val" id="vS">25%</span></div>
-          <input type="range" id="bs" min="0" max="100" step="5" value="25">
+          <div class="row"><label for="bs">Shadow strength</label><span class="val" id="vS">65%</span></div>
+          <input type="range" id="bs" min="0" max="100" step="5" value="65">
         </div>
       </section>
 
@@ -372,19 +372,21 @@
       // count rendered rows of the heading so a third row is visible as a warning
       var rows = Math.round(title.getBoundingClientRect().height / (29 * 1.15));
       warn.textContent = rows > 2
-        ? 'Heading is on ' + rows + ' rows — raise this until it is back to two.'
-        : 'Two rows. Raise this if the heading breaks onto a third.';
+        ? 'Heading is on ' + rows + ' rows — LOWER this until it is back to two.'
+        : 'Two rows. This is padding, so lower it if the heading breaks onto a third.';
       warn.style.color = rows > 2 ? '#C0392B' : '';
 
-      // the bottles now rise over the curve; flag it once they reach the stats copy
+      // riding over the curve is intended; only flag it once they reach the stats copy
       var clipNote = document.getElementById('clipWarn');
-      var curveTop = curve.getBoundingClientRect().top;
-      var capTop = art(bl) ? art(bl).getBoundingClientRect().top : curveTop;
-      var risen = Math.round(curveTop - capTop);
-      clipNote.textContent = risen > 0
-        ? 'Reaching ' + risen + 'px past the curve into the stats block — nudge down before it covers the copy.'
-        : 'Negative lifts them over the curve. Far enough and they cover the stats text.';
-      clipNote.style.color = risen > 0 ? '#C0392B' : '';
+      // the copy's own line box, not the block bottom — a cap tucked under the
+      // descenders is fine, reaching the line itself is not
+      var copyTop = document.querySelector('.eis-stats__foot').getBoundingClientRect().top;
+      var capTop = art(bl) ? art(bl).getBoundingClientRect().top : copyTop;
+      var overCopy = Math.round(copyTop - capTop);
+      clipNote.textContent = overCopy > 0
+        ? 'Covering the stats copy by ' + overCopy + 'px — nudge down.'
+        : 'Negative lifts them over the curve, which is the idea. Far enough and they reach the stats copy.';
+      clipNote.style.color = overCopy > 0 ? '#C0392B' : '';
 
       out.innerHTML =
         '<i>eis-stats-block</i>\n' +
