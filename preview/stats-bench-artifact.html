@@ -47,31 +47,24 @@
     --eis-maroon-mid:#7B1315;
     --eis-gold:#E3C46F;
     --eis-cream:#F6E7C8;
+    --eis-cream-card:#FBF3E7;
+    --eis-muted:#5E5147;
+    --eis-soft:#8A7A63;
     --eis-serif:'Playfair Display',Georgia,'Times New Roman',serif;
     --eis-sans:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,system-ui,sans-serif;
   }
 
   *{box-sizing:border-box}
   body{
-    margin:0;
-    background:var(--ground);
-    color:var(--ink);
-    font-family:var(--eis-sans);
-    font-size:15px;
-    line-height:1.55;
+    margin:0;background:var(--ground);color:var(--ink);
+    font-family:var(--eis-sans);font-size:15px;line-height:1.55;
     -webkit-font-smoothing:antialiased;
   }
-  .page{max-width:1100px;margin:0 auto;padding:36px 24px 72px;display:flex;flex-direction:column;gap:28px}
+  .page{max-width:1120px;margin:0 auto;padding:36px 24px 72px;display:flex;flex-direction:column;gap:28px}
 
   header{display:flex;flex-direction:column;gap:6px;max-width:62ch}
-  .eyebrow{
-    font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--accent);
-  }
-  h1{
-    font-family:var(--eis-serif);font-weight:600;font-size:clamp(26px,4vw,34px);
-    margin:0;line-height:1.1;text-wrap:balance;color:var(--ink);
-  }
+  .eyebrow{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+  h1{font-family:var(--eis-serif);font-weight:600;font-size:clamp(26px,4vw,34px);margin:0;line-height:1.1;text-wrap:balance}
   .lede{margin:0;color:var(--ink-soft);font-size:14.5px;max-width:60ch}
 
   .bench{display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap}
@@ -81,62 +74,55 @@
   .frame{
     width:390px;max-width:100%;
     border:9px solid #100A08;border-radius:38px;overflow:hidden;
-    box-shadow:var(--shadow);
-    transition:width .28s ease;
+    box-shadow:var(--shadow);transition:width .28s ease;
   }
   .frame.is-wide{width:min(560px,100%);border-radius:14px}
-  .devicebar{
-    display:flex;align-items:center;justify-content:space-between;gap:12px;
-    font-size:12px;color:var(--ink-faint);
-  }
-  .widthchip{
-    font-variant-numeric:tabular-nums;font-weight:500;color:var(--ink-soft);
-  }
+  .devicebar{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px;color:var(--ink-faint)}
+  .widthchip{font-variant-numeric:tabular-nums;font-weight:500;color:var(--ink-soft)}
 
-  /* ---------- the section under test ---------- */
+  /* ---------- section 1: stats ---------- */
   .eis-stats{background:var(--eis-maroon);font-family:var(--eis-sans)}
   .eis-stats__inner{max-width:480px;margin:0 auto;padding:36px 20px 0;text-align:center}
-  .eis-stats__head{position:relative}
-  .eis-stats__title{
-    font-family:var(--eis-serif);font-size:29px;font-weight:600;
-    color:var(--eis-cream);margin:0 0 26px;line-height:1.15;
-  }
-  .eis-stats__value{
-    font-family:var(--eis-serif);font-style:italic;font-size:52px;
-    color:var(--eis-gold);line-height:1;
-  }
+  .eis-stats__title{font-family:var(--eis-serif);font-size:29px;font-weight:600;color:var(--eis-cream);margin:0 0 26px;line-height:1.15}
+  .eis-stats__value{font-family:var(--eis-serif);font-style:italic;font-size:52px;color:var(--eis-gold);line-height:1}
   .eis-stats__label{font-size:13px;color:#EEDDBC;line-height:1.5;margin-top:6px}
-  .eis-stats__track{
-    height:2px;background:rgba(246,231,200,.25);border-radius:2px;
-    margin:16px 0 26px;position:relative;
-  }
+  .eis-stats__track{height:2px;background:rgba(246,231,200,.25);border-radius:2px;margin:16px 0 26px;position:relative}
   .eis-stats__fill{height:2px;background:var(--eis-gold);border-radius:2px;width:var(--pct)}
-  .eis-stats__knob{
-    position:absolute;top:-9px;left:var(--pct);transform:translateX(-50%);
-    width:20px;height:20px;border-radius:999px;background:var(--eis-gold);
-    color:var(--eis-maroon);font-size:10px;display:flex;align-items:center;justify-content:center;
-  }
+  .eis-stats__knob{position:absolute;top:-9px;left:var(--pct);transform:translateX(-50%);width:20px;height:20px;border-radius:999px;background:var(--eis-gold);color:var(--eis-maroon);font-size:10px;display:flex;align-items:center;justify-content:center}
   .eis-stats__foot{font-family:var(--eis-serif);font-style:italic;font-size:12px;color:#C4AE86}
   .eis-stats__curve{display:block;width:100%;height:56px;margin-bottom:-1px}
 
-  .eis-stats__bottle{
-    display:none;position:absolute;bottom:0;width:32%;height:auto;max-width:none;
-    pointer-events:none;filter:drop-shadow(0 14px 18px rgba(0,0,0,.55));
+  /* ---------- section 2: ingredients ---------- */
+  .eis-herbs{background:#FFFFFF;font-family:var(--eis-sans);color:#2A1C18;overflow:clip}
+  .eis-herbs__inner{max-width:480px;margin:0 auto;padding:32px 16px 32px}
+  .eis-herbs__head{position:relative;min-height:170px;display:flex;align-items:center;justify-content:center}
+  .eis-herbs__title{
+    font-family:var(--eis-serif);font-size:29px;font-weight:600;color:var(--eis-maroon-mid);
+    text-align:center;margin:0;line-height:1.15;
+    padding-left:20%;padding-right:20%;position:relative;z-index:1;
   }
-  .eis-stats--bottles .eis-stats__head{
-    min-height:190px;padding-left:28%;padding-right:28%;
-    display:flex;align-items:center;justify-content:center;
+  .eis-herbs__bottle{
+    display:block;position:absolute;top:50%;width:24%;
+    pointer-events:none;
+    filter:drop-shadow(0 10px 14px rgba(0,0,0,.25));
   }
-  .eis-stats--bottles .eis-stats__bottle{display:block}
-  .eis-stats__bottle--l{left:-20px}
-  .eis-stats__bottle--r{right:-20px;transform:scaleX(-1)}
-  .eis-stats__bottle img{display:block;width:100%;height:auto}
+  .eis-herbs__bottle > *{display:block;width:100%;height:auto;max-width:none}
+  .eis-herbs__bottle--l{left:-44px;transform:translateY(-50%)}
+  .eis-herbs__bottle--l > *{transform:rotate(-45deg)}
+  .eis-herbs__bottle--r{right:-44px;transform:translateY(-50%)}
+  .eis-herbs__bottle--r > *{transform:rotate(45deg)}
+  .eis-herbs__intro{font-size:13px;line-height:1.55;color:var(--eis-muted);text-align:center;margin:12px 0 20px}
+  .eis-herbs__intro strong{color:#2A1C18}
+  .eis-herbs__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .eis-herbs__card{border:1px solid #EFE0C9;border-radius:11px;padding:14px 10px;text-align:center;background:var(--eis-cream-card);min-width:0}
+  .eis-herbs__dot{width:42px;height:42px;border-radius:999px;margin:0 auto 9px}
+  .eis-herbs__name{font-family:var(--eis-serif);font-size:15px;font-weight:600;color:var(--eis-maroon-mid)}
+  .eis-herbs__role{font-size:11px;color:var(--eis-muted);margin-top:4px;line-height:1.35}
 
   /* bottles are a phone-only device in the real section */
-  .frame.is-wide .eis-stats--bottles .eis-stats__bottle{display:none}
-  .frame.is-wide .eis-stats--bottles .eis-stats__head{
-    min-height:0;padding-left:0;padding-right:0;display:block;
-  }
+  .frame.is-wide .eis-herbs__bottle{display:none}
+  .frame.is-wide .eis-herbs__head{min-height:0;display:block}
+  .frame.is-wide .eis-herbs__title{padding-left:0;padding-right:0}
 
   /* stand-in artwork, replaced the moment a real PNG is loaded */
   .standin{
@@ -149,44 +135,28 @@
   }
   .standin::after{
     content:"EIS";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-    font-family:var(--eis-serif);font-size:1.4em;letter-spacing:.14em;color:var(--eis-gold);padding-top:14%;
-  }
-  .nextsection{
-    background:#FFFFFF;padding:26px 20px 40px;text-align:center;
-    font-family:var(--eis-serif);font-size:26px;line-height:1.15;color:var(--eis-maroon-mid);
+    font-family:var(--eis-serif);font-size:1.5em;letter-spacing:.14em;color:var(--eis-gold);padding-top:14%;
   }
 
   /* ---------- control rail ---------- */
-  .rail{
-    flex:1 1 300px;min-width:280px;display:flex;flex-direction:column;gap:16px;
-  }
-  .card{
-    background:var(--panel);border:1px solid var(--line);border-radius:14px;
-    padding:20px;display:flex;flex-direction:column;gap:16px;box-shadow:var(--shadow);
-  }
-  .card h2{
-    font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
-    color:var(--ink-faint);margin:0;
-  }
+  .rail{flex:1 1 300px;min-width:280px;display:flex;flex-direction:column;gap:16px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:16px;box-shadow:var(--shadow)}
+  .card h2{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-faint);margin:0}
+  .card h2 em{font-style:normal;color:var(--accent)}
   .field{display:flex;flex-direction:column;gap:7px}
   .field .row{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
   .field label{font-size:13.5px;color:var(--ink);font-weight:500}
-  .field .val{
-    font-size:13px;font-weight:700;color:var(--accent);
-    font-variant-numeric:tabular-nums;
-  }
+  .field .val{font-size:13px;font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums}
   .field .why{font-size:11.5px;color:var(--ink-faint);line-height:1.45;margin:0}
 
-  input[type=range]{
-    width:100%;accent-color:var(--accent);height:22px;margin:0;
-  }
+  input[type=range]{width:100%;accent-color:var(--accent);height:22px;margin:0}
   input[type=range]:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
 
-  .segmented{display:flex;gap:0;border:1px solid var(--line);border-radius:9px;overflow:hidden}
+  .segmented{display:flex;border:1px solid var(--line);border-radius:9px;overflow:hidden}
   .segmented button{
     flex:1;appearance:none;border:0;background:var(--panel);color:var(--ink-soft);
     font:500 13px/1 var(--eis-sans);padding:9px 4px;cursor:pointer;
-    border-right:1px solid var(--line);transition:background .15s, color .15s;
+    border-right:1px solid var(--line);transition:background .15s,color .15s;
   }
   .segmented button:last-child{border-right:0}
   .segmented button[aria-pressed="true"]{background:var(--accent-soft);color:var(--ink);font-weight:700}
@@ -203,15 +173,12 @@
     background:var(--ground);border:1px solid var(--line-soft);border-radius:10px;
     padding:14px 15px;margin:0;
     font:12.5px/1.85 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-    color:var(--ink-soft);white-space:pre;overflow-x:auto;
-    font-variant-numeric:tabular-nums;
+    color:var(--ink-soft);white-space:pre;overflow-x:auto;font-variant-numeric:tabular-nums;
   }
   .readout b{color:var(--ink);font-weight:700}
+  .readout i{color:var(--ink-faint);font-style:normal}
 
-  .note{
-    border-left:2px solid var(--accent);padding-left:14px;margin:0;
-    font-size:12.5px;line-height:1.6;color:var(--ink-soft);
-  }
+  .note{border-left:2px solid var(--accent);padding-left:14px;margin:0;font-size:12.5px;line-height:1.6;color:var(--ink-soft)}
   .note strong{color:var(--ink)}
 
   @media (max-width:900px){
@@ -225,9 +192,9 @@
 
 <div class="page">
   <header>
-    <div class="eyebrow">Draft theme · sections/eis-stats-block.liquid</div>
-    <h1>After 36,243 Bottles</h1>
-    <p class="lede">The stats block with its new curved bottom edge and the phone-only bottles flanking the heading. Drag the controls, then send me the values from the readout and I'll write them in as defaults.</p>
+    <div class="eyebrow">Draft theme · stats block → ingredients grid</div>
+    <h1>The Curve and the Tipped Bottles</h1>
+    <p class="lede">The stats headline is back to its plain two rows. The bottles have moved down onto <em>15 Herbs</em>, one each side at 45°, with the shadow cast from the tipped shape rather than baked into the image. Dial it, then send me the readout.</p>
   </header>
 
   <div class="bench">
@@ -241,13 +208,10 @@
       </div>
 
       <div class="frame" id="frame">
-        <div class="eis-stats eis-stats--bottles" id="sec">
+
+        <div class="eis-stats">
           <div class="eis-stats__inner">
-            <div class="eis-stats__head" id="head">
-              <div class="eis-stats__bottle eis-stats__bottle--l" id="bl"><div class="standin" id="sl"></div></div>
-              <div class="eis-stats__bottle eis-stats__bottle--r" id="br"><div class="standin" id="sr"></div></div>
-              <h2 class="eis-stats__title">After 36,243 Bottles,<br>The Results Are In.</h2>
-            </div>
+            <h2 class="eis-stats__title">After 36,243 Bottles,<br>The Results Are In.</h2>
 
             <div>
               <div class="eis-stats__value">89%</div>
@@ -273,56 +237,86 @@
           </svg>
         </div>
 
-        <div class="nextsection">15 Herbs. Deeper,<br>Longer Relief.</div>
+        <div class="eis-herbs">
+          <div class="eis-herbs__inner">
+            <div class="eis-herbs__head" id="head">
+              <div class="eis-herbs__bottle eis-herbs__bottle--l" id="bl"><div class="standin"></div></div>
+              <div class="eis-herbs__bottle eis-herbs__bottle--r" id="br"><div class="standin"></div></div>
+              <h2 class="eis-herbs__title" id="herbTitle">15 Herbs. Deeper,<br>Longer Relief.</h2>
+            </div>
+
+            <p class="eis-herbs__intro">EIS works differently from a balm — it <strong>absorbs into the muscle and joint</strong> instead of sitting on the surface.</p>
+
+            <div class="eis-herbs__grid">
+              <div class="eis-herbs__card">
+                <div class="eis-herbs__dot" style="background:radial-gradient(circle at 35% 30%,#8E4F2A,#3B1F10)"></div>
+                <div class="eis-herbs__name">Nirgundi</div>
+                <div class="eis-herbs__role">the anti-inflammatory herb</div>
+              </div>
+              <div class="eis-herbs__card">
+                <div class="eis-herbs__dot" style="background:radial-gradient(circle at 35% 30%,#7A6A3A,#2E2812)"></div>
+                <div class="eis-herbs__name">Rasna</div>
+                <div class="eis-herbs__role">the joint-mobility herb</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
     <div class="rail">
       <section class="card">
-        <h2>Bottom edge</h2>
-        <div class="field">
-          <div class="segmented" role="group" aria-label="Edge shape">
-            <button type="button" data-edge="convex" aria-pressed="true">Curved down</button>
-            <button type="button" data-edge="concave" aria-pressed="false">Curved up</button>
-            <button type="button" data-edge="none" aria-pressed="false">Straight</button>
-          </div>
+        <h2>Bottom edge <em>· stats block</em></h2>
+        <div class="segmented" role="group" aria-label="Edge shape">
+          <button type="button" data-edge="convex" aria-pressed="true">Curved down</button>
+          <button type="button" data-edge="concave" aria-pressed="false">Curved up</button>
+          <button type="button" data-edge="none" aria-pressed="false">Straight</button>
         </div>
         <div class="field">
           <div class="row"><label for="curveH">Curve depth</label><span class="val" id="vCurve">56px</span></div>
           <input type="range" id="curveH" min="16" max="120" step="4" value="56">
-          <p class="why">The curve is drawn in white because the section below it — Ingredients — is white.</p>
         </div>
       </section>
 
       <section class="card">
-        <h2>Side bottles · phones only</h2>
+        <h2>Tipped bottles <em>· 15 Herbs</em></h2>
         <div class="filerow">
           <label for="pngIn" style="font-size:13.5px;font-weight:500">Load your bottle PNG</label>
           <input type="file" id="pngIn" accept="image/png,image/webp,image/jpeg">
-          <p class="why" style="margin:0">Stays in this browser — nothing is uploaded anywhere.</p>
+          <p class="why" style="margin:0">Upload the <strong>upright</strong> render — the tilt happens here. Stays in this browser.</p>
         </div>
         <div class="field">
-          <div class="row"><label for="bw">Bottle width</label><span class="val" id="vW">32%</span></div>
-          <input type="range" id="bw" min="18" max="48" step="2" value="32">
+          <div class="row"><label for="ang">Tilt</label><span class="val" id="vA">45°</span></div>
+          <input type="range" id="ang" min="0" max="75" step="5" value="45">
         </div>
         <div class="field">
-          <div class="row"><label for="bh">Heading row height</label><span class="val" id="vH">190px</span></div>
-          <input type="range" id="bh" min="120" max="320" step="10" value="190">
+          <div class="row"><label for="bw">Bottle width</label><span class="val" id="vW">24%</span></div>
+          <input type="range" id="bw" min="14" max="40" step="2" value="24">
         </div>
         <div class="field">
-          <div class="row"><label for="bb">Bleed past the edge</label><span class="val" id="vB">20px</span></div>
-          <input type="range" id="bb" min="0" max="40" step="2" value="20">
+          <div class="row"><label for="bb">Bleed past the edge</label><span class="val" id="vB">44px</span></div>
+          <input type="range" id="bb" min="0" max="90" step="2" value="44">
         </div>
         <div class="field">
-          <div class="row"><label for="bs">Shadow strength</label><span class="val" id="vS">55%</span></div>
-          <input type="range" id="bs" min="0" max="100" step="5" value="55">
+          <div class="row"><label for="bh">Heading row height</label><span class="val" id="vH">170px</span></div>
+          <input type="range" id="bh" min="100" max="300" step="10" value="170">
+        </div>
+        <div class="field">
+          <div class="row"><label for="hg">Space kept clear for the heading</label><span class="val" id="vG">20%</span></div>
+          <input type="range" id="hg" min="0" max="34" step="2" value="20">
+          <p class="why" id="wrapWarn">Two rows. Raise this if the heading breaks onto a third.</p>
+        </div>
+        <div class="field">
+          <div class="row"><label for="bs">Shadow strength</label><span class="val" id="vS">25%</span></div>
+          <input type="range" id="bs" min="0" max="100" step="5" value="25">
         </div>
       </section>
 
       <section class="card">
         <h2>Send me these</h2>
         <pre class="readout" id="out"></pre>
-        <p class="note"><strong>The bottle above is a stand-in.</strong> The shot you sent is a JPG on a black background — <code>drop-shadow</code> follows the alpha channel, so that file renders as a shadowed black rectangle on the maroon. Export it as a transparent PNG, load it here to check, then upload it under Shopify → Content → Files and pick it as <em>Bottle cut-out</em>.</p>
+        <p class="note"><strong>Keep your 90° render.</strong> Export it as a transparent PNG with no ground shadow baked in, load it above to check the alpha, then upload it under Shopify → Content → Files and pick it as <em>Bottle cut-out</em> on the Ingredients section.</p>
       </section>
     </div>
   </div>
@@ -332,12 +326,14 @@
   (function () {
     var frame = document.getElementById('frame');
     var head  = document.getElementById('head');
+    var title = document.getElementById('herbTitle');
     var bl    = document.getElementById('bl');
     var br    = document.getElementById('br');
     var curve = document.getElementById('curve');
     var path  = document.getElementById('curvePath');
     var out   = document.getElementById('out');
     var chip  = document.getElementById('widthChip');
+    var warn  = document.getElementById('wrapWarn');
 
     var edge = 'convex';
 
@@ -347,40 +343,57 @@
     };
 
     function num(id) { return +document.getElementById(id).value; }
+    function art(holder) { return holder.firstElementChild; }
 
     function apply() {
-      var ch = num('curveH'), w = num('bw'), h = num('bh'), b = num('bb'), s = num('bs');
+      var ch = num('curveH'), a = num('ang'), w = num('bw'),
+          b  = num('bb'), h = num('bh'), g = num('hg'), s = num('bs');
 
       curve.style.display = edge === 'none' ? 'none' : 'block';
       curve.style.height  = ch + 'px';
       if (edge !== 'none') path.setAttribute('d', PATHS[edge]);
 
       head.style.minHeight = h + 'px';
-      head.style.paddingLeft = head.style.paddingRight = (w - 4) + '%';
+      title.style.paddingLeft = title.style.paddingRight = g + '%';
 
       [bl, br].forEach(function (el) {
         el.style.width  = w + '%';
-        el.style.filter = 'drop-shadow(0 14px 18px rgba(0, 0, 0, ' + (s / 100) + '))';
+        el.style.filter = 'drop-shadow(0 10px 14px rgba(0, 0, 0, ' + (s / 100) + '))';
       });
       bl.style.left  = -b + 'px';
       br.style.right = -b + 'px';
+      if (art(bl)) art(bl).style.transform = 'rotate(-' + a + 'deg)';
+      if (art(br)) art(br).style.transform = 'rotate(' + a + 'deg)';
 
       document.getElementById('vCurve').textContent = ch + 'px';
+      document.getElementById('vA').textContent = a + '°';
       document.getElementById('vW').textContent = w + '%';
-      document.getElementById('vH').textContent = h + 'px';
       document.getElementById('vB').textContent = b + 'px';
+      document.getElementById('vH').textContent = h + 'px';
+      document.getElementById('vG').textContent = g + '%';
       document.getElementById('vS').textContent = s + '%';
 
+      // count rendered rows of the heading so a third row is visible as a warning
+      var rows = Math.round(title.getBoundingClientRect().height / (29 * 1.15));
+      warn.textContent = rows > 2
+        ? 'Heading is on ' + rows + ' rows — raise this until it is back to two.'
+        : 'Two rows. Raise this if the heading breaks onto a third.';
+      warn.style.color = rows > 2 ? '#C0392B' : '';
+
       out.innerHTML =
-        'curve_style    <b>' + edge + '</b>\n' +
-        'curve_height   <b>' + ch + '</b>px\n' +
-        'bottle_width   <b>' + w + '</b>%\n' +
-        'bottle_height  <b>' + h + '</b>px\n' +
-        'bottle_bleed   <b>' + b + '</b>px\n' +
-        'bottle_shadow  <b>' + s + '</b>%';
+        '<i>eis-stats-block</i>\n' +
+        'curve_style        <b>' + edge + '</b>\n' +
+        'curve_height       <b>' + ch + '</b>px\n\n' +
+        '<i>eis-ingredients-grid</i>\n' +
+        'bottle_angle       <b>' + a + '</b>°\n' +
+        'bottle_width       <b>' + w + '</b>%\n' +
+        'bottle_bleed       <b>' + b + '</b>px\n' +
+        'bottle_row_height  <b>' + h + '</b>px\n' +
+        'heading_gutter     <b>' + g + '</b>%\n' +
+        'bottle_shadow      <b>' + s + '</b>%';
     }
 
-    ['curveH', 'bw', 'bh', 'bb', 'bs'].forEach(function (id) {
+    ['curveH', 'ang', 'bw', 'bb', 'bh', 'hg', 'bs'].forEach(function (id) {
       document.getElementById(id).addEventListener('input', apply);
     });
 
@@ -399,6 +412,7 @@
       document.getElementById('vpPhone').setAttribute('aria-pressed', String(!wide));
       document.getElementById('vpWide').setAttribute('aria-pressed', String(wide));
       chip.textContent = wide ? '≥ 750px — bottles hidden' : '390px';
+      apply();
     }
     document.getElementById('vpPhone').addEventListener('click', function () { setViewport(false); });
     document.getElementById('vpWide').addEventListener('click', function () { setViewport(true); });
@@ -413,6 +427,7 @@
         img.alt = '';
         holder.replaceChildren(img);
       });
+      apply();
     });
 
     apply();

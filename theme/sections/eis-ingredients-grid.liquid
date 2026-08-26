@@ -103,12 +103,84 @@
     text-align: center;
     margin: 16px 0 0;
   }
+  .eis-herbs__head { position: relative; }
+  .eis-herbs__bottle { display: none; }
+
+  /* Tipped bottles are a phone-only device — they'd read as clutter wide. */
+  @media (max-width: 749px) {
+    .eis-herbs--bottles { overflow: clip; }
+    .eis-herbs--bottles .eis-herbs__head {
+      min-height: {{ section.settings.bottle_row_height }}px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .eis-herbs--bottles .eis-herbs__title {
+      padding-left: {{ section.settings.heading_gutter }}%;
+      padding-right: {{ section.settings.heading_gutter }}%;
+      position: relative;
+      z-index: 1;
+    }
+    .eis-herbs--bottles .eis-herbs__bottle {
+      display: block;
+      position: absolute;
+      top: 50%;
+      width: {{ section.settings.bottle_width }}%;
+      pointer-events: none;
+      -webkit-user-select: none;
+      user-select: none;
+      /* Shadow lives on the wrapper, rotation on the image inside it, so the
+         bottle tips over while its shadow still falls straight down. */
+      filter: drop-shadow(0 10px 14px rgba(0, 0, 0, {{ section.settings.bottle_shadow | times: 0.01 }}));
+    }
+    .eis-herbs__bottle img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-width: none;
+    }
+    .eis-herbs__bottle--l {
+      left: -{{ section.settings.bottle_bleed }}px;
+      transform: translateY(-50%);
+    }
+    .eis-herbs__bottle--l img { transform: rotate(-{{ section.settings.bottle_angle }}deg); }
+    .eis-herbs__bottle--r {
+      right: -{{ section.settings.bottle_bleed }}px;
+      transform: translateY(-50%);
+    }
+    .eis-herbs__bottle--r img { transform: rotate({{ section.settings.bottle_angle }}deg); }
+  }
 {% endstyle %}
 
-<div class="eis-herbs">
+{%- assign eis_bottles_on = false -%}
+{%- if section.settings.show_bottles and section.settings.bottle_image != blank -%}
+  {%- assign eis_bottles_on = true -%}
+{%- endif -%}
+
+<div class="eis-herbs{% if eis_bottles_on %} eis-herbs--bottles{% endif %}">
   <div class="eis-herbs__inner">
-    {%- if section.settings.heading != blank -%}
-      <h2 class="eis-herbs__title">{{ section.settings.heading | newline_to_br }}</h2>
+    {%- if section.settings.heading != blank or eis_bottles_on -%}
+      <div class="eis-herbs__head">
+        {%- if eis_bottles_on -%}
+          <div class="eis-herbs__bottle eis-herbs__bottle--l">
+            {{
+              section.settings.bottle_image
+              | image_url: width: 460
+              | image_tag: widths: '160, 240, 320, 460', sizes: '26vw', loading: 'lazy', alt: ''
+            }}
+          </div>
+          <div class="eis-herbs__bottle eis-herbs__bottle--r">
+            {{
+              section.settings.bottle_image
+              | image_url: width: 460
+              | image_tag: widths: '160, 240, 320, 460', sizes: '26vw', loading: 'lazy', alt: ''
+            }}
+          </div>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="eis-herbs__title">{{ section.settings.heading | newline_to_br }}</h2>
+        {%- endif -%}
+      </div>
     {%- endif -%}
     {%- if section.settings.intro != blank -%}
       <p class="eis-herbs__intro">{{ section.settings.intro }}</p>
@@ -191,6 +263,84 @@
       "max": 3,
       "step": 1,
       "default": 2
+    },
+    {
+      "type": "header",
+      "content": "Tipped bottles (mobile only)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bottles",
+      "label": "Show a bottle each side of the heading",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "bottle_image",
+      "label": "Bottle cut-out",
+      "info": "Upright PNG with a transparent background and no baked-in shadow — the tilt and the shadow are both added here."
+    },
+    {
+      "type": "range",
+      "id": "bottle_angle",
+      "label": "Tilt",
+      "info": "Left bottle leans one way, right bottle the other.",
+      "min": 0,
+      "max": 75,
+      "step": 5,
+      "unit": "°",
+      "default": 45
+    },
+    {
+      "type": "range",
+      "id": "bottle_width",
+      "label": "Bottle width",
+      "min": 14,
+      "max": 40,
+      "step": 2,
+      "unit": "%",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "bottle_bleed",
+      "label": "Bleed past the edge",
+      "min": 0,
+      "max": 90,
+      "step": 2,
+      "unit": "px",
+      "default": 44
+    },
+    {
+      "type": "range",
+      "id": "bottle_row_height",
+      "label": "Heading row height",
+      "min": 100,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "default": 170
+    },
+    {
+      "type": "range",
+      "id": "heading_gutter",
+      "label": "Space kept clear for the heading",
+      "info": "Raise this if the heading wraps onto extra rows.",
+      "min": 0,
+      "max": 34,
+      "step": 2,
+      "unit": "%",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "bottle_shadow",
+      "label": "Shadow strength",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 25
     },
     {
       "type": "header",
