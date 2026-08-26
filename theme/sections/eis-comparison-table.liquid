@@ -22,6 +22,17 @@
     margin: 0 auto;
     padding: {{ section.settings.padding_top }}px 16px {{ section.settings.padding_bottom }}px;
   }
+  /* The heading lives inside the grid, in the feature column, filling the
+     headroom the bottle needs above our column. That space used to be empty
+     padding above a centred headline, so the section is shorter for it. */
+  .eis-cmp__lede {
+    grid-column: 1;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 4px 10px 0;
+    min-height: {{ section.settings.bottle_size | minus: 6 }}px;
+  }
+  .eis-cmp__spacer { min-height: {{ section.settings.bottle_size | minus: 6 }}px; }
   .eis-cmp__title {
     font-family: var(--eis-serif);
     font-size: {{ section.settings.heading_size }}px;
@@ -29,17 +40,14 @@
     line-height: 1.06;
     text-transform: uppercase;
     color: var(--eis-maroon);
-    text-align: center;
-    margin: 0 0 18px;
-    text-wrap: balance;
+    text-align: left;
+    margin: 0;
   }
 
   .eis-cmp__grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr) {{ section.settings.col_width }}px {{ section.settings.col_width }}px;
     column-gap: 9px;
-    /* headroom for the bottle, which hangs over our column */
-    padding-top: {{ section.settings.bottle_size | minus: 6 }}px;
   }
 
   .eis-cmp__head {
@@ -159,8 +167,9 @@
         {{ section.settings.col_width | times: 78 | divided_by: 100 }}px
         {{ section.settings.col_width | times: 78 | divided_by: 100 }}px;
       column-gap: 7px;
-      padding-top: {{ section.settings.bottle_size | times: 82 | divided_by: 100 | minus: 6 }}px;
     }
+    .eis-cmp__lede,
+    .eis-cmp__spacer { min-height: {{ section.settings.bottle_size | times: 82 | divided_by: 100 | minus: 6 }}px; }
     .eis-cmp__bottle { height: {{ section.settings.bottle_size | times: 82 | divided_by: 100 }}px; }
     .eis-cmp__head { font-size: 10px; padding: 9px 4px; }
     .eis-cmp__feat { padding: 10px; gap: 9px; }
@@ -197,10 +206,12 @@
         {{ section.settings.col_width | times: 120 | divided_by: 100 }}px
         {{ section.settings.col_width | times: 120 | divided_by: 100 }}px;
       column-gap: 13px;
-      padding-top: {{ section.settings.bottle_size | times: 150 | divided_by: 100 | minus: 6 }}px;
     }
+    .eis-cmp__lede,
+    .eis-cmp__spacer { min-height: {{ section.settings.bottle_size | times: 150 | divided_by: 100 | minus: 6 }}px; }
+    .eis-cmp__lede { padding-bottom: 14px; }
     .eis-cmp__bottle { height: {{ section.settings.bottle_size | times: 150 | divided_by: 100 }}px; }
-    .eis-cmp__title { font-size: {{ section.settings.heading_size | times: 145 | divided_by: 100 }}px; }
+    .eis-cmp__title { font-size: {{ section.settings.heading_size | times: 125 | divided_by: 100 }}px; }
     .eis-cmp__head { font-size: 14px; padding: 14px 10px; }
     .eis-cmp__feat {
       padding: 14px 16px;
@@ -217,11 +228,15 @@
 
 <div class="eis-cmp">
   <div class="eis-cmp__inner">
-    {%- if section.settings.heading != blank -%}
-      <h2 class="eis-cmp__title">{{ section.settings.heading | newline_to_br }}</h2>
-    {%- endif -%}
-
     <div class="eis-cmp__grid">
+      <div class="eis-cmp__lede">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="eis-cmp__title">{{ section.settings.heading | newline_to_br }}</h2>
+        {%- endif -%}
+      </div>
+      <div class="eis-cmp__spacer" aria-hidden="true"></div>
+      <div class="eis-cmp__spacer" aria-hidden="true"></div>
+
       <div class="eis-cmp__head eis-cmp__head--feat">{{ section.settings.compare_label }}</div>
       <div class="eis-cmp__head eis-cmp__head--brand">
         {%- if section.settings.bottle_image != blank -%}
@@ -297,12 +312,12 @@
       "type": "range",
       "id": "heading_size",
       "label": "Heading size",
-      "info": "Scales up by half again on desktop.",
+      "info": "Sits in the feature column, beside the bottle. At 26px the headline fits inside the bottle's headroom and costs the section no height at all; larger and it starts pushing the table down. Desktop steps up to 125%.",
       "min": 20,
       "max": 40,
       "step": 1,
       "unit": "px",
-      "default": 28
+      "default": 26
     },
     {
       "type": "text",
