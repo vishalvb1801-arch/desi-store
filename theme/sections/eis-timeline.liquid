@@ -42,7 +42,7 @@
     padding-top: calc(var(--eis-marker) * .46);
   }
   .eis-time__row { position: relative; }
-  /* The rail: one hairline per gap, down the centre of the card. Two stacked
+  /* The rail: one bar per gap, down the centre of the card. Two stacked
      backgrounds - a gold layer whose height animates from 0, over a dim base -
      so it fills downward as the stage below it comes into view. */
   .eis-time__row + .eis-time__row::before {
@@ -51,8 +51,9 @@
     left: 50%;
     transform: translateX(-50%);
     top: calc(-1 * var(--eis-gap));
-    width: 1px;
+    width: {{ section.settings.rail_width }}px;
     height: var(--eis-gap);
+    border-radius: 999px;
     background:
       linear-gradient(var(--eis-gold-light), var(--eis-gold-light)) no-repeat top center,
       rgba(246, 231, 200, .28);
@@ -262,12 +263,22 @@
       "type": "range",
       "id": "stage_gap",
       "label": "Space between stages",
-      "info": "The connecting hairline fills this gap.",
+      "info": "The connecting rail fills this gap.",
       "min": 24,
       "max": 96,
       "step": 4,
       "unit": "px",
       "default": 56
+    },
+    {
+      "type": "range",
+      "id": "rail_width",
+      "label": "Rail thickness",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "unit": "px",
+      "default": 3
     },
     {
       "type": "checkbox",
