@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EIS — Stats block bench</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --maroon:#5C0D0F; --gold:#E3C46F; --cream:#F6E7C8;
+    --serif:'Playfair Display',Georgia,serif;
+    --sans:'DM Sans',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#20140f;color:#EEDDBC;font-family:var(--sans);padding:24px 16px 60px}
+  h1{font-family:var(--serif);font-size:20px;color:var(--cream);margin:0 0 4px}
+  .sub{font-size:12px;color:#A08E77;margin:0 0 22px}
+  .wrap{display:flex;gap:28px;flex-wrap:wrap;align-items:flex-start}
+
+  /* ---- phone frame ------------------------------------------------ */
+  .phone{width:390px;flex:0 0 390px;border:8px solid #0d0806;border-radius:34px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.6)}
+
+  /* ---- the section, mirrored from eis-stats-block.liquid ---------- */
+  .eis-stats{background:var(--maroon);font-family:var(--sans)}
+  .eis-stats__inner{max-width:480px;margin:0 auto;padding:36px 20px 0;text-align:center}
+  .eis-stats__head{position:relative}
+  .eis-stats__title{font-family:var(--serif);font-size:29px;font-weight:600;color:var(--cream);margin:0 0 26px;line-height:1.15}
+  .eis-stats__value{font-family:var(--serif);font-style:italic;font-size:52px;color:var(--gold);line-height:1}
+  .eis-stats__label{font-size:13px;color:#EEDDBC;line-height:1.5;margin-top:6px}
+  .eis-stats__track{height:2px;background:rgba(246,231,200,.25);border-radius:2px;margin:16px 0 26px;position:relative}
+  .eis-stats__fill{height:2px;background:var(--gold);border-radius:2px;width:var(--pct)}
+  .eis-stats__knob{position:absolute;top:-9px;left:var(--pct);transform:translateX(-50%);width:20px;height:20px;border-radius:999px;background:var(--gold);color:var(--maroon);font-size:10px;display:flex;align-items:center;justify-content:center}
+  .eis-stats__foot{font-family:var(--serif);font-style:italic;font-size:12px;color:#C4AE86}
+  .eis-stats__curve{display:block;width:100%;height:56px;margin-bottom:-1px}
+
+  .eis-stats--bottles .eis-stats__head{
+    min-height:190px;padding-left:28%;padding-right:28%;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .eis-stats__bottle{
+    display:none;position:absolute;bottom:0;width:32%;height:auto;max-width:none;
+    pointer-events:none;filter:drop-shadow(0 14px 18px rgba(0,0,0,.55));
+  }
+  .eis-stats--bottles .eis-stats__bottle{display:block}
+  .eis-stats__bottle--l{left:-20px}
+  .eis-stats__bottle--r{right:-20px;transform:scaleX(-1)}
+
+  /* stand-in artwork only — the real thing is your bottle PNG */
+  .standin{aspect-ratio:1024/1536;border-radius:6px 6px 10px 10px;
+    background:
+      linear-gradient(#fdfdfd 0 5%, #d8d8d8 5% 8%, transparent 8%),
+      linear-gradient(100deg, rgba(255,255,255,.28) 0 12%, transparent 40%),
+      linear-gradient(#8d1013 0 12%, #b1191c 12% 84%, #6d0c0f 84% 100%);
+    position:relative}
+  .standin::after{content:"EIS";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    font-family:var(--serif);font-size:22px;letter-spacing:.12em;color:var(--gold);padding-top:12%}
+
+  .next{background:#fff;color:#2A1C18;padding:26px 20px 40px;text-align:center;font-family:var(--serif);font-size:26px;color:#7B1315}
+
+  /* ---- controls ---------------------------------------------------- */
+  .panel{flex:1 1 280px;min-width:260px;background:#2b1c16;border:1px solid #4a3226;border-radius:14px;padding:18px}
+  .panel h2{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#C4AE86;margin:0 0 14px}
+  label{display:block;font-size:12px;margin:0 0 14px;color:#DCC9AC}
+  label span{float:right;color:var(--gold);font-variant-numeric:tabular-nums}
+  input[type=range]{width:100%;margin-top:6px;accent-color:#E3C46F}
+  select{width:100%;margin-top:6px;padding:6px;border-radius:7px;border:1px solid #5a3d2e;background:#1c120e;color:#EEDDBC;font-family:inherit}
+  .readout{margin-top:14px;padding:12px;border-radius:9px;background:#1c120e;border:1px solid #4a3226;font:12px/1.7 ui-monospace,Menlo,monospace;color:#C9B392;white-space:pre-wrap}
+  .warn{margin-top:14px;font-size:11.5px;line-height:1.6;color:#E9B4B4}
+</style>
+</head>
+<body>
+
+<h1>EIS — Stats block</h1>
+<p class="sub">Phone width (390 px). Drag the controls, then tell me the numbers you want and I'll set them as defaults.</p>
+
+<div class="wrap">
+  <div class="phone">
+    <div class="eis-stats eis-stats--bottles" id="sec">
+      <div class="eis-stats__inner">
+        <div class="eis-stats__head" id="head">
+          <div class="eis-stats__bottle eis-stats__bottle--l" id="bl"><div class="standin"></div></div>
+          <div class="eis-stats__bottle eis-stats__bottle--r" id="br"><div class="standin"></div></div>
+          <h2 class="eis-stats__title">After 36,243 Bottles,<br>The Results Are In.</h2>
+        </div>
+
+        <div><div class="eis-stats__value">89%</div>
+          <div class="eis-stats__label">reported less stiffness and pain within the first week</div>
+          <div class="eis-stats__track" style="--pct:89%"><div class="eis-stats__fill"></div><div class="eis-stats__knob">☾</div></div></div>
+        <div><div class="eis-stats__value">92%</div>
+          <div class="eis-stats__label">noticed relief lasting longer than balms or sprays</div>
+          <div class="eis-stats__track" style="--pct:92%"><div class="eis-stats__fill"></div><div class="eis-stats__knob">❍</div></div></div>
+        <div><div class="eis-stats__value">86%</div>
+          <div class="eis-stats__label">said they moved more easily within 30 days</div>
+          <div class="eis-stats__track" style="--pct:86%"><div class="eis-stats__fill"></div><div class="eis-stats__knob">✦</div></div></div>
+
+        <div class="eis-stats__foot">Based on customer survey data*</div>
+      </div>
+
+      <svg class="eis-stats__curve" id="curve" viewBox="0 0 1200 100" preserveAspectRatio="none" aria-hidden="true">
+        <path id="curvePath" d="M0,0 Q600,200 1200,0 L1200,100 L0,100 Z" fill="#FFFFFF"></path>
+      </svg>
+    </div>
+    <div class="next">15 Herbs. Deeper,<br>Longer Relief.</div>
+  </div>
+
+  <div class="panel">
+    <h2>Controls</h2>
+
+    <label>Bottom edge
+      <select id="style">
+        <option value="convex" selected>Curved down</option>
+        <option value="concave">Curved up</option>
+        <option value="none">Straight</option>
+      </select>
+    </label>
+    <label>Curve depth <span id="vCurve">56px</span>
+      <input type="range" id="curveH" min="16" max="120" step="4" value="56"></label>
+
+    <label>Bottle width <span id="vW">32%</span>
+      <input type="range" id="bw" min="18" max="48" step="2" value="32"></label>
+    <label>Heading row height <span id="vH">190px</span>
+      <input type="range" id="bh" min="120" max="320" step="10" value="190"></label>
+    <label>Bleed past the edge <span id="vB">20px</span>
+      <input type="range" id="bb" min="0" max="40" step="2" value="20"></label>
+    <label>Shadow strength <span id="vS">55%</span>
+      <input type="range" id="bs" min="0" max="100" step="5" value="55"></label>
+
+    <div class="readout" id="out"></div>
+    <p class="warn">The bottle here is a stand-in. Upload your bottle as a <strong>transparent PNG</strong> (Shopify → Content → Files) and pick it under “Bottle cut-out” — on the black-background JPG you sent, the drop shadow has nothing to hug and you'd get a black rectangle.</p>
+  </div>
+</div>
+
+<script>
+  var sec=document.getElementById('sec'), head=document.getElementById('head'),
+      bl=document.getElementById('bl'), br=document.getElementById('br'),
+      curve=document.getElementById('curve'), path=document.getElementById('curvePath'),
+      out=document.getElementById('out');
+
+  function apply(){
+    var st=document.getElementById('style').value,
+        ch=+document.getElementById('curveH').value,
+        w=+document.getElementById('bw').value,
+        h=+document.getElementById('bh').value,
+        b=+document.getElementById('bb').value,
+        s=+document.getElementById('bs').value;
+
+    curve.style.display = st==='none' ? 'none' : 'block';
+    curve.style.height  = ch+'px';
+    path.setAttribute('d', st==='concave'
+      ? 'M0,100 Q600,-100 1200,100 Z'
+      : 'M0,0 Q600,200 1200,0 L1200,100 L0,100 Z');
+
+    head.style.minHeight   = h+'px';
+    head.style.paddingLeft = head.style.paddingRight = (w-4)+'%';
+    [bl,br].forEach(function(el){
+      el.style.width='' + w + '%';
+      el.style.filter='drop-shadow(0 14px 18px rgba(0,0,0,'+(s/100)+'))';
+    });
+    bl.style.left = -b+'px';
+    br.style.right = -b+'px';
+
+    document.getElementById('vCurve').textContent=ch+'px';
+    document.getElementById('vW').textContent=w+'%';
+    document.getElementById('vH').textContent=h+'px';
+    document.getElementById('vB').textContent=b+'px';
+    document.getElementById('vS').textContent=s+'%';
+
+    out.textContent =
+      'curve_style   '+st+'\n'+
+      'curve_height  '+ch+'px\n'+
+      'bottle_width  '+w+'%\n'+
+      'bottle_height '+h+'px\n'+
+      'bottle_bleed  '+b+'px\n'+
+      'bottle_shadow '+s+'%';
+  }
+  ['style','curveH','bw','bh','bb','bs'].forEach(function(id){
+    document.getElementById(id).addEventListener('input', apply);
+  });
+  apply();
+</script>
+</body>
+</html>
