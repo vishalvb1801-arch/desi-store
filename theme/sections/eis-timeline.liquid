@@ -32,6 +32,11 @@
     margin: 0 0 24px;
     line-height: 1.18;
   }
+  /* "Pain Relief Oil Nightly" is a long last line: at full size it breaks to a
+     fourth row on 360px phones, so trim the type there rather than the copy. */
+  @media (max-width: 389px) {
+    .eis-time__title { font-size: {{ section.settings.heading_size | times: 88 | divided_by: 100 }}px; }
+  }
   .eis-time__list {
     --eis-marker: {{ section.settings.marker_size }}px;
     --eis-gap: {{ section.settings.stage_gap }}px;
@@ -237,7 +242,7 @@
       "id": "heading",
       "label": "Heading",
       "info": "Line breaks are kept.",
-      "default": "What to Expect\nWhen You Start\nUsing EIS Nightly"
+      "default": "What to Expect\nWhen You Start Using\nPain Relief Oil Nightly"
     },
     {
       "type": "range",
