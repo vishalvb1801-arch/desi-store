@@ -36,6 +36,7 @@ uploaded to the draft theme and take effect only when that theme is published:
 | `sections/eis-announcement-bar.liquid` | Fade-rotate replaced with a CSS-only right-to-left marquee; icons; adjustable spacing and height |
 | `snippets/eis-icon.liquid` | New — 9 inline SVG stroke icons used by the announcement bar |
 | `templates/product.eis-oil.json` | Announcement bar copy: 3 messages with icons; hero review avatar |
+| `sections/eis-faq-accordion.liquid` | Unmodified — tracked for reference only |
 | `sections/eis-product-hero.liquid` | Google mark beside the hero review name, behind a `review_google` toggle |
 
 Publishing is a manual step in Shopify admin (Online Store → Themes → the draft
