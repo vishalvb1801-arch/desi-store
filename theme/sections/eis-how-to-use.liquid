@@ -1,0 +1,453 @@
+{%- comment -%}
+  EIS — How to use
+  ------------------------------------------------------------------
+  New section, not in the original prototype. Numbered application steps in
+  the house style, closed by a safety note.
+{%- endcomment -%}
+
+{% render 'eis-fonts' %}
+
+{%- liquid
+  assign safety_count = 0
+  for block in section.blocks
+    if block.type == 'safety_note'
+      assign safety_count = safety_count | plus: 1
+    endif
+  endfor
+-%}
+
+{% style %}
+  {% render 'eis-tokens', id: section.id, s: section.settings %}
+
+  .eis-how {
+    background: var(--eis-cream);
+    font-family: var(--eis-sans);
+    color: var(--eis-ink);
+  }
+  .eis-how__inner {
+    max-width: var(--eis-max);
+    margin: 0 auto;
+    padding: {{ section.settings.padding_top }}px 16px {{ section.settings.padding_bottom }}px;
+  }
+  .eis-how__head { text-align: center; }
+  .eis-how__eyebrow {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: .18em;
+    color: var(--eis-soft);
+    border: 1px solid #E2D2B8;
+    border-radius: 999px;
+    padding: 4px 12px;
+  }
+  .eis-how__title {
+    font-family: var(--eis-serif);
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--eis-maroon);
+    margin: 12px 0 8px;
+    line-height: 1.18;
+  }
+  .eis-how__intro {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--eis-muted);
+    margin: 0 0 20px;
+  }
+  .eis-how__step {
+    display: flex;
+    gap: 13px;
+    align-items: flex-start;
+    background: #FFFDF8;
+    border: 1px solid #EFE0C9;
+    border-radius: 11px;
+    padding: 14px;
+    margin-bottom: 10px;
+  }
+  .eis-how__num {
+    width: 34px;
+    height: 34px;
+    flex: none;
+    border-radius: 999px;
+    background: var(--eis-maroon);
+    color: var(--eis-cream-light);
+    font-family: var(--eis-serif);
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .eis-how__num span {
+    position: absolute;
+    right: -4px;
+    bottom: -4px;
+    width: 17px;
+    height: 17px;
+    border-radius: 999px;
+    background: var(--eis-gold);
+    color: #3B0E0F;
+    font-family: var(--eis-sans);
+    font-size: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .eis-how__step-title {
+    font-size: 14px;
+    font-weight: 700;
+    font-family: var(--eis-serif);
+    color: var(--eis-maroon);
+  }
+  .eis-how__step-text {
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--eis-muted);
+    margin-top: 4px;
+  }
+  .eis-how__step-time {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .07em;
+    color: #3B0E0F;
+    background: var(--eis-gold);
+    border-radius: 5px;
+    padding: 3px 8px;
+    margin-top: 8px;
+  }
+  .eis-how__safety {
+    border: 1px dashed var(--eis-gold);
+    border-radius: 11px;
+    background: #FDF9F1;
+    padding: 14px;
+    margin-top: 16px;
+  }
+  .eis-how__safety-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    color: var(--eis-maroon);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .eis-how__safety-list {
+    list-style: none;
+    margin: 10px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .eis-how__safety-list li {
+    display: flex;
+    gap: 9px;
+    align-items: flex-start;
+    font-size: 12.5px;
+    line-height: 1.45;
+    color: var(--eis-muted);
+  }
+  .eis-how__safety-list b { color: var(--eis-ink); font-weight: 700; }
+  .eis-how__tick {
+    color: var(--eis-green);
+    font-size: 12px;
+    flex: none;
+    margin-top: 2px;
+  }
+{% endstyle %}
+
+<div class="eis-how">
+  <div class="eis-how__inner">
+    <div class="eis-how__head">
+      {%- if section.settings.eyebrow != blank -%}
+        <div class="eis-how__eyebrow">{{ section.settings.eyebrow }}</div>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="eis-how__title">{{ section.settings.heading | newline_to_br }}</h2>
+      {%- endif -%}
+      {%- if section.settings.intro != blank -%}
+        <p class="eis-how__intro">{{ section.settings.intro }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- assign step_number = 0 -%}
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'step' -%}
+        {%- assign step_number = step_number | plus: 1 -%}
+        <div class="eis-how__step" {{ block.shopify_attributes }}>
+          <div class="eis-how__num" aria-hidden="true">
+            {{ step_number }}
+            {%- if block.settings.icon != blank -%}
+              <span>{{ block.settings.icon }}</span>
+            {%- endif -%}
+          </div>
+          <div>
+            <div class="eis-how__step-title">{{ block.settings.title }}</div>
+            {%- if block.settings.text != blank -%}
+              <div class="eis-how__step-text">{{ block.settings.text }}</div>
+            {%- endif -%}
+            {%- if block.settings.time_label != blank -%}
+              <div class="eis-how__step-time">{{ block.settings.time_label }}</div>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- if safety_count > 0 -%}
+      <div class="eis-how__safety">
+        {%- if section.settings.safety_title != blank -%}
+          <div class="eis-how__safety-title">
+            <span aria-hidden="true">{{ section.settings.safety_icon }}</span>
+            {{ section.settings.safety_title }}
+          </div>
+        {%- endif -%}
+        <ul class="eis-how__safety-list">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'safety_note' -%}
+              <li {{ block.shopify_attributes }}>
+                <span class="eis-how__tick" aria-hidden="true">✓</span>
+                <span>{{ block.settings.text }}</span>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "EIS — How to use",
+  "tag": "section",
+  "class": "eis-section eis-section--how",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "HOW TO USE"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Line breaks are kept.",
+      "default": "Four Steps,\nEvery Night"
+    },
+    {
+      "type": "text",
+      "id": "intro",
+      "label": "Intro",
+      "default": "Takes about ten minutes. Do it consistently and the results build week on week."
+    },
+    {
+      "type": "header",
+      "content": "Safety note"
+    },
+    {
+      "type": "text",
+      "id": "safety_icon",
+      "label": "Icon character",
+      "default": "✷"
+    },
+    {
+      "type": "text",
+      "id": "safety_title",
+      "label": "Title",
+      "default": "GOOD TO KNOW"
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color",
+      "id": "color_cream",
+      "label": "Background",
+      "default": "#FBF3E7"
+    },
+    {
+      "type": "color",
+      "id": "color_maroon",
+      "label": "Headings",
+      "default": "#7B1315"
+    },
+    {
+      "type": "color",
+      "id": "color_gold",
+      "label": "Gold accent",
+      "default": "#C9A24A"
+    },
+    {
+      "type": "color",
+      "id": "color_cream_light",
+      "label": "Number text",
+      "default": "#F6E7C8"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Text",
+      "default": "#2A1C18"
+    },
+    {
+      "type": "color",
+      "id": "color_muted",
+      "label": "Muted text",
+      "default": "#5E5147"
+    },
+    {
+      "type": "color",
+      "id": "color_soft",
+      "label": "Eyebrow text",
+      "default": "#8A7A63"
+    },
+    {
+      "type": "color",
+      "id": "color_green",
+      "label": "Tick green",
+      "default": "#1E7A4D"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "Content width",
+      "min": 400,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "default": 480
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Warm it"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Warm a little oil between your palms until it feels comfortably warm — never hot."
+        },
+        {
+          "type": "text",
+          "id": "time_label",
+          "label": "Badge (optional)"
+        },
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Corner icon (optional)"
+        }
+      ]
+    },
+    {
+      "type": "safety_note",
+      "name": "Safety line",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "info": "Basic HTML like <b> works.",
+          "default": "<b>External use only.</b> Do not swallow."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "EIS — How to use",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "title": "Warm it",
+            "text": "Warm a little oil between your palms, or stand the bottle in warm water for a minute. Comfortably warm — never hot.",
+            "icon": "☾"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Apply to the sore area",
+            "text": "Knee, lower back, shoulder, neck or calf. Use enough to cover the area in a thin film.",
+            "icon": "❍"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Massage in circular motion",
+            "text": "Slow, firm circles until the oil absorbs and the area feels warm.",
+            "time_label": "5–10 MINUTES",
+            "icon": "✦"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Nightly, before bed",
+            "text": "Best at night so it works while you sleep. Twice daily during a flare-up.",
+            "time_label": "EVERY NIGHT",
+            "icon": "☘"
+          }
+        },
+        {
+          "type": "safety_note",
+          "settings": {
+            "text": "<b>External use only.</b> Do not swallow. Keep away from eyes and broken skin."
+          }
+        },
+        {
+          "type": "safety_note",
+          "settings": {
+            "text": "<b>Safe for daily use.</b> Gentle enough to apply every night, long-term."
+          }
+        },
+        {
+          "type": "safety_note",
+          "settings": {
+            "text": "<b>Patch test first if you have sensitive skin.</b> Apply a little to your inner forearm and wait 24 hours."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
