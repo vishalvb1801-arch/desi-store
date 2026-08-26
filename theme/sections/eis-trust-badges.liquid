@@ -1,0 +1,255 @@
+{%- comment -%}
+  EIS — Trust badges
+  ------------------------------------------------------------------
+  Deep maroon band: heading, a row of certification badges, closing line.
+{%- endcomment -%}
+
+{% render 'eis-fonts' %}
+
+{% style %}
+  {% render 'eis-tokens', id: section.id, s: section.settings %}
+
+  .eis-trust {
+    background: var(--eis-maroon-deep);
+    font-family: var(--eis-sans);
+  }
+  .eis-trust__inner {
+    max-width: var(--eis-max);
+    margin: 0 auto;
+    padding: {{ section.settings.padding_top }}px 16px {{ section.settings.padding_bottom }}px;
+    text-align: center;
+  }
+  .eis-trust__title {
+    font-family: var(--eis-serif);
+    font-size: 27px;
+    font-weight: 600;
+    color: var(--eis-cream-light);
+    margin: 0;
+    line-height: 1.2;
+  }
+  .eis-trust__title em { color: var(--eis-gold-light); font-style: italic; }
+  .eis-trust__grid {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.columns }}, 1fr);
+    gap: 10px;
+    margin-top: 22px;
+  }
+  .eis-trust__badge {
+    border: 1px solid rgba(227, 196, 111, .4);
+    border-radius: 10px;
+    padding: 16px 8px;
+  }
+  .eis-trust__icon {
+    width: 44px;
+    height: 44px;
+    margin: 0 auto 10px;
+    border-radius: 999px;
+    border: 1.5px solid var(--eis-gold-light);
+    color: var(--eis-gold-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: {{ section.settings.icon_size }}px;
+    line-height: 1;
+    overflow: hidden;
+  }
+  .eis-trust__icon img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .eis-trust__label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    color: var(--eis-cream-light);
+    line-height: 1.4;
+  }
+  .eis-trust__note {
+    font-family: var(--eis-serif);
+    font-style: italic;
+    font-size: 14px;
+    color: #E9D8B6;
+    margin-top: 20px;
+  }
+{% endstyle %}
+
+<div class="eis-trust">
+  <div class="eis-trust__inner">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="eis-trust__title">{{ section.settings.heading | newline_to_br }}</h2>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="eis-trust__grid">
+        {%- for block in section.blocks -%}
+          <div class="eis-trust__badge" {{ block.shopify_attributes }}>
+            <div class="eis-trust__icon" aria-hidden="true">
+              {%- if block.settings.image != blank -%}
+                {{ block.settings.image | image_url: width: 120 | image_tag: widths: '88, 120', sizes: '44px', loading: 'lazy', alt: '' }}
+              {%- else -%}
+                {{ block.settings.icon }}
+              {%- endif -%}
+            </div>
+            <div class="eis-trust__label">{{ block.settings.label | newline_to_br }}</div>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.note != blank -%}
+      <div class="eis-trust__note">{{ section.settings.note }}</div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "EIS — Trust badges",
+  "tag": "section",
+  "class": "eis-section eis-section--trust",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Line breaks are kept. Use <em>…</em> to highlight words in gold.",
+      "default": "Why Over <em>36,243 Families</em>\nTrust EIS"
+    },
+    {
+      "type": "text",
+      "id": "note",
+      "label": "Closing line",
+      "default": "Every batch made to a standard you can verify."
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "Badges per row",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon size",
+      "min": 14,
+      "max": 34,
+      "step": 1,
+      "unit": "px",
+      "default": 28,
+      "info": "Size of the character inside the ring. The ring itself stays 44px."
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color",
+      "id": "color_maroon_deep",
+      "label": "Background",
+      "default": "#5C0D0F"
+    },
+    {
+      "type": "color",
+      "id": "color_cream_light",
+      "label": "Text",
+      "default": "#F6E7C8"
+    },
+    {
+      "type": "color",
+      "id": "color_gold_light",
+      "label": "Gold accent",
+      "default": "#E3C46F"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "Content width",
+      "min": 400,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "default": 480
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 34
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 34
+    }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Badge",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon character",
+          "default": "⚗",
+          "info": "Used when no image is set."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Icon image (optional)"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "info": "Line breaks are kept.",
+          "default": "LAB\nTESTED"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "EIS — Trust badges",
+      "blocks": [
+        {
+          "type": "badge",
+          "settings": {
+            "icon": "⚗",
+            "label": "LAB\nTESTED"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "icon": "☘",
+            "label": "15+ AYURVEDIC\nHERBS"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "icon": "✷",
+            "label": "GMP CERTIFIED\nFACILITY"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
