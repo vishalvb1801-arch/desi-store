@@ -1,0 +1,321 @@
+{%- comment -%}
+  EIS — Timeline ("What to expect")
+  ------------------------------------------------------------------
+  Stages down a connecting rail, each a card with a stage badge and up to
+  three outcome lines. Empty image slots keep the design's striped
+  placeholder so the rhythm is right before real photos land.
+{%- endcomment -%}
+
+{% render 'eis-fonts' %}
+
+{% style %}
+  {% render 'eis-tokens', id: section.id, s: section.settings %}
+
+  .eis-time {
+    background: var(--eis-maroon-deep);
+    font-family: var(--eis-sans);
+  }
+  .eis-time__inner {
+    max-width: var(--eis-max);
+    margin: 0 auto;
+    padding: {{ section.settings.padding_top }}px 16px {{ section.settings.padding_bottom }}px;
+  }
+  .eis-time__title {
+    font-family: var(--eis-serif);
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--eis-cream-light);
+    text-align: center;
+    margin: 0 0 24px;
+    line-height: 1.18;
+  }
+  .eis-time__row { display: flex; gap: 12px; margin-bottom: 16px; }
+  .eis-time__row:last-of-type { margin-bottom: 0; }
+  .eis-time__rail {
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .eis-time__marker {
+    width: 54px;
+    height: 54px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: repeating-linear-gradient(135deg, #EDE1CE 0 6px, #F9F1E4 6px 12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: 7px ui-monospace, monospace;
+    color: var(--eis-soft);
+    text-align: center;
+    padding: 4px;
+  }
+  .eis-time__marker img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .eis-time__line { width: 1px; flex: 1; background: rgba(246, 231, 200, .3); }
+  .eis-time__card {
+    flex: 1;
+    min-width: 0;
+    background: #FFFDF8;
+    border-radius: 11px;
+    padding: 14px;
+    position: relative;
+  }
+  .eis-time__badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--eis-green);
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .07em;
+    padding: 3px 8px;
+    border-radius: 5px;
+  }
+  .eis-time__point {
+    display: flex;
+    gap: 9px;
+    font-size: 12.5px;
+    line-height: 1.45;
+    color: var(--eis-ink);
+  }
+  .eis-time__point:first-of-type { margin-top: 22px; }
+  .eis-time__point + .eis-time__point { margin-top: 8px; }
+  .eis-time__tick { color: var(--eis-green); font-size: 12px; flex: none; }
+  .eis-time__note {
+    font-size: 12px;
+    line-height: 1.55;
+    color: #D9C6A2;
+    text-align: center;
+    margin: 22px 0 0;
+  }
+{% endstyle %}
+
+<div class="eis-time">
+  <div class="eis-time__inner">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="eis-time__title">{{ section.settings.heading | newline_to_br }}</h2>
+    {%- endif -%}
+
+    {%- for block in section.blocks -%}
+      <div class="eis-time__row" {{ block.shopify_attributes }}>
+        <div class="eis-time__rail">
+          <div class="eis-time__marker" aria-hidden="true">
+            {%- if block.settings.image != blank -%}
+              {{ block.settings.image | image_url: width: 160 | image_tag: widths: '108, 160', sizes: '54px', loading: 'lazy', alt: '' }}
+            {%- else -%}
+              {{ block.settings.placeholder_note }}
+            {%- endif -%}
+          </div>
+          {%- unless forloop.last -%}<div class="eis-time__line"></div>{%- endunless -%}
+        </div>
+
+        <div class="eis-time__card">
+          {%- if block.settings.badge != blank -%}
+            <div class="eis-time__badge">{{ block.settings.badge }}</div>
+          {%- endif -%}
+          {%- if block.settings.point_1 != blank -%}
+            <div class="eis-time__point">
+              <span class="eis-time__tick" aria-hidden="true">✓</span>
+              <span>{{ block.settings.point_1 }}</span>
+            </div>
+          {%- endif -%}
+          {%- if block.settings.point_2 != blank -%}
+            <div class="eis-time__point">
+              <span class="eis-time__tick" aria-hidden="true">✓</span>
+              <span>{{ block.settings.point_2 }}</span>
+            </div>
+          {%- endif -%}
+          {%- if block.settings.point_3 != blank -%}
+            <div class="eis-time__point">
+              <span class="eis-time__tick" aria-hidden="true">✓</span>
+              <span>{{ block.settings.point_3 }}</span>
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endfor -%}
+
+    {%- if section.settings.note != blank -%}
+      <p class="eis-time__note">{{ section.settings.note }}</p>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "EIS — Timeline",
+  "tag": "section",
+  "class": "eis-section eis-section--timeline",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Line breaks are kept.",
+      "default": "What to Expect\nWhen You Start\nUsing EIS Nightly"
+    },
+    {
+      "type": "text",
+      "id": "note",
+      "label": "Closing note",
+      "default": "Customers report their best results after 3–4 weeks of nightly use — consistency is the key."
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color",
+      "id": "color_maroon_deep",
+      "label": "Background",
+      "default": "#5C0D0F"
+    },
+    {
+      "type": "color",
+      "id": "color_cream_light",
+      "label": "Heading",
+      "default": "#F6E7C8"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Card text",
+      "default": "#2A1C18"
+    },
+    {
+      "type": "color",
+      "id": "color_green",
+      "label": "Badge & ticks",
+      "default": "#1E7A4D"
+    },
+    {
+      "type": "color",
+      "id": "color_soft",
+      "label": "Placeholder text",
+      "default": "#8A7A63"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "Content width",
+      "min": 400,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "default": 480
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 34
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 34
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stage",
+      "name": "Stage",
+      "settings": [
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Stage badge",
+          "default": "NIGHT 1–2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo"
+        },
+        {
+          "type": "text",
+          "id": "placeholder_note",
+          "label": "Placeholder note",
+          "info": "Shown in the circle until you add a photo.",
+          "default": "night massage"
+        },
+        {
+          "type": "text",
+          "id": "point_1",
+          "label": "Line 1",
+          "default": "Warm it, massage it in before bed."
+        },
+        {
+          "type": "text",
+          "id": "point_2",
+          "label": "Line 2"
+        },
+        {
+          "type": "text",
+          "id": "point_3",
+          "label": "Line 3"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "EIS — Timeline",
+      "blocks": [
+        {
+          "type": "stage",
+          "settings": {
+            "badge": "NIGHT 1–2",
+            "placeholder_note": "night massage",
+            "point_1": "Warm it, massage it in before bed.",
+            "point_2": "The area feels lighter and stiffness starts to ease."
+          }
+        },
+        {
+          "type": "stage",
+          "settings": {
+            "badge": "DAY 3–7",
+            "placeholder_note": "morning stretch",
+            "point_1": "Morning stiffness eases.",
+            "point_2": "You wake up moving more freely."
+          }
+        },
+        {
+          "type": "stage",
+          "settings": {
+            "badge": "WEEK 2–4",
+            "placeholder_note": "walk / stairs",
+            "point_1": "Relief lasts longer through the day.",
+            "point_2": "Back on your walks, stairs and daily activities."
+          }
+        },
+        {
+          "type": "stage",
+          "settings": {
+            "badge": "WEEK 4+",
+            "placeholder_note": "family photo",
+            "point_1": "Consistent nightly use keeps joints loose and comfortable long-term."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
