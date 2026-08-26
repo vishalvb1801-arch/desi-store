@@ -18,9 +18,12 @@ checkout. Everything else in the theme is untouched and lives only in Shopify.
 The PDP is composed of 14 custom `eis-*` sections, in this order:
 
 ```
-announcement · hero · faq · trust · videos · stats · ingredients
-how-to-use · timeline · comparison · offer-repeat · guarantee · reviews · footer
+announcement · hero · faq · trust · videos · social-proof · stats
+ingredients · how-to-use · timeline · comparison · offer-repeat
+guarantee · reviews · footer
 ```
+
+That is 15 sections — `social-proof` was added after `videos`.
 
 ## Status
 
@@ -39,6 +42,7 @@ uploaded to the draft theme and take effect only when that theme is published:
 | `sections/eis-faq-accordion.liquid` | New five questions; accordion starts fully closed |
 | `sections/eis-trust-badges.liquid` | Heading count 50,000 → 36,243; icon glyph size is now a setting (28px) |
 | `sections/eis-video-testimonials.liquid` | Grid → horizontal snap scroller with its own scroll bar; captions → name, city, verified tick |
+| `sections/eis-social-proof.liquid` | New — face strip, rating, headline, swipeable review cards with benefit chips and a segmented indicator |
 | `sections/eis-product-hero.liquid` | Google mark beside the hero review name, behind a `review_google` toggle |
 
 Publishing is a manual step in Shopify admin (Online Store → Themes → the draft
@@ -67,6 +71,21 @@ publishing against the live storefront are both blocked.
   Kochi) purely as layout scaffolding. Replace them with the real people in
   the clips before this goes live — a verified tick beside an invented name
   is a false attribution, and the clips themselves are still placeholders.
+- **Social-proof reviews are invented.** All 8 review blocks and both benefit
+  chips are placeholder copy, and the 5 face slots are empty. Every card
+  carries a "Verified" badge, which is a specific claim about a specific
+  named person — replace the lot with real reviews, or switch
+  `show_verified` off per block, before publishing.
+- **Diabetes was deliberately excluded** from the review angles. India's
+  Drugs & Magic Remedies (Objectionable Advertisements) Act names diabetes
+  among the conditions for which advertising a remedy is prohibited, and a
+  testimonial on a product page is advertising. Night leg cramps and
+  on-feet-all-day cover adjacent ground lawfully.
+- **Template formatting.** The theme's stored copy of
+  `templates/product.eis-oil.json` is a compact variant (18197 bytes,
+  6c8fbad1) while the copy here is pretty-printed. Semantically identical —
+  verified by reading the stored file back — but the two are not byte-equal,
+  so normalise before comparing checksums.
 - **Unverified claims.** The PDP states "89% / 92% / 86%" outcome statistics,
   "GMP CERTIFIED", "LAB TESTED", "36,243+ Families Without Pain", and three
   named reviews with purchase dates, on a product created 2026-08-25 with no

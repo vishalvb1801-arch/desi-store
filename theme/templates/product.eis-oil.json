@@ -700,6 +700,127 @@
         "payment-badge-6"
       ],
       "settings": {}
+    },
+    "social-proof": {
+      "type": "eis-social-proof",
+      "blocks": {
+        "face-1": {
+          "type": "face",
+          "settings": {}
+        },
+        "face-2": {
+          "type": "face",
+          "settings": {}
+        },
+        "face-3": {
+          "type": "face",
+          "settings": {}
+        },
+        "face-4": {
+          "type": "face",
+          "settings": {}
+        },
+        "face-5": {
+          "type": "face",
+          "settings": {}
+        },
+        "review-1": {
+          "type": "review",
+          "settings": {
+            "quote": "\"My knees used to lock up every time I stood after sitting. Two weeks of nightly massage and that first step doesn't hurt anymore.\"",
+            "tag_1": "Knee Pain",
+            "tag_2": "Easier Stairs",
+            "name": "Sunita K.",
+            "city": "Mumbai"
+          }
+        },
+        "review-2": {
+          "type": "review",
+          "settings": {
+            "quote": "\"Twelve-hour driving shifts wreck my lower back. Balms gave me twenty minutes; this lasts the night and I wake up straighter.\"",
+            "tag_1": "Back Pain",
+            "tag_2": "Lasts All Night",
+            "name": "Imran S.",
+            "city": "Delhi"
+          }
+        },
+        "review-3": {
+          "type": "review",
+          "settings": {
+            "quote": "\"I wasn't sleeping because of the ache. Now I massage it in before bed and actually stay asleep till morning.\"",
+            "tag_1": "Deeper Sleep",
+            "tag_2": "Less Night Ache",
+            "name": "Meena J.",
+            "city": "Bengaluru"
+          }
+        },
+        "review-4": {
+          "type": "review",
+          "settings": {
+            "quote": "\"Bought it for my mother's joint pain. She's 63 and back to her evening walks. We've ordered the family pack since.\"",
+            "tag_1": "Bought For Mom",
+            "tag_2": "Walking Again",
+            "name": "Priya D.",
+            "city": "Pune"
+          }
+        },
+        "review-5": {
+          "type": "review",
+          "settings": {
+            "quote": "\"Got it for my father — he never complains, but he stopped asking me to press his shoulders at night. That said enough.\"",
+            "tag_1": "Bought For Dad",
+            "tag_2": "Shoulder Relief",
+            "name": "Arjun M.",
+            "city": "Hyderabad"
+          }
+        },
+        "review-6": {
+          "type": "review",
+          "settings": {
+            "quote": "\"Years of the same ache, and I'd stopped expecting anything to help. This is the first thing that made a daily difference.\"",
+            "tag_1": "Long-Standing Pain",
+            "tag_2": "Daily Relief",
+            "name": "Rakesh M.",
+            "city": "Jaipur"
+          }
+        },
+        "review-7": {
+          "type": "review",
+          "settings": {
+            "quote": "\"Night cramps in my calves used to wake me up. A massage before bed and they've eased right off.\"",
+            "tag_1": "Leg Cramps",
+            "tag_2": "Uninterrupted Sleep",
+            "name": "Lakshmi V.",
+            "city": "Chennai"
+          }
+        },
+        "review-8": {
+          "type": "review",
+          "settings": {
+            "quote": "\"I'm on my feet at the shop all day. By evening my legs were done. Now I finish the day without dreading it.\"",
+            "tag_1": "On Feet All Day",
+            "tag_2": "Evening Comfort",
+            "name": "Vikram S.",
+            "city": "Surat"
+          }
+        }
+      },
+      "block_order": [
+        "face-1",
+        "face-2",
+        "face-3",
+        "face-4",
+        "face-5",
+        "review-1",
+        "review-2",
+        "review-3",
+        "review-4",
+        "review-5",
+        "review-6",
+        "review-7",
+        "review-8"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -708,6 +829,7 @@
     "faq",
     "trust",
     "videos",
+    "social-proof",
     "stats",
     "ingredients",
     "how-to-use",

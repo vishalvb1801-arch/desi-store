@@ -1,0 +1,637 @@
+{%- comment -%}
+  EIS — Social proof
+  ------------------------------------------------------------------
+  Maroon band: a strip of customer faces, an aggregate rating, the headline,
+  then a swipeable row of review cards with verified badges and benefit chips.
+
+  Both rows are horizontal snap scrollers. The face strip scrolls on its own;
+  the review row drives the segmented indicator underneath, which also acts as
+  a control — tap a segment to jump to that card.
+
+  Blocks with no image render the design's striped placeholder, so the layout
+  is right before the real photos arrive.
+{%- endcomment -%}
+
+{% render 'eis-fonts' %}
+
+{%- liquid
+  assign face_count = 0
+  assign review_count = 0
+  for block in section.blocks
+    case block.type
+      when 'face'
+        assign face_count = face_count | plus: 1
+      when 'review'
+        assign review_count = review_count | plus: 1
+    endcase
+  endfor
+-%}
+
+{% style %}
+  {% render 'eis-tokens', id: section.id, s: section.settings %}
+
+  .eis-sp {
+    background: var(--eis-maroon-deep);
+    font-family: var(--eis-sans);
+  }
+  .eis-sp__inner {
+    max-width: var(--eis-max);
+    margin: 0 auto;
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+  }
+
+  /* ---------- face strip ---------- */
+  .eis-sp__faces {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 0 16px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .eis-sp__faces::-webkit-scrollbar { display: none; }
+  .eis-sp__face {
+    flex: 0 0 {{ section.settings.face_size }}px;
+    aspect-ratio: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1.5px solid var(--eis-gold-light);
+    background: repeating-linear-gradient(135deg, #7A2A2B 0 8px, #6A1E20 8px 16px);
+  }
+  .eis-sp__face img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* ---------- rating ---------- */
+  .eis-sp__rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    margin-top: 20px;
+    padding: 0 16px;
+    flex-wrap: wrap;
+  }
+  .eis-sp__stars { display: flex; gap: 3px; }
+  .eis-sp__stars i {
+    width: 20px;
+    height: 20px;
+    background: var(--eis-green);
+    color: #fff;
+    font-size: 12px;
+    font-style: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+  }
+  .eis-sp__rated {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--eis-cream-light);
+  }
+
+  /* ---------- headline ---------- */
+  .eis-sp__title {
+    font-family: var(--eis-serif);
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1.18;
+    color: var(--eis-cream-light);
+    text-align: center;
+    margin: 16px 0 22px;
+    padding: 0 16px;
+  }
+  .eis-sp__title em { color: var(--eis-gold-light); font-style: normal; }
+
+  /* ---------- review row ---------- */
+  .eis-sp__track {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 16px 2px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .eis-sp__track::-webkit-scrollbar { display: none; }
+  .eis-sp__card {
+    flex: 0 0 calc((100% - 32px - ({{ section.settings.cards_in_view }} - 1) * 10px) / {{ section.settings.cards_in_view }});
+    min-width: 0;
+    scroll-snap-align: center;
+    background: #fff;
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .eis-sp__card .eis-sp__stars i { width: 17px; height: 17px; font-size: 10px; }
+  .eis-sp__quote {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #3B322C;
+    flex: 1;
+  }
+  .eis-sp__by {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-top: 1px solid #EFE3D2;
+    padding-top: 10px;
+  }
+  .eis-sp__avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 999px;
+    flex: none;
+    overflow: hidden;
+    background: repeating-linear-gradient(135deg, #EDE1CE 0 5px, #F9F1E4 5px 10px);
+  }
+  .eis-sp__avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .eis-sp__who { flex: 1; min-width: 0; }
+  .eis-sp__name { font-size: 12px; font-weight: 700; color: var(--eis-ink); }
+  .eis-sp__city { font-size: 10px; color: var(--eis-muted); }
+  .eis-sp__verified {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    flex: none;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--eis-green);
+  }
+  .eis-sp__tags { display: flex; flex-wrap: wrap; gap: 6px 14px; }
+  .eis-sp__tag {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10.5px;
+    font-weight: 600;
+    color: var(--eis-green);
+  }
+
+  /* ---------- segmented indicator ---------- */
+  .eis-sp__dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin-top: 18px;
+    padding: 0 16px;
+  }
+  .eis-sp__dot {
+    height: 3px;
+    width: 14px;
+    padding: 0;
+    border: 0;
+    border-radius: 99px;
+    background: rgba(246, 231, 200, .3);
+    cursor: pointer;
+    transition: width .18s ease, background .18s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .eis-sp__dot[aria-current="true"] { width: 30px; background: var(--eis-cream-light); }
+  .eis-sp__dot:focus-visible { outline: 2px solid var(--eis-gold-light); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) { .eis-sp__dot { transition: none; } }
+
+  @media (min-width: 560px) {
+    .eis-sp__title { font-size: 34px; }
+  }
+{% endstyle %}
+
+<div class="eis-sp">
+  <div class="eis-sp__inner">
+
+    {%- if face_count > 0 -%}
+      <div class="eis-sp__faces">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'face' -%}
+            <div class="eis-sp__face" {{ block.shopify_attributes }}>
+              {%- if block.settings.image != blank -%}
+                {{ block.settings.image | image_url: width: 240 | image_tag: widths: '120, 180, 240', sizes: '90px', loading: 'lazy', alt: '' }}
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.show_rating -%}
+      <div class="eis-sp__rating">
+        <div class="eis-sp__stars" aria-hidden="true">
+          {%- for i in (1..section.settings.rating_stars) -%}<i>★</i>{%- endfor -%}
+        </div>
+        {%- if section.settings.rating_label != blank -%}
+          <span class="eis-sp__rated">{{ section.settings.rating_label }}</span>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.heading != blank -%}
+      <h2 class="eis-sp__title">{{ section.settings.heading | newline_to_br }}</h2>
+    {%- endif -%}
+
+    {%- if review_count > 0 -%}
+      <div class="eis-sp__track" data-eis-track>
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'review' -%}
+            <div class="eis-sp__card" {{ block.shopify_attributes }}>
+              <div class="eis-sp__stars" aria-hidden="true">
+                {%- for i in (1..block.settings.stars) -%}<i>★</i>{%- endfor -%}
+              </div>
+
+              <div class="eis-sp__quote">{{ block.settings.quote }}</div>
+
+              {%- if block.settings.tag_1 != blank or block.settings.tag_2 != blank -%}
+                <div class="eis-sp__tags">
+                  {%- if block.settings.tag_1 != blank -%}
+                    <span class="eis-sp__tag"><span aria-hidden="true">&#10004;</span>{{ block.settings.tag_1 }}</span>
+                  {%- endif -%}
+                  {%- if block.settings.tag_2 != blank -%}
+                    <span class="eis-sp__tag"><span aria-hidden="true">&#10004;</span>{{ block.settings.tag_2 }}</span>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+
+              <div class="eis-sp__by">
+                <div class="eis-sp__avatar">
+                  {%- if block.settings.avatar != blank -%}
+                    {{ block.settings.avatar | image_url: width: 90 | image_tag: widths: '60, 90', sizes: '30px', loading: 'lazy', alt: '' }}
+                  {%- endif -%}
+                </div>
+                <div class="eis-sp__who">
+                  <div class="eis-sp__name">{{ block.settings.name }}</div>
+                  {%- if block.settings.city != blank -%}
+                    <div class="eis-sp__city">{{ block.settings.city }}</div>
+                  {%- endif -%}
+                </div>
+                {%- if block.settings.show_verified -%}
+                  <span class="eis-sp__verified"><span aria-hidden="true">&#10004;</span>{{ section.settings.verified_label }}</span>
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      <div class="eis-sp__dots" data-eis-dots role="tablist" aria-label="Choose a review"></div>
+    {%- endif -%}
+
+  </div>
+</div>
+
+<script>
+  (function () {
+    var root = document.getElementById('shopify-section-{{ section.id }}');
+    if (!root) return;
+    var track = root.querySelector('[data-eis-track]');
+    var dots = root.querySelector('[data-eis-dots]');
+    if (!track || !dots) return;
+
+    var cards = track.querySelectorAll('.eis-sp__card');
+    if (cards.length < 2) { dots.style.display = 'none'; return; }
+
+    /* One dot per card, each a real control rather than decoration. */
+    for (var i = 0; i < cards.length; i++) {
+      (function (index) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'eis-sp__dot';
+        b.setAttribute('aria-label', 'Review ' + (index + 1) + ' of ' + cards.length);
+        b.addEventListener('click', function () {
+          track.scrollTo({
+            left: cards[index].offsetLeft - track.offsetLeft,
+            behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+          });
+        });
+        dots.appendChild(b);
+      })(i);
+    }
+
+    var buttons = dots.querySelectorAll('.eis-sp__dot');
+
+    function sync() {
+      /* nearest card to the middle of the viewport wins */
+      var mid = track.scrollLeft + track.clientWidth / 2;
+      var best = 0;
+      var bestDist = Infinity;
+      for (var i = 0; i < cards.length; i++) {
+        var c = cards[i].offsetLeft - track.offsetLeft + cards[i].offsetWidth / 2;
+        var d = Math.abs(c - mid);
+        if (d < bestDist) { bestDist = d; best = i; }
+      }
+      for (var j = 0; j < buttons.length; j++) {
+        buttons[j].setAttribute('aria-current', j === best ? 'true' : 'false');
+      }
+    }
+
+    track.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync);
+    sync();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "EIS — Social proof",
+  "tag": "section",
+  "class": "eis-section eis-section--social",
+  "max_blocks": 24,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Line breaks are kept. Use <em>…</em> to highlight words in gold.",
+      "default": "EIS Has Transformed\nThe Lives of <em>36,243+</em>"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "label": "Show the rating row",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "rating_stars",
+      "label": "Filled stars",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "rating_label",
+      "label": "Rating text",
+      "default": "Rated 4.8 / 5.0"
+    },
+    {
+      "type": "text",
+      "id": "verified_label",
+      "label": "Verified badge text",
+      "default": "Verified"
+    },
+    {
+      "type": "range",
+      "id": "cards_in_view",
+      "label": "Reviews in view",
+      "min": 1,
+      "max": 3,
+      "step": 0.1,
+      "default": 1.2,
+      "info": "1.2 shows one whole card plus a sliver of the next, which is what tells people the row scrolls."
+    },
+    {
+      "type": "range",
+      "id": "face_size",
+      "label": "Face strip size",
+      "min": 60,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 90
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color",
+      "id": "color_maroon_deep",
+      "label": "Background",
+      "default": "#5C0D0F"
+    },
+    {
+      "type": "color",
+      "id": "color_cream_light",
+      "label": "Heading text",
+      "default": "#F6E7C8"
+    },
+    {
+      "type": "color",
+      "id": "color_gold_light",
+      "label": "Gold accent",
+      "default": "#E3C46F"
+    },
+    {
+      "type": "color",
+      "id": "color_green",
+      "label": "Stars, ticks & verified",
+      "default": "#1E7A4D"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Reviewer name",
+      "default": "#2A1C18"
+    },
+    {
+      "type": "color",
+      "id": "color_muted",
+      "label": "City text",
+      "default": "#5E5147"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "Content width",
+      "min": 400,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "default": 480
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 34
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 34
+    }
+  ],
+  "blocks": [
+    {
+      "type": "face",
+      "name": "Face (top strip)",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo",
+          "info": "A real customer holding the bottle works best. Square crop."
+        }
+      ]
+    },
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "range",
+          "id": "stars",
+          "label": "Stars",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "\"Two weeks in and the stiffness is gone.\""
+        },
+        {
+          "type": "text",
+          "id": "tag_1",
+          "label": "Benefit chip 1",
+          "default": "Less Stiffness"
+        },
+        {
+          "type": "text",
+          "id": "tag_2",
+          "label": "Benefit chip 2",
+          "default": "Easier Mornings"
+        },
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "Reviewer photo"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "info": "The actual customer.",
+          "default": "Anita R."
+        },
+        {
+          "type": "text",
+          "id": "city",
+          "label": "City",
+          "default": "Nagpur"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_verified",
+          "label": "Show the verified badge",
+          "default": true,
+          "info": "Only for reviews from customers who actually bought."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "EIS — Social proof",
+      "blocks": [
+        { "type": "face" },
+        { "type": "face" },
+        { "type": "face" },
+        { "type": "face" },
+        { "type": "face" },
+        {
+          "type": "review",
+          "settings": {
+            "quote": "\"My knees used to lock up every time I stood after sitting. Two weeks of nightly massage and that first step doesn't hurt anymore.\"",
+            "tag_1": "Knee Pain",
+            "tag_2": "Easier Stairs",
+            "name": "Sunita K.",
+            "city": "Mumbai"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "quote": "\"Twelve-hour driving shifts wreck my lower back. Balms gave me twenty minutes; this lasts the night and I wake up straighter.\"",
+            "tag_1": "Back Pain",
+            "tag_2": "Lasts All Night",
+            "name": "Imran S.",
+            "city": "Delhi"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "quote": "\"I wasn't sleeping because of the ache. Now I massage it in before bed and actually stay asleep till morning.\"",
+            "tag_1": "Deeper Sleep",
+            "tag_2": "Less Night Ache",
+            "name": "Meena J.",
+            "city": "Bengaluru"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "quote": "\"Bought it for my mother's joint pain. She's 63 and back to her evening walks. We've ordered the family pack since.\"",
+            "tag_1": "Bought For Mom",
+            "tag_2": "Walking Again",
+            "name": "Priya D.",
+            "city": "Pune"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "quote": "\"Got it for my father — he never complains, but he stopped asking me to press his shoulders at night. That said enough.\"",
+            "tag_1": "Bought For Dad",
+            "tag_2": "Shoulder Relief",
+            "name": "Arjun M.",
+            "city": "Hyderabad"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "quote": "\"Years of the same ache, and I'd stopped expecting anything to help. This is the first thing that made a daily difference.\"",
+            "tag_1": "Long-Standing Pain",
+            "tag_2": "Daily Relief",
+            "name": "Rakesh M.",
+            "city": "Jaipur"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "quote": "\"Night cramps in my calves used to wake me up. A massage before bed and they've eased right off.\"",
+            "tag_1": "Leg Cramps",
+            "tag_2": "Uninterrupted Sleep",
+            "name": "Lakshmi V.",
+            "city": "Chennai"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "quote": "\"I'm on my feet at the shop all day. By evening my legs were done. Now I finish the day without dreading it.\"",
+            "tag_1": "On Feet All Day",
+            "tag_2": "Evening Comfort",
+            "name": "Vikram S.",
+            "city": "Surat"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
