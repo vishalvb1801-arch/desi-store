@@ -3,7 +3,8 @@
   ------------------------------------------------------------------
   Stages down a connecting rail. Each stage is a full-width card whose top
   edge is straddled by a round photo on the left and a stage pill on the
-  right; a hairline runs between consecutive cards. Empty image slots keep
+  right; a hairline runs down the centre between consecutive cards and
+  fills with gold as each stage scrolls into view. Empty image slots keep
   the design's striped placeholder so the rhythm is right before real
   photos land.
 {%- endcomment -%}
@@ -41,18 +42,25 @@
     padding-top: calc(var(--eis-marker) * .46);
   }
   .eis-time__row { position: relative; }
-  /* The rail: one hairline per gap, centred on the circle below it. That
-     circle covers the line's lower end, so it reads as running into the photo
-     rather than through it. */
+  /* The rail: one hairline per gap, down the centre of the card. Two stacked
+     backgrounds - a gold layer whose height animates from 0, over a dim base -
+     so it fills downward as the stage below it comes into view. */
   .eis-time__row + .eis-time__row::before {
     content: "";
     position: absolute;
-    left: calc(16px + var(--eis-marker) / 2);
+    left: 50%;
+    transform: translateX(-50%);
     top: calc(-1 * var(--eis-gap));
     width: 1px;
     height: var(--eis-gap);
-    background: rgba(246, 231, 200, .35);
+    background:
+      linear-gradient(var(--eis-gold-light), var(--eis-gold-light)) no-repeat top center,
+      rgba(246, 231, 200, .28);
+    background-size: 100% 0, auto;
+    transition: background-size {{ section.settings.light_speed }}ms ease;
   }
+  /* Same specificity as the rule above, so it has to come after it. */
+  .eis-time__row.is-lit::before { background-size: 100% 100%, auto; }
   .eis-time__card {
     background: #FFFDF8;
     border-radius: 14px;
@@ -70,6 +78,7 @@
     overflow: hidden;
     background: repeating-linear-gradient(135deg, #EDE1CE 0 6px, #F9F1E4 6px 12px);
     box-shadow: 0 0 0 3px var(--eis-maroon-deep);
+    transition: box-shadow {{ section.settings.light_speed }}ms ease;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -79,6 +88,13 @@
     padding: 4px;
   }
   .eis-time__marker img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .eis-time__row.is-lit .eis-time__marker {
+    box-shadow: 0 0 0 3px var(--eis-maroon-deep), 0 0 0 5px var(--eis-gold-light);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .eis-time__row::before,
+    .eis-time__marker { transition: none; }
+  }
   .eis-time__badge {
     position: absolute;
     top: -11px;
@@ -130,7 +146,10 @@
 
     <div class="eis-time__list">
       {%- for block in section.blocks -%}
-        <div class="eis-time__row" {{ block.shopify_attributes }}>
+        <div
+          class="eis-time__row{% unless section.settings.animate %} is-lit{% endunless %}"
+          {{ block.shopify_attributes }}
+        >
           <div class="eis-time__card">
             <div class="eis-time__marker" aria-hidden="true">
               {%- if block.settings.image != blank -%}
@@ -174,6 +193,36 @@
     {%- endif -%}
   </div>
 </div>
+
+{%- if section.settings.animate -%}
+  <script>
+    (function () {
+      var list = document.querySelector('#shopify-section-{{ section.id }} .eis-time__list');
+      if (!list) return;
+      var rows = list.querySelectorAll('.eis-time__row');
+
+      /* No IntersectionObserver (old Android WebViews): show the lit state. */
+      if (!('IntersectionObserver' in window)) {
+        for (var i = 0; i < rows.length; i++) rows[i].classList.add('is-lit');
+        return;
+      }
+
+      var io = new IntersectionObserver(
+        function (entries) {
+          for (var i = 0; i < entries.length; i++) {
+            if (entries[i].isIntersecting) {
+              entries[i].target.classList.add('is-lit');
+              io.unobserve(entries[i].target);
+            }
+          }
+        },
+        { threshold: 0.15, rootMargin: '0px 0px -12% 0px' }
+      );
+
+      for (var j = 0; j < rows.length; j++) io.observe(rows[j]);
+    })();
+  </script>
+{%- endif -%}
 
 {% schema %}
 {
@@ -221,6 +270,23 @@
       "default": 56
     },
     {
+      "type": "checkbox",
+      "id": "animate",
+      "label": "Light the rail up as it scrolls",
+      "info": "Off renders every stage already lit.",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "light_speed",
+      "label": "Light-up speed",
+      "min": 200,
+      "max": 1600,
+      "step": 50,
+      "unit": "ms",
+      "default": 800
+    },
+    {
       "type": "text",
       "id": "note",
       "label": "Closing note",
@@ -253,6 +319,12 @@
       "id": "color_green",
       "label": "Badge & ticks",
       "default": "#1E7A4D"
+    },
+    {
+      "type": "color",
+      "id": "color_gold_light",
+      "label": "Rail light-up",
+      "default": "#E3C46F"
     },
     {
       "type": "color",
