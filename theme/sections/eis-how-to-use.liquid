@@ -32,19 +32,21 @@
   .eis-how__head { text-align: center; }
   .eis-how__eyebrow {
     display: inline-block;
-    font-size: 10px;
+    font-size: {{ section.settings.eyebrow_size }}px;
+    font-weight: 700;
     letter-spacing: .18em;
     color: var(--eis-soft);
-    border: 1px solid #E2D2B8;
+    border: 1px solid var(--eis-soft);
     border-radius: 999px;
-    padding: 4px 12px;
+    /* tight vertical padding: the pill hugs the word rather than framing it */
+    padding: {{ section.settings.eyebrow_padding }}px 13px;
   }
   .eis-how__title {
     font-family: var(--eis-serif);
     font-size: 28px;
     font-weight: 600;
     color: var(--eis-maroon);
-    margin: 12px 0 8px;
+    margin: 10px 0 8px;
     line-height: 1.18;
   }
   .eis-how__intro {
@@ -53,15 +55,30 @@
     color: var(--eis-muted);
     margin: 0 0 20px;
   }
-  .eis-how__step {
+  .eis-how__steps {
     display: flex;
-    gap: 13px;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+  }
+  .eis-how__steps::-webkit-scrollbar { display: none; }
+  .eis-how__step {
+    /* square by default; a card whose copy needs more room grows past it
+       rather than clipping */
+    flex: 0 0 calc((100% - ({{ section.settings.cards_in_view }} - 1) * 10px) / {{ section.settings.cards_in_view }});
+    aspect-ratio: 1 / 1;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
     align-items: flex-start;
+    text-align: left;
     background: #FFFDF8;
     border: 1px solid #EFE0C9;
-    border-radius: 11px;
+    border-radius: 12px;
     padding: 14px;
-    margin-bottom: 10px;
   }
   .eis-how__num {
     width: 34px;
@@ -94,6 +111,7 @@
     justify-content: center;
   }
   .eis-how__step-title {
+    margin-top: 11px;
     font-size: 14px;
     font-weight: 700;
     font-family: var(--eis-serif);
@@ -114,7 +132,7 @@
     background: var(--eis-gold);
     border-radius: 5px;
     padding: 3px 8px;
-    margin-top: 8px;
+    margin-top: auto;
   }
   .eis-how__safety {
     border: 1px dashed var(--eis-gold);
@@ -171,18 +189,18 @@
       {%- endif -%}
     </div>
 
-    {%- assign step_number = 0 -%}
-    {%- for block in section.blocks -%}
-      {%- if block.type == 'step' -%}
-        {%- assign step_number = step_number | plus: 1 -%}
-        <div class="eis-how__step" {{ block.shopify_attributes }}>
-          <div class="eis-how__num" aria-hidden="true">
-            {{ step_number }}
-            {%- if block.settings.icon != blank -%}
-              <span>{{ block.settings.icon }}</span>
-            {%- endif -%}
-          </div>
-          <div>
+    <div class="eis-how__steps">
+      {%- assign step_number = 0 -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'step' -%}
+          {%- assign step_number = step_number | plus: 1 -%}
+          <div class="eis-how__step" {{ block.shopify_attributes }}>
+            <div class="eis-how__num" aria-hidden="true">
+              {{ step_number }}
+              {%- if block.settings.icon != blank -%}
+                <span>{{ block.settings.icon }}</span>
+              {%- endif -%}
+            </div>
             <div class="eis-how__step-title">{{ block.settings.title }}</div>
             {%- if block.settings.text != blank -%}
               <div class="eis-how__step-text">{{ block.settings.text }}</div>
@@ -191,9 +209,9 @@
               <div class="eis-how__step-time">{{ block.settings.time_label }}</div>
             {%- endif -%}
           </div>
-        </div>
-      {%- endif -%}
-    {%- endfor -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
 
     {%- if safety_count > 0 -%}
       <div class="eis-how__safety">
@@ -232,17 +250,48 @@
       "default": "HOW TO USE"
     },
     {
+      "type": "range",
+      "id": "eyebrow_size",
+      "label": "Eyebrow size",
+      "min": 9,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_padding",
+      "label": "Eyebrow padding",
+      "info": "Space between the word and the pill's edge.",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "default": 2
+    },
+    {
       "type": "text",
       "id": "heading",
       "label": "Heading",
       "info": "Line breaks are kept.",
-      "default": "Four Steps,\nEvery Night"
+      "default": "4 Steps,\nEvery Day"
     },
     {
       "type": "text",
       "id": "intro",
       "label": "Intro",
       "default": "Takes about ten minutes. Do it consistently and the results build week on week."
+    },
+    {
+      "type": "range",
+      "id": "cards_in_view",
+      "label": "Step cards in view",
+      "info": "The steps scroll sideways; a part-shown card is what signals that.",
+      "min": 1.1,
+      "max": 2.6,
+      "step": 0.1,
+      "default": 1.6
     },
     {
       "type": "header",
@@ -303,8 +352,8 @@
     {
       "type": "color",
       "id": "color_soft",
-      "label": "Eyebrow text",
-      "default": "#8A7A63"
+      "label": "Eyebrow",
+      "default": "#B3161A"
     },
     {
       "type": "color",
@@ -443,7 +492,7 @@
         {
           "type": "safety_note",
           "settings": {
-            "text": "<b>Patch test first if you have sensitive skin.</b> Apply a little to your inner forearm and wait 24 hours."
+            "text": "<b>Made specially for sensitive skin.</b>"
           }
         }
       ]
