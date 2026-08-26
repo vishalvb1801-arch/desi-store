@@ -38,6 +38,7 @@ uploaded to the draft theme and take effect only when that theme is published:
 | `templates/product.eis-oil.json` | Announcement bar copy: 3 messages with icons; hero review avatar |
 | `sections/eis-faq-accordion.liquid` | New five questions; accordion starts fully closed |
 | `sections/eis-trust-badges.liquid` | Heading count 50,000 → 36,243; icon glyph size is now a setting (28px) |
+| `sections/eis-video-testimonials.liquid` | Grid → horizontal snap scroller with its own scroll bar; captions → name, city, verified tick |
 | `sections/eis-product-hero.liquid` | Google mark beside the hero review name, behind a `review_google` toggle |
 
 Publishing is a manual step in Shopify admin (Online Store → Themes → the draft
@@ -61,6 +62,11 @@ publishing against the live storefront are both blocked.
   Google mark beside a review Google did not verify is a trademark and
   consumer-protection problem. Toggle it off in the theme editor under
   *Hero review*.
+- **UGC names are placeholders.** The three clip blocks ship with invented
+  names and cities (Anita R. / Nagpur, Vikram S. / Jaipur, Dr. Meera N. /
+  Kochi) purely as layout scaffolding. Replace them with the real people in
+  the clips before this goes live — a verified tick beside an invented name
+  is a false attribution, and the clips themselves are still placeholders.
 - **Unverified claims.** The PDP states "89% / 92% / 86%" outcome statistics,
   "GMP CERTIFIED", "LAB TESTED", "36,243+ Families Without Pain", and three
   named reviews with purchase dates, on a product created 2026-08-25 with no

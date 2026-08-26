@@ -244,21 +244,24 @@
         "clip-1": {
           "type": "clip",
           "settings": {
-            "caption": "\"Knees feel loose again\"",
+            "name": "Anita R.",
+            "city": "Nagpur",
             "placeholder_note": "UGC video — knee pain"
           }
         },
         "clip-2": {
           "type": "clip",
           "settings": {
-            "caption": "\"Slept through the night\"",
+            "name": "Vikram S.",
+            "city": "Jaipur",
             "placeholder_note": "UGC video — back pain"
           }
         },
         "clip-3": {
           "type": "clip",
           "settings": {
-            "caption": "Why the oil base matters",
+            "name": "Dr. Meera N.",
+            "city": "Kochi",
             "placeholder_note": "Vaidya / expert clip"
           }
         }
