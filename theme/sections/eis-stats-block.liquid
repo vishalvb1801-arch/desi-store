@@ -90,12 +90,86 @@
     height: {{ section.settings.image_height }}px;
     object-fit: contain;
   }
+  .eis-stats__head {
+    position: relative;
+  }
+  .eis-stats__bottle { display: none; }
+  .eis-stats__curve {
+    display: block;
+    width: 100%;
+    height: {{ section.settings.curve_height }}px;
+    margin-bottom: -1px;
+  }
+
+  /* Flanking bottles are a phone-only device — they'd read as clutter wide. */
+  @media (max-width: 749px) {
+    .eis-stats--bottles .eis-stats__head {
+      min-height: {{ section.settings.bottle_height }}px;
+      padding-left: {{ section.settings.bottle_width | minus: 4 }}%;
+      padding-right: {{ section.settings.bottle_width | minus: 4 }}%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .eis-stats--bottles .eis-stats__bottle {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      width: {{ section.settings.bottle_width }}%;
+      height: auto;
+      max-width: none;
+      pointer-events: none;
+      -webkit-user-select: none;
+      user-select: none;
+      filter: drop-shadow(0 14px 18px rgba(0, 0, 0, {{ section.settings.bottle_shadow | times: 0.01 }}));
+    }
+    .eis-stats--bottles .eis-stats__bottle--l { left: -{{ section.settings.bottle_bleed }}px; }
+    .eis-stats--bottles .eis-stats__bottle--r {
+      right: -{{ section.settings.bottle_bleed }}px;
+      transform: scaleX(-1);
+    }
+  }
 {% endstyle %}
 
-<div class="eis-stats" data-eis-stats>
+{%- assign eis_bottle = section.settings.bottle_image -%}
+{%- if eis_bottle == blank -%}
+  {%- assign eis_bottle = section.settings.image -%}
+{%- endif -%}
+{%- assign eis_bottles_on = false -%}
+{%- if section.settings.show_bottles and eis_bottle != blank -%}
+  {%- assign eis_bottles_on = true -%}
+{%- endif -%}
+
+<div class="eis-stats{% if eis_bottles_on %} eis-stats--bottles{% endif %}" data-eis-stats>
   <div class="eis-stats__inner">
-    {%- if section.settings.heading != blank -%}
-      <h2 class="eis-stats__title">{{ section.settings.heading | newline_to_br }}</h2>
+    {%- if section.settings.heading != blank or eis_bottles_on -%}
+      <div class="eis-stats__head">
+        {%- if eis_bottles_on -%}
+          {{
+            eis_bottle
+            | image_url: width: 500
+            | image_tag:
+              widths: '180, 260, 360, 500',
+              sizes: '34vw',
+              loading: 'lazy',
+              class: 'eis-stats__bottle eis-stats__bottle--l',
+              alt: ''
+          }}
+          {{
+            eis_bottle
+            | image_url: width: 500
+            | image_tag:
+              widths: '180, 260, 360, 500',
+              sizes: '34vw',
+              loading: 'lazy',
+              class: 'eis-stats__bottle eis-stats__bottle--r',
+              alt: ''
+          }}
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="eis-stats__title">{{ section.settings.heading | newline_to_br }}</h2>
+        {%- endif -%}
+      </div>
     {%- endif -%}
 
     {%- for block in section.blocks -%}
@@ -127,6 +201,22 @@
       }}
     {%- endif -%}
   </div>
+
+  {%- unless section.settings.curve_style == 'none' -%}
+    <svg
+      class="eis-stats__curve"
+      viewBox="0 0 1200 100"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+      focusable="false"
+    >
+      {%- if section.settings.curve_style == 'concave' -%}
+        <path d="M0,100 Q600,-100 1200,100 Z" fill="{{ section.settings.curve_color }}"></path>
+      {%- else -%}
+        <path d="M0,0 Q600,200 1200,0 L1200,100 L0,100 Z" fill="{{ section.settings.curve_color }}"></path>
+      {%- endif -%}
+    </svg>
+  {%- endunless -%}
 </div>
 
 <script>
@@ -167,7 +257,7 @@
       "id": "heading",
       "label": "Heading",
       "info": "Line breaks are kept.",
-      "default": "After 50,000 Bottles,\nThe Results Are In."
+      "default": "After 36,243 Bottles,\nThe Results Are In."
     },
     {
       "type": "text",
@@ -209,6 +299,95 @@
       "step": 10,
       "unit": "px",
       "default": 300
+    },
+    {
+      "type": "header",
+      "content": "Side bottles (mobile only)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bottles",
+      "label": "Show a bottle each side of the heading",
+      "info": "Phones only. Use a PNG with a transparent background — the drop shadow needs one.",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "bottle_image",
+      "label": "Bottle cut-out",
+      "info": "Falls back to the image above when empty."
+    },
+    {
+      "type": "range",
+      "id": "bottle_width",
+      "label": "Bottle width",
+      "min": 18,
+      "max": 48,
+      "step": 2,
+      "unit": "%",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "bottle_height",
+      "label": "Heading row height",
+      "min": 120,
+      "max": 320,
+      "step": 10,
+      "unit": "px",
+      "default": 190
+    },
+    {
+      "type": "range",
+      "id": "bottle_bleed",
+      "label": "Bleed past the edge",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "bottle_shadow",
+      "label": "Shadow strength",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 55
+    },
+    {
+      "type": "header",
+      "content": "Bottom edge"
+    },
+    {
+      "type": "select",
+      "id": "curve_style",
+      "label": "Shape",
+      "options": [
+        { "value": "convex", "label": "Curved down" },
+        { "value": "concave", "label": "Curved up" },
+        { "value": "none", "label": "Straight" }
+      ],
+      "default": "convex"
+    },
+    {
+      "type": "range",
+      "id": "curve_height",
+      "label": "Curve depth",
+      "min": 16,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "color",
+      "id": "curve_color",
+      "label": "Colour below the curve",
+      "info": "Match the next section's background.",
+      "default": "#FFFFFF"
     },
     {
       "type": "header",
