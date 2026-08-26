@@ -85,6 +85,7 @@
     border: 1px solid #EFE0C9;
     border-radius: 12px;
     padding: 14px;
+    position: relative;
   }
   /* Once any step carries a photo the cards stop forcing themselves square and
      size to their content instead, stretching to match the tallest. */
@@ -102,12 +103,6 @@
     height: 100%;
     object-fit: cover;
     display: block;
-  }
-  .eis-how__num--over {
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, .35);
   }
   .eis-how__num {
     width: 34px;
@@ -138,6 +133,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  /* Declared after .eis-how__num: same specificity, so it has to come later to
+     beat that rule's position: relative. Pinned to the card, not the photo, so
+     it laps over the photo's corner. */
+  .eis-how__num--over {
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    z-index: 1;
+    box-shadow: 0 0 0 2px #FFFDF8, 0 2px 8px rgba(0, 0, 0, .35);
   }
   .eis-how__step-media + .eis-how__step-title { margin-top: 0; }
   .eis-how__step-title {
@@ -238,8 +243,8 @@
                   | image_url: width: 480
                   | image_tag: widths: '160, 240, 320, 480', sizes: '55vw', loading: 'lazy', alt: ''
                 }}
-                <div class="eis-how__num eis-how__num--over" aria-hidden="true">{{ step_num }}</div>
               </div>
+              <div class="eis-how__num eis-how__num--over" aria-hidden="true">{{ step_num }}</div>
             {%- else -%}
               <div class="eis-how__num" aria-hidden="true">{{ step_num }}</div>
             {%- endif -%}
