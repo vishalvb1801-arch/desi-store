@@ -321,7 +321,8 @@
             "role": "the anti-inflammatory herb",
             "detail": "<p>Calms swelling and dulls the throb in stiff joints and the lower back.</p>",
             "color_from": "#8E4F2A",
-            "color_to": "#3B1F10"
+            "color_to": "#3B1F10",
+            "image": "shopify://shop_images/nirgundi-ke-fayde-in-hindi-1.webp"
           }
         },
         "herb-2": {
@@ -331,7 +332,8 @@
             "role": "the joint-mobility herb",
             "detail": "<p>The classical joint herb, used where movement feels restricted or creaky.</p>",
             "color_from": "#7A6A3A",
-            "color_to": "#2E2812"
+            "color_to": "#2E2812",
+            "image": "shopify://shop_images/Rasna.webp"
           }
         },
         "herb-3": {
@@ -341,7 +343,8 @@
             "role": "the muscle-recovery herb",
             "detail": "<p>Helps tired, overworked muscle recover overnight.</p>",
             "color_from": "#A98B5C",
-            "color_to": "#4A3A20"
+            "color_to": "#4A3A20",
+            "image": "shopify://shop_images/Ashwagandha-winter-cherry-1703497855.avif"
           }
         },
         "herb-4": {
@@ -351,7 +354,8 @@
             "role": "the warming relief herb",
             "detail": "<p>Creates the warm, opening sensation that lets the massage reach deeper.</p>",
             "color_from": "#4E7A55",
-            "color_to": "#16301C"
+            "color_to": "#16301C",
+            "image": "shopify://shop_images/nilgiri.webp"
           }
         },
         "herb-5": {
@@ -361,7 +365,8 @@
             "role": "the deep-penetration herb",
             "detail": "<p>Carries the formula past the skin barrier and into the aching tissue.</p>",
             "color_from": "#B9A06A",
-            "color_to": "#4C3E1E"
+            "color_to": "#4C3E1E",
+            "image": "shopify://shop_images/ed3118_a19e90f85f7a403897f242e6a5b977a9_mv2.png"
           }
         },
         "herb-6": {
@@ -371,7 +376,8 @@
             "role": "the cooling comfort herb",
             "detail": "<p>Balances the warmth with a clean cooling finish so nothing feels harsh.</p>",
             "color_from": "#6FA07A",
-            "color_to": "#1E3A26"
+            "color_to": "#1E3A26",
+            "image": "shopify://shop_images/Pudhina_dcf88f3e-e1a1-4c59-b5d7-0a97e088db74.jpg"
           }
         }
       },
