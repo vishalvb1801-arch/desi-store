@@ -1,0 +1,341 @@
+{%- comment -%}
+  EIS — Stats block
+  ------------------------------------------------------------------
+  Survey figures on deep maroon, each with a gold progress line that fills
+  when it scrolls into view.
+{%- endcomment -%}
+
+{% render 'eis-fonts' %}
+
+{% style %}
+  {% render 'eis-tokens', id: section.id, s: section.settings %}
+
+  .eis-stats {
+    background: var(--eis-maroon-deep);
+    font-family: var(--eis-sans);
+  }
+  .eis-stats__inner {
+    max-width: var(--eis-max);
+    margin: 0 auto;
+    padding: {{ section.settings.padding_top }}px 20px {{ section.settings.padding_bottom }}px;
+    text-align: center;
+  }
+  .eis-stats__title {
+    font-family: var(--eis-serif);
+    font-size: 29px;
+    font-weight: 600;
+    color: var(--eis-cream-light);
+    margin: 0 0 26px;
+    line-height: 1.15;
+  }
+  .eis-stats__value {
+    font-family: var(--eis-serif);
+    font-style: italic;
+    font-size: 52px;
+    color: var(--eis-gold-light);
+    line-height: 1;
+  }
+  .eis-stats__label {
+    font-size: 13px;
+    color: #EEDDBC;
+    line-height: 1.5;
+    margin-top: 6px;
+  }
+  .eis-stats__track {
+    height: 2px;
+    background: rgba(246, 231, 200, .25);
+    border-radius: 2px;
+    margin: 16px 0 26px;
+    position: relative;
+  }
+  .eis-stats__fill {
+    height: 2px;
+    background: var(--eis-gold-light);
+    border-radius: 2px;
+    width: 0;
+    transition: width 1.2s ease;
+  }
+  .eis-stats__knob {
+    position: absolute;
+    top: -9px;
+    left: 0;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 999px;
+    background: var(--eis-gold-light);
+    color: var(--eis-maroon-deep);
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: left 1.2s ease;
+  }
+  .eis-stats.is-in .eis-stats__fill { width: var(--eis-pct); }
+  .eis-stats.is-in .eis-stats__knob { left: var(--eis-pct); }
+  @media (prefers-reduced-motion: reduce) {
+    .eis-stats__fill,
+    .eis-stats__knob { transition: none; }
+  }
+  .eis-stats__foot {
+    font-family: var(--eis-serif);
+    font-style: italic;
+    font-size: 12px;
+    color: #C4AE86;
+  }
+  .eis-stats__image {
+    display: block;
+    width: {{ section.settings.image_width }}%;
+    margin: 6px auto 0;
+    height: {{ section.settings.image_height }}px;
+    object-fit: contain;
+  }
+{% endstyle %}
+
+<div class="eis-stats" data-eis-stats>
+  <div class="eis-stats__inner">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="eis-stats__title">{{ section.settings.heading | newline_to_br }}</h2>
+    {%- endif -%}
+
+    {%- for block in section.blocks -%}
+      <div {{ block.shopify_attributes }}>
+        <div class="eis-stats__value">{{ block.settings.value }}</div>
+        <div class="eis-stats__label">{{ block.settings.label }}</div>
+        <div class="eis-stats__track" style="--eis-pct: {{ block.settings.percent }}%">
+          <div class="eis-stats__fill"></div>
+          <div class="eis-stats__knob" aria-hidden="true">{{ block.settings.icon }}</div>
+        </div>
+      </div>
+    {%- endfor -%}
+
+    {%- if section.settings.footnote != blank -%}
+      <div class="eis-stats__foot">{{ section.settings.footnote }}</div>
+    {%- endif -%}
+
+    {%- assign stats_alt = section.settings.image_alt | escape -%}
+    {%- if section.settings.image != blank -%}
+      {{
+        section.settings.image
+        | image_url: width: 900
+        | image_tag:
+          widths: '300, 450, 600, 900',
+          sizes: '80vw',
+          loading: 'lazy',
+          class: 'eis-stats__image',
+          alt: stats_alt
+      }}
+    {%- endif -%}
+  </div>
+</div>
+
+<script>
+  (function () {
+    var el = document.querySelector('#shopify-section-{{ section.id }} [data-eis-stats]');
+    if (!el) return;
+
+    /* No IntersectionObserver (old Android WebViews): just show the filled state. */
+    if (!('IntersectionObserver' in window)) {
+      el.classList.add('is-in');
+      return;
+    }
+
+    var io = new IntersectionObserver(
+      function (entries) {
+        for (var i = 0; i < entries.length; i++) {
+          if (entries[i].isIntersecting) {
+            entries[i].target.classList.add('is-in');
+            io.unobserve(entries[i].target);
+          }
+        }
+      },
+      { threshold: 0.25 }
+    );
+    io.observe(el);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "EIS — Stats block",
+  "tag": "section",
+  "class": "eis-section eis-section--stats",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Line breaks are kept.",
+      "default": "After 50,000 Bottles,\nThe Results Are In."
+    },
+    {
+      "type": "text",
+      "id": "footnote",
+      "label": "Footnote",
+      "default": "Based on customer survey data*"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image alt text",
+      "default": "EIS Ayurvedic Pain Relief Oil bottle"
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "label": "Image width",
+      "min": 40,
+      "max": 100,
+      "step": 2,
+      "unit": "%",
+      "default": 78
+    },
+    {
+      "type": "range",
+      "id": "image_height",
+      "label": "Image height",
+      "min": 150,
+      "max": 420,
+      "step": 10,
+      "unit": "px",
+      "default": 300
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color",
+      "id": "color_maroon_deep",
+      "label": "Background",
+      "default": "#5C0D0F"
+    },
+    {
+      "type": "color",
+      "id": "color_cream_light",
+      "label": "Heading",
+      "default": "#F6E7C8"
+    },
+    {
+      "type": "color",
+      "id": "color_gold_light",
+      "label": "Figures & bar",
+      "default": "#E3C46F"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "Content width",
+      "min": 400,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "default": 480
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Figure",
+          "default": "89%"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Description",
+          "default": "reported less stiffness and pain within the first week"
+        },
+        {
+          "type": "range",
+          "id": "percent",
+          "label": "Bar fill",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 89
+        },
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Marker character",
+          "default": "☾"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "EIS — Stats block",
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": {
+            "value": "89%",
+            "label": "reported less stiffness and pain within the first week",
+            "percent": 89,
+            "icon": "☾"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "value": "92%",
+            "label": "noticed relief lasting longer than balms or sprays",
+            "percent": 92,
+            "icon": "❍"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "value": "86%",
+            "label": "said they moved more easily within 30 days",
+            "percent": 86,
+            "icon": "✦"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
