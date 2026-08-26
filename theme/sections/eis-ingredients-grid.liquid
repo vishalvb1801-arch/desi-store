@@ -1,0 +1,382 @@
+{%- comment -%}
+  EIS — Ingredients grid
+  ------------------------------------------------------------------
+  Herb cards, each with an expandable "MORE INFO" detail. Built on
+  <details>/<summary> so the detail is reachable without JavaScript.
+
+  A card with no image falls back to the design's two-tone herb dot, mixed
+  from the block's own colour settings.
+{%- endcomment -%}
+
+{% render 'eis-fonts' %}
+
+{% style %}
+  {% render 'eis-tokens', id: section.id, s: section.settings %}
+
+  .eis-herbs {
+    background: {{ section.settings.color_background }};
+    font-family: var(--eis-sans);
+    color: var(--eis-ink);
+  }
+  .eis-herbs__inner {
+    max-width: var(--eis-max);
+    margin: 0 auto;
+    padding: {{ section.settings.padding_top }}px 16px {{ section.settings.padding_bottom }}px;
+  }
+  .eis-herbs__title {
+    font-family: var(--eis-serif);
+    font-size: 29px;
+    font-weight: 600;
+    color: var(--eis-maroon);
+    text-align: center;
+    margin: 0;
+    line-height: 1.15;
+  }
+  .eis-herbs__intro {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--eis-muted);
+    text-align: center;
+    margin: 12px 0 20px;
+  }
+  .eis-herbs__intro strong { color: var(--eis-ink); }
+  .eis-herbs__grid {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.columns }}, 1fr);
+    gap: 10px;
+  }
+  .eis-herbs__card {
+    border: 1px solid #EFE0C9;
+    border-radius: 11px;
+    padding: 14px 10px;
+    text-align: center;
+    background: var(--eis-cream);
+    min-width: 0;
+  }
+  .eis-herbs__dot {
+    width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    margin: 0 auto 9px;
+    overflow: hidden;
+  }
+  .eis-herbs__dot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .eis-herbs__name {
+    font-family: var(--eis-serif);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--eis-maroon);
+  }
+  .eis-herbs__role { font-size: 11px; color: var(--eis-muted); margin-top: 4px; line-height: 1.35; }
+  .eis-herbs__detail { list-style: none; }
+  .eis-herbs__detail summary {
+    list-style: none;
+    cursor: pointer;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    color: var(--eis-maroon);
+    border: 1px solid #E2D2B8;
+    border-radius: 999px;
+    padding: 4px 9px;
+    display: inline-block;
+    margin-top: 10px;
+    background: #fff;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .eis-herbs__detail summary::-webkit-details-marker { display: none; }
+  .eis-herbs__detail summary::after { content: ' +'; }
+  .eis-herbs__detail[open] summary::after { content: ' −'; }
+  .eis-herbs__body {
+    font-size: 11px;
+    color: var(--eis-muted);
+    line-height: 1.45;
+    margin-top: 8px;
+    text-align: left;
+  }
+  .eis-herbs__body p { margin: 0 0 6px; }
+  .eis-herbs__body p:last-child { margin-bottom: 0; }
+  .eis-herbs__note {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--eis-soft);
+    text-align: center;
+    margin: 16px 0 0;
+  }
+{% endstyle %}
+
+<div class="eis-herbs">
+  <div class="eis-herbs__inner">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="eis-herbs__title">{{ section.settings.heading | newline_to_br }}</h2>
+    {%- endif -%}
+    {%- if section.settings.intro != blank -%}
+      <p class="eis-herbs__intro">{{ section.settings.intro }}</p>
+    {%- endif -%}
+
+    <div class="eis-herbs__grid">
+      {%- for block in section.blocks -%}
+        <div class="eis-herbs__card" {{ block.shopify_attributes }}>
+          <div
+            class="eis-herbs__dot"
+            {% if block.settings.image == blank %}
+              style="background: radial-gradient(circle at 35% 30%, {{ block.settings.color_from }}, {{ block.settings.color_to }})"
+            {% endif %}
+            aria-hidden="true"
+          >
+            {%- if block.settings.image != blank -%}
+              {{ block.settings.image | image_url: width: 120 | image_tag: widths: '84, 120', sizes: '42px', loading: 'lazy', alt: '' }}
+            {%- endif -%}
+          </div>
+
+          <div class="eis-herbs__name">{{ block.settings.name }}</div>
+          {%- if block.settings.role != blank -%}
+            <div class="eis-herbs__role">{{ block.settings.role }}</div>
+          {%- endif -%}
+
+          {%- if block.settings.detail != blank -%}
+            <details class="eis-herbs__detail">
+              <summary>{{ section.settings.more_label }}</summary>
+              <div class="eis-herbs__body">{{ block.settings.detail }}</div>
+            </details>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.note != blank -%}
+      <p class="eis-herbs__note">{{ section.settings.note }}</p>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "EIS — Ingredients grid",
+  "tag": "section",
+  "class": "eis-section eis-section--herbs",
+  "max_blocks": 16,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Line breaks are kept.",
+      "default": "15 Herbs. Deeper,\nLonger Relief."
+    },
+    {
+      "type": "text",
+      "id": "intro",
+      "label": "Intro",
+      "info": "Basic HTML like <strong> works.",
+      "default": "EIS works differently from a balm — it <strong>absorbs into the muscle and joint</strong> instead of sitting on the surface."
+    },
+    {
+      "type": "text",
+      "id": "more_label",
+      "label": "Expand button label",
+      "default": "MORE INFO"
+    },
+    {
+      "type": "text",
+      "id": "note",
+      "label": "Closing note",
+      "default": "Each herb has a role — inflammation, mobility, recovery, penetration and comfort — working together in a sesame & Mahanarayan oil base."
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "Cards per row",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "color_cream",
+      "label": "Card background",
+      "default": "#FBF3E7"
+    },
+    {
+      "type": "color",
+      "id": "color_maroon",
+      "label": "Heading & names",
+      "default": "#7B1315"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Text",
+      "default": "#2A1C18"
+    },
+    {
+      "type": "color",
+      "id": "color_muted",
+      "label": "Muted text",
+      "default": "#5E5147"
+    },
+    {
+      "type": "color",
+      "id": "color_soft",
+      "label": "Closing note",
+      "default": "#8A7A63"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "Content width",
+      "min": 400,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "default": 480
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    }
+  ],
+  "blocks": [
+    {
+      "type": "herb",
+      "name": "Herb",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Nirgundi"
+        },
+        {
+          "type": "text",
+          "id": "role",
+          "label": "Role",
+          "default": "the anti-inflammatory herb"
+        },
+        {
+          "type": "richtext",
+          "id": "detail",
+          "label": "More info",
+          "default": "<p>Vitex negundo, 3ml per 100ml.</p>"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo (optional)",
+          "info": "Without one, the two colours below make the herb dot."
+        },
+        {
+          "type": "color",
+          "id": "color_from",
+          "label": "Dot highlight",
+          "default": "#8E4F2A"
+        },
+        {
+          "type": "color",
+          "id": "color_to",
+          "label": "Dot shadow",
+          "default": "#3B1F10"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "EIS — Ingredients grid",
+      "blocks": [
+        {
+          "type": "herb",
+          "settings": {
+            "name": "Nirgundi",
+            "role": "the anti-inflammatory herb",
+            "detail": "<p>Vitex negundo, 3ml per 100ml. Traditionally used to calm swelling and dull throbbing pain in joints and lower back.</p>",
+            "color_from": "#8E4F2A",
+            "color_to": "#3B1F10"
+          }
+        },
+        {
+          "type": "herb",
+          "settings": {
+            "name": "Rasna",
+            "role": "the joint-mobility herb",
+            "detail": "<p>Pluchea lanceolata, 2ml per 100ml. A classical Ayurvedic joint herb used where movement feels restricted or creaky.</p>",
+            "color_from": "#7A6A3A",
+            "color_to": "#2E2812"
+          }
+        },
+        {
+          "type": "herb",
+          "settings": {
+            "name": "Ashwagandha",
+            "role": "the muscle-recovery herb",
+            "detail": "<p>Withania somnifera, 2ml per 100ml. Applied topically to help tired, overworked muscle recover overnight.</p>",
+            "color_from": "#A98B5C",
+            "color_to": "#4A3A20"
+          }
+        },
+        {
+          "type": "herb",
+          "settings": {
+            "name": "Nilgiri",
+            "role": "the warming relief herb",
+            "detail": "<p>Eucalyptus globulus, 5ml per 100ml. Creates the warm, opening sensation that helps the massage reach deeper.</p>",
+            "color_from": "#4E7A55",
+            "color_to": "#16301C"
+          }
+        },
+        {
+          "type": "herb",
+          "settings": {
+            "name": "Gandhapura",
+            "role": "the deep-penetration herb",
+            "detail": "<p>Gaultheria fragrantissima, 5ml per 100ml. Carries the formula past the skin barrier into the aching tissue.</p>",
+            "color_from": "#B9A06A",
+            "color_to": "#4C3E1E"
+          }
+        },
+        {
+          "type": "herb",
+          "settings": {
+            "name": "Pudina",
+            "role": "the cooling comfort herb",
+            "detail": "<p>Mentha arvensis, 4ml per 100ml. Balances the warmth with a clean cooling finish so nothing feels harsh.</p>",
+            "color_from": "#6FA07A",
+            "color_to": "#1E3A26"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
