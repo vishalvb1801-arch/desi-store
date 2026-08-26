@@ -93,7 +93,8 @@
   .eis-stats__curve{display:block;width:100%;height:56px;margin-bottom:-1px}
 
   /* ---------- section 2: ingredients ---------- */
-  .eis-herbs{background:#FFFFFF;font-family:var(--eis-sans);color:#2A1C18;overflow:clip}
+  .eis-herbs{background:#FFFFFF;font-family:var(--eis-sans);color:#2A1C18;overflow:hidden}
+  @supports (overflow: clip){ .eis-herbs{overflow:clip visible} }
   .eis-herbs__inner{max-width:480px;margin:0 auto;padding:32px 16px 32px}
   .eis-herbs__head{position:relative;min-height:150px;display:flex;align-items:center;justify-content:center}
   .eis-herbs__title{
@@ -102,7 +103,7 @@
     padding-left:14%;padding-right:14%;position:relative;z-index:1;
   }
   .eis-herbs__bottle{
-    display:block;position:absolute;top:50%;margin-top:8px;width:22%;
+    display:block;position:absolute;top:50%;margin-top:-40px;width:22%;
     pointer-events:none;
     filter:drop-shadow(0 10px 14px rgba(0,0,0,.25));
   }
@@ -291,9 +292,9 @@
           <input type="range" id="bh" min="100" max="420" step="10" value="150">
         </div>
         <div class="field">
-          <div class="row"><label for="oy">Nudge up or down</label><span class="val" id="vY">8px</span></div>
-          <input type="range" id="oy" min="-140" max="60" step="4" value="8">
-          <p class="why" id="clipWarn">Negative moves them up. Too far and the section clips the caps flat.</p>
+          <div class="row"><label for="oy">Nudge up or down</label><span class="val" id="vY">-40px</span></div>
+          <input type="range" id="oy" min="-140" max="60" step="4" value="-40">
+          <p class="why" id="clipWarn">Negative lifts them over the curve. Far enough and they cover the stats text.</p>
         </div>
         <div class="field">
           <div class="row"><label for="hg">Space kept clear for the heading</label><span class="val" id="vG">14%</span></div>
@@ -375,15 +376,15 @@
         : 'Two rows. Raise this if the heading breaks onto a third.';
       warn.style.color = rows > 2 ? '#C0392B' : '';
 
-      // the section clips its overflow, so flag it when a cap is being cut flat
+      // the bottles now rise over the curve; flag it once they reach the stats copy
       var clipNote = document.getElementById('clipWarn');
-      var secTop = document.querySelector('.eis-herbs').getBoundingClientRect().top;
-      var capTop = art(bl) ? art(bl).getBoundingClientRect().top : secTop;
-      var cut = Math.round(secTop - capTop);
-      clipNote.textContent = cut > 0
-        ? 'The caps are being cut flat by ' + cut + 'px — nudge down or shrink the bottles.'
-        : 'Negative moves them up. Too far and the section clips the caps flat.';
-      clipNote.style.color = cut > 0 ? '#C0392B' : '';
+      var curveTop = curve.getBoundingClientRect().top;
+      var capTop = art(bl) ? art(bl).getBoundingClientRect().top : curveTop;
+      var risen = Math.round(curveTop - capTop);
+      clipNote.textContent = risen > 0
+        ? 'Reaching ' + risen + 'px past the curve into the stats block — nudge down before it covers the copy.'
+        : 'Negative lifts them over the curve. Far enough and they cover the stats text.';
+      clipNote.style.color = risen > 0 ? '#C0392B' : '';
 
       out.innerHTML =
         '<i>eis-stats-block</i>\n' +

@@ -108,7 +108,14 @@
 
   /* Tipped bottles are a phone-only device — they'd read as clutter wide. */
   @media (max-width: 749px) {
-    .eis-herbs--bottles { overflow: clip; }
+    /* Clip sideways only, so a rotated bottle can never push the page into a
+       horizontal scroll, but its cap is free to rise over the section above
+       instead of being sliced flat at the top edge. `overflow: hidden` is the
+       fallback where `clip` is unsupported (Safari < 16). */
+    .eis-herbs--bottles { overflow: hidden; }
+    @supports (overflow: clip) {
+      .eis-herbs--bottles { overflow: clip visible; }
+    }
     .eis-herbs--bottles .eis-herbs__head {
       min-height: {{ section.settings.bottle_row_height }}px;
       display: flex;
@@ -317,12 +324,12 @@
       "type": "range",
       "id": "bottle_offset_y",
       "label": "Nudge up or down",
-      "info": "Negative moves the bottles up. Too far and the section clips the caps flat.",
+      "info": "Negative moves the bottles up, over the section above. Far enough and they start covering its text.",
       "min": -140,
       "max": 60,
       "step": 4,
       "unit": "px",
-      "default": 8
+      "default": -40
     },
     {
       "type": "range",
