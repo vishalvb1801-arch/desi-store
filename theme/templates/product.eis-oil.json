@@ -514,7 +514,7 @@
           "type": "row",
           "settings": {
             "icon": "leaf",
-            "label": "15+ Ayurvedic herbs, no chemicals",
+            "label": "15+ herbs, no chemicals",
             "us": true,
             "them": false
           }
@@ -523,12 +523,21 @@
           "type": "row",
           "settings": {
             "icon": "spark",
-            "label": "Absorbs into the muscle and joint",
+            "label": "Instant relief",
             "us": true,
             "them": false
           }
         },
         "row-3": {
+          "type": "row",
+          "settings": {
+            "icon": "heart",
+            "label": "Absorbs deep into the joint",
+            "us": true,
+            "them": false
+          }
+        },
+        "row-4": {
           "type": "row",
           "settings": {
             "icon": "clock",
@@ -537,20 +546,11 @@
             "them": false
           }
         },
-        "row-4": {
-          "type": "row",
-          "settings": {
-            "icon": "heart",
-            "label": "No burning, no numbing",
-            "us": true,
-            "them": false
-          }
-        },
         "row-5": {
           "type": "row",
           "settings": {
-            "icon": "families",
-            "label": "Gentle enough for nightly use",
+            "icon": "shield",
+            "label": "No burning, no numbing",
             "us": true,
             "them": false
           }
@@ -558,8 +558,8 @@
         "row-6": {
           "type": "row",
           "settings": {
-            "icon": "shield",
-            "label": "Lab tested, GMP certified",
+            "icon": "families",
+            "label": "Gentle for nightly use",
             "us": true,
             "them": false
           }
@@ -567,8 +567,8 @@
         "row-7": {
           "type": "row",
           "settings": {
-            "icon": "truck",
-            "label": "Free delivery in 3–5 days",
+            "icon": "flask",
+            "label": "Lab tested, GMP certified",
             "us": true,
             "them": false
           }
@@ -577,7 +577,7 @@
           "type": "row",
           "settings": {
             "icon": "discount",
-            "label": "7-day money-back guarantee",
+            "label": "7-day money-back promise",
             "us": true,
             "them": false
           }

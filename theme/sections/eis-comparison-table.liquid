@@ -91,6 +91,10 @@
     align-items: center;
     gap: 11px;
     padding: 12px 13px;
+    /* every row is held to the height of a two-line label, so a one-line
+       feature does not make its band shorter than the rest */
+    min-height: {{ section.settings.row_height }}px;
+    box-sizing: border-box;
     background: {{ section.settings.color_card }};
     border-left: 1px solid var(--eis-line);
     border-right: 1px solid var(--eis-line);
@@ -145,23 +149,66 @@
     margin: 16px 0 0;
   }
 
+  /* Small phones: the two tick columns are fixed-width, so everything they
+     take comes straight out of the feature label. Shrink them (and the
+     chrome around the label) so no feature has to run past two lines. */
+  @media (max-width: 389px) {
+    .eis-cmp__grid {
+      grid-template-columns:
+        minmax(0, 1fr)
+        {{ section.settings.col_width | times: 78 | divided_by: 100 }}px
+        {{ section.settings.col_width | times: 78 | divided_by: 100 }}px;
+      column-gap: 7px;
+      padding-top: {{ section.settings.bottle_size | times: 82 | divided_by: 100 | minus: 6 }}px;
+    }
+    .eis-cmp__bottle { height: {{ section.settings.bottle_size | times: 82 | divided_by: 100 }}px; }
+    .eis-cmp__head { font-size: 10px; padding: 9px 4px; }
+    .eis-cmp__feat { padding: 10px; gap: 9px; }
+    .eis-cmp__ic { width: 30px; height: 30px; font-size: 15px; }
+    .eis-cmp__lbl { font-size: 13px; }
+    .eis-cmp__cell { padding: 10px 4px; }
+    .eis-cmp__yes { width: 26px; height: 26px; }
+    .eis-cmp__no { width: 17px; height: 17px; }
+  }
+
+  /* Same again for the narrowest phones still in real use (320px). */
+  @media (max-width: 339px) {
+    .eis-cmp__grid {
+      grid-template-columns:
+        minmax(0, 1fr)
+        {{ section.settings.col_width | times: 63 | divided_by: 100 }}px
+        {{ section.settings.col_width | times: 63 | divided_by: 100 }}px;
+      column-gap: 6px;
+    }
+    .eis-cmp__feat { padding: 9px 8px; gap: 8px; }
+    .eis-cmp__ic { width: 26px; height: 26px; font-size: 13px; }
+    .eis-cmp__lbl { font-size: 12.5px; }
+    .eis-cmp__cell { padding: 9px 3px; }
+    .eis-cmp__yes { width: 23px; height: 23px; }
+    .eis-cmp__no { width: 15px; height: 15px; }
+  }
+
   /* The PDP runs to a 480px column throughout, so desktop is a gentle step up
      from the phone layout rather than the wide three-panel version. */
   @media (min-width: 750px) {
     .eis-cmp__grid {
       grid-template-columns:
         minmax(0, 1fr)
-        {{ section.settings.col_width | times: 140 | divided_by: 100 }}px
-        {{ section.settings.col_width | times: 140 | divided_by: 100 }}px;
+        {{ section.settings.col_width | times: 120 | divided_by: 100 }}px
+        {{ section.settings.col_width | times: 120 | divided_by: 100 }}px;
       column-gap: 13px;
       padding-top: {{ section.settings.bottle_size | times: 150 | divided_by: 100 | minus: 6 }}px;
     }
     .eis-cmp__bottle { height: {{ section.settings.bottle_size | times: 150 | divided_by: 100 }}px; }
     .eis-cmp__title { font-size: {{ section.settings.heading_size | times: 145 | divided_by: 100 }}px; }
     .eis-cmp__head { font-size: 14px; padding: 14px 10px; }
-    .eis-cmp__feat { padding: 16px 20px; gap: 15px; }
-    .eis-cmp__ic { width: 46px; height: 46px; font-size: 23px; }
-    .eis-cmp__lbl { font-size: 16px; }
+    .eis-cmp__feat {
+      padding: 14px 16px;
+      gap: 13px;
+      min-height: {{ section.settings.row_height | times: 125 | divided_by: 100 }}px;
+    }
+    .eis-cmp__ic { width: 42px; height: 42px; font-size: 21px; }
+    .eis-cmp__lbl { font-size: 15px; }
     .eis-cmp__cell { padding: 16px; }
     .eis-cmp__yes { width: 38px; height: 38px; }
     .eis-cmp__no { width: 24px; height: 24px; }
@@ -294,7 +341,7 @@
       "type": "range",
       "id": "bottle_size",
       "label": "Bottle height",
-      "info": "Phone height; desktop scales to 150% of it.",
+      "info": "Phone height. Desktop scales to 150% of it, phones under 390px to 82%.",
       "min": 70,
       "max": 220,
       "step": 5,
@@ -367,12 +414,23 @@
       "type": "range",
       "id": "col_width",
       "label": "Comparison column width",
-      "info": "Desktop steps up to 140% of this.",
+      "info": "Desktop steps up to 120% of this; phones under 390px step down, so the feature label keeps its width.",
       "min": 60,
       "max": 120,
       "step": 2,
       "unit": "px",
       "default": 78
+    },
+    {
+      "type": "range",
+      "id": "row_height",
+      "label": "Row height",
+      "info": "Every row is at least this tall, so one-line and two-line features sit on the same rhythm. Desktop steps up to 125% of it.",
+      "min": 44,
+      "max": 96,
+      "step": 2,
+      "unit": "px",
+      "default": 62
     },
     {
       "type": "range",
@@ -414,7 +472,7 @@
           "type": "text",
           "id": "label",
           "label": "Feature",
-          "default": "15+ Ayurvedic herbs, no chemicals"
+          "default": "15+ herbs, no chemicals"
         },
         {
           "type": "select",
@@ -426,6 +484,7 @@
             { "value": "clock", "label": "Clock" },
             { "value": "heart", "label": "Heart" },
             { "value": "shield", "label": "Shield" },
+            { "value": "flask", "label": "Lab flask" },
             { "value": "families", "label": "Family" },
             { "value": "truck", "label": "Delivery" },
             { "value": "discount", "label": "Discount" }
@@ -451,14 +510,14 @@
     {
       "name": "EIS — Comparison table",
       "blocks": [
-        { "type": "row", "settings": { "icon": "leaf", "label": "15+ Ayurvedic herbs, no chemicals" } },
-        { "type": "row", "settings": { "icon": "spark", "label": "Absorbs into the muscle and joint" } },
+        { "type": "row", "settings": { "icon": "leaf", "label": "15+ herbs, no chemicals" } },
+        { "type": "row", "settings": { "icon": "spark", "label": "Instant relief" } },
+        { "type": "row", "settings": { "icon": "heart", "label": "Absorbs deep into the joint" } },
         { "type": "row", "settings": { "icon": "clock", "label": "Relief that lasts the night" } },
-        { "type": "row", "settings": { "icon": "heart", "label": "No burning, no numbing" } },
-        { "type": "row", "settings": { "icon": "families", "label": "Gentle enough for nightly use" } },
-        { "type": "row", "settings": { "icon": "shield", "label": "Lab tested, GMP certified" } },
-        { "type": "row", "settings": { "icon": "truck", "label": "Free delivery in 3–5 days" } },
-        { "type": "row", "settings": { "icon": "discount", "label": "7-day money-back guarantee" } }
+        { "type": "row", "settings": { "icon": "shield", "label": "No burning, no numbing" } },
+        { "type": "row", "settings": { "icon": "families", "label": "Gentle for nightly use" } },
+        { "type": "row", "settings": { "icon": "flask", "label": "Lab tested, GMP certified" } },
+        { "type": "row", "settings": { "icon": "discount", "label": "7-day money-back promise" } }
       ]
     }
   ]
