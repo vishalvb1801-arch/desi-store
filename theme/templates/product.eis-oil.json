@@ -383,7 +383,9 @@
         "herb-5",
         "herb-6"
       ],
-      "settings": {}
+      "settings": {
+        "bottle_image": "shopify://shop_images/eis-bottle-cutout.png"
+      }
     },
     "how-to-use": {
       "type": "eis-how-to-use",

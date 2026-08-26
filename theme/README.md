@@ -53,12 +53,22 @@ publishing against the live storefront are both blocked.
 
 ## Known gaps
 
-- **The ingredients grid's tipped bottles need a cut-out.** `show_bottles`
-  is on by default but nothing renders until `bottle_image` is picked. It
-  must be an **upright, transparent PNG with no baked-in shadow**: the tilt
-  is a CSS `rotate()` on the image and the shadow is a `drop-shadow()` on
-  its wrapper, so a shadow rendered into the file would tip over with the
-  bottle, and a solid background would show as a rotated rectangle.
+- **The bottle cut-out is derived, not an original asset.** The merchant's
+  render is a JPEG on solid black. `assets/eis-bottle-cutout.png` in this
+  repo was produced from it by flood-filling the border-connected black
+  region to transparent (threshold 26, 0.8px feather) and is uploaded to
+  Shopify Files as `eis-bottle-cutout.png`. If the packshot is ever
+  re-rendered, redo the key — the section needs an **upright PNG with a
+  transparent background and no baked-in shadow**, because the tilt is a
+  CSS `rotate()` on the image and the shadow a `drop-shadow()` on its
+  wrapper. A shadow rendered into the file would tip over with the bottle;
+  a solid background would show as a rotated rectangle.
+- **The bottles clip if nudged too far up.** `.eis-herbs` sets
+  `overflow: clip` to stop the rotated images causing sideways page scroll,
+  which means a bottle taller than the section gets cut flat at the top
+  edge. The shipped defaults (22% wide, 88px bleed, 150px row, +8px nudge)
+  were measured to clear it at 390px; raising the width or lowering the
+  nudge can reintroduce it.
 - **The stats curve colour is not automatic.** `curve_color` defaults to
   `#FFFFFF` because the section below it (`eis-ingredients-grid`) has a white
   background. Reorder the sections and this has to be re-matched by hand.
