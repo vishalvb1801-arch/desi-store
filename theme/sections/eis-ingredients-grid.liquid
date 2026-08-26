@@ -143,12 +143,12 @@
       left: -{{ section.settings.bottle_bleed }}px;
       transform: translateY(-50%);
     }
-    .eis-herbs__bottle--l img { transform: rotate(-{{ section.settings.bottle_angle }}deg); }
+    .eis-herbs__bottle--l img { transform: rotate({{ section.settings.bottle_angle }}deg); }
     .eis-herbs__bottle--r {
       right: -{{ section.settings.bottle_bleed }}px;
       transform: translateY(-50%);
     }
-    .eis-herbs__bottle--r img { transform: rotate({{ section.settings.bottle_angle }}deg); }
+    .eis-herbs__bottle--r img { transform: rotate(-{{ section.settings.bottle_angle }}deg); }
   }
 {% endstyle %}
 
@@ -284,7 +284,7 @@
       "type": "range",
       "id": "bottle_angle",
       "label": "Tilt",
-      "info": "Left bottle leans one way, right bottle the other.",
+      "info": "Both bottles lean inward, towards the heading.",
       "min": 0,
       "max": 75,
       "step": 5,

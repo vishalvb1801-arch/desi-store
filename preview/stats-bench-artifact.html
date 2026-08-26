@@ -108,9 +108,9 @@
   }
   .eis-herbs__bottle > *{display:block;width:100%;height:auto;max-width:none}
   .eis-herbs__bottle--l{left:-44px;transform:translateY(-50%)}
-  .eis-herbs__bottle--l > *{transform:rotate(-45deg)}
+  .eis-herbs__bottle--l > *{transform:rotate(45deg)}
   .eis-herbs__bottle--r{right:-44px;transform:translateY(-50%)}
-  .eis-herbs__bottle--r > *{transform:rotate(45deg)}
+  .eis-herbs__bottle--r > *{transform:rotate(-45deg)}
   .eis-herbs__intro{font-size:13px;line-height:1.55;color:var(--eis-muted);text-align:center;margin:12px 0 20px}
   .eis-herbs__intro strong{color:#2A1C18}
   .eis-herbs__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
@@ -194,7 +194,7 @@
   <header>
     <div class="eyebrow">Draft theme · stats block → ingredients grid</div>
     <h1>The Curve and the Tipped Bottles</h1>
-    <p class="lede">The stats headline is back to its plain two rows. The bottles have moved down onto <em>15 Herbs</em>, one each side at 45°, with the shadow cast from the tipped shape rather than baked into the image. Dial it, then send me the readout.</p>
+    <p class="lede">The stats headline is back to its plain two rows. The bottles have moved down onto <em>15 Herbs</em>, one each side at 45°, both leaning inward, with the shadow cast from the tipped shape rather than baked into the image. Dial it, then send me the readout.</p>
   </header>
 
   <div class="bench">
@@ -289,6 +289,7 @@
         <div class="field">
           <div class="row"><label for="ang">Tilt</label><span class="val" id="vA">45°</span></div>
           <input type="range" id="ang" min="0" max="75" step="5" value="45">
+          <p class="why">Both lean inward — left clockwise, right anticlockwise.</p>
         </div>
         <div class="field">
           <div class="row"><label for="bw">Bottle width</label><span class="val" id="vW">24%</span></div>
@@ -362,8 +363,8 @@
       });
       bl.style.left  = -b + 'px';
       br.style.right = -b + 'px';
-      if (art(bl)) art(bl).style.transform = 'rotate(-' + a + 'deg)';
-      if (art(br)) art(br).style.transform = 'rotate(' + a + 'deg)';
+      if (art(bl)) art(bl).style.transform = 'rotate(' + a + 'deg)';
+      if (art(br)) art(br).style.transform = 'rotate(-' + a + 'deg)';
 
       document.getElementById('vCurve').textContent = ch + 'px';
       document.getElementById('vA').textContent = a + '°';
