@@ -1,0 +1,1471 @@
+{%- comment -%}
+  EIS — Product Hero
+  ------------------------------------------------------------------
+  Gallery + rating + title + benefit list + offer slot + trust strip,
+  plus the mobile sticky Add-to-Cart bar.
+
+  The offer ladder (1 / 3 / 5 bottles) is NOT hard-coded here. The section
+  exposes an app-block slot inside "Choose Your Supply" — add the MoonBundle
+  block there in the theme customizer and it owns offer selection + Add to Cart.
+  The native Add-to-Cart button below it is off by default and exists only as a
+  fallback for merchants who aren't running the app.
+{%- endcomment -%}
+
+{%- liquid
+  assign eis_product = section.settings.product | default: product
+  assign eis_variant = eis_product.selected_or_first_available_variant
+
+  assign gallery_images = eis_product.images
+  if section.settings.featured_image != blank
+    assign hero_image = section.settings.featured_image
+  else
+    assign hero_image = eis_product.featured_image
+  endif
+
+  assign app_block_count = 0
+  assign pill_count = 0
+  assign benefit_count = 0
+  assign badge_count = 0
+  for block in section.blocks
+    case block.type
+      when '@app'
+        assign app_block_count = app_block_count | plus: 1
+      when 'feature_pill'
+        assign pill_count = pill_count | plus: 1
+      when 'benefit'
+        assign benefit_count = benefit_count | plus: 1
+      when 'payment_badge'
+        assign badge_count = badge_count | plus: 1
+    endcase
+  endfor
+
+  assign has_compare_at = false
+  if eis_variant.compare_at_price > eis_variant.price
+    assign has_compare_at = true
+  endif
+
+  comment
+    Filters can't be chained inside an image_tag argument, so alt text and the
+    sizes hint are worked out up front.
+  endcomment
+  assign image_alt = eis_product.title
+  assign hero_alt = image_alt | escape
+  assign img_sizes ='(min-width: ' | append: section.settings.content_width | append: 'px) ' | append: section.settings.content_width | append: 'px, 100vw'
+-%}
+
+{% render 'eis-fonts' %}
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    --eis-maroon: {{ section.settings.color_maroon }};
+    --eis-maroon-deep: {{ section.settings.color_maroon_deep }};
+    --eis-gold: {{ section.settings.color_gold }};
+    --eis-cream: {{ section.settings.color_cream }};
+    --eis-ink: {{ section.settings.color_text }};
+    --eis-muted: {{ section.settings.color_muted }};
+    --eis-green: {{ section.settings.color_green }};
+    --eis-line: {{ section.settings.color_border }};
+    --eis-max: {{ section.settings.content_width }}px;
+    --eis-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --eis-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
+  }
+
+  .eis-hero {
+    max-width: var(--eis-max);
+    margin: 0 auto;
+    padding: 14px 16px {{ section.settings.padding_bottom }}px;
+    background: #fff;
+    font-family: var(--eis-sans);
+    color: var(--eis-ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  .eis-hero *, .eis-sticky * { box-sizing: border-box; }
+
+  /* ---------- gallery ---------- */
+  .eis-hero__stage {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    background: radial-gradient(120% 90% at 50% 20%, #3A0F10 0%, #150606 70%);
+    border: 1px solid #E7D9C3;
+  }
+  .eis-hero__slides { display: block; }
+  .eis-hero__slide { display: none; }
+  .eis-hero__slide[data-active] { display: block; }
+  .eis-hero__slide img,
+  .eis-hero__slide svg {
+    display: block;
+    width: 100%;
+    height: {{ section.settings.image_height }}px;
+    object-fit: contain;
+    object-position: {{ section.settings.image_position }};
+  }
+  .eis-hero__pills {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .eis-hero__pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,.94);
+    border-radius: 999px;
+    padding: 6px 11px 6px 7px;
+    max-width: 172px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.25);
+  }
+  .eis-hero__pill-icon {
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    background: var(--eis-maroon);
+    color: #F6E7C8;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+  }
+  .eis-hero__pill-text { font-size: 9.5px; line-height: 1.25; font-weight: 500; color: var(--eis-ink); }
+  .eis-hero__nav {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    display: flex;
+    gap: 8px;
+    z-index: 2;
+  }
+  .eis-hero__nav button {
+    width: 30px;
+    height: 30px;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(255,255,255,.9);
+    color: var(--eis-ink);
+    font-size: 13px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .eis-hero__thumbs {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.thumb_columns }}, 1fr);
+    gap: 7px;
+    margin-top: 9px;
+  }
+  .eis-hero__thumb {
+    aspect-ratio: 1;
+    border-radius: 8px;
+    border: 1px solid var(--eis-line);
+    overflow: hidden;
+    background: #150606;
+    padding: 0;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .eis-hero__thumb[aria-current="true"] { border: 2px solid var(--eis-maroon); }
+  .eis-hero__thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
+
+  /* ---------- rating ---------- */
+  .eis-hero__rating { display: flex; align-items: center; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+  .eis-stars { display: flex; gap: 2px; }
+  .eis-stars i {
+    width: 17px;
+    height: 17px;
+    background: var(--eis-green);
+    color: #fff;
+    font-size: 11px;
+    font-style: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .eis-hero__rating-text { font-size: 11.5px; color: var(--eis-muted); }
+  .eis-hero__rating-text strong { color: var(--eis-ink); }
+  .eis-hero__rating-count { font-size: 11.5px; color: #8A7A63; width: 100%; }
+
+  /* ---------- copy ---------- */
+  .eis-hero__title {
+    font-family: var(--eis-serif);
+    font-size: 31px;
+    line-height: 1.12;
+    font-weight: 600;
+    color: var(--eis-maroon);
+    margin: 14px 0 0;
+  }
+  .eis-hero__subtitle { font-size: 14px; line-height: 1.5; color: var(--eis-muted); margin: 10px 0 0; }
+
+  .eis-hero__benefits {
+    background: var(--eis-cream);
+    border: 1px solid #EFE0C9;
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .eis-hero__benefit { display: flex; gap: 11px; align-items: flex-start; }
+  .eis-hero__check {
+    width: 19px;
+    height: 19px;
+    border-radius: 999px;
+    background: var(--eis-green);
+    color: #fff;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    margin-top: 1px;
+  }
+  .eis-hero__benefit-text { font-size: 13px; line-height: 1.45; }
+  .eis-hero__benefit-text span { color: var(--eis-muted); }
+
+  /* ---------- price + offers ---------- */
+  .eis-hero__price { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+  .eis-hero__price-now { font-size: 26px; font-weight: 700; color: var(--eis-maroon); font-family: var(--eis-serif); }
+  .eis-hero__price-was { font-size: 14px; color: #A79684; text-decoration: line-through; }
+  .eis-hero__price-save {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    color: #3B0E0F;
+    background: var(--eis-gold);
+    border-radius: 4px;
+    padding: 3px 8px;
+  }
+  .eis-hero__price-unit { font-size: 11.5px; color: #8A7A63; width: 100%; }
+
+  .eis-hero__offers-title {
+    font-family: var(--eis-serif);
+    font-size: 21px;
+    font-weight: 600;
+    color: var(--eis-ink);
+    margin: 24px 0 12px;
+  }
+  .eis-hero__app-block + .eis-hero__app-block { margin-top: 12px; }
+  .eis-hero__slot-empty {
+    border: 1px dashed var(--eis-gold);
+    border-radius: 11px;
+    background: #FDF9F1;
+    padding: 18px 16px;
+    text-align: center;
+  }
+  .eis-hero__slot-empty b { display: block; font-size: 13px; margin-bottom: 6px; color: var(--eis-maroon); }
+  .eis-hero__slot-empty span { font-size: 11.5px; line-height: 1.5; color: var(--eis-muted); }
+
+  /* ---------- stock + cart ---------- */
+  .eis-hero__stock {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 16px;
+    font-size: 11.5px;
+    font-weight: 500;
+    color: var(--eis-ink);
+  }
+  .eis-dot { color: var(--eis-green); font-size: 14px; line-height: 1; }
+  @media (prefers-reduced-motion: no-preference) {
+    .eis-dot--pulse { animation: eisPulse 2s infinite; }
+  }
+  @keyframes eisPulse { 0%, 100% { opacity: 1 } 50% { opacity: .35 } }
+  .eis-hero__stock--out .eis-dot { color: #B0413A; }
+
+  .eis-btn {
+    display: block;
+    width: 100%;
+    border: 0;
+    background: var(--eis-maroon);
+    color: #FFF7E6;
+    font-family: var(--eis-sans);
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-align: center;
+    padding: 19px;
+    border-radius: 10px;
+    margin-top: 14px;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(123,19,21,.28);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .eis-btn:hover { background: var(--eis-maroon-deep); }
+  .eis-btn[disabled] { background: #B9A9A0; box-shadow: none; cursor: not-allowed; }
+
+  .eis-pay { display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; margin-top: 14px; }
+  .eis-pay span {
+    border: 1px solid var(--eis-line);
+    border-radius: 4px;
+    padding: 4px 7px;
+    font-size: 8px;
+    font-weight: 700;
+    color: var(--eis-muted);
+    letter-spacing: .04em;
+  }
+  .eis-pay span.is-highlight { border-color: var(--eis-green); color: var(--eis-green); }
+  .eis-hero__cod {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 10px;
+    font-size: 11.5px;
+    font-weight: 500;
+    color: var(--eis-green);
+  }
+
+  .eis-hero__guarantee {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    border: 1px solid #EFE0C9;
+    border-radius: 10px;
+    padding: 13px;
+    margin-top: 14px;
+    background: var(--eis-cream);
+  }
+  .eis-hero__guarantee-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 999px;
+    background: var(--eis-gold);
+    color: #3B0E0F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex: none;
+  }
+  .eis-hero__guarantee b { font-size: 12.5px; display: block; }
+  .eis-hero__guarantee a { font-size: 11px; color: var(--eis-maroon); }
+
+  /* ---------- hero review ---------- */
+  .eis-hero__review { border: 1px solid #EFE3D2; border-radius: 11px; padding: 14px; margin-top: 14px; }
+  .eis-hero__review .eis-stars { margin-bottom: 9px; }
+  .eis-hero__review .eis-stars i { width: 15px; height: 15px; font-size: 10px; }
+  .eis-hero__review-quote { font-size: 13px; line-height: 1.5; color: #3B322C; }
+  .eis-hero__review-by { display: flex; align-items: center; gap: 9px; margin-top: 11px; }
+  .eis-hero__avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    flex: none;
+    overflow: hidden;
+    background: repeating-linear-gradient(135deg, #EDE1CE 0 5px, #F9F1E4 5px 10px);
+  }
+  .eis-hero__avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .eis-hero__review-name-row { display: flex; align-items: center; gap: 5px; }
+  .eis-hero__review-name { font-size: 12px; font-weight: 700; }
+  .eis-hero__google { width: 14px; height: 14px; flex: none; display: block; }
+  .eis-hero__review-meta { font-size: 10.5px; color: var(--eis-green); }
+
+  /* ---------- sticky bar ---------- */
+  .eis-sticky {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 40;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+  }
+  .eis-sticky__inner {
+    width: 100%;
+    max-width: var(--eis-max);
+    background: rgba(255,255,255,.97);
+    border-top: 1px solid #EFE0C9;
+    padding: 10px 14px;
+    padding-bottom: calc(10px + env(safe-area-inset-bottom));
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 -6px 18px rgba(0,0,0,.1);
+    pointer-events: auto;
+    transform: translateY(120%);
+    transition: transform .25s ease;
+    font-family: var(--eis-sans);
+  }
+  @media (prefers-reduced-motion: reduce) { .eis-sticky__inner { transition: none; } }
+  .eis-sticky.is-visible .eis-sticky__inner { transform: translateY(0); }
+  .eis-sticky__thumb {
+    width: 40px;
+    height: 40px;
+    border-radius: 7px;
+    overflow: hidden;
+    background: #150606;
+    flex: none;
+  }
+  .eis-sticky__thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .eis-sticky__copy { flex: 1; min-width: 0; }
+  .eis-sticky__name {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--eis-ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .eis-sticky__price { font-size: 11px; color: #8A7A63; }
+  .eis-sticky__price s { color: #B7A692; }
+  .eis-sticky__btn {
+    background: var(--eis-maroon);
+    color: #FFF7E6;
+    border: 0;
+    font-family: var(--eis-sans);
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    padding: 13px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    flex: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .eis-sticky__btn[disabled] { background: #B9A9A0; cursor: not-allowed; }
+  {%- unless section.settings.sticky_on_desktop %}
+  @media (min-width: 750px) { .eis-sticky { display: none; } }
+  {%- endunless %}
+
+  /* ---------- larger screens: same layout, a touch more air ---------- */
+  @media (min-width: 560px) {
+    .eis-hero__title { font-size: 34px; }
+    .eis-hero__subtitle { font-size: 15px; }
+    .eis-hero__benefit-text { font-size: 13.5px; }
+  }
+{% endstyle %}
+
+<div class="eis-hero" id="EisHero-{{ section.id }}" data-eis-hero>
+  {%- if eis_product == blank -%}
+    <div class="eis-hero__slot-empty">
+      <b>No product selected</b>
+      <span>Open this section in the theme customizer and pick a product, or add the section to a product template.</span>
+    </div>
+  {%- else -%}
+
+    {%- comment -%} ---------- gallery ---------- {%- endcomment -%}
+    <div class="eis-hero__stage">
+      {%- if pill_count > 0 -%}
+        <div class="eis-hero__pills">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'feature_pill' -%}
+              <div class="eis-hero__pill" {{ block.shopify_attributes }}>
+                <div class="eis-hero__pill-icon" aria-hidden="true">{{ block.settings.icon }}</div>
+                <div class="eis-hero__pill-text">{{ block.settings.text }}</div>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      <div class="eis-hero__slides" data-eis-slides>
+        {%- if gallery_images.size > 0 -%}
+          {%- for image in gallery_images limit: section.settings.gallery_limit -%}
+            {%- liquid
+              # only the first image is part of the initial paint
+              if forloop.first
+                assign img_loading = 'eager'
+                assign img_priority = 'high'
+              else
+                assign img_loading = 'lazy'
+                assign img_priority = 'auto'
+              endif
+              assign slide_alt = image.alt | default: image_alt | escape
+            -%}
+            <div class="eis-hero__slide" data-eis-slide="{{ forloop.index0 }}" {% if forloop.first %}data-active{% endif %}>
+              {{
+                image
+                | image_url: width: 1080
+                | image_tag:
+                  widths: '360, 480, 720, 900, 1080',
+                  sizes: img_sizes,
+                  loading: img_loading,
+                  fetchpriority: img_priority,
+                  alt: slide_alt
+              }}
+            </div>
+          {%- endfor -%}
+        {%- elsif hero_image != blank -%}
+          <div class="eis-hero__slide" data-eis-slide="0" data-active>
+            {{
+              hero_image
+              | image_url: width: 1080
+              | image_tag:
+                widths: '360, 480, 720, 900, 1080',
+                sizes: img_sizes,
+                loading: 'eager',
+                fetchpriority: 'high',
+                alt: hero_alt
+            }}
+          </div>
+        {%- else -%}
+          <div class="eis-hero__slide" data-eis-slide="0" data-active>
+            {{ 'product-1' | placeholder_svg_tag: 'eis-placeholder' }}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- if gallery_images.size > 1 -%}
+        <div class="eis-hero__nav">
+          <button type="button" data-eis-prev aria-label="Previous image">&lsaquo;</button>
+          <button type="button" data-eis-next aria-label="Next image">&rsaquo;</button>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- if gallery_images.size > 1 -%}
+      <div class="eis-hero__thumbs" role="group" aria-label="Product images">
+        {%- for image in gallery_images limit: section.settings.gallery_limit -%}
+          <button
+            type="button"
+            class="eis-hero__thumb"
+            data-eis-thumb="{{ forloop.index0 }}"
+            aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
+            aria-label="Show image {{ forloop.index }}"
+          >
+            {{ image | image_url: width: 200 | image_tag: widths: '100, 160, 200', sizes: '20vw', loading: 'lazy', alt: '' }}
+          </button>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} ---------- rating ---------- {%- endcomment -%}
+    {%- if section.settings.show_rating -%}
+      <div class="eis-hero__rating">
+        <div class="eis-stars" aria-hidden="true">
+          {%- for i in (1..section.settings.rating_stars) -%}<i>★</i>{%- endfor -%}
+        </div>
+        {%- if section.settings.rating_text != blank -%}
+          <div class="eis-hero__rating-text">{{ section.settings.rating_text }}</div>
+        {%- endif -%}
+        {%- if section.settings.rating_count_text != blank -%}
+          <div class="eis-hero__rating-count">{{ section.settings.rating_count_text }}</div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} ---------- title ---------- {%- endcomment -%}
+    {%- assign heading = section.settings.heading | default: eis_product.title -%}
+    <h1 class="eis-hero__title">{{ heading | newline_to_br }}</h1>
+    {%- if section.settings.subheading != blank -%}
+      <p class="eis-hero__subtitle">{{ section.settings.subheading }}</p>
+    {%- endif -%}
+
+    {%- comment -%} ---------- benefit bullets ---------- {%- endcomment -%}
+    {%- if benefit_count > 0 -%}
+      <div class="eis-hero__benefits">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'benefit' -%}
+            <div class="eis-hero__benefit" {{ block.shopify_attributes }}>
+              <div class="eis-hero__check" aria-hidden="true">✓</div>
+              <div class="eis-hero__benefit-text">
+                <strong>{{ block.settings.title }}</strong> <span>{{ block.settings.text }}</span>
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} ---------- price ---------- {%- endcomment -%}
+    {%- if section.settings.show_price -%}
+      <div class="eis-hero__price">
+        <span class="eis-hero__price-now">{{ eis_variant.price | money }}</span>
+        {%- if has_compare_at -%}
+          <s class="eis-hero__price-was">{{ eis_variant.compare_at_price | money }}</s>
+          {%- assign saved = eis_variant.compare_at_price | minus: eis_variant.price | times: 100.0 | divided_by: eis_variant.compare_at_price | round -%}
+          <span class="eis-hero__price-save">SAVE {{ saved }}%</span>
+        {%- endif -%}
+        {%- if section.settings.price_note != blank -%}
+          <span class="eis-hero__price-unit">{{ section.settings.price_note }}</span>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- comment -%}
+      ---------- offer slot (MoonBundle app block goes here) ----------
+      Any app block added to this section renders inside this container.
+    {%- endcomment -%}
+    <div class="eis-hero__offers" id="EisOffers-{{ section.id }}">
+      {%- if section.settings.offers_heading != blank -%}
+        <h2 class="eis-hero__offers-title">{{ section.settings.offers_heading }}</h2>
+      {%- endif -%}
+
+      {%- for block in section.blocks -%}
+        {%- if block.type == '@app' -%}
+          <div class="eis-hero__app-block" {{ block.shopify_attributes }}>{% render block %}</div>
+        {%- endif -%}
+      {%- endfor -%}
+
+      {%- if app_block_count == 0 and request.design_mode -%}
+        <div class="eis-hero__slot-empty">
+          <b>Offer ladder slot — empty</b>
+          <span>
+            Click <em>Add block</em> on this section and choose your MoonBundle bundle/quantity-break
+            block. It renders here and handles offer selection and Add to Cart.
+            This message is only visible to you in the customizer.
+          </span>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} ---------- stock line ---------- {%- endcomment -%}
+    {%- if section.settings.show_stock -%}
+      {%- if eis_product.available -%}
+        <div class="eis-hero__stock">
+          <span class="eis-dot eis-dot--pulse" aria-hidden="true">●</span>
+          {{ section.settings.stock_text }}
+        </div>
+      {%- else -%}
+        <div class="eis-hero__stock eis-hero__stock--out">
+          <span class="eis-dot" aria-hidden="true">●</span>
+          {{ section.settings.out_of_stock_text }}
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- comment -%}
+      ---------- fallback Add to Cart ----------
+      Off by default: MoonBundle owns the buy button. Turn on only if the app
+      block isn't in use.
+    {%- endcomment -%}
+    {%- if section.settings.show_fallback_atc -%}
+      <form
+        method="post"
+        action="{{ routes.cart_add_url }}"
+        data-eis-form
+        {% if eis_variant == blank or eis_product.available == false %}data-unavailable{% endif %}
+      >
+        <input type="hidden" name="id" value="{{ eis_variant.id }}">
+        <input type="hidden" name="quantity" value="1">
+        <button
+          type="submit"
+          class="eis-btn"
+          data-eis-atc
+          {% unless eis_product.available %}disabled{% endunless %}
+        >
+          {%- if eis_product.available -%}{{ section.settings.atc_label }}{%- else -%}{{ section.settings.sold_out_label }}{%- endif -%}
+        </button>
+      </form>
+    {%- endif -%}
+
+    {%- comment -%} ---------- payment badges + COD ---------- {%- endcomment -%}
+    {%- if badge_count > 0 -%}
+      <div class="eis-pay">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'payment_badge' -%}
+            <span class="{% if block.settings.highlight %}is-highlight{% endif %}" {{ block.shopify_attributes }}>
+              {{- block.settings.label -}}
+            </span>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.cod_text != blank -%}
+      <div class="eis-hero__cod">
+        <span aria-hidden="true">✓</span>{{ section.settings.cod_text }}
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} ---------- guarantee strip ---------- {%- endcomment -%}
+    {%- if section.settings.show_guarantee -%}
+      <div class="eis-hero__guarantee">
+        <div class="eis-hero__guarantee-icon" aria-hidden="true">{{ section.settings.guarantee_icon }}</div>
+        <div>
+          <b>{{ section.settings.guarantee_title }}</b>
+          {%- if section.settings.guarantee_link_text != blank -%}
+            <a href="{{ section.settings.guarantee_link | default: '#guarantee' }}">
+              {{- section.settings.guarantee_link_text -}}
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} ---------- hero review card ---------- {%- endcomment -%}
+    {%- if section.settings.show_review -%}
+      <div class="eis-hero__review">
+        <div class="eis-stars" aria-hidden="true">
+          {%- for i in (1..section.settings.review_stars) -%}<i>★</i>{%- endfor -%}
+        </div>
+        <div class="eis-hero__review-quote">{{ section.settings.review_quote }}</div>
+        <div class="eis-hero__review-by">
+          <div class="eis-hero__avatar">
+            {%- if section.settings.review_avatar != blank -%}
+              {{ section.settings.review_avatar | image_url: width: 80 | image_tag: widths: '56, 80', sizes: '28px', loading: 'lazy', alt: '' }}
+            {%- endif -%}
+          </div>
+          <div>
+            <div class="eis-hero__review-name-row">
+              <div class="eis-hero__review-name">{{ section.settings.review_name }}</div>
+              {%- if section.settings.review_google -%}
+                <svg class="eis-hero__google" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Google review">
+                  <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+                  <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+                  <path fill="#FBBC05" d="M10.53 28.59a14.5 14.5 0 0 1 0-9.18l-7.98-6.19a24.0 24.0 0 0 0 0 21.56l7.98-6.19z"/>
+                  <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+                </svg>
+              {%- endif -%}
+            </div>
+            <div class="eis-hero__review-meta">{{ section.settings.review_meta }}</div>
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+
+  {%- endif -%}
+</div>
+
+{%- comment -%} ---------- sticky bar ---------- {%- endcomment -%}
+{%- if section.settings.show_sticky and eis_product != blank -%}
+  <div
+    class="eis-sticky"
+    data-eis-sticky
+    data-reveal-at="{{ section.settings.sticky_reveal_at }}"
+    data-action="{{ section.settings.sticky_action }}"
+    data-offers="EisOffers-{{ section.id }}"
+  >
+    <div class="eis-sticky__inner">
+      <div class="eis-sticky__thumb">
+        {%- if hero_image != blank -%}
+          {{ hero_image | image_url: width: 120 | image_tag: widths: '80, 120', sizes: '40px', loading: 'lazy', alt: '' }}
+        {%- endif -%}
+      </div>
+      <div class="eis-sticky__copy">
+        <div class="eis-sticky__name">{{ section.settings.sticky_title | default: eis_product.title }}</div>
+        <div class="eis-sticky__price">
+          {{ eis_variant.price | money }}
+          {%- if has_compare_at %} <s>{{ eis_variant.compare_at_price | money }}</s>{% endif -%}
+        </div>
+      </div>
+      <button
+        type="button"
+        class="eis-sticky__btn"
+        data-eis-sticky-btn
+        data-variant-id="{{ eis_variant.id }}"
+        {% unless eis_product.available %}disabled{% endunless %}
+      >
+        {%- if eis_product.available -%}{{ section.settings.sticky_label }}{%- else -%}{{ section.settings.sold_out_label }}{%- endif -%}
+      </button>
+    </div>
+  </div>
+{%- endif -%}
+
+<script>
+  (function () {
+    var root = document.getElementById('EisHero-{{ section.id }}');
+    var sticky = document.querySelector('[data-eis-sticky][data-offers="EisOffers-{{ section.id }}"]');
+    if (!root) return;
+
+    /* ---- gallery ---- */
+    var slides = root.querySelectorAll('[data-eis-slide]');
+    var thumbs = root.querySelectorAll('[data-eis-thumb]');
+    var index = 0;
+
+    function show(next) {
+      if (!slides.length) return;
+      index = (next + slides.length) % slides.length;
+      for (var i = 0; i < slides.length; i++) {
+        if (i === index) {
+          slides[i].setAttribute('data-active', '');
+        } else {
+          slides[i].removeAttribute('data-active');
+        }
+      }
+      for (var t = 0; t < thumbs.length; t++) {
+        thumbs[t].setAttribute('aria-current', t === index ? 'true' : 'false');
+      }
+    }
+
+    for (var t = 0; t < thumbs.length; t++) {
+      (function (el) {
+        el.addEventListener('click', function () {
+          show(parseInt(el.getAttribute('data-eis-thumb'), 10));
+        });
+      })(thumbs[t]);
+    }
+
+    var prev = root.querySelector('[data-eis-prev]');
+    var next = root.querySelector('[data-eis-next]');
+    if (prev) prev.addEventListener('click', function () { show(index - 1); });
+    if (next) next.addEventListener('click', function () { show(index + 1); });
+
+    /* ---- swipe ---- */
+    var stage = root.querySelector('.eis-hero__stage');
+    if (stage && slides.length > 1) {
+      var startX = null;
+      stage.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
+      stage.addEventListener('touchend', function (e) {
+        if (startX === null) return;
+        var dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 40) show(dx < 0 ? index + 1 : index - 1);
+        startX = null;
+      }, { passive: true });
+    }
+
+    /* ---- add to cart (AJAX, then go to /cart) ---- */
+    function addToCart(variantId, button) {
+      if (!variantId) return;
+      var original = button.innerHTML;
+      button.disabled = true;
+      button.innerHTML = {{ section.settings.adding_label | json }};
+      fetch('{{ routes.cart_add_url }}', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ items: [{ id: Number(variantId), quantity: 1 }] })
+      })
+        .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
+        .then(function (r) {
+          if (!r.ok) throw new Error(r.data && r.data.description ? r.data.description : 'Add to cart failed');
+          window.location.href = '{{ routes.cart_url }}';
+        })
+        .catch(function (err) {
+          button.disabled = false;
+          button.innerHTML = original;
+          /* Slow or flaky network: fall back to a normal form post so the
+             customer still gets to the cart. */
+          var form = root.querySelector('[data-eis-form]');
+          if (form) { form.removeAttribute('data-eis-form'); form.submit(); return; }
+          window.alert(err.message);
+        });
+    }
+
+    var form = root.querySelector('[data-eis-form]');
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        if (!form.hasAttribute('data-eis-form')) return;
+        e.preventDefault();
+        var btn = form.querySelector('[data-eis-atc]');
+        addToCart(form.querySelector('input[name="id"]').value, btn);
+      });
+    }
+
+    /* ---- sticky bar ---- */
+    if (sticky) {
+      var revealAt = parseInt(sticky.getAttribute('data-reveal-at'), 10) || 620;
+      var action = sticky.getAttribute('data-action');
+      var ticking = false;
+
+      function update() {
+        var y = window.scrollY || document.documentElement.scrollTop;
+        sticky.classList.toggle('is-visible', y > revealAt);
+        ticking = false;
+      }
+      window.addEventListener('scroll', function () {
+        if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
+      }, { passive: true });
+      update();
+
+      var stickyBtn = sticky.querySelector('[data-eis-sticky-btn]');
+      if (stickyBtn) {
+        stickyBtn.addEventListener('click', function () {
+          if (action === 'add_to_cart') {
+            addToCart(stickyBtn.getAttribute('data-variant-id'), stickyBtn);
+          } else {
+            var target = document.getElementById(sticky.getAttribute('data-offers'));
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        });
+      }
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "EIS — Product hero",
+  "tag": "section",
+  "class": "eis-section eis-section--hero",
+  "max_blocks": 24,
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product",
+      "info": "Leave empty on a product template to use the current product."
+    },
+    {
+      "type": "header",
+      "content": "Gallery"
+    },
+    {
+      "type": "image_picker",
+      "id": "featured_image",
+      "label": "Fallback / sticky-bar image",
+      "info": "Optional. Used when the product has no images, and for the sticky bar thumbnail."
+    },
+    {
+      "type": "range",
+      "id": "image_height",
+      "label": "Main image height",
+      "min": 260,
+      "max": 520,
+      "step": 10,
+      "unit": "px",
+      "default": 380
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Main image focus",
+      "options": [
+        {
+          "value": "center center",
+          "label": "Centre"
+        },
+        {
+          "value": "70% center",
+          "label": "Right of centre"
+        },
+        {
+          "value": "30% center",
+          "label": "Left of centre"
+        }
+      ],
+      "default": "70% center"
+    },
+    {
+      "type": "range",
+      "id": "gallery_limit",
+      "label": "Max images to show",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "thumb_columns",
+      "label": "Thumbnail columns",
+      "min": 3,
+      "max": 6,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "header",
+      "content": "Rating"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "label": "Show rating row",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "rating_stars",
+      "label": "Filled stars",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating text",
+      "default": "Rated <strong>4.8 / 5.0</strong> | 'Excellent'"
+    },
+    {
+      "type": "text",
+      "id": "rating_count_text",
+      "label": "Review count text",
+      "default": "Based on 2,400+ Reviews"
+    },
+    {
+      "type": "header",
+      "content": "Title"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Line breaks are kept. Leave empty to use the product title.",
+      "default": "15-in-1 Ayurvedic\nPain Relief Oil"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Sub-heading",
+      "default": "Deep relief for joint, back, knee & muscle pain — the traditional way."
+    },
+    {
+      "type": "header",
+      "content": "Price"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_price",
+      "label": "Show price",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "price_note",
+      "label": "Note under price",
+      "default": "1 Bottle · 200ml · inclusive of all taxes"
+    },
+    {
+      "type": "header",
+      "content": "Offer ladder (MoonBundle)"
+    },
+    {
+      "type": "paragraph",
+      "content": "Add your MoonBundle app block to this section — it renders under the heading below and controls offer selection and Add to Cart."
+    },
+    {
+      "type": "text",
+      "id": "offers_heading",
+      "label": "Offers heading",
+      "default": "Choose Your Supply"
+    },
+    {
+      "type": "header",
+      "content": "Stock"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stock",
+      "label": "Show stock line",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "stock_text",
+      "label": "In stock text",
+      "default": "IN STOCK — DELIVERY IN 3–5 DAYS ACROSS INDIA 🇮🇳"
+    },
+    {
+      "type": "text",
+      "id": "out_of_stock_text",
+      "label": "Out of stock text",
+      "default": "OUT OF STOCK — back in a few days"
+    },
+    {
+      "type": "header",
+      "content": "Fallback Add to Cart"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_fallback_atc",
+      "label": "Show a native Add to Cart button",
+      "default": false,
+      "info": "Leave off while MoonBundle handles the buy button, so customers don't see two."
+    },
+    {
+      "type": "text",
+      "id": "atc_label",
+      "label": "Button label",
+      "default": "ADD TO CART"
+    },
+    {
+      "type": "text",
+      "id": "sold_out_label",
+      "label": "Sold out label",
+      "default": "SOLD OUT"
+    },
+    {
+      "type": "text",
+      "id": "adding_label",
+      "label": "Label while adding",
+      "default": "ADDING…",
+      "info": "Shown on the button between the tap and the cart page loading."
+    },
+    {
+      "type": "header",
+      "content": "Cash on Delivery"
+    },
+    {
+      "type": "text",
+      "id": "cod_text",
+      "label": "COD line",
+      "default": "Cash on Delivery available across India"
+    },
+    {
+      "type": "header",
+      "content": "Guarantee strip"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_guarantee",
+      "label": "Show guarantee strip",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "guarantee_icon",
+      "label": "Icon character",
+      "default": "✷"
+    },
+    {
+      "type": "text",
+      "id": "guarantee_title",
+      "label": "Title",
+      "default": "7-Day Money Back Guarantee"
+    },
+    {
+      "type": "text",
+      "id": "guarantee_link_text",
+      "label": "Link text",
+      "default": "Click here to learn more"
+    },
+    {
+      "type": "url",
+      "id": "guarantee_link",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Hero review"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_review",
+      "label": "Show review card",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "review_stars",
+      "label": "Stars",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "textarea",
+      "id": "review_quote",
+      "label": "Quote",
+      "default": "\"My knee pain after standing all day at the shop was the worst part of my evening. Two weeks of nightly massage and I'm climbing stairs without holding the railing.\""
+    },
+    {
+      "type": "image_picker",
+      "id": "review_avatar",
+      "label": "Avatar"
+    },
+    {
+      "type": "text",
+      "id": "review_name",
+      "label": "Name",
+      "default": "Rakesh M."
+    },
+    {
+      "type": "checkbox",
+      "id": "review_google",
+      "label": "Show Google logo beside the name",
+      "default": true,
+      "info": "Only use this where the review genuinely comes from Google."
+    },
+    {
+      "type": "text",
+      "id": "review_meta",
+      "label": "Meta line",
+      "default": "✔ Verified | Purchased 14th August"
+    },
+    {
+      "type": "header",
+      "content": "Sticky bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sticky",
+      "label": "Show sticky bar",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_on_desktop",
+      "label": "Also show on desktop",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "sticky_action",
+      "label": "Button action",
+      "options": [
+        {
+          "value": "scroll_to_offers",
+          "label": "Scroll to the offer ladder"
+        },
+        {
+          "value": "add_to_cart",
+          "label": "Add to cart, then go to cart"
+        }
+      ],
+      "default": "scroll_to_offers",
+      "info": "Keep this on 'Scroll to the offer ladder' while MoonBundle owns the buy button."
+    },
+    {
+      "type": "range",
+      "id": "sticky_reveal_at",
+      "label": "Appears after scrolling",
+      "min": 200,
+      "max": 1200,
+      "step": 20,
+      "unit": "px",
+      "default": 620
+    },
+    {
+      "type": "text",
+      "id": "sticky_label",
+      "label": "Button label",
+      "default": "ADD TO CART"
+    },
+    {
+      "type": "text",
+      "id": "sticky_title",
+      "label": "Sticky title",
+      "info": "Leave empty to use the product title.",
+      "default": "15-in-1 Ayurvedic Pain Relief Oil"
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color",
+      "id": "color_maroon",
+      "label": "Maroon",
+      "default": "#7B1315"
+    },
+    {
+      "type": "color",
+      "id": "color_maroon_deep",
+      "label": "Deep maroon",
+      "default": "#5C0D0F"
+    },
+    {
+      "type": "color",
+      "id": "color_gold",
+      "label": "Gold",
+      "default": "#C9A24A"
+    },
+    {
+      "type": "color",
+      "id": "color_cream",
+      "label": "Cream",
+      "default": "#FBF3E7"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Text",
+      "default": "#2A1C18"
+    },
+    {
+      "type": "color",
+      "id": "color_muted",
+      "label": "Muted text",
+      "default": "#5E5147"
+    },
+    {
+      "type": "color",
+      "id": "color_green",
+      "label": "Verified green",
+      "default": "#1E7A4D"
+    },
+    {
+      "type": "color",
+      "id": "color_border",
+      "label": "Border",
+      "default": "#E7D9C3"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "Content width",
+      "min": 400,
+      "max": 720,
+      "step": 20,
+      "unit": "px",
+      "default": 480
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "feature_pill",
+      "name": "Image pill",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon character",
+          "default": "✦"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Fast-absorbing, non-greasy"
+        }
+      ]
+    },
+    {
+      "type": "benefit",
+      "name": "Benefit bullet",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Bold lead",
+          "default": "Fast-absorbing relief."
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Soaks into the muscle — it doesn't just sit on the skin like a balm."
+        }
+      ]
+    },
+    {
+      "type": "payment_badge",
+      "name": "Payment badge",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "UPI"
+        },
+        {
+          "type": "checkbox",
+          "id": "highlight",
+          "label": "Highlight in green",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "EIS — Product hero",
+      "blocks": [
+        {
+          "type": "feature_pill",
+          "settings": {
+            "icon": "✦",
+            "text": "Fast-absorbing, non-greasy"
+          }
+        },
+        {
+          "type": "feature_pill",
+          "settings": {
+            "icon": "❍",
+            "text": "Loosens stiff, aching joints"
+          }
+        },
+        {
+          "type": "feature_pill",
+          "settings": {
+            "icon": "☘",
+            "text": "15+ Ayurvedic herbs"
+          }
+        },
+        {
+          "type": "feature_pill",
+          "settings": {
+            "icon": "☾",
+            "text": "Gentle for nightly use"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Fast-absorbing relief.",
+            "text": "Soaks into the muscle — it doesn't just sit on the skin like a balm."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Eases stiffness.",
+            "text": "Loosens tight, aching joints so you move freely again."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Built for long days.",
+            "text": "Reduces the ache from all-day standing, sitting, or work."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "15+ Ayurvedic herbs, no chemicals.",
+            "text": "Gentle enough for nightly use."
+          }
+        },
+        {
+          "type": "payment_badge",
+          "settings": {
+            "label": "UPI"
+          }
+        },
+        {
+          "type": "payment_badge",
+          "settings": {
+            "label": "RuPay"
+          }
+        },
+        {
+          "type": "payment_badge",
+          "settings": {
+            "label": "VISA"
+          }
+        },
+        {
+          "type": "payment_badge",
+          "settings": {
+            "label": "MASTERCARD"
+          }
+        },
+        {
+          "type": "payment_badge",
+          "settings": {
+            "label": "PAYTM"
+          }
+        },
+        {
+          "type": "payment_badge",
+          "settings": {
+            "label": "COD",
+            "highlight": true
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

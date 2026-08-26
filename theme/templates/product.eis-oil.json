@@ -154,7 +154,9 @@
         "payment-badge-5",
         "payment-badge-6"
       ],
-      "settings": {}
+      "settings": {
+        "review_avatar": "shopify://shop_images/8f1969dda710b211fab63d21ff4ae7c3.jpg"
+      }
     },
     "faq": {
       "type": "eis-faq-accordion",

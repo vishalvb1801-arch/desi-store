@@ -35,7 +35,8 @@ uploaded to the draft theme and take effect only when that theme is published:
 | `layout/theme.liquid` | Hides the global `footer-group` on the `eis-oil` template only, so the PDP shows one footer instead of two |
 | `sections/eis-announcement-bar.liquid` | Fade-rotate replaced with a CSS-only right-to-left marquee; icons; adjustable spacing and height |
 | `snippets/eis-icon.liquid` | New — 9 inline SVG stroke icons used by the announcement bar |
-| `templates/product.eis-oil.json` | Announcement bar copy: 3 messages with icons |
+| `templates/product.eis-oil.json` | Announcement bar copy: 3 messages with icons; hero review avatar |
+| `sections/eis-product-hero.liquid` | Google mark beside the hero review name, behind a `review_google` toggle |
 
 Publishing is a manual step in Shopify admin (Online Store → Themes → the draft
 theme → Publish). It cannot be automated from here: theme file writes and theme
@@ -51,6 +52,13 @@ publishing against the live storefront are both blocked.
   deferred. Note it is rendered from `layout/theme.liquid` via
   `{% section 'eis-header' %}`, so it appears on *every page of the store* —
   changing it is not a PDP-scoped edit.
+- **Google mark on the hero review.** `review_google` (default on) renders
+  Google's four-colour G beside the reviewer name. The merchant states this
+  review originates from a genuine Google review, that the reviewer consented,
+  and that legal advice was taken. Only keep this on where that holds — a
+  Google mark beside a review Google did not verify is a trademark and
+  consumer-protection problem. Toggle it off in the theme editor under
+  *Hero review*.
 - **Unverified claims.** The PDP states "89% / 92% / 86%" outcome statistics,
   "GMP CERTIFIED", "LAB TESTED", "36,243+ Families Without Pain", and three
   named reviews with purchase dates, on a product created 2026-08-25 with no
