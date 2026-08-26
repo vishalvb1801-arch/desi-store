@@ -44,6 +44,7 @@ uploaded to the draft theme and take effect only when that theme is published:
 | `sections/eis-video-testimonials.liquid` | Grid → horizontal snap scroller with its own scroll bar; captions → name, city, verified tick |
 | `sections/eis-social-proof.liquid` | New — face strip, rating, headline, swipeable review cards with benefit chips and a segmented indicator |
 | `sections/eis-product-hero.liquid` | Google mark beside the hero review name, behind a `review_google` toggle |
+| `sections/eis-stats-block.liquid` | Heading count 50,000 → 36,243; curved bottom edge (SVG, colour/depth are settings); phone-only mirrored bottle each side of the heading |
 
 Publishing is a manual step in Shopify admin (Online Store → Themes → the draft
 theme → Publish). It cannot be automated from here: theme file writes and theme
@@ -51,6 +52,14 @@ publishing against the live storefront are both blocked.
 
 ## Known gaps
 
+- **The stats block's side bottles need a cut-out.** `show_bottles` is on
+  by default but nothing renders until a bottle image is picked (it falls
+  back to the section's existing `image`, which is also unset). It must be
+  a **transparent PNG** — the drop shadow hugs the alpha channel, so a JPG
+  with a black or white background renders as a shadowed rectangle.
+- **The stats curve colour is not automatic.** `curve_color` defaults to
+  `#FFFFFF` because the section below it (`eis-ingredients-grid`) has a white
+  background. Reorder the sections and this has to be re-matched by hand.
 - **The product has no images.** `media` is empty, so the hero gallery renders
   blank on a live, buyable page. This is the most visible defect on the PDP.
 - **The product has no description**, though the hero draws its copy from
