@@ -20,6 +20,8 @@
     margin: 0 auto;
     padding: {{ section.settings.padding_top }}px 16px {{ section.settings.padding_bottom }}px;
   }
+  /* Retained: the eyebrow/heading markup was removed from this section, but
+     keeping these rules means restoring a heading later is a markup-only change. */
   .eis-faq__head { text-align: center; }
   .eis-faq__eyebrow {
     display: inline-block;
@@ -78,15 +80,6 @@
 
 <div class="eis-faq">
   <div class="eis-faq__inner" data-eis-faq>
-    <div class="eis-faq__head">
-      {%- if section.settings.eyebrow != blank -%}
-        <div class="eis-faq__eyebrow">{{ section.settings.eyebrow }}</div>
-      {%- endif -%}
-      {%- if section.settings.heading != blank -%}
-        <h2 class="eis-faq__title">{{ section.settings.heading | newline_to_br }}</h2>
-      {%- endif -%}
-    </div>
-
     {%- for block in section.blocks -%}
       <details
         class="eis-faq__item"
@@ -150,19 +143,6 @@
   "class": "eis-section eis-section--faq",
   "max_blocks": 20,
   "settings": [
-    {
-      "type": "text",
-      "id": "eyebrow",
-      "label": "Eyebrow",
-      "default": "FAQ"
-    },
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "info": "Line breaks are kept.",
-      "default": "Frequently Asked\nQuestions"
-    },
     {
       "type": "checkbox",
       "id": "open_first",
@@ -260,7 +240,7 @@
           "type": "text",
           "id": "question",
           "label": "Question",
-          "default": "Why do I need this oil?"
+          "default": "Who is it for?"
         },
         {
           "type": "richtext",
@@ -278,36 +258,36 @@
         {
           "type": "question",
           "settings": {
-            "question": "Why do I need this oil?",
-            "answer": "<p>Because most balms only warm the skin. EIS is a Mahanarayan-and-sesame oil base carrying 15+ herbs into the muscle and joint, so relief goes deeper and holds longer — for knees, lower back, shoulders and everyday stiffness.</p>"
+            "question": "Who is it for?",
+            "answer": "<p>Anyone living with joint, knee, back, shoulder or muscle pain — whether it's from age, all-day standing, desk work, driving, or physical labour. Elders love it for daily stiffness; younger people use it for gym soreness, neck pain, and recovery. If pain is part of your routine, this oil was made for you.</p>"
           }
         },
         {
           "type": "question",
           "settings": {
             "question": "What's actually in it?",
-            "answer": "<p>Nirgundi, Rasna, Ashwagandha, Nilgiri (eucalyptus), Gandhapura, Pudina, Lawang, Dalchini, Kapoor, Sunthi, Erand Mool and more — in a Til Taila (sesame) and Mahanarayan oil base. No synthetic actives.</p>"
+            "answer": "<p>15+ Ayurvedic herbs in a sesame and Mahanarayan oil base — Nirgundi, Rasna, Ashwagandha, Nilgiri (eucalyptus), Gandhapura, Pudina, Lawang, Dalchini, Kapoor, Sunthi, Erand Mool and more. No chemicals, no parabens, no artificial fragrance. Smells herbal, not chemical.</p>"
           }
         },
         {
           "type": "question",
           "settings": {
             "question": "How and when do I apply it?",
-            "answer": "<p>Warm a little oil, apply to the affected area and massage in circular motion for 5–10 minutes. Best at night before bed; twice daily during flare-ups. External use only.</p>"
+            "answer": "<p>Pour a small amount on the painful area, massage gently in circular motions for 2–3 minutes until the warmth sets in. Repeat 2–3 times a day — best used before bed so it works while you sleep. External use only. Safe for daily use.</p>"
           }
         },
         {
           "type": "question",
           "settings": {
-            "question": "Is there a guarantee?",
-            "answer": "<p>Yes — use it nightly for 7 days. If you don't feel a difference, contact us and we'll refund every rupee. No forms, no arguing.</p>"
+            "question": "Is it safe?",
+            "answer": "<p>100%. EIS Pain Relief Oil is third-party lab tested and made in a GMP-certified facility. Award-winning Ayurvedic formulation with no harsh chemicals — no burning, no numbness, no side effects. Gentle enough for nightly use by the whole family, including elders. For external use only — do a patch test if you have sensitive skin.</p>"
           }
         },
         {
           "type": "question",
           "settings": {
             "question": "When will it arrive?",
-            "answer": "<p>Orders ship within 24 hours and reach most Indian pin codes in 3–5 days. You'll get a tracking link by SMS and WhatsApp.</p>"
+            "answer": "<p>Orders ship within 24 hours and reach you in 3–5 days. Free delivery, no hidden charges. You'll get a tracking link the moment it ships. COD available.</p>"
           }
         }
       ]
