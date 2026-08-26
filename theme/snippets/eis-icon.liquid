@@ -1,0 +1,28 @@
+{%- comment -%}
+  EIS — inline icon.
+
+  Usage:  {% render 'eis-icon', name: 'truck' %}
+
+  Stroke icons on a 24×24 grid, sized in em so they scale with whatever text
+  they sit beside and inherit their colour from it. Decorative only — every
+  icon here repeats something the adjacent text already says, so they are
+  hidden from assistive tech.
+{%- endcomment -%}
+{%- case name -%}
+  {%- when 'truck' -%}
+    <svg class="eis-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2.5 6.5h11v10h-11z"/><path d="M13.5 10h4l4 3.5v3h-8z"/><circle cx="6.5" cy="18.5" r="1.9"/><circle cx="17" cy="18.5" r="1.9"/></svg>
+  {%- when 'families' -%}
+    <svg class="eis-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="8.5" cy="7.5" r="3"/><path d="M2.5 19.5a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2.3"/><path d="M15.5 19.5a5 5 0 0 1 6-4.6"/></svg>
+  {%- when 'discount' -%}
+    <svg class="eis-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 5 5 19"/><circle cx="7.6" cy="7.6" r="2.4"/><circle cx="16.4" cy="16.4" r="2.4"/></svg>
+  {%- when 'leaf' -%}
+    <svg class="eis-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4.5 19.5C4.5 10.5 10.5 4.5 19.5 4.5c0 9-6 15-15 15z"/><path d="M8.5 15.5c2-3.5 5-6 9-7.5"/></svg>
+  {%- when 'shield' -%}
+    <svg class="eis-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2.8 20 5.8v6.4c0 4.2-3.6 7.4-8 9-4.4-1.6-8-4.8-8-9V5.8z"/><path d="m8.8 12 2.2 2.2 4.2-4.4"/></svg>
+  {%- when 'clock' -%}
+    <svg class="eis-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.6"/><path d="M12 6.8V12l3.6 2.1"/></svg>
+  {%- when 'heart' -%}
+    <svg class="eis-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 20.2s-7.4-4.6-7.4-10A3.9 3.9 0 0 1 12 8.2a3.9 3.9 0 0 1 7.4 2c0 5.4-7.4 10-7.4 10z"/></svg>
+  {%- when 'spark' -%}
+    <svg class="eis-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2.8c.7 5.4 3.1 7.8 8.5 8.5-5.4.7-7.8 3.1-8.5 8.5-.7-5.4-3.1-7.8-8.5-8.5 5.4-.7 7.8-3.1 8.5-8.5z"/></svg>
+{%- endcase -%}

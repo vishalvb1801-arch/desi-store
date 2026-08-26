@@ -1,0 +1,341 @@
+{%- comment -%}
+  EIS — Announcement bar
+  ------------------------------------------------------------------
+  One message, or several, running as a continuous right-to-left
+  marquee. Sits above the header.
+
+  The track holds two identical copies of the message list and slides
+  by exactly -50%, so the loop is seamless. Each copy is forced to at
+  least the full bar width, which keeps the loop gapless even when the
+  messages are shorter than the viewport.
+
+  Spacing between messages is a real flex `gap`, so it stays even no
+  matter how many messages there are. `space-around` then shares out
+  any leftover width, which only happens on wide screens.
+
+  Motion is CSS-only — no JavaScript. Where the visitor has asked for
+  reduced motion the marquee is replaced by a centred, wrapped block
+  showing every message at once.
+{%- endcomment -%}
+
+{% render 'eis-fonts' %}
+
+{%- liquid
+  assign pad = section.settings.padding_block
+  assign pad_mobile = pad | minus: 3
+  if pad_mobile < 6
+    assign pad_mobile = 6
+  endif
+  assign gap = section.settings.item_gap
+  assign gap_mobile = gap | times: 6 | divided_by: 10
+  if gap_mobile < 14
+    assign gap_mobile = 14
+  endif
+-%}
+
+{% style %}
+  {% render 'eis-tokens', id: section.id, s: section.settings %}
+
+  .eis-announce {
+    background: var(--eis-maroon-deep);
+    font-family: var(--eis-sans);
+  }
+  .eis-announce__viewport {
+    display: flex;
+    overflow: hidden;
+    padding: {{ pad }}px 0;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%);
+  }
+  .eis-announce__track {
+    display: flex;
+    flex: none;
+    width: max-content;
+    min-width: 200%;
+    animation: eis-announce-scroll {{ section.settings.scroll_seconds }}s linear infinite;
+    will-change: transform;
+  }
+  .eis-announce__viewport:hover .eis-announce__track,
+  .eis-announce__viewport:focus-within .eis-announce__track {
+    animation-play-state: paused;
+  }
+  @keyframes eis-announce-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .eis-announce__group {
+    flex: 1 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: {{ gap }}px;
+    padding-right: {{ gap }}px;
+  }
+  .eis-announce__item {
+    display: inline-flex;
+    align-items: center;
+    gap: .62em;
+    font-size: {{ section.settings.font_size }}px;
+    color: var(--eis-cream-light);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  a.eis-announce__item:hover { color: var(--eis-gold-light); }
+  a.eis-announce__item:focus-visible { outline: 2px solid var(--eis-gold-light); outline-offset: 3px; }
+  .eis-announce__msg {
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    font-weight: 500;
+    line-height: 1.35;
+  }
+  .eis-icon {
+    width: 1.22em;
+    height: 1.22em;
+    flex: none;
+    color: var(--eis-gold);
+    display: block;
+  }
+  .eis-announce__sep {
+    color: var(--eis-gold);
+    font-size: {{ section.settings.font_size }}px;
+    line-height: 1.35;
+    opacity: .7;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 749px) {
+    .eis-announce__viewport { padding: {{ pad_mobile }}px 0; }
+    .eis-announce__group { gap: {{ gap_mobile }}px; padding-right: {{ gap_mobile }}px; }
+  }
+
+  /* No animation: show every message at once, wrapped and centred. */
+  @media (prefers-reduced-motion: reduce) {
+    .eis-announce__viewport {
+      -webkit-mask-image: none;
+      mask-image: none;
+      overflow: visible;
+    }
+    .eis-announce__track {
+      animation: none;
+      width: 100%;
+      min-width: 0;
+    }
+    .eis-announce__group--clone { display: none; }
+    .eis-announce__group {
+      flex: 1 1 auto;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px {{ gap_mobile }}px;
+      padding: 0 14px;
+      max-width: var(--eis-max);
+      margin: 0 auto;
+    }
+    .eis-announce__sep { display: none; }
+  }
+{% endstyle %}
+
+{%- capture eis_announce_items -%}
+  {%- for block in section.blocks -%}
+    {%- if block.settings.link != blank -%}
+      <a class="eis-announce__item" href="{{ block.settings.link }}" {{ block.shopify_attributes }}>
+        {%- render 'eis-icon', name: block.settings.icon -%}
+        <span class="eis-announce__msg">{{- block.settings.text -}}</span>
+      </a>
+    {%- else -%}
+      <span class="eis-announce__item" {{ block.shopify_attributes }}>
+        {%- render 'eis-icon', name: block.settings.icon -%}
+        <span class="eis-announce__msg">{{- block.settings.text -}}</span>
+      </span>
+    {%- endif -%}
+    <span class="eis-announce__sep" aria-hidden="true">{{- section.settings.separator -}}</span>
+  {%- else -%}
+    <span class="eis-announce__item">
+      <span class="eis-announce__msg">{{- section.settings.fallback_text -}}</span>
+    </span>
+    <span class="eis-announce__sep" aria-hidden="true">{{- section.settings.separator -}}</span>
+  {%- endfor -%}
+{%- endcapture -%}
+
+{%- capture eis_announce_clone -%}
+  {%- for block in section.blocks -%}
+    <span class="eis-announce__item">
+      {%- render 'eis-icon', name: block.settings.icon -%}
+      <span class="eis-announce__msg">{{- block.settings.text -}}</span>
+    </span>
+    <span class="eis-announce__sep">{{- section.settings.separator -}}</span>
+  {%- else -%}
+    <span class="eis-announce__item">
+      <span class="eis-announce__msg">{{- section.settings.fallback_text -}}</span>
+    </span>
+    <span class="eis-announce__sep">{{- section.settings.separator -}}</span>
+  {%- endfor -%}
+{%- endcapture -%}
+
+<div class="eis-announce">
+  <div class="eis-announce__viewport">
+    <div class="eis-announce__track">
+      <div class="eis-announce__group">{{ eis_announce_items }}</div>
+      <div class="eis-announce__group eis-announce__group--clone" aria-hidden="true">{{ eis_announce_clone }}</div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "EIS — Announcement bar",
+  "tag": "section",
+  "class": "eis-section eis-section--announce",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "text",
+      "id": "fallback_text",
+      "label": "Message (used when there are no blocks)",
+      "default": "Delivery in 3-4 days"
+    },
+    {
+      "type": "text",
+      "id": "separator",
+      "label": "Separator between messages",
+      "default": "✦"
+    },
+    {
+      "type": "range",
+      "id": "scroll_seconds",
+      "label": "Seconds for one full loop (lower = faster)",
+      "min": 8,
+      "max": 60,
+      "step": 1,
+      "unit": "s",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "item_gap",
+      "label": "Space between messages",
+      "min": 12,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 38
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Text size",
+      "min": 9,
+      "max": 18,
+      "step": 0.5,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "padding_block",
+      "label": "Bar height (padding above and below)",
+      "min": 6,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color",
+      "id": "color_maroon_deep",
+      "label": "Background",
+      "default": "#5C0D0F"
+    },
+    {
+      "type": "color",
+      "id": "color_cream_light",
+      "label": "Text",
+      "default": "#F6E7C8"
+    },
+    {
+      "type": "color",
+      "id": "color_gold",
+      "label": "Icons and separator",
+      "default": "#C9A24A"
+    },
+    {
+      "type": "color",
+      "id": "color_gold_light",
+      "label": "Link hover",
+      "default": "#E3C46F"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "Content width (reduced-motion fallback only)",
+      "min": 400,
+      "max": 1200,
+      "step": 20,
+      "unit": "px",
+      "default": 480
+    }
+  ],
+  "blocks": [
+    {
+      "type": "message",
+      "name": "Message",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Delivery in 3-4 days"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "none", "label": "No icon" },
+            { "value": "truck", "label": "Delivery van" },
+            { "value": "families", "label": "Family / people" },
+            { "value": "discount", "label": "Percent" },
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "clock", "label": "Clock" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "spark", "label": "Spark" }
+          ],
+          "default": "truck"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link (optional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "EIS — Announcement bar",
+      "blocks": [
+        {
+          "type": "message",
+          "settings": { "text": "Delivery in 3-4 days", "icon": "truck" }
+        },
+        {
+          "type": "message",
+          "settings": { "text": "36,243+ Families Without Pain", "icon": "families" }
+        },
+        {
+          "type": "message",
+          "settings": { "text": "Extra Discount On Prepaid", "icon": "discount" }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

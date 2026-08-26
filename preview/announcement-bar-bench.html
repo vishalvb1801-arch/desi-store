@@ -1,0 +1,510 @@
+<title>EIS Marquee Bench</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap">
+
+<style>
+  :root {
+    --ground: #E9ECE8;
+    --surface: #FCFDFB;
+    --surface-sunk: #DFE4DE;
+    --ink: #1C221E;
+    --muted: #5A625C;
+    --faint: #8A928B;
+    --line: #D2D8D1;
+    --accent: #3E6B4F;
+    --accent-soft: #E2EBE4;
+    --warn: #8A5A1E;
+
+    /* The bar's own palette — from sections/eis-announcement-bar.liquid */
+    --eis-maroon-deep: #5C0D0F;
+    --eis-cream-light: #F6E7C8;
+    --eis-gold: #C9A24A;
+    --eis-gold-light: #E3C46F;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #171A18;
+      --surface: #1F2320;
+      --surface-sunk: #121513;
+      --ink: #E4E8E3;
+      --muted: #A3ABA4;
+      --faint: #767E77;
+      --line: #2E3430;
+      --accent: #7FA98C;
+      --accent-soft: #232E27;
+      --warn: #C79A56;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #171A18;
+    --surface: #1F2320;
+    --surface-sunk: #121513;
+    --ink: #E4E8E3;
+    --muted: #A3ABA4;
+    --faint: #767E77;
+    --line: #2E3430;
+    --accent: #7FA98C;
+    --accent-soft: #232E27;
+    --warn: #C79A56;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+    padding: 40px 20px 72px;
+  }
+
+  .wrap { max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; gap: 34px; }
+
+  /* ---- masthead ---- */
+  .eyebrow {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 11px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--accent); margin: 0 0 10px;
+  }
+  h1 {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: clamp(30px, 5vw, 42px); font-weight: 500; line-height: 1.1;
+    letter-spacing: -.01em; margin: 0 0 12px; text-wrap: balance;
+  }
+  .lede { color: var(--muted); margin: 0; max-width: 60ch; }
+
+  h2 {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 21px; font-weight: 500; margin: 0 0 4px; letter-spacing: -.005em;
+  }
+  .sub { color: var(--muted); font-size: 13.5px; margin: 0 0 18px; max-width: 62ch; }
+
+  /* ---- specimen frame ---- */
+  .stage {
+    background: var(--surface-sunk);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 22px;
+    display: flex; flex-direction: column; align-items: center; gap: 14px;
+  }
+  .device {
+    width: 100%;
+    max-width: 100%;
+    transition: max-width .3s ease;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px #0000001f, 0 8px 24px #00000014;
+  }
+  .device[data-w="mobile"] { max-width: 390px; }
+
+  /* ================= THE BAR — mirrors the Liquid section's CSS ================= */
+  .eis-announce {
+    background: var(--eis-maroon-deep);
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  }
+  .eis-announce__viewport {
+    display: flex;
+    overflow: hidden;
+    padding: var(--bar-pad) 0;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%);
+  }
+  .eis-announce__track {
+    display: flex;
+    flex: none;
+    width: max-content;
+    min-width: 200%;
+    animation: eis-announce-scroll var(--bar-dur) linear infinite;
+    will-change: transform;
+  }
+  .eis-announce__viewport:hover .eis-announce__track { animation-play-state: paused; }
+  @keyframes eis-announce-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .eis-announce__group {
+    flex: 1 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: var(--bar-gap);
+    padding-right: var(--bar-gap);
+  }
+  .eis-announce__item {
+    display: inline-flex;
+    align-items: center;
+    gap: .62em;
+    font-size: var(--bar-fs);
+    color: var(--eis-cream-light);
+    white-space: nowrap;
+  }
+  .eis-icon {
+    width: 1.22em; height: 1.22em; flex: none;
+    color: var(--eis-gold); display: block;
+  }
+  .eis-announce__msg {
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    font-weight: 500;
+    line-height: 1.35;
+  }
+  .eis-announce__sep {
+    color: var(--eis-gold);
+    font-size: var(--bar-fs);
+    line-height: 1.35;
+    opacity: .75;
+    white-space: nowrap;
+  }
+  /* mobile rule — in the real theme this is @media (max-width:749px) */
+  .device[data-w="mobile"] .eis-announce__viewport { padding: var(--bar-pad-m) 0; }
+  .device[data-w="mobile"] .eis-announce__group {
+    gap: var(--bar-gap-m); padding-right: var(--bar-gap-m);
+  }
+
+  /* ---- old fade behaviour, for comparison ---- */
+  .eis-old__inner {
+    max-width: 480px; margin: 0 auto; padding: 9px 14px;
+    position: relative; display: grid;
+  }
+  .eis-old__msg {
+    grid-area: 1 / 1;
+    color: var(--eis-cream-light);
+    font-size: 11.5px; letter-spacing: .09em; text-transform: uppercase;
+    text-align: center; font-weight: 500; line-height: 1.35;
+    opacity: 0; visibility: hidden; transition: opacity .4s ease;
+  }
+  .eis-old__msg[data-active] { opacity: 1; visibility: visible; }
+
+  /* ---- controls ---- */
+  .panel {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 10px; padding: 22px;
+  }
+  .controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 22px; }
+  .ctrl { display: flex; flex-direction: column; gap: 7px; }
+  .ctrl-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+  .ctrl label {
+    font-size: 11px; font-weight: 500; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .val {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 14px; font-weight: 600; color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+  input[type="range"] {
+    -webkit-appearance: none; appearance: none;
+    width: 100%; height: 22px; background: transparent; margin: 0; cursor: pointer;
+  }
+  input[type="range"]::-webkit-slider-runnable-track {
+    height: 3px; background: var(--line); border-radius: 2px;
+  }
+  input[type="range"]::-moz-range-track { height: 3px; background: var(--line); border-radius: 2px; }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 16px; height: 16px; border-radius: 50%;
+    background: var(--accent); border: 2px solid var(--surface);
+    box-shadow: 0 0 0 1px var(--accent);
+    margin-top: -6.5px;
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--surface);
+    background: var(--accent); box-shadow: 0 0 0 1px var(--accent);
+  }
+  input[type="range"]:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+  .hint { font-size: 12px; color: var(--faint); }
+
+  .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 7px; overflow: hidden; }
+  .seg button {
+    font-family: inherit; font-size: 12.5px; font-weight: 500;
+    padding: 7px 15px; border: 0; background: var(--surface);
+    color: var(--muted); cursor: pointer; transition: background .15s, color .15s;
+  }
+  .seg button + button { border-left: 1px solid var(--line); }
+  .seg button[aria-pressed="true"] { background: var(--accent); color: #fff; }
+  :root[data-theme="dark"] .seg button[aria-pressed="true"],
+  .seg button[aria-pressed="true"] { color: var(--surface); }
+  .seg button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+  .btn {
+    font-family: inherit; font-size: 12.5px; font-weight: 500;
+    padding: 7px 15px; border: 1px solid var(--line); border-radius: 7px;
+    background: var(--surface); color: var(--ink); cursor: pointer;
+  }
+  .btn:hover { border-color: var(--accent); color: var(--accent); }
+  .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* ---- readout ---- */
+  .readout {
+    background: var(--surface-sunk); border: 1px solid var(--line);
+    border-radius: 8px; padding: 16px 18px; margin-top: 20px;
+  }
+  .readout h3 {
+    font-size: 11px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase;
+    color: var(--accent); margin: 0 0 12px;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th, td { text-align: left; padding: 7px 0; border-bottom: 1px solid var(--line); }
+  tr:last-child th, tr:last-child td { border-bottom: 0; }
+  th { font-weight: 400; color: var(--muted); }
+  td {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 600;
+    text-align: right; font-variant-numeric: tabular-nums;
+  }
+  .changed td { color: var(--accent); }
+
+  .note {
+    border-left: 2px solid var(--accent); padding: 2px 0 2px 14px;
+    color: var(--muted); font-size: 13.5px;
+  }
+  .note strong { color: var(--ink); font-weight: 600; }
+  .warnnote { border-left-color: var(--warn); }
+
+  footer { color: var(--faint); font-size: 12.5px; border-top: 1px solid var(--line); padding-top: 18px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .eis-announce__track { animation: none; }
+    .device { transition: none; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">Staged · not yet published</p>
+    <h1>Announcement bar, right to left</h1>
+    <p class="lede">The marquee that's staged on <em>EIS PDP — Fv3 of Horizon</em>, running here with the real section CSS and your three new messages. Drag the sliders until it feels right, then set the same numbers in the Shopify theme editor.</p>
+  </header>
+
+  <section>
+    <h2>Live specimen</h2>
+    <p class="sub">Hover the bar to pause it. This is the actual rule set from <code>sections/eis-announcement-bar.liquid</code>, not an impression of it.</p>
+
+    <div class="stage">
+      <div class="device" id="device" data-w="desktop">
+        <!-- new marquee -->
+        <div class="eis-announce" id="modeNew">
+          <div class="eis-announce__viewport">
+            <div class="eis-announce__track" id="track">
+              <div class="eis-announce__group">
+                <span class="eis-announce__item"><svg class="eis-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5h11v10h-11z"/><path d="M13.5 10h4l4 3.5v3h-8z"/><circle cx="6.5" cy="18.5" r="1.9"/><circle cx="17" cy="18.5" r="1.9"/></svg><span class="eis-announce__msg">Delivery in 3–4 days</span></span>
+                <span class="eis-announce__sep">✦</span>
+                <span class="eis-announce__item"><svg class="eis-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8.5" cy="7.5" r="3"/><path d="M2.5 19.5a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2.3"/><path d="M15.5 19.5a5 5 0 0 1 6-4.6"/></svg><span class="eis-announce__msg">36,243+ Families Without Pain</span></span>
+                <span class="eis-announce__sep">✦</span>
+                <span class="eis-announce__item"><svg class="eis-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 5 5 19"/><circle cx="7.6" cy="7.6" r="2.4"/><circle cx="16.4" cy="16.4" r="2.4"/></svg><span class="eis-announce__msg">Extra Discount On Prepaid</span></span>
+                <span class="eis-announce__sep">✦</span>
+              </div>
+              <div class="eis-announce__group eis-announce__group--clone" aria-hidden="true">
+                <span class="eis-announce__item"><svg class="eis-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5h11v10h-11z"/><path d="M13.5 10h4l4 3.5v3h-8z"/><circle cx="6.5" cy="18.5" r="1.9"/><circle cx="17" cy="18.5" r="1.9"/></svg><span class="eis-announce__msg">Delivery in 3–4 days</span></span>
+                <span class="eis-announce__sep">✦</span>
+                <span class="eis-announce__item"><svg class="eis-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8.5" cy="7.5" r="3"/><path d="M2.5 19.5a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2.3"/><path d="M15.5 19.5a5 5 0 0 1 6-4.6"/></svg><span class="eis-announce__msg">36,243+ Families Without Pain</span></span>
+                <span class="eis-announce__sep">✦</span>
+                <span class="eis-announce__item"><svg class="eis-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 5 5 19"/><circle cx="7.6" cy="7.6" r="2.4"/><circle cx="16.4" cy="16.4" r="2.4"/></svg><span class="eis-announce__msg">Extra Discount On Prepaid</span></span>
+                <span class="eis-announce__sep">✦</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- old fade -->
+        <div class="eis-announce" id="modeOld" hidden>
+          <div class="eis-old__inner">
+            <div class="eis-old__msg" data-active>Feel the difference in 7 days — or your money back</div>
+            <div class="eis-old__msg">Free delivery across India · Cash on Delivery available</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="seg" role="group" aria-label="Behaviour">
+          <button id="bNew" aria-pressed="true">New marquee</button>
+          <button id="bOld" aria-pressed="false">Old fade</button>
+        </div>
+        <div class="seg" role="group" aria-label="Width">
+          <button id="bDesk" aria-pressed="true">Desktop</button>
+          <button id="bMob" aria-pressed="false">Mobile 390</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Tune it</h2>
+    <p class="sub">Each maps to one slider in the theme editor. Nothing here changes your store — it's a bench.</p>
+
+    <div class="controls">
+      <div class="ctrl">
+        <div class="ctrl-head">
+          <label for="sDur">Loop time</label>
+          <span class="val" id="vDur">24s</span>
+        </div>
+        <input type="range" id="sDur" min="8" max="60" step="1" value="24">
+        <span class="hint">Lower is faster. Staged default 24s.</span>
+      </div>
+
+      <div class="ctrl">
+        <div class="ctrl-head">
+          <label for="sPad">Bar height</label>
+          <span class="val" id="vPad">13px</span>
+        </div>
+        <input type="range" id="sPad" min="6" max="28" step="1" value="13">
+        <span class="hint">Padding above and below. Was 9px.</span>
+      </div>
+
+      <div class="ctrl">
+        <div class="ctrl-head">
+          <label for="sFs">Text size</label>
+          <span class="val" id="vFs">12px</span>
+        </div>
+        <input type="range" id="sFs" min="9" max="18" step="0.5" value="12">
+        <span class="hint">Was 11.5px.</span>
+      </div>
+
+      <div class="ctrl">
+        <div class="ctrl-head">
+          <label for="sGap">Space between messages</label>
+          <span class="val" id="vGap">38px</span>
+        </div>
+        <input type="range" id="sGap" min="12" max="80" step="2" value="38">
+        <span class="hint">Even gap between every message. Mobile uses 60% of it.</span>
+      </div>
+    </div>
+
+    <div class="readout">
+      <h3>Set these in the theme editor</h3>
+      <table>
+        <tbody>
+          <tr><th>Total bar height</th><td id="rTotal">43px</td></tr>
+          <tr class="changed"><th>Seconds for one full loop</th><td id="rDur">24</td></tr>
+          <tr class="changed"><th>Bar height (padding)</th><td id="rPad">13</td></tr>
+          <tr class="changed"><th>Text size</th><td id="rFs">12</td></tr>
+          <tr class="changed"><th>Space between messages</th><td id="rGap">38</td></tr>
+        </tbody>
+      </table>
+      <div class="row" style="margin-top:14px">
+        <button class="btn" id="bCopy">Copy values</button>
+        <button class="btn" id="bReset">Reset to staged</button>
+        <span class="hint" id="copied" aria-live="polite"></span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What actually changed</h2>
+    <p class="sub">Old behaviour on the left of each row, staged on the right.</p>
+    <div class="panel">
+      <table>
+        <tbody>
+          <tr><th>Motion</th><td>fade swap → marquee</td></tr>
+          <tr><th>JavaScript</th><td>setInterval → none</td></tr>
+          <tr><th>Width</th><td>480px box → full bleed</td></tr>
+          <tr><th>Wrapping</th><td>2 cramped lines → 1 line</td></tr>
+          <tr><th>Height</th><td>~34px → ~43px</td></tr>
+          <tr><th>Separator</th><td>none → gold ✦</td></tr>
+          <tr><th>Icons</th><td>none → inline SVG</td></tr>
+          <tr><th>Messages</th><td>2 → 3</td></tr>
+          <tr><th>Spacing</th><td>fixed 18px → adjustable gap</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <p class="note"><strong>Why wrapping and scrolling can't coexist.</strong> Scrolling text has to sit on one unbroken line, so the marquee sets <code>white-space: nowrap</code>. What was making the old bar wrap badly wasn't the text — it was the 480px box squeezing it. Full-bleed removes the squeeze entirely. Visitors who've switched on "reduce motion" get a centred, properly wrapped block with no animation instead.</p>
+  </section>
+
+  <footer>
+    Mirrors <code>sections/eis-announcement-bar.liquid</code> as staged on EIS PDP — Fv3 of Horizon. One difference worth knowing: the mobile rule here keys off the frame width, while the real theme keys off the browser viewport at 749px. Everything else — the <code>min-width: 200%</code> track, the <code>-50%</code> slide, the edge mask — is identical.
+  </footer>
+</div>
+
+<script>
+  const track = document.getElementById('track');
+  const device = document.getElementById('device');
+  const modeNew = document.getElementById('modeNew');
+  const modeOld = document.getElementById('modeOld');
+
+  const sDur = document.getElementById('sDur');
+  const sPad = document.getElementById('sPad');
+  const sFs  = document.getElementById('sFs');
+  const sGap = document.getElementById('sGap');
+
+  const DEFAULTS = { dur: 24, pad: 13, fs: 12, gap: 38 };
+
+  function apply() {
+    const dur = +sDur.value, pad = +sPad.value, fs = +sFs.value, gap = +sGap.value;
+    const padM = Math.max(6, pad - 3);
+    const gapM = Math.max(14, Math.floor(gap * 0.6));
+
+    device.style.setProperty('--bar-dur', dur + 's');
+    device.style.setProperty('--bar-pad', pad + 'px');
+    device.style.setProperty('--bar-pad-m', padM + 'px');
+    device.style.setProperty('--bar-fs', fs + 'px');
+    device.style.setProperty('--bar-gap', gap + 'px');
+    device.style.setProperty('--bar-gap-m', gapM + 'px');
+
+    document.getElementById('vDur').textContent = dur + 's';
+    document.getElementById('vPad').textContent = pad + 'px';
+    document.getElementById('vFs').textContent  = fs + 'px';
+    document.getElementById('vGap').textContent = gap + 'px';
+
+    document.getElementById('rDur').textContent = dur;
+    document.getElementById('rPad').textContent = pad;
+    document.getElementById('rFs').textContent  = fs;
+    document.getElementById('rGap').textContent = gap;
+
+    const isMobile = device.dataset.w === 'mobile';
+    const effPad = isMobile ? padM : pad;
+    document.getElementById('rTotal').textContent =
+      Math.round(effPad * 2 + fs * 1.35) + 'px' + (isMobile ? ' (mobile)' : '');
+
+    document.getElementById('copied').textContent = '';
+  }
+
+  [sDur, sPad, sFs, sGap].forEach(el => el.addEventListener('input', apply));
+
+  function press(onBtn, offBtn) {
+    onBtn.setAttribute('aria-pressed', 'true');
+    offBtn.setAttribute('aria-pressed', 'false');
+  }
+
+  const bNew = document.getElementById('bNew'), bOld = document.getElementById('bOld');
+  bNew.onclick = () => { press(bNew, bOld); modeNew.hidden = false; modeOld.hidden = true; };
+  bOld.onclick = () => { press(bOld, bNew); modeNew.hidden = true;  modeOld.hidden = false; };
+
+  const bDesk = document.getElementById('bDesk'), bMob = document.getElementById('bMob');
+  bDesk.onclick = () => { press(bDesk, bMob); device.dataset.w = 'desktop'; apply(); };
+  bMob.onclick  = () => { press(bMob, bDesk); device.dataset.w = 'mobile';  apply(); };
+
+  document.getElementById('bReset').onclick = () => {
+    sDur.value = DEFAULTS.dur; sPad.value = DEFAULTS.pad;
+    sFs.value = DEFAULTS.fs; sGap.value = DEFAULTS.gap;
+    apply();
+  };
+
+  document.getElementById('bCopy').onclick = async () => {
+    const txt = `Seconds for one full loop: ${sDur.value}\nBar height (padding): ${sPad.value}\nText size: ${sFs.value}\nSpace between messages: ${sGap.value}`;
+    try {
+      await navigator.clipboard.writeText(txt);
+      document.getElementById('copied').textContent = 'Copied';
+    } catch {
+      document.getElementById('copied').textContent = `${sDur.value} / ${sPad.value} / ${sFs.value} / ${sGap.value}`;
+    }
+  };
+
+  // Old fade behaviour, reproduced from the section this replaces.
+  const oldMsgs = modeOld.querySelectorAll('.eis-old__msg');
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let i = 0;
+    setInterval(() => {
+      oldMsgs[i].removeAttribute('data-active');
+      i = (i + 1) % oldMsgs.length;
+      oldMsgs[i].setAttribute('data-active', '');
+    }, 4000);
+  }
+
+  apply();
+</script>

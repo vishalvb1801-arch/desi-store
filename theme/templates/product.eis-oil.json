@@ -1,0 +1,716 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "announcement": {
+      "type": "eis-announcement-bar",
+      "blocks": {
+        "message-1": {
+          "type": "message",
+          "settings": {
+            "text": "Delivery in 3–4 days",
+            "icon": "truck"
+          }
+        },
+        "message-2": {
+          "type": "message",
+          "settings": {
+            "text": "36,243+ Families Without Pain",
+            "icon": "families"
+          }
+        },
+        "message-3": {
+          "type": "message",
+          "settings": {
+            "text": "Extra Discount On Prepaid",
+            "icon": "discount"
+          }
+        }
+      },
+      "block_order": [
+        "message-1",
+        "message-2",
+        "message-3"
+      ],
+      "settings": {}
+    },
+    "hero": {
+      "type": "eis-product-hero",
+      "blocks": {
+        "feature-pill-1": {
+          "type": "feature_pill",
+          "settings": {
+            "icon": "✦",
+            "text": "Fast-absorbing, non-greasy"
+          }
+        },
+        "feature-pill-2": {
+          "type": "feature_pill",
+          "settings": {
+            "icon": "❍",
+            "text": "Loosens stiff, aching joints"
+          }
+        },
+        "feature-pill-3": {
+          "type": "feature_pill",
+          "settings": {
+            "icon": "☘",
+            "text": "15+ Ayurvedic herbs"
+          }
+        },
+        "feature-pill-4": {
+          "type": "feature_pill",
+          "settings": {
+            "icon": "☾",
+            "text": "Gentle for nightly use"
+          }
+        },
+        "benefit-1": {
+          "type": "benefit",
+          "settings": {
+            "title": "Fast-absorbing relief.",
+            "text": "Soaks into the muscle — it doesn't just sit on the skin like a balm."
+          }
+        },
+        "benefit-2": {
+          "type": "benefit",
+          "settings": {
+            "title": "Eases stiffness.",
+            "text": "Loosens tight, aching joints so you move freely again."
+          }
+        },
+        "benefit-3": {
+          "type": "benefit",
+          "settings": {
+            "title": "Built for long days.",
+            "text": "Reduces the ache from all-day standing, sitting, or work."
+          }
+        },
+        "benefit-4": {
+          "type": "benefit",
+          "settings": {
+            "title": "15+ Ayurvedic herbs, no chemicals.",
+            "text": "Gentle enough for nightly use."
+          }
+        },
+        "payment-badge-1": {
+          "type": "payment_badge",
+          "settings": {
+            "label": "UPI"
+          }
+        },
+        "payment-badge-2": {
+          "type": "payment_badge",
+          "settings": {
+            "label": "RuPay"
+          }
+        },
+        "payment-badge-3": {
+          "type": "payment_badge",
+          "settings": {
+            "label": "VISA"
+          }
+        },
+        "payment-badge-4": {
+          "type": "payment_badge",
+          "settings": {
+            "label": "MASTERCARD"
+          }
+        },
+        "payment-badge-5": {
+          "type": "payment_badge",
+          "settings": {
+            "label": "PAYTM"
+          }
+        },
+        "payment-badge-6": {
+          "type": "payment_badge",
+          "settings": {
+            "label": "COD",
+            "highlight": true
+          }
+        }
+      },
+      "block_order": [
+        "feature-pill-1",
+        "feature-pill-2",
+        "feature-pill-3",
+        "feature-pill-4",
+        "benefit-1",
+        "benefit-2",
+        "benefit-3",
+        "benefit-4",
+        "payment-badge-1",
+        "payment-badge-2",
+        "payment-badge-3",
+        "payment-badge-4",
+        "payment-badge-5",
+        "payment-badge-6"
+      ],
+      "settings": {}
+    },
+    "faq": {
+      "type": "eis-faq-accordion",
+      "blocks": {
+        "question-1": {
+          "type": "question",
+          "settings": {
+            "question": "Why do I need this oil?",
+            "answer": "<p>Because most balms only warm the skin. EIS is a Mahanarayan-and-sesame oil base carrying 15+ herbs into the muscle and joint, so relief goes deeper and holds longer — for knees, lower back, shoulders and everyday stiffness.</p>"
+          }
+        },
+        "question-2": {
+          "type": "question",
+          "settings": {
+            "question": "What's actually in it?",
+            "answer": "<p>Nirgundi, Rasna, Ashwagandha, Nilgiri (eucalyptus), Gandhapura, Pudina, Lawang, Dalchini, Kapoor, Sunthi, Erand Mool and more — in a Til Taila (sesame) and Mahanarayan oil base. No synthetic actives.</p>"
+          }
+        },
+        "question-3": {
+          "type": "question",
+          "settings": {
+            "question": "How and when do I apply it?",
+            "answer": "<p>Warm a little oil, apply to the affected area and massage in circular motion for 5–10 minutes. Best at night before bed; twice daily during flare-ups. External use only.</p>"
+          }
+        },
+        "question-4": {
+          "type": "question",
+          "settings": {
+            "question": "Is there a guarantee?",
+            "answer": "<p>Yes — use it nightly for 7 days. If you don't feel a difference, contact us and we'll refund every rupee. No forms, no arguing.</p>"
+          }
+        },
+        "question-5": {
+          "type": "question",
+          "settings": {
+            "question": "When will it arrive?",
+            "answer": "<p>Orders ship within 24 hours and reach most Indian pin codes in 3–5 days. You'll get a tracking link by SMS and WhatsApp.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question-1",
+        "question-2",
+        "question-3",
+        "question-4",
+        "question-5"
+      ],
+      "settings": {}
+    },
+    "trust": {
+      "type": "eis-trust-badges",
+      "blocks": {
+        "badge-1": {
+          "type": "badge",
+          "settings": {
+            "icon": "⚗",
+            "label": "LAB\nTESTED"
+          }
+        },
+        "badge-2": {
+          "type": "badge",
+          "settings": {
+            "icon": "☘",
+            "label": "15+ AYURVEDIC\nHERBS"
+          }
+        },
+        "badge-3": {
+          "type": "badge",
+          "settings": {
+            "icon": "✷",
+            "label": "GMP CERTIFIED\nFACILITY"
+          }
+        }
+      },
+      "block_order": [
+        "badge-1",
+        "badge-2",
+        "badge-3"
+      ],
+      "settings": {}
+    },
+    "videos": {
+      "type": "eis-video-testimonials",
+      "blocks": {
+        "clip-1": {
+          "type": "clip",
+          "settings": {
+            "caption": "\"Knees feel loose again\"",
+            "placeholder_note": "UGC video — knee pain"
+          }
+        },
+        "clip-2": {
+          "type": "clip",
+          "settings": {
+            "caption": "\"Slept through the night\"",
+            "placeholder_note": "UGC video — back pain"
+          }
+        },
+        "clip-3": {
+          "type": "clip",
+          "settings": {
+            "caption": "Why the oil base matters",
+            "placeholder_note": "Vaidya / expert clip"
+          }
+        }
+      },
+      "block_order": [
+        "clip-1",
+        "clip-2",
+        "clip-3"
+      ],
+      "settings": {}
+    },
+    "stats": {
+      "type": "eis-stats-block",
+      "blocks": {
+        "stat-1": {
+          "type": "stat",
+          "settings": {
+            "value": "89%",
+            "label": "reported less stiffness and pain within the first week",
+            "percent": 89,
+            "icon": "☾"
+          }
+        },
+        "stat-2": {
+          "type": "stat",
+          "settings": {
+            "value": "92%",
+            "label": "noticed relief lasting longer than balms or sprays",
+            "percent": 92,
+            "icon": "❍"
+          }
+        },
+        "stat-3": {
+          "type": "stat",
+          "settings": {
+            "value": "86%",
+            "label": "said they moved more easily within 30 days",
+            "percent": 86,
+            "icon": "✦"
+          }
+        }
+      },
+      "block_order": [
+        "stat-1",
+        "stat-2",
+        "stat-3"
+      ],
+      "settings": {}
+    },
+    "ingredients": {
+      "type": "eis-ingredients-grid",
+      "blocks": {
+        "herb-1": {
+          "type": "herb",
+          "settings": {
+            "name": "Nirgundi",
+            "role": "the anti-inflammatory herb",
+            "detail": "<p>Vitex negundo, 3ml per 100ml. Traditionally used to calm swelling and dull throbbing pain in joints and lower back.</p>",
+            "color_from": "#8E4F2A",
+            "color_to": "#3B1F10"
+          }
+        },
+        "herb-2": {
+          "type": "herb",
+          "settings": {
+            "name": "Rasna",
+            "role": "the joint-mobility herb",
+            "detail": "<p>Pluchea lanceolata, 2ml per 100ml. A classical Ayurvedic joint herb used where movement feels restricted or creaky.</p>",
+            "color_from": "#7A6A3A",
+            "color_to": "#2E2812"
+          }
+        },
+        "herb-3": {
+          "type": "herb",
+          "settings": {
+            "name": "Ashwagandha",
+            "role": "the muscle-recovery herb",
+            "detail": "<p>Withania somnifera, 2ml per 100ml. Applied topically to help tired, overworked muscle recover overnight.</p>",
+            "color_from": "#A98B5C",
+            "color_to": "#4A3A20"
+          }
+        },
+        "herb-4": {
+          "type": "herb",
+          "settings": {
+            "name": "Nilgiri",
+            "role": "the warming relief herb",
+            "detail": "<p>Eucalyptus globulus, 5ml per 100ml. Creates the warm, opening sensation that helps the massage reach deeper.</p>",
+            "color_from": "#4E7A55",
+            "color_to": "#16301C"
+          }
+        },
+        "herb-5": {
+          "type": "herb",
+          "settings": {
+            "name": "Gandhapura",
+            "role": "the deep-penetration herb",
+            "detail": "<p>Gaultheria fragrantissima, 5ml per 100ml. Carries the formula past the skin barrier into the aching tissue.</p>",
+            "color_from": "#B9A06A",
+            "color_to": "#4C3E1E"
+          }
+        },
+        "herb-6": {
+          "type": "herb",
+          "settings": {
+            "name": "Pudina",
+            "role": "the cooling comfort herb",
+            "detail": "<p>Mentha arvensis, 4ml per 100ml. Balances the warmth with a clean cooling finish so nothing feels harsh.</p>",
+            "color_from": "#6FA07A",
+            "color_to": "#1E3A26"
+          }
+        }
+      },
+      "block_order": [
+        "herb-1",
+        "herb-2",
+        "herb-3",
+        "herb-4",
+        "herb-5",
+        "herb-6"
+      ],
+      "settings": {}
+    },
+    "how-to-use": {
+      "type": "eis-how-to-use",
+      "blocks": {
+        "step-1": {
+          "type": "step",
+          "settings": {
+            "title": "Warm it",
+            "text": "Warm a little oil between your palms, or stand the bottle in warm water for a minute. Comfortably warm — never hot.",
+            "icon": "☾"
+          }
+        },
+        "step-2": {
+          "type": "step",
+          "settings": {
+            "title": "Apply to the sore area",
+            "text": "Knee, lower back, shoulder, neck or calf. Use enough to cover the area in a thin film.",
+            "icon": "❍"
+          }
+        },
+        "step-3": {
+          "type": "step",
+          "settings": {
+            "title": "Massage in circular motion",
+            "text": "Slow, firm circles until the oil absorbs and the area feels warm.",
+            "time_label": "5–10 MINUTES",
+            "icon": "✦"
+          }
+        },
+        "step-4": {
+          "type": "step",
+          "settings": {
+            "title": "Nightly, before bed",
+            "text": "Best at night so it works while you sleep. Twice daily during a flare-up.",
+            "time_label": "EVERY NIGHT",
+            "icon": "☘"
+          }
+        },
+        "safety-note-1": {
+          "type": "safety_note",
+          "settings": {
+            "text": "<b>External use only.</b> Do not swallow. Keep away from eyes and broken skin."
+          }
+        },
+        "safety-note-2": {
+          "type": "safety_note",
+          "settings": {
+            "text": "<b>Safe for daily use.</b> Gentle enough to apply every night, long-term."
+          }
+        },
+        "safety-note-3": {
+          "type": "safety_note",
+          "settings": {
+            "text": "<b>Patch test first if you have sensitive skin.</b> Apply a little to your inner forearm and wait 24 hours."
+          }
+        }
+      },
+      "block_order": [
+        "step-1",
+        "step-2",
+        "step-3",
+        "step-4",
+        "safety-note-1",
+        "safety-note-2",
+        "safety-note-3"
+      ],
+      "settings": {}
+    },
+    "timeline": {
+      "type": "eis-timeline",
+      "blocks": {
+        "stage-1": {
+          "type": "stage",
+          "settings": {
+            "badge": "NIGHT 1–2",
+            "placeholder_note": "night massage",
+            "point_1": "Warm it, massage it in before bed.",
+            "point_2": "The area feels lighter and stiffness starts to ease."
+          }
+        },
+        "stage-2": {
+          "type": "stage",
+          "settings": {
+            "badge": "DAY 3–7",
+            "placeholder_note": "morning stretch",
+            "point_1": "Morning stiffness eases.",
+            "point_2": "You wake up moving more freely."
+          }
+        },
+        "stage-3": {
+          "type": "stage",
+          "settings": {
+            "badge": "WEEK 2–4",
+            "placeholder_note": "walk / stairs",
+            "point_1": "Relief lasts longer through the day.",
+            "point_2": "Back on your walks, stairs and daily activities."
+          }
+        },
+        "stage-4": {
+          "type": "stage",
+          "settings": {
+            "badge": "WEEK 4+",
+            "placeholder_note": "family photo",
+            "point_1": "Consistent nightly use keeps joints loose and comfortable long-term."
+          }
+        }
+      },
+      "block_order": [
+        "stage-1",
+        "stage-2",
+        "stage-3",
+        "stage-4"
+      ],
+      "settings": {}
+    },
+    "comparison": {
+      "type": "eis-comparison-table",
+      "blocks": {
+        "row-1": {
+          "type": "row",
+          "settings": {
+            "label": "HERBS",
+            "us_value": "15+ Ayurvedic herbs, full-spectrum",
+            "them_value": "1–2 synthetic actives"
+          }
+        },
+        "row-2": {
+          "type": "row",
+          "settings": {
+            "label": "ACTION",
+            "us_value": "Absorbs into muscle & joint",
+            "them_value": "Sits on skin, wears off in an hour"
+          }
+        },
+        "row-3": {
+          "type": "row",
+          "settings": {
+            "label": "BASE",
+            "us_value": "Sesame & Mahanarayan oil",
+            "them_value": "Chemical gel / menthol"
+          }
+        },
+        "row-4": {
+          "type": "row",
+          "settings": {
+            "label": "TESTING",
+            "us_value": "Lab tested every batch",
+            "them_value": "Scattered verification"
+          }
+        },
+        "row-5": {
+          "type": "row",
+          "settings": {
+            "label": "GUARANTEE",
+            "us_value": "7-day money back",
+            "them_value": "None"
+          }
+        }
+      },
+      "block_order": [
+        "row-1",
+        "row-2",
+        "row-3",
+        "row-4",
+        "row-5"
+      ],
+      "settings": {}
+    },
+    "offer-repeat": {
+      "type": "eis-offer-repeat",
+      "settings": {}
+    },
+    "guarantee": {
+      "type": "eis-guarantee-block",
+      "settings": {}
+    },
+    "reviews": {
+      "type": "eis-reviews",
+      "blocks": {
+        "review-1": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "rating_label": "Rated 4.8",
+            "quote": "\"My knees used to lock up when I stood after sitting. A week of nightly massage and that first step doesn't hurt anymore. Smells herbal, not chemical.\"",
+            "name": "Sunita K.",
+            "meta": "✔ Verified | Purchased 3rd August"
+          }
+        },
+        "review-2": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "rating_label": "Rated 4.9",
+            "quote": "\"Lower back pain from twelve-hour driving shifts. Balms gave me twenty minutes; this actually lasts the night and I wake up straighter.\"",
+            "name": "Imran S.",
+            "meta": "✔ Verified | Purchased 19th July"
+          }
+        },
+        "review-3": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "rating_label": "Rated 5.0",
+            "quote": "\"Bought it for my mother's joint pain. She's 63 and back to her evening walks. We've ordered the 5-bottle pack for the family.\"",
+            "name": "Priya D.",
+            "meta": "✔ Verified | Purchased 28th July"
+          }
+        }
+      },
+      "block_order": [
+        "review-1",
+        "review-2",
+        "review-3"
+      ],
+      "settings": {}
+    },
+    "footer": {
+      "type": "eis-footer",
+      "blocks": {
+        "link-1": {
+          "type": "link",
+          "settings": {
+            "label": "Order Tracker"
+          }
+        },
+        "link-2": {
+          "type": "link",
+          "settings": {
+            "label": "Shipping Policy"
+          }
+        },
+        "link-3": {
+          "type": "link",
+          "settings": {
+            "label": "Refund Policy"
+          }
+        },
+        "link-4": {
+          "type": "link",
+          "settings": {
+            "label": "Privacy Policy"
+          }
+        },
+        "link-5": {
+          "type": "link",
+          "settings": {
+            "label": "Contact Information"
+          }
+        },
+        "certification-1": {
+          "type": "certification",
+          "settings": {
+            "label": "MADE IN INDIA 🇮🇳"
+          }
+        },
+        "certification-2": {
+          "type": "certification",
+          "settings": {
+            "label": "GMP CERTIFIED"
+          }
+        },
+        "payment-badge-1": {
+          "type": "payment_badge",
+          "settings": {
+            "label": "UPI"
+          }
+        },
+        "payment-badge-2": {
+          "type": "payment_badge",
+          "settings": {
+            "label": "RuPay"
+          }
+        },
+        "payment-badge-3": {
+          "type": "payment_badge",
+          "settings": {
+            "label": "VISA"
+          }
+        },
+        "payment-badge-4": {
+          "type": "payment_badge",
+          "settings": {
+            "label": "MASTERCARD"
+          }
+        },
+        "payment-badge-5": {
+          "type": "payment_badge",
+          "settings": {
+            "label": "PAYTM"
+          }
+        },
+        "payment-badge-6": {
+          "type": "payment_badge",
+          "settings": {
+            "label": "COD",
+            "highlight": true
+          }
+        }
+      },
+      "block_order": [
+        "link-1",
+        "link-2",
+        "link-3",
+        "link-4",
+        "link-5",
+        "certification-1",
+        "certification-2",
+        "payment-badge-1",
+        "payment-badge-2",
+        "payment-badge-3",
+        "payment-badge-4",
+        "payment-badge-5",
+        "payment-badge-6"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "announcement",
+    "hero",
+    "faq",
+    "trust",
+    "videos",
+    "stats",
+    "ingredients",
+    "how-to-use",
+    "timeline",
+    "comparison",
+    "offer-repeat",
+    "guarantee",
+    "reviews",
+    "footer"
+  ]
+}
