@@ -319,7 +319,7 @@
           "settings": {
             "name": "Nirgundi",
             "role": "the anti-inflammatory herb",
-            "detail": "<p>Vitex negundo, 3ml per 100ml. Traditionally used to calm swelling and dull throbbing pain in joints and lower back.</p>",
+            "detail": "<p>Calms swelling and dulls the throb in stiff joints and the lower back.</p>",
             "color_from": "#8E4F2A",
             "color_to": "#3B1F10"
           }
@@ -329,7 +329,7 @@
           "settings": {
             "name": "Rasna",
             "role": "the joint-mobility herb",
-            "detail": "<p>Pluchea lanceolata, 2ml per 100ml. A classical Ayurvedic joint herb used where movement feels restricted or creaky.</p>",
+            "detail": "<p>The classical joint herb, used where movement feels restricted or creaky.</p>",
             "color_from": "#7A6A3A",
             "color_to": "#2E2812"
           }
@@ -339,7 +339,7 @@
           "settings": {
             "name": "Ashwagandha",
             "role": "the muscle-recovery herb",
-            "detail": "<p>Withania somnifera, 2ml per 100ml. Applied topically to help tired, overworked muscle recover overnight.</p>",
+            "detail": "<p>Helps tired, overworked muscle recover overnight.</p>",
             "color_from": "#A98B5C",
             "color_to": "#4A3A20"
           }
@@ -349,7 +349,7 @@
           "settings": {
             "name": "Nilgiri",
             "role": "the warming relief herb",
-            "detail": "<p>Eucalyptus globulus, 5ml per 100ml. Creates the warm, opening sensation that helps the massage reach deeper.</p>",
+            "detail": "<p>Creates the warm, opening sensation that lets the massage reach deeper.</p>",
             "color_from": "#4E7A55",
             "color_to": "#16301C"
           }
@@ -359,7 +359,7 @@
           "settings": {
             "name": "Gandhapura",
             "role": "the deep-penetration herb",
-            "detail": "<p>Gaultheria fragrantissima, 5ml per 100ml. Carries the formula past the skin barrier into the aching tissue.</p>",
+            "detail": "<p>Carries the formula past the skin barrier and into the aching tissue.</p>",
             "color_from": "#B9A06A",
             "color_to": "#4C3E1E"
           }
@@ -369,7 +369,7 @@
           "settings": {
             "name": "Pudina",
             "role": "the cooling comfort herb",
-            "detail": "<p>Mentha arvensis, 4ml per 100ml. Balances the warmth with a clean cooling finish so nothing feels harsh.</p>",
+            "detail": "<p>Balances the warmth with a clean cooling finish so nothing feels harsh.</p>",
             "color_from": "#6FA07A",
             "color_to": "#1E3A26"
           }

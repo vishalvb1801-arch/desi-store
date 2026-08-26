@@ -53,6 +53,11 @@ publishing against the live storefront are both blocked.
 
 ## Known gaps
 
+- **The herb tiles have no photos.** The card image is now a full-width
+  rectangle (`image_ratio`, default 4:3, `image_radius` 8px) instead of a
+  42px circle, but all six herb blocks still have an empty `image`, so each
+  falls back to its two-tone gradient. Pick a plant photo per block in the
+  theme editor; `object-fit: cover` crops them to the tile.
 - **The bottle cut-out is derived, not an original asset.** The merchant's
   render is a JPEG on solid black. `assets/eis-bottle-cutout.png` in this
   repo was produced from it by flood-filling the border-connected black
