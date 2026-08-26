@@ -1,9 +1,11 @@
 {%- comment -%}
   EIS — Timeline ("What to expect")
   ------------------------------------------------------------------
-  Stages down a connecting rail, each a card with a stage badge and up to
-  three outcome lines. Empty image slots keep the design's striped
-  placeholder so the rhythm is right before real photos land.
+  Stages down a connecting rail. Each stage is a full-width card whose top
+  edge is straddled by a round photo on the left and a stage pill on the
+  right; a hairline runs between consecutive cards. Empty image slots keep
+  the design's striped placeholder so the rhythm is right before real
+  photos land.
 {%- endcomment -%}
 
 {% render 'eis-fonts' %}
@@ -22,28 +24,52 @@
   }
   .eis-time__title {
     font-family: var(--eis-serif);
-    font-size: 28px;
+    font-size: {{ section.settings.heading_size }}px;
     font-weight: 600;
     color: var(--eis-cream-light);
     text-align: center;
     margin: 0 0 24px;
     line-height: 1.18;
   }
-  .eis-time__row { display: flex; gap: 12px; margin-bottom: 16px; }
-  .eis-time__row:last-of-type { margin-bottom: 0; }
-  .eis-time__rail {
-    flex: none;
+  .eis-time__list {
+    --eis-marker: {{ section.settings.marker_size }}px;
+    --eis-gap: {{ section.settings.stage_gap }}px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 6px;
+    gap: var(--eis-gap);
+    /* room for the first card's circle, which hangs above it */
+    padding-top: calc(var(--eis-marker) * .46);
+  }
+  .eis-time__row { position: relative; }
+  /* The rail: one hairline per gap, centred on the circle below it. That
+     circle covers the line's lower end, so it reads as running into the photo
+     rather than through it. */
+  .eis-time__row + .eis-time__row::before {
+    content: "";
+    position: absolute;
+    left: calc(16px + var(--eis-marker) / 2);
+    top: calc(-1 * var(--eis-gap));
+    width: 1px;
+    height: var(--eis-gap);
+    background: rgba(246, 231, 200, .35);
+  }
+  .eis-time__card {
+    background: #FFFDF8;
+    border-radius: 14px;
+    /* top padding clears the circle that overlaps this edge */
+    padding: calc(var(--eis-marker) * .58) 16px 16px;
+    position: relative;
   }
   .eis-time__marker {
-    width: 54px;
-    height: 54px;
+    position: absolute;
+    top: calc(var(--eis-marker) * -.46);
+    left: 16px;
+    width: var(--eis-marker);
+    height: var(--eis-marker);
     border-radius: 999px;
     overflow: hidden;
     background: repeating-linear-gradient(135deg, #EDE1CE 0 6px, #F9F1E4 6px 12px);
+    box-shadow: 0 0 0 3px var(--eis-maroon-deep);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -53,26 +79,18 @@
     padding: 4px;
   }
   .eis-time__marker img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .eis-time__line { width: 1px; flex: 1; background: rgba(246, 231, 200, .3); }
-  .eis-time__card {
-    flex: 1;
-    min-width: 0;
-    background: #FFFDF8;
-    border-radius: 11px;
-    padding: 14px;
-    position: relative;
-  }
   .eis-time__badge {
     position: absolute;
-    top: 12px;
-    right: 12px;
+    top: -11px;
+    right: 16px;
     background: var(--eis-green);
     color: #fff;
-    font-size: 9px;
+    font-size: 10px;
     font-weight: 700;
-    letter-spacing: .07em;
-    padding: 3px 8px;
-    border-radius: 5px;
+    letter-spacing: .08em;
+    padding: 5px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
   }
   .eis-time__point {
     display: flex;
@@ -81,15 +99,26 @@
     line-height: 1.45;
     color: var(--eis-ink);
   }
-  .eis-time__point:first-of-type { margin-top: 22px; }
-  .eis-time__point + .eis-time__point { margin-top: 8px; }
-  .eis-time__tick { color: var(--eis-green); font-size: 12px; flex: none; }
+  .eis-time__point + .eis-time__point { margin-top: 9px; }
+  .eis-time__tick {
+    flex: none;
+    width: 16px;
+    height: 16px;
+    margin-top: 1px;
+    border-radius: 5px;
+    background: var(--eis-green);
+    color: #fff;
+    font-size: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .eis-time__note {
     font-size: 12px;
     line-height: 1.55;
     color: #D9C6A2;
     text-align: center;
-    margin: 22px 0 0;
+    margin: 26px 0 0;
   }
 {% endstyle %}
 
@@ -99,44 +128,46 @@
       <h2 class="eis-time__title">{{ section.settings.heading | newline_to_br }}</h2>
     {%- endif -%}
 
-    {%- for block in section.blocks -%}
-      <div class="eis-time__row" {{ block.shopify_attributes }}>
-        <div class="eis-time__rail">
-          <div class="eis-time__marker" aria-hidden="true">
-            {%- if block.settings.image != blank -%}
-              {{ block.settings.image | image_url: width: 160 | image_tag: widths: '108, 160', sizes: '54px', loading: 'lazy', alt: '' }}
-            {%- else -%}
-              {{ block.settings.placeholder_note }}
+    <div class="eis-time__list">
+      {%- for block in section.blocks -%}
+        <div class="eis-time__row" {{ block.shopify_attributes }}>
+          <div class="eis-time__card">
+            <div class="eis-time__marker" aria-hidden="true">
+              {%- if block.settings.image != blank -%}
+                {{
+                  block.settings.image
+                  | image_url: width: 220
+                  | image_tag: widths: '110, 160, 220', sizes: '72px', loading: 'lazy', alt: ''
+                }}
+              {%- else -%}
+                {{ block.settings.placeholder_note }}
+              {%- endif -%}
+            </div>
+            {%- if block.settings.badge != blank -%}
+              <div class="eis-time__badge">{{ block.settings.badge }}</div>
+            {%- endif -%}
+            {%- if block.settings.point_1 != blank -%}
+              <div class="eis-time__point">
+                <span class="eis-time__tick" aria-hidden="true">✓</span>
+                <span>{{ block.settings.point_1 }}</span>
+              </div>
+            {%- endif -%}
+            {%- if block.settings.point_2 != blank -%}
+              <div class="eis-time__point">
+                <span class="eis-time__tick" aria-hidden="true">✓</span>
+                <span>{{ block.settings.point_2 }}</span>
+              </div>
+            {%- endif -%}
+            {%- if block.settings.point_3 != blank -%}
+              <div class="eis-time__point">
+                <span class="eis-time__tick" aria-hidden="true">✓</span>
+                <span>{{ block.settings.point_3 }}</span>
+              </div>
             {%- endif -%}
           </div>
-          {%- unless forloop.last -%}<div class="eis-time__line"></div>{%- endunless -%}
         </div>
-
-        <div class="eis-time__card">
-          {%- if block.settings.badge != blank -%}
-            <div class="eis-time__badge">{{ block.settings.badge }}</div>
-          {%- endif -%}
-          {%- if block.settings.point_1 != blank -%}
-            <div class="eis-time__point">
-              <span class="eis-time__tick" aria-hidden="true">✓</span>
-              <span>{{ block.settings.point_1 }}</span>
-            </div>
-          {%- endif -%}
-          {%- if block.settings.point_2 != blank -%}
-            <div class="eis-time__point">
-              <span class="eis-time__tick" aria-hidden="true">✓</span>
-              <span>{{ block.settings.point_2 }}</span>
-            </div>
-          {%- endif -%}
-          {%- if block.settings.point_3 != blank -%}
-            <div class="eis-time__point">
-              <span class="eis-time__tick" aria-hidden="true">✓</span>
-              <span>{{ block.settings.point_3 }}</span>
-            </div>
-          {%- endif -%}
-        </div>
-      </div>
-    {%- endfor -%}
+      {%- endfor -%}
+    </div>
 
     {%- if section.settings.note != blank -%}
       <p class="eis-time__note">{{ section.settings.note }}</p>
@@ -157,6 +188,37 @@
       "label": "Heading",
       "info": "Line breaks are kept.",
       "default": "What to Expect\nWhen You Start\nUsing EIS Nightly"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 24,
+      "max": 44,
+      "step": 1,
+      "unit": "px",
+      "default": 34
+    },
+    {
+      "type": "range",
+      "id": "marker_size",
+      "label": "Photo circle size",
+      "min": 48,
+      "max": 96,
+      "step": 4,
+      "unit": "px",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "stage_gap",
+      "label": "Space between stages",
+      "info": "The connecting hairline fills this gap.",
+      "min": 24,
+      "max": 96,
+      "step": 4,
+      "unit": "px",
+      "default": 56
     },
     {
       "type": "text",
