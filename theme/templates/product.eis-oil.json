@@ -400,7 +400,7 @@
           "type": "step",
           "settings": {
             "title": "Warm it",
-            "text": "Warm a little oil between your palms, or stand the bottle in warm water for a minute. Comfortably warm — never hot.",
+            "text": "Rub a little between your palms until it feels warm — never hot.",
             "icon": "☾"
           }
         },
@@ -408,7 +408,7 @@
           "type": "step",
           "settings": {
             "title": "Apply to the sore area",
-            "text": "Knee, lower back, shoulder, neck or calf. Use enough to cover the area in a thin film.",
+            "text": "Knee, back, shoulder, neck or calf. Enough for a thin film.",
             "icon": "❍"
           }
         },
@@ -416,7 +416,7 @@
           "type": "step",
           "settings": {
             "title": "Massage in circular motion",
-            "text": "Slow, firm circles until the oil absorbs and the area feels warm.",
+            "text": "Slow, firm circles until it absorbs and the area feels warm.",
             "time_label": "5–10 MINUTES",
             "icon": "✦"
           }
@@ -425,7 +425,7 @@
           "type": "step",
           "settings": {
             "title": "Nightly, before bed",
-            "text": "Best at night so it works while you sleep. Twice daily during a flare-up.",
+            "text": "Best at night, so it works while you sleep. Twice daily in a flare-up.",
             "time_label": "EVERY NIGHT",
             "icon": "☘"
           }

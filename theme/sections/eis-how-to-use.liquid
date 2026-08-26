@@ -9,9 +9,13 @@
 
 {%- liquid
   assign safety_count = 0
+  assign media_count = 0
   for block in section.blocks
     if block.type == 'safety_note'
       assign safety_count = safety_count | plus: 1
+    endif
+    if block.type == 'step' and block.settings.image != blank
+      assign media_count = media_count | plus: 1
     endif
   endfor
 -%}
@@ -43,7 +47,7 @@
   }
   .eis-how__title {
     font-family: var(--eis-serif);
-    font-size: 28px;
+    font-size: {{ section.settings.heading_size }}px;
     font-weight: 600;
     color: var(--eis-maroon);
     margin: 10px 0 8px;
@@ -57,6 +61,7 @@
   }
   .eis-how__steps {
     display: flex;
+    align-items: stretch;
     gap: 10px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
@@ -70,6 +75,7 @@
        rather than clipping */
     flex: 0 0 calc((100% - ({{ section.settings.cards_in_view }} - 1) * 10px) / {{ section.settings.cards_in_view }});
     aspect-ratio: 1 / 1;
+    height: auto;
     scroll-snap-align: start;
     display: flex;
     flex-direction: column;
@@ -79,6 +85,29 @@
     border: 1px solid #EFE0C9;
     border-radius: 12px;
     padding: 14px;
+  }
+  /* Once any step carries a photo the cards stop forcing themselves square and
+     size to their content instead, stretching to match the tallest. */
+  .eis-how--media .eis-how__step { aspect-ratio: auto; }
+  .eis-how__step-media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: {{ section.settings.step_image_ratio }};
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+  .eis-how__step-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .eis-how__num--over {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .35);
   }
   .eis-how__num {
     width: 34px;
@@ -110,6 +139,7 @@
     align-items: center;
     justify-content: center;
   }
+  .eis-how__step-media + .eis-how__step-title { margin-top: 0; }
   .eis-how__step-title {
     margin-top: 11px;
     font-size: 14px;
@@ -175,7 +205,7 @@
   }
 {% endstyle %}
 
-<div class="eis-how">
+<div class="eis-how{% if media_count > 0 %} eis-how--media{% endif %}">
   <div class="eis-how__inner">
     <div class="eis-how__head">
       {%- if section.settings.eyebrow != blank -%}
@@ -195,12 +225,24 @@
         {%- if block.type == 'step' -%}
           {%- assign step_number = step_number | plus: 1 -%}
           <div class="eis-how__step" {{ block.shopify_attributes }}>
-            <div class="eis-how__num" aria-hidden="true">
+            {%- capture step_num -%}
               {{ step_number }}
               {%- if block.settings.icon != blank -%}
                 <span>{{ block.settings.icon }}</span>
               {%- endif -%}
-            </div>
+            {%- endcapture -%}
+            {%- if block.settings.image != blank -%}
+              <div class="eis-how__step-media">
+                {{
+                  block.settings.image
+                  | image_url: width: 480
+                  | image_tag: widths: '160, 240, 320, 480', sizes: '55vw', loading: 'lazy', alt: ''
+                }}
+                <div class="eis-how__num eis-how__num--over" aria-hidden="true">{{ step_num }}</div>
+              </div>
+            {%- else -%}
+              <div class="eis-how__num" aria-hidden="true">{{ step_num }}</div>
+            {%- endif -%}
             <div class="eis-how__step-title">{{ block.settings.title }}</div>
             {%- if block.settings.text != blank -%}
               <div class="eis-how__step-text">{{ block.settings.text }}</div>
@@ -278,6 +320,16 @@
       "default": "4 Steps,\nEvery Day"
     },
     {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 22,
+      "max": 46,
+      "step": 1,
+      "unit": "px",
+      "default": 34
+    },
+    {
       "type": "text",
       "id": "intro",
       "label": "Intro",
@@ -292,6 +344,17 @@
       "max": 2.6,
       "step": 0.1,
       "default": 1.6
+    },
+    {
+      "type": "select",
+      "id": "step_image_ratio",
+      "label": "Step photo shape",
+      "options": [
+        { "value": "1 / 1", "label": "Square" },
+        { "value": "4 / 3", "label": "Landscape" },
+        { "value": "16 / 9", "label": "Wide" }
+      ],
+      "default": "1 / 1"
     },
     {
       "type": "header",
@@ -411,7 +474,13 @@
           "type": "text",
           "id": "text",
           "label": "Text",
-          "default": "Warm a little oil between your palms until it feels comfortably warm — never hot."
+          "default": "Rub a little between your palms until it feels warm — never hot."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo (optional)",
+          "info": "Cropped to the shape set on the section. Cards stay square until at least one step has a photo."
         },
         {
           "type": "text",
@@ -447,7 +516,7 @@
           "type": "step",
           "settings": {
             "title": "Warm it",
-            "text": "Warm a little oil between your palms, or stand the bottle in warm water for a minute. Comfortably warm — never hot.",
+            "text": "Rub a little between your palms until it feels warm — never hot.",
             "icon": "☾"
           }
         },
@@ -455,7 +524,7 @@
           "type": "step",
           "settings": {
             "title": "Apply to the sore area",
-            "text": "Knee, lower back, shoulder, neck or calf. Use enough to cover the area in a thin film.",
+            "text": "Knee, back, shoulder, neck or calf. Enough for a thin film.",
             "icon": "❍"
           }
         },
@@ -463,7 +532,7 @@
           "type": "step",
           "settings": {
             "title": "Massage in circular motion",
-            "text": "Slow, firm circles until the oil absorbs and the area feels warm.",
+            "text": "Slow, firm circles until it absorbs and the area feels warm.",
             "time_label": "5–10 MINUTES",
             "icon": "✦"
           }
@@ -472,7 +541,7 @@
           "type": "step",
           "settings": {
             "title": "Nightly, before bed",
-            "text": "Best at night so it works while you sleep. Twice daily during a flare-up.",
+            "text": "Best at night, so it works while you sleep. Twice daily in a flare-up.",
             "time_label": "EVERY NIGHT",
             "icon": "☘"
           }
