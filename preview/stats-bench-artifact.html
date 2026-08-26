@@ -100,17 +100,17 @@
   .eis-herbs__title{
     font-family:var(--eis-serif);font-size:29px;font-weight:600;color:var(--eis-maroon-mid);
     text-align:center;margin:0;line-height:1.15;
-    padding-left:16%;padding-right:16%;position:relative;z-index:1;
+    padding-left:24%;padding-right:24%;position:relative;z-index:1;
   }
   .eis-herbs__bottle{
-    display:block;position:absolute;top:50%;margin-top:-36px;width:26%;
+    display:block;position:absolute;top:50%;margin-top:-48px;width:28%;
     pointer-events:none;
-    filter:drop-shadow(0 10px 14px rgba(0,0,0,.65));
+    filter:drop-shadow(0 10px 14px rgba(0,0,0,.8));
   }
   .eis-herbs__bottle > *{display:block;width:100%;height:auto;max-width:none}
-  .eis-herbs__bottle--l{left:-116px;transform:translateY(-50%)}
+  .eis-herbs__bottle--l{left:-68px;transform:translateY(-50%)}
   .eis-herbs__bottle--l > *{transform:rotate(45deg)}
-  .eis-herbs__bottle--r{right:-116px;transform:translateY(-50%)}
+  .eis-herbs__bottle--r{right:-68px;transform:translateY(-50%)}
   .eis-herbs__bottle--r > *{transform:rotate(-45deg)}
   .eis-herbs__intro{font-size:13px;line-height:1.55;color:var(--eis-muted);text-align:center;margin:12px 0 20px}
   .eis-herbs__intro strong{color:#2A1C18}
@@ -279,12 +279,12 @@
           <p class="why">Both lean inward — left clockwise, right anticlockwise.</p>
         </div>
         <div class="field">
-          <div class="row"><label for="bw">Bottle width</label><span class="val" id="vW">26%</span></div>
-          <input type="range" id="bw" min="14" max="48" step="2" value="26">
+          <div class="row"><label for="bw">Bottle width</label><span class="val" id="vW">28%</span></div>
+          <input type="range" id="bw" min="14" max="48" step="2" value="28">
         </div>
         <div class="field">
-          <div class="row"><label for="bb">Bleed past the edge</label><span class="val" id="vB">116px</span></div>
-          <input type="range" id="bb" min="0" max="240" step="4" value="116">
+          <div class="row"><label for="bb">Bleed past the edge</label><span class="val" id="vB">68px</span></div>
+          <input type="range" id="bb" min="0" max="240" step="4" value="68">
           <p class="why">A tall bottle laid at 45° sweeps wide — most of its length is meant to run off the screen.</p>
         </div>
         <div class="field">
@@ -292,18 +292,18 @@
           <input type="range" id="bh" min="100" max="420" step="10" value="150">
         </div>
         <div class="field">
-          <div class="row"><label for="oy">Nudge up or down</label><span class="val" id="vY">-36px</span></div>
-          <input type="range" id="oy" min="-140" max="60" step="4" value="-36">
+          <div class="row"><label for="oy">Nudge up or down</label><span class="val" id="vY">-48px</span></div>
+          <input type="range" id="oy" min="-140" max="60" step="4" value="-48">
           <p class="why" id="clipWarn">Negative lifts them over the curve, which is the idea. Far enough and they reach the stats copy.</p>
         </div>
         <div class="field">
-          <div class="row"><label for="hg">Space kept clear for the heading</label><span class="val" id="vG">16%</span></div>
-          <input type="range" id="hg" min="0" max="34" step="2" value="16">
+          <div class="row"><label for="hg">Space kept clear for the heading</label><span class="val" id="vG">24%</span></div>
+          <input type="range" id="hg" min="0" max="34" step="2" value="24">
           <p class="why" id="wrapWarn">Two rows. This is padding, so <em>lower</em> it if the heading breaks onto a third.</p>
         </div>
         <div class="field">
-          <div class="row"><label for="bs">Shadow strength</label><span class="val" id="vS">65%</span></div>
-          <input type="range" id="bs" min="0" max="100" step="5" value="65">
+          <div class="row"><label for="bs">Shadow strength</label><span class="val" id="vS">80%</span></div>
+          <input type="range" id="bs" min="0" max="100" step="5" value="80">
         </div>
       </section>
 
