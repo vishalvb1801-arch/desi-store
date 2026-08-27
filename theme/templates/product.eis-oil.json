@@ -90,43 +90,6 @@
             "title": "AYUSH Licensed & GMP Verified.",
             "text": "15+ Ayurvedic herbs, made in a certified facility."
           }
-        },
-        "payment-badge-1": {
-          "type": "payment_badge",
-          "settings": {
-            "label": "UPI"
-          }
-        },
-        "payment-badge-2": {
-          "type": "payment_badge",
-          "settings": {
-            "label": "RuPay"
-          }
-        },
-        "payment-badge-3": {
-          "type": "payment_badge",
-          "settings": {
-            "label": "VISA"
-          }
-        },
-        "payment-badge-4": {
-          "type": "payment_badge",
-          "settings": {
-            "label": "MASTERCARD"
-          }
-        },
-        "payment-badge-5": {
-          "type": "payment_badge",
-          "settings": {
-            "label": "PAYTM"
-          }
-        },
-        "payment-badge-6": {
-          "type": "payment_badge",
-          "settings": {
-            "label": "COD",
-            "highlight": true
-          }
         }
       },
       "block_order": [
@@ -136,13 +99,7 @@
         "benefit-2",
         "benefit-3",
         "benefit-4",
-        "benefit-5",
-        "payment-badge-1",
-        "payment-badge-2",
-        "payment-badge-3",
-        "payment-badge-4",
-        "payment-badge-5",
-        "payment-badge-6"
+        "benefit-5"
       ],
       "settings": {
         "review_avatar": "shopify://shop_images/8f1969dda710b211fab63d21ff4ae7c3.jpg",
@@ -169,7 +126,12 @@
         "doctors_gap": 8,
         "show_fallback_atc": true,
         "atc_label": "ADD TO CART",
-        "sticky_action": "add_to_cart"
+        "sticky_action": "add_to_cart",
+        "show_price": false,
+        "offers_heading": "",
+        "show_stock": false,
+        "cod_text": "",
+        "show_guarantee": false
       }
     },
     "faq": {
