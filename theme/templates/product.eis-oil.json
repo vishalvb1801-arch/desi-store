@@ -166,7 +166,10 @@
         "doctors_count": "1,192+",
         "doctors_label": "Doctors' Choice",
         "doctors_badge": "✓ Verified",
-        "doctors_gap": 8
+        "doctors_gap": 8,
+        "show_fallback_atc": true,
+        "atc_label": "ADD TO CART",
+        "sticky_action": "add_to_cart"
       }
     },
     "faq": {
