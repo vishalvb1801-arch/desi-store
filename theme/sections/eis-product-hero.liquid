@@ -73,7 +73,7 @@
   .eis-hero {
     max-width: var(--eis-max);
     margin: 0 auto;
-    padding: {{ section.settings.padding_top }}px 16px {{ section.settings.padding_bottom }}px;
+    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_x }}px {{ section.settings.padding_bottom }}px;
     background: #fff;
     font-family: var(--eis-sans);
     color: var(--eis-ink);
@@ -1296,6 +1296,17 @@
       "step": 20,
       "unit": "px",
       "default": 480
+    },
+    {
+      "type": "range",
+      "id": "padding_x",
+      "label": "Side padding",
+      "info": "The gutter down both sides of the buy box. 0 runs the gallery edge to edge.",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 16
     },
     {
       "type": "range",

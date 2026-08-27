@@ -1,0 +1,843 @@
+<title>Buy Box Calipers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Playfair+Display:wght@600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap">
+
+<style>
+/* ==========================================================================
+   BENCH CHROME
+   Tokenised for light / dark / unstamped-system.
+   The specimen inside the phone is deliberately NOT tokenised — it has to
+   render in the storefront's own colours whatever theme the bench is read in.
+   ========================================================================== */
+:root {
+  --ground: #F6F3EF;
+  --panel: #FFFFFF;
+  --sunk: #EDE8E2;
+  --line: #E2DAD1;
+  --ink: #241D19;
+  --muted: #6B5E56;
+  --accent: #A87A1E;
+  --accent-ink: #FFFFFF;
+  --band: rgba(201, 162, 74, .34);
+  --band-line: rgba(168, 122, 30, .9);
+  --shadow: 0 20px 44px rgba(36, 29, 25, .14);
+  --focus: #A87A1E;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #14100E;
+    --panel: #1E1917;
+    --sunk: #0E0B0A;
+    --line: #332B26;
+    --ink: #F3EEE8;
+    --muted: #9C8E84;
+    --accent: #E0B45E;
+    --accent-ink: #241D19;
+    --band: rgba(224, 180, 94, .30);
+    --band-line: rgba(224, 180, 94, .95);
+    --shadow: 0 20px 44px rgba(0, 0, 0, .5);
+    --focus: #E0B45E;
+  }
+}
+:root[data-theme="dark"] {
+  --ground: #14100E;
+  --panel: #1E1917;
+  --sunk: #0E0B0A;
+  --line: #332B26;
+  --ink: #F3EEE8;
+  --muted: #9C8E84;
+  --accent: #E0B45E;
+  --accent-ink: #241D19;
+  --band: rgba(224, 180, 94, .30);
+  --band-line: rgba(224, 180, 94, .95);
+  --shadow: 0 20px 44px rgba(0, 0, 0, .5);
+  --focus: #E0B45E;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+:where(a, button, input):focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 28px 20px 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+/* ---------- masthead ---------- */
+.masthead {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+.eyebrow {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+h1 {
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -.015em;
+  margin: 0;
+  text-wrap: balance;
+}
+.lede {
+  font-size: 14.5px;
+  color: var(--muted);
+  margin: 0;
+  max-width: 62ch;
+}
+
+/* ---------- two-column bench ---------- */
+.bench {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 26px;
+  align-items: start;
+}
+@media (min-width: 900px) {
+  .bench { grid-template-columns: 340px minmax(0, 1fr); gap: 34px; }
+  .rail { position: sticky; top: 24px; }
+}
+
+/* ---------- control rail ---------- */
+.rail { display: flex; flex-direction: column; gap: 16px; }
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.card__title {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0;
+}
+
+.dial { display: flex; flex-direction: column; gap: 7px; }
+.dial__top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+.dial__name { font-size: 14px; font-weight: 500; }
+.dial__val {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--accent);
+}
+.dial__note {
+  font-size: 11.5px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.dial__note b { color: var(--ink); font-weight: 500; }
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 22px;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 99px;
+  background: var(--sunk);
+  border: 1px solid var(--line);
+}
+input[type="range"]::-moz-range-track {
+  height: 4px;
+  border-radius: 99px;
+  background: var(--sunk);
+  border: 1px solid var(--line);
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  margin-top: -8px;
+  border-radius: 99px;
+  background: var(--accent);
+  border: 2px solid var(--panel);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 99px;
+  background: var(--accent);
+  border: 2px solid var(--panel);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+}
+
+/* ---------- segmented + toggles ---------- */
+.seg {
+  display: flex;
+  background: var(--sunk);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 3px;
+  gap: 3px;
+}
+.seg button {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 12px;
+  padding: 7px 4px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.seg button[aria-pressed="true"] {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.row { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn {
+  flex: 1 1 auto;
+  border: 1px solid var(--line);
+  background: var(--sunk);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 13px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.btn:hover { border-color: var(--accent); }
+.btn--go {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
+  font-weight: 500;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13.5px;
+  cursor: pointer;
+}
+.check input { accent-color: var(--accent); width: 16px; height: 16px; }
+
+/* ---------- readback ---------- */
+.readback {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 12.5px;
+  line-height: 1.75;
+  background: var(--sunk);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 12px 13px;
+  margin: 0;
+  white-space: pre;
+  overflow-x: auto;
+  color: var(--ink);
+}
+.hint { font-size: 12px; color: var(--muted); margin: 0; }
+
+/* ---------- specimen stage ---------- */
+.stagearea {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+.stagearea__bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.phone {
+  width: 390px;
+  max-width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: #fff;
+  transition: width .18s ease;
+}
+@media (prefers-reduced-motion: reduce) { .phone { transition: none; } }
+
+/* the measured region: hero padding drawn as bands over the live specimen */
+.measure { position: relative; }
+.band {
+  position: absolute;
+  background: var(--band);
+  z-index: 5;
+  pointer-events: none;
+  display: none;
+}
+.is-measuring .band { display: block; }
+.band--top { top: 0; left: 0; right: 0; height: var(--pt); border-bottom: 1px dashed var(--band-line); }
+.band--left { top: 0; bottom: 0; left: 0; width: var(--px); border-right: 1px dashed var(--band-line); }
+.band--right { top: 0; bottom: 0; right: 0; width: var(--px); border-left: 1px dashed var(--band-line); }
+.band--bottom { bottom: 0; left: 0; right: 0; height: var(--pb); border-top: 1px dashed var(--band-line); }
+.band__tag {
+  position: absolute;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 10px;
+  line-height: 1;
+  padding: 3px 5px;
+  border-radius: 4px;
+  background: var(--band-line);
+  color: #14100E;
+  white-space: nowrap;
+}
+.band--top .band__tag { top: 100%; left: 50%; transform: translate(-50%, 4px); }
+.band--left .band__tag { top: 190px; left: 100%; transform: translate(4px, 0); }
+.band--right .band__tag { top: 220px; right: 100%; transform: translate(-4px, 0); }
+.band--bottom .band__tag { bottom: 100%; left: 50%; transform: translate(-50%, -4px); }
+
+.zerotag {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 10px;
+  color: var(--muted);
+}
+
+/* ==========================================================================
+   SPECIMEN — a faithful copy of the storefront's own CSS.
+   Colours are literal on purpose: this is what the shopper sees, and it must
+   not follow the bench's theme.
+   ========================================================================== */
+.sp {
+  --eis-maroon: #7B1315;
+  --eis-maroon-deep: #5C0D0F;
+  --eis-gold: #C9A24A;
+  --eis-gold-light: #E3C46F;
+  --eis-cream: #FBF3E7;
+  --eis-cream-light: #F6E7C8;
+  --eis-ink: #2A1C18;
+  --eis-muted: #5E5147;
+  --eis-green: #1E7A4D;
+  --eis-line: #E7D9C3;
+  --eis-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --eis-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  background: #fff;
+}
+.sp * { box-sizing: border-box; }
+
+.sp-announce { background: var(--eis-maroon-deep); font-family: var(--eis-sans); }
+.sp-announce__viewport { display: flex; overflow: hidden; padding: 10px 0; }
+/* The live bar is a marquee. Frozen mid-scroll it just looks clipped, so the
+   bench shows the section's reduced-motion variant: wrapped and centred. */
+.sp-announce__group {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px 22px;
+  padding: 0 14px;
+}
+.sp-announce__item {
+  display: inline-flex;
+  align-items: center;
+  gap: .62em;
+  font-size: 12px;
+  color: var(--eis-cream-light);
+  white-space: nowrap;
+}
+.sp-announce__msg {
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  font-weight: 500;
+  line-height: 1.35;
+}
+.sp-icon { width: 1.22em; height: 1.22em; flex: none; color: var(--eis-gold); display: block; }
+
+.sp-hero {
+  padding: var(--pt) var(--px) var(--pb);
+  background: #fff;
+  font-family: var(--eis-sans);
+  color: var(--eis-ink);
+}
+.sp-hero__stage {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  background: radial-gradient(120% 90% at 50% 20%, #3A0F10 0%, #150606 70%);
+  border: 1px solid #E7D9C3;
+}
+.sp-hero__stage svg { display: block; width: 100%; height: 380px; object-fit: contain; }
+
+.sp-hero__rating { display: flex; align-items: center; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+.sp-stars { display: flex; gap: 2px; }
+.sp-stars i {
+  width: 17px;
+  height: 17px;
+  background: var(--eis-green);
+  color: #fff;
+  font-size: 11px;
+  font-style: normal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sp-hero__rating-text { font-size: 11.5px; color: var(--eis-muted); }
+.sp-hero__rating-text strong { color: var(--eis-ink); }
+.sp-hero__rating-count { font-size: 11.5px; color: #8A7A63; width: 100%; }
+
+.sp-hero__title {
+  font-family: var(--eis-serif);
+  font-size: 31px;
+  line-height: 1.12;
+  font-weight: 600;
+  color: var(--eis-maroon);
+  margin: 14px 0 0;
+}
+.sp-hero__subtitle { font-size: 14px; line-height: 1.5; color: var(--eis-muted); margin: 10px 0 0; }
+
+.sp-hero__benefits {
+  background: var(--eis-cream);
+  border: 1px solid #EFE0C9;
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.sp-hero__benefit { display: flex; gap: 11px; align-items: flex-start; }
+.sp-hero__check {
+  width: 19px;
+  height: 19px;
+  border-radius: 999px;
+  background: var(--eis-green);
+  color: #fff;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  margin-top: 1px;
+}
+.sp-hero__benefit-text { font-size: 13px; line-height: 1.45; }
+.sp-hero__benefit-text span { color: var(--eis-muted); }
+
+.sp-hero__price { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+.sp-hero__price-now { font-size: 26px; font-weight: 700; color: var(--eis-maroon); font-family: var(--eis-serif); }
+.sp-hero__price-was { font-size: 14px; color: #A79684; text-decoration: line-through; }
+.sp-hero__price-save {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  color: #3B0E0F;
+  background: var(--eis-gold);
+  border-radius: 4px;
+  padding: 3px 8px;
+}
+.sp-hero__price-unit { font-size: 11.5px; color: #8A7A63; width: 100%; }
+
+.sp-hero__offers-title {
+  font-family: var(--eis-serif);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--eis-ink);
+  margin: 24px 0 12px;
+}
+.sp-hero__stock {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 16px;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--eis-ink);
+}
+.sp-dot { color: var(--eis-green); font-size: 14px; line-height: 1; }
+
+.sp-pay { display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; margin-top: 14px; }
+.sp-pay span {
+  border: 1px solid var(--eis-line);
+  border-radius: 4px;
+  padding: 4px 7px;
+  font-size: 8px;
+  font-weight: 700;
+  color: var(--eis-muted);
+  letter-spacing: .04em;
+}
+.sp-pay span.is-highlight { border-color: var(--eis-green); color: var(--eis-green); }
+
+.sp-hero__guarantee {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  border: 1px solid #EFE0C9;
+  border-radius: 10px;
+  padding: 13px;
+  margin-top: 14px;
+  background: var(--eis-cream);
+}
+.sp-hero__guarantee-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: var(--eis-gold);
+  color: #3B0E0F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex: none;
+}
+.sp-hero__guarantee b { font-size: 12.5px; display: block; color: var(--eis-ink); }
+.sp-hero__guarantee a { font-size: 11px; color: var(--eis-maroon); text-decoration: none; }
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <span class="eyebrow">EIS &middot; product.eis-oil &middot; draft theme</span>
+    <h1>Buy Box Calipers</h1>
+    <p class="lede">
+      Drag the three gutters and read the numbers back to me. The sliders use the same
+      minimums, maximums and steps as the Shopify settings, so anything you land on here
+      is a value I can actually apply.
+    </p>
+  </header>
+
+  <div class="bench">
+    <!-- ------------------------------ controls ------------------------------ -->
+    <div class="rail">
+      <section class="card">
+        <h2 class="card__title">Gutters</h2>
+
+        <div class="dial">
+          <div class="dial__top">
+            <label class="dial__name" for="pt">Top &mdash; bar to gallery</label>
+            <span class="dial__val" id="ptOut">0px</span>
+          </div>
+          <input id="pt" type="range" min="0" max="60" step="2" value="0">
+          <p class="dial__note">Live now: <b>0px</b> &middot; steps of 2 &middot; was 14px before today</p>
+        </div>
+
+        <div class="dial">
+          <div class="dial__top">
+            <label class="dial__name" for="px">Sides &mdash; left &amp; right</label>
+            <span class="dial__val" id="pxOut">16px</span>
+          </div>
+          <input id="px" type="range" min="0" max="40" step="1" value="16">
+          <p class="dial__note">Live now: <b>16px</b> &middot; steps of 1 &middot; 0 runs the gallery edge to edge</p>
+        </div>
+
+        <div class="dial">
+          <div class="dial__top">
+            <label class="dial__name" for="pb">Bottom &mdash; box to trust row</label>
+            <span class="dial__val" id="pbOut">0px</span>
+          </div>
+          <input id="pb" type="range" min="0" max="60" step="4" value="0">
+          <p class="dial__note">Live now: <b>0px</b> &middot; steps of 4</p>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2 class="card__title">View</h2>
+        <div class="seg" role="group" aria-label="Preview width">
+          <button type="button" data-w="360" aria-pressed="false">360</button>
+          <button type="button" data-w="390" aria-pressed="true">390</button>
+          <button type="button" data-w="430" aria-pressed="false">430</button>
+        </div>
+        <label class="check">
+          <input type="checkbox" id="measure" checked>
+          Shade the gutters
+        </label>
+        <div class="row">
+          <button type="button" class="btn" id="reset">Back to live values</button>
+          <button type="button" class="btn" id="zero">Zero everything</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2 class="card__title">Send this back</h2>
+        <pre class="readback" id="readback"></pre>
+        <div class="row">
+          <button type="button" class="btn btn--go" id="copy">Copy values</button>
+        </div>
+        <p class="hint">Paste that into the chat and I'll set it on the draft theme.</p>
+      </section>
+    </div>
+
+    <!-- ------------------------------ specimen ------------------------------ -->
+    <div class="stagearea">
+      <div class="stagearea__bar">
+        <span id="widthLabel">390px viewport</span>
+        <span class="zerotag">gallery has no product photo yet &mdash; showing the placeholder</span>
+      </div>
+
+      <div class="phone" id="phone">
+        <div class="sp">
+          <!-- announcement bar, static copy of the live marquee -->
+          <div class="sp-announce">
+            <div class="sp-announce__viewport">
+              <div class="sp-announce__group">
+                <span class="sp-announce__item">
+                  <svg class="sp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5h11v10h-11z"></path><path d="M13.5 10h4l4 3.5v3h-8z"></path><circle cx="6.5" cy="18.5" r="1.9"></circle><circle cx="17" cy="18.5" r="1.9"></circle></svg>
+                  <span class="sp-announce__msg">Delivery in 3&ndash;4 days</span>
+                </span>
+                <span class="sp-announce__item">
+                  <svg class="sp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8.5" cy="7.5" r="3"></circle><path d="M2.5 19.5a6 6 0 0 1 12 0"></path><circle cx="17" cy="9" r="2.3"></circle><path d="M15.5 19.5a5 5 0 0 1 6-4.6"></path></svg>
+                  <span class="sp-announce__msg">36,243+ Families Without Pain</span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- the measured region -->
+          <div class="measure is-measuring" id="measureBox">
+            <div class="band band--top"><span class="band__tag" id="tagTop">0</span></div>
+            <div class="band band--left"><span class="band__tag" id="tagLeft">16</span></div>
+            <div class="band band--right"><span class="band__tag" id="tagRight">16</span></div>
+            <div class="band band--bottom"><span class="band__tag" id="tagBottom">0</span></div>
+
+            <div class="sp-hero">
+              <div class="sp-hero__stage">
+                <svg viewBox="0 0 280 300" aria-hidden="true">
+                  <g fill="none" stroke="#2A0C0D" stroke-width="2" stroke-linejoin="round">
+                    <rect x="112" y="34" width="56" height="30" rx="4"></rect>
+                    <path d="M104 64h72l16 34v154a14 14 0 0 1-14 14H102a14 14 0 0 1-14-14V98z"></path>
+                    <rect x="104" y="150" width="72" height="60" rx="3"></rect>
+                  </g>
+                </svg>
+              </div>
+
+              <div class="sp-hero__rating">
+                <div class="sp-stars" aria-hidden="true"><i>&#9733;</i><i>&#9733;</i><i>&#9733;</i><i>&#9733;</i><i>&#9733;</i></div>
+                <div class="sp-hero__rating-text">Rated <strong>4.8 / 5.0</strong> | 'Excellent'</div>
+                <div class="sp-hero__rating-count">Based on 2,400+ Reviews</div>
+              </div>
+
+              <h2 class="sp-hero__title">15-in-1 Ayurvedic<br>Pain Relief Oil</h2>
+              <p class="sp-hero__subtitle">Deep relief for joint, back, knee &amp; muscle pain &mdash; the traditional way.</p>
+
+              <div class="sp-hero__benefits">
+                <div class="sp-hero__benefit">
+                  <div class="sp-hero__check" aria-hidden="true">&#10003;</div>
+                  <div class="sp-hero__benefit-text"><strong>Fast-absorbing relief.</strong> <span>Soaks into the muscle &mdash; it doesn't just sit on the skin like a balm.</span></div>
+                </div>
+                <div class="sp-hero__benefit">
+                  <div class="sp-hero__check" aria-hidden="true">&#10003;</div>
+                  <div class="sp-hero__benefit-text"><strong>Eases stiffness.</strong> <span>Loosens tight, aching joints so you move freely again.</span></div>
+                </div>
+                <div class="sp-hero__benefit">
+                  <div class="sp-hero__check" aria-hidden="true">&#10003;</div>
+                  <div class="sp-hero__benefit-text"><strong>Built for long days.</strong> <span>Reduces the ache from all-day standing, sitting, or work.</span></div>
+                </div>
+              </div>
+
+              <div class="sp-hero__price">
+                <span class="sp-hero__price-now">&#8377;699</span>
+                <s class="sp-hero__price-was">&#8377;1,299</s>
+                <span class="sp-hero__price-save">SAVE 46%</span>
+                <span class="sp-hero__price-unit">1 Bottle &middot; 200ml &middot; inclusive of all taxes</span>
+              </div>
+
+              <h3 class="sp-hero__offers-title">Choose Your Supply</h3>
+
+              <div class="sp-hero__stock">
+                <span class="sp-dot" aria-hidden="true">&#9679;</span>
+                IN STOCK &mdash; DELIVERY IN 3&ndash;5 DAYS ACROSS INDIA
+              </div>
+
+              <div class="sp-pay">
+                <span>UPI</span><span>RuPay</span><span>VISA</span><span>MASTERCARD</span><span>PAYTM</span><span class="is-highlight">COD</span>
+              </div>
+
+              <div class="sp-hero__guarantee">
+                <div class="sp-hero__guarantee-icon" aria-hidden="true">&#10039;</div>
+                <div>
+                  <b>7-Day Money Back Guarantee</b>
+                  <a href="#">Click here to learn more</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var LIVE = { pt: 0, px: 16, pb: 0 };
+  var KEY = 'eis-buybox-calipers';
+
+  var pt = document.getElementById('pt');
+  var px = document.getElementById('px');
+  var pb = document.getElementById('pb');
+  var box = document.getElementById('measureBox');
+  var phone = document.getElementById('phone');
+  var readback = document.getElementById('readback');
+  var widthLabel = document.getElementById('widthLabel');
+
+  var out = { pt: document.getElementById('ptOut'), px: document.getElementById('pxOut'), pb: document.getElementById('pbOut') };
+  var tag = {
+    pt: document.getElementById('tagTop'),
+    pxl: document.getElementById('tagLeft'),
+    pxr: document.getElementById('tagRight'),
+    pb: document.getElementById('tagBottom')
+  };
+  var band = {
+    top: document.querySelector('.band--top'),
+    left: document.querySelector('.band--left'),
+    right: document.querySelector('.band--right'),
+    bottom: document.querySelector('.band--bottom')
+  };
+
+  function save() {
+    try {
+      window.localStorage.setItem(KEY, JSON.stringify({ pt: pt.value, px: px.value, pb: pb.value, w: phone.style.width }));
+    } catch (e) {}
+  }
+
+  function paint() {
+    var t = Number(pt.value), x = Number(px.value), b = Number(pb.value);
+
+    box.style.setProperty('--pt', t + 'px');
+    box.style.setProperty('--px', x + 'px');
+    box.style.setProperty('--pb', b + 'px');
+
+    out.pt.textContent = t + 'px';
+    out.px.textContent = x + 'px';
+    out.pb.textContent = b + 'px';
+
+    tag.pt.textContent = t;
+    tag.pxl.textContent = x;
+    tag.pxr.textContent = x;
+    tag.pb.textContent = b;
+
+    /* A zero gutter still paints its dashed edge, which reads as a stray rule
+       across the gallery. Nothing to measure, so take the whole band out. */
+    band.top.style.display = t === 0 ? 'none' : '';
+    band.left.style.display = x === 0 ? 'none' : '';
+    band.right.style.display = x === 0 ? 'none' : '';
+    band.bottom.style.display = b === 0 ? 'none' : '';
+
+    var changed = (t !== LIVE.pt || x !== LIVE.px || b !== LIVE.pb);
+    readback.textContent =
+      'eis-product-hero\n' +
+      '  padding_top     ' + t + 'px\n' +
+      '  padding_x       ' + x + 'px\n' +
+      '  padding_bottom  ' + b + 'px' +
+      (changed ? '' : '\n\n(unchanged from live)');
+
+    save();
+  }
+
+  [pt, px, pb].forEach(function (el) { el.addEventListener('input', paint); });
+
+  document.getElementById('measure').addEventListener('change', function () {
+    box.classList.toggle('is-measuring', this.checked);
+  });
+
+  document.getElementById('reset').addEventListener('click', function () {
+    pt.value = LIVE.pt; px.value = LIVE.px; pb.value = LIVE.pb; paint();
+  });
+  document.getElementById('zero').addEventListener('click', function () {
+    pt.value = 0; px.value = 0; pb.value = 0; paint();
+  });
+
+  var segButtons = document.querySelectorAll('.seg button');
+  function setWidth(w) {
+    phone.style.width = w + 'px';
+    widthLabel.textContent = w + 'px viewport';
+    for (var i = 0; i < segButtons.length; i++) {
+      segButtons[i].setAttribute('aria-pressed', segButtons[i].getAttribute('data-w') === String(w) ? 'true' : 'false');
+    }
+    save();
+  }
+  for (var i = 0; i < segButtons.length; i++) {
+    (function (btn) {
+      btn.addEventListener('click', function () { setWidth(Number(btn.getAttribute('data-w'))); });
+    })(segButtons[i]);
+  }
+
+  var copyBtn = document.getElementById('copy');
+  copyBtn.addEventListener('click', function () {
+    var text = readback.textContent;
+    function done() {
+      copyBtn.textContent = 'Copied';
+      window.setTimeout(function () { copyBtn.textContent = 'Copy values'; }, 1400);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, select);
+    } else {
+      select();
+    }
+    function select() {
+      /* Clipboard access can be blocked in an embedded frame — selecting the
+         text still leaves the reader one keystroke from copying it. */
+      var range = document.createRange();
+      range.selectNodeContents(readback);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      copyBtn.textContent = 'Selected — press copy';
+      window.setTimeout(function () { copyBtn.textContent = 'Copy values'; }, 2200);
+    }
+  });
+
+  /* Restore the last session's dials, if the browser kept them. */
+  var stored = null;
+  try { stored = JSON.parse(window.localStorage.getItem(KEY)); } catch (e) {}
+  if (stored) {
+    if (stored.pt != null) pt.value = stored.pt;
+    if (stored.px != null) px.value = stored.px;
+    if (stored.pb != null) pb.value = stored.pb;
+  }
+  setWidth(stored && stored.w ? parseInt(stored.w, 10) || 390 : 390);
+  paint();
+})();
+</script>
