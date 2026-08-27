@@ -744,9 +744,8 @@
     padding: 11px 14px;
     padding-bottom: calc(11px + env(safe-area-inset-bottom));
     display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 7px;
+    align-items: center;
+    gap: 11px;
     box-shadow: 0 -8px 22px rgba(59,14,15,.1);
     pointer-events: auto;
     transform: translateY(120%);
@@ -755,9 +754,10 @@
   }
   @media (prefers-reduced-motion: reduce) { .eis-sticky__inner { transition: none; } }
   .eis-sticky.is-visible .eis-sticky__inner { transform: translateY(0); }
-  .eis-sticky__row { display: flex; align-items: center; gap: 11px; }
-  /* On the narrowest phones the thumbnail costs 57px the title needs more. */
-  @media (max-width: 359px) { .eis-sticky__row .eis-sticky__thumb { display: none; } }
+  .eis-sticky__row { display: contents; }
+  /* The thumbnail costs 57px that the title and rating need. Above 390px
+     there is room for both; below it the copy wins. */
+  @media (max-width: 389px) { .eis-sticky__thumb { display: none; } }
   .eis-sticky__thumb {
     width: 46px;
     height: 46px;
@@ -768,11 +768,11 @@
     align-self: center;
   }
   .eis-sticky__thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
-  .eis-sticky__copy { flex: 1; min-width: 0; padding-top: 1px; }
+  .eis-sticky__copy { flex: 1; min-width: 0; }
   .eis-sticky__name {
     font-size: 13.5px;
     font-weight: 700;
-    line-height: 1.3;
+    line-height: 1.2;
     color: var(--eis-ink);
     white-space: nowrap;
     overflow: hidden;
@@ -780,12 +780,11 @@
   }
   .eis-sticky__price { font-size: 11px; color: #8A7A63; }
   .eis-sticky__price s { color: #B7A692; }
-  /* Its own full-width strip: on a 390px phone the copy column is ~155px and
-     this line needs ~226px, so inline next to the title it would always clip. */
   .eis-sticky__rating {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 3px;
+    margin-top: 1px;
     min-width: 0;
   }
   .eis-sticky__rating i {
@@ -793,14 +792,23 @@
     font-size: 10px;
     line-height: 1;
     color: {{ section.settings.color_star }};
-    letter-spacing: .5px;
+    letter-spacing: 0;
+    flex: none;
   }
   .eis-sticky__rating span {
-    font-size: 10.5px;
+    font-size: 10px;
+    line-height: 1.25;
     color: #6A5B4D;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    /* a flex item won't shrink past its own text without this, and would
+       run out under the button instead of ellipsising */
+    min-width: 0;
+  }
+  @media (max-width: 389px) {
+    .eis-sticky__rating i { font-size: 9px; }
+    .eis-sticky__rating span { font-size: 9.5px; }
   }
   .eis-sticky__btn {
     position: relative;
@@ -811,8 +819,8 @@
     font-family: var(--eis-sans);
     font-size: 12px;
     font-weight: 700;
-    letter-spacing: .09em;
-    padding: 15px 18px;
+    letter-spacing: .07em;
+    padding: 15px 16px;
     border-radius: 9px;
     cursor: pointer;
     flex: none;
@@ -1400,17 +1408,6 @@
     data-hero="EisHero-{{ section.id }}"
   >
     <div class="eis-sticky__inner">
-      {%- comment -%}
-        Same copy as the buy box's rating row, read from the same settings so
-        the two can't drift apart.
-      {%- endcomment -%}
-      {%- if section.settings.sticky_show_rating and section.settings.rating_text != blank -%}
-        <div class="eis-sticky__rating">
-          <i aria-hidden="true">{% for i in (1..section.settings.rating_stars) %}&#9733;{% endfor %}</i>
-          <span>{{ section.settings.rating_text }}</span>
-        </div>
-      {%- endif -%}
-      <div class="eis-sticky__row">
       <div class="eis-sticky__thumb">
         {%- if hero_image != blank -%}
           {{ hero_image | image_url: width: 120 | image_tag: widths: '80, 120', sizes: '40px', loading: 'lazy', alt: '' }}
@@ -1424,6 +1421,20 @@
             {%- if has_compare_at %} <s>{{ eis_variant.compare_at_price | money }}</s>{% endif -%}
           </div>
         {%- endif -%}
+        {%- comment -%}
+          The buy box's rating, from the same settings so the two can't drift.
+          sticky_rating_text overrides it where the full sentence is too wide
+          for this bar.
+        {%- endcomment -%}
+        {%- if section.settings.sticky_show_rating -%}
+          {%- assign sticky_rating = section.settings.sticky_rating_text | default: section.settings.rating_text -%}
+          {%- if sticky_rating != blank -%}
+            <div class="eis-sticky__rating">
+              <i aria-hidden="true">{% for i in (1..section.settings.rating_stars) %}&#9733;{% endfor %}</i>
+              <span>{{ sticky_rating }}</span>
+            </div>
+          {%- endif -%}
+        {%- endif -%}
       </div>
       <button
         type="button"
@@ -1435,7 +1446,6 @@
         <span class="eis-sticky__sheen" aria-hidden="true"></span>
         <span>{%- if eis_product.available -%}{{ section.settings.sticky_label }}{%- else -%}{{ section.settings.sold_out_label }}{%- endif -%}</span>
       </button>
-      </div>
     </div>
   </div>
 {%- endif -%}
@@ -2387,6 +2397,12 @@
       "label": "Show the rating line",
       "default": true,
       "info": "Uses the same rating text as the buy box."
+    },
+    {
+      "type": "text",
+      "id": "sticky_rating_text",
+      "label": "Rating text in the bar",
+      "info": "Leave empty to reuse the buy box's wording. The bar is narrow, so a shorter form usually fits better."
     },
     {
       "type": "checkbox",

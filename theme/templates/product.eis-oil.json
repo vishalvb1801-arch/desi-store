@@ -202,7 +202,8 @@
         "sticky_show_price": false,
         "sticky_on_desktop": true,
         "sticky_title": "Pain Relief Oil",
-        "sticky_reveal_mode": "after_buy_box"
+        "sticky_reveal_mode": "after_buy_box",
+        "sticky_rating_text": "4.9/5 · 36,243 reviews"
       }
     },
     "faq": {
