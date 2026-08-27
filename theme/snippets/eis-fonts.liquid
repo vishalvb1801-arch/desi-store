@@ -1,0 +1,17 @@
+{%- comment -%}
+  EIS — webfont loader.
+
+  Rendered by every EIS section so each section stays self-contained and can be
+  copied into any theme on its own. The browser de-duplicates the identical
+  requests, so N sections still cost one font download.
+
+  Faster option for production: paste these three tags once into the <head> of
+  layout/theme.liquid and delete the `{% render 'eis-fonts' %}` line from each
+  section. See INSTALL.md.
+{%- endcomment -%}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Manrope:wght@400;600&display=swap" media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Manrope:wght@400;600&display=swap">
+</noscript>

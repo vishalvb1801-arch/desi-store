@@ -142,7 +142,15 @@
         "padding_x": 12,
         "padding_bottom": 0,
         "show_review": false,
-        "show_rating": false
+        "show_rating": true,
+        "rating_stars": 5,
+        "rating_text": "Rated 4.9/5 from 36,243 Reviews",
+        "rating_count_text": "",
+        "rating_star_size": 18,
+        "rating_text_size": 16,
+        "rating_gap": 14,
+        "color_star": "#FFD700",
+        "color_rating_text": "#000000"
       }
     },
     "faq": {
