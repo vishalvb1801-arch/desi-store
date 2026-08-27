@@ -122,8 +122,8 @@
         "bfaq-5": {
           "type": "buybox_faq",
           "settings": {
-            "question": "When will it arrive?",
-            "answer": "<p>Orders ship within 24 hours and reach you in 2–5 days. Free delivery, no hidden charges. You'll get a tracking link the moment it ships. COD available.</p>"
+            "question": "When will it be delivered?",
+            "answer": "<p>Orders ship within 24 hours and reach you in 2–5 days depending on your location. Free delivery, no hidden charges. You'll get a tracking link the moment it ships. COD available.</p>"
           }
         }
       },
@@ -196,7 +196,8 @@
         "show_warning": true,
         "warning_title": "Warning: Unauthorised Sellers Detected",
         "sp_gap": 22,
-        "bfaq_title": "Quick Answers"
+        "bfaq_title": "",
+        "delivery_note": "2–5 days depending on your location"
       }
     },
     "faq": {
