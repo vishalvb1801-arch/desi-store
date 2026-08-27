@@ -84,6 +84,9 @@
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     padding: 0 16px 2px;
+    /* Without this the snap aligns the first card to the scrollport edge and
+       eats the left padding, so card one sits flush against the screen. */
+    scroll-padding-inline: 16px;
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
