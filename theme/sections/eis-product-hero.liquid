@@ -286,6 +286,55 @@
   }
   .eis-hero__subtitle { font-size: 14px; line-height: 1.5; color: var(--eis-muted); margin: 10px 0 0; }
 
+  /* ---------- doctors' choice badge ---------- */
+  .eis-docs { display: flex; justify-content: center; width: 100%; padding: 6px 0; margin-top: {{ section.settings.doctors_gap }}px; }
+  .eis-docs__pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: {{ section.settings.doctors_bg }};
+    border: 1.5px solid {{ section.settings.doctors_border }};
+    border-radius: 50px;
+    padding: 5px 14px 5px 6px;
+    font-family: 'Manrope', var(--eis-sans);
+    max-width: 100%;
+  }
+  .eis-docs__avatars { display: flex; align-items: center; flex-shrink: 0; }
+  .eis-docs__avatars img {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    border: 2px solid #fff;
+    margin-left: -8px;
+    display: block;
+  }
+  .eis-docs__avatars img:first-child { margin-left: 0; }
+  .eis-docs__text { display: flex; flex-direction: column; align-items: flex-start; gap: 1px; white-space: nowrap; }
+  .eis-docs__stars { display: inline-flex; align-items: center; gap: 1px; margin-left: 38px; }
+  .eis-docs__stars span { color: #F5A623; font-size: 11px; line-height: 1; }
+  .eis-docs__row { display: flex; align-items: center; gap: 6px; }
+  .eis-docs__count { font-size: 13px; font-weight: 700; color: {{ section.settings.doctors_ink }}; }
+  .eis-docs__label { font-size: 13px; font-weight: 500; color: {{ section.settings.doctors_label_ink }}; }
+  .eis-docs__verified {
+    font-size: 10px;
+    background: {{ section.settings.doctors_ink }};
+    color: #fff;
+    border-radius: 50px;
+    padding: 2px 7px;
+    font-weight: 600;
+    letter-spacing: .3px;
+  }
+  /* The pill is one unbreakable line; below ~360px it would push past the
+     gutter, so shrink it rather than let it overflow. */
+  @media (max-width: 359px) {
+    .eis-docs__pill { gap: 8px; padding: 4px 11px 4px 5px; }
+    .eis-docs__avatars img { width: 30px; height: 30px; }
+    .eis-docs__stars { margin-left: 32px; }
+    .eis-docs__count, .eis-docs__label { font-size: 12px; }
+  }
+
   .eis-hero__benefits {
     background: var(--eis-cream);
     border: 1px solid #EFE0C9;
@@ -676,6 +725,46 @@
     <h1 class="eis-hero__title">{{ heading | newline_to_br }}</h1>
     {%- if section.settings.subheading != blank -%}
       <p class="eis-hero__subtitle">{{ section.settings.subheading }}</p>
+    {%- endif -%}
+
+    {%- comment -%} ---------- doctors' choice badge ---------- {%- endcomment -%}
+    {%- if section.settings.show_doctors -%}
+      <div class="eis-docs">
+        <div class="eis-docs__pill">
+          <div class="eis-docs__avatars">
+            {%- for i in (1..2) -%}
+              {%- if i == 1 -%}
+                {%- assign doc_img = section.settings.doctor_image_1 -%}
+                {%- assign doc_url = section.settings.doctor_image_url_1 -%}
+              {%- else -%}
+                {%- assign doc_img = section.settings.doctor_image_2 -%}
+                {%- assign doc_url = section.settings.doctor_image_url_2 -%}
+              {%- endif -%}
+              {%- if doc_img != blank -%}
+                {{ doc_img | image_url: width: 96 | image_tag: loading: 'lazy', alt: '', width: 48, height: 48, sizes: '34px' }}
+              {%- elsif doc_url != blank -%}
+                <img src="{{ doc_url }}" alt="" width="48" height="48" loading="lazy">
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+          <div class="eis-docs__text">
+            <span class="eis-docs__stars" aria-hidden="true">
+              {%- for i in (1..5) -%}<span>&#9733;</span>{%- endfor -%}
+            </span>
+            <div class="eis-docs__row">
+              {%- if section.settings.doctors_count != blank -%}
+                <span class="eis-docs__count">{{ section.settings.doctors_count }}</span>
+              {%- endif -%}
+              {%- if section.settings.doctors_label != blank -%}
+                <span class="eis-docs__label">{{ section.settings.doctors_label }}</span>
+              {%- endif -%}
+              {%- if section.settings.doctors_badge != blank -%}
+                <span class="eis-docs__verified">{{ section.settings.doctors_badge }}</span>
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+      </div>
     {%- endif -%}
 
     {%- comment -%} ---------- benefit bullets ---------- {%- endcomment -%}
@@ -1164,6 +1253,90 @@
     },
     {
       "type": "header",
+      "content": "Doctors' choice badge"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_doctors",
+      "label": "Show the badge",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "doctor_image_1",
+      "label": "Doctor photo 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "doctor_image_2",
+      "label": "Doctor photo 2"
+    },
+    {
+      "type": "text",
+      "id": "doctor_image_url_1",
+      "label": "Doctor photo 1 fallback URL",
+      "info": "Used only while no image is picked above."
+    },
+    {
+      "type": "text",
+      "id": "doctor_image_url_2",
+      "label": "Doctor photo 2 fallback URL",
+      "info": "Used only while no image is picked above."
+    },
+    {
+      "type": "text",
+      "id": "doctors_count",
+      "label": "Count",
+      "default": "1,192+"
+    },
+    {
+      "type": "text",
+      "id": "doctors_label",
+      "label": "Label",
+      "default": "Doctors' Choice"
+    },
+    {
+      "type": "text",
+      "id": "doctors_badge",
+      "label": "Verified tag",
+      "default": "\u2713 Verified"
+    },
+    {
+      "type": "range",
+      "id": "doctors_gap",
+      "label": "Space above the badge",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "color",
+      "id": "doctors_bg",
+      "label": "Badge background",
+      "default": "#F0F4FF"
+    },
+    {
+      "type": "color",
+      "id": "doctors_border",
+      "label": "Badge border",
+      "default": "#C5D3F0"
+    },
+    {
+      "type": "color",
+      "id": "doctors_ink",
+      "label": "Badge count / tag",
+      "default": "#1A3A7A"
+    },
+    {
+      "type": "color",
+      "id": "doctors_label_ink",
+      "label": "Badge label",
+      "default": "#3A5AA8"
+    },
+    {
+      "type": "header",
       "content": "Title"
     },
     {
@@ -1187,7 +1360,7 @@
       "type": "text",
       "id": "subheading",
       "label": "Sub-heading",
-      "default": "Deep relief for joint, back, knee & muscle pain — the traditional way."
+      "default": "Instant long lasting relief for joint pain, backache, knee pain & leg cramps — without the side effects."
     },
     {
       "type": "header",

@@ -150,7 +150,15 @@
         "rating_text_size": 16,
         "rating_gap": 14,
         "color_star": "#FFD700",
-        "color_rating_text": "#000000"
+        "color_rating_text": "#000000",
+        "subheading": "Instant long lasting relief for joint pain, backache, knee pain & leg cramps — without the side effects.",
+        "show_doctors": true,
+        "doctor_image_url_1": "https://cdn.shopify.com/s/files/1/0975/8287/4990/files/doctor_1.jpg?v=1772787524",
+        "doctor_image_url_2": "https://cdn.shopify.com/s/files/1/0975/8287/4990/files/doctor_2.jpg?v=1772787523",
+        "doctors_count": "1,192+",
+        "doctors_label": "Doctors' Choice",
+        "doctors_badge": "✓ Verified",
+        "doctors_gap": 8
       }
     },
     "faq": {
