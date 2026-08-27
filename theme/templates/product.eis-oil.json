@@ -518,7 +518,8 @@
           "settings": {
             "title": "Warm it",
             "text": "Rub a little between your palms until it feels warm — never hot.",
-            "icon": "☾"
+            "icon": "☾",
+            "placeholder_note": "warming the oil in palms"
           }
         },
         "step-2": {
@@ -526,7 +527,8 @@
           "settings": {
             "title": "Apply to the sore area",
             "text": "Knee, back, shoulder, neck or calf. Enough for a thin film.",
-            "icon": "❍"
+            "icon": "❍",
+            "placeholder_note": "applying to the knee"
           }
         },
         "step-3": {
@@ -535,7 +537,8 @@
             "title": "Massage in circular motion",
             "text": "Slow, firm circles until it absorbs and the area feels warm.",
             "time_label": "5–10 MINUTES",
-            "icon": "✦"
+            "icon": "✦",
+            "placeholder_note": "circular massage"
           }
         },
         "step-4": {
@@ -544,7 +547,8 @@
             "title": "Nightly, before bed",
             "text": "Best at night, so it works while you sleep. Twice daily in a flare-up.",
             "time_label": "EVERY NIGHT",
-            "icon": "☘"
+            "icon": "☘",
+            "placeholder_note": "night-time routine"
           }
         },
         "safety-note-1": {
@@ -575,7 +579,9 @@
         "safety-note-2",
         "safety-note-3"
       ],
-      "settings": {}
+      "settings": {
+        "step_image_ratio": "1 / 1"
+      }
     },
     "timeline": {
       "type": "eis-timeline",
