@@ -1,0 +1,165 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>EIS PDP — Desktop Design Brief</title>
+<style>
+  :root{
+    --maroon:#7B1315; --maroon-deep:#5C0D0F; --gold:#C9A24A; --cream:#FBF3E7;
+    --ink:#2A1C18; --muted:#5E5147; --green:#1E7A4D; --line:#E7D9C3;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#fff;color:var(--ink);
+    font:15px/1.6 'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  .wrap{max-width:860px;margin:0 auto;padding:48px 24px 90px}
+  h1{font-family:'Playfair Display',Georgia,serif;font-size:34px;font-weight:600;color:var(--maroon);margin:0 0 6px;line-height:1.15}
+  .sub{color:var(--muted);margin:0 0 34px;font-size:15px}
+  h2{font-family:'Playfair Display',Georgia,serif;font-size:23px;font-weight:600;color:var(--maroon);
+    margin:42px 0 12px;padding-top:22px;border-top:1px solid var(--line)}
+  h3{font-size:14px;font-weight:700;letter-spacing:.02em;margin:22px 0 7px}
+  p{margin:0 0 12px}
+  code{font:12.5px ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--cream);
+    border:1px solid var(--line);border-radius:4px;padding:1px 5px}
+  pre{background:#150606;color:#F6E7C8;border-radius:10px;padding:16px 18px;overflow-x:auto;
+    font:12.5px/1.65 ui-monospace,SFMono-Regular,Menlo,monospace;margin:0 0 14px}
+  pre .c{color:#9E8C74}
+  table{border-collapse:collapse;width:100%;margin:0 0 14px;font-size:13.5px}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  td.n{white-space:nowrap;color:var(--muted)}
+  .sw{display:inline-block;width:13px;height:13px;border-radius:3px;border:1px solid rgba(0,0,0,.15);
+    vertical-align:-2px;margin-right:7px}
+  .callout{background:var(--cream);border:1px solid var(--line);border-left:3px solid var(--gold);
+    border-radius:0 8px 8px 0;padding:14px 16px;margin:0 0 16px}
+  .callout.warn{border-left-color:var(--maroon);background:#FDF2F2;border-color:#E4C9C9}
+  .callout p:last-child{margin-bottom:0}
+  ul,ol{margin:0 0 14px;padding-left:22px}
+  li{margin-bottom:5px}
+  .lede{font-size:16px}
+  .diagram{display:flex;gap:14px;margin:0 0 18px;flex-wrap:wrap}
+  .fig{flex:1;min-width:230px;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .fig-h{background:var(--cream);padding:7px 12px;font-size:11px;font-weight:700;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line)}
+  .fig-b{padding:16px;background:#FAFAF8;display:flex;justify-content:center;gap:5px;align-items:stretch;height:120px}
+  .col{background:var(--maroon);border-radius:3px;opacity:.85}
+  .gap{background:repeating-linear-gradient(135deg,#EDE1CE 0 6px,#F9F1E4 6px 12px);border-radius:3px}
+  .tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.14em;color:var(--gold);
+    border:1px solid #E2CB94;border-radius:999px;padding:4px 11px;background:#fff;margin-bottom:14px}
+</style>
+<div class="wrap">
+
+<span class="tag">EIS · AYURVEDIC PAIN RELIEF OIL</span>
+<h1>Desktop Design Brief</h1>
+<p class="sub">Everything needed to design the desktop PDP in Claude Design without disturbing the finished mobile build. Generated from the live draft theme.</p>
+
+<div class="callout">
+  <p><strong>Short answer: yes.</strong> Design desktop freely and hand it back. Mobile can be locked completely — not by convention, but structurally. Desktop rules live inside a <code>@media (min-width: 750px)</code> block, and a phone browser never reads a single line inside that block.</p>
+</div>
+
+<h2>Why desktop looks broken today</h2>
+<p>It isn't a styling problem. Every one of the 15 sections caps its content at <strong>480px</strong>, and only 5 of them define any desktop behaviour at all. So on a 1440px monitor the whole page is a phone-width column stranded in the middle with ~480px of empty space either side.</p>
+
+<div class="diagram">
+  <div class="fig">
+    <div class="fig-h">Now — 1440px viewport</div>
+    <div class="fig-b">
+      <div class="gap" style="flex:1"></div>
+      <div class="col" style="flex:.5"></div>
+      <div class="gap" style="flex:1"></div>
+    </div>
+  </div>
+  <div class="fig">
+    <div class="fig-h">What desktop wants</div>
+    <div class="fig-b">
+      <div class="col" style="flex:1"></div>
+      <div class="col" style="flex:1"></div>
+      <div class="col" style="flex:1"></div>
+    </div>
+  </div>
+</div>
+
+<p>Nothing is misaligned — there is simply no desktop layout yet. That is the thing to design.</p>
+
+<h2>How mobile stays locked</h2>
+<p>The theme's breakpoint is <strong>750px</strong>. Below it, the current mobile CSS runs untouched. At and above it, your desktop rules apply. The rule for anything you hand back:</p>
+
+<pre><span class="c">/* Mobile — already signed off. Do not touch. */</span>
+.eis-hero__title { font-size: 31px; }
+
+<span class="c">/* Desktop — everything new goes in here */</span>
+@media (min-width: 750px) {
+  .eis-hero__title { font-size: 44px; }
+}</pre>
+
+<div class="callout warn">
+  <p><strong>The one thing that breaks the lock:</strong> changing a base rule instead of adding a desktop override. If a value is edited outside the media query, mobile changes too. Everything desktop-specific must sit inside <code>@media (min-width: 750px)</code>.</p>
+  <p>Two more that leak across both: changing the HTML structure, and changing a shared design token. Flag either if your design needs it.</p>
+</div>
+
+<h2>Design tokens</h2>
+<p>These are the live values. Reuse them rather than picking new ones — they are wired to theme settings, so a token change affects mobile too.</p>
+
+<table>
+  <tr><th>Token</th><th>Value</th><th>Used for</th></tr>
+  <tr><td><span class="sw" style="background:#7B1315"></span>Maroon</td><td class="n">#7B1315</td><td>Buttons, headings, primary brand</td></tr>
+  <tr><td><span class="sw" style="background:#5C0D0F"></span>Maroon deep</td><td class="n">#5C0D0F</td><td>Hover states</td></tr>
+  <tr><td><span class="sw" style="background:#C9A24A"></span>Gold</td><td class="n">#C9A24A</td><td>Eyebrows, accents</td></tr>
+  <tr><td><span class="sw" style="background:#FBF3E7"></span>Cream</td><td class="n">#FBF3E7</td><td>Section backgrounds</td></tr>
+  <tr><td><span class="sw" style="background:#2A1C18"></span>Ink</td><td class="n">#2A1C18</td><td>Body text</td></tr>
+  <tr><td><span class="sw" style="background:#5E5147"></span>Muted</td><td class="n">#5E5147</td><td>Secondary text</td></tr>
+  <tr><td><span class="sw" style="background:#1E7A4D"></span>Green</td><td class="n">#1E7A4D</td><td>Ticks, confirmations</td></tr>
+  <tr><td><span class="sw" style="background:#E7D9C3"></span>Line</td><td class="n">#E7D9C3</td><td>Borders, rules</td></tr>
+  <tr><td><span class="sw" style="background:#FFD700"></span>Star</td><td class="n">#FFD700</td><td>Rating stars</td></tr>
+  <tr><td><span class="sw" style="background:#E8740C"></span>Orange</td><td class="n">#E8740C</td><td>Social proof accent</td></tr>
+</table>
+
+<h3>Type</h3>
+<ul>
+  <li><strong>Playfair Display</strong> 500/600/700 — headings</li>
+  <li><strong>DM Sans</strong> 400/500/700 — body</li>
+  <li><strong>Manrope</strong> 400/500/600/700 — rating rows, the doctors' badge</li>
+</ul>
+
+<h2>The 15 sections</h2>
+<p>In page order. "Desktop" says what each does today above 750px.</p>
+
+<table>
+  <tr><th>#</th><th>Section</th><th>Desktop today</th></tr>
+  <tr><td class="n">1</td><td>Announcement bar</td><td>Same marquee, full width</td></tr>
+  <tr><td class="n">2</td><td>Product hero / buy box</td><td>480px column. <strong>Wants a two-column split:</strong> gallery left, buy box right</td></tr>
+  <tr><td class="n">3</td><td>Trust badges</td><td>3 across, unchanged</td></tr>
+  <tr><td class="n">4</td><td>Video testimonials</td><td>Scroller — could become a static row</td></tr>
+  <tr><td class="n">5</td><td>Social proof</td><td>Face strip + review scroller</td></tr>
+  <tr><td class="n">6</td><td>Stats</td><td>3 stats stacked — could go 3 across</td></tr>
+  <tr><td class="n">7</td><td>Ingredients</td><td>6 herbs — could go 3×2 or 6 across</td></tr>
+  <tr><td class="n">8</td><td>Experts recommend</td><td>Scroller, slightly larger type</td></tr>
+  <tr><td class="n">9</td><td>How to use</td><td>4 steps with square photos</td></tr>
+  <tr><td class="n">10</td><td>Timeline</td><td>4 stages stacked — could go horizontal</td></tr>
+  <tr><td class="n">11</td><td>Comparison table</td><td>Scales to 120%</td></tr>
+  <tr><td class="n">12</td><td>Offer repeat</td><td>Countdown, mostly empty right now</td></tr>
+  <tr><td class="n">13</td><td>FAQ</td><td>14 accordions, full width — could go two-column</td></tr>
+  <tr><td class="n">14</td><td>Reviews</td><td>6 Google cards in a scroller</td></tr>
+  <tr><td class="n">15</td><td>Footer</td><td>Links, certifications, payment badges</td></tr>
+</table>
+
+<div class="callout">
+  <p><strong>The hero is the one that matters.</strong> Everything else is a stacked column that mostly needs widening or re-columning. The buy box is the only section whose desktop layout is genuinely a different design — image left, buy column right, which is what every desktop PDP does and what this page currently cannot do.</p>
+</div>
+
+<h2>Fixed behaviour — please design around these</h2>
+<ul>
+  <li><strong>Sticky bar</strong> already has a desktop variant: 1240px wide, Playfair title, no thumbnail, larger button. It reveals only once the buy box has scrolled past.</li>
+  <li><strong>Add to Cart</strong> goes straight to checkout.</li>
+  <li><strong>No price is shown anywhere</strong> on the page by choice.</li>
+  <li><strong>Product has no images.</strong> The gallery runs on two fallback blocks; step photos and expert clips are placeholders.</li>
+</ul>
+
+<h2>What to hand back</h2>
+<ol>
+  <li>Design at <strong>1440px</strong>, and 1024px if the layout differs there.</li>
+  <li>One artboard per section is easiest to translate — the hero especially.</li>
+  <li>Export the <code>.dc.html</code> file and send it here. Not a PDF or screenshot: the HTML carries real hex values, sizes and spacing, so nothing gets eyeballed.</li>
+  <li>Say which sections are final and which are exploratory.</li>
+</ol>
+<p>I will translate each artboard into <code>@media (min-width: 750px)</code> blocks, then verify mobile is byte-identical at 320/360/390/430 before and after. If anything in the design can't be done without touching mobile, I'll flag it rather than quietly change it.</p>
+
+</div>
