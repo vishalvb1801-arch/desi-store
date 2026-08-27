@@ -165,35 +165,98 @@
           "type": "question",
           "settings": {
             "question": "Who is it for?",
-            "answer": "<p>Anyone living with joint, knee, back, shoulder or muscle pain — whether it's from age, all-day standing, desk work, driving, or physical labour. Elders love it for daily stiffness; younger people use it for gym soreness, neck pain, and recovery. If pain is part of your routine, this oil was made for you.</p>"
+            "answer": "<p>EIS Pain Relief Oil is for anyone who wants relief from everyday aches and stiffness — people with knee, back, joint, neck or muscle pain, those who spend all day on their feet or sitting, and older parents whose stiffness has started slowing them down. It’s also great even if you don’t have pain — just to unwind and relax tight, tired muscles at the end of the day, and it works well for gym and workout recovery to ease soreness after training.</p>"
           }
         },
         "question-2": {
           "type": "question",
           "settings": {
-            "question": "What's actually in it?",
-            "answer": "<p>15+ Ayurvedic herbs in a sesame and Mahanarayan oil base — Nirgundi, Rasna, Ashwagandha, Nilgiri (eucalyptus), Gandhapura, Pudina, Lawang, Dalchini, Kapoor, Sunthi, Erand Mool and more. No chemicals, no parabens, no artificial fragrance. Smells herbal, not chemical.</p>"
+            "question": "Why do I need EIS Pain Relief Oil?",
+            "answer": "<p>If balms, sprays or painkillers only relieve your pain for an hour before it comes back, it’s because they sit on the surface of the skin. EIS is a medicated Ayurvedic oil that absorbs deeper, carrying 15+ herbs into the stiff, aching area so it eases the pain closer to the source instead of just masking it.</p>"
           }
         },
         "question-3": {
           "type": "question",
           "settings": {
-            "question": "How and when do I apply it?",
-            "answer": "<p>Pour a small amount on the painful area, massage gently in circular motions for 2–3 minutes until the warmth sets in. Repeat 2–3 times a day — best used before bed so it works while you sleep. External use only. Safe for daily use.</p>"
+            "question": "What’s actually in it?",
+            "answer": "<p>15+ Ayurvedic herbs in a sesame and Mahanarayan oil base — including Nirgundi, Rasna, Ashwagandha, Nilgiri (eucalyptus), Pudina and Gandhapura. No chemicals. It’s an Ayurvedic proprietary medicine for external use.</p>"
           }
         },
         "question-4": {
           "type": "question",
           "settings": {
-            "question": "Is it safe?",
-            "answer": "<p>100%. EIS Pain Relief Oil is third-party lab tested and made in a GMP-certified facility. Award-winning Ayurvedic formulation with no harsh chemicals — no burning, no numbness, no side effects. Gentle enough for nightly use by the whole family, including elders. For external use only — do a patch test if you have sensitive skin.</p>"
+            "question": "How and when do I use it?",
+            "answer": "<p>Warm a little oil, apply it to the affected area, and massage gently in circular motions for 5–10 minutes. Most people use it before bed, and it works well after a workout too. Daily use gives the best results.</p>"
           }
         },
         "question-5": {
           "type": "question",
           "settings": {
-            "question": "When will it arrive?",
-            "answer": "<p>Orders ship within 24 hours and reach you in 3–5 days. Free delivery, no hidden charges. You'll get a tracking link the moment it ships. COD available.</p>"
+            "question": "Do you offer Cash on Delivery?",
+            "answer": "<p>Yes — Cash on Delivery is available across India, along with UPI, cards and other payment options.</p>"
+          }
+        },
+        "question-6": {
+          "type": "question",
+          "settings": {
+            "question": "Can I trust paying online?",
+            "answer": "<p>Absolutely, and here is exactly why you can.</p><p>Our payment gateway is RBI verified. No store in India can process online payments without clearing strict verification and security checks first, so the fact that we can accept prepaid orders means we have already passed them. Every transaction runs through fully encrypted, secure banking channels.</p><p>You are also never alone after you order. We have a real, responsive customer support team that actually replies, ready to help with anything before, during, or after your purchase.</p><p>And paying online genuinely works in your favour. You unlock an extra ₹100 off as a thank you for confirming your order, which is our way of rewarding the customers who help a small business run smoothly. Lower price, full protection, and real humans behind the screen if you ever need us.</p>"
+          }
+        },
+        "question-7": {
+          "type": "question",
+          "settings": {
+            "question": "Is it greasy or sticky? Will it stain my sheets?",
+            "answer": "<p>No. EIS is light on the skin and absorbs quickly without a greasy or sticky feeling, so it’s comfortable to apply before bed. It also has a soft, herbal aroma — not a harsh chemical smell.</p>"
+          }
+        },
+        "question-8": {
+          "type": "question",
+          "settings": {
+            "question": "How soon will I feel a difference?",
+            "answer": "<p>Many people feel the stiffness loosen within a few minutes of massaging it in. For deeper, lasting relief from chronic stiffness, best results come with consistent nightly use over 2–4 weeks.</p>"
+          }
+        },
+        "question-9": {
+          "type": "question",
+          "settings": {
+            "question": "Which types of pain does it help with?",
+            "answer": "<p>It’s used for knee pain, back pain, joint pain, muscle pain, neck and shoulder stiffness, leg pain, gym and workout soreness, and everyday aches from standing, sitting or physical work.</p>"
+          }
+        },
+        "question-10": {
+          "type": "question",
+          "settings": {
+            "question": "Is it safe for daily use and for elderly people?",
+            "answer": "<p>Yes — it’s for external use only and gentle enough for regular daily use, which is why many families keep it for their parents. If you have sensitive skin, do a small patch test first. Avoid contact with eyes, nose and mouth, and don’t apply on wounds or broken skin.</p>"
+          }
+        },
+        "question-11": {
+          "type": "question",
+          "settings": {
+            "question": "Can diabetics or people on medication use it?",
+            "answer": "<p>It’s applied externally on the skin and isn’t taken internally. As with any product, if you have a medical condition or are unsure, check with your doctor before use.</p>"
+          }
+        },
+        "question-12": {
+          "type": "question",
+          "settings": {
+            "question": "Is this the genuine EIS product?",
+            "answer": "<p>Yes — when you order directly here, you receive the authentic EIS Ayurvedic Pain Relief Oil, made in small batches in a GMP-certified facility and lab-tested for quality.</p>"
+          }
+        },
+        "question-13": {
+          "type": "question",
+          "settings": {
+            "question": "What if it doesn’t work for me?",
+            "answer": "<p>EIS is backed by our money-back guarantee. If you don’t feel a difference, contact us and we’ll make it right.</p>"
+          }
+        },
+        "question-14": {
+          "type": "question",
+          "settings": {
+            "question": "How long does one bottle last?",
+            "answer": "<p>Each bottle is 200ml. With regular nightly use on one or two areas, a bottle typically lasts several weeks. Many customers order the multi-bottle pack so they don’t run out or for other family members.</p>"
           }
         }
       },
@@ -202,9 +265,20 @@
         "question-2",
         "question-3",
         "question-4",
-        "question-5"
+        "question-5",
+        "question-6",
+        "question-7",
+        "question-8",
+        "question-9",
+        "question-10",
+        "question-11",
+        "question-12",
+        "question-13",
+        "question-14"
       ],
-      "settings": {}
+      "settings": {
+        "footer_text": "<p><strong>Still have questions? Get in touch.</strong></p><p>We’re happy to help — reach us anytime at <a href=\"mailto:support@eliteindianstore.com\">support@eliteindianstore.com</a>, before, during or after your order.</p>"
+      }
     },
     "trust": {
       "type": "eis-trust-badges",
@@ -601,38 +675,71 @@
         "review-1": {
           "type": "review",
           "settings": {
+            "placeholder_note": "knee pain",
             "stars": 5,
-            "rating_label": "Rated 4.8",
-            "quote": "\"My knees used to lock up when I stood after sitting. A week of nightly massage and that first step doesn't hurt anymore. Smells herbal, not chemical.\"",
+            "quote": "“My knees used to lock up when I stood after sitting. A week of nightly massage and that first step doesn’t hurt anymore. Smells herbal, not chemical.”",
             "name": "Sunita K.",
-            "meta": "✔ Verified | Purchased 3rd August"
+            "meta": "Google review"
           }
         },
         "review-2": {
           "type": "review",
           "settings": {
+            "placeholder_note": "back pain",
             "stars": 5,
-            "rating_label": "Rated 4.9",
-            "quote": "\"Lower back pain from twelve-hour driving shifts. Balms gave me twenty minutes; this actually lasts the night and I wake up straighter.\"",
+            "quote": "“Lower back pain from twelve-hour driving shifts. Balms gave me twenty minutes; this actually lasts the night and I wake up straighter.”",
             "name": "Imran S.",
-            "meta": "✔ Verified | Purchased 19th July"
+            "meta": "Google review"
           }
         },
         "review-3": {
           "type": "review",
           "settings": {
+            "placeholder_note": "bought for mom",
             "stars": 5,
-            "rating_label": "Rated 5.0",
-            "quote": "\"Bought it for my mother's joint pain. She's 63 and back to her evening walks. We've ordered the 5-bottle pack for the family.\"",
+            "quote": "“Bought it for my mother’s joint pain. She’s 63 and back to her evening walks. We’ve ordered the 5-bottle pack for the family.”",
             "name": "Priya D.",
-            "meta": "✔ Verified | Purchased 28th July"
+            "meta": "Google review"
+          }
+        },
+        "review-4": {
+          "type": "review",
+          "settings": {
+            "placeholder_note": "deeper sleep",
+            "stars": 5,
+            "quote": "“I wasn’t sleeping because of the ache. Now I massage it in before bed and actually stay asleep till morning.”",
+            "name": "Meena J.",
+            "meta": "Google review"
+          }
+        },
+        "review-5": {
+          "type": "review",
+          "settings": {
+            "placeholder_note": "bought for dad",
+            "stars": 5,
+            "quote": "“Got it for my father — he never complains, but he stopped asking me to press his shoulders at night. That said enough.”",
+            "name": "Arjun M.",
+            "meta": "Google review"
+          }
+        },
+        "review-6": {
+          "type": "review",
+          "settings": {
+            "placeholder_note": "leg cramps",
+            "stars": 5,
+            "quote": "“Night cramps in my calves used to wake me up. A massage before bed and they’ve eased right off.”",
+            "name": "Lakshmi V.",
+            "meta": "Google review"
           }
         }
       },
       "block_order": [
         "review-1",
         "review-2",
-        "review-3"
+        "review-3",
+        "review-4",
+        "review-5",
+        "review-6"
       ],
       "settings": {}
     },

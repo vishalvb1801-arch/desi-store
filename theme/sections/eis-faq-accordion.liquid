@@ -76,6 +76,18 @@
   .eis-faq__answer p { margin: 0 0 8px; }
   .eis-faq__answer p:last-child { margin-bottom: 0; }
   .eis-faq__answer a { color: var(--eis-maroon); }
+  /* Closing line under the list — the way out for anything the FAQ misses. */
+  .eis-faq__foot {
+    text-align: center;
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: var(--eis-muted);
+    margin: 18px 0 0;
+  }
+  .eis-faq__foot p { margin: 0 0 6px; }
+  .eis-faq__foot p:last-child { margin-bottom: 0; }
+  .eis-faq__foot strong { color: var(--eis-ink); }
+  .eis-faq__foot a { color: var(--eis-maroon); font-weight: 700; }
 {% endstyle %}
 
 <div class="eis-faq">
@@ -93,6 +105,10 @@
         <div class="eis-faq__answer">{{ block.settings.answer }}</div>
       </details>
     {%- endfor -%}
+
+    {%- if section.settings.footer_text != blank -%}
+      <div class="eis-faq__foot">{{ section.settings.footer_text }}</div>
+    {%- endif -%}
   </div>
 </div>
 
@@ -161,6 +177,12 @@
       "label": "Add FAQ structured data for Google",
       "default": true,
       "info": "Lets these questions appear as rich results in search. Turn off if another app already outputs FAQ schema on this page."
+    },
+    {
+      "type": "richtext",
+      "id": "footer_text",
+      "label": "Closing line",
+      "info": "Sits under the last answer. Use it for the 'still have questions' route out."
     },
     {
       "type": "header",

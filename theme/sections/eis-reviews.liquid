@@ -1,0 +1,603 @@
+{%- comment -%}
+  EIS — Reviews
+  ------------------------------------------------------------------
+  A horizontal row of tall review cards, each with its own photo, scrolled
+  by finger or by the bar underneath. Same scroller mechanics as the video
+  testimonials, so the two rows behave identically.
+
+  The quote is clamped to a set number of lines. Every card in a flex row
+  stretches to the tallest one, so without a clamp a single long review
+  would set the height of all six.
+
+  A block with no photo yet renders the design's striped placeholder, so the
+  layout is right before the real photos arrive.
+{%- endcomment -%}
+
+{% render 'eis-fonts' %}
+
+{% style %}
+  {% render 'eis-tokens', id: section.id, s: section.settings %}
+
+  .eis-rev {
+    background: {{ section.settings.color_background }};
+    font-family: var(--eis-sans);
+    color: var(--eis-ink);
+  }
+  .eis-rev__inner {
+    max-width: var(--eis-max);
+    margin: 0 auto;
+    padding: {{ section.settings.padding_top }}px 16px {{ section.settings.padding_bottom }}px;
+  }
+  .eis-rev__title {
+    font-family: var(--eis-serif);
+    font-size: {{ section.settings.heading_size }}px;
+    font-weight: 600;
+    color: var(--eis-maroon);
+    text-align: center;
+    margin: 0 0 12px;
+    line-height: 1.18;
+  }
+
+  /* Source lockup — says where these came from, once, above the row. */
+  .eis-rev__source {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4px 8px;
+    margin: 0 0 16px;
+    font-size: 12px;
+    color: var(--eis-muted);
+  }
+  .eis-rev__glogo { width: 17px; height: 17px; display: block; flex: none; }
+  .eis-rev__source-label { font-weight: 700; color: var(--eis-ink); }
+  .eis-rev__score { display: flex; align-items: center; gap: 5px; }
+  .eis-rev__score b { font-size: 13px; color: var(--eis-ink); }
+
+  .eis-rev__row {
+    display: flex;
+    align-items: stretch;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 2px;
+    /* the native bar is hidden because the section draws its own below */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .eis-rev__row::-webkit-scrollbar { display: none; }
+
+  .eis-rev__card {
+    flex: 0 0 calc((100% - ({{ section.settings.cards_in_view }} - 1) * 10px) / {{ section.settings.cards_in_view }});
+    min-width: 0;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    background: {{ section.settings.color_card }};
+    border: 1px solid {{ section.settings.color_border }};
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .eis-rev__media {
+    position: relative;
+    aspect-ratio: {{ section.settings.image_ratio }};
+    background: repeating-linear-gradient(135deg, #EDE1CE 0 8px, #F9F1E4 8px 16px);
+    flex: none;
+  }
+  .eis-rev__media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .eis-rev__hint {
+    position: absolute;
+    inset: auto 6px 8px;
+    font: 9px ui-monospace, monospace;
+    color: var(--eis-soft);
+    text-align: center;
+  }
+
+  .eis-rev__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    padding: 11px 12px 12px;
+  }
+  .eis-rev__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 7px;
+  }
+  .eis-rev__stars { display: flex; gap: 1px; line-height: 1; }
+  .eis-rev__stars i {
+    font-style: normal;
+    font-size: 12px;
+    color: {{ section.settings.color_stars }};
+  }
+  .eis-rev__quote {
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: {{ section.settings.color_quote }};
+    /* clamped so one long review cannot set the height of the whole row */
+    display: -webkit-box;
+    -webkit-line-clamp: {{ section.settings.quote_lines }};
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .eis-rev__by {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 11px;
+  }
+  .eis-rev__avatar {
+    width: 26px;
+    height: 26px;
+    border-radius: 999px;
+    flex: none;
+    overflow: hidden;
+    background: repeating-linear-gradient(135deg, #EDE1CE 0 5px, #F9F1E4 5px 10px);
+  }
+  .eis-rev__avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .eis-rev__name { font-size: 11.5px; font-weight: 700; line-height: 1.3; }
+  .eis-rev__meta { font-size: 10px; color: var(--eis-soft); line-height: 1.3; }
+
+  /* Scroll bar. Reflects position and is draggable; hidden by JS when
+     everything already fits, so it never appears as dead furniture. */
+  .eis-rev__bar {
+    position: relative;
+    height: 4px;
+    max-width: 180px;
+    margin: 16px auto 0;
+    border-radius: 99px;
+    background: #EDE1CE;
+    cursor: pointer;
+    touch-action: none;
+  }
+  .eis-rev__bar-thumb {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 99px;
+    background: var(--eis-maroon);
+    transition: left .08s linear, width .08s linear;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .eis-rev__bar-thumb { transition: none; }
+  }
+
+  .eis-rev__more { text-align: center; margin-top: 16px; }
+  .eis-rev__more a {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    color: var(--eis-maroon);
+  }
+  .eis-rev__app { margin-top: 16px; }
+
+  @media (min-width: 750px) {
+    .eis-rev__title { font-size: {{ section.settings.heading_size | times: 125 | divided_by: 100 }}px; }
+    .eis-rev__quote { font-size: 13.5px; }
+  }
+{% endstyle %}
+
+{%- comment -%} The Google mark, defined once and referenced per card. {%- endcomment -%}
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="EisGoogleG-{{ section.id }}" viewBox="0 0 48 48">
+    <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/>
+    <path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/>
+    <path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.88l7.35-5.7z"/>
+    <path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/>
+  </symbol>
+</svg>
+
+<div class="eis-rev">
+  <div class="eis-rev__inner">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="eis-rev__title">{{ section.settings.heading | newline_to_br }}</h2>
+    {%- endif -%}
+
+    {%- if section.settings.show_source -%}
+      <div class="eis-rev__source">
+        <svg class="eis-rev__glogo" aria-hidden="true" focusable="false"><use href="#EisGoogleG-{{ section.id }}"></use></svg>
+        <span class="eis-rev__source-label">{{ section.settings.source_label }}</span>
+        {%- if section.settings.source_score != blank -%}
+          <span class="eis-rev__score">
+            <b>{{ section.settings.source_score }}</b>
+            <span class="eis-rev__stars" aria-hidden="true">
+              {%- for i in (1..5) -%}<i>★</i>{%- endfor -%}
+            </span>
+          </span>
+        {%- endif -%}
+        {%- if section.settings.source_count != blank -%}
+          <span>{{ section.settings.source_count }}</span>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="eis-rev__row" data-eis-scroller>
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'review' -%}
+          <article class="eis-rev__card" {{ block.shopify_attributes }}>
+            <div class="eis-rev__media">
+              {%- if block.settings.image != blank -%}
+                {{
+                  block.settings.image
+                  | image_url: width: 720
+                  | image_tag: widths: '240, 360, 480, 720', sizes: '65vw', loading: 'lazy', alt: ''
+                }}
+              {%- else -%}
+                <span class="eis-rev__hint">{{ block.settings.placeholder_note }}</span>
+              {%- endif -%}
+            </div>
+
+            <div class="eis-rev__body">
+              <div class="eis-rev__top">
+                <span class="eis-rev__stars" aria-label="{{ block.settings.stars }} out of 5">
+                  {%- for i in (1..block.settings.stars) -%}<i aria-hidden="true">★</i>{%- endfor -%}
+                </span>
+                <svg class="eis-rev__glogo" aria-hidden="true" focusable="false"><use href="#EisGoogleG-{{ section.id }}"></use></svg>
+              </div>
+
+              <p class="eis-rev__quote">{{ block.settings.quote }}</p>
+
+              <div class="eis-rev__by">
+                <span class="eis-rev__avatar">
+                  {%- if block.settings.avatar != blank -%}
+                    {{ block.settings.avatar | image_url: width: 80 | image_tag: widths: '52, 80', sizes: '26px', loading: 'lazy', alt: '' }}
+                  {%- endif -%}
+                </span>
+                <span>
+                  <span class="eis-rev__name">{{ block.settings.name }}</span>
+                  {%- if block.settings.meta != blank -%}
+                    <span class="eis-rev__meta" style="display:block">{{ block.settings.meta }}</span>
+                  {%- endif -%}
+                </span>
+              </div>
+            </div>
+          </article>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    <div
+      class="eis-rev__bar"
+      data-eis-bar
+      role="scrollbar"
+      aria-orientation="horizontal"
+      aria-label="Scroll reviews"
+      hidden
+    >
+      <div class="eis-rev__bar-thumb" data-eis-thumb></div>
+    </div>
+
+    {%- for block in section.blocks -%}
+      {%- if block.type == '@app' -%}
+        <div class="eis-rev__app" {{ block.shopify_attributes }}>{% render block %}</div>
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- if section.settings.more_text != blank and section.settings.more_link != blank -%}
+      <div class="eis-rev__more">
+        <a href="{{ section.settings.more_link }}">{{ section.settings.more_text }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<script>
+  (function () {
+    var root = document.getElementById('shopify-section-{{ section.id }}');
+    if (!root) return;
+
+    var scroller = root.querySelector('[data-eis-scroller]');
+    var bar = root.querySelector('[data-eis-bar]');
+    var thumb = root.querySelector('[data-eis-thumb]');
+    if (!scroller || !bar || !thumb) return;
+
+    var MIN_THUMB = 18; /* percent — keeps the thumb grabbable on long rows */
+
+    function sync() {
+      var max = scroller.scrollWidth - scroller.clientWidth;
+      if (max <= 1) { bar.hidden = true; return; }
+      bar.hidden = false;
+      var width = Math.max(MIN_THUMB, (scroller.clientWidth / scroller.scrollWidth) * 100);
+      thumb.style.width = width + '%';
+      thumb.style.left = (scroller.scrollLeft / max) * (100 - width) + '%';
+      bar.setAttribute('aria-valuenow', Math.round((scroller.scrollLeft / max) * 100));
+    }
+
+    function seek(clientX) {
+      var r = bar.getBoundingClientRect();
+      var p = Math.min(1, Math.max(0, (clientX - r.left) / r.width));
+      scroller.scrollLeft = p * (scroller.scrollWidth - scroller.clientWidth);
+    }
+
+    var dragging = false;
+    bar.addEventListener('pointerdown', function (e) {
+      dragging = true;
+      bar.setPointerCapture(e.pointerId);
+      seek(e.clientX);
+    });
+    bar.addEventListener('pointermove', function (e) { if (dragging) seek(e.clientX); });
+    bar.addEventListener('pointerup', function () { dragging = false; });
+    bar.addEventListener('pointercancel', function () { dragging = false; });
+
+    scroller.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync);
+    sync();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "EIS — Reviews",
+  "tag": "section",
+  "class": "eis-section eis-section--reviews",
+  "max_blocks": 24,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Line breaks are kept.",
+      "default": "What Our Customers\nSay on Google"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "info": "Desktop steps up to 125%.",
+      "min": 20,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 27
+    },
+    {
+      "type": "header",
+      "content": "Google lockup"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_source",
+      "label": "Show the Google line above the row",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "source_label",
+      "label": "Source label",
+      "default": "Google Reviews"
+    },
+    {
+      "type": "text",
+      "id": "source_score",
+      "label": "Score",
+      "info": "e.g. 4.9. Leave empty to hide the score and stars. Use the figure actually shown on your Google profile."
+    },
+    {
+      "type": "text",
+      "id": "source_count",
+      "label": "Count line",
+      "info": "e.g. from 128 reviews. Leave empty to hide."
+    },
+    {
+      "type": "header",
+      "content": "Cards"
+    },
+    {
+      "type": "range",
+      "id": "cards_in_view",
+      "label": "Cards in view",
+      "min": 1,
+      "max": 3.5,
+      "step": 0.1,
+      "default": 1.5,
+      "info": "Shopify allows one decimal place here. 1.5 shows one whole card plus half of the next, which is what tells people the row scrolls."
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Photo shape",
+      "options": [
+        { "value": "1 / 1", "label": "Square" },
+        { "value": "4 / 3", "label": "4:3 — shorter card" },
+        { "value": "4 / 5", "label": "4:5 — taller card" },
+        { "value": "3 / 4", "label": "3:4 — tallest card" }
+      ],
+      "default": "1 / 1"
+    },
+    {
+      "type": "range",
+      "id": "quote_lines",
+      "label": "Quote lines",
+      "info": "Every card stretches to the tallest, so the quote is clamped to this many lines to keep the row an even height. Anything past it is cut off — raise this rather than shortening a real review.",
+      "min": 3,
+      "max": 12,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "more_text",
+      "label": "Link text",
+      "default": "READ MORE REVIEWS"
+    },
+    {
+      "type": "url",
+      "id": "more_link",
+      "label": "Link",
+      "info": "Point this at your Google reviews page."
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "color_card",
+      "label": "Card",
+      "default": "#FFFDF8"
+    },
+    {
+      "type": "color",
+      "id": "color_border",
+      "label": "Card border",
+      "default": "#EFE3D2"
+    },
+    {
+      "type": "color",
+      "id": "color_maroon",
+      "label": "Heading, link & scroll bar",
+      "default": "#7B1315"
+    },
+    {
+      "type": "color",
+      "id": "color_stars",
+      "label": "Stars",
+      "default": "#FBBC05"
+    },
+    {
+      "type": "color",
+      "id": "color_quote",
+      "label": "Quote",
+      "default": "#3B322C"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Names",
+      "default": "#2A1C18"
+    },
+    {
+      "type": "color",
+      "id": "color_muted",
+      "label": "Source line",
+      "default": "#5E5147"
+    },
+    {
+      "type": "color",
+      "id": "color_soft",
+      "label": "Dates",
+      "default": "#8A7A63"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "Content width",
+      "min": 400,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "default": 480
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo",
+          "info": "Sits at the top of the card."
+        },
+        {
+          "type": "text",
+          "id": "placeholder_note",
+          "label": "Placeholder note",
+          "info": "Shown in the photo area until a photo is chosen.",
+          "default": "review photo"
+        },
+        {
+          "type": "range",
+          "id": "stars",
+          "label": "Stars",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote"
+        },
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "Reviewer photo"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "text",
+          "id": "meta",
+          "label": "Meta line",
+          "info": "e.g. Google review · 2 weeks ago",
+          "default": "Google review"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "EIS — Reviews",
+      "blocks": [
+        { "type": "review" },
+        { "type": "review" },
+        { "type": "review" },
+        { "type": "review" },
+        { "type": "review" },
+        { "type": "review" }
+      ]
+    }
+  ]
+}
+{% endschema %}
