@@ -1007,6 +1007,41 @@
         "review-8"
       ],
       "settings": {}
+    },
+    "experts": {
+      "type": "eis-expert-videos",
+      "blocks": {
+        "expert-1": {
+          "type": "expert",
+          "settings": {
+            "name": "Dr. Meera Joshi",
+            "role": "Ayurvedic Physician, 18 yrs",
+            "placeholder_note": "expert clip — oil vs balm"
+          }
+        },
+        "expert-2": {
+          "type": "expert",
+          "settings": {
+            "name": "Dr. Arjun Nair",
+            "role": "Physiotherapist, Kochi",
+            "placeholder_note": "expert clip — knee massage"
+          }
+        },
+        "expert-3": {
+          "type": "expert",
+          "settings": {
+            "name": "Vaidya Suresh Patel",
+            "role": "Panchakarma Specialist",
+            "placeholder_note": "expert clip — the 15 herbs"
+          }
+        }
+      },
+      "block_order": [
+        "expert-1",
+        "expert-2",
+        "expert-3"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -1017,6 +1052,7 @@
     "social-proof",
     "stats",
     "ingredients",
+    "experts",
     "how-to-use",
     "timeline",
     "comparison",
