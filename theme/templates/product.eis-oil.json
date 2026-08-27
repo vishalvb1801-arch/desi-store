@@ -166,7 +166,7 @@
         "doctors_gap": 8,
         "show_fallback_atc": true,
         "atc_label": "ADD TO CART",
-        "sticky_action": "add_to_cart",
+        "sticky_action": "scroll_to_atc",
         "show_price": false,
         "offers_heading": "",
         "show_stock": false,
@@ -197,7 +197,11 @@
         "warning_title": "Warning: Unauthorised Sellers Detected",
         "sp_gap": 22,
         "bfaq_title": "",
-        "delivery_note": "2–5 days depending on your location"
+        "delivery_note": "2–5 days depending on your location",
+        "sticky_show_rating": true,
+        "sticky_show_price": false,
+        "sticky_on_desktop": true,
+        "sticky_title": "Pain Relief Oil"
       }
     },
     "faq": {

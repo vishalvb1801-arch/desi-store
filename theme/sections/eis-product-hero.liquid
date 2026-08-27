@@ -21,6 +21,18 @@
   else
     assign hero_image = eis_product.featured_image
   endif
+  comment
+    The product carries no media yet, so the sticky bar's thumbnail would be
+    an empty black square. Fall back to the first gallery block.
+  endcomment
+  if hero_image == blank
+    for block in section.blocks
+      if block.type == 'gallery_image' and block.settings.image != blank
+        assign hero_image = block.settings.image
+        break
+      endif
+    endfor
+  endif
 
   assign app_block_count = 0
   assign pill_count = 0
@@ -727,14 +739,15 @@
   .eis-sticky__inner {
     width: 100%;
     max-width: var(--eis-max);
-    background: rgba(255,255,255,.97);
+    background: rgba(255,255,255,.98);
     border-top: 1px solid #EFE0C9;
-    padding: 10px 14px;
-    padding-bottom: calc(10px + env(safe-area-inset-bottom));
+    padding: 11px 14px;
+    padding-bottom: calc(11px + env(safe-area-inset-bottom));
     display: flex;
-    align-items: center;
-    gap: 12px;
-    box-shadow: 0 -6px 18px rgba(0,0,0,.1);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 7px;
+    box-shadow: 0 -8px 22px rgba(59,14,15,.1);
     pointer-events: auto;
     transform: translateY(120%);
     transition: transform .25s ease;
@@ -742,19 +755,24 @@
   }
   @media (prefers-reduced-motion: reduce) { .eis-sticky__inner { transition: none; } }
   .eis-sticky.is-visible .eis-sticky__inner { transform: translateY(0); }
+  .eis-sticky__row { display: flex; align-items: center; gap: 11px; }
+  /* On the narrowest phones the thumbnail costs 57px the title needs more. */
+  @media (max-width: 359px) { .eis-sticky__row .eis-sticky__thumb { display: none; } }
   .eis-sticky__thumb {
-    width: 40px;
-    height: 40px;
-    border-radius: 7px;
+    width: 46px;
+    height: 46px;
+    border-radius: 9px;
     overflow: hidden;
     background: #150606;
     flex: none;
+    align-self: center;
   }
   .eis-sticky__thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
-  .eis-sticky__copy { flex: 1; min-width: 0; }
+  .eis-sticky__copy { flex: 1; min-width: 0; padding-top: 1px; }
   .eis-sticky__name {
-    font-size: 11.5px;
+    font-size: 13.5px;
     font-weight: 700;
+    line-height: 1.3;
     color: var(--eis-ink);
     white-space: nowrap;
     overflow: hidden;
@@ -762,24 +780,91 @@
   }
   .eis-sticky__price { font-size: 11px; color: #8A7A63; }
   .eis-sticky__price s { color: #B7A692; }
+  /* Its own full-width strip: on a 390px phone the copy column is ~155px and
+     this line needs ~226px, so inline next to the title it would always clip. */
+  .eis-sticky__rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    min-width: 0;
+  }
+  .eis-sticky__rating i {
+    font-style: normal;
+    font-size: 10px;
+    line-height: 1;
+    color: {{ section.settings.color_star }};
+    letter-spacing: .5px;
+  }
+  .eis-sticky__rating span {
+    font-size: 10.5px;
+    color: #6A5B4D;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   .eis-sticky__btn {
+    position: relative;
+    overflow: hidden;
     background: var(--eis-maroon);
     color: #FFF7E6;
     border: 0;
     font-family: var(--eis-sans);
-    font-size: 12.5px;
+    font-size: 12px;
     font-weight: 700;
-    letter-spacing: .1em;
-    padding: 13px 18px;
-    border-radius: 8px;
+    letter-spacing: .09em;
+    padding: 15px 18px;
+    border-radius: 9px;
     cursor: pointer;
     flex: none;
+    align-self: center;
+    white-space: nowrap;
+    animation: eisCtaPulse 2.6s ease-in-out infinite;
+    transition: background .2s ease, transform .2s cubic-bezier(.34,1.56,.64,1);
     -webkit-tap-highlight-color: transparent;
   }
-  .eis-sticky__btn[disabled] { background: #B9A9A0; cursor: not-allowed; }
-  {%- unless section.settings.sticky_on_desktop %}
+  .eis-sticky__btn:hover { background: var(--eis-maroon-deep); }
+  .eis-sticky__btn:active { transform: scale(.96); }
+  .eis-sticky__btn[disabled] { background: #B9A9A0; cursor: not-allowed; animation: none; }
+  .eis-sticky__sheen {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 40%;
+    background: linear-gradient(90deg, rgba(255,247,230,0), rgba(255,247,230,.28), rgba(255,247,230,0));
+    animation: eisCtaSheen 3.4s ease-in-out infinite;
+    pointer-events: none;
+  }
+  .eis-sticky__btn span:not(.eis-sticky__sheen) { position: relative; }
+  @keyframes eisCtaPulse {
+    0%, 100% { box-shadow: 0 5px 14px rgba(123,19,21,.30), 0 0 0 0 rgba(201,162,74,0); }
+    50% { box-shadow: 0 7px 20px rgba(123,19,21,.38), 0 0 0 5px rgba(201,162,74,.22); }
+  }
+  @keyframes eisCtaSheen {
+    0% { transform: translateX(-130%) skewX(-18deg); }
+    55% { transform: translateX(240%) skewX(-18deg); }
+    100% { transform: translateX(240%) skewX(-18deg); }
+  }
+  /* The pulse and sheen are decoration; hold them still on request. */
+  @media (prefers-reduced-motion: reduce) {
+    .eis-sticky__btn { animation: none; transition: none; }
+    .eis-sticky__sheen { animation: none; opacity: 0; }
+  }
+  {%- if section.settings.sticky_on_desktop %}
+  /* Desktop drops the thumbnail and lets the title carry the bar. */
+  @media (min-width: 750px) {
+    .eis-sticky__inner { max-width: 1240px; padding: 14px 28px; gap: 22px; }
+    .eis-sticky__inner .eis-sticky__thumb { display: none; }
+    .eis-sticky__name { font-family: var(--eis-serif); font-size: 19px; font-weight: 600; line-height: 1.2; color: var(--eis-maroon); }
+    .eis-sticky__rating i { font-size: 12px; }
+    .eis-sticky__rating span { font-size: 12px; }
+    .eis-sticky__btn { font-size: 15px; letter-spacing: .13em; padding: 19px 42px; border-radius: 10px; }
+    .eis-sticky__btn:hover { transform: translateY(-2px) scale(1.02); }
+    .eis-sticky__btn:active { transform: translateY(0) scale(.98); }
+  }
+  {%- else %}
   @media (min-width: 750px) { .eis-sticky { display: none; } }
-  {%- endunless %}
+  {%- endif %}
 
   /* ---------- larger screens: same layout, a touch more air ---------- */
   @media (min-width: 560px) {
@@ -1311,8 +1396,20 @@
     data-reveal-at="{{ section.settings.sticky_reveal_at }}"
     data-action="{{ section.settings.sticky_action }}"
     data-offers="EisOffers-{{ section.id }}"
+    data-hero="EisHero-{{ section.id }}"
   >
     <div class="eis-sticky__inner">
+      {%- comment -%}
+        Same copy as the buy box's rating row, read from the same settings so
+        the two can't drift apart.
+      {%- endcomment -%}
+      {%- if section.settings.sticky_show_rating and section.settings.rating_text != blank -%}
+        <div class="eis-sticky__rating">
+          <i aria-hidden="true">{% for i in (1..section.settings.rating_stars) %}&#9733;{% endfor %}</i>
+          <span>{{ section.settings.rating_text }}</span>
+        </div>
+      {%- endif -%}
+      <div class="eis-sticky__row">
       <div class="eis-sticky__thumb">
         {%- if hero_image != blank -%}
           {{ hero_image | image_url: width: 120 | image_tag: widths: '80, 120', sizes: '40px', loading: 'lazy', alt: '' }}
@@ -1320,10 +1417,12 @@
       </div>
       <div class="eis-sticky__copy">
         <div class="eis-sticky__name">{{ section.settings.sticky_title | default: eis_product.title }}</div>
-        <div class="eis-sticky__price">
-          {{ eis_variant.price | money }}
-          {%- if has_compare_at %} <s>{{ eis_variant.compare_at_price | money }}</s>{% endif -%}
-        </div>
+        {%- if section.settings.sticky_show_price -%}
+          <div class="eis-sticky__price">
+            {{ eis_variant.price | money }}
+            {%- if has_compare_at %} <s>{{ eis_variant.compare_at_price | money }}</s>{% endif -%}
+          </div>
+        {%- endif -%}
       </div>
       <button
         type="button"
@@ -1332,8 +1431,10 @@
         data-variant-id="{{ eis_variant.id }}"
         {% unless eis_product.available %}disabled{% endunless %}
       >
-        {%- if eis_product.available -%}{{ section.settings.sticky_label }}{%- else -%}{{ section.settings.sold_out_label }}{%- endif -%}
+        <span class="eis-sticky__sheen" aria-hidden="true"></span>
+        <span>{%- if eis_product.available -%}{{ section.settings.sticky_label }}{%- else -%}{{ section.settings.sold_out_label }}{%- endif -%}</span>
       </button>
+      </div>
     </div>
   </div>
 {%- endif -%}
@@ -1535,9 +1636,22 @@
         stickyBtn.addEventListener('click', function () {
           if (action === 'add_to_cart') {
             addToCart(stickyBtn.getAttribute('data-variant-id'), stickyBtn);
-          } else {
-            var target = document.getElementById(sticky.getAttribute('data-offers'));
-            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            return;
+          }
+
+          var target = null;
+          if (action === 'scroll_to_atc') {
+            /* Send them back to the real buy button, and focus it so the
+               keyboard path lands in the same place as the tap. */
+            target = root.querySelector('[data-eis-atc]');
+          }
+          if (!target) target = document.getElementById(sticky.getAttribute('data-offers'));
+          if (!target) return;
+
+          var smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          target.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'center' });
+          if (action === 'scroll_to_atc' && target.focus) {
+            window.setTimeout(function () { target.focus({ preventScroll: true }); }, smooth ? 450 : 0);
           }
         });
       }
@@ -2223,11 +2337,15 @@
           "label": "Scroll to the offer ladder"
         },
         {
+          "value": "scroll_to_atc",
+          "label": "Scroll back to the Add to Cart button"
+        },
+        {
           "value": "add_to_cart",
           "label": "Add to cart, then go to cart"
         }
       ],
-      "default": "scroll_to_offers",
+      "default": "scroll_to_atc",
       "info": "Keep this on 'Scroll to the offer ladder' while MoonBundle owns the buy button."
     },
     {
@@ -2239,6 +2357,19 @@
       "step": 20,
       "unit": "px",
       "default": 620
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_show_rating",
+      "label": "Show the rating line",
+      "default": true,
+      "info": "Uses the same rating text as the buy box."
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_show_price",
+      "label": "Show the price",
+      "default": true
     },
     {
       "type": "text",
