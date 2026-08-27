@@ -277,7 +277,8 @@
         "question-14"
       ],
       "settings": {
-        "footer_text": "<p><strong>Still have questions? Get in touch.</strong></p><p>We’re happy to help — reach us anytime at <a href=\"mailto:support@eliteindianstore.com\">support@eliteindianstore.com</a>, before, during or after your order.</p>"
+        "footer_text": "<p><strong>Still have questions? Get in touch.</strong></p><p>We’re happy to help — reach us anytime at <a href=\"mailto:support@eliteindianstore.com\">support@eliteindianstore.com</a>, before, during or after your order.</p>",
+        "padding_top": 18
       }
     },
     "trust": {
