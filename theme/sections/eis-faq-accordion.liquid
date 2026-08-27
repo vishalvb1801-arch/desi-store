@@ -20,8 +20,6 @@
     margin: 0 auto;
     padding: {{ section.settings.padding_top }}px 16px {{ section.settings.padding_bottom }}px;
   }
-  /* Retained: the eyebrow/heading markup was removed from this section, but
-     keeping these rules means restoring a heading later is a markup-only change. */
   .eis-faq__head { text-align: center; }
   .eis-faq__eyebrow {
     display: inline-block;
@@ -92,6 +90,12 @@
 
 <div class="eis-faq">
   <div class="eis-faq__inner" data-eis-faq>
+    {%- if section.settings.heading != blank -%}
+      <div class="eis-faq__head">
+        <h2 class="eis-faq__title">{{ section.settings.heading | newline_to_br }}</h2>
+      </div>
+    {%- endif -%}
+
     {%- for block in section.blocks -%}
       <details
         class="eis-faq__item"
@@ -159,6 +163,13 @@
   "class": "eis-section eis-section--faq",
   "max_blocks": 20,
   "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Line breaks are kept. Leave empty for a bare accordion.",
+      "default": "Frequently Asked Questions"
+    },
     {
       "type": "checkbox",
       "id": "open_first",

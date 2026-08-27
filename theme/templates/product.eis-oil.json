@@ -665,10 +665,6 @@
       "type": "eis-offer-repeat",
       "settings": {}
     },
-    "guarantee": {
-      "type": "eis-guarantee-block",
-      "settings": {}
-    },
     "reviews": {
       "type": "eis-reviews",
       "blocks": {
@@ -968,7 +964,6 @@
   "order": [
     "announcement",
     "hero",
-    "faq",
     "trust",
     "videos",
     "social-proof",
@@ -978,7 +973,7 @@
     "timeline",
     "comparison",
     "offer-repeat",
-    "guarantee",
+    "faq",
     "reviews",
     "footer"
   ]
