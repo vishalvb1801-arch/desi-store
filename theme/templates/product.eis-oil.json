@@ -663,7 +663,12 @@
     },
     "offer-repeat": {
       "type": "eis-offer-repeat",
-      "settings": {}
+      "settings": {
+        "intro": "",
+        "offers_heading": "",
+        "stock_text": "",
+        "padding_bottom": 0
+      }
     },
     "reviews": {
       "type": "eis-reviews",

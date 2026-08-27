@@ -32,11 +32,16 @@
   }
   .eis-faq__title {
     font-family: var(--eis-serif);
-    font-size: 27px;
+    font-size: {{ section.settings.heading_size }}px;
     font-weight: 600;
     color: var(--eis-maroon);
-    margin: 12px 0 20px;
-    line-height: 1.15;
+    line-height: 1.18;
+    /* Held narrower than the column so it reads as a centred block rather
+       than a line running wall to wall, and balanced so the two lines are
+       close in length. */
+    max-width: 16ch;
+    margin: 0 auto 18px;
+    text-wrap: balance;
   }
   .eis-faq__item {
     background: #fff;
@@ -169,6 +174,16 @@
       "label": "Heading",
       "info": "Line breaks are kept. Leave empty for a bare accordion.",
       "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 20,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 26
     },
     {
       "type": "checkbox",
