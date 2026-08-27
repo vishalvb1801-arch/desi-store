@@ -90,6 +90,41 @@
             "title": "AYUSH Licensed & GMP Verified.",
             "text": "15+ Ayurvedic herbs, made in a certified facility."
           }
+        },
+        "bfaq-1": {
+          "type": "buybox_faq",
+          "settings": {
+            "question": "Who is it for?",
+            "answer": "<p>Anyone living with joint, knee, back, shoulder or muscle pain — whether it's from age, all-day standing, desk work, driving, or physical labour. Elders love it for daily stiffness; younger people use it for gym soreness, neck pain, and recovery. If pain is part of your routine, this oil was made for you.</p>"
+          }
+        },
+        "bfaq-2": {
+          "type": "buybox_faq",
+          "settings": {
+            "question": "What's actually in it?",
+            "answer": "<p>15+ Ayurvedic herbs in a sesame and Mahanarayan oil base — Nirgundi, Rasna, Ashwagandha, Nilgiri (eucalyptus), Gandhapura, Pudina, Lawang, Dalchini, Kapoor, Sunthi, Erand Mool and more. No chemicals, no parabens, no artificial fragrance. Smells herbal, not chemical.</p>"
+          }
+        },
+        "bfaq-3": {
+          "type": "buybox_faq",
+          "settings": {
+            "question": "How and when do I apply it?",
+            "answer": "<p>Pour a small amount on the painful area, massage gently in circular motions for 2–3 minutes until the warmth sets in. Repeat 2–3 times a day — best used before bed so it works while you sleep. External use only. Safe for daily use.</p>"
+          }
+        },
+        "bfaq-4": {
+          "type": "buybox_faq",
+          "settings": {
+            "question": "Is it safe?",
+            "answer": "<p>100%. EIS Pain Relief Oil is third-party lab tested and made in a GMP-certified facility. Award-winning Ayurvedic formulation with no harsh chemicals — no burning, no numbness, no side effects. Gentle enough for nightly use by the whole family, including elders, and made for sensitive skin too. For external use only.</p>"
+          }
+        },
+        "bfaq-5": {
+          "type": "buybox_faq",
+          "settings": {
+            "question": "When will it arrive?",
+            "answer": "<p>Orders ship within 24 hours and reach you in 2–5 days. Free delivery, no hidden charges. You'll get a tracking link the moment it ships. COD available.</p>"
+          }
         }
       },
       "block_order": [
@@ -99,7 +134,12 @@
         "benefit-2",
         "benefit-3",
         "benefit-4",
-        "benefit-5"
+        "benefit-5",
+        "bfaq-1",
+        "bfaq-2",
+        "bfaq-3",
+        "bfaq-4",
+        "bfaq-5"
       ],
       "settings": {
         "review_avatar": "shopify://shop_images/8f1969dda710b211fab63d21ff4ae7c3.jpg",
@@ -155,7 +195,8 @@
         "delivery_max_days": 5,
         "show_warning": true,
         "warning_title": "Warning: Unauthorised Sellers Detected",
-        "sp_gap": 22
+        "sp_gap": 22,
+        "bfaq_title": "Quick Answers"
       }
     },
     "faq": {
