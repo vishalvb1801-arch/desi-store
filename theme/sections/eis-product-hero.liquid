@@ -73,7 +73,7 @@
   .eis-hero {
     max-width: var(--eis-max);
     margin: 0 auto;
-    padding: 14px 16px {{ section.settings.padding_bottom }}px;
+    padding: {{ section.settings.padding_top }}px 16px {{ section.settings.padding_bottom }}px;
     background: #fff;
     font-family: var(--eis-sans);
     color: var(--eis-ink);
@@ -1299,6 +1299,17 @@
     },
     {
       "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "info": "The gap between the announcement bar and the gallery. 0 sits the gallery straight under the bar.",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
       "id": "padding_bottom",
       "label": "Bottom padding",
       "min": 0,
@@ -1371,34 +1382,6 @@
     {
       "name": "EIS — Product hero",
       "blocks": [
-        {
-          "type": "feature_pill",
-          "settings": {
-            "icon": "✦",
-            "text": "Fast-absorbing, non-greasy"
-          }
-        },
-        {
-          "type": "feature_pill",
-          "settings": {
-            "icon": "❍",
-            "text": "Loosens stiff, aching joints"
-          }
-        },
-        {
-          "type": "feature_pill",
-          "settings": {
-            "icon": "☘",
-            "text": "15+ Ayurvedic herbs"
-          }
-        },
-        {
-          "type": "feature_pill",
-          "settings": {
-            "icon": "☾",
-            "text": "Gentle for nightly use"
-          }
-        },
         {
           "type": "benefit",
           "settings": {

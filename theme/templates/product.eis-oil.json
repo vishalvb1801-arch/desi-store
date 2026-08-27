@@ -44,34 +44,6 @@
     "hero": {
       "type": "eis-product-hero",
       "blocks": {
-        "feature-pill-1": {
-          "type": "feature_pill",
-          "settings": {
-            "icon": "✦",
-            "text": "Fast-absorbing, non-greasy"
-          }
-        },
-        "feature-pill-2": {
-          "type": "feature_pill",
-          "settings": {
-            "icon": "❍",
-            "text": "Loosens stiff, aching joints"
-          }
-        },
-        "feature-pill-3": {
-          "type": "feature_pill",
-          "settings": {
-            "icon": "☘",
-            "text": "15+ Ayurvedic herbs"
-          }
-        },
-        "feature-pill-4": {
-          "type": "feature_pill",
-          "settings": {
-            "icon": "☾",
-            "text": "Gentle for nightly use"
-          }
-        },
         "benefit-1": {
           "type": "benefit",
           "settings": {
@@ -139,10 +111,6 @@
         }
       },
       "block_order": [
-        "feature-pill-1",
-        "feature-pill-2",
-        "feature-pill-3",
-        "feature-pill-4",
         "benefit-1",
         "benefit-2",
         "benefit-3",
