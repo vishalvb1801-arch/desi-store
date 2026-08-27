@@ -433,6 +433,144 @@
   .eis-btn:hover { background: var(--eis-maroon-deep); }
   .eis-btn[disabled] { background: #B9A9A0; box-shadow: none; cursor: not-allowed; }
 
+  /* ---------- social proof row ---------- */
+  .eis-sp { display: flex; flex-direction: column; align-items: flex-start; width: 100%; padding: 15px 0; font-family: 'Manrope', var(--eis-sans); }
+  .eis-sp__row { display: inline-flex; align-items: center; gap: 12px; flex-wrap: nowrap; max-width: 100%; }
+  .eis-sp__avatars { display: flex; align-items: center; flex-shrink: 0; }
+  .eis-sp__avatars img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2.5px solid {{ section.settings.sp_accent }};
+    object-fit: cover;
+    margin-left: -10px;
+    display: block;
+    transition: transform .3s ease;
+  }
+  .eis-sp__avatars img:first-child { margin-left: 0; }
+  .eis-sp__avatars img:hover { transform: scale(1.1); z-index: 10; position: relative; }
+  .eis-sp__text { display: flex; align-items: center; gap: 6px; row-gap: 2px; font-size: 17px; font-weight: 600; color: #333; flex-wrap: wrap; white-space: nowrap; }
+  .eis-sp__count { font-weight: 800; color: {{ section.settings.sp_accent }}; font-size: 18px; font-variant-numeric: tabular-nums; }
+  .eis-sp__dot { color: #ccc; font-size: 16px; margin: 0 2px; }
+  .eis-sp__stars { display: inline-flex; align-items: center; gap: 1px; }
+  .eis-sp__stars span { color: {{ section.settings.sp_accent }}; font-size: 18px; line-height: 1; }
+  .eis-sp__rating { font-weight: 700; color: #333; font-size: 17px; margin-left: 3px; }
+  .eis-sp__score { display: inline-flex; align-items: center; gap: 3px; flex-basis: 100%; }
+  /* The pasted design is one unbroken line, which needs ~505px of column.
+     The buy box is capped at 480px, so that line can never fit at any
+     viewport — the stars and rating always take their own row, and the
+     separator dot that divided them goes away with it. */
+  .eis-sp__dot { display: none; }
+  @media (max-width: 429px) {
+    .eis-sp__row { gap: 9px; }
+    .eis-sp__avatars img { width: 38px; height: 38px; border-width: 2px; margin-left: -9px; }
+    .eis-sp__text { font-size: 14px; gap: 4px; }
+    .eis-sp__count { font-size: 15px; }
+    .eis-sp__stars span { font-size: 14px; }
+    .eis-sp__rating { font-size: 14px; }
+  }
+  @media (max-width: 359px) {
+    .eis-sp__avatars img { width: 33px; height: 33px; margin-left: -8px; }
+    .eis-sp__text { font-size: 12.5px; }
+    .eis-sp__count { font-size: 13.5px; }
+    .eis-sp__stars span { font-size: 12.5px; }
+    .eis-sp__rating { font-size: 12.5px; }
+  }
+
+  /* ---------- payment methods ---------- */
+  .eis-pm { margin-top: 6px; }
+  .eis-pm__row { display: flex; align-items: center; justify-content: space-between; gap: 3px; }
+  .eis-pm__tile {
+    flex: 1 1 0;
+    min-width: 0;
+    aspect-ratio: 3 / 2;
+    border: 1px solid var(--eis-line);
+    border-radius: 5px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    overflow: hidden;
+  }
+  .eis-pm__tile svg, .eis-pm__tile img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .eis-pm__note { font-size: 11px; color: var(--eis-muted); text-align: center; margin: 7px 0 0; }
+
+  /* ---------- low stock + delivery ---------- */
+  .eis-stockbar { margin-top: 16px; }
+  .eis-stockbar__head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 6px; }
+  .eis-stockbar__label { font-size: 13px; font-weight: 700; color: #A11B1B; }
+  .eis-stockbar__pct { font-size: 11.5px; color: var(--eis-muted); }
+  .eis-stockbar__track { height: 9px; border-radius: 999px; background: #F0E4E4; overflow: hidden; }
+  .eis-stockbar__fill {
+    height: 100%;
+    width: {{ section.settings.stock_percent }}%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #D63232, #A11B1B);
+    animation: eisStockPulse 2.2s ease-in-out infinite;
+  }
+  @keyframes eisStockPulse { 0%, 100% { opacity: 1; } 50% { opacity: .62; } }
+  @media (prefers-reduced-motion: reduce) { .eis-stockbar__fill { animation: none; } }
+  .eis-deliv {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 11px;
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--eis-ink);
+  }
+  .eis-deliv__icon {
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    background: var(--eis-green);
+    color: #fff;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+  }
+  .eis-deliv b { font-weight: 700; }
+
+  /* ---------- counterfeit warning ---------- */
+  .eis-warn {
+    background: #FDF2F2;
+    border: 2px dashed #D37373;
+    padding: 16px;
+    border-radius: 4px;
+    margin: 15px 0 0;
+    font-family: var(--eis-sans);
+  }
+  .eis-warn__head {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    color: #A94442;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: .5px;
+  }
+  .eis-warn__icon {
+    background: #A94442;
+    color: #fff;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+    font-size: 12px;
+    flex: none;
+  }
+  .eis-warn__body p { margin: 0 0 8px; font-size: 14px; line-height: 1.5; color: #834040; }
+  .eis-warn__body p:last-child { margin-bottom: 0; }
+  .eis-warn__body strong { color: #A94442; }
+  .eis-warn__body a { color: #834040; text-decoration: underline; font-weight: 500; }
+
   .eis-pay { display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; margin-top: 14px; }
   .eis-pay span {
     border: 1px solid var(--eis-line);
@@ -854,6 +992,13 @@
       >
         <input type="hidden" name="id" value="{{ eis_variant.id }}">
         <input type="hidden" name="quantity" value="1">
+        {%- comment -%}
+          Without JS the form posts normally, so return_to has to carry the
+          same destination the fetch path uses.
+        {%- endcomment -%}
+        {%- if section.settings.atc_destination == 'checkout' -%}
+          <input type="hidden" name="return_to" value="/checkout">
+        {%- endif -%}
         <button
           type="submit"
           class="eis-btn"
@@ -863,6 +1008,128 @@
           {%- if eis_product.available -%}{{ section.settings.atc_label }}{%- else -%}{{ section.settings.sold_out_label }}{%- endif -%}
         </button>
       </form>
+    {%- endif -%}
+
+    {%- comment -%} ---------- social proof row ---------- {%- endcomment -%}
+    {%- if section.settings.show_social_proof -%}
+      <div class="eis-sp">
+        <div class="eis-sp__row">
+          <div class="eis-sp__avatars">
+            {%- for i in (1..3) -%}
+              {%- liquid
+                case i
+                  when 1
+                    assign sp_img = section.settings.sp_avatar_1
+                    assign sp_url = section.settings.sp_avatar_url_1
+                  when 2
+                    assign sp_img = section.settings.sp_avatar_2
+                    assign sp_url = section.settings.sp_avatar_url_2
+                  else
+                    assign sp_img = section.settings.sp_avatar_3
+                    assign sp_url = section.settings.sp_avatar_url_3
+                endcase
+              -%}
+              {%- if sp_img != blank -%}
+                {{ sp_img | image_url: width: 120 | image_tag: loading: 'lazy', alt: '', width: 60, height: 60, sizes: '44px' }}
+              {%- elsif sp_url != blank -%}
+                <img src="{{ sp_url }}" alt="" width="60" height="60" loading="lazy">
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+          <div class="eis-sp__text">
+            <span
+              class="eis-sp__count"
+              data-eis-count
+              data-from="{{ section.settings.sp_count_from }}"
+              data-to="{{ section.settings.sp_count_to }}"
+            >{{ section.settings.sp_count_to }}</span>
+            <span>{{ section.settings.sp_label }}</span>
+            <span class="eis-sp__dot" aria-hidden="true">&bull;</span>
+            <span class="eis-sp__score">
+              <span class="eis-sp__stars" aria-hidden="true">
+                {%- for i in (1..5) -%}<span>&#9733;</span>{%- endfor -%}
+              </span>
+              <span class="eis-sp__rating">{{ section.settings.sp_rating }}</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} ---------- payment methods ---------- {%- endcomment -%}
+    {%- if section.settings.show_pay_marks -%}
+      {%- assign pay_marks = section.settings.pay_marks | split: ',' -%}
+      <div class="eis-pm">
+        <div class="eis-pm__row">
+          {%- for raw_mark in pay_marks -%}
+            {%- assign pay_mark = raw_mark | strip -%}
+            {%- if pay_mark != blank -%}
+              <span class="eis-pm__tile">{% render 'eis-pay-mark', mark: pay_mark %}</span>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+        {%- if section.settings.pay_note != blank -%}
+          <p class="eis-pm__note">{{ section.settings.pay_note }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} ---------- low stock bar + delivery estimate ---------- {%- endcomment -%}
+    {%- if section.settings.show_stockbar -%}
+      <div class="eis-stockbar">
+        <div class="eis-stockbar__head">
+          <span class="eis-stockbar__label">{{ section.settings.stock_label }}</span>
+          {%- if section.settings.stock_note != blank -%}
+            <span class="eis-stockbar__pct">{{ section.settings.stock_note }}</span>
+          {%- endif -%}
+        </div>
+        <div
+          class="eis-stockbar__track"
+          role="progressbar"
+          aria-valuenow="{{ section.settings.stock_percent }}"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-label="{{ section.settings.stock_label | escape }}"
+        >
+          <div class="eis-stockbar__fill"></div>
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.show_delivery -%}
+      {%- comment -%}
+        Liquid renders the server-side estimate so the line is never blank;
+        the script below recomputes it on the viewer's own clock, because a
+        cached page would otherwise show a stale date.
+      {%- endcomment -%}
+      {%- assign now_seconds = 'now' | date: '%s' | plus: 0 -%}
+      {%- assign min_days = section.settings.delivery_min_days -%}
+      {%- assign max_days = section.settings.delivery_max_days -%}
+      {%- assign from_seconds = min_days | times: 86400 | plus: now_seconds -%}
+      {%- assign to_seconds = max_days | times: 86400 | plus: now_seconds -%}
+      <div
+        class="eis-deliv"
+        data-eis-delivery
+        data-min-days="{{ min_days }}"
+        data-max-days="{{ max_days }}"
+      >
+        <span class="eis-deliv__icon" aria-hidden="true">&#10003;</span>
+        <span>
+          {{ section.settings.delivery_label }}
+          <b data-eis-delivery-range>{{ from_seconds | date: '%a, %-d %b' }} &ndash; {{ to_seconds | date: '%a, %-d %b' }}</b>
+        </span>
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} ---------- counterfeit warning ---------- {%- endcomment -%}
+    {%- if section.settings.show_warning -%}
+      <div class="eis-warn">
+        <div class="eis-warn__head">
+          <span class="eis-warn__icon" aria-hidden="true">!</span>
+          <span>{{ section.settings.warning_title }}</span>
+        </div>
+        <div class="eis-warn__body">{{ section.settings.warning_body }}</div>
+      </div>
     {%- endif -%}
 
     {%- comment -%} ---------- payment badges + COD ---------- {%- endcomment -%}
@@ -1038,7 +1305,9 @@
       }, { passive: true });
     }
 
-    /* ---- add to cart (AJAX, then go to /cart) ---- */
+    /* ---- add to cart (AJAX, then go to the cart or straight to checkout) ---- */
+    var ATC_DESTINATION = {% if section.settings.atc_destination == 'checkout' %}'/checkout'{% else %}'{{ routes.cart_url }}'{% endif %};
+
     function addToCart(variantId, button) {
       if (!variantId) return;
       var original = button.innerHTML;
@@ -1052,7 +1321,7 @@
         .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
         .then(function (r) {
           if (!r.ok) throw new Error(r.data && r.data.description ? r.data.description : 'Add to cart failed');
-          window.location.href = '{{ routes.cart_url }}';
+          window.location.href = ATC_DESTINATION;
         })
         .catch(function (err) {
           button.disabled = false;
@@ -1073,6 +1342,73 @@
         var btn = form.querySelector('[data-eis-atc]');
         addToCart(form.querySelector('input[name="id"]').value, btn);
       });
+    }
+
+    /* ---- social proof counter ---- */
+    var counter = root.querySelector('[data-eis-count]');
+    if (counter && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      var cFrom = parseInt(counter.getAttribute('data-from'), 10);
+      var cTo = parseInt(counter.getAttribute('data-to'), 10);
+      var COUNT_MS = 2000;
+      var PAUSE_MS = 10000;
+
+      if (!isNaN(cFrom) && !isNaN(cTo) && cTo > cFrom) {
+        var fmt = function (n) {
+          try { return n.toLocaleString('en-IN'); } catch (e) { return String(n); }
+        };
+
+        var runCount = function () {
+          var startTime = null;
+          var step = function (now) {
+            if (startTime === null) startTime = now;
+            var progress = Math.min((now - startTime) / COUNT_MS, 1);
+            /* easeOutExpo: fast off the mark, then settles */
+            var eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+            counter.textContent = fmt(Math.floor(cFrom + eased * (cTo - cFrom)));
+            if (progress < 1) {
+              window.requestAnimationFrame(step);
+            } else {
+              counter.textContent = fmt(cTo);
+              window.setTimeout(runCount, PAUSE_MS);
+            }
+          };
+          window.requestAnimationFrame(step);
+        };
+
+        /* Only start once the row is actually on screen, so the first run
+           isn't spent before anybody scrolls down to it. */
+        if (window.IntersectionObserver) {
+          var seen = false;
+          var io = new IntersectionObserver(function (entries) {
+            for (var i = 0; i < entries.length; i++) {
+              if (entries[i].isIntersecting && !seen) { seen = true; io.disconnect(); runCount(); }
+            }
+          }, { threshold: 0.4 });
+          io.observe(counter);
+        } else {
+          window.setTimeout(runCount, 500);
+        }
+      }
+    }
+
+    /* ---- delivery estimate on the viewer's own clock ---- */
+    var deliv = root.querySelector('[data-eis-delivery]');
+    if (deliv) {
+      var out = deliv.querySelector('[data-eis-delivery-range]');
+      var minD = parseInt(deliv.getAttribute('data-min-days'), 10);
+      var maxD = parseInt(deliv.getAttribute('data-max-days'), 10);
+      if (out && !isNaN(minD) && !isNaN(maxD)) {
+        var dayLabel = function (offset) {
+          var d = new Date();
+          d.setDate(d.getDate() + offset);
+          try {
+            return d.toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short' });
+          } catch (e) {
+            return d.toDateString().slice(0, 10);
+          }
+        };
+        out.textContent = dayLabel(minD) + ' \u2013 ' + dayLabel(maxD);
+      }
     }
 
     /* ---- sticky bar ---- */
@@ -1432,6 +1768,16 @@
       "default": "ADD TO CART"
     },
     {
+      "type": "select",
+      "id": "atc_destination",
+      "label": "After adding, go to",
+      "options": [
+        { "value": "checkout", "label": "Checkout" },
+        { "value": "cart", "label": "The cart page" }
+      ],
+      "default": "checkout"
+    },
+    {
       "type": "text",
       "id": "sold_out_label",
       "label": "Sold out label",
@@ -1443,6 +1789,191 @@
       "label": "Label while adding",
       "default": "ADDING…",
       "info": "Shown on the button between the tap and the cart page loading."
+    },
+    {
+      "type": "header",
+      "content": "Social proof row"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social_proof",
+      "label": "Show the social proof row",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "sp_avatar_1",
+      "label": "Customer photo 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "sp_avatar_2",
+      "label": "Customer photo 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "sp_avatar_3",
+      "label": "Customer photo 3"
+    },
+    {
+      "type": "text",
+      "id": "sp_avatar_url_1",
+      "label": "Customer photo 1 fallback URL",
+      "info": "Used only while no image is picked above."
+    },
+    {
+      "type": "text",
+      "id": "sp_avatar_url_2",
+      "label": "Customer photo 2 fallback URL"
+    },
+    {
+      "type": "text",
+      "id": "sp_avatar_url_3",
+      "label": "Customer photo 3 fallback URL"
+    },
+    {
+      "type": "number",
+      "id": "sp_count_from",
+      "label": "Count animates from",
+      "default": 10000
+    },
+    {
+      "type": "number",
+      "id": "sp_count_to",
+      "label": "Count animates to",
+      "default": 36000,
+      "info": "The final number is what shows with animation off, so keep it the honest one."
+    },
+    {
+      "type": "text",
+      "id": "sp_label",
+      "label": "Label after the count",
+      "default": "+ Happy Customers"
+    },
+    {
+      "type": "text",
+      "id": "sp_rating",
+      "label": "Rating",
+      "default": "4.9/5"
+    },
+    {
+      "type": "color",
+      "id": "sp_accent",
+      "label": "Accent",
+      "default": "#E8740C"
+    },
+    {
+      "type": "header",
+      "content": "Payment methods"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pay_marks",
+      "label": "Show the payment method row",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "pay_marks",
+      "label": "Marks, in order",
+      "default": "gpay, phonepe, paytm, bhim, amazonpay, visa, mastercard, rupay, amex",
+      "info": "Comma-separated. Available: gpay, phonepe, paytm, bhim, amazonpay, visa, mastercard, rupay, amex."
+    },
+    {
+      "type": "text",
+      "id": "pay_note",
+      "label": "Note under the row",
+      "default": "UPI, cards & Cash on Delivery accepted"
+    },
+    {
+      "type": "header",
+      "content": "Low stock bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stockbar",
+      "label": "Show the stock bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "stock_label",
+      "label": "Stock label",
+      "default": "Almost sold out"
+    },
+    {
+      "type": "text",
+      "id": "stock_note",
+      "label": "Note on the right",
+      "default": "Selling fast"
+    },
+    {
+      "type": "range",
+      "id": "stock_percent",
+      "label": "Bar fill",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 7
+    },
+    {
+      "type": "header",
+      "content": "Delivery estimate"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_delivery",
+      "label": "Show the delivery estimate",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "delivery_label",
+      "label": "Lead-in text",
+      "default": "Order today, delivered"
+    },
+    {
+      "type": "range",
+      "id": "delivery_min_days",
+      "label": "Earliest",
+      "min": 1,
+      "max": 21,
+      "step": 1,
+      "unit": "d",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "delivery_max_days",
+      "label": "Latest",
+      "min": 1,
+      "max": 30,
+      "step": 1,
+      "unit": "d",
+      "default": 5
+    },
+    {
+      "type": "header",
+      "content": "Counterfeit warning"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_warning",
+      "label": "Show the warning box",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "warning_title",
+      "label": "Title",
+      "default": "Warning: Unauthorised Sellers Detected"
+    },
+    {
+      "type": "richtext",
+      "id": "warning_body",
+      "label": "Body",
+      "default": "<p>EIS Pain Relief Oil has sold out <u>12 times</u> in the past year due to high demand. Unfortunately, this has led to <strong>counterfeit versions appearing on Amazon, Flipkart and other websites</strong> with diluted formulations that don't work and may irritate the skin.</p><p>We're the only authorised seller — shipped direct from us, from the same GMP-certified batch, quality-verified. Take advantage of the current discount before we sell out again.</p><p>We are also the <strong>only seller who replaces a bottle you're not happy with</strong> — something you will never get from an unauthorised seller.</p><p><strong>PS:</strong> Only available here. Please don't buy fakes on Amazon, Flipkart, or any other site.</p>"
     },
     {
       "type": "header",
