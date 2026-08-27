@@ -154,7 +154,8 @@
         "delivery_min_days": 2,
         "delivery_max_days": 5,
         "show_warning": true,
-        "warning_title": "Warning: Unauthorised Sellers Detected"
+        "warning_title": "Warning: Unauthorised Sellers Detected",
+        "sp_gap": 22
       }
     },
     "faq": {
