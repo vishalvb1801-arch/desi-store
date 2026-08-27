@@ -59,29 +59,36 @@
         "benefit-1": {
           "type": "benefit",
           "settings": {
-            "title": "Fast-absorbing relief.",
-            "text": "Soaks into the muscle — it doesn't just sit on the skin like a balm."
+            "title": "Instant relief.",
+            "text": "Non-sticky, gets absorbed easily — feel the pain reduce from the first application."
           }
         },
         "benefit-2": {
           "type": "benefit",
           "settings": {
-            "title": "Eases stiffness.",
-            "text": "Loosens tight, aching joints so you move freely again."
+            "title": "Not just a scented oil.",
+            "text": "Soaks into the muscle and joint — unlike balms and pain relief sprays that just mask it for an hour."
           }
         },
         "benefit-3": {
           "type": "benefit",
           "settings": {
-            "title": "Built for long days.",
-            "text": "Reduces the ache from all-day standing, sitting, or work."
+            "title": "Targets the entire body.",
+            "text": "Knees, back, neck, shoulders & leg cramps — relief wherever it hurts."
           }
         },
         "benefit-4": {
           "type": "benefit",
           "settings": {
-            "title": "15+ Ayurvedic herbs, no chemicals.",
-            "text": "Gentle enough for nightly use."
+            "title": "No chemicals, no burns, no side effects.",
+            "text": "Gentle enough for the whole family to use nightly."
+          }
+        },
+        "benefit-5": {
+          "type": "benefit",
+          "settings": {
+            "title": "AYUSH Licensed & GMP Verified.",
+            "text": "15+ Ayurvedic herbs, made in a certified facility."
           }
         },
         "payment-badge-1": {
@@ -129,6 +136,7 @@
         "benefit-2",
         "benefit-3",
         "benefit-4",
+        "benefit-5",
         "payment-badge-1",
         "payment-badge-2",
         "payment-badge-3",
