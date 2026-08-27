@@ -1394,6 +1394,7 @@
     class="eis-sticky"
     data-eis-sticky
     data-reveal-at="{{ section.settings.sticky_reveal_at }}"
+    data-reveal-mode="{{ section.settings.sticky_reveal_mode }}"
     data-action="{{ section.settings.sticky_action }}"
     data-offers="EisOffers-{{ section.id }}"
     data-hero="EisHero-{{ section.id }}"
@@ -1619,11 +1620,22 @@
     if (sticky) {
       var revealAt = parseInt(sticky.getAttribute('data-reveal-at'), 10) || 620;
       var action = sticky.getAttribute('data-action');
+      var revealMode = sticky.getAttribute('data-reveal-mode');
       var ticking = false;
 
+      /* The buy box ends with its FAQ, so that is the anchor. With the FAQ
+         switched off, fall back to the whole hero. */
+      var revealAnchor = root.querySelector('.eis-bfaq') || root;
+
       function update() {
-        var y = window.scrollY || document.documentElement.scrollTop;
-        sticky.classList.toggle('is-visible', y > revealAt);
+        var show;
+        if (revealMode === 'after_buy_box') {
+          show = revealAnchor.getBoundingClientRect().bottom <= 0;
+        } else {
+          var y = window.scrollY || document.documentElement.scrollTop;
+          show = y > revealAt;
+        }
+        sticky.classList.toggle('is-visible', show);
         ticking = false;
       }
       window.addEventListener('scroll', function () {
@@ -2349,9 +2361,20 @@
       "info": "Keep this on 'Scroll to the offer ladder' while MoonBundle owns the buy button."
     },
     {
+      "type": "select",
+      "id": "sticky_reveal_mode",
+      "label": "Show the bar",
+      "options": [
+        { "value": "after_buy_box", "label": "Once the buy box has scrolled past" },
+        { "value": "pixels", "label": "After a set scroll distance" }
+      ],
+      "default": "after_buy_box"
+    },
+    {
       "type": "range",
       "id": "sticky_reveal_at",
-      "label": "Appears after scrolling",
+      "label": "Scroll distance",
+      "info": "Only used when the bar shows after a set distance.",
       "min": 200,
       "max": 1200,
       "step": 20,
