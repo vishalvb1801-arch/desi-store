@@ -26,6 +26,7 @@
   assign pill_count = 0
   assign benefit_count = 0
   assign badge_count = 0
+  assign gallery_block_count = 0
   for block in section.blocks
     case block.type
       when '@app'
@@ -36,8 +37,28 @@
         assign benefit_count = benefit_count | plus: 1
       when 'payment_badge'
         assign badge_count = badge_count | plus: 1
+      when 'gallery_image'
+        if block.settings.image != blank
+          assign gallery_block_count = gallery_block_count | plus: 1
+        endif
     endcase
   endfor
+
+  comment
+    The gallery reads the product's own media first — that is what Shopify
+    uses everywhere else, so it has to win. Gallery-image blocks are the
+    fallback for a product whose media is not up yet; they disappear on
+    their own the moment real media exists.
+  endcomment
+  assign use_gallery_blocks = false
+  assign gallery_count = gallery_images.size
+  if gallery_count == 0 and gallery_block_count > 0
+    assign use_gallery_blocks = true
+    assign gallery_count = gallery_block_count
+  endif
+  if gallery_count > section.settings.gallery_limit
+    assign gallery_count = section.settings.gallery_limit
+  endif
 
   assign has_compare_at = false
   if eis_variant.compare_at_price > eis_variant.price
@@ -478,7 +499,25 @@
       {%- endif -%}
 
       <div class="eis-hero__slides" data-eis-slides>
-        {%- if gallery_images.size > 0 -%}
+        {%- if use_gallery_blocks -%}
+          {%- assign slide_i = 0 -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'gallery_image' and block.settings.image != blank and slide_i < section.settings.gallery_limit -%}
+              <div class="eis-hero__slide" data-eis-slide="{{ slide_i }}" {% if slide_i == 0 %}data-active{% endif %} {{ block.shopify_attributes }}>
+                {{
+                  block.settings.image
+                  | image_url: width: 1080
+                  | image_tag:
+                    widths: '360, 480, 720, 900, 1080',
+                    sizes: img_sizes,
+                    loading: 'lazy',
+                    alt: hero_alt
+                }}
+              </div>
+              {%- assign slide_i = slide_i | plus: 1 -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- elsif gallery_images.size > 0 -%}
           {%- for image in gallery_images limit: section.settings.gallery_limit -%}
             {%- liquid
               # only the first image is part of the initial paint
@@ -524,7 +563,7 @@
         {%- endif -%}
       </div>
 
-      {%- if gallery_images.size > 1 -%}
+      {%- if gallery_count > 1 -%}
         <div class="eis-hero__nav">
           <button type="button" data-eis-prev aria-label="Previous image">&lsaquo;</button>
           <button type="button" data-eis-next aria-label="Next image">&rsaquo;</button>
@@ -532,19 +571,37 @@
       {%- endif -%}
     </div>
 
-    {%- if gallery_images.size > 1 -%}
+    {%- if gallery_count > 1 -%}
       <div class="eis-hero__thumbs" role="group" aria-label="Product images">
-        {%- for image in gallery_images limit: section.settings.gallery_limit -%}
-          <button
-            type="button"
-            class="eis-hero__thumb"
-            data-eis-thumb="{{ forloop.index0 }}"
-            aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
-            aria-label="Show image {{ forloop.index }}"
-          >
-            {{ image | image_url: width: 200 | image_tag: widths: '100, 160, 200', sizes: '20vw', loading: 'lazy', alt: '' }}
-          </button>
-        {%- endfor -%}
+        {%- if use_gallery_blocks -%}
+          {%- assign thumb_i = 0 -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'gallery_image' and block.settings.image != blank and thumb_i < section.settings.gallery_limit -%}
+              <button
+                type="button"
+                class="eis-hero__thumb"
+                data-eis-thumb="{{ thumb_i }}"
+                aria-current="{% if thumb_i == 0 %}true{% else %}false{% endif %}"
+                aria-label="Show image {{ thumb_i | plus: 1 }}"
+              >
+                {{ block.settings.image | image_url: width: 200 | image_tag: widths: '100, 160, 200', sizes: '20vw', loading: 'lazy', alt: '' }}
+              </button>
+              {%- assign thumb_i = thumb_i | plus: 1 -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- else -%}
+          {%- for image in gallery_images limit: section.settings.gallery_limit -%}
+            <button
+              type="button"
+              class="eis-hero__thumb"
+              data-eis-thumb="{{ forloop.index0 }}"
+              aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
+              aria-label="Show image {{ forloop.index }}"
+            >
+              {{ image | image_url: width: 200 | image_tag: widths: '100, 160, 200', sizes: '20vw', loading: 'lazy', alt: '' }}
+            </button>
+          {%- endfor -%}
+        {%- endif -%}
       </div>
     {%- endif -%}
 
@@ -1361,6 +1418,21 @@
   "blocks": [
     {
       "type": "@app"
+    },
+    {
+      "type": "gallery_image",
+      "name": "Gallery image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "paragraph",
+          "content": "Only used while the product itself has no media. Add photos to the product and they take over automatically."
+        }
+      ]
     },
     {
       "type": "feature_pill",

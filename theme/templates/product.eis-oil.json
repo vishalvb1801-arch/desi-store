@@ -44,6 +44,18 @@
     "hero": {
       "type": "eis-product-hero",
       "blocks": {
+        "gallery-1": {
+          "type": "gallery_image",
+          "settings": {
+            "image": "shopify://shop_images/WhatsApp_Image_2026-08-21_at_3.05.43_PM.jpg"
+          }
+        },
+        "gallery-2": {
+          "type": "gallery_image",
+          "settings": {
+            "image": "shopify://shop_images/eis-bottle-cutout.png"
+          }
+        },
         "benefit-1": {
           "type": "benefit",
           "settings": {
@@ -111,6 +123,8 @@
         }
       },
       "block_order": [
+        "gallery-1",
+        "gallery-2",
         "benefit-1",
         "benefit-2",
         "benefit-3",
