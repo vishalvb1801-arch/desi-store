@@ -157,12 +157,21 @@
     -webkit-tap-highlight-color: transparent;
   }
   .eis-hero__thumbs {
-    display: grid;
-    grid-template-columns: repeat({{ section.settings.thumb_columns }}, 1fr);
+    display: flex;
     gap: 7px;
     margin-top: 9px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    /* no bar: the arrows on the main image drive this row, and a half-thumb
+       at the edge is what tells people it keeps going */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
+  .eis-hero__thumbs::-webkit-scrollbar { display: none; }
   .eis-hero__thumb {
+    flex: 0 0 calc((100% - ({{ section.settings.thumb_columns }} - 1) * 7px) / {{ section.settings.thumb_columns }});
+    scroll-snap-align: start;
     aspect-ratio: 1;
     border-radius: 8px;
     border: 1px solid var(--eis-line);
@@ -786,6 +795,24 @@
       for (var t = 0; t < thumbs.length; t++) {
         thumbs[t].setAttribute('aria-current', t === index ? 'true' : 'false');
       }
+      trackThumb();
+    }
+
+    /* The thumb row scrolls, so the active thumb can sit off-screen after the
+       arrows move the main image. Scroll the row itself rather than calling
+       scrollIntoView, which would drag the whole page along with it. */
+    var thumbRow = root.querySelector('.eis-hero__thumbs');
+    var smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function trackThumb() {
+      if (!thumbRow || !thumbs[index]) return;
+      var t = thumbs[index];
+      var left = t.offsetLeft - (thumbRow.clientWidth - t.offsetWidth) / 2;
+      left = Math.max(0, Math.min(left, thumbRow.scrollWidth - thumbRow.clientWidth));
+      if (thumbRow.scrollTo) {
+        thumbRow.scrollTo({ left: left, behavior: smooth ? 'smooth' : 'auto' });
+      } else {
+        thumbRow.scrollLeft = left;
+      }
     }
 
     for (var t = 0; t < thumbs.length; t++) {
@@ -947,11 +974,12 @@
     {
       "type": "range",
       "id": "thumb_columns",
-      "label": "Thumbnail columns",
+      "label": "Thumbnails in view",
+      "info": "The row scrolls. A half thumbnail at the edge (4.5, 5.5) is what tells people there are more images.",
       "min": 3,
-      "max": 6,
-      "step": 1,
-      "default": 5
+      "max": 7,
+      "step": 0.5,
+      "default": 4.5
     },
     {
       "type": "header",
