@@ -1027,6 +1027,52 @@
       </div>
     {%- endif -%}
 
+    {%- comment -%} ---------- social proof row ---------- {%- endcomment -%}
+    {%- if section.settings.show_social_proof -%}
+      <div class="eis-hsp">
+        <div class="eis-hsp__row">
+          <div class="eis-hsp__avatars">
+            {%- for i in (1..3) -%}
+              {%- liquid
+                case i
+                  when 1
+                    assign sp_img = section.settings.sp_avatar_1
+                    assign sp_url = section.settings.sp_avatar_url_1
+                  when 2
+                    assign sp_img = section.settings.sp_avatar_2
+                    assign sp_url = section.settings.sp_avatar_url_2
+                  else
+                    assign sp_img = section.settings.sp_avatar_3
+                    assign sp_url = section.settings.sp_avatar_url_3
+                endcase
+              -%}
+              {%- if sp_img != blank -%}
+                {{ sp_img | image_url: width: 120 | image_tag: loading: 'lazy', alt: '', width: 60, height: 60, sizes: '44px' }}
+              {%- elsif sp_url != blank -%}
+                <img src="{{ sp_url }}" alt="" width="60" height="60" loading="lazy">
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+          <div class="eis-hsp__text">
+            <span
+              class="eis-hsp__count"
+              data-eis-count
+              data-from="{{ section.settings.sp_count_from }}"
+              data-to="{{ section.settings.sp_count_to }}"
+            >{{ section.settings.sp_count_to }}</span>
+            <span>{{ section.settings.sp_label }}</span>
+            <span class="eis-hsp__dot" aria-hidden="true">&bull;</span>
+            <span class="eis-hsp__score">
+              <span class="eis-hsp__stars" aria-hidden="true">
+                {%- for i in (1..5) -%}<span>&#9733;</span>{%- endfor -%}
+              </span>
+              <span class="eis-hsp__rating">{{ section.settings.sp_rating }}</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+
     {%- comment -%} ---------- title ---------- {%- endcomment -%}
     {%- assign heading = section.settings.heading | default: eis_product.title -%}
     <h1 class="eis-hero__title">{{ heading | newline_to_br }}</h1>
@@ -1177,52 +1223,6 @@
           {%- if eis_product.available -%}{{ section.settings.atc_label }}{%- else -%}{{ section.settings.sold_out_label }}{%- endif -%}
         </button>
       </form>
-    {%- endif -%}
-
-    {%- comment -%} ---------- social proof row ---------- {%- endcomment -%}
-    {%- if section.settings.show_social_proof -%}
-      <div class="eis-hsp">
-        <div class="eis-hsp__row">
-          <div class="eis-hsp__avatars">
-            {%- for i in (1..3) -%}
-              {%- liquid
-                case i
-                  when 1
-                    assign sp_img = section.settings.sp_avatar_1
-                    assign sp_url = section.settings.sp_avatar_url_1
-                  when 2
-                    assign sp_img = section.settings.sp_avatar_2
-                    assign sp_url = section.settings.sp_avatar_url_2
-                  else
-                    assign sp_img = section.settings.sp_avatar_3
-                    assign sp_url = section.settings.sp_avatar_url_3
-                endcase
-              -%}
-              {%- if sp_img != blank -%}
-                {{ sp_img | image_url: width: 120 | image_tag: loading: 'lazy', alt: '', width: 60, height: 60, sizes: '44px' }}
-              {%- elsif sp_url != blank -%}
-                <img src="{{ sp_url }}" alt="" width="60" height="60" loading="lazy">
-              {%- endif -%}
-            {%- endfor -%}
-          </div>
-          <div class="eis-hsp__text">
-            <span
-              class="eis-hsp__count"
-              data-eis-count
-              data-from="{{ section.settings.sp_count_from }}"
-              data-to="{{ section.settings.sp_count_to }}"
-            >{{ section.settings.sp_count_to }}</span>
-            <span>{{ section.settings.sp_label }}</span>
-            <span class="eis-hsp__dot" aria-hidden="true">&bull;</span>
-            <span class="eis-hsp__score">
-              <span class="eis-hsp__stars" aria-hidden="true">
-                {%- for i in (1..5) -%}<span>&#9733;</span>{%- endfor -%}
-              </span>
-              <span class="eis-hsp__rating">{{ section.settings.sp_rating }}</span>
-            </span>
-          </div>
-        </div>
-      </div>
     {%- endif -%}
 
     {%- comment -%} ---------- payment methods ---------- {%- endcomment -%}
