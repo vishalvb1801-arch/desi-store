@@ -360,7 +360,12 @@
     border: 1px solid #EFE0C9;
     border-radius: 12px;
     padding: 16px;
-    margin-top: 16px;
+    /* Without the bottom margin the cream edge butted straight into the
+       offer ladder the bundle app injects below. 24px at every width: the
+       same value the offers heading already uses, and enough to survive
+       collapsing against the button's own 14px top margin, which a 16px
+       bottom margin would not have. */
+    margin: 16px 0 24px;
     display: flex;
     flex-direction: column;
     gap: 14px;
