@@ -68,9 +68,6 @@
     assign use_gallery_blocks = true
     assign gallery_count = gallery_block_count
   endif
-  if gallery_count > section.settings.gallery_limit
-    assign gallery_count = section.settings.gallery_limit
-  endif
 
   assign has_compare_at = false
   if eis_variant.compare_at_price > eis_variant.price
@@ -137,7 +134,11 @@
   .eis-hero__slide svg {
     display: block;
     width: 100%;
-    height: {{ section.settings.image_height }}px;
+    /* Square at every width, whatever the source image is. contain letterboxes
+       a non-square photo against the stage rather than cropping it, so a 4:5
+       or 16:9 upload still shows whole. */
+    aspect-ratio: 1 / 1;
+    height: auto;
     object-fit: contain;
     object-position: {{ section.settings.image_position }};
   }
@@ -1023,7 +1024,7 @@
         {%- if use_gallery_blocks -%}
           {%- assign slide_i = 0 -%}
           {%- for block in section.blocks -%}
-            {%- if block.type == 'gallery_image' and block.settings.image != blank and slide_i < section.settings.gallery_limit -%}
+            {%- if block.type == 'gallery_image' and block.settings.image != blank -%}
               <div class="eis-hero__slide" data-eis-slide="{{ slide_i }}" {% if slide_i == 0 %}data-active{% endif %} {{ block.shopify_attributes }}>
                 {{
                   block.settings.image
@@ -1039,7 +1040,7 @@
             {%- endif -%}
           {%- endfor -%}
         {%- elsif gallery_images.size > 0 -%}
-          {%- for image in gallery_images limit: section.settings.gallery_limit -%}
+          {%- for image in gallery_images -%}
             {%- liquid
               # only the first image is part of the initial paint
               if forloop.first
@@ -1097,7 +1098,7 @@
         {%- if use_gallery_blocks -%}
           {%- assign thumb_i = 0 -%}
           {%- for block in section.blocks -%}
-            {%- if block.type == 'gallery_image' and block.settings.image != blank and thumb_i < section.settings.gallery_limit -%}
+            {%- if block.type == 'gallery_image' and block.settings.image != blank -%}
               <button
                 type="button"
                 class="eis-hero__thumb"
@@ -1111,7 +1112,7 @@
             {%- endif -%}
           {%- endfor -%}
         {%- else -%}
-          {%- for image in gallery_images limit: section.settings.gallery_limit -%}
+          {%- for image in gallery_images -%}
             <button
               type="button"
               class="eis-hero__thumb"
@@ -1888,16 +1889,6 @@
       "info": "Optional. Used when the product has no images, and for the sticky bar thumbnail."
     },
     {
-      "type": "range",
-      "id": "image_height",
-      "label": "Main image height",
-      "min": 260,
-      "max": 520,
-      "step": 10,
-      "unit": "px",
-      "default": 380
-    },
-    {
       "type": "select",
       "id": "image_position",
       "label": "Main image focus",
@@ -1916,15 +1907,6 @@
         }
       ],
       "default": "70% center"
-    },
-    {
-      "type": "range",
-      "id": "gallery_limit",
-      "label": "Max images to show",
-      "min": 2,
-      "max": 10,
-      "step": 1,
-      "default": 5
     },
     {
       "type": "range",
