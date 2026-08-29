@@ -68,6 +68,46 @@
     color: #E9D8B6;
     margin-top: 20px;
   }
+
+  /* ---------- desktop & iPad ---------- */
+  /* The design drops the maroon band here and shows the three marks as cream
+     chips sitting under the gallery column. They cannot move inside the hero
+     without duplicating their content or disturbing mobile, so they keep
+     their own band and instead take the design's chip treatment, aligned to
+     the same left edge and the same 552px column width as the gallery. */
+  @media (min-width: 750px) {
+    .eis-trust { background: #fff; }
+    .eis-trust__inner {
+      max-width: 976px;
+      padding: 0 12px 30px;
+      text-align: left;
+    }
+    .eis-trust__title { display: none; }
+    .eis-trust__grid {
+      max-width: 448px;
+      margin-top: 0;
+      gap: 12px;
+    }
+    .eis-trust__badge {
+      background: var(--eis-cream);
+      border: 1px solid var(--eis-line);
+      border-radius: 11px;
+      padding: 14px 8px;
+    }
+    .eis-trust__icon {
+      width: 30px;
+      height: 30px;
+      border: 0;
+      color: var(--eis-maroon);
+      margin-bottom: 6px;
+    }
+    .eis-trust__label { color: var(--eis-ink); }
+  }
+
+  @media (min-width: 1200px) {
+    .eis-trust__inner { max-width: 1280px; }
+    .eis-trust__grid { max-width: 552px; }
+  }
 {% endstyle %}
 
 <div class="eis-trust">
