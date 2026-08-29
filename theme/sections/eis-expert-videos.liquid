@@ -172,8 +172,20 @@
        is also the width-limiter, so painting it left a 1059px cream box
        floating on white with full-width cream sections above and below. This
        is how the UGC row is built: background on the band, width on the inner. */
-    .eis-section--experts { background: var(--eis-cream); }
+    /* Brand maroon, the same value the stats, timeline and trust bands use.
+       Written as a literal, not var(--eis-maroon-deep): this section's schema
+       only defines maroon, gold, cream, text and muted, so the deep-maroon
+       token resolves to nothing here and the band came out transparent.
+       Everything inside was drawn for cream, so the type flips with it. */
+    .eis-section--experts { background: #5C0D0F; }
     .eis-exp { background: transparent; max-width: none; }
+    .eis-exp__title { color: #F6E7C8; }
+    .eis-exp__sub { color: #D9C6A2; }
+    .eis-exp__name b { color: #F6E7C8; }
+    .eis-exp__tick { color: #E3C46F; }
+    .eis-exp__role { color: #C4AE86; }
+    .eis-exp__tag { color: #E3C46F; border-color: rgba(227, 196, 111, .5); }
+    .eis-exp__note { color: #8A7A63; }
     .eis-exp__head,
     .eis-exp__track { max-width: 976px; margin-left: auto; margin-right: auto; }
     .eis-exp__track {
