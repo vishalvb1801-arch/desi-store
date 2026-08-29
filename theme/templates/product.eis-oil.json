@@ -436,7 +436,9 @@
         "stat-2",
         "stat-3"
       ],
-      "settings": {}
+      "settings": {
+        "image": "shopify://shop_images/eis-bottle-cutout.png"
+      }
     },
     "ingredients": {
       "type": "eis-ingredients-grid",
@@ -590,7 +592,8 @@
         "safety-note-3"
       ],
       "settings": {
-        "step_image_ratio": "1 / 1"
+        "step_image_ratio": "1 / 1",
+        "bottle_image": "shopify://shop_images/eis-bottle-cutout.png"
       }
     },
     "timeline": {

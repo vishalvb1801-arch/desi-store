@@ -84,7 +84,9 @@
     color: #C4AE86;
   }
   .eis-stats__image {
-    display: block;
+    /* Desktop only: mobile is signed off, and rendering this there would move
+       everything below it. The min-width rule below turns it back on. */
+    display: none;
     width: {{ section.settings.image_width }}%;
     margin: 6px auto 0;
     height: {{ section.settings.image_height }}px;
@@ -108,6 +110,7 @@
     }
     .eis-stats__title { grid-column: 1; font-size: 34px; }
     .eis-stats__row, .eis-stats__foot { grid-column: 2; }
+    .eis-stats__image { display: block; grid-column: 1; grid-row: 2 / span 99; width: 100%; height: auto; max-height: 420px; }
   }
   @media (min-width: 1200px) {
     .eis-stats__inner { max-width: 1280px; grid-template-columns: minmax(0, 588px) minmax(0, 1fr); column-gap: 72px; }

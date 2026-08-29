@@ -1,0 +1,101 @@
+{%- comment -%}
+  EIS hero — desktop and iPad rules.
+  ------------------------------------------------------------------
+  Lifted out of the section because eis-product-hero.liquid had grown
+  past the size Shopify accepts for a section file: the upload was
+  being rejected with no error. Pure CSS, no section settings, so it
+  renders inside the section's {% style %} with no arguments.
+{%- endcomment -%}
+  /* Desktop only. On phones the standalone trust section carries these, and
+     that layout is signed off, so these must not render there at all. */
+  .eis-hero__marks { display: none; }
+  .eis-hero__mark {
+    background: var(--eis-cream);
+    border: 1px solid var(--eis-line);
+    border-radius: 11px;
+    padding: 14px 8px;
+    text-align: center;
+  }
+  .eis-hero__mark-icon { font-size: 18px; line-height: 1; color: var(--eis-maroon); }
+  .eis-hero__mark-label {
+    margin-top: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    line-height: 1.45;
+    color: var(--eis-ink);
+  }
+
+  /* ---------- desktop & iPad: two columns ---------- */
+  /* Everything below is inside a min-width query. Mobile never sees it. */
+  @media (min-width: 750px) {
+    .eis-hero {
+      max-width: 976px;
+      display: grid;
+      grid-template-columns: minmax(0, 47%) minmax(0, 1fr);
+      /* min-content on the first row stops the buy column, which spans both
+         rows, from inflating it and pushing the FAQ away from the gallery. */
+      grid-template-rows: min-content min-content 1fr;
+      column-gap: 28px;
+      align-items: start;
+    }
+    .eis-hero__media {
+      display: flex;
+      flex-direction: column;
+      grid-column: 1;
+      grid-row: 1;
+      min-width: 0;
+    }
+    /* Spans both rows so the buy box runs full height beside the gallery
+       and the FAQ underneath it. */
+    .eis-hero__buy {
+      display: flex;
+      flex-direction: column;
+      grid-column: 2;
+      grid-row: 1 / span 3;
+      min-width: 0;
+    }
+    /* Sits directly under the FAQ in the gallery column. On its own the trust
+       section renders after the whole hero, which left it stranded 504px below
+       the FAQ because the buy column is taller. */
+    .eis-hero__marks {
+      display: grid;
+      grid-column: 1;
+      grid-row: 3;
+      align-self: start;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+    /* The design puts the buy-box FAQ under the gallery, not in the buy box.
+       It is the last child in the DOM, so it only has to be placed, not moved. */
+    /* Mobile bleeds the cream panel past the hero padding; inside a column
+       that would overflow the gutter, so square it off here. */
+    .eis-bfaq {
+      grid-column: 1;
+      grid-row: 2;
+      min-width: 0;
+      margin: 16px 0 0;
+      padding: 18px 20px;
+      border-radius: 14px;
+    }
+
+    /* The design drops the social proof row low in the buy box, between the
+       delivery estimate and the warning. Mobile keeps it above the title.
+       Flex order does that without a second DOM position. */
+    .eis-hsp { order: 10; }
+    .eis-warn { order: 11; }
+
+    /* The stage is square on mobile; desktop has room for a taller frame. */
+    .eis-hero__title { font-size: 40px; }
+    .eis-hero__subtitle { font-size: 16px; }
+  }
+
+  @media (min-width: 1200px) {
+    .eis-hero {
+      max-width: 1280px;
+      grid-template-columns: minmax(0, 552px) minmax(0, 1fr);
+      column-gap: 48px;
+    }
+    .eis-hero__title { font-size: 44px; }
+  }

@@ -182,6 +182,10 @@
     padding: 3px 8px;
     margin-top: auto;
   }
+  /* Desktop only: the phone layout is signed off and an extra image there
+     would push everything below it. The min-width rule turns it back on. */
+  .eis-how__bottle { display: none; }
+
   .eis-how__safety {
     border: 1px dashed var(--eis-gold);
     border-radius: 11px;
@@ -234,6 +238,7 @@
     }
     .eis-how__head { grid-column: 1; grid-row: 1; }
     .eis-how__safety { grid-column: 1; grid-row: 2; }
+    .eis-how__bottle { display: block; grid-column: 1; grid-row: 3; width: 100%; height: auto; max-height: 380px; object-fit: contain; margin-top: 18px; }
     .eis-how__steps {
       grid-column: 2;
       grid-row: 1 / span 2;
@@ -326,6 +331,15 @@
         </ul>
       </div>
     {%- endif -%}
+
+    {%- if section.settings.bottle_image != blank -%}
+      {{
+        section.settings.bottle_image
+        | image_url: width: 760
+        | image_tag: widths: '380, 570, 760', sizes: '380px', loading: 'lazy',
+          class: 'eis-how__bottle', alt: ''
+      }}
+    {%- endif -%}
   </div>
 </div>
 
@@ -336,6 +350,12 @@
   "class": "eis-section eis-section--how",
   "max_blocks": 12,
   "settings": [
+    {
+      "type": "image_picker",
+      "id": "bottle_image",
+      "label": "Bottle image (desktop only)",
+      "info": "Shown beside the steps on desktop and iPad. Hidden on phones."
+    },
     {
       "type": "text",
       "id": "eyebrow",

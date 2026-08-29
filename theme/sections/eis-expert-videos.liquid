@@ -179,9 +179,15 @@
     }
     .eis-exp__card { width: auto; min-width: 0; scroll-snap-align: none; }
     .eis-exp__bar { display: none; }
+    /* Cream on cream read as a stray panel; the UGC row sits on white. */
+    .eis-exp { background: #fff; }
+    /* It was ending flush against the next section. */
+    .eis-exp { padding-bottom: 56px; }
   }
   @media (min-width: 1200px) {
-    .eis-exp { max-width: 888px; }
+    /* Same wrapper and gap as the UGC video row, so the two card sets are the
+       same size instead of the experts reading as a smaller, separate thing. */
+    .eis-exp { max-width: 1059px; }
     .eis-exp__track { gap: 24px; }
   }
 {% endstyle %}

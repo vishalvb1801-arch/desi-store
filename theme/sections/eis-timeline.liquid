@@ -148,11 +148,27 @@
     .eis-time__inner { max-width: 976px; }
     .eis-time__title { font-size: 34px; }
     .eis-time__list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; align-items: start; }
+    /* The rail is a vertical bar between stacked rows. Across four columns it
+       pointed up into empty space, so turn it on its side: it now spans the
+       column gap at the markers' height and fills left to right. */
+    .eis-time__row + .eis-time__row::before {
+      top: calc(var(--eis-marker) * .04);
+      left: -16px;
+      transform: none;
+      width: 16px;
+      height: {{ section.settings.rail_width }}px;
+      background:
+        linear-gradient(var(--eis-gold-light), var(--eis-gold-light)) no-repeat left center,
+        rgba(246, 231, 200, .28);
+      background-size: 0 100%, auto;
+    }
+    .eis-time__row.is-lit::before { background-size: 100% 100%, auto; }
   }
   @media (min-width: 1200px) {
     .eis-time__inner { max-width: 1280px; }
     .eis-time__title { font-size: 42px; }
     .eis-time__list { gap: 24px; }
+    .eis-time__row + .eis-time__row::before { left: -24px; width: 24px; }
   }
 {% endstyle %}
 

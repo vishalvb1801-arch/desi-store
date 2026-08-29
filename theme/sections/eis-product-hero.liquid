@@ -124,6 +124,7 @@
   .eis-hero__media,
   .eis-hero__buy { display: contents; }
 
+
   /* ---------- gallery ---------- */
   .eis-hero__stage {
     position: relative;
@@ -970,7 +971,7 @@
   /* Desktop drops the thumbnail and lets the title carry the bar. */
   @media (min-width: 750px) {
     .eis-sticky__inner { max-width: 1240px; padding: 14px 28px; gap: 22px; }
-    .eis-sticky__inner .eis-sticky__thumb { display: none; }
+    .eis-sticky__inner .eis-sticky__thumb { width: 54px; height: 54px; border-radius: 10px; }
     .eis-sticky__name { font-family: var(--eis-serif); font-size: 19px; font-weight: 600; line-height: 1.2; color: var(--eis-maroon); }
     .eis-sticky__rating i { font-size: 12px; }
     .eis-sticky__rating span { font-size: 12px; }
@@ -989,67 +990,7 @@
     .eis-hero__benefit-text { font-size: 13.5px; }
   }
 
-  /* ---------- desktop & iPad: two columns ---------- */
-  /* Everything below is inside a min-width query. Mobile never sees it. */
-  @media (min-width: 750px) {
-    .eis-hero {
-      max-width: 976px;
-      display: grid;
-      grid-template-columns: minmax(0, 47%) minmax(0, 1fr);
-      /* min-content on the first row stops the buy column, which spans both
-         rows, from inflating it and pushing the FAQ away from the gallery. */
-      grid-template-rows: min-content 1fr;
-      column-gap: 28px;
-      align-items: start;
-    }
-    .eis-hero__media {
-      display: flex;
-      flex-direction: column;
-      grid-column: 1;
-      grid-row: 1;
-      min-width: 0;
-    }
-    /* Spans both rows so the buy box runs full height beside the gallery
-       and the FAQ underneath it. */
-    .eis-hero__buy {
-      display: flex;
-      flex-direction: column;
-      grid-column: 2;
-      grid-row: 1 / span 2;
-      min-width: 0;
-    }
-    /* The design puts the buy-box FAQ under the gallery, not in the buy box.
-       It is the last child in the DOM, so it only has to be placed, not moved. */
-    /* Mobile bleeds the cream panel past the hero padding; inside a column
-       that would overflow the gutter, so square it off here. */
-    .eis-bfaq {
-      grid-column: 1;
-      grid-row: 2;
-      min-width: 0;
-      margin: 16px 0 0;
-      padding: 18px 20px;
-      border-radius: 14px;
-    }
-
-    /* The design drops the social proof row low in the buy box, between the
-       delivery estimate and the warning. Mobile keeps it above the title.
-       Flex order does that without a second DOM position. */
-    .eis-hsp { order: 10; }
-    .eis-warn { order: 11; }
-
-    /* The stage is square on mobile; desktop has room for a taller frame. */
-    .eis-hero__title { font-size: 40px; }
-    .eis-hero__subtitle { font-size: 16px; }
-  }
-
-  @media (min-width: 1200px) {
-    .eis-hero {
-      max-width: 1280px;
-      grid-template-columns: minmax(0, 552px) minmax(0, 1fr);
-      column-gap: 48px;
-    }
-    .eis-hero__title { font-size: 44px; }
-  }
+  {% render 'eis-hero-desktop' %}
 {% endstyle %}
 
 <div class="eis-hero" id="EisHero-{{ section.id }}" data-eis-hero>
@@ -1540,6 +1481,29 @@
         {%- endfor -%}
       </div>
     {%- endif -%}
+
+    {%- comment -%}
+      ---------- trust marks (desktop column) ----------
+      Fixed rather than block-driven: this section is already at the maximum
+      number of schema settings Shopify accepts, and adding two more made the
+      whole file fail to upload with no error returned. The phone layout takes
+      these from the eis-trust-badges section, which stays editable; only these
+      desktop copies are hard-coded. Keep the two in step by hand.
+    {%- endcomment -%}
+    <div class="eis-hero__marks" aria-hidden="true">
+      <div class="eis-hero__mark">
+        <div class="eis-hero__mark-icon">&#9879;</div>
+        <div class="eis-hero__mark-label">LAB<br>TESTED</div>
+      </div>
+      <div class="eis-hero__mark">
+        <div class="eis-hero__mark-icon">&#9752;</div>
+        <div class="eis-hero__mark-label">15+ AYURVEDIC<br>HERBS</div>
+      </div>
+      <div class="eis-hero__mark">
+        <div class="eis-hero__mark-icon">&#10039;</div>
+        <div class="eis-hero__mark-label">GMP CERTIFIED<br>FACILITY</div>
+      </div>
+    </div>
 
     {%- comment -%} ---------- payment badges + COD ---------- {%- endcomment -%}
     {%- if badge_count > 0 -%}
