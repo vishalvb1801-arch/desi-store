@@ -137,6 +137,26 @@
   @media (prefers-reduced-motion: reduce) {
     .eis-ugc__bar-thumb { transition: none; }
   }
+
+  /* ---------- desktop & iPad ---------- */
+  /* The design shows the three clips side by side rather than as a scroller:
+     321px cards with 24px gaps on desktop, 314px with 16px on iPad, the row
+     centred. overflow stays auto so a fourth clip still scrolls. */
+  @media (min-width: 750px) {
+    .eis-ugc__inner { max-width: 976px; padding-left: 12px; padding-right: 12px; }
+    .eis-ugc__title { font-size: 34px; margin-bottom: 22px; }
+    .eis-ugc__grid { gap: 16px; justify-content: center; }
+    .eis-ugc__item { flex: 0 0 calc((100% - 32px) / 3); }
+    /* Nothing overflows at this size, so the custom scrollbar is noise. */
+    .eis-ugc__bar { display: none; }
+  }
+
+  @media (min-width: 1200px) {
+    .eis-ugc__inner { max-width: 1059px; }
+    .eis-ugc__title { font-size: 38px; }
+    .eis-ugc__grid { gap: 24px; }
+    .eis-ugc__item { flex: 0 0 calc((100% - 48px) / 3); }
+  }
 {% endstyle %}
 
 <div class="eis-ugc">
