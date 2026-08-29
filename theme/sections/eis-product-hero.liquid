@@ -15,7 +15,12 @@
   assign eis_product = section.settings.product | default: product
   assign eis_variant = eis_product.selected_or_first_available_variant
 
-  assign gallery_images = eis_product.images
+  comment
+    media, not images: images excludes video, and a silent looping MP4 is how
+    an animation belongs on a product page — the same clip as a GIF runs about
+    a tenth the bytes. Order follows whatever the merchant sets in Shopify.
+  endcomment
+  assign gallery_media = eis_product.media
   if section.settings.featured_image != blank
     assign hero_image = section.settings.featured_image
   else
@@ -63,7 +68,7 @@
     their own the moment real media exists.
   endcomment
   assign use_gallery_blocks = false
-  assign gallery_count = gallery_images.size
+  assign gallery_count = gallery_media.size
   if gallery_count == 0 and gallery_block_count > 0
     assign use_gallery_blocks = true
     assign gallery_count = gallery_block_count
@@ -131,7 +136,9 @@
   .eis-hero__slide { display: none; }
   .eis-hero__slide[data-active] { display: block; }
   .eis-hero__slide img,
-  .eis-hero__slide svg {
+  .eis-hero__slide svg,
+  .eis-hero__slide video,
+  .eis-hero__slide iframe {
     display: block;
     width: 100%;
     /* Square at every width, whatever the source image is. contain letterboxes
@@ -224,6 +231,32 @@
     -webkit-tap-highlight-color: transparent;
   }
   .eis-hero__thumb[aria-current="true"] { border: 2px solid var(--eis-maroon); }
+  .eis-hero__thumb { position: relative; }
+  /* Marks a thumbnail whose slide is a video. Drawn rather than an icon file
+     so it inherits the gallery's own colours and costs no extra request. */
+  .eis-hero__thumb-play {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgba(21, 6, 6, .62);
+    border: 1px solid rgba(246, 231, 200, .85);
+    pointer-events: none;
+  }
+  .eis-hero__thumb-play::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 0;
+    height: 0;
+    border-left: 7px solid #F6E7C8;
+    border-top: 4.5px solid transparent;
+    border-bottom: 4.5px solid transparent;
+    transform: translateX(1px);
+  }
   .eis-hero__thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
 
   /* ---------- rating ---------- */
@@ -1039,10 +1072,10 @@
               {%- assign slide_i = slide_i | plus: 1 -%}
             {%- endif -%}
           {%- endfor -%}
-        {%- elsif gallery_images.size > 0 -%}
-          {%- for image in gallery_images -%}
+        {%- elsif gallery_media.size > 0 -%}
+          {%- for media in gallery_media -%}
             {%- liquid
-              # only the first image is part of the initial paint
+              # only the first frame is part of the initial paint
               if forloop.first
                 assign img_loading = 'eager'
                 assign img_priority = 'high'
@@ -1050,19 +1083,52 @@
                 assign img_loading = 'lazy'
                 assign img_priority = 'auto'
               endif
-              assign slide_alt = image.alt | default: image_alt | escape
+              assign slide_alt = media.alt | default: image_alt | escape
             -%}
-            <div class="eis-hero__slide" data-eis-slide="{{ forloop.index0 }}" {% if forloop.first %}data-active{% endif %}>
-              {{
-                image
-                | image_url: width: 1080
-                | image_tag:
-                  widths: '360, 480, 720, 900, 1080',
-                  sizes: img_sizes,
-                  loading: img_loading,
-                  fetchpriority: img_priority,
-                  alt: slide_alt
-              }}
+            <div
+              class="eis-hero__slide"
+              data-eis-slide="{{ forloop.index0 }}"
+              data-media-type="{{ media.media_type }}"
+              {% if forloop.first %}data-active{% endif %}
+            >
+              {%- case media.media_type -%}
+                {%- when 'video' -%}
+                  {%- comment -%}
+                    Shopify's own filter rather than a hand-rolled <video>: it
+                    picks the right source from media.sources, which carries
+                    several encodings, and writes the poster. Muted so autoplay
+                    is allowed at all, looping and chrome-free so it reads as
+                    an animation rather than something to press play on.
+                  {%- endcomment -%}
+                  {{
+                    media
+                    | video_tag:
+                      image_size: '1080x',
+                      autoplay: true,
+                      loop: true,
+                      muted: true,
+                      playsinline: true,
+                      controls: false
+                  }}
+                {%- when 'external_video' -%}
+                  {{ media | external_video_tag: loading: 'lazy' }}
+                {%- else -%}
+                  {%- comment -%}
+                    Covers image and 3D model alike: every media type carries a
+                    preview_image, so an unsupported type still shows a frame
+                    instead of a hole.
+                  {%- endcomment -%}
+                  {{
+                    media.preview_image
+                    | image_url: width: 1080
+                    | image_tag:
+                      widths: '360, 480, 720, 900, 1080',
+                      sizes: img_sizes,
+                      loading: img_loading,
+                      fetchpriority: img_priority,
+                      alt: slide_alt
+                  }}
+              {%- endcase -%}
             </div>
           {%- endfor -%}
         {%- elsif hero_image != blank -%}
@@ -1112,15 +1178,18 @@
             {%- endif -%}
           {%- endfor -%}
         {%- else -%}
-          {%- for image in gallery_images -%}
+          {%- for media in gallery_media -%}
             <button
               type="button"
               class="eis-hero__thumb"
               data-eis-thumb="{{ forloop.index0 }}"
               aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
-              aria-label="Show image {{ forloop.index }}"
+              aria-label="{% if media.media_type == 'image' %}Show image {{ forloop.index }}{% else %}Show video {{ forloop.index }}{% endif %}"
             >
-              {{ image | image_url: width: 200 | image_tag: widths: '100, 160, 200', sizes: '20vw', loading: 'lazy', alt: '' }}
+              {{ media.preview_image | image_url: width: 200 | image_tag: widths: '100, 160, 200', sizes: '20vw', loading: 'lazy', alt: '' }}
+              {%- unless media.media_type == 'image' -%}
+                <span class="eis-hero__thumb-play" aria-hidden="true"></span>
+              {%- endunless -%}
             </button>
           {%- endfor -%}
         {%- endif -%}
@@ -1628,6 +1697,7 @@
     var slides = root.querySelectorAll('[data-eis-slide]');
     var thumbs = root.querySelectorAll('[data-eis-thumb]');
     var index = 0;
+    var motionOK = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function show(next) {
       if (!slides.length) return;
@@ -1644,7 +1714,27 @@
       }
       warm(index + 1);
       warm(index - 1);
+      playActive();
       trackThumb();
+    }
+
+    /* Every video is marked autoplay so it still runs with JS disabled, which
+       left to itself would have several slides decoding at once. Only the one
+       on screen plays; a reduced-motion preference stops all of them. */
+    function playActive() {
+      for (var i = 0; i < slides.length; i++) {
+        var video = slides[i].querySelector('video');
+        if (!video) continue;
+        if (i === index && motionOK) {
+          var playing = video.play();
+          /* Browsers reject play() for reasons outside our control — a data
+             saver, a power-saving mode. An unhandled rejection is noisy and
+             there is nothing to recover, so swallow it. */
+          if (playing && playing.catch) playing.catch(function () {});
+        } else {
+          video.pause();
+        }
+      }
     }
 
     /* Slides are display:none, so a lazy image in one is never in the viewport
@@ -1693,6 +1783,11 @@
     var next = root.querySelector('[data-eis-next]');
     if (prev) prev.addEventListener('click', function () { show(index - 1); });
     if (next) next.addEventListener('click', function () { show(index + 1); });
+
+    /* The first slide is marked active by Liquid, so show() has not run yet.
+       Settle the videos once on load, which is what stops a video first slide
+       from playing when the visitor asked for reduced motion. */
+    playActive();
 
     /* ---- swipe ---- */
     var stage = root.querySelector('.eis-hero__stage');
