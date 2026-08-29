@@ -199,6 +199,23 @@
   @media (min-width: 560px) {
     .eis-sp__title { font-size: 34px; }
   }
+
+  /* ---------- desktop & iPad ---------- */
+  @media (min-width: 750px) {
+    .eis-sp__inner { max-width: 976px; padding-left: 12px; padding-right: 12px; }
+    .eis-sp__title { font-size: 34px; }
+    .eis-sp__faces { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 16px; overflow: visible; padding: 0; }
+    .eis-sp__face { flex: initial; width: auto; }
+    .eis-sp__track { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; overflow: visible; padding: 0; }
+    .eis-sp__card { flex: initial; width: auto; min-width: 0; scroll-snap-align: none; }
+    .eis-sp__dots { display: none; }
+  }
+  @media (min-width: 1200px) {
+    .eis-sp__inner { max-width: 1280px; }
+    .eis-sp__title { font-size: 42px; }
+    .eis-sp__faces { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+    .eis-sp__track { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+  }
 {% endstyle %}
 
 <div class="eis-sp">

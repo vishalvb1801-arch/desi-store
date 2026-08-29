@@ -224,6 +224,16 @@
     .eis-cmp__yes { width: 38px; height: 38px; }
     .eis-cmp__no { width: 24px; height: 24px; }
   }
+
+  /* ---------- desktop & iPad ---------- */
+  @media (min-width: 750px) {
+    .eis-cmp__inner { max-width: 976px; }
+    .eis-cmp__grid { grid-template-columns: minmax(0, 1fr) 160px 160px; }
+  }
+  @media (min-width: 1200px) {
+    .eis-cmp__inner { max-width: 1046px; }
+    .eis-cmp__grid { grid-template-columns: minmax(0, 598px) 200px 200px; }
+  }
 {% endstyle %}
 
 <div class="eis-cmp">

@@ -165,6 +165,25 @@
     .eis-exp__title { font-size: {{ section.settings.heading_size | times: 1.2 | round }}px; }
     .eis-exp__sub { font-size: 14px; }
   }
+
+  /* ---------- desktop & iPad ---------- */
+  @media (min-width: 750px) {
+    .eis-exp { max-width: 976px; }
+    .eis-exp__track {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      overflow: visible;
+      padding: 0 16px;
+      scroll-padding-inline: 0;
+    }
+    .eis-exp__card { width: auto; min-width: 0; scroll-snap-align: none; }
+    .eis-exp__bar { display: none; }
+  }
+  @media (min-width: 1200px) {
+    .eis-exp { max-width: 888px; }
+    .eis-exp__track { gap: 24px; }
+  }
 {% endstyle %}
 
 <div class="eis-exp" id="EisExp-{{ section.id }}">

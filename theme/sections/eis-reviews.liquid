@@ -187,6 +187,20 @@
     .eis-rev__title { font-size: {{ section.settings.heading_size | times: 125 | divided_by: 100 }}px; }
     .eis-rev__quote { font-size: 13.5px; }
   }
+
+  /* ---------- desktop & iPad ---------- */
+  @media (min-width: 750px) {
+    .eis-rev__inner { max-width: 976px; }
+    .eis-rev__title { font-size: 34px; }
+    .eis-rev__row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; overflow: visible; }
+    .eis-rev__card { flex: initial; width: auto; min-width: 0; scroll-snap-align: none; }
+    .eis-rev__bar { display: none; }
+  }
+  @media (min-width: 1200px) {
+    .eis-rev__inner { max-width: 1280px; }
+    .eis-rev__title { font-size: 42px; }
+    .eis-rev__row { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+  }
 {% endstyle %}
 
 {%- comment -%} The Google mark, defined once and referenced per card. {%- endcomment -%}

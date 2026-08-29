@@ -91,6 +91,24 @@
   .eis-faq__foot p:last-child { margin-bottom: 0; }
   .eis-faq__foot strong { color: var(--eis-ink); }
   .eis-faq__foot a { color: var(--eis-maroon); font-weight: 700; }
+
+  /* ---------- desktop & iPad ---------- */
+  @media (min-width: 750px) {
+    .eis-faq__inner {
+      max-width: 976px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 14px;
+      row-gap: 10px;
+      align-items: start;
+    }
+    .eis-faq__head, .eis-faq__foot { grid-column: 1 / -1; }
+    .eis-faq__title { font-size: 34px; }
+  }
+  @media (min-width: 1200px) {
+    .eis-faq__inner { max-width: 1280px; column-gap: 20px; }
+    .eis-faq__title { font-size: 42px; }
+  }
 {% endstyle %}
 
 <div class="eis-faq">

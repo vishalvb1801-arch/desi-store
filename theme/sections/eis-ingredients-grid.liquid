@@ -158,6 +158,16 @@
     }
     .eis-herbs__bottle--r img { transform: rotate(-{{ section.settings.bottle_angle }}deg); }
   }
+
+  /* ---------- desktop & iPad ---------- */
+  @media (min-width: 750px) {
+    .eis-herbs__inner { max-width: 976px; }
+    .eis-herbs__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  }
+  @media (min-width: 1200px) {
+    .eis-herbs__inner { max-width: 1280px; }
+    .eis-herbs__grid { gap: 24px; }
+  }
 {% endstyle %}
 
 {%- assign eis_bottles_on = false -%}

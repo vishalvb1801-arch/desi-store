@@ -221,6 +221,35 @@
     flex: none;
     margin-top: 2px;
   }
+
+  /* ---------- desktop & iPad ---------- */
+  @media (min-width: 750px) {
+    .eis-how__inner {
+      max-width: 976px;
+      display: grid;
+      grid-template-columns: minmax(0, 419px) minmax(0, 1fr);
+      grid-template-rows: min-content 1fr;
+      column-gap: 32px;
+      align-items: start;
+    }
+    .eis-how__head { grid-column: 1; grid-row: 1; }
+    .eis-how__safety { grid-column: 1; grid-row: 2; }
+    .eis-how__steps {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      overflow: visible;
+    }
+    .eis-how__step { flex: initial; width: auto; min-width: 0; scroll-snap-align: none; }
+    .eis-how__title { font-size: 34px; }
+  }
+  @media (min-width: 1200px) {
+    .eis-how__inner { max-width: 1280px; grid-template-columns: minmax(0, 512px) minmax(0, 1fr); column-gap: 56px; }
+    .eis-how__steps { gap: 24px; }
+    .eis-how__title { font-size: 42px; }
+  }
 {% endstyle %}
 
 <div class="eis-how{% if media_count > 0 %} eis-how--media{% endif %}">

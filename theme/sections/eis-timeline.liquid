@@ -142,6 +142,18 @@
     text-align: center;
     margin: 26px 0 0;
   }
+
+  /* ---------- desktop & iPad ---------- */
+  @media (min-width: 750px) {
+    .eis-time__inner { max-width: 976px; }
+    .eis-time__title { font-size: 34px; }
+    .eis-time__list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; align-items: start; }
+  }
+  @media (min-width: 1200px) {
+    .eis-time__inner { max-width: 1280px; }
+    .eis-time__title { font-size: 42px; }
+    .eis-time__list { gap: 24px; }
+  }
 {% endstyle %}
 
 <div class="eis-time">
