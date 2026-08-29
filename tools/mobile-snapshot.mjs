@@ -31,6 +31,7 @@ const SELECTORS = [
   '.eis-hero', '.eis-hero__stage', '.eis-hero__thumbs', '.eis-hero__rating',
   '.eis-hero__title', '.eis-hero__subtitle', '.eis-docs__pill',
   '.eis-hero__benefits', '.eis-btn', '.eis-hsp__row', '.eis-pm__row',
+  '.eis-mbp', '.eis-mbp__banner', '.eis-mbp__badge', '.eis-mbp__refund',
   '.eis-stockbar', '.eis-deliv', '.eis-warn', '.eis-bfaq',
   '.eis-sticky__inner', '.eis-sticky__name', '.eis-sticky__rating',
   '.eis-trust', '.eis-stats', '.eis-herbs', '.eis-exp', '.eis-exp__card',
@@ -50,7 +51,10 @@ const browser = await chromium.launch({
 const snap = {};
 for (const width of WIDTHS) {
   const page = await browser.newPage({ viewport: { width, height: 900 } });
-  await page.goto('file://' + process.cwd() + '/' + PAGE);
+  /* domcontentloaded, not load: the inlined CSS still references webfonts
+     and this Chromium has no network, so 'load' never fires. */
+  await page.goto('file://' + process.cwd() + '/' + PAGE,
+    { waitUntil: 'domcontentloaded' });
   /* Kill transitions and animations: otherwise the sticky bar's slide-in
      races the measurement and its position differs run to run. */
   await page.addStyleTag({
