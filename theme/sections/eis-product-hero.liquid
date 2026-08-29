@@ -1309,10 +1309,11 @@
         <input type="hidden" name="id" value="{{ eis_variant.id }}">
         <input type="hidden" name="quantity" value="1">
         {%- comment -%}
-          Without JS the form posts normally, so return_to has to carry the
-          same destination the fetch path uses: the cart, never checkout.
+          Without JS the form posts normally and the browser has to land
+          somewhere, so send it back to this page — the closest thing to the
+          fetch path, which does not navigate at all.
         {%- endcomment -%}
-        <input type="hidden" name="return_to" value="{{ routes.cart_url }}">
+        <input type="hidden" name="return_to" value="{{ eis_product.url }}">
         <button
           type="submit"
           class="eis-btn"
@@ -1681,11 +1682,18 @@
       }, { passive: true });
     }
 
-    /* ---- add to cart (AJAX, then the cart page) ----
-       Deliberately not a setting. This used to be a Checkout/Cart select, but
-       skipping the cart also skips the offer ladder's upsell, and a stale
-       "checkout" value in the template kept overriding the intended default. */
-    var ATC_DESTINATION = '{{ routes.cart_url }}';
+    /* ---- add to cart (AJAX; never navigates) ----
+       The customer keeps their place on the page. Nothing here opens a cart:
+       the drawer is the bundle app's, and it reacts to the events below. */
+    function notifyCartUpdated() {
+      /* Themes and cart-drawer apps each listen for their own name, and an
+         event nobody hears costs nothing, so fire the common ones. */
+      ['cart:refresh', 'cart:update', 'cart-update'].forEach(function (name) {
+        document.dispatchEvent(
+          new CustomEvent(name, { bubbles: true, detail: { source: 'eis-hero' } })
+        );
+      });
+    }
 
     function addToCart(variantId, button) {
       if (!variantId) return;
@@ -1700,13 +1708,19 @@
         .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
         .then(function (r) {
           if (!r.ok) throw new Error(r.data && r.data.description ? r.data.description : 'Add to cart failed');
-          window.location.href = ATC_DESTINATION;
+          button.innerHTML = {{ section.settings.added_label | json }};
+          notifyCartUpdated();
+          /* Back to the normal label so a second bottle is one click away. */
+          window.setTimeout(function () {
+            button.disabled = false;
+            button.innerHTML = original;
+          }, 1800);
         })
         .catch(function (err) {
           button.disabled = false;
           button.innerHTML = original;
-          /* Slow or flaky network: fall back to a normal form post so the
-             customer still gets to the cart. */
+          /* Slow or flaky network: fall back to a normal form post, which
+             adds the item and returns to this page via return_to. */
           var form = root.querySelector('[data-eis-form]');
           if (form) { form.removeAttribute('data-eis-form'); form.submit(); return; }
           window.alert(err.message);
@@ -2179,6 +2193,13 @@
       "id": "atc_label",
       "label": "Button label",
       "default": "ADD TO CART"
+    },
+    {
+      "type": "text",
+      "id": "added_label",
+      "label": "Added-to-cart label",
+      "default": "ADDED \u2713",
+      "info": "Shown on the button for a moment after a successful add."
     },
     {
       "type": "text",

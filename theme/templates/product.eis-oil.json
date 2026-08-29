@@ -174,7 +174,6 @@
         "show_stock": false,
         "cod_text": "",
         "show_guarantee": false,
-        "atc_destination": "checkout",
         "show_social_proof": true,
         "sp_avatar_url_1": "https://cdn.shopify.com/s/files/1/0808/0752/6593/files/Untitled_design_12.png",
         "sp_avatar_url_2": "https://cdn.shopify.com/s/files/1/0808/0752/6593/files/01e163dc-e893-4f63-97de-f87f0f321353-thumbnail-image_207557.jpg?v=1784920588",
@@ -723,15 +722,6 @@
         "bottle_image": "shopify://shop_images/eis-bottle-cutout.png"
       }
     },
-    "offer-repeat": {
-      "type": "eis-offer-repeat",
-      "settings": {
-        "intro": "",
-        "offers_heading": "",
-        "stock_text": "",
-        "padding_bottom": 0
-      }
-    },
     "reviews": {
       "type": "eis-reviews",
       "blocks": {
@@ -1075,7 +1065,6 @@
     "how-to-use",
     "timeline",
     "comparison",
-    "offer-repeat",
     "faq",
     "reviews",
     "footer"
