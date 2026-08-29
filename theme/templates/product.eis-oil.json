@@ -146,6 +146,7 @@
         "padding_top": 8,
         "padding_x": 12,
         "padding_bottom": 28,
+        "subtitle_gap": 4,
         "show_review": false,
         "show_rating": false,
         "rating_stars": 5,

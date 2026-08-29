@@ -299,7 +299,7 @@
     color: var(--eis-maroon);
     margin: {{ section.settings.title_gap }}px 0 0;
   }
-  .eis-hero__subtitle { font-size: 14px; line-height: 1.5; color: var(--eis-muted); margin: 10px 0 0; }
+  .eis-hero__subtitle { font-size: 14px; line-height: 1.5; color: var(--eis-muted); margin: {{ section.settings.subtitle_gap }}px 0 0; }
 
   /* ---------- doctors' choice badge ---------- */
   .eis-docs { display: flex; justify-content: center; width: 100%; padding: 6px 0; margin-top: {{ section.settings.doctors_gap }}px; }
@@ -1923,6 +1923,16 @@
       "step": 1,
       "unit": "px",
       "default": 6
+    },
+    {
+      "type": "range",
+      "id": "subtitle_gap",
+      "label": "Space below the title",
+      "min": 0,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 4
     },
     {
       "type": "text",
