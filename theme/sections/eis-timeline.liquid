@@ -148,27 +148,46 @@
     .eis-time__inner { max-width: 976px; }
     .eis-time__title { font-size: 34px; }
     .eis-time__list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; align-items: start; }
-    /* The rail is a vertical bar between stacked rows. Across four columns it
-       pointed up into empty space, so turn it on its side: it now spans the
-       column gap at the markers' height and fills left to right. */
-    .eis-time__row + .eis-time__row::before {
-      top: calc(var(--eis-marker) * .04);
-      left: -16px;
-      transform: none;
-      width: 16px;
+    /* One continuous rail behind the whole row of markers, rather than a
+       segment per gap. The markers sit centred on it, half above their card. */
+    /* The markers clear the cards entirely so the rail reads as one line
+       across the section rather than disappearing behind each card. */
+    .eis-time__list { position: relative; padding-top: calc(var(--eis-marker) + 14px); }
+    .eis-time__list::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: calc(var(--eis-marker) * .5);
       height: {{ section.settings.rail_width }}px;
-      background:
-        linear-gradient(var(--eis-gold-light), var(--eis-gold-light)) no-repeat left center,
-        rgba(246, 231, 200, .28);
-      background-size: 0 100%, auto;
+      border-radius: 999px;
+      background: var(--eis-gold-light);
+      opacity: .5;
     }
-    .eis-time__row.is-lit::before { background-size: 100% 100%, auto; }
+    .eis-time__row + .eis-time__row::before { display: none; }
+    .eis-time__card {
+      padding-top: 38px;
+      overflow: visible;
+    }
+    .eis-time__marker {
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%);
+      top: calc((var(--eis-marker) + 14px) * -1);
+      border-radius: 16px;
+      z-index: 1;
+    }
+    .eis-time__badge {
+      top: 10px;
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%);
+    }
   }
   @media (min-width: 1200px) {
     .eis-time__inner { max-width: 1280px; }
     .eis-time__title { font-size: 42px; }
     .eis-time__list { gap: 24px; }
-    .eis-time__row + .eis-time__row::before { left: -24px; width: 24px; }
   }
 {% endstyle %}
 

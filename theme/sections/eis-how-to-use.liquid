@@ -232,16 +232,18 @@
       max-width: 976px;
       display: grid;
       grid-template-columns: minmax(0, 44%) minmax(0, 1fr);
-      grid-template-rows: min-content 1fr;
+      /* Three content rows: head, safety, bottle. With only two the middle
+         row took the leftover space and dropped the bottle to the floor. */
+      grid-template-rows: min-content min-content 1fr;
       column-gap: 32px;
       align-items: start;
     }
     .eis-how__head { grid-column: 1; grid-row: 1; }
     .eis-how__safety { grid-column: 1; grid-row: 2; }
-    .eis-how__bottle { display: block; grid-column: 1; grid-row: 3; width: 100%; height: auto; max-height: 380px; object-fit: contain; margin-top: 18px; }
+    .eis-how__bottle { display: block; grid-column: 1; grid-row: 3; align-self: start; width: 100%; height: auto; max-height: 380px; object-fit: contain; margin-top: 18px; }
     .eis-how__steps {
       grid-column: 2;
-      grid-row: 1 / span 2;
+      grid-row: 1 / span 3;
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 16px;
