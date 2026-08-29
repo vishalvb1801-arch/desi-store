@@ -14,13 +14,6 @@
 
 {%- liquid
   assign eis_product = section.settings.product | default: product
-
-  assign app_block_count = 0
-  for block in section.blocks
-    if block.type == '@app'
-      assign app_block_count = app_block_count | plus: 1
-    endif
-  endfor
 -%}
 
 {% style %}
@@ -80,15 +73,6 @@
     margin: 8px 0 12px;
   }
   .eis-repeat__app-block + .eis-repeat__app-block { margin-top: 12px; }
-  .eis-repeat__slot-empty {
-    border: 1px dashed var(--eis-gold);
-    border-radius: 11px;
-    background: #FDF9F1;
-    padding: 18px 16px;
-    text-align: center;
-  }
-  .eis-repeat__slot-empty b { display: block; font-size: 13px; margin-bottom: 6px; color: var(--eis-maroon); }
-  .eis-repeat__slot-empty span { font-size: 11.5px; line-height: 1.5; color: var(--eis-muted); }
   .eis-repeat__stock {
     display: flex;
     align-items: center;
@@ -164,16 +148,6 @@
           <div class="eis-repeat__app-block" {{ block.shopify_attributes }}>{% render block %}</div>
         {%- endif -%}
       {%- endfor -%}
-
-      {%- if app_block_count == 0 and request.design_mode -%}
-        <div class="eis-repeat__slot-empty">
-          <b>Offer ladder slot — empty</b>
-          <span>
-            Click <em>Add block</em> on this section and choose your MoonBundle block, the same
-            one you used in the hero. Only you can see this message.
-          </span>
-        </div>
-      {%- endif -%}
     </div>
 
     {%- if section.settings.stock_text != blank -%}

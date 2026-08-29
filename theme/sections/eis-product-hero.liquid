@@ -34,7 +34,6 @@
     endfor
   endif
 
-  assign app_block_count = 0
   assign pill_count = 0
   assign benefit_count = 0
   assign badge_count = 0
@@ -42,8 +41,6 @@
   assign bfaq_count = 0
   for block in section.blocks
     case block.type
-      when '@app'
-        assign app_block_count = app_block_count | plus: 1
       when 'feature_pill'
         assign pill_count = pill_count | plus: 1
       when 'benefit'
@@ -1280,17 +1277,6 @@
           <div class="eis-hero__app-block" {{ block.shopify_attributes }}>{% render block %}</div>
         {%- endif -%}
       {%- endfor -%}
-
-      {%- if app_block_count == 0 and request.design_mode -%}
-        <div class="eis-hero__slot-empty">
-          <b>Offer ladder slot — empty</b>
-          <span>
-            Click <em>Add block</em> on this section and choose your MoonBundle bundle/quantity-break
-            block. It renders here and handles offer selection and Add to Cart.
-            This message is only visible to you in the customizer.
-          </span>
-        </div>
-      {%- endif -%}
     </div>
 
     {%- comment -%} ---------- stock line ---------- {%- endcomment -%}
