@@ -168,7 +168,14 @@
 
   /* ---------- desktop & iPad ---------- */
   @media (min-width: 750px) {
-    .eis-exp { max-width: 976px; }
+    /* The cream has to sit on the section wrapper, not on .eis-exp. .eis-exp
+       is also the width-limiter, so painting it left a 1059px cream box
+       floating on white with full-width cream sections above and below. This
+       is how the UGC row is built: background on the band, width on the inner. */
+    .eis-section--experts { background: var(--eis-cream); }
+    .eis-exp { background: transparent; max-width: none; }
+    .eis-exp__head,
+    .eis-exp__track { max-width: 976px; margin-left: auto; margin-right: auto; }
     .eis-exp__track {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -183,9 +190,10 @@
     .eis-exp { padding-bottom: 56px; }
   }
   @media (min-width: 1200px) {
-    /* Same wrapper and gap as the UGC video row, so the two card sets are the
-       same size instead of the experts reading as a smaller, separate thing. */
-    .eis-exp { max-width: 1059px; }
+    /* Same inner width and gap as the UGC video row, so the two card sets
+       are the same size. */
+    .eis-exp__head,
+    .eis-exp__track { max-width: 1059px; }
     .eis-exp__track { gap: 24px; }
   }
 {% endstyle %}
