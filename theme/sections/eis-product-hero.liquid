@@ -1642,7 +1642,26 @@
       for (var t = 0; t < thumbs.length; t++) {
         thumbs[t].setAttribute('aria-current', t === index ? 'true' : 'false');
       }
+      warm(index + 1);
+      warm(index - 1);
       trackThumb();
+    }
+
+    /* Slides are display:none, so a lazy image in one is never in the viewport
+       and does not start downloading until the customer lands on it — which on
+       a heavy frame reads as a broken slide. Flipping the neighbours to eager
+       fetches them in the background: an eager image loads whether or not it is
+       displayed, so the next slide is usually ready before it is asked for. */
+    function warm(i) {
+      /* Deliberately does not wrap the way show() does: from the first slide
+         that would warm the last one, and the last slide is exactly where a
+         heavy frame tends to sit. */
+      if (i < 0 || i >= slides.length) return;
+      var slide = slides[i];
+      var img = slide.querySelector('img');
+      if (img && img.getAttribute('loading') === 'lazy') {
+        img.setAttribute('loading', 'eager');
+      }
     }
 
     /* The thumb row scrolls, so the active thumb can sit off-screen after the
