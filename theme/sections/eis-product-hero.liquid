@@ -457,7 +457,9 @@
     align-items: center;
     width: 100%;
     margin-top: {{ section.settings.sp_gap }}px;
-    padding: 0 0 15px;
+    /* No bottom padding: the space under this row is the title's title_gap,
+       so one setting controls the gap instead of two stacked values. */
+    padding: 0;
     background: transparent;
     font-family: 'Manrope', var(--eis-sans);
   }
