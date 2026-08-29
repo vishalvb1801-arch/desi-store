@@ -1310,11 +1310,9 @@
         <input type="hidden" name="quantity" value="1">
         {%- comment -%}
           Without JS the form posts normally, so return_to has to carry the
-          same destination the fetch path uses.
+          same destination the fetch path uses: the cart, never checkout.
         {%- endcomment -%}
-        {%- if section.settings.atc_destination == 'checkout' -%}
-          <input type="hidden" name="return_to" value="/checkout">
-        {%- endif -%}
+        <input type="hidden" name="return_to" value="{{ routes.cart_url }}">
         <button
           type="submit"
           class="eis-btn"
@@ -1683,8 +1681,11 @@
       }, { passive: true });
     }
 
-    /* ---- add to cart (AJAX, then go to the cart or straight to checkout) ---- */
-    var ATC_DESTINATION = {% if section.settings.atc_destination == 'checkout' %}'/checkout'{% else %}'{{ routes.cart_url }}'{% endif %};
+    /* ---- add to cart (AJAX, then the cart page) ----
+       Deliberately not a setting. This used to be a Checkout/Cart select, but
+       skipping the cart also skips the offer ladder's upsell, and a stale
+       "checkout" value in the template kept overriding the intended default. */
+    var ATC_DESTINATION = '{{ routes.cart_url }}';
 
     function addToCart(variantId, button) {
       if (!variantId) return;
@@ -2178,16 +2179,6 @@
       "id": "atc_label",
       "label": "Button label",
       "default": "ADD TO CART"
-    },
-    {
-      "type": "select",
-      "id": "atc_destination",
-      "label": "After adding, go to",
-      "options": [
-        { "value": "checkout", "label": "Checkout" },
-        { "value": "cart", "label": "The cart page" }
-      ],
-      "default": "checkout"
     },
     {
       "type": "text",

@@ -90,9 +90,11 @@
     .eis-hero__title { font-size: 40px; }
     .eis-hero__subtitle { font-size: 16px; }
 
-    /* The last bullet sat 17px off the panel's bottom edge, which read as
-       no margin at all next to the 14px gaps between the bullets themselves. */
-    .eis-hero__benefits { padding-bottom: 20px; }
+    /* The panel's bottom edge butted straight into the offer ladder that the
+       bundle app injects below it. 24px is the same top margin the offers
+       heading already uses, so the break reads as one rhythm, not two.
+       Inside padding stays at 16px. */
+    .eis-hero__benefits { margin-bottom: 24px; }
   }
 
   @media (min-width: 1200px) {
