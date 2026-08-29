@@ -1,0 +1,333 @@
+{%- comment -%}
+  EIS — Footer
+  ------------------------------------------------------------------
+  Newsletter box posts to Shopify's real customer form, so sign-ups land in
+  Customers with the "newsletter" tag. The bottom padding leaves room for the
+  hero's sticky bar on mobile.
+{%- endcomment -%}
+
+{% render 'eis-fonts' %}
+
+{%- liquid
+  assign link_count = 0
+  assign cert_count = 0
+  assign pay_count = 0
+  for block in section.blocks
+    case block.type
+      when 'link'
+        assign link_count = link_count | plus: 1
+      when 'certification'
+        assign cert_count = cert_count | plus: 1
+      when 'payment_badge'
+        assign pay_count = pay_count | plus: 1
+    endcase
+  endfor
+-%}
+
+{% style %}
+  {% render 'eis-tokens', id: section.id, s: section.settings %}
+
+  .eis-footer {
+    background: var(--eis-maroon-darkest);
+    color: #E9D8B6;
+    font-family: var(--eis-sans);
+  }
+  .eis-footer__inner {
+    max-width: var(--eis-max);
+    margin: 0 auto;
+    padding: {{ section.settings.padding_top }}px 16px {{ section.settings.padding_bottom }}px;
+  }
+  .eis-footer__brand { text-align: center; margin-bottom: 24px; }
+  .eis-footer__logo {
+    font-family: var(--eis-serif);
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    color: var(--eis-cream-light);
+  }
+  .eis-footer__logo img { display: block; margin: 0 auto; max-width: 160px; height: auto; }
+  .eis-footer__tagline {
+    font-size: 8px;
+    letter-spacing: .3em;
+    color: #B9A075;
+    margin-top: 4px;
+  }
+  .eis-footer__label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    color: var(--eis-cream-light);
+    margin-top: 26px;
+  }
+  .eis-footer__brand + .eis-footer__label { margin-top: 0; }
+  .eis-footer__text { font-size: 12px; line-height: 1.7; color: #C9B48E; margin-top: 8px; }
+  .eis-footer__intro { font-size: 12px; line-height: 1.5; color: #C9B48E; margin: 8px 0 12px; }
+  .eis-footer__form {
+    display: flex;
+    border: 1px solid rgba(227, 196, 111, .45);
+    border-radius: 7px;
+    overflow: hidden;
+  }
+  .eis-footer__form input {
+    flex: 1;
+    min-width: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 12px;
+    font-family: var(--eis-sans);
+    font-size: 11px;
+    letter-spacing: .08em;
+    color: var(--eis-cream-light);
+  }
+  .eis-footer__form input::placeholder { color: #A08C68; }
+  .eis-footer__form button {
+    padding: 12px 14px;
+    font-family: var(--eis-sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    color: #3B0E0F;
+    background: var(--eis-gold);
+    border: 0;
+    cursor: pointer;
+    flex: none;
+  }
+  .eis-footer__msg { font-size: 11px; margin-top: 8px; color: var(--eis-gold-light); }
+  .eis-footer__links { display: flex; flex-direction: column; gap: 9px; margin-top: 10px; }
+  .eis-footer__links a { font-size: 12px; color: #C9B48E; text-decoration: none; }
+  .eis-footer__links a:hover { color: var(--eis-gold-light); }
+  .eis-footer__certs { display: flex; align-items: center; gap: 10px; margin-top: 26px; flex-wrap: wrap; }
+  .eis-footer__cert {
+    border: 1px solid rgba(227, 196, 111, .45);
+    border-radius: 6px;
+    padding: 7px 10px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    color: var(--eis-gold-light);
+  }
+  .eis-footer__pay { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 16px; }
+  .eis-footer__pay span {
+    border: 1px solid rgba(233, 216, 182, .3);
+    border-radius: 4px;
+    padding: 4px 7px;
+    font-size: 8px;
+    font-weight: 700;
+    color: #C9B48E;
+  }
+  .eis-footer__pay span.is-highlight {
+    border-color: var(--eis-gold-light);
+    color: var(--eis-gold-light);
+  }
+  .eis-footer__disclaimer {
+    font-size: 10.5px;
+    line-height: 1.6;
+    color: #9C8461;
+    margin-top: 22px;
+    font-style: italic;
+  }
+  .eis-footer__copy { font-size: 10px; color: #8A7455; margin-top: 14px; }
+
+  /* ---------- desktop & iPad ---------- */
+  /* The design has no footer artboard, so this stays conservative: the same
+     content, centred and widened, with the stacked lists laid out in rows. */
+  @media (min-width: 750px) {
+    .eis-footer__inner {
+      max-width: 976px;
+      padding-left: 12px;
+      padding-right: 12px;
+      padding-bottom: 64px;
+      text-align: center;
+    }
+    .eis-footer__intro,
+    .eis-footer__text,
+    .eis-footer__disclaimer,
+    .eis-footer__copy { max-width: 640px; margin-left: auto; margin-right: auto; }
+    .eis-footer__form { max-width: 420px; margin: 0 auto; }
+    .eis-footer__links { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 10px 26px; }
+    .eis-footer__certs,
+    .eis-footer__pay { justify-content: center; }
+  }
+  @media (min-width: 1200px) {
+    .eis-footer__inner { max-width: 1280px; }
+  }
+{% endstyle %}
+
+<div class="eis-footer">
+  <div class="eis-footer__inner">
+    {%- assign logo_alt = section.settings.logo_text | escape -%}
+    <div class="eis-footer__brand">
+      {%- if section.settings.logo != blank -%}
+        <div class="eis-footer__logo">
+          {{ section.settings.logo | image_url: width: 320 | image_tag: widths: '160, 240, 320', sizes: '160px', loading: 'lazy', alt: logo_alt }}
+        </div>
+      {%- else -%}
+        <div class="eis-footer__logo">{{ section.settings.logo_text }}</div>
+      {%- endif -%}
+      {%- if section.settings.tagline != blank -%}
+        <div class="eis-footer__tagline">{{ section.settings.tagline }}</div>
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.show_newsletter -%}
+      <div class="eis-footer__label">{{ section.settings.newsletter_title }}</div>
+      {%- if section.settings.newsletter_text != blank -%}
+        <p class="eis-footer__intro">{{ section.settings.newsletter_text }}</p>
+      {%- endif -%}
+      {%- form 'customer', class: 'eis-footer__newsletter' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <div class="eis-footer__form">
+          <label class="visually-hidden" for="EisNewsletter-{{ section.id }}">
+            {{- section.settings.newsletter_placeholder -}}
+          </label>
+          <input
+            id="EisNewsletter-{{ section.id }}"
+            type="email"
+            name="contact[email]"
+            placeholder="{{ section.settings.newsletter_placeholder | escape }}"
+            autocomplete="email"
+            required
+          >
+          <button type="submit">{{ section.settings.newsletter_button }}</button>
+        </div>
+        {%- if form.posted_successfully? -%}
+          <div class="eis-footer__msg">{{ section.settings.newsletter_success }}</div>
+        {%- elsif form.errors -%}
+          <div class="eis-footer__msg">{{ form.errors | default_errors }}</div>
+        {%- endif -%}
+      {%- endform -%}
+    {%- endif -%}
+
+    {%- if section.settings.contact_text != blank -%}
+      <div class="eis-footer__label">{{ section.settings.contact_title }}</div>
+      <div class="eis-footer__text">{{ section.settings.contact_text }}</div>
+    {%- endif -%}
+
+    {%- if link_count > 0 -%}
+      <div class="eis-footer__label">{{ section.settings.policies_title }}</div>
+      <nav class="eis-footer__links">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'link' -%}
+            <a href="{{ block.settings.url | default: '#' }}" {{ block.shopify_attributes }}>
+              {{- block.settings.label -}}
+            </a>
+          {%- endif -%}
+        {%- endfor -%}
+      </nav>
+    {%- endif -%}
+
+    {%- if cert_count > 0 -%}
+      <div class="eis-footer__certs">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'certification' -%}
+            <div class="eis-footer__cert" {{ block.shopify_attributes }}>{{ block.settings.label }}</div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if pay_count > 0 -%}
+      <div class="eis-footer__pay">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'payment_badge' -%}
+            <span class="{% if block.settings.highlight %}is-highlight{% endif %}" {{ block.shopify_attributes }}>
+              {{- block.settings.label -}}
+            </span>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.disclaimer != blank -%}
+      <div class="eis-footer__disclaimer">{{ section.settings.disclaimer }}</div>
+    {%- endif -%}
+    {%- if section.settings.copyright != blank -%}
+      <div class="eis-footer__copy">{{ section.settings.copyright }}</div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "EIS — Footer",
+  "tag": "section",
+  "class": "eis-section eis-section--footer",
+  "max_blocks": 24,
+  "settings": [
+    { "type": "header", "content": "Brand" },
+    { "type": "image_picker", "id": "logo", "label": "Logo image (optional)" },
+    { "type": "text", "id": "logo_text", "label": "Logo text", "default": "EIS" },
+    { "type": "text", "id": "tagline", "label": "Tagline", "default": "ESSENCE OF NATURE" },
+    { "type": "header", "content": "Newsletter" },
+    { "type": "checkbox", "id": "show_newsletter", "label": "Show newsletter", "default": true },
+    { "type": "text", "id": "newsletter_title", "label": "Title", "default": "OUR NEWSLETTER" },
+    { "type": "text", "id": "newsletter_text", "label": "Text", "default": "Tips & offers, no spam. Ayurvedic care notes and early access to restocks." },
+    { "type": "text", "id": "newsletter_placeholder", "label": "Field placeholder", "default": "ENTER YOUR EMAIL" },
+    { "type": "text", "id": "newsletter_button", "label": "Button", "default": "SUBMIT" },
+    { "type": "text", "id": "newsletter_success", "label": "Success message", "default": "Thanks — you're on the list." },
+    { "type": "header", "content": "Contact" },
+    { "type": "text", "id": "contact_title", "label": "Title", "default": "CONTACT US" },
+    { "type": "richtext", "id": "contact_text", "label": "Details", "default": "<p>care@eiswellness.com<br/>+91 98765 43210<br/>EIS Wellness Private Limited<br/>123, Herbal Park, Near Nature City,<br/>Surat 395007, Gujarat, India</p>" },
+    { "type": "header", "content": "Policies" },
+    { "type": "text", "id": "policies_title", "label": "Title", "default": "OUR POLICIES" },
+    { "type": "header", "content": "Legal" },
+    { "type": "textarea", "id": "disclaimer", "label": "Disclaimer", "default": "Disclaimer: These statements are based on traditional Ayurvedic use. This product is for external use only. Results vary from person to person." },
+    { "type": "text", "id": "copyright", "label": "Copyright", "default": "© 2026 EIS Wellness Private Limited | All Rights Reserved" },
+    { "type": "header", "content": "Colours" },
+    { "type": "color", "id": "color_maroon_darkest", "label": "Background", "default": "#3B0E0F" },
+    { "type": "color", "id": "color_cream_light", "label": "Headings", "default": "#F6E7C8" },
+    { "type": "color", "id": "color_gold", "label": "Button", "default": "#C9A24A" },
+    { "type": "color", "id": "color_gold_light", "label": "Gold accent", "default": "#E3C46F" },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "content_width", "label": "Content width", "min": 400, "max": 900, "step": 20, "unit": "px", "default": 480 },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 80, "step": 2, "unit": "px", "default": 30 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 100, "info": "Leaves room for the sticky Add-to-Cart bar on mobile." }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Policy link",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Shipping Policy" },
+        { "type": "url", "id": "url", "label": "Link" }
+      ]
+    },
+    {
+      "type": "certification",
+      "name": "Certification",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "MADE IN INDIA 🇮🇳" }
+      ]
+    },
+    {
+      "type": "payment_badge",
+      "name": "Payment badge",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "UPI" },
+        { "type": "checkbox", "id": "highlight", "label": "Highlight in gold", "default": false }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "EIS — Footer",
+      "blocks": [
+        { "type": "link", "settings": { "label": "Order Tracker" } },
+        { "type": "link", "settings": { "label": "Shipping Policy" } },
+        { "type": "link", "settings": { "label": "Refund Policy" } },
+        { "type": "link", "settings": { "label": "Privacy Policy" } },
+        { "type": "link", "settings": { "label": "Contact Information" } },
+        { "type": "certification", "settings": { "label": "MADE IN INDIA 🇮🇳" } },
+        { "type": "certification", "settings": { "label": "GMP CERTIFIED" } },
+        { "type": "payment_badge", "settings": { "label": "UPI" } },
+        { "type": "payment_badge", "settings": { "label": "RuPay" } },
+        { "type": "payment_badge", "settings": { "label": "VISA" } },
+        { "type": "payment_badge", "settings": { "label": "MASTERCARD" } },
+        { "type": "payment_badge", "settings": { "label": "PAYTM" } },
+        { "type": "payment_badge", "settings": { "label": "COD", "highlight": true } }
+      ]
+    }
+  ]
+}
+{% endschema %}

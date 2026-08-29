@@ -99,6 +99,14 @@
     color: var(--eis-muted);
   }
   .eis-repeat__dot { color: var(--eis-green); }
+
+  /* ---------- desktop & iPad ---------- */
+  @media (min-width: 750px) {
+    .eis-repeat__inner { max-width: 976px; padding-left: 12px; padding-right: 12px; }
+  }
+  @media (min-width: 1200px) {
+    .eis-repeat__inner { max-width: 1280px; }
+  }
 {% endstyle %}
 
 <div class="eis-repeat">
