@@ -187,6 +187,7 @@
         "show_pay_marks": true,
         "pay_marks": "gpay, phonepe, paytm, bhim, amazonpay, visa, mastercard, rupay, amex",
         "pay_note": "UPI, cards & Cash on Delivery accepted",
+        "show_money_back": true,
         "show_stockbar": true,
         "stock_label": "Almost sold out",
         "stock_note": "Selling fast",

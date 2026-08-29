@@ -525,6 +525,105 @@
   .eis-pm__note { font-size: 11px; color: var(--eis-muted); text-align: center; margin: 7px 0 0; }
 
   /* ---------- low stock + delivery ---------- */
+  /* ---------- Cashfree money-back promise ---------- */
+  /* eis-mbp prefix: section styles are page-wide, so the class names have to
+     be unique across every section on the template, not just this one. */
+  .eis-mbp { margin-top: 14px; }
+  .eis-mbp__banner {
+    background: linear-gradient(135deg, #E8E0F4 0%, #DDD3F0 100%);
+    border-radius: 12px;
+    padding: 16px 18px;
+    position: relative;
+  }
+  .eis-mbp__badge {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    background: #C9B8E8;
+    color: #2D1A6E;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .eis-mbp__header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .eis-mbp__logo {
+    width: 36px;
+    height: 36px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .1);
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+  .eis-mbp__logo svg { width: 22px; height: 22px; }
+  .eis-mbp__brand { font-size: 15px; font-weight: 700; color: #2D1A6E; margin: 0 0 1px; }
+  .eis-mbp__promise { font-size: 20px; font-weight: 700; color: #1A0E45; line-height: 1.2; margin: 0; }
+  .eis-mbp__verified {
+    font-size: 12px;
+    color: #2D1A6E;
+    margin: 4px 0 0;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .eis-mbp__tick {
+    width: 14px;
+    height: 14px;
+    background: #6C3FC4;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .eis-mbp__tick svg { width: 9px; height: 9px; fill: none; stroke: #fff; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+  .eis-mbp__refund {
+    background: #F0EAF8;
+    border-radius: 10px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #C9B8E8;
+  }
+  .eis-mbp__refund-icon {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #6C3FC4 0%, #5A2DAF 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .eis-mbp__refund-icon svg { width: 18px; height: 18px; fill: none; stroke: #fff; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+  .eis-mbp__refund-text { color: #2D1A6E; font-size: 13px; font-weight: 500; }
+  .eis-mbp__refund-text p { margin: 0; }
+  /* Shopify's richtext editor rewrites <b> as <strong>, so match both. */
+  .eis-mbp__refund-text b,
+  .eis-mbp__refund-text strong { color: #6C3FC4; font-weight: 700; }
+  @media (max-width: 640px) {
+    .eis-mbp__banner { border-radius: 10px; padding: 12px 14px; }
+    .eis-mbp__badge { top: 10px; right: 12px; padding: 3px 10px; font-size: 10px; border-radius: 10px; }
+    .eis-mbp__header { gap: 8px; margin-bottom: 10px; }
+    .eis-mbp__logo { width: 30px; height: 30px; }
+    .eis-mbp__logo svg { width: 18px; height: 18px; }
+    .eis-mbp__brand { font-size: 12px; }
+    .eis-mbp__promise { font-size: 15px; }
+    .eis-mbp__verified { font-size: 9px; margin-top: 2px; gap: 3px; white-space: nowrap; }
+    .eis-mbp__tick { width: 11px; height: 11px; }
+    .eis-mbp__tick svg { width: 6px; height: 6px; }
+    .eis-mbp__refund { border-radius: 8px; padding: 9px 11px; gap: 8px; }
+    .eis-mbp__refund-icon { width: 26px; height: 26px; }
+    .eis-mbp__refund-icon svg { width: 14px; height: 14px; }
+    .eis-mbp__refund-text { font-size: 10px; line-height: 1.3; }
+  }
+
   .eis-stockbar { margin-top: 16px; }
   .eis-stockbar__head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 6px; }
   .eis-stockbar__label { font-size: 13px; font-weight: 700; color: #A11B1B; }
@@ -1242,6 +1341,43 @@
         {%- if section.settings.pay_note != blank -%}
           <p class="eis-pm__note">{{ section.settings.pay_note }}</p>
         {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} ---------- Cashfree money-back promise ---------- {%- endcomment -%}
+    {%- if section.settings.show_money_back -%}
+      <div class="eis-mbp">
+        <div class="eis-mbp__banner">
+          {%- if section.settings.mbp_badge != blank -%}
+            <div class="eis-mbp__badge">{{ section.settings.mbp_badge }}</div>
+          {%- endif -%}
+          <div class="eis-mbp__header">
+            <div class="eis-mbp__logo">
+              <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                <path d="M18 6 L18 18 L30 18" fill="none" stroke="#21BF73" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 12 L12 24 L24 24" fill="none" stroke="#F5A623" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <p class="eis-mbp__brand">{{ section.settings.mbp_brand }}</p>
+              <p class="eis-mbp__promise">{{ section.settings.mbp_promise }}</p>
+              {%- if section.settings.mbp_verified != blank -%}
+                <p class="eis-mbp__verified">
+                  <span class="eis-mbp__tick" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><polyline points="5 13 9 17 19 7"/></svg>
+                  </span>
+                  {{ section.settings.mbp_verified }}
+                </p>
+              {%- endif -%}
+            </div>
+          </div>
+          <div class="eis-mbp__refund">
+            <div class="eis-mbp__refund-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><polyline points="5 13 9 17 19 7"/></svg>
+            </div>
+            <div class="eis-mbp__refund-text">{{ section.settings.mbp_refund_text }}</div>
+          </div>
+        </div>
       </div>
     {%- endif -%}
 
@@ -2145,6 +2281,49 @@
       "id": "pay_note",
       "label": "Note under the row",
       "default": "UPI, cards & Cash on Delivery accepted"
+    },
+    {
+      "type": "header",
+      "content": "Money back promise"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_money_back",
+      "label": "Show the money back banner",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "mbp_badge",
+      "label": "Corner badge",
+      "info": "Leave empty to hide it.",
+      "default": "On Prepaid Orders"
+    },
+    {
+      "type": "text",
+      "id": "mbp_brand",
+      "label": "Provider",
+      "default": "Cashfree Payments"
+    },
+    {
+      "type": "text",
+      "id": "mbp_promise",
+      "label": "Headline",
+      "default": "Money Back Promise"
+    },
+    {
+      "type": "text",
+      "id": "mbp_verified",
+      "label": "Verified line",
+      "info": "Leave empty to hide it.",
+      "default": "Elite Indian Store is a verified business"
+    },
+    {
+      "type": "richtext",
+      "id": "mbp_refund_text",
+      "label": "Refund line",
+      "info": "Bold text is highlighted in purple.",
+      "default": "<p>Get <b>100% refund</b> on non-delivery or defects</p>"
     },
     {
       "type": "header",
