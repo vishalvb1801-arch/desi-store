@@ -204,7 +204,17 @@
   @media (min-width: 750px) {
     .eis-sp__inner { max-width: 976px; padding-left: 12px; padding-right: 12px; }
     .eis-sp__title { font-size: 34px; }
-    .eis-sp__faces { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 16px; overflow: visible; padding: 0; }
+    /* One row of however many faces exist, sized to fill it. auto-fit with a
+       minmax floor was dropping to four columns whenever the row could not
+       fit five at the floor width, which broke the strip into 4 + 1 between
+       750-999px and again at 1200-1279px. Counting the blocks cannot wrap. */
+    .eis-sp__faces {
+      display: grid;
+      grid-template-columns: repeat({{ face_count }}, minmax(0, 1fr));
+      gap: 16px;
+      overflow: visible;
+      padding: 0;
+    }
     .eis-sp__face { flex: initial; width: auto; }
     .eis-sp__track { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; overflow: visible; padding: 0; }
     .eis-sp__card { flex: initial; width: auto; min-width: 0; scroll-snap-align: none; }
@@ -213,7 +223,7 @@
   @media (min-width: 1200px) {
     .eis-sp__inner { max-width: 1280px; }
     .eis-sp__title { font-size: 42px; }
-    .eis-sp__faces { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+    .eis-sp__faces { gap: 24px; }
     .eis-sp__track { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
   }
 {% endstyle %}
@@ -405,11 +415,12 @@
       "type": "range",
       "id": "face_size",
       "label": "Face strip size",
+      "info": "Phones only. Desktop divides the row evenly between the faces.",
       "min": 60,
-      "max": 120,
+      "max": 160,
       "step": 2,
       "unit": "px",
-      "default": 90
+      "default": 112
     },
     {
       "type": "header",
