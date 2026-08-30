@@ -22,6 +22,18 @@
   assign s = section.settings
   assign uid = section.id
   assign cycle = s.cycle_seconds | default: 6
+
+  comment
+    The frame's shape, as two numbers the CSS can do arithmetic with. Height
+    is derived rather than set, so one setting drives the frame, the rail's
+    vertical centre and the aspect-ratio box without them drifting apart.
+  endcomment
+  assign ratio_w = 1
+  assign ratio_h = 1
+  if s.frame_ratio == 'portrait'
+    assign ratio_w = 9
+    assign ratio_h = 16
+  endif
 -%}
 
 <style>
@@ -35,7 +47,11 @@
     --wte-green: #1E7A4D;
     --wte-accent: #7B1315;
     --wte-frame: {{ s.frame_size }}px;
+    --wte-frame-h: calc(var(--wte-frame) * {{ ratio_h }} / {{ ratio_w }});
     --wte-frame-wide: {{ s.frame_size_wide }}px;
+    /* References resolve where they are used, so the breakpoint overrides of
+       --wte-frame-wide further down carry into this without restating it. */
+    --wte-frame-wide-h: calc(var(--wte-frame-wide) * {{ ratio_h }} / {{ ratio_w }});
     --wte-cycle: {{ cycle }}s;
     background: var(--wte-maroon);
     padding: {{ s.padding_top }}px {{ s.padding_side }}px {{ s.padding_bottom }}px;
@@ -71,7 +87,7 @@
   .eis-wte-{{ uid }}__frame {
     position: relative;
     width: var(--wte-frame);
-    height: var(--wte-frame);
+    height: var(--wte-frame-h);
     max-width: 100%;
     border-radius: 16px;
     overflow: hidden;
@@ -244,7 +260,7 @@
       position: absolute;
       left: 0;
       right: 0;
-      top: calc(var(--wte-frame-wide) / 2);
+      top: calc(var(--wte-frame-wide-h) / 2);
       height: 3px;
       border-radius: 2px;
       background: rgba(246, 231, 200, .22);
@@ -267,7 +283,7 @@
     .eis-wte-{{ uid }}__frame {
       width: min(var(--wte-frame-wide), 100%);
       height: auto;
-      aspect-ratio: 1;
+      aspect-ratio: {{ ratio_w }} / {{ ratio_h }};
     }
     .eis-wte-{{ uid }}__ph { padding: 10px; }
 
@@ -521,9 +537,20 @@
       "content": "Layout & motion"
     },
     {
+      "type": "select",
+      "id": "frame_ratio",
+      "label": "Video shape",
+      "options": [
+        { "value": "square", "label": "Square 1:1" },
+        { "value": "portrait", "label": "Portrait 9:16 — matches phone video" }
+      ],
+      "default": "portrait",
+      "info": "The size settings below set the width. Height follows the shape."
+    },
+    {
       "type": "range",
       "id": "frame_size",
-      "label": "Video size (mobile)",
+      "label": "Video width (mobile)",
       "min": 200,
       "max": 420,
       "step": 10,
@@ -533,7 +560,7 @@
     {
       "type": "range",
       "id": "frame_size_wide",
-      "label": "Video size (desktop)",
+      "label": "Video width (desktop)",
       "min": 140,
       "max": 320,
       "step": 10,
