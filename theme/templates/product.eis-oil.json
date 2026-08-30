@@ -644,7 +644,9 @@
         "step-3",
         "step-4"
       ],
-      "settings": {}
+      "settings": {
+        "frame_size": 240
+      }
     },
     "comparison": {
       "type": "eis-comparison-table",
