@@ -51,7 +51,13 @@
   }
   .eis-sp__faces::-webkit-scrollbar { display: none; }
   .eis-sp__face {
-    flex: 0 0 {{ section.settings.face_size }}px;
+    /* face_size_mobile, not face_size: the live template has a face_size of
+       100 saved against it from the theme editor, and a saved value always
+       beats a schema default, so raising the default alone changed nothing.
+       A new id has nothing saved against it, so its default applies and the
+       stale 100 is ignored. Renaming means this ships in the section file
+       instead of the template, which carries edits worth keeping. */
+    flex: 0 0 {{ section.settings.face_size_mobile }}px;
     aspect-ratio: 1;
     border-radius: 12px;
     overflow: hidden;
@@ -423,14 +429,14 @@
     },
     {
       "type": "range",
-      "id": "face_size",
+      "id": "face_size_mobile",
       "label": "Face strip size",
       "info": "Phones only. Desktop divides the row evenly between the faces.",
       "min": 60,
-      "max": 160,
+      "max": 200,
       "step": 2,
       "unit": "px",
-      "default": 112
+      "default": 150
     },
     {
       "type": "header",
