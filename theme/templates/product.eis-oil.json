@@ -595,50 +595,54 @@
         "bottle_image": "shopify://shop_images/eis-bottle-cutout.png"
       }
     },
-    "timeline": {
-      "type": "eis-timeline",
+    "what-to-expect": {
+      "type": "eis-what-to-expect",
       "blocks": {
-        "stage-1": {
-          "type": "stage",
+        "step-1": {
+          "type": "step",
           "settings": {
+            "stage": "Warmth Sets In",
             "badge": "NIGHT 1–2",
-            "placeholder_note": "night massage",
+            "placeholder": "night massage",
             "point_1": "Warm it, massage it in before bed.",
             "point_2": "The area feels lighter and stiffness starts to ease."
           }
         },
-        "stage-2": {
-          "type": "stage",
+        "step-2": {
+          "type": "step",
           "settings": {
+            "stage": "Mornings Get Easier",
             "badge": "DAY 3–7",
-            "placeholder_note": "morning stretch",
+            "placeholder": "morning stretch",
             "point_1": "Morning stiffness eases.",
             "point_2": "You wake up moving more freely."
           }
         },
-        "stage-3": {
-          "type": "stage",
+        "step-3": {
+          "type": "step",
           "settings": {
+            "stage": "Relief Lasts Longer",
             "badge": "WEEK 2–4",
-            "placeholder_note": "walk / stairs",
+            "placeholder": "walk / stairs",
             "point_1": "Relief lasts longer through the day.",
             "point_2": "Back on your walks, stairs and daily activities."
           }
         },
-        "stage-4": {
-          "type": "stage",
+        "step-4": {
+          "type": "step",
           "settings": {
+            "stage": "Joints Stay Loose",
             "badge": "WEEK 4+",
-            "placeholder_note": "family photo",
+            "placeholder": "family photo",
             "point_1": "Consistent nightly use keeps joints loose and comfortable long-term."
           }
         }
       },
       "block_order": [
-        "stage-1",
-        "stage-2",
-        "stage-3",
-        "stage-4"
+        "step-1",
+        "step-2",
+        "step-3",
+        "step-4"
       ],
       "settings": {}
     },
@@ -1063,7 +1067,7 @@
     "ingredients",
     "experts",
     "how-to-use",
-    "timeline",
+    "what-to-expect",
     "comparison",
     "faq",
     "reviews",

@@ -35,7 +35,7 @@ const SELECTORS = [
   '.eis-stockbar', '.eis-deliv', '.eis-warn', '.eis-bfaq',
   '.eis-sticky__inner', '.eis-sticky__name', '.eis-sticky__rating',
   '.eis-trust', '.eis-stats', '.eis-herbs', '.eis-exp', '.eis-exp__card',
-  '.eis-how', '.eis-how__step-media', '.eis-time', '.eis-cmp',
+  '.eis-how', '.eis-how__step-media', '.eis-wte-section', '.eis-cmp',
   '.eis-faq', '.eis-rev', '.eis-sp',
 ];
 

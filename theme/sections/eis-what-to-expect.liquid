@@ -1,0 +1,574 @@
+{%- comment -%}
+  EIS — What to Expect (nightly-use timeline)
+  ------------------------------------------------------------------
+  Vertical timeline: square autoplay video per step, animated golden
+  thread running video -> card -> next video, gold borders that flare
+  as the thread reaches each marker.
+
+  Install:
+    1. Save as sections/eis-what-to-expect.liquid
+    2. Add the section on the product template via the theme editor
+    3. Per block, upload a video (or paste an external MP4 URL) and an
+       optional poster image
+
+  Notes:
+    - Videos autoplay muted, looped, inline — no controls, no audio.
+    - Falls back to the poster image, then to a placeholder tile.
+    - Animations are disabled under prefers-reduced-motion.
+    - Scoped to .eis-wte-{{ section.id }} so it can't leak into the theme.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign uid = section.id
+  assign cycle = s.cycle_seconds | default: 6
+-%}
+
+<style>
+  .eis-wte-{{ uid }} {
+    --wte-maroon: {{ s.bg_color }};
+    --wte-gold: {{ s.gold_color }};
+    --wte-cream: {{ s.heading_color }};
+    --wte-ink: #2A1C18;
+    --wte-muted: #5E5147;
+    --wte-card: #FFFDF8;
+    --wte-green: #1E7A4D;
+    --wte-accent: #7B1315;
+    --wte-frame: {{ s.frame_size }}px;
+    --wte-cycle: {{ cycle }}s;
+    background: var(--wte-maroon);
+    padding: {{ s.padding_top }}px {{ s.padding_side }}px {{ s.padding_bottom }}px;
+    font-family: {{ s.body_font.family }}, {{ s.body_font.fallback_families }};
+    color: var(--wte-ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  .eis-wte-{{ uid }} * { box-sizing: border-box; }
+
+  .eis-wte-{{ uid }}__inner {
+    max-width: {{ s.max_width }}px;
+    margin: 0 auto;
+  }
+
+  .eis-wte-{{ uid }}__title {
+    font-family: {{ s.heading_font.family }}, {{ s.heading_font.fallback_families }};
+    font-weight: 600;
+    font-size: {{ s.heading_size }}px;
+    line-height: 1.16;
+    color: var(--wte-cream);
+    text-align: center;
+    margin: 0 0 24px;
+    text-wrap: pretty;
+  }
+
+  .eis-wte-{{ uid }}__step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ---- video frame ---- */
+  .eis-wte-{{ uid }}__frame {
+    position: relative;
+    width: var(--wte-frame);
+    height: var(--wte-frame);
+    max-width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    flex: none;
+    border: 3px solid rgba(201, 162, 74, .4);
+    background: repeating-linear-gradient(135deg, #EDE1CE 0 6px, #F9F1E4 6px 12px);
+    animation: eisWteGlow-{{ uid }} var(--wte-cycle) cubic-bezier(.45, .05, .2, 1) var(--wte-delay, 0s) infinite;
+  }
+  .eis-wte-{{ uid }}__media,
+  .eis-wte-{{ uid }}__poster {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .eis-wte-{{ uid }}__ph {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 34px 14px;
+    text-align: center;
+    font: 10px ui-monospace, monospace;
+    color: #8A7A63;
+  }
+
+  /* ---- golden thread ---- */
+  .eis-wte-{{ uid }}__thread {
+    width: 4px;
+    border-radius: 3px;
+    background: rgba(201, 162, 74, .22);
+    overflow: hidden;
+    margin: 10px 0;
+  }
+  .eis-wte-{{ uid }}__thread--stub { height: 22px; }
+  .eis-wte-{{ uid }}__thread--link { height: 34px; }
+  .eis-wte-{{ uid }}__thread i {
+    display: block;
+    width: 4px;
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(var(--wte-gold), #E3C46F);
+    transform-origin: top center;
+    animation: eisWteThread-{{ uid }} var(--wte-cycle) cubic-bezier(.45, .05, .2, 1) var(--wte-delay, 0s) infinite;
+  }
+
+  /* ---- card ---- */
+  .eis-wte-{{ uid }}__card {
+    width: 100%;
+    background: var(--wte-card);
+    border-radius: 11px;
+    padding: 16px;
+  }
+  .eis-wte-{{ uid }}__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .eis-wte-{{ uid }}__headline {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 0;
+  }
+  .eis-wte-{{ uid }}__num {
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    background: var(--wte-accent);
+    color: #FFF7E6;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+  }
+  .eis-wte-{{ uid }}__stage {
+    font-family: {{ s.heading_font.family }}, {{ s.heading_font.fallback_families }};
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--wte-accent);
+    line-height: 1.2;
+  }
+  .eis-wte-{{ uid }}__badge {
+    background: var(--wte-green);
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .07em;
+    padding: 3px 8px;
+    border-radius: 5px;
+    white-space: nowrap;
+    flex: none;
+  }
+  .eis-wte-{{ uid }}__rule {
+    height: 1px;
+    background: #EFE3D2;
+    margin: 12px 0;
+  }
+  .eis-wte-{{ uid }}__point {
+    display: flex;
+    gap: 9px;
+  }
+  .eis-wte-{{ uid }}__point + .eis-wte-{{ uid }}__point { margin-top: 8px; }
+  .eis-wte-{{ uid }}__tick {
+    color: var(--wte-green);
+    font-size: 12px;
+    flex: none;
+  }
+  .eis-wte-{{ uid }}__point p {
+    margin: 0;
+    font-size: 12.5px;
+    line-height: 1.45;
+  }
+
+  .eis-wte-{{ uid }}__foot {
+    font-size: 12px;
+    line-height: 1.55;
+    color: #D9C6A2;
+    text-align: center;
+    margin: 22px 0 0;
+  }
+
+  @keyframes eisWteThread-{{ uid }} {
+    0%   { transform: scaleY(0); }
+    15%  { transform: scaleY(1); }
+    96%  { transform: scaleY(1); }
+    100% { transform: scaleY(0); }
+  }
+  @keyframes eisWteGlow-{{ uid }} {
+    0%, 100% { border-color: rgba(201, 162, 74, .4); box-shadow: none; }
+    7%       { border-color: #F0DCA6; box-shadow: 0 0 0 5px rgba(201, 162, 74, .3), 0 0 26px rgba(227, 196, 111, .6); }
+    24%      { border-color: rgba(201, 162, 74, .4); box-shadow: none; }
+  }
+
+  /* wider screens: cap the frame so it doesn't dominate */
+  @media screen and (min-width: 750px) {
+    .eis-wte-{{ uid }} { padding-left: 24px; padding-right: 24px; }
+    .eis-wte-{{ uid }}__title { font-size: {{ s.heading_size | plus: 5 }}px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .eis-wte-{{ uid }}__frame,
+    .eis-wte-{{ uid }}__thread i {
+      animation: none !important;
+    }
+    .eis-wte-{{ uid }}__thread i { transform: scaleY(1); }
+  }
+</style>
+
+<section class="eis-wte-{{ uid }}" aria-labelledby="eis-wte-title-{{ uid }}">
+  <div class="eis-wte-{{ uid }}__inner">
+
+    {%- if s.heading != blank -%}
+      <h2 class="eis-wte-{{ uid }}__title" id="eis-wte-title-{{ uid }}">{{ s.heading }}</h2>
+    {%- endif -%}
+
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign i = forloop.index
+        assign markDelay = forloop.index0 | times: 140 | divided_by: 100.0
+        assign stubDelay = markDelay | plus: 0.25
+        assign linkDelay = markDelay | plus: 0.5
+      -%}
+
+      <div class="eis-wte-{{ uid }}__step" {{ block.shopify_attributes }}>
+
+        <div class="eis-wte-{{ uid }}__frame" style="--wte-delay: {{ markDelay }}s;">
+          {%- if block.settings.video != blank -%}
+            {{
+              block.settings.video
+              | video_tag:
+                image_size: '800x800',
+                autoplay: true,
+                loop: true,
+                muted: true,
+                controls: false,
+                playsinline: true,
+                class: 'eis-wte-' | append: uid | append: '__media'
+            }}
+          {%- elsif block.settings.video_url != blank -%}
+            <video
+              class="eis-wte-{{ uid }}__media"
+              autoplay
+              loop
+              muted
+              playsinline
+              preload="metadata"
+              {% if block.settings.poster != blank %}poster="{{ block.settings.poster | image_url: width: 800 }}"{% endif %}
+            >
+              <source src="{{ block.settings.video_url }}" type="video/mp4">
+            </video>
+          {%- elsif block.settings.poster != blank -%}
+            {{
+              block.settings.poster
+              | image_url: width: 800
+              | image_tag:
+                widths: '300, 450, 600, 800',
+                sizes: '(min-width: 750px) 300px, 82vw',
+                loading: 'lazy',
+                class: 'eis-wte-' | append: uid | append: '__poster',
+                alt: block.settings.stage
+            }}
+          {%- else -%}
+            <div class="eis-wte-{{ uid }}__ph">{{ block.settings.placeholder | default: 'video' }}</div>
+          {%- endif -%}
+        </div>
+
+        <div class="eis-wte-{{ uid }}__thread eis-wte-{{ uid }}__thread--stub" aria-hidden="true">
+          <i style="--wte-delay: {{ stubDelay }}s;"></i>
+        </div>
+
+        <div class="eis-wte-{{ uid }}__card">
+          <div class="eis-wte-{{ uid }}__head">
+            <div class="eis-wte-{{ uid }}__headline">
+              <span class="eis-wte-{{ uid }}__num">{{ i }}</span>
+              <span class="eis-wte-{{ uid }}__stage">{{ block.settings.stage }}</span>
+            </div>
+            {%- if block.settings.badge != blank -%}
+              <span class="eis-wte-{{ uid }}__badge">{{ block.settings.badge }}</span>
+            {%- endif -%}
+          </div>
+
+          <div class="eis-wte-{{ uid }}__rule"></div>
+
+          {%- if block.settings.point_1 != blank -%}
+            <div class="eis-wte-{{ uid }}__point">
+              <span class="eis-wte-{{ uid }}__tick" aria-hidden="true">&#10004;</span>
+              <p>{{ block.settings.point_1 }}</p>
+            </div>
+          {%- endif -%}
+          {%- if block.settings.point_2 != blank -%}
+            <div class="eis-wte-{{ uid }}__point">
+              <span class="eis-wte-{{ uid }}__tick" aria-hidden="true">&#10004;</span>
+              <p>{{ block.settings.point_2 }}</p>
+            </div>
+          {%- endif -%}
+        </div>
+
+        {%- unless forloop.last -%}
+          <div class="eis-wte-{{ uid }}__thread eis-wte-{{ uid }}__thread--link" aria-hidden="true">
+            <i style="--wte-delay: {{ linkDelay }}s;"></i>
+          </div>
+        {%- endunless -%}
+
+      </div>
+    {%- endfor -%}
+
+    {%- if s.footnote != blank -%}
+      <p class="eis-wte-{{ uid }}__foot">{{ s.footnote }}</p>
+    {%- endif -%}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "EIS What to Expect",
+  "tag": "section",
+  "class": "eis-wte-section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What to Expect When You Start Using EIS Nightly"
+    },
+    {
+      "type": "textarea",
+      "id": "footnote",
+      "label": "Closing line",
+      "default": "Customers report their best results after 3–4 weeks of nightly use — consistency is the key."
+    },
+    {
+      "type": "header",
+      "content": "Type"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font",
+      "label": "Heading font",
+      "default": "playfair_display_n5"
+    },
+    {
+      "type": "font_picker",
+      "id": "body_font",
+      "label": "Body font",
+      "default": "dm_sans_n4"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size (mobile)",
+      "min": 22,
+      "max": 46,
+      "step": 1,
+      "unit": "px",
+      "default": 33
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#5C0D0F"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "#F6E7C8"
+    },
+    {
+      "type": "color",
+      "id": "gold_color",
+      "label": "Thread & border gold",
+      "default": "#C9A24A"
+    },
+    {
+      "type": "header",
+      "content": "Layout & motion"
+    },
+    {
+      "type": "range",
+      "id": "frame_size",
+      "label": "Video size",
+      "min": 200,
+      "max": 420,
+      "step": 10,
+      "unit": "px",
+      "default": 300
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Content width",
+      "min": 360,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "default": 480
+    },
+    {
+      "type": "range",
+      "id": "cycle_seconds",
+      "label": "Thread loop length",
+      "min": 4,
+      "max": 12,
+      "step": 1,
+      "unit": "s",
+      "default": 6,
+      "info": "How long one full pass of the golden thread takes."
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 34
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 34
+    },
+    {
+      "type": "range",
+      "id": "padding_side",
+      "label": "Padding sides",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video",
+          "info": "Autoplays muted and looped. Square crop works best."
+        },
+        {
+          "type": "text",
+          "id": "video_url",
+          "label": "External MP4 URL",
+          "info": "Used only if no video is uploaded above."
+        },
+        {
+          "type": "image_picker",
+          "id": "poster",
+          "label": "Poster / fallback image"
+        },
+        {
+          "type": "text",
+          "id": "placeholder",
+          "label": "Placeholder label",
+          "info": "Shown while no video or image is set."
+        },
+        {
+          "type": "text",
+          "id": "stage",
+          "label": "Stage headline",
+          "default": "Warmth Sets In"
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Timeframe badge",
+          "default": "NIGHT 1–2"
+        },
+        {
+          "type": "text",
+          "id": "point_1",
+          "label": "Point 1",
+          "default": "Warm it, massage it in before bed."
+        },
+        {
+          "type": "text",
+          "id": "point_2",
+          "label": "Point 2",
+          "default": "The area feels lighter and stiffness starts to ease."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "EIS What to Expect",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "stage": "Warmth Sets In",
+            "badge": "NIGHT 1–2",
+            "placeholder": "night massage",
+            "point_1": "Warm it, massage it in before bed.",
+            "point_2": "The area feels lighter and stiffness starts to ease."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "stage": "Mornings Get Easier",
+            "badge": "DAY 3–7",
+            "placeholder": "morning stretch",
+            "point_1": "Morning stiffness eases.",
+            "point_2": "You wake up moving more freely."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "stage": "Relief Lasts Longer",
+            "badge": "WEEK 2–4",
+            "placeholder": "walk / stairs",
+            "point_1": "Relief lasts longer through the day.",
+            "point_2": "Back on your walks, stairs and daily activities."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "stage": "Joints Stay Loose",
+            "badge": "WEEK 4+",
+            "placeholder": "family photo",
+            "point_1": "Consistent nightly use keeps joints loose and comfortable long-term.",
+            "point_2": ""
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
