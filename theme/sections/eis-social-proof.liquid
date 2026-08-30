@@ -214,6 +214,16 @@
       gap: 16px;
       overflow: visible;
       padding: 0;
+      /* The strip breaks out of the section's content column. Held to the
+         column it could never exceed 232px a face however wide the monitor
+         was; on its own width it keeps growing. 40px of slack rather than
+         the section's 24px because 100vw counts the scrollbar and the
+         difference would be a sideways scroll. Centred on the viewport:
+         the parent is already centred, so 50% plus a half-width pull back
+         lands in the middle whatever the parent's own width is. */
+      width: min(1560px, calc(100vw - 40px));
+      margin-left: 50%;
+      transform: translateX(-50%);
     }
     .eis-sp__face { flex: initial; width: auto; }
     .eis-sp__track { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; overflow: visible; padding: 0; }
@@ -223,7 +233,7 @@
   @media (min-width: 1200px) {
     .eis-sp__inner { max-width: 1280px; }
     .eis-sp__title { font-size: 42px; }
-    .eis-sp__faces { gap: 24px; }
+    .eis-sp__faces { gap: 20px; }
     .eis-sp__track { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
   }
 {% endstyle %}
