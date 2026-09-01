@@ -1,0 +1,482 @@
+{%- comment -%}
+  EIS home — hero
+  ------------------------------------------------------------------
+  Two columns above 750px, stacked on phones with the bottle ABOVE the
+  copy, which is what the artboard specifies and the reverse of the
+  desktop order — hence the order swap rather than a DOM reorder.
+
+  Class prefix eis-hh. A section's {% style %} is page-wide in Shopify,
+  so every prefix on this site has to be unique or two sections silently
+  restyle each other.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign uid = section.id
+
+  assign avatar_count = 0
+  for block in section.blocks
+    if block.type == 'avatar' and block.settings.image != blank
+      assign avatar_count = avatar_count | plus: 1
+    endif
+  endfor
+-%}
+
+{% style %}
+  .eis-hh-{{ uid }} {
+    background: radial-gradient(120% 100% at 50% 0%, {{ s.bg_top }} 0%, {{ s.bg_bottom }} 70%);
+    padding: 40px 16px;
+    font-family: {{ s.body_font.family }}, {{ s.body_font.fallback_families }};
+  }
+  .eis-hh-{{ uid }} * { box-sizing: border-box; }
+
+  .eis-hh-{{ uid }}__inner {
+    max-width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    align-items: center;
+  }
+
+  /* Bottle first on phones, copy first from 750px up. */
+  .eis-hh-{{ uid }}__copy { order: 2; text-align: center; }
+  .eis-hh-{{ uid }}__media { order: 1; }
+
+  .eis-hh-{{ uid }}__eyebrow {
+    display: inline-block;
+    background: {{ s.gold }};
+    color: #3B0E0F;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .15em;
+    padding: 5px 12px;
+    border-radius: 5px;
+    white-space: nowrap;
+  }
+
+  .eis-hh-{{ uid }}__title {
+    font-family: {{ s.heading_font.family }}, {{ s.heading_font.fallback_families }};
+    font-size: 34px;
+    line-height: 1.08;
+    font-weight: 600;
+    color: {{ s.heading_color }};
+    margin: 16px 0 0;
+    text-wrap: pretty;
+  }
+  .eis-hh-{{ uid }}__title em { font-style: normal; color: {{ s.accent }}; }
+
+  .eis-hh-{{ uid }}__sub {
+    font-size: 14px;
+    line-height: 1.6;
+    color: {{ s.body_color }};
+    margin: 16px auto 0;
+    max-width: 460px;
+    text-wrap: pretty;
+  }
+
+  .eis-hh-{{ uid }}__cta {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .eis-hh-{{ uid }}__btn {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    background: {{ s.btn_bg }};
+    color: #FFF7E6;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    padding: 17px 34px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background .2s ease, transform .2s cubic-bezier(.34, 1.56, .64, 1);
+  }
+  .eis-hh-{{ uid }}__btn:hover { background: {{ s.btn_bg_hover }}; transform: translateY(-2px); }
+
+  .eis-hh-{{ uid }}__btn--ghost {
+    display: inline-flex;
+    align-items: center;
+    background: transparent;
+    border: 1.5px solid rgba(227, 196, 111, .55);
+    color: #E9D8B6;
+    padding: 17px 30px;
+  }
+  .eis-hh-{{ uid }}__btn--ghost:hover { background: rgba(201, 162, 74, .12); transform: none; }
+
+  /* The sheen is a band swept across the button, not a gradient animation:
+     transform is compositor-only, so it does not repaint on every frame. */
+  .eis-hh-{{ uid }}__sheen {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 38%;
+    background: linear-gradient(90deg, rgba(255, 247, 230, 0), rgba(255, 247, 230, .3), rgba(255, 247, 230, 0));
+    pointer-events: none;
+  }
+  .eis-hh-{{ uid }}__btn-label { position: relative; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .eis-hh-{{ uid }}__btn--solid { animation: eisHhPulse-{{ uid }} 2.6s ease-in-out infinite; }
+    .eis-hh-{{ uid }}__sheen { animation: eisHhSheen-{{ uid }} 3.4s ease-in-out infinite; }
+  }
+  @keyframes eisHhPulse-{{ uid }} {
+    0%, 100% { box-shadow: 0 5px 14px rgba(123, 19, 21, .30), 0 0 0 0 rgba(201, 162, 74, 0); }
+    50%      { box-shadow: 0 7px 20px rgba(123, 19, 21, .38), 0 0 0 5px rgba(201, 162, 74, .22); }
+  }
+  @keyframes eisHhSheen-{{ uid }} {
+    0%        { transform: translateX(-130%) skewX(-18deg); }
+    55%, 100% { transform: translateX(260%) skewX(-18deg); }
+  }
+
+  .eis-hh-{{ uid }}__proof {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 26px;
+    justify-content: center;
+  }
+  .eis-hh-{{ uid }}__avatars { display: flex; flex: none; }
+  .eis-hh-{{ uid }}__avatars img {
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    object-fit: cover;
+    border: 2px solid {{ s.bg_top }};
+    display: block;
+  }
+  .eis-hh-{{ uid }}__avatars img + img { margin-left: -12px; }
+  .eis-hh-{{ uid }}__proof-text {
+    font-family: 'Manrope', {{ s.body_font.fallback_families }};
+    font-size: 13px;
+    color: {{ s.body_color }};
+  }
+  .eis-hh-{{ uid }}__proof-text b { color: {{ s.heading_color }}; font-weight: 700; }
+
+  .eis-hh-{{ uid }}__bottle {
+    display: block;
+    height: 280px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    margin: 0 auto;
+    filter: drop-shadow(0 30px 44px rgba(0, 0, 0, .45));
+  }
+  /* Nothing has been uploaded yet: hold the bottle's footprint so adding one
+     later does not shift the whole hero. */
+  .eis-hh-{{ uid }}__bottle--empty {
+    height: 280px;
+    border-radius: 16px;
+    background: repeating-linear-gradient(135deg, rgba(246, 231, 200, .07) 0 10px, rgba(246, 231, 200, .03) 10px 20px);
+    border: 1px dashed rgba(201, 162, 74, .4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: 11px ui-monospace, monospace;
+    color: rgba(246, 231, 200, .5);
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  @media screen and (min-width: 750px) {
+    .eis-hh-{{ uid }} { padding: 52px 24px; }
+    .eis-hh-{{ uid }}__inner {
+      max-width: 976px;
+      grid-template-columns: minmax(0, 1fr) minmax(0, {{ s.media_share }}fr);
+      gap: 32px;
+    }
+    .eis-hh-{{ uid }}__copy { order: 1; text-align: left; }
+    .eis-hh-{{ uid }}__media { order: 2; }
+    .eis-hh-{{ uid }}__cta,
+    .eis-hh-{{ uid }}__proof { justify-content: flex-start; }
+    .eis-hh-{{ uid }}__sub { margin-left: 0; }
+    .eis-hh-{{ uid }}__title { font-size: 44px; }
+    .eis-hh-{{ uid }}__sub { font-size: 16px; }
+    .eis-hh-{{ uid }}__bottle,
+    .eis-hh-{{ uid }}__bottle--empty { height: 420px; }
+  }
+
+  @media screen and (min-width: 1200px) {
+    .eis-hh-{{ uid }} { padding: 72px 80px; }
+    .eis-hh-{{ uid }}__inner { max-width: 1280px; gap: 56px; }
+    .eis-hh-{{ uid }}__title { font-size: 54px; }
+    .eis-hh-{{ uid }}__sub { font-size: 17px; }
+    .eis-hh-{{ uid }}__bottle,
+    .eis-hh-{{ uid }}__bottle--empty { height: 520px; }
+  }
+{% endstyle %}
+
+<div class="eis-hh-{{ uid }}">
+  <div class="eis-hh-{{ uid }}__inner">
+
+    <div class="eis-hh-{{ uid }}__copy">
+      {%- if s.eyebrow != blank -%}
+        <div class="eis-hh-{{ uid }}__eyebrow">{{ s.eyebrow }}</div>
+      {%- endif -%}
+
+      {%- if s.heading != blank -%}
+        <h1 class="eis-hh-{{ uid }}__title">{{ s.heading }}</h1>
+      {%- endif -%}
+
+      {%- if s.subheading != blank -%}
+        <p class="eis-hh-{{ uid }}__sub">{{ s.subheading }}</p>
+      {%- endif -%}
+
+      {%- if s.btn_label != blank or s.btn2_label != blank -%}
+        <div class="eis-hh-{{ uid }}__cta">
+          {%- if s.btn_label != blank -%}
+            <a
+              href="{{ s.btn_link | default: '#' }}"
+              class="eis-hh-{{ uid }}__btn eis-hh-{{ uid }}__btn--solid"
+            >
+              <span class="eis-hh-{{ uid }}__sheen" aria-hidden="true"></span>
+              <span class="eis-hh-{{ uid }}__btn-label">{{ s.btn_label }}</span>
+            </a>
+          {%- endif -%}
+          {%- if s.btn2_label != blank -%}
+            <a
+              href="{{ s.btn2_link | default: '#' }}"
+              class="eis-hh-{{ uid }}__btn eis-hh-{{ uid }}__btn--ghost"
+            >{{ s.btn2_label }}</a>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      {%- if avatar_count > 0 or s.proof_text != blank -%}
+        <div class="eis-hh-{{ uid }}__proof">
+          {%- if avatar_count > 0 -%}
+            <div class="eis-hh-{{ uid }}__avatars">
+              {%- for block in section.blocks -%}
+                {%- if block.type == 'avatar' and block.settings.image != blank -%}
+                  {{
+                    block.settings.image
+                    | image_url: width: 108
+                    | image_tag: widths: '36, 72, 108', sizes: '36px', loading: 'lazy', alt: ''
+                  }}
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+          {%- if s.proof_text != blank -%}
+            <div class="eis-hh-{{ uid }}__proof-text">{{ s.proof_text }}</div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="eis-hh-{{ uid }}__media">
+      {%- if s.image != blank -%}
+        {{
+          s.image
+          | image_url: width: 1040
+          | image_tag:
+            widths: '280, 420, 520, 780, 1040',
+            sizes: '(min-width: 1200px) 520px, (min-width: 750px) 420px, 280px',
+            loading: 'eager',
+            fetchpriority: 'high',
+            class: 'eis-hh-' | append: uid | append: '__bottle',
+            alt: s.image_alt
+        }}
+      {%- else -%}
+        <div class="eis-hh-{{ uid }}__bottle--empty">product bottle</div>
+      {%- endif -%}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "EIS Home Hero",
+  "tag": "section",
+  "class": "eis-hh-section",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "15+ AYURVEDIC HERBS · AYUSH LICENSED"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Wrap a phrase in italics to pick up the gold accent colour.",
+      "default": "<p>Joint & Muscle Pain,<br>Relieved the<br><em>Ayurvedic Way.</em></p>"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Instant, long-lasting relief for knees, back, shoulders & leg cramps — a medicated oil that absorbs into the joint instead of sitting on the skin."
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Main button",
+      "default": "SHOP PAIN RELIEF OIL"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Main button link"
+    },
+    {
+      "type": "text",
+      "id": "btn2_label",
+      "label": "Second button",
+      "default": "OUR STORY"
+    },
+    {
+      "type": "url",
+      "id": "btn2_link",
+      "label": "Second button link"
+    },
+    {
+      "type": "header",
+      "content": "Social proof"
+    },
+    {
+      "type": "richtext",
+      "id": "proof_text",
+      "label": "Proof line",
+      "info": "Add customer photos as blocks below.",
+      "default": "<p><strong>36,000+ Happy Customers</strong> · ★★★★★ 4.9/5</p>"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Product image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image description",
+      "info": "Read aloud by screen readers.",
+      "default": "EIS Ayurvedic Pain Relief Oil 200ml"
+    },
+    {
+      "type": "range",
+      "id": "media_share",
+      "label": "Image column width",
+      "info": "Relative to the text column. 1 splits the row evenly.",
+      "min": 0.6,
+      "max": 1.4,
+      "step": 0.1,
+      "default": 1
+    },
+    {
+      "type": "header",
+      "content": "Type"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font",
+      "label": "Heading font",
+      "default": "playfair_display_n5"
+    },
+    {
+      "type": "font_picker",
+      "id": "body_font",
+      "label": "Body font",
+      "default": "dm_sans_n4"
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color",
+      "id": "bg_top",
+      "label": "Background centre",
+      "default": "#3A0F10"
+    },
+    {
+      "type": "color",
+      "id": "bg_bottom",
+      "label": "Background edge",
+      "default": "#200808"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "#F6E7C8"
+    },
+    {
+      "type": "color",
+      "id": "accent",
+      "label": "Heading accent",
+      "default": "#E3C46F"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body text",
+      "default": "#E4D3B4"
+    },
+    {
+      "type": "color",
+      "id": "gold",
+      "label": "Eyebrow",
+      "default": "#C9A24A"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg",
+      "label": "Button",
+      "default": "#7B1315"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg_hover",
+      "label": "Button hover",
+      "default": "#5C0D0F"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "avatar",
+      "name": "Customer photo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo",
+          "info": "Square crops work best."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "EIS Home Hero",
+      "blocks": [
+        { "type": "avatar" },
+        { "type": "avatar" },
+        { "type": "avatar" }
+      ]
+    }
+  ]
+}
+{% endschema %}
