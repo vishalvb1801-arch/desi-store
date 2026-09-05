@@ -1,0 +1,930 @@
+{%- comment -%}
+  Solvanno · Purchase block
+  ------------------------------------------------------------------
+  Built from the Claude Design homepage, section 9. Everything that was
+  a prototype click handler in the design (pick1 / setSub / add) is a
+  real Shopify interaction here:
+
+    · each bundle tier is a block pointing at a real product,
+      so the price on screen is the price Shopify charges
+    · the One-time / Subscribe toggle reads the product's own
+      selling plan and posts it with the line item
+    · Add to cart posts to {{ routes.cart_add_url }} and still works
+      with JavaScript switched off
+
+  Class prefix sv-buy is unique to this section — a section's inline
+  style block is page-wide, so nothing here may collide with the
+  theme's own classes.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign p = s.product
+
+  assign tiers = section.blocks | where: 'type', 'tier'
+  assign tier_count = tiers.size
+
+  comment
+    The gallery follows whichever product the merchant put in the
+    section, not the tier — the tiers are 1/2/3 of the same bottle.
+  endcomment
+  assign media_list = p.media
+-%}
+
+{%- if s.load_fonts -%}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Manrope:wght@500;700;800&display=swap"
+  >
+{%- endif -%}
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    --sv-buy-ground: {{ s.bg_color }};
+    --sv-buy-frame: {{ s.image_bg }};
+    --sv-buy-ink: #131313;
+    --sv-buy-muted: #5c5c50;
+    --sv-buy-faint: #a5a596;
+    --sv-buy-line: #E4E1CF;
+    --sv-buy-green: {{ s.accent_color }};
+    --sv-buy-green-tint: #F4F8DF;
+    --sv-buy-red: {{ s.badge_color }};
+  }
+
+  .sv-buy {
+    background: var(--sv-buy-ground);
+    padding: 40px 16px;
+    color: var(--sv-buy-ink);
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  .sv-buy__inner {
+    max-width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  /* ---------- gallery ---------- */
+  .sv-buy__stage {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--sv-buy-frame);
+    aspect-ratio: 4 / 4.6;
+  }
+
+  .sv-buy__slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity .25s ease;
+    pointer-events: none;
+  }
+  .sv-buy__slide[data-sv-active] { opacity: 1; pointer-events: auto; }
+
+  .sv-buy__slide img,
+  .sv-buy__slide video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Empty state: a labelled frame rather than a hole, so the section
+     reads correctly before the photography lands. */
+  .sv-buy__empty {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 16px;
+    font: 10px ui-monospace, SFMono-Regular, Menlo, monospace;
+    color: #8b9367;
+  }
+
+  .sv-buy__bestseller {
+    position: absolute;
+    top: 13px;
+    left: 13px;
+    z-index: 2;
+    background: var(--sv-buy-red);
+    color: #fff;
+    font-family: 'Manrope', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    padding: 6px 13px;
+    border-radius: 999px;
+  }
+
+  .sv-buy__thumbrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  .sv-buy__arrow {
+    width: 30px;
+    height: 30px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    line-height: 1;
+    cursor: pointer;
+    flex: none;
+    padding: 0;
+    background: transparent;
+    border: 1.5px solid var(--sv-buy-ink);
+    color: var(--sv-buy-ink);
+    transition: background .18s ease, color .18s ease;
+  }
+  .sv-buy__arrow--next {
+    background: var(--sv-buy-ink);
+    border-color: var(--sv-buy-ink);
+    color: #fff;
+  }
+  .sv-buy__arrow:disabled { opacity: .3; cursor: default; }
+
+  .sv-buy__thumbs {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .sv-buy__thumb {
+    aspect-ratio: 1;
+    border-radius: 10px;
+    border: 1px solid var(--sv-buy-line);
+    background: var(--sv-buy-frame);
+    overflow: hidden;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: 8px ui-monospace, SFMono-Regular, Menlo, monospace;
+    color: #8b9367;
+    text-align: center;
+    transition: border-color .18s ease;
+  }
+  .sv-buy__thumb[aria-current='true'] { border: 2px solid var(--sv-buy-ink); }
+  .sv-buy__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* ---------- copy ---------- */
+  .sv-buy__stars {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+  }
+  .sv-buy__stars i { font-style: normal; letter-spacing: .05em; }
+  .sv-buy__stars span { color: var(--sv-buy-muted); }
+
+  .sv-buy__wordmark {
+    font-family: 'Manrope', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .18em;
+    margin-top: 12px;
+  }
+
+  .sv-buy__title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 25px;
+    font-weight: 800;
+    line-height: 1.15;
+    margin: 6px 0 0;
+  }
+
+  .sv-buy__desc {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--sv-buy-muted);
+    margin: 10px 0 0;
+  }
+
+  .sv-buy__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 13px;
+    padding: 0;
+    list-style: none;
+  }
+  .sv-buy__chip {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11.5px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .sv-buy__tick {
+    width: 15px;
+    height: 15px;
+    border-radius: 999px;
+    background: var(--sv-buy-green);
+    color: #fff;
+    font-size: 9px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+  }
+
+  /* ---------- tiers ---------- */
+  .sv-buy__tiers { margin-top: 16px; }
+
+  .sv-buy__tier {
+    position: relative;
+    width: 100%;
+    text-align: left;
+    border: 1px solid var(--sv-buy-line);
+    background: #fff;
+    border-radius: 10px;
+    padding: 14px 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font: inherit;
+    color: inherit;
+    transition: border-color .18s ease, background .18s ease;
+  }
+  .sv-buy__tier + .sv-buy__tier { margin-top: 9px; }
+  .sv-buy__tier[aria-checked='true'] {
+    border: 2px solid var(--sv-buy-green);
+    background: var(--sv-buy-green-tint);
+    /* The 2px border would nudge the row 1px; pull it back so the
+       stack does not jump as the selection moves. */
+    padding: 13px 14px;
+  }
+  .sv-buy__tier[data-sv-sold-out] { opacity: .45; cursor: not-allowed; }
+
+  .sv-buy__radio {
+    width: 16px;
+    height: 16px;
+    border-radius: 999px;
+    border: 2px solid #C9C5AE;
+    background: #fff;
+    flex: none;
+    transition: border-color .18s ease, background .18s ease;
+  }
+  .sv-buy__tier[aria-checked='true'] .sv-buy__radio {
+    border-color: var(--sv-buy-green);
+    background: var(--sv-buy-green);
+  }
+
+  .sv-buy__tierlabel {
+    flex: 1;
+    font-family: 'Manrope', sans-serif;
+    font-size: 13.5px;
+    font-weight: 800;
+    min-width: 0;
+  }
+
+  .sv-buy__tierprice {
+    text-align: right;
+    flex: none;
+  }
+  .sv-buy__tierprice b {
+    display: block;
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+  }
+  .sv-buy__tierprice s {
+    display: block;
+    font-size: 10.5px;
+    color: var(--sv-buy-faint);
+  }
+
+  .sv-buy__tierbadge {
+    position: absolute;
+    top: -9px;
+    right: 12px;
+    background: var(--sv-buy-ink);
+    color: var(--sv-buy-green);
+    font-family: 'Manrope', sans-serif;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    padding: 3px 9px;
+    border-radius: 4px;
+  }
+
+  /* ---------- purchase mode ---------- */
+  .sv-buy__modes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+    margin-top: 12px;
+  }
+
+  .sv-buy__mode {
+    border: 1px solid var(--sv-buy-line);
+    background: #fff;
+    border-radius: 10px;
+    padding: 12px;
+    text-align: center;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+    transition: border-color .18s ease, background .18s ease;
+  }
+  .sv-buy__mode[aria-checked='true'] {
+    border: 2px solid var(--sv-buy-ink);
+    background: var(--sv-buy-green-tint);
+    padding: 11px;
+  }
+  .sv-buy__mode b { display: block; font-size: 12px; font-weight: 700; }
+  .sv-buy__mode small {
+    display: block;
+    font-size: 9.5px;
+    color: #8a8a7c;
+    margin-top: 2px;
+  }
+  .sv-buy__mode[hidden] { display: none; }
+
+  /* ---------- cta ---------- */
+  .sv-buy__cta {
+    display: block;
+    width: 100%;
+    background: var(--sv-buy-ink);
+    color: #fff;
+    font-family: 'Manrope', sans-serif;
+    font-size: 13.5px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-align: center;
+    padding: 16px;
+    border: 0;
+    border-radius: 10px;
+    margin-top: 13px;
+    cursor: pointer;
+    transition: background .18s ease;
+  }
+  .sv-buy__cta:hover { background: #2b2b2b; }
+  .sv-buy__cta:disabled { background: #8a8a7c; cursor: not-allowed; }
+  .sv-buy__cta s { color: #8a8a7c; font-weight: 600; }
+
+  .sv-buy__guarantee {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--sv-buy-muted);
+    margin-top: 10px;
+  }
+
+  .sv-buy__error {
+    margin: 10px 0 0;
+    font-size: 12px;
+    color: var(--sv-buy-red);
+    text-align: center;
+  }
+  .sv-buy__error:empty { display: none; }
+
+  @media screen and (min-width: 750px) {
+    .sv-buy { padding: 64px 32px; }
+    .sv-buy__inner { gap: 32px; }
+    .sv-buy__title { font-size: 30px; }
+    /* Still one column here. Left unbounded the 4:4.6 frame grows to
+       810px tall on a tablet and pushes the buy box off the screen. */
+    .sv-buy__gallery,
+    .sv-buy__box { max-width: 460px; margin: 0 auto; width: 100%; }
+  }
+
+  @media screen and (min-width: 990px) {
+    .sv-buy { padding: 64px 56px; }
+    .sv-buy__gallery,
+    .sv-buy__box { max-width: none; margin: 0; }
+    .sv-buy__inner {
+      max-width: 1200px;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 48px;
+    }
+    .sv-buy__title { font-size: 36px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sv-buy__slide,
+    .sv-buy__tier,
+    .sv-buy__mode,
+    .sv-buy__cta,
+    .sv-buy__arrow,
+    .sv-buy__radio { transition: none; }
+  }
+{% endstyle %}
+
+<div class="sv-buy" data-sv-buy>
+  <div class="sv-buy__inner">
+
+    {%- comment -%} ---------- left: gallery ---------- {%- endcomment -%}
+    <div class="sv-buy__gallery">
+      <div class="sv-buy__stage">
+        {%- if s.bestseller_label != blank -%}
+          <div class="sv-buy__bestseller">{{ s.bestseller_label }}</div>
+        {%- endif -%}
+
+        {%- if media_list.size > 0 -%}
+          {%- for m in media_list limit: 8 -%}
+            <div class="sv-buy__slide" data-sv-slide="{{ forloop.index0 }}"{% if forloop.first %} data-sv-active{% endif %}>
+              {%- case m.media_type -%}
+                {%- when 'video' -%}
+                  {{ m | video_tag: image_size: '1200x', playsinline: true, muted: true, loop: true, controls: true }}
+                {%- when 'external_video' -%}
+                  {{ m | external_video_tag }}
+                {%- else -%}
+                  {{
+                    m
+                    | image_url: width: 1200
+                    | image_tag:
+                      loading: 'lazy',
+                      widths: '400, 600, 800, 1200',
+                      sizes: '(min-width: 990px) 590px, 100vw',
+                      alt: m.alt
+                  }}
+              {%- endcase -%}
+            </div>
+          {%- endfor -%}
+        {%- else -%}
+          <div class="sv-buy__slide" data-sv-slide="0" data-sv-active>
+            <div class="sv-buy__empty">{{ s.empty_label }}</div>
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- if media_list.size > 1 -%}
+        <div class="sv-buy__thumbrow">
+          <button
+            type="button"
+            class="sv-buy__arrow sv-buy__arrow--prev"
+            data-sv-prev
+            aria-label="Previous image"
+          >&lsaquo;</button>
+
+          <div class="sv-buy__thumbs">
+            {%- for m in media_list limit: 8 -%}
+              <button
+                type="button"
+                class="sv-buy__thumb"
+                data-sv-thumb="{{ forloop.index0 }}"
+                aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
+                aria-label="Image {{ forloop.index }}"
+              >
+                {{
+                  m.preview_image
+                  | image_url: width: 240
+                  | image_tag: loading: 'lazy', widths: '120, 240', sizes: '80px', alt: m.alt
+                }}
+              </button>
+            {%- endfor -%}
+          </div>
+
+          <button
+            type="button"
+            class="sv-buy__arrow sv-buy__arrow--next"
+            data-sv-next
+            aria-label="Next image"
+          >&rsaquo;</button>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} ---------- right: buy box ---------- {%- endcomment -%}
+    <div class="sv-buy__box">
+      {%- if s.review_line != blank -%}
+        <div class="sv-buy__stars">
+          <i aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</i>
+          <span>| {{ s.review_line }}</span>
+        </div>
+      {%- endif -%}
+
+      {%- if s.wordmark != blank -%}
+        <div class="sv-buy__wordmark">{{ s.wordmark }}</div>
+      {%- endif -%}
+
+      <h2 class="sv-buy__title">{{ s.heading | default: p.title }}</h2>
+
+      {%- if s.description != blank -%}
+        <p class="sv-buy__desc">{{ s.description }}</p>
+      {%- endif -%}
+
+      {%- assign chips = s.benefits | split: ',' -%}
+      {%- if chips.size > 0 -%}
+        <ul class="sv-buy__chips">
+          {%- for chip in chips -%}
+            {%- assign chip_text = chip | strip -%}
+            {%- if chip_text != blank -%}
+              <li class="sv-buy__chip">
+                <span class="sv-buy__tick" aria-hidden="true">&#10003;</span>{{ chip_text }}
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      {%- if p == blank -%}
+        <p class="sv-buy__error">
+          Pick a product for this section in the theme editor — the price and the
+          Add to cart button read from it.
+        </p>
+      {%- elsif tier_count == 0 -%}
+        <p class="sv-buy__error">Add at least one bundle tier to this section.</p>
+      {%- else -%}
+
+        <form
+          action="{{ routes.cart_add_url }}"
+          method="post"
+          enctype="multipart/form-data"
+          class="sv-buy__form"
+          data-sv-form
+          data-sv-after="{{ s.after_add }}"
+        >
+          <input type="hidden" name="form_type" value="product">
+          <input type="hidden" name="utf8" value="✓">
+          <input type="hidden" name="id" value="" data-sv-id>
+          <input type="hidden" name="quantity" value="1" data-sv-qty>
+          <input type="hidden" name="selling_plan" value="" data-sv-plan disabled>
+          {%- if s.after_add == 'checkout' -%}
+            <input type="hidden" name="return_to" value="/checkout">
+          {%- else -%}
+            <input type="hidden" name="return_to" value="{{ routes.cart_url }}">
+          {%- endif -%}
+
+          <div class="sv-buy__tiers" role="radiogroup" aria-label="Choose a bundle">
+            {%- assign tier_index = 0 -%}
+            {%- for block in section.blocks -%}
+              {%- if block.type != 'tier' -%}{% continue %}{%- endif -%}
+
+              {%- liquid
+                assign b = block.settings
+
+                assign tier_product = b.product
+                if tier_product == blank
+                  assign tier_product = p
+                endif
+
+                assign v = tier_product.selected_or_first_available_variant
+                if v == blank
+                  assign v = tier_product.variants | first
+                endif
+
+                assign qty = b.quantity | at_least: 1
+
+                assign line_price = v.price | times: qty
+
+                comment
+                  Two ways a tier can show a saving: the variant carries a
+                  compare-at price, or the merchant typed what the same
+                  number of bottles would cost bought singly. Whichever is
+                  larger than the real price wins; neither means no strike.
+                endcomment
+                assign was_price = 0
+                if v.compare_at_price > v.price
+                  assign was_price = v.compare_at_price | times: qty
+                endif
+                if b.compare_at_override > 0
+                  assign override_cents = b.compare_at_override | times: 100
+                  if override_cents > was_price
+                    assign was_price = override_cents
+                  endif
+                endif
+
+                assign alloc = v.selling_plan_allocations | first
+                assign plan_id = ''
+                assign sub_price = 0
+                if alloc
+                  assign plan_id = alloc.selling_plan.id
+                  assign sub_price = alloc.price | times: qty
+                endif
+
+                assign is_selected = false
+                if b.preselected
+                  assign is_selected = true
+                endif
+              -%}
+
+              <button
+                type="button"
+                class="sv-buy__tier"
+                role="radio"
+                aria-checked="{% if is_selected %}true{% else %}false{% endif %}"
+                data-sv-tier="{{ tier_index }}"
+                data-sv-vid="{{ v.id }}"
+                data-sv-qty="{{ qty }}"
+                data-sv-once="{{ line_price | money }}"
+                data-sv-once-was="{% if was_price > 0 %}{{ was_price | money }}{% endif %}"
+                data-sv-plan="{{ plan_id }}"
+                data-sv-sub="{% if plan_id != blank %}{{ sub_price | money }}{% endif %}"
+                {% unless v.available %}data-sv-sold-out disabled{% endunless %}
+              >
+                {%- if b.badge != blank -%}
+                  <span class="sv-buy__tierbadge">{{ b.badge }}</span>
+                {%- endif -%}
+
+                <span class="sv-buy__radio" aria-hidden="true"></span>
+
+                <span class="sv-buy__tierlabel">
+                  {{ b.label | default: tier_product.title }}
+                  {%- unless v.available %} — sold out{% endunless -%}
+                </span>
+
+                <span class="sv-buy__tierprice">
+                  <b>{{ line_price | money }}</b>
+                  {%- if was_price > 0 -%}
+                    <s>{{ was_price | money }}</s>
+                  {%- endif -%}
+                </span>
+              </button>
+
+              {%- assign tier_index = tier_index | plus: 1 -%}
+            {%- endfor -%}
+          </div>
+
+          <div class="sv-buy__modes" role="radiogroup" aria-label="Purchase type" data-sv-modes>
+            <button type="button" class="sv-buy__mode" role="radio" aria-checked="true" data-sv-mode="once">
+              <b>{{ s.once_label }}</b>
+            </button>
+            <button type="button" class="sv-buy__mode" role="radio" aria-checked="false" data-sv-mode="sub" hidden>
+              <b>{{ s.sub_label }}</b>
+              {%- if s.sub_note != blank -%}<small>{{ s.sub_note }}</small>{%- endif -%}
+            </button>
+          </div>
+
+          <button type="submit" class="sv-buy__cta" data-sv-cta>
+            <span data-sv-cta-text>{{ s.cta_label }}</span>
+            <span data-sv-cta-price></span>
+          </button>
+
+          <p class="sv-buy__error" data-sv-error role="status" aria-live="polite"></p>
+        </form>
+
+        {%- if s.guarantee != blank -%}
+          <div class="sv-buy__guarantee"><span aria-hidden="true">&#128737;</span>{{ s.guarantee }}</div>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+
+  </div>
+</div>
+
+<script>
+  (function () {
+    var root = document.currentScript.previousElementSibling;
+    while (root && !root.hasAttribute('data-sv-buy')) root = root.previousElementSibling;
+    if (!root) return;
+
+    /* ---------- gallery ---------- */
+    var slides = root.querySelectorAll('[data-sv-slide]');
+    var thumbs = root.querySelectorAll('[data-sv-thumb]');
+    var shown = 0;
+
+    function show(i) {
+      if (!slides.length) return;
+      shown = (i + slides.length) % slides.length;
+      slides.forEach(function (el, n) {
+        if (n === shown) el.setAttribute('data-sv-active', '');
+        else el.removeAttribute('data-sv-active');
+        // Pause a clip the moment it leaves the stage, otherwise audio
+        // from an off-screen slide keeps playing.
+        var vid = el.querySelector('video');
+        if (vid && n !== shown) vid.pause();
+      });
+      thumbs.forEach(function (el, n) {
+        el.setAttribute('aria-current', n === shown ? 'true' : 'false');
+      });
+    }
+
+    thumbs.forEach(function (el) {
+      el.addEventListener('click', function () {
+        show(parseInt(el.getAttribute('data-sv-thumb'), 10));
+      });
+    });
+
+    var prev = root.querySelector('[data-sv-prev]');
+    var next = root.querySelector('[data-sv-next]');
+    if (prev) prev.addEventListener('click', function () { show(shown - 1); });
+    if (next) next.addEventListener('click', function () { show(shown + 1); });
+
+    /* ---------- buy box ---------- */
+    var form = root.querySelector('[data-sv-form]');
+    if (!form) return;
+
+    var tiers = Array.prototype.slice.call(root.querySelectorAll('[data-sv-tier]'));
+    var modes = Array.prototype.slice.call(root.querySelectorAll('[data-sv-mode]'));
+    var subMode = root.querySelector('[data-sv-mode="sub"]');
+    var modeWrap = root.querySelector('[data-sv-modes]');
+    var idInput = root.querySelector('[data-sv-id]');
+    var qtyInput = root.querySelector('[data-sv-qty]');
+    var planInput = root.querySelector('[data-sv-plan]');
+    var cta = root.querySelector('[data-sv-cta]');
+    var ctaText = root.querySelector('[data-sv-cta-text]');
+    var ctaPrice = root.querySelector('[data-sv-cta-price]');
+    var errorEl = root.querySelector('[data-sv-error]');
+    var addedLabel = {{ s.added_label | default: 'ADDED TO CART' | json }};
+    var idleLabel = ctaText ? ctaText.textContent : '';
+    var subscribing = false;
+    var current = null;
+    var resetTimer;
+
+    function pick(tier) {
+      if (!tier || tier.hasAttribute('data-sv-sold-out')) return;
+      current = tier;
+      tiers.forEach(function (t) {
+        t.setAttribute('aria-checked', t === tier ? 'true' : 'false');
+      });
+
+      idInput.value = tier.getAttribute('data-sv-vid') || '';
+      qtyInput.value = tier.getAttribute('data-sv-qty') || '1';
+
+      // A tier with no selling plan cannot be subscribed to, so the
+      // toggle collapses to a single option rather than offering a
+      // choice that would fail at the cart.
+      var plan = tier.getAttribute('data-sv-plan') || '';
+      var canSub = plan !== '' && tier.getAttribute('data-sv-sub') !== '';
+      if (subMode) subMode.hidden = !canSub;
+      // With nothing to choose between, the row is one button that does
+      // nothing — hide it rather than leave the noise on the page.
+      if (modeWrap) modeWrap.hidden = !canSub;
+      if (!canSub && subscribing) setMode('once');
+      else paint();
+    }
+
+    function setMode(mode) {
+      subscribing = mode === 'sub';
+      modes.forEach(function (m) {
+        m.setAttribute('aria-checked', m.getAttribute('data-sv-mode') === mode ? 'true' : 'false');
+      });
+      paint();
+    }
+
+    function paint() {
+      if (!current) return;
+      var plan = current.getAttribute('data-sv-plan') || '';
+      var sub = current.getAttribute('data-sv-sub') || '';
+
+      if (subscribing && plan && sub) {
+        planInput.value = plan;
+        planInput.disabled = false;
+        ctaPrice.innerHTML = ' | ' + sub;
+      } else {
+        planInput.value = '';
+        planInput.disabled = true;
+        var was = current.getAttribute('data-sv-once-was') || '';
+        ctaPrice.innerHTML =
+          ' | ' + (current.getAttribute('data-sv-once') || '') + (was ? ' <s>' + was + '</s>' : '');
+      }
+    }
+
+    tiers.forEach(function (t) {
+      t.addEventListener('click', function () { pick(t); });
+    });
+    modes.forEach(function (m) {
+      m.addEventListener('click', function () { setMode(m.getAttribute('data-sv-mode')); });
+    });
+
+    // A preselected tier that is sold out cannot be the opening choice,
+    // so fall through to the first one that can actually be bought.
+    var opening = root.querySelector('[data-sv-tier][aria-checked="true"]:not([data-sv-sold-out])');
+    if (!opening) {
+      opening = tiers.filter(function (t) { return !t.hasAttribute('data-sv-sold-out'); })[0];
+    }
+    pick(opening);
+
+    /* ---------- add to cart ---------- */
+    function tellTheTheme() {
+      // Different themes listen for different names; firing all of them
+      // is cheap and means the cart drawer refreshes whichever this is.
+      ['cart:refresh', 'cart:update', 'cart-update', 'cart:build'].forEach(function (name) {
+        document.dispatchEvent(new CustomEvent(name, { bubbles: true, detail: { source: 'sv-buy' } }));
+      });
+      if (window.Shopify && window.Shopify.onCartUpdate) {
+        try { window.Shopify.onCartUpdate(); } catch (e) {}
+      }
+    }
+
+    form.addEventListener('submit', function (e) {
+      if (!window.fetch || !idInput.value) return; // let the plain POST happen
+      e.preventDefault();
+      errorEl.textContent = '';
+      cta.disabled = true;
+
+      var body = { items: [{ id: Number(idInput.value), quantity: Number(qtyInput.value) || 1 }] };
+      if (!planInput.disabled && planInput.value) {
+        body.items[0].selling_plan = Number(planInput.value);
+      }
+
+      fetch('{{ routes.cart_add_url }}.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(body)
+      })
+        .then(function (r) {
+          return r.json().then(function (data) {
+            if (!r.ok) throw new Error(data.description || data.message || 'Could not add to cart.');
+            return data;
+          });
+        })
+        .then(function () {
+          var after = form.getAttribute('data-sv-after');
+          if (after === 'checkout') { window.location.href = '/checkout'; return; }
+          if (after === 'cart') { window.location.href = '{{ routes.cart_url }}'; return; }
+
+          cta.disabled = false;
+          ctaText.textContent = addedLabel;
+          tellTheTheme();
+          clearTimeout(resetTimer);
+          resetTimer = setTimeout(function () { ctaText.textContent = idleLabel; }, 1800);
+        })
+        .catch(function (err) {
+          cta.disabled = false;
+          errorEl.textContent = err.message;
+        });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Solvanno purchase",
+  "tag": "section",
+  "class": "sv-buy-section",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Product", "info": "The gallery, the prices and Add to cart all read from this product." },
+    { "type": "header", "content": "Copy" },
+    { "type": "text", "id": "review_line", "label": "Review line", "default": "Hundreds of 5-Star Reviews" },
+    { "type": "text", "id": "wordmark", "label": "Wordmark", "default": "S◎LVANNO" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Milk Thistle Support" },
+    { "type": "textarea", "id": "description", "label": "Description", "default": "Feel lighter, think clearer, and start the day with energy that holds. Solvanno supports your liver as part of your wellness routine.*" },
+    { "type": "textarea", "id": "benefits", "label": "Benefit chips", "info": "Separate with commas.", "default": "Liver Support*, Blood Sugar Support*, Natural Energy*, Eases Digestion*, Gut Health*, Increased Vitality*" },
+    { "type": "header", "content": "Gallery" },
+    { "type": "text", "id": "bestseller_label", "label": "Corner badge", "default": "BESTSELLER" },
+    { "type": "text", "id": "empty_label", "label": "Empty-gallery caption", "info": "Shown only while the product has no images.", "default": "product photo — bottle with thistle flowers" },
+    { "type": "header", "content": "Purchase" },
+    { "type": "text", "id": "once_label", "label": "One-time label", "default": "One-time purchase" },
+    { "type": "text", "id": "sub_label", "label": "Subscribe label", "info": "Only shown when the selected bundle has a subscription plan.", "default": "Subscribe and Save" },
+    { "type": "text", "id": "sub_note", "label": "Subscribe note", "default": "Delivery every month. Cancel anytime!" },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "ADD TO CART" },
+    { "type": "text", "id": "added_label", "label": "Button label after adding", "default": "✓ ADDED TO CART" },
+    {
+      "type": "select",
+      "id": "after_add",
+      "label": "After adding to cart",
+      "options": [
+        { "value": "stay", "label": "Stay on the page" },
+        { "value": "cart", "label": "Go to the cart" },
+        { "value": "checkout", "label": "Go to checkout" }
+      ],
+      "default": "cart"
+    },
+    { "type": "text", "id": "guarantee", "label": "Guarantee line", "default": "30-day money back guarantee" },
+    { "type": "header", "content": "Colours" },
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "#F3F1E5" },
+    { "type": "color", "id": "image_bg", "label": "Image frame", "default": "#EDF3D3" },
+    { "type": "color", "id": "accent_color", "label": "Accent", "default": "#A5C424" },
+    { "type": "color", "id": "badge_color", "label": "Corner badge", "default": "#C42430" },
+    { "type": "header", "content": "Fonts" },
+    { "type": "checkbox", "id": "load_fonts", "label": "Load DM Sans and Manrope from Google Fonts", "default": true }
+  ],
+  "blocks": [
+    {
+      "type": "tier",
+      "name": "Bundle tier",
+      "settings": [
+        { "type": "product", "id": "product", "label": "Product", "info": "Leave empty to use the section's product. Set a bundle product here so the price shown is the price charged." },
+        { "type": "text", "id": "label", "label": "Label", "default": "Buy 1 Bottle" },
+        { "type": "number", "id": "quantity", "label": "Quantity added", "default": 1 },
+        { "type": "text", "id": "badge", "label": "Corner badge", "info": "Leave empty for none." },
+        { "type": "number", "id": "compare_at_override", "label": "Struck-through price", "info": "Whole currency units, e.g. 69. Leave empty to use the variant's compare-at price." },
+        { "type": "checkbox", "id": "preselected", "label": "Selected by default", "default": false }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Solvanno purchase",
+      "blocks": [
+        { "type": "tier", "settings": { "label": "Buy 1 Bottle", "quantity": 1 } },
+        { "type": "tier", "settings": { "label": "Buy 2 Bottles", "quantity": 2, "badge": "+ FREE SHIPPING", "preselected": true } },
+        { "type": "tier", "settings": { "label": "Buy 3 Bottles", "quantity": 3, "badge": "+ FREE SHIPPING" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
