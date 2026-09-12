@@ -1,0 +1,732 @@
+{%- comment -%}
+  SOL — Social proof
+  ------------------------------------------------------------------
+  Maroon band: a strip of customer faces, an aggregate rating, the headline,
+  then a swipeable row of review cards with verified badges and benefit chips.
+
+  Both rows are horizontal snap scrollers. The face strip scrolls on its own;
+  the review row drives the segmented indicator underneath, which also acts as
+  a control — tap a segment to jump to that card.
+
+  Blocks with no image render the design's striped placeholder, so the layout
+  is right before the real photos arrive.
+{%- endcomment -%}
+
+{% render 'sol-fonts' %}
+
+{%- liquid
+  assign face_count = 0
+  assign review_count = 0
+  for block in section.blocks
+    case block.type
+      when 'face'
+        assign face_count = face_count | plus: 1
+      when 'review'
+        assign review_count = review_count | plus: 1
+    endcase
+  endfor
+-%}
+
+{% style %}
+  {% render 'sol-tokens', id: section.id, s: section.settings %}
+
+  .sol-sp {
+    background: var(--sol-maroon-deep);
+    font-family: var(--sol-sans);
+  }
+  .sol-sp__inner {
+    max-width: var(--sol-max);
+    margin: 0 auto;
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+  }
+
+  /* ---------- face strip ---------- */
+  .sol-sp__faces {
+    --sol-face-gap: 8px;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 0 16px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .sol-sp__faces::-webkit-scrollbar { display: none; }
+  .sol-sp__faces-track {
+    display: flex;
+    width: max-content;
+    will-change: transform;
+    animation: sol-sp-faces-marquee 26s linear infinite;
+  }
+  .sol-sp__faces-set {
+    display: flex;
+    flex: none;
+    gap: var(--sol-face-gap);
+    padding-right: var(--sol-face-gap);
+  }
+  .sol-sp__faces:hover .sol-sp__faces-track,
+  .sol-sp__faces:focus-within .sol-sp__faces-track {
+    animation-play-state: paused;
+  }
+  @keyframes sol-sp-faces-marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .sol-sp__face {
+    /* face_size_mobile, not face_size: the live template has a face_size of
+       100 saved against it from the theme editor, and a saved value always
+       beats a schema default, so raising the default alone changed nothing.
+       A new id has nothing saved against it, so its default applies and the
+       stale 100 is ignored. Renaming means this ships in the section file
+       instead of the template, which carries edits worth keeping. */
+    flex: 0 0 {{ section.settings.face_size_mobile }}px;
+    aspect-ratio: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1.5px solid var(--sol-gold-light);
+    background: repeating-linear-gradient(135deg, #7A2A2B 0 8px, #6A1E20 8px 16px);
+  }
+  .sol-sp__face img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* ---------- rating ---------- */
+  .sol-sp__rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    margin-top: 20px;
+    padding: 0 16px;
+    flex-wrap: wrap;
+  }
+  .sol-sp__stars { display: flex; gap: 3px; }
+  .sol-sp__stars i {
+    width: 20px;
+    height: 20px;
+    background: var(--sol-green);
+    color: #fff;
+    font-size: 12px;
+    font-style: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+  }
+  .sol-sp__rated {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--sol-cream-light);
+  }
+
+  /* ---------- headline ---------- */
+  .sol-sp__title {
+    font-family: var(--sol-serif);
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1.18;
+    color: var(--sol-cream-light);
+    text-align: center;
+    margin: 16px 0 22px;
+    padding: 0 16px;
+  }
+  .sol-sp__title em { color: var(--sol-gold-light); font-style: normal; }
+
+  /* ---------- review row ---------- */
+  .sol-sp__track {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 16px 2px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .sol-sp__track::-webkit-scrollbar { display: none; }
+  .sol-sp__card {
+    flex: 0 0 calc((100% - 32px - ({{ section.settings.cards_in_view }} - 1) * 10px) / {{ section.settings.cards_in_view }});
+    min-width: 0;
+    scroll-snap-align: center;
+    background: #fff;
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .sol-sp__card .sol-sp__stars i { width: 17px; height: 17px; font-size: 10px; }
+  .sol-sp__quote {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #3B322C;
+    flex: 1;
+  }
+  .sol-sp__by {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-top: 1px solid #EFE3D2;
+    padding-top: 10px;
+  }
+  .sol-sp__avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 999px;
+    flex: none;
+    overflow: hidden;
+    background: repeating-linear-gradient(135deg, #EDE1CE 0 5px, #F9F1E4 5px 10px);
+  }
+  .sol-sp__avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .sol-sp__who { flex: 1; min-width: 0; }
+  .sol-sp__name { font-size: 12px; font-weight: 700; color: var(--sol-ink); }
+  .sol-sp__city { font-size: 10px; color: var(--sol-muted); }
+  .sol-sp__verified {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    flex: none;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--sol-green);
+  }
+  .sol-sp__tags { display: flex; flex-wrap: wrap; gap: 6px 14px; }
+  .sol-sp__tag {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10.5px;
+    font-weight: 600;
+    color: var(--sol-green);
+  }
+
+  /* ---------- segmented indicator ---------- */
+  .sol-sp__dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin-top: 18px;
+    padding: 0 16px;
+  }
+  .sol-sp__dot {
+    height: 3px;
+    width: 14px;
+    padding: 0;
+    border: 0;
+    border-radius: 99px;
+    background: rgba(246, 231, 200, .3);
+    cursor: pointer;
+    transition: width .18s ease, background .18s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .sol-sp__dot[aria-current="true"] { width: 30px; background: var(--sol-cream-light); }
+  .sol-sp__dot:focus-visible { outline: 2px solid var(--sol-gold-light); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) {
+    .sol-sp__dot { transition: none; }
+    .sol-sp__faces-track { animation: none; }
+  }
+
+  @media (min-width: 560px) {
+    .sol-sp__title { font-size: 34px; }
+  }
+
+  /* ---------- desktop & iPad ---------- */
+  @media (min-width: 750px) {
+    .sol-sp__inner { max-width: 976px; padding-left: 12px; padding-right: 12px; }
+    .sol-sp__title { font-size: 34px; }
+    /* One row of however many faces exist, sized to fill it. auto-fit with a
+       minmax floor was dropping to four columns whenever the row could not
+       fit five at the floor width, which broke the strip into 4 + 1 between
+       750-999px and again at 1200-1279px. Counting the blocks cannot wrap. */
+    .sol-sp__faces {
+      --sol-face-gap: 16px;
+      display: block;
+      overflow: hidden;
+      padding: 0;
+      width: min(1560px, calc(100vw - 40px));
+      margin-left: 50%;
+      transform: translateX(-50%);
+    }
+    .sol-sp__faces-set { gap: var(--sol-face-gap); padding-right: var(--sol-face-gap); }
+    .sol-sp__face {
+      flex: 0 0 calc((min(1560px, 100vw - 40px) - ({{ face_count }} - 1) * var(--sol-face-gap)) / {{ face_count }});
+      width: auto;
+    }
+    .sol-sp__track { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; overflow: visible; padding: 0; }
+    .sol-sp__card { flex: initial; width: auto; min-width: 0; scroll-snap-align: none; }
+    .sol-sp__dots { display: none; }
+  }
+  @media (min-width: 1200px) {
+    .sol-sp__inner { max-width: 1280px; }
+    .sol-sp__title { font-size: 42px; }
+    .sol-sp__faces { --sol-face-gap: 20px; }
+    .sol-sp__track { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+  }
+{% endstyle %}
+
+<div class="sol-sp">
+  <div class="sol-sp__inner">
+
+    {%- if face_count > 0 -%}
+      <div class="sol-sp__faces" data-sol-faces>
+        <div class="sol-sp__faces-track">
+          <div class="sol-sp__faces-set">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'face' -%}
+                <div class="sol-sp__face" {{ block.shopify_attributes }}>
+                  {%- if block.settings.image != blank -%}
+                    {{ block.settings.image | image_url: width: 240 | image_tag: widths: '120, 180, 240', sizes: '90px', loading: 'lazy', alt: '' }}
+                  {%- elsif block.settings.image_url != blank -%}
+                    <img src="{{ block.settings.image_url }}" loading="lazy" alt="">
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+          <div class="sol-sp__faces-set" aria-hidden="true">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'face' -%}
+                <div class="sol-sp__face">
+                  {%- if block.settings.image != blank -%}
+                    {{ block.settings.image | image_url: width: 240 | image_tag: widths: '120, 180, 240', sizes: '90px', loading: 'lazy', alt: '' }}
+                  {%- elsif block.settings.image_url != blank -%}
+                    <img src="{{ block.settings.image_url }}" loading="lazy" alt="">
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.show_rating -%}
+      <div class="sol-sp__rating">
+        <div class="sol-sp__stars" aria-hidden="true">
+          {%- for i in (1..section.settings.rating_stars) -%}<i>★</i>{%- endfor -%}
+        </div>
+        {%- if section.settings.rating_label != blank -%}
+          <span class="sol-sp__rated">{{ section.settings.rating_label }}</span>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.heading != blank -%}
+      <h2 class="sol-sp__title">{{ section.settings.heading | newline_to_br }}</h2>
+    {%- endif -%}
+
+    {%- if review_count > 0 -%}
+      <div class="sol-sp__track" data-sol-track>
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'review' -%}
+            <div class="sol-sp__card" {{ block.shopify_attributes }}>
+              <div class="sol-sp__stars" aria-hidden="true">
+                {%- for i in (1..block.settings.stars) -%}<i>★</i>{%- endfor -%}
+              </div>
+
+              <div class="sol-sp__quote">{{ block.settings.quote }}</div>
+
+              {%- if block.settings.tag_1 != blank or block.settings.tag_2 != blank -%}
+                <div class="sol-sp__tags">
+                  {%- if block.settings.tag_1 != blank -%}
+                    <span class="sol-sp__tag"><span aria-hidden="true">&#10004;</span>{{ block.settings.tag_1 }}</span>
+                  {%- endif -%}
+                  {%- if block.settings.tag_2 != blank -%}
+                    <span class="sol-sp__tag"><span aria-hidden="true">&#10004;</span>{{ block.settings.tag_2 }}</span>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+
+              <div class="sol-sp__by">
+                <div class="sol-sp__avatar">
+                  {%- if block.settings.avatar != blank -%}
+                    {{ block.settings.avatar | image_url: width: 90 | image_tag: widths: '60, 90', sizes: '30px', loading: 'lazy', alt: '' }}
+                  {%- elsif block.settings.avatar_url != blank -%}
+                    <img src="{{ block.settings.avatar_url }}" loading="lazy" alt="">
+                  {%- endif -%}
+                </div>
+                <div class="sol-sp__who">
+                  <div class="sol-sp__name">{{ block.settings.name }}</div>
+                  {%- if block.settings.city != blank -%}
+                    <div class="sol-sp__city">{{ block.settings.city }}</div>
+                  {%- endif -%}
+                </div>
+                {%- if block.settings.show_verified -%}
+                  <span class="sol-sp__verified"><span aria-hidden="true">&#10004;</span>{{ section.settings.verified_label }}</span>
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      <div class="sol-sp__dots" data-sol-dots role="tablist" aria-label="Choose a review"></div>
+    {%- endif -%}
+
+  </div>
+</div>
+
+<script>
+  (function () {
+    var root = document.getElementById('shopify-section-{{ section.id }}');
+    if (!root) return;
+    var track = root.querySelector('[data-sol-track]');
+    var dots = root.querySelector('[data-sol-dots]');
+    if (!track || !dots) return;
+
+    var cards = track.querySelectorAll('.sol-sp__card');
+    if (cards.length < 2) { dots.style.display = 'none'; return; }
+
+    /* One dot per card, each a real control rather than decoration. */
+    for (var i = 0; i < cards.length; i++) {
+      (function (index) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'sol-sp__dot';
+        b.setAttribute('aria-label', 'Review ' + (index + 1) + ' of ' + cards.length);
+        b.addEventListener('click', function () {
+          track.scrollTo({
+            left: cards[index].offsetLeft - track.offsetLeft,
+            behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+          });
+        });
+        dots.appendChild(b);
+      })(i);
+    }
+
+    var buttons = dots.querySelectorAll('.sol-sp__dot');
+
+    function sync() {
+      /* nearest card to the middle of the viewport wins */
+      var mid = track.scrollLeft + track.clientWidth / 2;
+      var best = 0;
+      var bestDist = Infinity;
+      for (var i = 0; i < cards.length; i++) {
+        var c = cards[i].offsetLeft - track.offsetLeft + cards[i].offsetWidth / 2;
+        var d = Math.abs(c - mid);
+        if (d < bestDist) { bestDist = d; best = i; }
+      }
+      for (var j = 0; j < buttons.length; j++) {
+        buttons[j].setAttribute('aria-current', j === best ? 'true' : 'false');
+      }
+    }
+
+    track.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync);
+    sync();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "SOL — Social proof",
+  "tag": "section",
+  "class": "sol-section sol-section--social",
+  "max_blocks": 24,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Line breaks are kept. Use <em>…</em> to highlight words in gold.",
+      "default": "SOL Has Transformed\nThe Lives of <em>36,243+</em>"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "label": "Show the rating row",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "rating_stars",
+      "label": "Filled stars",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "rating_label",
+      "label": "Rating text",
+      "default": "Rated 4.8 / 5.0"
+    },
+    {
+      "type": "text",
+      "id": "verified_label",
+      "label": "Verified badge text",
+      "default": "Verified"
+    },
+    {
+      "type": "range",
+      "id": "cards_in_view",
+      "label": "Reviews in view",
+      "min": 1,
+      "max": 3,
+      "step": 0.1,
+      "default": 1.2,
+      "info": "1.2 shows one whole card plus a sliver of the next, which is what tells people the row scrolls."
+    },
+    {
+      "type": "range",
+      "id": "face_size_mobile",
+      "label": "Face strip size",
+      "info": "Phones only. Desktop divides the row evenly between the faces.",
+      "min": 60,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 150
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color",
+      "id": "color_maroon_deep",
+      "label": "Background",
+      "default": "#1e3a16"
+    },
+    {
+      "type": "color",
+      "id": "color_cream_light",
+      "label": "Heading text",
+      "default": "#edf3d6"
+    },
+    {
+      "type": "color",
+      "id": "color_gold_light",
+      "label": "Gold accent",
+      "default": "#c3d34a"
+    },
+    {
+      "type": "color",
+      "id": "color_green",
+      "label": "Stars, ticks & verified",
+      "default": "#1E7A4D"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Reviewer name",
+      "default": "#17271b"
+    },
+    {
+      "type": "color",
+      "id": "color_muted",
+      "label": "City text",
+      "default": "#5a6b4e"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "Content width",
+      "min": 400,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "default": 480
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 34
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 34
+    }
+  ],
+  "blocks": [
+    {
+      "type": "face",
+      "name": "Face (top strip)",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo",
+          "info": "A real customer holding the bottle works best. Square crop."
+        },
+        {
+          "type": "url",
+          "id": "image_url",
+          "label": "Photo URL"
+        }
+      ]
+    },
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "range",
+          "id": "stars",
+          "label": "Stars",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "\"Two weeks in and the stiffness is gone.\""
+        },
+        {
+          "type": "text",
+          "id": "tag_1",
+          "label": "Benefit chip 1",
+          "default": "Less Stiffness"
+        },
+        {
+          "type": "text",
+          "id": "tag_2",
+          "label": "Benefit chip 2",
+          "default": "Easier Mornings"
+        },
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "Reviewer photo"
+        },
+        {
+          "type": "url",
+          "id": "avatar_url",
+          "label": "Reviewer photo URL"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "info": "The actual customer.",
+          "default": "Anita R."
+        },
+        {
+          "type": "text",
+          "id": "city",
+          "label": "City",
+          "default": "Nagpur"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_verified",
+          "label": "Show the verified badge",
+          "default": true,
+          "info": "Only for reviews from customers who actually bought."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SOL — Social proof",
+      "blocks": [
+        { "type": "face" },
+        { "type": "face" },
+        { "type": "face" },
+        { "type": "face" },
+        { "type": "face" },
+        {
+          "type": "review",
+          "settings": {
+            "quote": "\"My knees used to lock up every time I stood after sitting. Two weeks of nightly massage and that first step doesn't hurt anymore.\"",
+            "tag_1": "Knee Pain",
+            "tag_2": "Easier Stairs",
+            "name": "Sunita K.",
+            "city": "Mumbai"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "quote": "\"Twelve-hour driving shifts wreck my lower back. Balms gave me twenty minutes; this lasts the night and I wake up straighter.\"",
+            "tag_1": "Back Pain",
+            "tag_2": "Lasts All Night",
+            "name": "Imran S.",
+            "city": "Delhi"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "quote": "\"I wasn't sleeping because of the ache. Now I massage it in before bed and actually stay asleep till morning.\"",
+            "tag_1": "Deeper Sleep",
+            "tag_2": "Less Night Ache",
+            "name": "Meena J.",
+            "city": "Bengaluru"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "quote": "\"Bought it for my mother's joint pain. She's 63 and back to her evening walks. We've ordered the family pack since.\"",
+            "tag_1": "Bought For Mom",
+            "tag_2": "Walking Again",
+            "name": "Priya D.",
+            "city": "Pune"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "quote": "\"Got it for my father — he never complains, but he stopped asking me to press his shoulders at night. That said enough.\"",
+            "tag_1": "Bought For Dad",
+            "tag_2": "Shoulder Relief",
+            "name": "Arjun M.",
+            "city": "Hyderabad"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "quote": "\"Years of the same ache, and I'd stopped expecting anything to help. This is the first thing that made a daily difference.\"",
+            "tag_1": "Long-Standing Pain",
+            "tag_2": "Daily Relief",
+            "name": "Rakesh M.",
+            "city": "Jaipur"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "quote": "\"Night cramps in my calves used to wake me up. A massage before bed and they've eased right off.\"",
+            "tag_1": "Leg Cramps",
+            "tag_2": "Uninterrupted Sleep",
+            "name": "Lakshmi V.",
+            "city": "Chennai"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "quote": "\"I'm on my feet at the shop all day. By evening my legs were done. Now I finish the day without dreading it.\"",
+            "tag_1": "On Feet All Day",
+            "tag_2": "Evening Comfort",
+            "name": "Vikram S.",
+            "city": "Surat"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

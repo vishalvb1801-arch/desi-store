@@ -1,0 +1,366 @@
+{%- comment -%}
+  SOL — FAQ accordion
+  ------------------------------------------------------------------
+  Built on <details>/<summary>, so every answer is readable and openable
+  before JavaScript runs. The script only adds "one open at a time".
+{%- endcomment -%}
+
+{% render 'sol-fonts' %}
+
+{% style %}
+  {% render 'sol-tokens', id: section.id, s: section.settings %}
+
+  .sol-faq {
+    background: var(--sol-cream);
+    font-family: var(--sol-sans);
+    color: var(--sol-ink);
+  }
+  /* Fill the whole section wrapper too, so no white shows around/below the bg. */
+  #shopify-section-{{ section.id }} { background: var(--sol-cream); }
+  .sol-faq__inner {
+    max-width: var(--sol-max);
+    margin: 0 auto;
+    padding: 8px 16px 12px;
+  }
+  .sol-faq__head { text-align: center; }
+  .sol-faq__eyebrow {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: .18em;
+    color: var(--sol-soft);
+    border: 1px solid rgba(255, 255, 255, .22);
+    border-radius: 999px;
+    padding: 4px 12px;
+  }
+  .sol-faq__title {
+    font-family: var(--sol-serif);
+    font-size: {{ section.settings.heading_size }}px;
+    font-weight: 600;
+    color: var(--sol-maroon);
+    line-height: 1.18;
+    /* Held narrower than the column so it reads as a centred block rather
+       than a line running wall to wall, and balanced so the two lines are
+       close in length. */
+    max-width: 16ch;
+    margin: 0 auto 18px;
+    text-wrap: balance;
+  }
+  .sol-faq__item {
+    background: rgba(255, 255, 255, .06);
+    border: 1px solid rgba(255, 255, 255, .16);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 9px;
+  }
+  .sol-faq__item summary {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+    cursor: pointer;
+    list-style: none;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #f0f4d6;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .sol-faq__item summary::-webkit-details-marker { display: none; }
+  .sol-faq__sign {
+    font-size: 17px;
+    line-height: 1;
+    color: var(--sol-maroon);
+    flex: none;
+  }
+  .sol-faq__sign::after { content: '+'; }
+  .sol-faq__item[open] .sol-faq__sign::after { content: '−'; }
+  .sol-faq__answer {
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: #e3e6d6;
+    margin-top: 10px;
+  }
+  .sol-faq__answer p { margin: 0 0 8px; }
+  .sol-faq__answer p:last-child { margin-bottom: 0; }
+  .sol-faq__answer a { color: var(--sol-maroon); }
+  /* Closing line under the list — the way out for anything the FAQ misses. */
+  .sol-faq__foot {
+    text-align: center;
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: #e3e6d6;
+    margin: 18px 0 0;
+  }
+  .sol-faq__foot p { margin: 0 0 6px; }
+  .sol-faq__foot p:last-child { margin-bottom: 0; }
+  .sol-faq__foot strong { color: #f0f4d6; }
+  .sol-faq__foot a { color: var(--sol-maroon); font-weight: 700; }
+
+  /* ---------- desktop & iPad ---------- */
+  @media (min-width: 750px) {
+    .sol-faq__inner {
+      max-width: 976px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 14px;
+      row-gap: 10px;
+      align-items: start;
+    }
+    .sol-faq__head, .sol-faq__foot { grid-column: 1 / -1; }
+    .sol-faq__title { font-size: 34px; }
+  }
+  @media (min-width: 1200px) {
+    .sol-faq__inner { max-width: 1280px; column-gap: 20px; }
+    .sol-faq__title { font-size: 42px; }
+  }
+{% endstyle %}
+
+<div class="sol-faq">
+  <div class="sol-faq__inner" data-sol-faq>
+    {%- if section.settings.heading != blank -%}
+      <div class="sol-faq__head">
+        <h2 class="sol-faq__title">{{ section.settings.heading | newline_to_br }}</h2>
+      </div>
+    {%- endif -%}
+
+    {%- for block in section.blocks -%}
+      <details
+        class="sol-faq__item"
+        {% if forloop.first and section.settings.open_first %}open{% endif %}
+        {{ block.shopify_attributes }}
+      >
+        <summary>
+          <span>{{ block.settings.question }}</span>
+          <span class="sol-faq__sign" aria-hidden="true"></span>
+        </summary>
+        <div class="sol-faq__answer">{{ block.settings.answer }}</div>
+      </details>
+    {%- endfor -%}
+
+    {%- if section.settings.footer_text != blank -%}
+      <div class="sol-faq__foot">{{ section.settings.footer_text }}</div>
+    {%- endif -%}
+  </div>
+</div>
+
+<script>
+  (function () {
+    var wrap = document.querySelector('#shopify-section-{{ section.id }} [data-sol-faq]');
+    if (!wrap) return;
+    var items = wrap.querySelectorAll('.sol-faq__item');
+
+    {%- if section.settings.one_at_a_time %}
+    for (var i = 0; i < items.length; i++) {
+      items[i].addEventListener('toggle', function () {
+        if (!this.open) return;
+        for (var j = 0; j < items.length; j++) {
+          if (items[j] !== this) items[j].removeAttribute('open');
+        }
+      });
+    }
+    {%- endif %}
+  })();
+</script>
+
+{%- if section.settings.enable_seo_schema and section.blocks.size > 0 -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {%- for block in section.blocks -%}
+          {
+            "@type": "Question",
+            "name": {{ block.settings.question | strip_html | json }},
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ block.settings.answer | strip_html | json }}
+            }
+          }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "SOL — FAQ accordion",
+  "tag": "section",
+  "class": "sol-section sol-section--faq",
+  "max_blocks": 20,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Line breaks are kept. Leave empty for a bare accordion.",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 20,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 26
+    },
+    {
+      "type": "checkbox",
+      "id": "open_first",
+      "label": "Open the first question",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "one_at_a_time",
+      "label": "Only one answer open at a time",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_seo_schema",
+      "label": "Add FAQ structured data for Google",
+      "default": true,
+      "info": "Lets these questions appear as rich results in search. Turn off if another app already outputs FAQ schema on this page."
+    },
+    {
+      "type": "richtext",
+      "id": "footer_text",
+      "label": "Closing line",
+      "info": "Sits under the last answer. Use it for the 'still have questions' route out."
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color",
+      "id": "color_cream",
+      "label": "Background",
+      "default": "#f3f7e4"
+    },
+    {
+      "type": "color",
+      "id": "color_maroon",
+      "label": "Heading",
+      "default": "#2f6b2e"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Question text",
+      "default": "#17271b"
+    },
+    {
+      "type": "color",
+      "id": "color_muted",
+      "label": "Answer text",
+      "default": "#5a6b4e"
+    },
+    {
+      "type": "color",
+      "id": "color_soft",
+      "label": "Eyebrow text",
+      "default": "#8A7A63"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "Content width",
+      "min": 400,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "default": 480
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 30
+    }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Who is it for?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Because most balms only warm the skin.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SOL — FAQ accordion",
+      "blocks": [
+        {
+          "type": "question",
+          "settings": {
+            "question": "Who is it for?",
+            "answer": "<p>Anyone living with joint, knee, back, shoulder or muscle pain — whether it's from age, all-day standing, desk work, driving, or physical labour. Elders love it for daily stiffness; younger people use it for gym soreness, neck pain, and recovery. If pain is part of your routine, this oil was made for you.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "What's actually in it?",
+            "answer": "<p>15+ Ayurvedic herbs in a sesame and Mahanarayan oil base — Nirgundi, Rasna, Ashwagandha, Nilgiri (eucalyptus), Gandhapura, Pudina, Lawang, Dalchini, Kapoor, Sunthi, Erand Mool and more. No chemicals, no parabens, no artificial fragrance. Smells herbal, not chemical.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "How and when do I apply it?",
+            "answer": "<p>Pour a small amount on the painful area, massage gently in circular motions for 2–3 minutes until the warmth sets in. Repeat 2–3 times a day — best used before bed so it works while you sleep. External use only. Safe for daily use.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "Is it safe?",
+            "answer": "<p>100%. SOL Pain Relief Oil is third-party lab tested and made in a GMP-certified facility. Award-winning Ayurvedic formulation with no harsh chemicals — no burning, no numbness, no side effects. Gentle enough for nightly use by the whole family, including elders, and made for sensitive skin too. For external use only.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "When will it arrive?",
+            "answer": "<p>Orders ship within 24 hours and reach you in 3–5 days. Free delivery, no hidden charges. You'll get a tracking link the moment it ships. COD available.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

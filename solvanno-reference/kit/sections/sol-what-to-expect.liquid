@@ -1,0 +1,887 @@
+{%- comment -%}
+  SOL — What to Expect (nightly-use timeline)
+  ------------------------------------------------------------------
+  Vertical timeline: square autoplay video per step, animated golden
+  thread running video -> card -> next video, gold borders that flare
+  as the thread reaches each marker.
+
+  Install:
+    1. Save as sections/sol-what-to-expect.liquid
+    2. Add the section on the product template via the theme editor
+    3. Per block, upload a video (or paste an external MP4 URL) and an
+       optional poster image
+
+  Notes:
+    - Videos autoplay muted, looped, inline — no controls, no audio.
+    - Falls back to the poster image, then to a placeholder tile.
+    - Animations are disabled under prefers-reduced-motion.
+    - Scoped to .sol-wte-{{ section.id }} so it can't leak into the theme.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign uid = section.id
+  assign cycle = s.cycle_seconds | default: 6
+
+  comment
+    The frame's shape, as two numbers the CSS can do arithmetic with. Height
+    is derived rather than set, so one setting drives the frame, the rail's
+    vertical centre and the aspect-ratio box without them drifting apart.
+  endcomment
+  assign ratio_w = 270
+  assign ratio_h = 479
+-%}
+
+<style>
+  .sol-wte-{{ uid }} {
+    --wte-maroon: {{ s.bg_color }};
+    --wte-gold: {{ s.gold_color }};
+    --wte-cream: {{ s.heading_color }};
+    --wte-ink: #1e2413;
+    --wte-muted: #545a48;
+    --wte-card: #ffffff;
+    --wte-green: #4a8b2c;
+    --wte-accent: #364811;
+    --wte-frame: {{ s.frame_size }}px;
+    --wte-frame-h: calc(var(--wte-frame) * {{ ratio_h }} / {{ ratio_w }});
+    --wte-frame-wide: {{ s.frame_size_wide }}px;
+    /* References resolve where they are used, so the breakpoint overrides of
+       --wte-frame-wide further down carry into this without restating it. */
+    --wte-frame-wide-h: calc(var(--wte-frame-wide) * {{ ratio_h }} / {{ ratio_w }});
+    --wte-cycle: {{ cycle }}s;
+    position: relative;
+    overflow: visible;
+    isolation: isolate;
+    z-index: 2;
+    background: #364811;
+    padding: {{ s.padding_top }}px {{ s.padding_side }}px {{ s.padding_bottom }}px;
+    font-family: {{ s.body_font.family }}, {{ s.body_font.fallback_families }};
+    color: var(--wte-ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  .shopify-section.sol-wte-section {
+    background: #364811;
+  }
+  .sol-wte-{{ uid }} * { box-sizing: border-box; }
+
+  .sol-wte-{{ uid }}__side-image {
+    display: block;
+    position: absolute;
+    top: {{ s.side_image_top }}px;
+    width: {{ s.side_image_width }}px;
+    height: auto;
+    object-fit: contain;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .sol-wte-{{ uid }}__side-image--left {
+    left: {{ s.side_image_inset }}px;
+    border-radius: 0;
+    transform: rotate({{ s.side_image_rotation }}deg);
+  }
+  .sol-wte-{{ uid }}__side-image--right {
+    right: {{ s.side_image_inset }}px;
+    border-radius: 0;
+    transform: scaleX(-1) rotate({{ s.side_image_rotation }}deg);
+  }
+
+  .sol-wte-{{ uid }}__inner {
+    position: relative;
+    z-index: 3;
+    max-width: {{ s.max_width }}px;
+    margin: 0 auto;
+  }
+
+  .sol-wte-{{ uid }}__title {
+    font-family: {{ s.heading_font.family }}, {{ s.heading_font.fallback_families }};
+    font-weight: 600;
+    font-size: {{ s.heading_size }}px;
+    line-height: 1.16;
+    color: var(--wte-cream);
+    text-align: center;
+    margin: 0 0 24px;
+    text-wrap: pretty;
+  }
+
+  .sol-wte-{{ uid }}__step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ---- video frame ---- */
+  .sol-wte-{{ uid }}__frame {
+    position: relative;
+    width: var(--wte-frame);
+    height: var(--wte-frame-h);
+    max-width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    flex: none;
+    border: 5px solid rgba(224, 165, 38, .55);
+    background: repeating-linear-gradient(135deg, #EDE1CE 0 6px, #F9F1E4 6px 12px);
+    animation: eisWteGlow-{{ uid }} var(--wte-cycle) cubic-bezier(.45, .05, .2, 1) var(--wte-delay, 0s) infinite;
+  }
+  .sol-wte-{{ uid }}__media,
+  .sol-wte-{{ uid }}__poster {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .sol-wte-{{ uid }}__ph {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 34px 14px;
+    text-align: center;
+    font: 10px ui-monospace, monospace;
+    color: #8A7A63;
+  }
+
+  /* ---- golden thread ---- */
+  .sol-wte-{{ uid }}__thread {
+    width: 6px;
+    border-radius: 4px;
+    background: rgba(90, 53, 31, .22);
+    overflow: hidden;
+    margin: 10px 0;
+  }
+  .sol-wte-{{ uid }}__thread--stub { height: 22px; }
+  .sol-wte-{{ uid }}__thread--link { height: 34px; }
+  .sol-wte-{{ uid }}__thread i {
+    display: block;
+    width: 6px;
+    height: 100%;
+    border-radius: 4px;
+    background: linear-gradient(#b7ce2e, #FFD166, #b7ce2e);
+    box-shadow: 0 0 7px rgba(224, 165, 38, .78), 0 0 13px rgba(243, 195, 78, .5);
+    transform-origin: top center;
+    animation: eisWteThread-{{ uid }} 7.5s cubic-bezier(.45, .05, .2, 1) var(--wte-delay, 0s) infinite;
+  }
+
+  /* ---- card ---- */
+  .sol-wte-{{ uid }}__card {
+    width: 100%;
+    background: var(--wte-card);
+    border-radius: 11px;
+    padding: 16px;
+  }
+  .sol-wte-{{ uid }}__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .sol-wte-{{ uid }}__headline {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 0;
+  }
+  .sol-wte-{{ uid }}__num {
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    background: var(--wte-accent);
+    color: #FFF7E6;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+  }
+  .sol-wte-{{ uid }}__stage {
+    font-family: {{ s.heading_font.family }}, {{ s.heading_font.fallback_families }};
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--wte-accent);
+    line-height: 1.2;
+  }
+  .sol-wte-{{ uid }}__badge {
+    background: var(--wte-gold);
+    color: #1e2413;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .07em;
+    padding: 3px 8px;
+    border-radius: 5px;
+    white-space: nowrap;
+    flex: none;
+  }
+  .sol-wte-{{ uid }}__rule {
+    height: 1px;
+    background: #e3e6d6;
+    margin: 12px 0;
+  }
+  .sol-wte-{{ uid }}__point {
+    display: flex;
+    gap: 9px;
+  }
+  .sol-wte-{{ uid }}__point + .sol-wte-{{ uid }}__point { margin-top: 8px; }
+  .sol-wte-{{ uid }}__tick {
+    color: var(--wte-green);
+    font-size: 12px;
+    flex: none;
+  }
+  .sol-wte-{{ uid }}__point p {
+    margin: 0;
+    font-size: 12.5px;
+    line-height: 1.45;
+  }
+
+  .sol-wte-{{ uid }}__foot {
+    font-size: 12px;
+    line-height: 1.55;
+    color: #e3e6d6;
+    text-align: center;
+    margin: 22px 0 0;
+  }
+
+  @keyframes eisWteThread-{{ uid }} {
+    0%   { transform: scaleY(0); }
+    15%  { transform: scaleY(1); }
+    96%  { transform: scaleY(1); }
+    100% { transform: scaleY(0); }
+  }
+  @keyframes eisWteGlow-{{ uid }} {
+    0%, 100% { border-color: rgba(224, 165, 38, .5); box-shadow: none; }
+    7%       { border-color: #f3c34e; box-shadow: 0 0 0 5px rgba(224, 165, 38, .3), 0 0 26px rgba(224, 165, 38, .7); }
+    24%      { border-color: rgba(224, 165, 38, .5); box-shadow: none; }
+  }
+
+  /* the horizontal rail is mobile-hidden */
+  .sol-wte-{{ uid }}__rail { position: relative; }
+  .sol-wte-{{ uid }}__hthread { display: none; }
+  /* So is the badge row above the card. On phones the badge lives inside the
+     card head instead, and showing both printed every timeframe twice. */
+  .sol-wte-{{ uid }}__badgerow { display: none; }
+
+  /* ---------------- DESKTOP / TABLET: horizontal ---------------- */
+  @media screen and (max-width: 749px) {
+    html,
+    body {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    body .shopify-section {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+    }
+    body .shopify-section > * {
+      max-width: 100%;
+      min-width: 0;
+    }
+    .sol-wte-{{ uid }}__title {
+      padding: {{ s.heading_top_mobile }}px 54px 0;
+      min-height: 0;
+      font-size: min({{ s.heading_size }}px, 28px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    .sol-wte-{{ uid }}__side-image { display: none; }
+    .sol-wte-{{ uid }} {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+    .sol-wte-{{ uid }}__inner { max-width: {{ s.max_width_wide }}px; }
+    .sol-wte-{{ uid }}__title {
+      font-size: {{ s.heading_size_wide }}px;
+      margin-bottom: 44px;
+    }
+
+    .sol-wte-{{ uid }}__rail {
+      display: grid;
+      grid-template-columns: repeat({{ section.blocks.size | at_least: 1 }}, minmax(0, 1fr));
+      gap: {{ s.gap_wide }}px;
+      align-items: start;
+    }
+
+    /* one gold rule behind the row, at the marker's vertical centre */
+    .sol-wte-{{ uid }}__hthread {
+      display: block;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: calc(var(--wte-frame-wide-h) / 2);
+      height: 5px;
+      border-radius: 3px;
+      background: rgba(90, 53, 31, .22);
+      overflow: hidden;
+    }
+    .sol-wte-{{ uid }}__hthread i {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 3px;
+      background: linear-gradient(90deg, #b7ce2e, #FFD166, #b7ce2e);
+      box-shadow: 0 0 7px rgba(224, 165, 38, .78), 0 0 13px rgba(243, 195, 78, .5);
+      transform-origin: left center;
+      animation: eisWteThreadH-{{ uid }} 7.5s cubic-bezier(.45, .05, .2, 1) infinite;
+    }
+
+    .sol-wte-{{ uid }}__step { position: relative; }
+    /* A fixed height with a clamped width stopped being square the moment the
+       column was narrower than the set size: 158x250 at 750px. Sizing by width
+       and letting the ratio set the height keeps it square at every width. */
+    .sol-wte-{{ uid }}__frame {
+      width: min(var(--wte-frame-wide), 100%);
+      height: auto;
+      aspect-ratio: {{ ratio_w }} / {{ ratio_h }};
+    }
+    .sol-wte-{{ uid }}__ph { padding: 10px; }
+
+    /* vertical threads are a mobile device only */
+    .sol-wte-{{ uid }}__thread { display: none; }
+
+    /* badge sits between marker and card, as on the artboard */
+    .sol-wte-{{ uid }}__badgerow {
+      display: flex;
+      justify-content: center;
+      margin-top: 16px;
+    }
+    .sol-wte-{{ uid }}__badgerow .sol-wte-{{ uid }}__badge {
+      background: var(--wte-gold);
+      color: #14260f;
+      font-size: 10px;
+      letter-spacing: .11em;
+      padding: 4px 11px;
+    }
+    .sol-wte-{{ uid }}__card {
+      border-radius: 14px;
+      padding: 18px;
+      margin-top: 14px;
+    }
+    .sol-wte-{{ uid }}__head .sol-wte-{{ uid }}__badge { display: none; }
+    .sol-wte-{{ uid }}__num { width: 28px; height: 28px; font-size: 13px; }
+    .sol-wte-{{ uid }}__stage { font-size: 17px; }
+    .sol-wte-{{ uid }}__rule { margin: 13px 0; }
+    .sol-wte-{{ uid }}__point + .sol-wte-{{ uid }}__point { margin-top: 10px; }
+    .sol-wte-{{ uid }}__point p { font-size: 13px; }
+    .sol-wte-{{ uid }}__tick { font-size: 13px; }
+    .sol-wte-{{ uid }}__foot { font-size: 14px; margin-top: 34px; }
+  }
+
+  /* Between 750 and 1199 the columns are too narrow for the full frame, and a
+     clamped frame no longer lines up with the rail, which is positioned from
+     the set size. Scaling the size down by breakpoint keeps the column the
+     looser constraint, so the two stay in register. */
+  @media screen and (min-width: 750px) and (max-width: 989px) {
+    .sol-wte-{{ uid }} { --wte-frame-wide: calc({{ s.frame_size_wide }}px * .58); }
+  }
+  @media screen and (min-width: 990px) and (max-width: 1199px) {
+    .sol-wte-{{ uid }} { --wte-frame-wide: calc({{ s.frame_size_wide }}px * .78); }
+  }
+
+  @keyframes eisWteThreadH-{{ uid }} {
+    0%   { transform: scaleX(0); }
+    62%  { transform: scaleX(1); }
+    100% { transform: scaleX(1); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sol-wte-{{ uid }}__frame,
+    .sol-wte-{{ uid }}__thread i,
+    .sol-wte-{{ uid }}__hthread i {
+      animation: none !important;
+    }
+    .sol-wte-{{ uid }}__thread i { transform: scaleY(1); }
+    .sol-wte-{{ uid }}__hthread i { transform: scaleX(1); }
+  }
+</style>
+
+<section class="sol-wte-{{ uid }}" aria-labelledby="sol-wte-title-{{ uid }}">
+  <div class="sol-wte-{{ uid }}__inner">
+
+    {%- if s.heading != blank -%}
+      <h2 class="sol-wte-{{ uid }}__title" id="sol-wte-title-{{ uid }}">{{ s.heading }}</h2>
+    {%- endif -%}
+
+    <div class="sol-wte-{{ uid }}__rail">
+      <div class="sol-wte-{{ uid }}__hthread" aria-hidden="true"><i></i></div>
+
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign i = forloop.index
+        assign markDelay = forloop.index0 | times: 140 | divided_by: 100.0
+        assign stubDelay = markDelay | plus: 0.25
+        assign linkDelay = markDelay | plus: 0.5
+      -%}
+
+      <div class="sol-wte-{{ uid }}__step" {{ block.shopify_attributes }}>
+
+        <div class="sol-wte-{{ uid }}__frame" style="--wte-delay: {{ markDelay }}s;">
+          {%- if block.settings.video != blank -%}
+            {{
+              block.settings.video
+              | video_tag:
+                image_size: '800x800',
+                autoplay: true,
+                loop: true,
+                muted: true,
+                controls: false,
+                playsinline: true,
+                class: 'sol-wte-' | append: uid | append: '__media'
+            }}
+          {%- elsif block.settings.video_url != blank -%}
+            <video
+              class="sol-wte-{{ uid }}__media"
+              autoplay
+              loop
+              muted
+              playsinline
+              preload="metadata"
+              {% if block.settings.poster != blank %}poster="{{ block.settings.poster | image_url: width: 800 }}"{% endif %}
+            >
+              <source src="{{ block.settings.video_url }}" type="video/mp4">
+            </video>
+          {%- elsif block.settings.poster != blank -%}
+            {{
+              block.settings.poster
+              | image_url: width: 800
+              | image_tag:
+                widths: '300, 450, 600, 800',
+                sizes: '(min-width: 750px) 300px, 82vw',
+                loading: 'lazy',
+                class: 'sol-wte-' | append: uid | append: '__poster',
+                alt: block.settings.stage
+            }}
+          {%- else -%}
+            <div class="sol-wte-{{ uid }}__ph">{{ block.settings.placeholder | default: 'video' }}</div>
+          {%- endif -%}
+        </div>
+
+        {%- if block.settings.badge != blank -%}
+          <div class="sol-wte-{{ uid }}__badgerow">
+            <span class="sol-wte-{{ uid }}__badge">{{ block.settings.badge }}</span>
+          </div>
+        {%- endif -%}
+
+        <div class="sol-wte-{{ uid }}__thread sol-wte-{{ uid }}__thread--stub" aria-hidden="true">
+          <i style="--wte-delay: {{ stubDelay }}s;"></i>
+        </div>
+
+        <div class="sol-wte-{{ uid }}__card">
+          <div class="sol-wte-{{ uid }}__head">
+            <div class="sol-wte-{{ uid }}__headline">
+              <span class="sol-wte-{{ uid }}__num">{{ i }}</span>
+              <span class="sol-wte-{{ uid }}__stage">{{ block.settings.stage }}</span>
+            </div>
+            {%- if block.settings.badge != blank -%}
+              <span class="sol-wte-{{ uid }}__badge">{{ block.settings.badge }}</span>
+            {%- endif -%}
+          </div>
+
+          <div class="sol-wte-{{ uid }}__rule"></div>
+
+          {%- if block.settings.point_1 != blank -%}
+            <div class="sol-wte-{{ uid }}__point">
+              <span class="sol-wte-{{ uid }}__tick" aria-hidden="true">&#10004;</span>
+              <p>{{ block.settings.point_1 }}</p>
+            </div>
+          {%- endif -%}
+          {%- if block.settings.point_2 != blank -%}
+            <div class="sol-wte-{{ uid }}__point">
+              <span class="sol-wte-{{ uid }}__tick" aria-hidden="true">&#10004;</span>
+              <p>{{ block.settings.point_2 }}</p>
+            </div>
+          {%- endif -%}
+          {%- if block.settings.point_3 != blank -%}
+            <div class="sol-wte-{{ uid }}__point">
+              <span class="sol-wte-{{ uid }}__tick" aria-hidden="true">&#10004;</span>
+              <p>{{ block.settings.point_3 }}</p>
+            </div>
+          {%- endif -%}
+        </div>
+
+        {%- unless forloop.last -%}
+          <div class="sol-wte-{{ uid }}__thread sol-wte-{{ uid }}__thread--link" aria-hidden="true">
+            <i style="--wte-delay: {{ linkDelay }}s;"></i>
+          </div>
+        {%- endunless -%}
+
+      </div>
+    {%- endfor -%}
+    </div>
+
+    {%- if s.footnote != blank -%}
+      <p class="sol-wte-{{ uid }}__foot">{{ s.footnote }}</p>
+    {%- endif -%}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SOL What to Expect",
+  "tag": "section",
+  "class": "sol-wte-section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What to Expect When You Start Using SOL Nightly"
+    },
+    {
+      "type": "textarea",
+      "id": "footnote",
+      "label": "Closing line",
+      "default": "Customers report their best results after 3–4 weeks of nightly use — consistency is the key."
+    },
+    {
+      "type": "header",
+      "content": "Type"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font",
+      "label": "Heading font",
+      "default": "playfair_display_n5"
+    },
+    {
+      "type": "font_picker",
+      "id": "body_font",
+      "label": "Body font",
+      "default": "dm_sans_n4"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size (mobile)",
+      "min": 22,
+      "max": 46,
+      "step": 1,
+      "unit": "px",
+      "default": 33
+    },
+    {
+      "type": "header",
+      "content": "Mobile headline position"
+    },
+    {
+      "type": "range",
+      "id": "heading_top_mobile",
+      "label": "Mobile headline top gap",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 12,
+      "info": "Set to 0px to move the headline to the very top."
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#1e3a16"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "#edf3d6"
+    },
+    {
+      "type": "color",
+      "id": "gold_color",
+      "label": "Thread & border gold",
+      "default": "#9cae01"
+    },
+    {
+      "type": "header",
+      "content": "Layout & motion"
+    },
+    {
+      "type": "select",
+      "id": "frame_ratio",
+      "label": "Video shape",
+      "options": [
+        {
+          "value": "square",
+          "label": "Square 1:1"
+        },
+        {
+          "value": "portrait",
+          "label": "Portrait 9:16 — matches phone video"
+        }
+      ],
+      "default": "portrait",
+      "info": "The size settings below set the width. Height follows the shape."
+    },
+    {
+      "type": "range",
+      "id": "frame_size",
+      "label": "Video width (mobile)",
+      "min": 200,
+      "max": 420,
+      "step": 10,
+      "unit": "px",
+      "default": 300
+    },
+    {
+      "type": "range",
+      "id": "frame_size_wide",
+      "label": "Video width (desktop)",
+      "min": 140,
+      "max": 320,
+      "step": 10,
+      "unit": "px",
+      "default": 250
+    },
+    {
+      "type": "range",
+      "id": "heading_size_wide",
+      "label": "Heading size (desktop)",
+      "min": 28,
+      "max": 64,
+      "step": 1,
+      "unit": "px",
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "gap_wide",
+      "label": "Column gap (desktop)",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "max_width_wide",
+      "label": "Content width (desktop)",
+      "min": 900,
+      "max": 1400,
+      "step": 20,
+      "unit": "px",
+      "default": 1280
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Content width (mobile)",
+      "min": 360,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "default": 480
+    },
+    {
+      "type": "range",
+      "id": "cycle_seconds",
+      "label": "Thread loop length",
+      "min": 4,
+      "max": 12,
+      "step": 1,
+      "unit": "s",
+      "default": 6,
+      "info": "How long one full pass of the golden thread takes."
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 34
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 34
+    },
+    {
+      "type": "header",
+      "content": "Mobile side lights"
+    },
+    {
+      "type": "range",
+      "id": "side_image_width",
+      "label": "Light image size",
+      "min": 60,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "side_image_top",
+      "label": "Vertical position",
+      "min": -300,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "side_image_inset",
+      "label": "Distance from sides",
+      "min": -180,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": -25
+    },
+    {
+      "type": "range",
+      "id": "side_image_rotation",
+      "label": "Inward rotation",
+      "min": -60,
+      "max": 60,
+      "step": 2,
+      "unit": "deg",
+      "default": 26
+    },
+    {
+      "type": "range",
+      "id": "padding_side",
+      "label": "Padding sides",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video",
+          "info": "Autoplays muted and looped. Square crop works best."
+        },
+        {
+          "type": "text",
+          "id": "video_url",
+          "label": "External MP4 URL",
+          "info": "Used only if no video is uploaded above."
+        },
+        {
+          "type": "image_picker",
+          "id": "poster",
+          "label": "Poster / fallback image"
+        },
+        {
+          "type": "text",
+          "id": "placeholder",
+          "label": "Placeholder label",
+          "info": "Shown while no video or image is set."
+        },
+        {
+          "type": "text",
+          "id": "stage",
+          "label": "Stage headline",
+          "default": "Warmth Sets In"
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Timeframe badge",
+          "default": "NIGHT 1–2"
+        },
+        {
+          "type": "text",
+          "id": "point_1",
+          "label": "Point 1",
+          "default": "Warm it, massage it in before bed."
+        },
+        {
+          "type": "text",
+          "id": "point_2",
+          "label": "Point 2",
+          "default": "The area feels lighter and stiffness starts to ease."
+        },
+        {
+          "type": "text",
+          "id": "point_3",
+          "label": "Point 3",
+          "default": "Skin looks clearer and brighter."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SOL What to Expect",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "stage": "Warmth Sets In",
+            "badge": "NIGHT 1–2",
+            "placeholder": "night massage",
+            "point_1": "Warm it, massage it in before bed.",
+            "point_2": "The area feels lighter and stiffness starts to ease."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "stage": "Mornings Get Easier",
+            "badge": "DAY 3–7",
+            "placeholder": "morning stretch",
+            "point_1": "Morning stiffness eases.",
+            "point_2": "You wake up moving more freely."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "stage": "Relief Lasts Longer",
+            "badge": "WEEK 2–4",
+            "placeholder": "walk / stairs",
+            "point_1": "Relief lasts longer through the day.",
+            "point_2": "Back on your walks, stairs and daily activities."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "stage": "Joints Stay Loose",
+            "badge": "WEEK 4+",
+            "placeholder": "family photo",
+            "point_1": "Consistent nightly use keeps joints loose and comfortable long-term.",
+            "point_2": ""
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

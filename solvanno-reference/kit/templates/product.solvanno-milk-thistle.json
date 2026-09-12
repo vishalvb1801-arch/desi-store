@@ -1,0 +1,1423 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "announcement": {
+      "type": "sol-announcement-bar",
+      "blocks": {
+        "message-1": {
+          "type": "message",
+          "settings": {
+            "text": "FREE US SHIPPING OVER $50",
+            "icon": "truck",
+            "link": ""
+          }
+        },
+        "message-2": {
+          "type": "message",
+          "settings": {
+            "text": "38,472+ HAPPY CUSTOMERS",
+            "icon": "families",
+            "link": ""
+          }
+        },
+        "message-3": {
+          "type": "message",
+          "settings": {
+            "text": "90-DAY MONEY-BACK GUARANTEE",
+            "icon": "discount",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "message-1",
+        "message-2",
+        "message-3"
+      ],
+      "settings": {
+        "fallback_text": "Free shipping over $50",
+        "separator": "✦",
+        "scroll_seconds": 24,
+        "item_gap": 38,
+        "font_size": 12,
+        "padding_block": 13,
+        "color_maroon_deep": "#364811",
+        "color_cream_light": "#fafaf5",
+        "color_gold": "#9cae01",
+        "color_gold_light": "#9cae01",
+        "content_width": 480
+      }
+    },
+    "hero": {
+      "type": "sol-product-hero",
+      "blocks": {
+        "gallery-1": {
+          "type": "gallery_image",
+          "settings": {}
+        },
+        "gallery-2": {
+          "type": "gallery_image",
+          "settings": {}
+        },
+        "benefits-row": {
+          "type": "benefits_row",
+          "settings": {}
+        },
+        "add-to-cart-row": {
+          "type": "add_to_cart_row",
+          "settings": {}
+        },
+        "stock-warning": {
+          "type": "below_social_proof_liquid",
+          "name": "Estimate Delivery",
+          "settings": {
+            "custom_liquid": "<!-- Estimated Delivery + Geo Flag -->\n<style>\n  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;600&display=swap');\n  .stock-delivery-wrapper{text-align:center;width:100%;font-family:'Manrope',-apple-system,sans-serif;padding:8px 0;}\n  .estimated-delivery{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-size:14px;font-weight:500;color:#555;}\n  .country-flag{width:20px;height:15px;border-radius:2px;object-fit:cover;display:none;}\n</style>\n<div class=\"stock-delivery-wrapper\">\n  <div class=\"estimated-delivery\">\n    <img id=\"visitor-flag\" class=\"country-flag\" alt=\"flag\">\n    <span id=\"estimated-delivery-window\"></span>\n  </div>\n</div>\n<script>\n  (function(){\n    var today = new Date();\n    var startDate = new Date(today); startDate.setDate(today.getDate() + 4);\n    var endDate = new Date(today); endDate.setDate(today.getDate() + 10);\n    var showYear = startDate.getFullYear() !== endDate.getFullYear();\n    var formatOptions = showYear\n      ? { day: 'numeric', month: 'short', year: 'numeric' }\n      : { day: 'numeric', month: 'short' };\n    var startFormatted = startDate.toLocaleDateString('en-IN', formatOptions);\n    var endFormatted = endDate.toLocaleDateString('en-IN', formatOptions);\n    var win = document.getElementById('estimated-delivery-window');\n    if (win) win.textContent = 'Estimated delivery between ' + startFormatted + ' and ' + endFormatted;\n    fetch('/browsing_context_suggestions.json')\n      .then(function(res){ return res.json(); })\n      .then(function(data){\n        var dv = data && data.detected_values;\n        var code = (dv && dv.country && dv.country.handle ? dv.country.handle : '').toLowerCase();\n        if (code) {\n          var flag = document.getElementById('visitor-flag');\n          if (flag) { flag.src = 'https://flagcdn.com/w40/' + code + '.png'; flag.alt = code.toUpperCase() + ' flag'; flag.style.display = 'inline-block'; }\n        }\n      })\n      .catch(function(){});\n  })();\n</script>"
+          }
+        },
+        "stockbar-row": {
+          "type": "stockbar_row",
+          "settings": {}
+        },
+        "payment-methods-row": {
+          "type": "payment_methods_row",
+          "settings": {}
+        },
+        "benefit-1": {
+          "type": "benefit",
+          "settings": {
+            "title": "Supports Liver Detox -",
+            "text": "80% silymarin — the clinically studied threshold"
+          }
+        },
+        "benefit-2": {
+          "type": "benefit",
+          "settings": {
+            "title": "Reduces Bloating & Eases Digestion",
+            "text": ""
+          }
+        },
+        "benefit-3": {
+          "type": "benefit",
+          "settings": {
+            "title": "Boosts Daily Energy & Mental Clarity",
+            "text": ""
+          }
+        },
+        "benefit-4": {
+          "type": "benefit",
+          "settings": {
+            "title": "Balances Blood Sugar -",
+            "text": "Inositol + supporting botanicals"
+          }
+        },
+        "benefit-5": {
+          "type": "benefit",
+          "settings": {
+            "title": "8 Active Ingredients In One Capsule -",
+            "text": "( protects AND detoxes )"
+          }
+        },
+        "benefit-6": {
+          "type": "benefit",
+          "settings": {
+            "title": "Third-Party Lab Tested -",
+            "text": "Vegan, non-GMO & made in the USA."
+          }
+        },
+        "benefit-7": {
+          "type": "benefit",
+          "settings": {
+            "title": "90-Day Money-Back Guarantee",
+            "text": "– Feel the difference or your money back"
+          }
+        },
+        "bfaq-1": {
+          "type": "buybox_faq",
+          "settings": {
+            "question": "Description",
+            "answer": "<p>SOLVANNO™ Milk Thistle Support is a clinically backed liver cleanse built on 80% silymarin, plus 8 active ingredients that support liver function, ease bloating, balance blood sugar and boost daily energy. One capsule daily.</p>"
+          }
+        },
+        "bfaq-2": {
+          "type": "buybox_faq",
+          "settings": {
+            "question": "Money-Back Guarantee",
+            "answer": "<p>Every order is protected by our <strong>90-day money-back guarantee</strong>. If you don't feel lighter, clearer and more energised, we'll refund every cent — no questions, no hassle.</p>"
+          }
+        },
+        "bfaq-3": {
+          "type": "buybox_faq",
+          "settings": {
+            "question": "Shipping & Delivery",
+            "answer": "<p>Free US shipping on orders over $50. Orders ship direct and arrive in 3–5 business days with a tracking link emailed to you.</p>"
+          }
+        },
+        "bfaq-4": {
+          "type": "buybox_faq",
+          "settings": {
+            "question": "Is Checkout Secure?",
+            "answer": "<p>Absolutely. Checkout is fully encrypted and processed through Shopify's secure gateway. We accept all major cards, PayPal, Apple Pay and Shop Pay.</p>"
+          }
+        },
+        "bfaq-5": {
+          "type": "buybox_faq",
+          "settings": {
+            "question": "Contact Us",
+            "answer": "<p>Email us at <a href=\"mailto:support@solvanno.com\">support@solvanno.com</a> for the fastest resolution. We're available Mon–Fri, 9AM–5PM EST.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "gallery-1",
+        "gallery-2",
+        "benefits-row",
+        "add-to-cart-row",
+        "stock-warning",
+        "stockbar-row",
+        "payment-methods-row",
+        "benefit-1",
+        "benefit-2",
+        "benefit-3",
+        "benefit-4",
+        "benefit-5",
+        "benefit-6",
+        "benefit-7",
+        "bfaq-1",
+        "bfaq-2",
+        "bfaq-3",
+        "bfaq-4",
+        "bfaq-5"
+      ],
+      "settings": {
+        "product": "",
+        "image_position": "70% center",
+        "thumb_columns": 4.5,
+        "show_rating": false,
+        "rating_stars": 5,
+        "rating_text": "Rated 4.8/5 from 38,472 Reviews",
+        "rating_count_text": "",
+        "rating_star_size": 18,
+        "rating_text_size": 16,
+        "rating_gap": 14,
+        "color_star": "#e0a526",
+        "color_rating_text": "#000000",
+        "show_doctors": false,
+        "doctor_image_url_1": "https://cdn.shopify.com/s/files/1/0975/8287/4990/files/doctor_1.jpg?v=1772787524",
+        "doctor_image_url_2": "https://cdn.shopify.com/s/files/1/0975/8287/4990/files/doctor_2.jpg?v=1772787523",
+        "doctors_count": "1,192+",
+        "doctors_label": "Doctors' Choice",
+        "doctors_badge": "✓ Verified",
+        "doctors_gap": 8,
+        "doctors_bg": "#f0f4ff",
+        "doctors_border": "#c5d3f0",
+        "doctors_ink": "#1a3a7a",
+        "doctors_label_ink": "#3a5aa8",
+        "title_gap": 10,
+        "subtitle_gap": 4,
+        "slot_guarantee": "",
+        "slot_guarantee_mt": 10,
+        "slot_guarantee_mb": 6,
+        "slot_delivery": "",
+        "slot_delivery_mt": 0,
+        "slot_delivery_mb": 0,
+        "slot_stock": "",
+        "low_stock_start": 40,
+        "low_stock_floor": 3,
+        "low_stock_label": "Low stock — selling fast",
+        "slot_stock_mt": 0,
+        "slot_stock_mb": 0,
+        "slot_warning": "",
+        "slot_warning_mt": 6,
+        "slot_warning_mb": 6,
+        "heading": "SOLVANNO™ Milk Thistle Support",
+        "subheading": "",
+        "show_price": false,
+        "price_note": "1 Bottle · 60 Capsules · 30-Day Supply",
+        "offers_heading": "",
+        "show_stock": false,
+        "stock_text": "IN STOCK — SHIPS FREE IN 3–5 DAYS 🇺🇸",
+        "out_of_stock_text": "OUT OF STOCK — back in a few days",
+        "show_fallback_atc": true,
+        "atc_label": "ADD TO CART",
+        "added_label": "ADDED ✓",
+        "sold_out_label": "SOLD OUT",
+        "adding_label": "ADDING…",
+        "show_social_proof": true,
+        "sp_avatar_url_1": "https://cdn.shopify.com/s/files/1/0808/0752/6593/files/Untitled_design_12.png",
+        "sp_avatar_url_2": "https://cdn.shopify.com/s/files/1/0808/0752/6593/files/01e163dc-e893-4f63-97de-f87f0f321353-thumbnail-image_207557.jpg?v=1784920588",
+        "sp_avatar_url_3": "https://cdn.shopify.com/s/files/1/0808/0752/6593/files/Untitled_design_13.png",
+        "sp_count_from": 10000,
+        "sp_count_to": 36243,
+        "sp_label": "+ Happy Customers",
+        "sp_rating": "4.8/5",
+        "sp_accent": "#b45832",
+        "sp_gap": 22,
+        "show_pay_marks": true,
+        "pay_marks": "visa, mastercard, amex, paypal, applepay, shoppay",
+        "pay_note": "All major cards, PayPal, Apple Pay & Shop Pay accepted",
+        "show_money_back": true,
+        "mbp_badge": "On Every Order",
+        "mbp_brand": "Secure Checkout",
+        "mbp_promise": "Money Back Promise",
+        "mbp_verified": "Solvanno is a verified business",
+        "mbp_refund_text": "<p>Get a <strong>100% refund</strong> within 90 days — no questions asked</p>",
+        "show_stockbar": true,
+        "stock_label": "Almost sold out",
+        "stock_note": "Selling fast",
+        "stock_percent": 7,
+        "show_delivery": true,
+        "delivery_label": "Order today, delivered",
+        "delivery_min_days": 2,
+        "delivery_note": "3–5 business days depending on your location",
+        "delivery_max_days": 5,
+        "show_warning": false,
+        "warning_title": "",
+        "warning_body": "",
+        "bfaq_title": "",
+        "cod_text": "",
+        "show_guarantee": false,
+        "guarantee_icon": "✷",
+        "guarantee_title": "90-Day Money-Back Guarantee",
+        "guarantee_link_text": "Click here to learn more",
+        "guarantee_link": "",
+        "show_review": false,
+        "review_stars": 5,
+        "review_quote": "\"Six weeks in and my bloating is down, my energy is steadier, and I just feel lighter. Nothing else I tried came close.\"",
+        "review_name": "Sarah A.",
+        "review_google": true,
+        "review_meta": "✔ Verified | Purchased 14th August",
+        "show_sticky": true,
+        "sticky_on_desktop": true,
+        "sticky_action": "scroll_to_atc",
+        "sticky_reveal_mode": "after_buy_box",
+        "sticky_reveal_at": 620,
+        "sticky_show_rating": true,
+        "sticky_rating_text": "4.8/5 · 38,472 reviews",
+        "sticky_show_price": false,
+        "sticky_label": "SELECT OFFER",
+        "sticky_title": "SOLVANNO™ Milk Thistle Support",
+        "color_maroon": "#364811",
+        "color_maroon_deep": "#24330f",
+        "color_gold": "#9cae01",
+        "color_cream": "#f4f6e9",
+        "color_text": "#1e2413",
+        "color_muted": "#545a48",
+        "color_green": "#4a8b2c",
+        "color_border": "#e3e6d6",
+        "content_width": 480,
+        "padding_x": 12,
+        "padding_top": 8,
+        "padding_bottom": 0
+      }
+    },
+    "trust": {
+      "type": "sol-trust-badges",
+      "blocks": {
+        "badge-1": {
+          "type": "badge",
+          "settings": {
+            "icon": "◉",
+            "label": "80%\nSILYMARIN"
+          }
+        },
+        "badge-2": {
+          "type": "badge",
+          "settings": {
+            "icon": "⚡",
+            "label": "THIRD-PARTY\nLAB TESTED"
+          }
+        },
+        "badge-3": {
+          "type": "badge",
+          "settings": {
+            "icon": "✓",
+            "label": "90-DAY\nGUARANTEE"
+          }
+        }
+      },
+      "block_order": [
+        "badge-1",
+        "badge-2",
+        "badge-3"
+      ],
+      "settings": {
+        "heading": "",
+        "note": "",
+        "columns": 3,
+        "icon_size": 28,
+        "color_maroon_deep": "#24330f",
+        "color_cream_light": "#f0f4d6",
+        "color_gold_light": "#9cae01",
+        "content_width": 480,
+        "padding_top": 34,
+        "padding_bottom": 34
+      }
+    },
+    "videos": {
+      "type": "sol-video-testimonials",
+      "blocks": {
+        "clip-2": {
+          "type": "clip",
+          "settings": {
+            "video": "shopify://files/videos/V1 (2).mp4",
+            "video_url": "",
+            "mp4_url": "https://cdn.shopify.com/videos/c/o/v/23f271be97924b0d86da3e4da4014318.mp4",
+            "poster_url": "https://cdn.shopify.com/s/files/1/0674/1570/3651/files/vlcsnap-2026-08-03-19h13m52s119.png?v=1785764714",
+            "name": "Howard R.",
+            "city": "Portland, OR",
+            "placeholder_note": "Milk Thistle review"
+          }
+        },
+        "clip-3": {
+          "type": "clip",
+          "settings": {
+            "video": "shopify://files/videos/V1 (1).mp4",
+            "video_url": "",
+            "mp4_url": "https://cdn.shopify.com/videos/c/o/v/032652e3ffb64a33ad84fa6f7c7aa328.mp4",
+            "poster_url": "https://cdn.shopify.com/s/files/1/0674/1570/3651/files/vlcsnap-2026-09-04-05h05m42s499.png?v=1788478561",
+            "name": "Sarah Z.",
+            "city": "Denver, CO",
+            "placeholder_note": "Milk Thistle review"
+          }
+        },
+        "clip-1": {
+          "type": "clip",
+          "settings": {
+            "video": "shopify://files/videos/1 (12).mp4",
+            "video_url": "",
+            "mp4_url": "https://cdn.shopify.com/videos/c/o/v/78a42e2211d74401836b4a2cb9e2308f.mp4",
+            "poster_url": "",
+            "name": "Walter A.",
+            "city": "Austin, TX",
+            "placeholder_note": "Milk Thistle review"
+          }
+        }
+      },
+      "block_order": [
+        "clip-2",
+        "clip-3",
+        "clip-1"
+      ],
+      "settings": {
+        "heading": "Real People, Real Results",
+        "cards_in_view": 2.2,
+        "card_ratio": "9 / 16",
+        "color_background": "#fafaf5",
+        "color_maroon": "#364811",
+        "color_muted": "#545a48",
+        "color_text": "#1e2413",
+        "color_green": "#4a8b2c",
+        "content_width": 480,
+        "padding_top": 30,
+        "padding_bottom": 30
+      }
+    },
+    "social-proof": {
+      "type": "sol-social-proof",
+      "blocks": {
+        "face-1": {
+          "type": "face",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_6_2026_04_13_13_AM.png",
+            "image_url": "https://cdn.shopify.com/s/files/1/0674/1570/3651/files/0.png?v=1788541277"
+          }
+        },
+        "face-2": {
+          "type": "face",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_6_2026_04_12_38_AM.png",
+            "image_url": "https://cdn.shopify.com/s/files/1/0674/1570/3651/files/1_ff771c36-0564-4f62-a661-13e1fc033d11.png?v=1788541277"
+          }
+        },
+        "face-3": {
+          "type": "face",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_6_2026_04_12_55_AM.png",
+            "image_url": "https://cdn.shopify.com/s/files/1/0674/1570/3651/files/3_272afae1-860d-48d6-965d-e2217f4a695b.png?v=1788541278"
+          }
+        },
+        "face-4": {
+          "type": "face",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_6_2026_04_13_02_AM.png",
+            "image_url": "https://cdn.shopify.com/s/files/1/0674/1570/3651/files/4_ad722fc4-e1be-4c66-a9a7-161c2a35cd3d.png?v=1788541277"
+          }
+        },
+        "face-5": {
+          "type": "face",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_6_2026_04_12_05_AM.png",
+            "image_url": "https://cdn.shopify.com/s/files/1/0674/1570/3651/files/ChatGPT_Image_Sep_4_2026_10_31_43_PM.png?v=1788541333"
+          }
+        },
+        "review-1": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "quote": "\"Six weeks in and my liver feels like it's finally getting the support it needed. Bloating is down and I feel cleaner.\"",
+            "tag_1": "Reduced Bloating",
+            "tag_2": "Feel Cleaner",
+            "avatar": "shopify://shop_images/fe4.jpg",
+            "avatar_url": "",
+            "name": "Sarah A.",
+            "city": "Austin, TX",
+            "show_verified": true
+          }
+        },
+        "review-2": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "quote": "\"I feel a lot lighter and have more energy in the morning. Been taking it every day for about three weeks now.\"",
+            "tag_1": "More Energy",
+            "tag_2": "Feel Lighter",
+            "avatar": "shopify://shop_images/m4.jpg",
+            "avatar_url": "",
+            "name": "David Z.",
+            "city": "Denver, CO",
+            "show_verified": true
+          }
+        },
+        "review-3": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "quote": "\"Less bloating and more regular digestion. I've been feeling lighter and more energised every single day.\"",
+            "tag_1": "More Energy",
+            "tag_2": "Reduced Bloating",
+            "avatar": "shopify://shop_images/fe1.jpg",
+            "avatar_url": "",
+            "name": "Hannah R.",
+            "city": "Portland, OR",
+            "show_verified": true
+          }
+        },
+        "review-4": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "quote": "\"I sleep so much better now. I used to wake up 3 or 4 times a night — now maybe once. Life changing.\"",
+            "tag_1": "Better Sleep",
+            "tag_2": "Life Changing",
+            "avatar": "shopify://shop_images/m4.jpg",
+            "avatar_url": "",
+            "name": "Paul W.",
+            "city": "Columbus, OH",
+            "show_verified": true
+          }
+        },
+        "review-5": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "quote": "\"My doctor noticed my liver numbers improved at my last checkup. I genuinely believe SOLVANNO played a part.\"",
+            "tag_1": "Improved Levels",
+            "tag_2": "Doctor Approved",
+            "avatar": "shopify://shop_images/m2.jpg",
+            "avatar_url": "",
+            "name": "Kevin L.",
+            "city": "Dallas, TX",
+            "show_verified": true
+          }
+        },
+        "review-6": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "quote": "\"The bloating after meals is basically gone. I don't feel heavy by dinner anymore — that alone was worth it.\"",
+            "tag_1": "Less Bloating",
+            "tag_2": "Feels Lighter",
+            "avatar": "shopify://shop_images/fe3.jpg",
+            "avatar_url": "",
+            "name": "Sarah M.",
+            "city": "Seattle, WA",
+            "show_verified": true
+          }
+        },
+        "review-7": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "quote": "\"My energy is so much better. I used to crash every afternoon and now I make it through the day easily.\"",
+            "tag_1": "Steady Energy",
+            "tag_2": "No More Crashes",
+            "avatar": "shopify://shop_images/m1.jpg",
+            "avatar_url": "",
+            "name": "Mark T.",
+            "city": "Phoenix, AZ",
+            "show_verified": true
+          }
+        },
+        "review-8": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "quote": "\"Two months in and my digestion is smoother than it's been in years. Really glad I stuck with it.\"",
+            "tag_1": "Better Digestion",
+            "tag_2": "Long-Term User",
+            "avatar": "shopify://shop_images/m3.jpg",
+            "avatar_url": "",
+            "name": "James R.",
+            "city": "Chicago, IL",
+            "show_verified": true
+          }
+        }
+      },
+      "block_order": [
+        "face-1",
+        "face-2",
+        "face-3",
+        "face-4",
+        "face-5",
+        "review-1",
+        "review-2",
+        "review-3",
+        "review-4",
+        "review-5",
+        "review-6",
+        "review-7",
+        "review-8"
+      ],
+      "settings": {
+        "heading": "Why 38,472+ People Trust SOLVANNO Milk Thistle",
+        "show_rating": true,
+        "rating_stars": 5,
+        "rating_label": "Rated 4.8 / 5.0",
+        "verified_label": "Verified",
+        "cards_in_view": 1.2,
+        "face_size_mobile": 150,
+        "color_maroon_deep": "#364811",
+        "color_cream_light": "#f0f4d6",
+        "color_gold_light": "#9cae01",
+        "color_green": "#4a8b2c",
+        "color_text": "#1e2413",
+        "color_muted": "#545a48",
+        "content_width": 480,
+        "padding_top": 34,
+        "padding_bottom": 34
+      }
+    },
+    "stats": {
+      "type": "sol-stats-block",
+      "blocks": {
+        "desktop-photo": {
+          "type": "desktop_image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_14.png",
+            "image_alt": "SOLVANNO Milk Thistle Support bottle"
+          }
+        },
+        "stat-1": {
+          "type": "stat",
+          "settings": {
+            "value": "89%",
+            "label": "reported less bloating and lighter digestion",
+            "percent": 89,
+            "icon": "✓"
+          }
+        },
+        "stat-2": {
+          "type": "stat",
+          "settings": {
+            "value": "92%",
+            "label": "felt steadier energy through the day",
+            "percent": 92,
+            "icon": "⚡"
+          }
+        },
+        "stat-3": {
+          "type": "stat",
+          "settings": {
+            "value": "86%",
+            "label": "said they felt cleaner and more themselves within weeks",
+            "percent": 86,
+            "icon": "✦"
+          }
+        }
+      },
+      "block_order": [
+        "desktop-photo",
+        "stat-1",
+        "stat-2",
+        "stat-3"
+      ],
+      "settings": {
+        "heading": "After 38,472 Happy Customers, / The Results Are In.",
+        "footnote": "Based on customer feedback*",
+        "curve_style": "convex",
+        "curve_height": 48,
+        "curve_color": "#fafaf5",
+        "color_maroon_deep": "#fafaf5",
+        "color_cream_light": "#364811",
+        "color_gold_light": "#9cae01",
+        "content_width": 480,
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "ingredients": {
+      "type": "sol-ingredients-grid",
+      "blocks": {
+        "herb-1": {
+          "type": "herb",
+          "settings": {
+            "name": "Milk Thistle Extract",
+            "role": "300mg · 80% Silymarin",
+            "detail": "<p>The hero ingredient, dosed at the exact level shown in research to support your liver and protect it from daily stress.</p>",
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_6_2026_01_39_57_AM.png",
+            "color_from": "#9cae01",
+            "color_to": "#364811"
+          }
+        },
+        "herb-2": {
+          "type": "herb",
+          "settings": {
+            "name": "Inositol",
+            "role": "200mg",
+            "detail": "<p>Supports healthy blood-sugar metabolism and helps your liver break down and process stored fats more efficiently.</p>",
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_6_2026_01_40_40_AM.png",
+            "color_from": "#7e8c1a",
+            "color_to": "#24330f"
+          }
+        },
+        "herb-3": {
+          "type": "herb",
+          "settings": {
+            "name": "Pueraria Extract",
+            "role": "68mg · 10% Puerarin",
+            "detail": "<p>Traditionally used to support liver function after alcohol exposure and to reduce oxidative stress on overworked cells.</p>",
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_6_2026_01_40_28_AM.png",
+            "color_from": "#6e8452",
+            "color_to": "#24330f"
+          }
+        },
+        "herb-4": {
+          "type": "herb",
+          "settings": {
+            "name": "Wormwood Extract",
+            "role": "50mg",
+            "detail": "<p>A potent botanical used for centuries to target unwanted organisms in the gut and support natural digestive cleansing.</p>",
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_6_2026_01_40_22_AM.png",
+            "color_from": "#5e7345",
+            "color_to": "#1e3a16"
+          }
+        },
+        "herb-5": {
+          "type": "herb",
+          "settings": {
+            "name": "Clove Extract",
+            "role": "50mg",
+            "detail": "<p>Provides antimicrobial support while helping maintain balanced blood sugar. Works alongside wormwood for gut health.</p>",
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_6_2026_01_40_16_AM.png",
+            "color_from": "#8a9a3a",
+            "color_to": "#364811"
+          }
+        },
+        "herb-6": {
+          "type": "herb",
+          "settings": {
+            "name": "Turmeric Extract",
+            "role": "4mg · 95% Curcuminoids",
+            "detail": "<p>A powerful antioxidant that supports liver health and helps calm irritation throughout the body.</p>",
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_6_2026_01_40_34_AM.png",
+            "color_from": "#c3d34a",
+            "color_to": "#4a6b12"
+          }
+        }
+      },
+      "block_order": [
+        "herb-1",
+        "herb-2",
+        "herb-3",
+        "herb-4",
+        "herb-5",
+        "herb-6"
+      ],
+      "settings": {
+        "heading": "Every Capsule Is Packed With Essentials",
+        "intro": "8 active ingredients, each dosed with purpose — protecting your liver while helping your body detox.",
+        "more_label": "MORE INFO",
+        "note": "Every ingredient has a role — liver protection, detox, digestion and blood-sugar balance — working together in one daily capsule.",
+        "columns": 3,
+        "image_ratio": "4 / 3",
+        "image_radius": 8,
+        "show_bottles": true,
+        "bottle_image": "shopify://shop_images/Transparent_Product.png",
+        "bottle_angle": 45,
+        "bottle_width": 48,
+        "bottle_bleed": 76,
+        "bottle_offset_y": -96,
+        "bottle_row_height": 100,
+        "heading_gutter": 12,
+        "bottle_shadow": 80,
+        "color_background": "#fafaf5",
+        "color_cream": "#f4f6e9",
+        "color_maroon": "#364811",
+        "color_text": "#1e2413",
+        "color_muted": "#545a48",
+        "color_soft": "#545a48",
+        "content_width": 480,
+        "padding_top": 34,
+        "padding_bottom": 34
+      }
+    },
+    "experts": {
+      "type": "sol-expert-videos",
+      "blocks": {
+        "expert-1": {
+          "type": "expert",
+          "settings": {
+            "video_url": "",
+            "name": "Dr. Emily Carter",
+            "role": "Integrative MD, 15 yrs",
+            "placeholder_note": "expert clip — why silymarin %"
+          }
+        },
+        "expert-2": {
+          "type": "expert",
+          "settings": {
+            "video_url": "",
+            "name": "Dr. Mark Reyes",
+            "role": "Hepatology, New York",
+            "placeholder_note": "expert clip — liver support"
+          }
+        },
+        "expert-3": {
+          "type": "expert",
+          "settings": {
+            "video_url": "",
+            "name": "Dr. Rachel Kim",
+            "role": "Clinical Nutritionist",
+            "placeholder_note": "expert clip — the 8 ingredients"
+          }
+        }
+      },
+      "block_order": [
+        "expert-1",
+        "expert-2",
+        "expert-3"
+      ],
+      "disabled": true,
+      "settings": {
+        "eyebrow": "EXPERTS RECOMMENDED",
+        "heading": "Experts Recommend It.\nHere's Why.",
+        "heading_size": 27,
+        "subheading": "Nutritionists and doctors on why 80% silymarin is the threshold that actually matters.",
+        "show_progress": true,
+        "card_width": 200,
+        "content_width": 480,
+        "padding_top": 22,
+        "padding_bottom": 26,
+        "color_maroon": "#364811",
+        "color_gold": "#9cae01",
+        "color_cream": "#f4f6e9",
+        "color_text": "#1e2413",
+        "color_muted": "#545a48",
+        "color_tag_border": "#f0f4d6",
+        "color_bar_track": "#e3e6d6"
+      }
+    },
+    "eis_what_to_expect_GUwQQk": {
+      "type": "sol-what-to-expect",
+      "blocks": {
+        "step_zxEttq": {
+          "type": "step",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/30fbec56117b448f8670f458e35398ef.mp4",
+            "placeholder": "clearing out",
+            "stage": "Clearing Out",
+            "badge": "DAYS 1–14",
+            "point_1": "Your gut starts clearing unwanted buildup.",
+            "point_2": "Bloating begins to ease after meals.",
+            "point_3": "Digestion feels lighter day by day."
+          }
+        },
+        "step_gX6Uze": {
+          "type": "step",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/9af4a897b6f242f6bacdf5b0ea976676.mp4",
+            "placeholder": "energy returns",
+            "stage": "Energy Returns",
+            "badge": "WEEKS 3–6",
+            "point_1": "Steady energy throughout the day.",
+            "point_2": "Brain fog lifts and focus returns.",
+            "point_3": "Skin starts looking clearer and brighter."
+          }
+        },
+        "step_dTq7Xr": {
+          "type": "step",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/6213c07898df40cf8770bceca4564818.mp4",
+            "placeholder": "deep support",
+            "stage": "Deep Support",
+            "badge": "MONTHS 2–3",
+            "point_1": "Your liver gets the prolonged support it's been craving.",
+            "point_2": "Bloating stays down as your body clears more waste.",
+            "point_3": "Your skin keeps improving with a healthy glow."
+          }
+        },
+        "step_WDmN6w": {
+          "type": "step",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/b63b79297ee948a69a4e3f53c5d3ddab.mp4",
+            "placeholder": "full restoration",
+            "stage": "Full Restoration",
+            "badge": "MONTHS 4–6",
+            "point_1": "Your energy levels are in full swing.",
+            "point_2": "You keep a steady, lighter, less-bloated baseline.",
+            "point_3": "Clear, glowing skin becomes your new normal."
+          }
+        }
+      },
+      "block_order": [
+        "step_zxEttq",
+        "step_gX6Uze",
+        "step_dTq7Xr",
+        "step_WDmN6w"
+      ],
+      "name": "EIS What to Expect",
+      "settings": {
+        "heading": "What to Expect From Your Cleanse",
+        "footnote": "Take two capsule daily. Real change builds with consistent use.",
+        "heading_font": "playfair_display_n5",
+        "body_font": "dm_sans_n4",
+        "heading_size": 33,
+        "heading_top_mobile": 8,
+        "bg_color": "#364811",
+        "heading_color": "#fafaf5",
+        "gold_color": "#e0a526",
+        "frame_ratio": "portrait",
+        "frame_size": 300,
+        "frame_size_wide": 250,
+        "heading_size_wide": 42,
+        "gap_wide": 24,
+        "max_width_wide": 1280,
+        "max_width": 480,
+        "cycle_seconds": 6,
+        "padding_top": 34,
+        "padding_bottom": 34,
+        "side_image_width": 165,
+        "side_image_top": -85,
+        "side_image_inset": -40,
+        "side_image_rotation": 28,
+        "padding_side": 14
+      }
+    },
+    "comparison": {
+      "type": "sol-comparison-table",
+      "blocks": {
+        "row-1": {
+          "type": "row",
+          "settings": {
+            "label": "80% pure silymarin",
+            "icon": "motion",
+            "us": true,
+            "them": false
+          }
+        },
+        "row-2": {
+          "type": "row",
+          "settings": {
+            "label": "Protects AND detoxes",
+            "icon": "bulb",
+            "us": true,
+            "them": false
+          }
+        },
+        "row-3": {
+          "type": "row",
+          "settings": {
+            "label": "8 active ingredients",
+            "icon": "magnet",
+            "us": true,
+            "them": false
+          }
+        },
+        "row-4": {
+          "type": "row",
+          "settings": {
+            "label": "Parasite & gut support",
+            "icon": "usb",
+            "us": true,
+            "them": false
+          }
+        },
+        "row-5": {
+          "type": "row",
+          "settings": {
+            "label": "Blood sugar support",
+            "icon": "bolt",
+            "us": true,
+            "them": false
+          }
+        },
+        "row-6": {
+          "type": "row",
+          "settings": {
+            "label": "Naturally sourced",
+            "icon": "spark",
+            "us": true,
+            "them": false
+          }
+        },
+        "row-7": {
+          "type": "row",
+          "settings": {
+            "label": "90-day money-back guarantee",
+            "icon": "shield",
+            "us": true,
+            "them": false
+          }
+        }
+      },
+      "block_order": [
+        "row-1",
+        "row-2",
+        "row-3",
+        "row-4",
+        "row-5",
+        "row-6",
+        "row-7"
+      ],
+      "settings": {
+        "heading": "How SOLVANNO Compares / To Other Brands",
+        "heading_size": 26,
+        "compare_label": "Features",
+        "brand_label": "SOLVANNO",
+        "other_label": "Other Brands",
+        "note": "",
+        "bottle_image": "shopify://shop_images/Transparent_Product.png",
+        "bottle_size": 130,
+        "color_cream": "#fafaf5",
+        "color_card": "#ffffff",
+        "color_maroon": "#364811",
+        "color_tint": "#f0f4d6",
+        "color_cream_light": "#fafaf5",
+        "color_text": "#1e2413",
+        "color_soft": "#545a48",
+        "color_muted": "#545a48",
+        "color_border": "#e3e6d6",
+        "col_width": 78,
+        "row_height": 62,
+        "content_width": 480,
+        "padding_top": 34,
+        "padding_bottom": 34
+      }
+    },
+    "faq": {
+      "type": "sol-faq-accordion",
+      "blocks": {
+        "question-1": {
+          "type": "question",
+          "settings": {
+            "question": "What is milk thistle?",
+            "answer": "<p>Milk thistle is a plant-based supplement known for its active compound <strong>silymarin</strong>, which supports liver detox, reduced fatigue and many other health benefits.</p>"
+          }
+        },
+        "question-2": {
+          "type": "question",
+          "settings": {
+            "question": "Does it actually work?",
+            "answer": "<p>Yes. This formula supports cleansing with natural ingredients. Milk thistle helps your body clear buildup, while inositol and turmeric help reduce bloating and give you steady energy.</p>"
+          }
+        },
+        "question-3": {
+          "type": "question",
+          "settings": {
+            "question": "How long before I see results?",
+            "answer": "<p>Most people notice changes within days. <strong>Days 1–5:</strong> lighter digestion, less bloating, steadier energy. <strong>Weeks 2–3:</strong> clearer skin, more energy. <strong>Week 4+:</strong> a noticeably flatter, lighter feeling.</p>"
+          }
+        },
+        "question-4": {
+          "type": "question",
+          "settings": {
+            "question": "Is this just for men?",
+            "answer": "<p>No. This cleanse is effective for both men and women who want relief from digestive issues and increased vitality. The formula delivers results regardless of gender.</p>"
+          }
+        },
+        "question-16": {
+          "type": "question",
+          "settings": {
+            "question": "Who is it for?",
+            "answer": "<p>SOLVANNO is for anyone who wants to support their liver, ease bloating and feel more energised — whether you drink occasionally, eat a typical modern diet, or simply want to give your body's natural detox system a hand. It's made for both men and women and works alongside your normal routine.</p>"
+          }
+        },
+        "question-5": {
+          "type": "question",
+          "settings": {
+            "question": "How do I take it?",
+            "answer": "<p>Take 1 capsule daily with water, preferably with a meal. For best results, take it at the same time each day to keep your system balanced.</p>"
+          }
+        },
+        "question-17": {
+          "type": "question",
+          "settings": {
+            "question": "How long does one bottle last?",
+            "answer": "<p>Each bottle contains 60 capsules — a 30-day supply at one capsule daily. Many customers choose a 3–6 month supply, since liver support builds with consistent use.</p>"
+          }
+        },
+        "question-6": {
+          "type": "question",
+          "settings": {
+            "question": "Do I need to change my diet or quit drinking?",
+            "answer": "<p><strong>No.</strong> You don't need to quit drinking or go on a crash diet to feel a difference. Cutting back on alcohol and processed food will help your liver further, but you'll still feel noticeable benefits from SOLVANNO alone.</p>"
+          }
+        },
+        "question-7": {
+          "type": "question",
+          "settings": {
+            "question": "What is the best time to take this?",
+            "answer": "<p>The morning is ideal — it gives you a strong, steady start to your day.</p>"
+          }
+        },
+        "question-8": {
+          "type": "question",
+          "settings": {
+            "question": "What makes SOLVANNO different?",
+            "answer": "<p>Our milk thistle is standardised to <strong>80% silymarin</strong>, the clinical threshold. We use 8 active ingredients that protect and detox at the same time, and we source naturally under strict standards.</p>"
+          }
+        },
+        "question-9": {
+          "type": "question",
+          "settings": {
+            "question": "Is this safe? Any side effects?",
+            "answer": "<p>SOLVANNO is made with 100% natural, plant-based ingredients — vegan, non-GMO and free from harsh additives. Third-party lab tested. Consult your healthcare provider if you're pregnant, nursing or on medication.</p>"
+          }
+        },
+        "question-10": {
+          "type": "question",
+          "settings": {
+            "question": "Will this work if I've tried other supplements before?",
+            "answer": "<p>Most liver supplements only address one piece of the problem. SOLVANNO's 8-ingredient formula supports the full cycle — which is why customers who gave up on other products often see results here.</p>"
+          }
+        },
+        "question-12": {
+          "type": "question",
+          "settings": {
+            "question": "What if it doesn't work for me?",
+            "answer": "<p>Every order is protected by our <strong>90-day money-back guarantee</strong>. No questions, no hassle. If you don't feel the difference, we'll refund every cent.</p>"
+          }
+        },
+        "question-13": {
+          "type": "question",
+          "settings": {
+            "question": "How fast is shipping?",
+            "answer": "<p>Orders ship free over $50 and arrive within 3–5 business days across the US, with a tracking link emailed to you.</p>"
+          }
+        },
+        "question-14": {
+          "type": "question",
+          "settings": {
+            "question": "Is checkout secure?",
+            "answer": "<p>Yes. Checkout is fully encrypted and processed through a secure gateway. We accept all major cards, PayPal, Apple Pay and Shop Pay.</p>"
+          }
+        },
+        "question-15": {
+          "type": "question",
+          "settings": {
+            "question": "How do I get in touch?",
+            "answer": "<p>Email us at <a href=\"mailto:support@solvanno.com\">support@solvanno.com</a> and our support team will get back to you quickly.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question-1",
+        "question-2",
+        "question-3",
+        "question-4",
+        "question-16",
+        "question-5",
+        "question-17",
+        "question-6",
+        "question-7",
+        "question-8",
+        "question-9",
+        "question-10",
+        "question-12",
+        "question-13",
+        "question-14",
+        "question-15"
+      ],
+      "settings": {
+        "heading": "FAQ",
+        "heading_size": 26,
+        "open_first": false,
+        "one_at_a_time": true,
+        "enable_seo_schema": true,
+        "footer_text": "<p><strong>Still have questions? Get in touch.</strong></p><p>Email <a href=\"mailto:support@solvanno.com\">support@solvanno.com</a> and our team will help you out.</p>",
+        "color_cream": "#364811",
+        "color_maroon": "#f0f4d6",
+        "color_text": "#364811",
+        "color_muted": "#364811",
+        "color_soft": "#545a48",
+        "content_width": 480,
+        "padding_top": 18,
+        "padding_bottom": 30
+      }
+    },
+    "reviews": {
+      "type": "sol-reviews",
+      "blocks": {
+        "review-1": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_6_2026_08_28_25_PM.png",
+            "placeholder_note": "less bloating",
+            "stars": 5,
+            "quote": "“The bloating after meals is basically gone. I don't feel heavy by dinner anymore — that alone was worth it.”",
+            "avatar": "shopify://shop_images/ChatGPT_Image_Sep_6_2026_08_28_17_PM.png",
+            "name": "Sarah M.",
+            "meta": "Verified purchase"
+          }
+        },
+        "review-6": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_6_2026_07_43_30_PM.png",
+            "placeholder_note": "steady energy",
+            "stars": 5,
+            "quote": "“My energy is so much better. I used to crash every afternoon; now I make it through the day without feeling like a zombie.”",
+            "avatar": "shopify://shop_images/ChatGPT_Image_Sep_6_2026_07_47_28_PM.png",
+            "name": "Mark T.",
+            "meta": "Verified purchase"
+          }
+        },
+        "review-2": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_6_2026_07_10_35_PM.png",
+            "placeholder_note": "long-term user",
+            "stars": 5,
+            "quote": "“I've been drinking for 20 years and my gut was a mess. Two months in and my digestion is smoother than it's been in years.”",
+            "avatar": "shopify://shop_images/ChatGPT_Image_Sep_6_2026_07_10_35_PM.png",
+            "name": "James R.",
+            "meta": "Verified purchase"
+          }
+        },
+        "review-5": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_6_2026_09_19_05_PM.png",
+            "placeholder_note": "clearer skin",
+            "stars": 5,
+            "quote": "“Less bloating, clearer skin, and I just feel lighter and more energised every day.”",
+            "avatar": "shopify://shop_images/ChatGPT_Image_Sep_6_2026_09_18_55_PM.png",
+            "name": "Hannah R.",
+            "meta": "Verified purchase"
+          }
+        },
+        "review-3": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_6_2026_04_13_31_AM.png",
+            "placeholder_note": "doctor approved",
+            "stars": 5,
+            "quote": "“My doctor noticed my liver numbers improved at my last checkup. I genuinely believe SOLVANNO played a part.”",
+            "avatar": "shopify://shop_images/ChatGPT_Image_Sep_6_2026_04_13_31_AM.png",
+            "name": "Kevin L.",
+            "meta": "Verified purchase"
+          }
+        },
+        "review-4": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_6_2026_08_09_44_PM.png",
+            "placeholder_note": "better sleep",
+            "stars": 5,
+            "quote": "“I sleep so much better now. I used to wake 3–4 times a night; now maybe once. Life changing.”",
+            "avatar": "shopify://shop_images/ChatGPT_Image_Sep_6_2026_08_10_42_PM.png",
+            "name": "Paul W.",
+            "meta": "Verified purchase"
+          }
+        }
+      },
+      "block_order": [
+        "review-1",
+        "review-6",
+        "review-2",
+        "review-5",
+        "review-3",
+        "review-4"
+      ],
+      "settings": {
+        "heading": "See Why People Love SOLVANNO Milk Thistle",
+        "heading_size": 27,
+        "show_source": true,
+        "source_label": "Verified Customer Reviews",
+        "source_score": "",
+        "source_count": "",
+        "cards_in_view": 1.5,
+        "image_ratio": "1 / 1",
+        "quote_lines": 5,
+        "more_text": "READ MORE REVIEWS",
+        "more_link": "",
+        "color_background": "#fafaf5",
+        "color_card": "#ffffff",
+        "color_border": "#e3e6d6",
+        "color_maroon": "#364811",
+        "color_stars": "#9cae01",
+        "color_quote": "#1e2413",
+        "color_text": "#1e2413",
+        "color_muted": "#545a48",
+        "color_soft": "#545a48",
+        "content_width": 480,
+        "padding_top": 32,
+        "padding_bottom": 32
+      }
+    },
+    "footer": {
+      "type": "sol-footer",
+      "blocks": {
+        "link-1": {
+          "type": "link",
+          "settings": {
+            "label": "Order Tracker",
+            "url": ""
+          }
+        },
+        "link-2": {
+          "type": "link",
+          "settings": {
+            "label": "Shipping Policy",
+            "url": ""
+          }
+        },
+        "link-3": {
+          "type": "link",
+          "settings": {
+            "label": "Refund Policy",
+            "url": ""
+          }
+        },
+        "link-4": {
+          "type": "link",
+          "settings": {
+            "label": "Privacy Policy",
+            "url": ""
+          }
+        },
+        "link-5": {
+          "type": "link",
+          "settings": {
+            "label": "Contact Information",
+            "url": ""
+          }
+        },
+        "certification-1": {
+          "type": "certification",
+          "settings": {
+            "label": "MADE IN THE USA 🇺🇸"
+          }
+        },
+        "certification-2": {
+          "type": "certification",
+          "settings": {
+            "label": "GMP CERTIFIED"
+          }
+        },
+        "payment-badge-1": {
+          "type": "payment_badge",
+          "settings": {
+            "label": "VISA",
+            "highlight": false
+          }
+        },
+        "payment-badge-2": {
+          "type": "payment_badge",
+          "settings": {
+            "label": "MASTERCARD",
+            "highlight": false
+          }
+        },
+        "payment-badge-3": {
+          "type": "payment_badge",
+          "settings": {
+            "label": "AMEX",
+            "highlight": false
+          }
+        },
+        "payment-badge-4": {
+          "type": "payment_badge",
+          "settings": {
+            "label": "PAYPAL",
+            "highlight": false
+          }
+        },
+        "payment-badge-5": {
+          "type": "payment_badge",
+          "settings": {
+            "label": "APPLE PAY",
+            "highlight": false
+          }
+        },
+        "payment-badge-6": {
+          "type": "payment_badge",
+          "settings": {
+            "label": "SHOP PAY",
+            "highlight": true
+          }
+        }
+      },
+      "block_order": [
+        "link-1",
+        "link-2",
+        "link-3",
+        "link-4",
+        "link-5",
+        "certification-1",
+        "certification-2",
+        "payment-badge-1",
+        "payment-badge-2",
+        "payment-badge-3",
+        "payment-badge-4",
+        "payment-badge-5",
+        "payment-badge-6"
+      ],
+      "settings": {
+        "logo_text": "SOLVANNO",
+        "tagline": "SUPPORT FROM WITHIN",
+        "show_newsletter": true,
+        "newsletter_title": "OUR NEWSLETTER",
+        "newsletter_text": "Wellness tips & offers, no spam. Early access to restocks and new drops.",
+        "newsletter_placeholder": "ENTER YOUR EMAIL",
+        "newsletter_button": "SUBMIT",
+        "newsletter_success": "Thanks — you're on the list.",
+        "contact_title": "CONTACT US",
+        "contact_text": "<p>support@solvanno.com<br/>Solvanno<br/>159 Main Street, Apt 8B<br/>Stoneham, MA 02180, USA</p>",
+        "policies_title": "OUR POLICIES",
+        "disclaimer": "Disclaimer: These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure or prevent any disease.",
+        "copyright": "© 2026 Solvanno | All Rights Reserved",
+        "color_maroon_darkest": "#191f12",
+        "color_cream_light": "#f0f4d6",
+        "color_gold": "#9cae01",
+        "color_gold_light": "#9cae01",
+        "content_width": 480,
+        "padding_top": 30,
+        "padding_bottom": 100
+      }
+    }
+  },
+  "order": [
+    "announcement",
+    "hero",
+    "trust",
+    "videos",
+    "social-proof",
+    "stats",
+    "ingredients",
+    "experts",
+    "eis_what_to_expect_GUwQQk",
+    "comparison",
+    "faq",
+    "reviews",
+    "footer"
+  ]
+}

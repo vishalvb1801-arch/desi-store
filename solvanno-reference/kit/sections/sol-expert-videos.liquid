@@ -1,0 +1,567 @@
+{%- comment -%}
+  SOL — Experts Recommend
+  ------------------------------------------------------------------
+  Horizontal scroller of expert clips (Vaidyas, physiotherapists), with a
+  scroll-linked progress bar underneath.
+
+  Each card is a poster image with a play button. The real video only loads
+  when someone taps it, so three clips cost nothing on first paint.
+
+  Ported from the Claude Design canvas "Experts Recommend Section". Two
+  deliberate changes from that file: the scroller's left inset is 16px
+  rather than 32px so the first card lines up with the heading above it,
+  and the play control is a real <button> rather than a styled <div>.
+{%- endcomment -%}
+
+{%- liquid
+  assign expert_count = 0
+  for block in section.blocks
+    if block.type == 'expert'
+      assign expert_count = expert_count | plus: 1
+    endif
+  endfor
+-%}
+
+{% render 'sol-fonts' %}
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    --sol-maroon: {{ section.settings.color_maroon }};
+    --sol-gold: {{ section.settings.color_gold }};
+    --sol-cream: {{ section.settings.color_cream }};
+    --sol-ink: {{ section.settings.color_text }};
+    --sol-muted: {{ section.settings.color_muted }};
+    --sol-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --sol-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
+  }
+
+  .sol-exp {
+    max-width: {{ section.settings.content_width }}px;
+    margin: 0 auto;
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+    background: var(--sol-cream);
+    font-family: var(--sol-sans);
+    color: var(--sol-ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  .sol-exp * { box-sizing: border-box; }
+  .sol-exp__head { padding: 0 16px; }
+
+  .sol-exp__eyebrow { display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .sol-exp__eyebrow svg { flex: none; }
+  .sol-exp__tag {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: .18em;
+    color: var(--sol-gold);
+    border: 1px solid {{ section.settings.color_tag_border }};
+    border-radius: 999px;
+    padding: 5px 13px;
+    background: #fff;
+  }
+  .sol-exp__title {
+    font-family: var(--sol-serif);
+    font-size: {{ section.settings.heading_size }}px;
+    font-weight: 600;
+    color: var(--sol-maroon);
+    text-align: center;
+    margin: 10px 0 6px;
+    line-height: 1.2;
+  }
+  .sol-exp__sub {
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--sol-muted);
+    text-align: center;
+    margin: 0 0 16px;
+  }
+
+  .sol-exp__track {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 16px 2px;
+    /* Without this the snap aligns the first card to the scrollport edge and
+       eats the left padding, so card one sits flush against the screen. */
+    scroll-padding-inline: 16px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .sol-exp__track::-webkit-scrollbar { display: none; }
+
+  .sol-exp__card { flex: none; width: {{ section.settings.card_width }}px; scroll-snap-align: start; }
+  .sol-exp__frame {
+    position: relative;
+    aspect-ratio: 9 / 16;
+    border-radius: 12px;
+    overflow: hidden;
+    background: repeating-linear-gradient(135deg, #EDE1CE 0 8px, #F9F1E4 8px 16px);
+    display: flex;
+    align-items: flex-end;
+    padding: 10px;
+  }
+  .sol-exp__frame img,
+  .sol-exp__frame video,
+  .sol-exp__frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 0;
+    display: block;
+  }
+  .sol-exp__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: 999px;
+    background: {{ section.settings.color_maroon | color_modify: 'alpha', 0.92 }};
+    color: #FFF7E6;
+    font-size: 15px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .sol-exp__note {
+    position: relative;
+    font: 9px ui-monospace, SFMono-Regular, Menlo, monospace;
+    color: #8A7A63;
+  }
+  .sol-exp__meta { text-align: center; margin-top: 9px; }
+  .sol-exp__name { display: flex; align-items: center; justify-content: center; gap: 5px; }
+  .sol-exp__tick { color: var(--sol-maroon); font-size: 12px; }
+  .sol-exp__name b { font-size: 12.5px; font-weight: 700; color: var(--sol-ink); }
+  .sol-exp__role { font-size: 11px; color: var(--sol-muted); margin-top: 2px; }
+
+  .sol-exp__bar { display: flex; justify-content: center; margin-top: 16px; }
+  .sol-exp__bar-track {
+    width: 150px;
+    height: 4px;
+    border-radius: 999px;
+    background: {{ section.settings.color_bar_track }};
+    overflow: hidden;
+  }
+  .sol-exp__bar-fill {
+    height: 4px;
+    border-radius: 999px;
+    background: var(--sol-maroon);
+    width: 40%;
+    margin-left: 0;
+  }
+
+  @media (min-width: 750px) {
+    .sol-exp__title { font-size: {{ section.settings.heading_size | times: 1.2 | round }}px; }
+    .sol-exp__sub { font-size: 14px; }
+  }
+
+  /* ---------- desktop & iPad ---------- */
+  @media (min-width: 750px) {
+    /* The cream has to sit on the section wrapper, not on .sol-exp. .sol-exp
+       is also the width-limiter, so painting it left a 1059px cream box
+       floating on white with full-width cream sections above and below. This
+       is how the UGC row is built: background on the band, width on the inner. */
+    /* Brand maroon, the same value the stats, timeline and trust bands use.
+       Written as a literal, not var(--sol-maroon-deep): this section's schema
+       only defines maroon, gold, cream, text and muted, so the deep-maroon
+       token resolves to nothing here and the band came out transparent.
+       Everything inside was drawn for cream, so the type flips with it. */
+    .sol-section--experts { background: #1e3a16; }
+    .sol-exp { background: transparent; max-width: none; }
+    .sol-exp__title { color: #edf3d6; }
+    .sol-exp__sub { color: #D9C6A2; }
+    .sol-exp__name b { color: #edf3d6; }
+    .sol-exp__tick { color: #c3d34a; }
+    .sol-exp__role { color: #C4AE86; }
+    .sol-exp__tag { color: #c3d34a; border-color: rgba(227, 196, 111, .5); }
+    .sol-exp__note { color: #8A7A63; }
+    .sol-exp__head,
+    .sol-exp__track { max-width: 976px; margin-left: auto; margin-right: auto; }
+    .sol-exp__track {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      overflow: visible;
+      padding: 0 16px;
+      scroll-padding-inline: 0;
+    }
+    .sol-exp__card { width: auto; min-width: 0; scroll-snap-align: none; }
+    .sol-exp__bar { display: none; }
+    /* Both video rows sit on cream so they read as a pair. */
+    .sol-exp { padding-bottom: 56px; }
+  }
+  @media (min-width: 1200px) {
+    /* Same inner width and gap as the UGC video row, so the two card sets
+       are the same size. */
+    .sol-exp__head,
+    .sol-exp__track { max-width: 1059px; }
+    .sol-exp__track { gap: 24px; }
+  }
+{% endstyle %}
+
+<div class="sol-exp" id="EisExp-{{ section.id }}">
+  <div class="sol-exp__head">
+    {%- if section.settings.eyebrow != blank -%}
+      <div class="sol-exp__eyebrow">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{ section.settings.color_gold }}" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6 3v5a4 4 0 0 0 8 0V3"></path>
+          <path d="M4 3h3"></path>
+          <path d="M13 3h3"></path>
+          <path d="M10 12v3a5 5 0 0 0 10 0v-1.5"></path>
+          <circle cx="20" cy="10" r="2.2"></circle>
+        </svg>
+        <div class="sol-exp__tag">{{ section.settings.eyebrow }}</div>
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.heading != blank -%}
+      <h2 class="sol-exp__title">{{ section.settings.heading | newline_to_br }}</h2>
+    {%- endif -%}
+    {%- if section.settings.subheading != blank -%}
+      <p class="sol-exp__sub">{{ section.settings.subheading }}</p>
+    {%- endif -%}
+  </div>
+
+  {%- if expert_count > 0 -%}
+    <div class="sol-exp__track" data-sol-exp-track role="group" aria-label="{{ section.settings.heading | strip_newlines | escape }}">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'expert' -%}
+          <div class="sol-exp__card" {{ block.shopify_attributes }}>
+            <div class="sol-exp__frame" data-sol-exp-frame>
+              {%- if block.settings.poster != blank -%}
+                {{ block.settings.poster | image_url: width: 600 | image_tag: loading: 'lazy', alt: block.settings.name, widths: '200, 400, 600', sizes: '200px' }}
+              {%- endif -%}
+
+              {%- if block.settings.video != blank -%}
+                <button
+                  type="button"
+                  class="sol-exp__play"
+                  data-sol-exp-play
+                  aria-label="Play the clip from {{ block.settings.name | escape }}"
+                >&#9654;</button>
+                <template data-sol-exp-player>
+                  {{ block.settings.video | video_tag: controls: true, playsinline: true, autoplay: true }}
+                </template>
+              {%- elsif block.settings.video_url != blank -%}
+                <button
+                  type="button"
+                  class="sol-exp__play"
+                  data-sol-exp-play
+                  aria-label="Play the clip from {{ block.settings.name | escape }}"
+                >&#9654;</button>
+                {%- liquid
+                  assign embed = ''
+                  if block.settings.video_url.type == 'youtube'
+                    assign embed = 'https://www.youtube.com/embed/' | append: block.settings.video_url.id | append: '?autoplay=1&playsinline=1&rel=0'
+                  elsif block.settings.video_url.type == 'vimeo'
+                    assign embed = 'https://player.vimeo.com/video/' | append: block.settings.video_url.id | append: '?autoplay=1&playsinline=1'
+                  endif
+                -%}
+                <template data-sol-exp-player>
+                  <iframe
+                    src="{{ embed }}"
+                    title="{{ block.settings.name | escape }}"
+                    allow="autoplay; encrypted-media; picture-in-picture"
+                    allowfullscreen
+                    loading="lazy"
+                  ></iframe>
+                </template>
+              {%- else -%}
+                <span class="sol-exp__play" aria-hidden="true">&#9654;</span>
+              {%- endif -%}
+
+              {%- if block.settings.poster == blank and block.settings.placeholder_note != blank -%}
+                <span class="sol-exp__note">{{ block.settings.placeholder_note }}</span>
+              {%- endif -%}
+            </div>
+
+            <div class="sol-exp__meta">
+              {%- if block.settings.name != blank -%}
+                <div class="sol-exp__name">
+                  <span class="sol-exp__tick" aria-hidden="true">&#10004;</span>
+                  <b>{{ block.settings.name }}</b>
+                </div>
+              {%- endif -%}
+              {%- if block.settings.role != blank -%}
+                <div class="sol-exp__role">{{ block.settings.role }}</div>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.show_progress and expert_count > 1 -%}
+      <div class="sol-exp__bar">
+        <div class="sol-exp__bar-track">
+          <div class="sol-exp__bar-fill" data-sol-exp-bar></div>
+        </div>
+      </div>
+    {%- endif -%}
+  {%- endif -%}
+</div>
+
+<script>
+  (function () {
+    var root = document.getElementById('EisExp-{{ section.id }}');
+    if (!root) return;
+
+    /* ---- click to play ---- */
+    root.addEventListener('click', function (e) {
+      var btn = e.target.closest ? e.target.closest('[data-sol-exp-play]') : null;
+      if (!btn || !root.contains(btn)) return;
+      var frame = btn.closest('[data-sol-exp-frame]');
+      if (!frame) return;
+      var tpl = frame.querySelector('[data-sol-exp-player]');
+      if (!tpl) return;
+      /* Swap the poster for the player once, then let the player own the frame. */
+      frame.appendChild(tpl.content.cloneNode(true));
+      var poster = frame.querySelector('img');
+      if (poster) poster.style.display = 'none';
+      btn.remove();
+      tpl.remove();
+    });
+
+    /* ---- scroll-linked progress bar ---- */
+    var track = root.querySelector('[data-sol-exp-track]');
+    var bar = root.querySelector('[data-sol-exp-bar]');
+    if (!track || !bar) return;
+
+    var ticking = false;
+    function update() {
+      var max = track.scrollWidth - track.clientWidth;
+      var frac = track.scrollWidth > 0 ? track.clientWidth / track.scrollWidth : 1;
+      var pos = max > 0 ? track.scrollLeft / max : 0;
+      bar.style.width = (frac * 100).toFixed(1) + '%';
+      bar.style.marginLeft = (pos * (1 - frac) * 100).toFixed(1) + '%';
+      ticking = false;
+    }
+    track.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
+    }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "SOL — Experts recommend",
+  "tag": "section",
+  "class": "sol-section sol-section--experts",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow pill",
+      "default": "EXPERTS RECOMMENDED"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Doctors Recommend It.\nHere's Why.",
+      "info": "Line breaks are kept."
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 20,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 27
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Sub-heading",
+      "default": "Vaidyas and physiotherapists on why an oil base reaches deeper than a balm."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_progress",
+      "label": "Show the scroll progress bar",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "card_width",
+      "label": "Card width",
+      "min": 140,
+      "max": 280,
+      "step": 5,
+      "unit": "px",
+      "default": 200
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "Content width",
+      "min": 400,
+      "max": 720,
+      "step": 20,
+      "unit": "px",
+      "default": 480
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 22
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 26
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color",
+      "id": "color_maroon",
+      "label": "Maroon",
+      "default": "#2f6b2e"
+    },
+    {
+      "type": "color",
+      "id": "color_gold",
+      "label": "Gold",
+      "default": "#9cae01"
+    },
+    {
+      "type": "color",
+      "id": "color_cream",
+      "label": "Background",
+      "default": "#f3f7e4"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Text",
+      "default": "#17271b"
+    },
+    {
+      "type": "color",
+      "id": "color_muted",
+      "label": "Muted text",
+      "default": "#5a6b4e"
+    },
+    {
+      "type": "color",
+      "id": "color_tag_border",
+      "label": "Eyebrow border",
+      "default": "#d4e08a"
+    },
+    {
+      "type": "color",
+      "id": "color_bar_track",
+      "label": "Progress track",
+      "default": "#dde7c2"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "expert",
+      "name": "Expert clip",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "poster",
+          "label": "Poster image",
+          "info": "Portrait, 9:16. Shown until someone taps play."
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video",
+          "info": "A video uploaded to Shopify. Takes priority over the URL below."
+        },
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "label": "…or a YouTube / Vimeo URL",
+          "accept": ["youtube", "vimeo"]
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Dr. Meera Joshi"
+        },
+        {
+          "type": "text",
+          "id": "role",
+          "label": "Qualification",
+          "default": "Ayurvedic Physician, 18 yrs"
+        },
+        {
+          "type": "text",
+          "id": "placeholder_note",
+          "label": "Placeholder note",
+          "info": "Only shown while no poster image is set."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SOL — Experts recommend",
+      "blocks": [
+        {
+          "type": "expert",
+          "settings": {
+            "name": "Dr. Meera Joshi",
+            "role": "Ayurvedic Physician, 18 yrs",
+            "placeholder_note": "expert clip — oil vs balm"
+          }
+        },
+        {
+          "type": "expert",
+          "settings": {
+            "name": "Dr. Arjun Nair",
+            "role": "Physiotherapist, Kochi",
+            "placeholder_note": "expert clip — knee massage"
+          }
+        },
+        {
+          "type": "expert",
+          "settings": {
+            "name": "Vaidya Suresh Patel",
+            "role": "Panchakarma Specialist",
+            "placeholder_note": "expert clip — the 15 herbs"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

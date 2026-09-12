@@ -1,0 +1,649 @@
+{%- comment -%}
+  SOL — Reviews
+  ------------------------------------------------------------------
+  A horizontal row of tall review cards, each with its own photo, scrolled
+  by finger or by the bar underneath. Same scroller mechanics as the video
+  testimonials, so the two rows behave identically.
+
+  The quote is clamped to a set number of lines. Every card in a flex row
+  stretches to the tallest one, so without a clamp a single long review
+  would set the height of all six.
+
+  A block with no photo yet renders the design's striped placeholder, so the
+  layout is right before the real photos arrive.
+{%- endcomment -%}
+
+{% render 'sol-fonts' %}
+
+{% style %}
+  {% render 'sol-tokens', id: section.id, s: section.settings %}
+
+  .sol-rev {
+    background: {{ section.settings.color_background }};
+    font-family: var(--sol-sans);
+    color: var(--sol-ink);
+  }
+  .sol-rev__inner {
+    max-width: var(--sol-max);
+    margin: 0 auto;
+    padding: {{ section.settings.padding_top }}px 16px {{ section.settings.padding_bottom }}px;
+  }
+  .sol-rev__title {
+    font-family: var(--sol-serif);
+    font-size: {{ section.settings.heading_size }}px;
+    font-weight: 600;
+    color: var(--sol-maroon);
+    text-align: center;
+    margin: 0 0 12px;
+    line-height: 1.18;
+  }
+
+  /* Source lockup — says where these came from, once, above the row. */
+  .sol-rev__source {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4px 8px;
+    margin: 0 0 16px;
+    font-size: 12px;
+    color: var(--sol-muted);
+  }
+  .sol-rev__glogo { width: 17px; height: 17px; display: block; flex: none; }
+  .sol-rev__source-label { font-weight: 700; color: var(--sol-ink); }
+  .sol-rev__score { display: flex; align-items: center; gap: 5px; }
+  .sol-rev__score b { font-size: 13px; color: var(--sol-ink); }
+
+  .sol-rev__row {
+    display: flex;
+    align-items: stretch;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 2px;
+    /* the native bar is hidden because the section draws its own below */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .sol-rev__row::-webkit-scrollbar { display: none; }
+
+  .sol-rev__card {
+    flex: 0 0 calc((100% - ({{ section.settings.cards_in_view }} - 1) * 10px) / {{ section.settings.cards_in_view }});
+    min-width: 0;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    background: {{ section.settings.color_card }};
+    border: 1px solid {{ section.settings.color_border }};
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .sol-rev__media {
+    position: relative;
+    aspect-ratio: {{ section.settings.image_ratio }};
+    background: repeating-linear-gradient(135deg, #EDE1CE 0 8px, #F9F1E4 8px 16px);
+    flex: none;
+  }
+  .sol-rev__media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .sol-rev__hint {
+    position: absolute;
+    inset: auto 6px 8px;
+    font: 9px ui-monospace, monospace;
+    color: var(--sol-soft);
+    text-align: center;
+  }
+
+  .sol-rev__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    padding: 11px 12px 12px;
+  }
+  .sol-rev__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 7px;
+  }
+  .sol-rev__stars { display: flex; gap: 1px; line-height: 1; }
+  .sol-rev__stars i {
+    font-style: normal;
+    font-size: 12px;
+    color: {{ section.settings.color_stars }};
+  }
+  .sol-rev__quote {
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: {{ section.settings.color_quote }};
+    /* clamped so one long review cannot set the height of the whole row */
+    display: -webkit-box;
+    -webkit-line-clamp: {{ section.settings.quote_lines }};
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .sol-rev__by {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 11px;
+  }
+  .sol-rev__avatar {
+    width: 26px;
+    height: 26px;
+    border-radius: 999px;
+    flex: none;
+    overflow: hidden;
+    background: repeating-linear-gradient(135deg, #EDE1CE 0 5px, #F9F1E4 5px 10px);
+  }
+  .sol-rev__avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .sol-rev__name { font-size: 11.5px; font-weight: 700; line-height: 1.3; }
+  .sol-rev__meta { font-size: 10px; color: var(--sol-soft); line-height: 1.3; }
+
+  /* Scroll bar. Reflects position and is draggable; hidden by JS when
+     everything already fits, so it never appears as dead furniture. */
+  .sol-rev__bar {
+    position: relative;
+    height: 4px;
+    max-width: 180px;
+    margin: 16px auto 0;
+    border-radius: 99px;
+    background: #EDE1CE;
+    cursor: pointer;
+    touch-action: none;
+  }
+  .sol-rev__bar-thumb {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 99px;
+    background: var(--sol-maroon);
+    transition: left .08s linear, width .08s linear;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sol-rev__bar-thumb { transition: none; }
+  }
+
+  .sol-rev__more { text-align: center; margin-top: 16px; }
+  .sol-rev__more a {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    color: var(--sol-maroon);
+  }
+  .sol-rev__app { margin-top: 16px; }
+
+  @media (min-width: 750px) {
+    .sol-rev__title { font-size: {{ section.settings.heading_size | times: 125 | divided_by: 100 }}px; }
+    .sol-rev__quote { font-size: 13.5px; }
+  }
+
+  /* ---------- desktop & iPad ---------- */
+  @media (min-width: 750px) {
+    .sol-rev__inner { max-width: 976px; }
+    .sol-rev__title { font-size: 34px; }
+    .sol-rev__row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; overflow: visible; }
+    .sol-rev__card { flex: initial; width: auto; min-width: 0; scroll-snap-align: none; }
+    .sol-rev__bar { display: none; }
+  }
+  @media (min-width: 1200px) {
+    .sol-rev__inner { max-width: 1280px; }
+    .sol-rev__title { font-size: 42px; }
+    .sol-rev__row { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+  }
+{% endstyle %}
+
+{%- comment -%} Verified check mark, defined once and referenced per card. {%- endcomment -%}
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="EisGoogleG-{{ section.id }}" viewBox="0 0 48 48">
+    <circle cx="24" cy="24" r="22" fill="#4a8b2c"/>
+    <path fill="#ffffff" d="M21.3 32.4l-8-8 3.1-3.1 4.9 4.9 10.9-10.9 3.1 3.1z"/>
+  </symbol>
+</svg>
+
+<div class="sol-rev">
+  <div class="sol-rev__inner">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="sol-rev__title">{{ section.settings.heading | newline_to_br }}</h2>
+    {%- endif -%}
+
+    {%- if section.settings.show_source -%}
+      <div class="sol-rev__source">
+        <svg class="sol-rev__glogo" aria-hidden="true" focusable="false"><use href="#EisGoogleG-{{ section.id }}"></use></svg>
+        <span class="sol-rev__source-label">{{ section.settings.source_label }}</span>
+        {%- if section.settings.source_score != blank -%}
+          <span class="sol-rev__score">
+            <b>{{ section.settings.source_score }}</b>
+            <span class="sol-rev__stars" aria-hidden="true">
+              {%- for i in (1..5) -%}<i>★</i>{%- endfor -%}
+            </span>
+          </span>
+        {%- endif -%}
+        {%- if section.settings.source_count != blank -%}
+          <span>{{ section.settings.source_count }}</span>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="sol-rev__row" data-sol-scroller>
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'review' -%}
+          <article class="sol-rev__card" {{ block.shopify_attributes }}>
+            <div class="sol-rev__media">
+              {%- if block.settings.image != blank -%}
+                {{
+                  block.settings.image
+                  | image_url: width: 720
+                  | image_tag: widths: '240, 360, 480, 720', sizes: '65vw', loading: 'lazy', alt: ''
+                }}
+              {%- else -%}
+                <span class="sol-rev__hint">{{ block.settings.placeholder_note }}</span>
+              {%- endif -%}
+            </div>
+
+            <div class="sol-rev__body">
+              <div class="sol-rev__top">
+                <span class="sol-rev__stars" aria-label="{{ block.settings.stars }} out of 5">
+                  {%- for i in (1..block.settings.stars) -%}<i aria-hidden="true">★</i>{%- endfor -%}
+                </span>
+                <svg class="sol-rev__glogo" aria-hidden="true" focusable="false"><use href="#EisGoogleG-{{ section.id }}"></use></svg>
+              </div>
+
+              <p class="sol-rev__quote">{{ block.settings.quote }}</p>
+
+              <div class="sol-rev__by">
+                <span class="sol-rev__avatar">
+                  {%- if block.settings.avatar != blank -%}
+                    {{ block.settings.avatar | image_url: width: 80 | image_tag: widths: '52, 80', sizes: '26px', loading: 'lazy', alt: '' }}
+                  {%- endif -%}
+                </span>
+                <span>
+                  <span class="sol-rev__name">{{ block.settings.name }}</span>
+                  {%- if block.settings.meta != blank -%}
+                    <span class="sol-rev__meta" style="display:block">{{ block.settings.meta }}</span>
+                  {%- endif -%}
+                </span>
+              </div>
+            </div>
+          </article>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    <div
+      class="sol-rev__bar"
+      data-sol-bar
+      role="scrollbar"
+      aria-orientation="horizontal"
+      aria-label="Scroll reviews"
+      hidden
+    >
+      <div class="sol-rev__bar-thumb" data-sol-thumb></div>
+    </div>
+
+    {%- for block in section.blocks -%}
+      {%- if block.type == '@app' -%}
+        <div class="sol-rev__app" {{ block.shopify_attributes }}>{% render block %}</div>
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- if section.settings.more_text != blank and section.settings.more_link != blank -%}
+      <div class="sol-rev__more">
+        <a href="{{ section.settings.more_link }}">{{ section.settings.more_text }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<script>
+  (function () {
+    var root = document.getElementById('shopify-section-{{ section.id }}');
+    if (!root) return;
+
+    var scroller = root.querySelector('[data-sol-scroller]');
+    var bar = root.querySelector('[data-sol-bar]');
+    var thumb = root.querySelector('[data-sol-thumb]');
+    if (!scroller || !bar || !thumb) return;
+
+    var MIN_THUMB = 18; /* percent — keeps the thumb grabbable on long rows */
+
+    function sync() {
+      var max = scroller.scrollWidth - scroller.clientWidth;
+      if (max <= 1) { bar.hidden = true; return; }
+      bar.hidden = false;
+      var width = Math.max(MIN_THUMB, (scroller.clientWidth / scroller.scrollWidth) * 100);
+      thumb.style.width = width + '%';
+      thumb.style.left = (scroller.scrollLeft / max) * (100 - width) + '%';
+      bar.setAttribute('aria-valuenow', Math.round((scroller.scrollLeft / max) * 100));
+    }
+
+    function seek(clientX) {
+      var r = bar.getBoundingClientRect();
+      var p = Math.min(1, Math.max(0, (clientX - r.left) / r.width));
+      scroller.scrollLeft = p * (scroller.scrollWidth - scroller.clientWidth);
+    }
+
+    var dragging = false;
+    bar.addEventListener('pointerdown', function (e) {
+      dragging = true;
+      bar.setPointerCapture(e.pointerId);
+      seek(e.clientX);
+    });
+    bar.addEventListener('pointermove', function (e) { if (dragging) seek(e.clientX); });
+    bar.addEventListener('pointerup', function () { dragging = false; });
+    bar.addEventListener('pointercancel', function () { dragging = false; });
+
+    var autoplayTimer;
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    function stopAutoplay() {
+      if (autoplayTimer) window.clearInterval(autoplayTimer);
+      autoplayTimer = null;
+    }
+
+    function startAutoplay() {
+      stopAutoplay();
+      if (!window.matchMedia('(max-width: 749px)').matches || reducedMotion.matches) return;
+
+      autoplayTimer = window.setInterval(function () {
+        var cards = scroller.querySelectorAll('.sol-rev__card');
+        var max = scroller.scrollWidth - scroller.clientWidth;
+        if (!cards.length || max <= 1) return;
+
+        var step = cards[0].getBoundingClientRect().width + 10;
+        var next = scroller.scrollLeft >= max - 4 ? 0 : Math.min(max, scroller.scrollLeft + step);
+        scroller.scrollTo({ left: next, behavior: 'smooth' });
+      }, 3500);
+    }
+
+    scroller.addEventListener('scroll', sync, { passive: true });
+    scroller.addEventListener('pointerdown', stopAutoplay);
+    scroller.addEventListener('pointerup', startAutoplay);
+    scroller.addEventListener('pointercancel', startAutoplay);
+    window.addEventListener('resize', function () {
+      sync();
+      startAutoplay();
+    });
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) stopAutoplay();
+      else startAutoplay();
+    });
+    sync();
+    startAutoplay();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "SOL — Reviews",
+  "tag": "section",
+  "class": "sol-section sol-section--reviews",
+  "max_blocks": 24,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Line breaks are kept.",
+      "default": "See how our Oil Changed People's life"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "info": "Desktop steps up to 125%.",
+      "min": 20,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 27
+    },
+    {
+      "type": "header",
+      "content": "Google lockup"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_source",
+      "label": "Show the Google line above the row",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "source_label",
+      "label": "Source label",
+      "default": "Verified Google Reviews"
+    },
+    {
+      "type": "text",
+      "id": "source_score",
+      "label": "Score",
+      "info": "e.g. 4.9. Leave empty to hide the score and stars. Use the figure actually shown on your Google profile."
+    },
+    {
+      "type": "text",
+      "id": "source_count",
+      "label": "Count line",
+      "info": "e.g. from 128 reviews. Leave empty to hide."
+    },
+    {
+      "type": "header",
+      "content": "Cards"
+    },
+    {
+      "type": "range",
+      "id": "cards_in_view",
+      "label": "Cards in view",
+      "min": 1,
+      "max": 3.5,
+      "step": 0.1,
+      "default": 1.5,
+      "info": "Shopify allows one decimal place here. 1.5 shows one whole card plus half of the next, which is what tells people the row scrolls."
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Photo shape",
+      "options": [
+        { "value": "1 / 1", "label": "Square" },
+        { "value": "4 / 3", "label": "4:3 — shorter card" },
+        { "value": "4 / 5", "label": "4:5 — taller card" },
+        { "value": "3 / 4", "label": "3:4 — tallest card" }
+      ],
+      "default": "1 / 1"
+    },
+    {
+      "type": "range",
+      "id": "quote_lines",
+      "label": "Quote lines",
+      "info": "Every card stretches to the tallest, so the quote is clamped to this many lines to keep the row an even height. Anything past it is cut off — raise this rather than shortening a real review.",
+      "min": 3,
+      "max": 12,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "more_text",
+      "label": "Link text",
+      "default": "READ MORE REVIEWS"
+    },
+    {
+      "type": "url",
+      "id": "more_link",
+      "label": "Link",
+      "info": "Point this at your Google reviews page."
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "color_card",
+      "label": "Card",
+      "default": "#fcfef6"
+    },
+    {
+      "type": "color",
+      "id": "color_border",
+      "label": "Card border",
+      "default": "#EFE3D2"
+    },
+    {
+      "type": "color",
+      "id": "color_maroon",
+      "label": "Heading, link & scroll bar",
+      "default": "#2f6b2e"
+    },
+    {
+      "type": "color",
+      "id": "color_stars",
+      "label": "Stars",
+      "default": "#FBBC05"
+    },
+    {
+      "type": "color",
+      "id": "color_quote",
+      "label": "Quote",
+      "default": "#3B322C"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Names",
+      "default": "#17271b"
+    },
+    {
+      "type": "color",
+      "id": "color_muted",
+      "label": "Source line",
+      "default": "#5a6b4e"
+    },
+    {
+      "type": "color",
+      "id": "color_soft",
+      "label": "Dates",
+      "default": "#8A7A63"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "Content width",
+      "min": 400,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "default": 480
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo",
+          "info": "Sits at the top of the card."
+        },
+        {
+          "type": "text",
+          "id": "placeholder_note",
+          "label": "Placeholder note",
+          "info": "Shown in the photo area until a photo is chosen.",
+          "default": "review photo"
+        },
+        {
+          "type": "range",
+          "id": "stars",
+          "label": "Stars",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote"
+        },
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "Reviewer photo"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "text",
+          "id": "meta",
+          "label": "Meta line",
+          "info": "e.g. Google review · 2 weeks ago",
+          "default": "Google review"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SOL — Reviews",
+      "blocks": [
+        { "type": "review" },
+        { "type": "review" },
+        { "type": "review" },
+        { "type": "review" },
+        { "type": "review" },
+        { "type": "review" }
+      ]
+    }
+  ]
+}
+{% endschema %}

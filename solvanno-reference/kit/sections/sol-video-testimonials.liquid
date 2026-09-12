@@ -1,0 +1,517 @@
+{%- comment -%}
+  SOL — Video testimonials
+  ------------------------------------------------------------------
+  A row of 9:16 UGC clips. Nothing heavier than a poster image loads until
+  someone taps play — hosted videos use preload="none", YouTube/Vimeo use a
+  click-to-load facade so no third-party player script runs on page load.
+
+  A block with no video yet renders the design's striped placeholder, so the
+  layout is right before the real clips arrive.
+{%- endcomment -%}
+
+{% render 'sol-fonts' %}
+
+{% style %}
+  {% render 'sol-tokens', id: section.id, s: section.settings %}
+
+  .sol-ugc {
+    background: {{ section.settings.color_background }};
+    font-family: var(--sol-sans);
+  }
+  .sol-ugc__inner {
+    max-width: var(--sol-max);
+    margin: 0 auto;
+    padding: {{ section.settings.padding_top }}px 16px {{ section.settings.padding_bottom }}px;
+  }
+  .sol-ugc__title {
+    font-family: var(--sol-serif);
+    font-size: 27px;
+    font-weight: 600;
+    color: var(--sol-maroon);
+    text-align: center;
+    margin: 0 0 18px;
+    line-height: 1.2;
+  }
+  .sol-ugc__grid {
+    display: flex;
+    gap: 9px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 2px;
+    /* the native bar is hidden because the section draws its own below */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .sol-ugc__grid::-webkit-scrollbar { display: none; }
+  .sol-ugc__item {
+    flex: 0 0 calc((100% - ({{ section.settings.cards_in_view }} - 1) * 9px) / {{ section.settings.cards_in_view }});
+    min-width: 0;
+    scroll-snap-align: start;
+  }
+  .sol-ugc__frame {
+    position: relative;
+    aspect-ratio: {{ section.settings.card_ratio }};
+    border-radius: 11px;
+    overflow: hidden;
+    background: repeating-linear-gradient(135deg, #EDE1CE 0 8px, #F9F1E4 8px 16px);
+    width: 100%;
+    padding: 0;
+    border: 0;
+    display: block;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .sol-ugc__frame img,
+  .sol-ugc__frame video,
+  .sol-ugc__frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 0;
+    display: block;
+  }
+  .sol-ugc__hint {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 8px;
+    font: 9px ui-monospace, monospace;
+    color: var(--sol-soft);
+    text-align: center;
+    padding: 0 6px;
+  }
+  .sol-ugc__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    background: rgba(123, 19, 21, .9);
+    color: #FFF7E6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .sol-ugc__frame.is-playing .sol-ugc__play,
+  .sol-ugc__frame.is-playing .sol-ugc__hint { display: none; }
+  .sol-ugc__by { margin-top: 9px; text-align: center; }
+  .sol-ugc__name-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+  .sol-ugc__tick { color: var(--sol-green); font-size: 11px; line-height: 1; flex: none; }
+  .sol-ugc__name { font-size: 11.5px; font-weight: 700; color: var(--sol-ink); }
+  .sol-ugc__city { font-size: 10px; color: var(--sol-muted); line-height: 1.4; margin-top: 1px; }
+
+  /* Scroll bar. Reflects position and is draggable; hidden by JS when
+     everything already fits, so it never appears as dead furniture. */
+  .sol-ugc__bar {
+    position: relative;
+    height: 4px;
+    max-width: 180px;
+    margin: 16px auto 0;
+    border-radius: 99px;
+    background: #EDE1CE;
+    cursor: pointer;
+    touch-action: none;
+  }
+  .sol-ugc__bar-thumb {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 99px;
+    background: var(--sol-maroon);
+    transition: left .08s linear, width .08s linear;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sol-ugc__bar-thumb { transition: none; }
+  }
+
+  /* ---------- desktop & iPad ---------- */
+  /* The design shows the three clips side by side rather than as a scroller:
+     321px cards with 24px gaps on desktop, 314px with 16px on iPad, the row
+     centred. overflow stays auto so a fourth clip still scrolls. */
+  @media (min-width: 750px) {
+    .sol-ugc { background: {{ section.settings.color_background }}; }
+    .sol-ugc__inner { max-width: 976px; padding-left: 12px; padding-right: 12px; }
+    .sol-ugc__title { font-size: 34px; margin-bottom: 22px; }
+    .sol-ugc__grid { gap: 16px; justify-content: center; }
+    .sol-ugc__item { flex: 0 0 calc((100% - 32px) / 3); }
+    /* Nothing overflows at this size, so the custom scrollbar is noise. */
+    .sol-ugc__bar { display: none; }
+  }
+
+  @media (min-width: 1200px) {
+    .sol-ugc__inner { max-width: 1059px; }
+    .sol-ugc__title { font-size: 38px; }
+    .sol-ugc__grid { gap: 24px; }
+    .sol-ugc__item { flex: 0 0 calc((100% - 48px) / 3); }
+  }
+{% endstyle %}
+
+<div class="sol-ugc">
+  <div class="sol-ugc__inner">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="sol-ugc__title">{{ section.settings.heading | newline_to_br }}</h2>
+    {%- endif -%}
+
+    <div class="sol-ugc__grid" data-sol-scroller>
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign has_hosted = false
+          assign has_embed = false
+          assign has_direct = false
+          if block.settings.video != blank
+            assign has_hosted = true
+          elsif block.settings.mp4_url != blank
+            assign has_direct = true
+          elsif block.settings.video_url != blank
+            assign has_embed = true
+          endif
+        -%}
+        <div class="sol-ugc__item" {{ block.shopify_attributes }}>
+          {%- if has_hosted -%}
+            <div class="sol-ugc__frame is-playing">
+              <video controls preload="metadata" playsinline{% if block.settings.video.preview_image != blank %} poster="{{ block.settings.video.preview_image | image_url: width: 540 }}"{% endif %}>
+                {%- for src in block.settings.video.sources -%}
+                  <source src="{{ src.url }}" type="{{ src.mime_type }}">
+                {%- endfor -%}
+              </video>
+            </div>
+          {%- elsif has_direct -%}
+            <div class="sol-ugc__frame is-playing">
+              <video
+                controls
+                preload="metadata"
+                playsinline
+                {% if block.settings.poster_url != blank %}poster="{{ block.settings.poster_url | escape }}"{% endif %}
+              >
+                <source src="{{ block.settings.mp4_url | escape }}" type="video/mp4">
+              </video>
+            </div>
+          {%- elsif has_embed -%}
+            <button
+              type="button"
+              class="sol-ugc__frame"
+              data-sol-embed="{{ block.settings.video_url.id }}"
+              data-sol-type="{{ block.settings.video_url.type }}"
+              aria-label="Play video: {{ block.settings.name | escape }}"
+            >
+              {%- if block.settings.poster != blank -%}
+                {{ block.settings.poster | image_url: width: 540 | image_tag: widths: '180, 270, 360, 540', sizes: '33vw', loading: 'lazy', alt: '' }}
+              {%- endif -%}
+              <span class="sol-ugc__play" aria-hidden="true">▶</span>
+            </button>
+          {%- else -%}
+            <div class="sol-ugc__frame">
+              {%- if block.settings.poster != blank -%}
+                {{ block.settings.poster | image_url: width: 540 | image_tag: widths: '180, 270, 360, 540', sizes: '33vw', loading: 'lazy', alt: '' }}
+              {%- else -%}
+                <span class="sol-ugc__hint">{{ block.settings.placeholder_note }}</span>
+              {%- endif -%}
+              <span class="sol-ugc__play" aria-hidden="true">▶</span>
+            </div>
+          {%- endif -%}
+
+          {%- if block.settings.name != blank -%}
+            <div class="sol-ugc__by">
+              <div class="sol-ugc__name-row">
+                <span class="sol-ugc__tick" aria-hidden="true">&#10004;</span>
+                <span class="sol-ugc__name">{{ block.settings.name }}</span>
+              </div>
+              {%- if block.settings.city != blank -%}
+                <div class="sol-ugc__city">{{ block.settings.city }}</div>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+
+    <div
+      class="sol-ugc__bar"
+      data-sol-bar
+      role="scrollbar"
+      aria-orientation="horizontal"
+      aria-label="Scroll testimonials"
+      hidden
+    >
+      <div class="sol-ugc__bar-thumb" data-sol-thumb></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var root = document.getElementById('shopify-section-{{ section.id }}');
+    if (!root) return;
+    var buttons = root.querySelectorAll('[data-sol-embed]');
+
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].addEventListener('click', function () {
+        if (this.classList.contains('is-playing')) return;
+        var id = this.getAttribute('data-sol-embed');
+        var type = this.getAttribute('data-sol-type');
+        var src =
+          type === 'vimeo'
+            ? 'https://player.vimeo.com/video/' + id + '?autoplay=1'
+            : 'https://www.youtube.com/embed/' + id + '?autoplay=1&playsinline=1';
+
+        var frame = document.createElement('iframe');
+        frame.setAttribute('src', src);
+        frame.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture');
+        frame.setAttribute('allowfullscreen', '');
+        frame.setAttribute('title', this.getAttribute('aria-label') || 'Video');
+        this.appendChild(frame);
+        this.classList.add('is-playing');
+      });
+    }
+
+    /* ---- scroll bar ---- */
+    var scroller = root.querySelector('[data-sol-scroller]');
+    var bar = root.querySelector('[data-sol-bar]');
+    var thumb = root.querySelector('[data-sol-thumb]');
+    if (!scroller || !bar || !thumb) return;
+
+    var MIN_THUMB = 18; /* percent — keeps the thumb grabbable on long rows */
+
+    function sync() {
+      var max = scroller.scrollWidth - scroller.clientWidth;
+      if (max <= 1) { bar.hidden = true; return; }
+      bar.hidden = false;
+      var width = Math.max(MIN_THUMB, (scroller.clientWidth / scroller.scrollWidth) * 100);
+      thumb.style.width = width + '%';
+      thumb.style.left = (scroller.scrollLeft / max) * (100 - width) + '%';
+      bar.setAttribute('aria-valuenow', Math.round((scroller.scrollLeft / max) * 100));
+    }
+
+    function seek(clientX) {
+      var r = bar.getBoundingClientRect();
+      var p = Math.min(1, Math.max(0, (clientX - r.left) / r.width));
+      scroller.scrollLeft = p * (scroller.scrollWidth - scroller.clientWidth);
+    }
+
+    var dragging = false;
+    bar.addEventListener('pointerdown', function (e) {
+      dragging = true;
+      bar.setPointerCapture(e.pointerId);
+      seek(e.clientX);
+    });
+    bar.addEventListener('pointermove', function (e) { if (dragging) seek(e.clientX); });
+    bar.addEventListener('pointerup', function () { dragging = false; });
+    bar.addEventListener('pointercancel', function () { dragging = false; });
+
+    scroller.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync);
+    sync();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "SOL — Video testimonials",
+  "tag": "section",
+  "class": "sol-section sol-section--ugc",
+  "max_blocks": 9,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Line breaks are kept.",
+      "default": "Real People, Real Relief"
+    },
+    {
+      "type": "range",
+      "id": "cards_in_view",
+      "label": "Clips in view",
+      "min": 1.5,
+      "max": 3.5,
+      "step": 0.1,
+      "default": 2.2,
+      "info": "Shopify allows one decimal place here. 2.2 shows two whole clips plus a sliver of the next, which is what tells people the row scrolls."
+    },
+    {
+      "type": "select",
+      "id": "card_ratio",
+      "label": "Clip shape",
+      "options": [
+        { "value": "9 / 16", "label": "9:16 — matches phone video" },
+        { "value": "5 / 9", "label": "5:9 — taller" },
+        { "value": "1 / 2", "label": "1:2 — tallest" }
+      ],
+      "default": "9 / 16",
+      "info": "Taller than 9:16 crops the sides of the video."
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "color_maroon",
+      "label": "Heading",
+      "default": "#2f6b2e"
+    },
+    {
+      "type": "color",
+      "id": "color_muted",
+      "label": "City text",
+      "default": "#5a6b4e"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Name text",
+      "default": "#17271b"
+    },
+    {
+      "type": "color",
+      "id": "color_green",
+      "label": "Verified tick",
+      "default": "#1E7A4D"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "Content width",
+      "min": 400,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "default": 480
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 30
+    }
+  ],
+  "blocks": [
+    {
+      "type": "clip",
+      "name": "Video",
+      "settings": [
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video (uploaded to Shopify)",
+          "info": "Best option — served from Shopify's CDN and loads nothing until tapped."
+        },
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "label": "Or a YouTube / Vimeo link",
+          "accept": [
+            "youtube",
+            "vimeo"
+          ]
+        },
+        {
+          "type": "url",
+          "id": "mp4_url",
+          "label": "Or a direct MP4 link"
+        },
+        {
+          "type": "url",
+          "id": "poster_url",
+          "label": "Direct cover-image link"
+        },
+        {
+          "type": "image_picker",
+          "id": "poster",
+          "label": "Cover image",
+          "info": "Shown before the video plays. Portrait (9:16) works best."
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "info": "The actual person in the clip.",
+          "default": "Anita R."
+        },
+        {
+          "type": "text",
+          "id": "city",
+          "label": "City",
+          "default": "Nagpur"
+        },
+        {
+          "type": "text",
+          "id": "placeholder_note",
+          "label": "Placeholder note",
+          "info": "Shown in the empty tile until you add a video or cover image.",
+          "default": "UGC video"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SOL — Video testimonials",
+      "blocks": [
+        {
+          "type": "clip",
+          "settings": {
+            "name": "Anita R.",
+            "city": "Nagpur",
+            "placeholder_note": "UGC video — knee pain"
+          }
+        },
+        {
+          "type": "clip",
+          "settings": {
+            "name": "Vikram S.",
+            "city": "Jaipur",
+            "placeholder_note": "UGC video — back pain"
+          }
+        },
+        {
+          "type": "clip",
+          "settings": {
+            "name": "Dr. Meera N.",
+            "city": "Kochi",
+            "placeholder_note": "Vaidya / expert clip"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

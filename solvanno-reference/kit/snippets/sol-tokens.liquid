@@ -1,0 +1,26 @@
+{%- comment -%}
+  SOL — palette tokens.
+
+  Usage, inside a {% style %} block:
+    {% render 'sol-tokens', id: section.id, s: section.settings %}
+
+  Every token carries a fallback, so a section only needs to expose the colour
+  settings it actually uses and can still reference any token in its CSS.
+{%- endcomment -%}
+#shopify-section-{{ id }} {
+  --sol-maroon: {{ s.color_maroon | default: '#364811' }};
+  --sol-maroon-deep: {{ s.color_maroon_deep | default: '#24330f' }};
+  --sol-maroon-darkest: {{ s.color_maroon_darkest | default: '#191f12' }};
+  --sol-gold: {{ s.color_gold | default: '#9cae01' }};
+  --sol-gold-light: {{ s.color_gold_light | default: '#9cae01' }};
+  --sol-cream: {{ s.color_cream | default: '#f4f6e9' }};
+  --sol-cream-light: {{ s.color_cream_light | default: '#f0f4d6' }};
+  --sol-ink: {{ s.color_text | default: '#1e2413' }};
+  --sol-muted: {{ s.color_muted | default: '#545a48' }};
+  --sol-soft: {{ s.color_soft | default: '#8A7A63' }};
+  --sol-green: {{ s.color_green | default: '#4a8b2c' }};
+  --sol-line: {{ s.color_border | default: '#e3e6d6' }};
+  --sol-max: {{ s.content_width | default: 480 }}px;
+  --sol-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --sol-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
+}

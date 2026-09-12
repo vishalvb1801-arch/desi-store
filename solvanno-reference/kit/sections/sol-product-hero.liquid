@@ -1,0 +1,3350 @@
+{%- comment -%}
+  SOL — Product Hero
+  ------------------------------------------------------------------
+  Gallery + rating + title + benefit list + offer slot + trust strip,
+  plus the mobile sticky Add-to-Cart bar.
+
+  The offer ladder (1 / 3 / 5 bottles) is NOT hard-coded here. The section
+  exposes an app-block slot inside "Choose Your Supply" — add the MoonBundle
+  block there in the theme customizer and it owns offer selection + Add to Cart.
+  The native Add-to-Cart button below it is off by default and exists only as a
+  fallback for merchants who aren't running the app.
+{%- endcomment -%}
+
+{%- liquid
+  assign eis_product = section.settings.product | default: product
+  assign eis_variant = eis_product.selected_or_first_available_variant
+
+  comment
+    media, not images: images excludes video, and a silent looping MP4 is how
+    an animation belongs on a product page — the same clip as a GIF runs about
+    a tenth the bytes. Order follows whatever the merchant sets in Shopify.
+  endcomment
+  assign gallery_media = eis_product.media
+  if section.settings.featured_image != blank
+    assign hero_image = section.settings.featured_image
+  else
+    assign hero_image = eis_product.featured_image
+  endif
+  comment
+    The product carries no media yet, so the sticky bar's thumbnail would be
+    an empty black square. Fall back to the first gallery block.
+  endcomment
+  if hero_image == blank
+    for block in section.blocks
+      if block.type == 'gallery_image' and block.settings.image != blank
+        assign hero_image = block.settings.image
+        break
+      endif
+    endfor
+  endif
+  assign sticky_image = section.settings.sticky_image | default: hero_image
+
+  assign pill_count = 0
+  assign benefit_count = 0
+  assign badge_count = 0
+  assign gallery_block_count = 0
+  assign bfaq_count = 0
+  for block in section.blocks
+    case block.type
+      when 'feature_pill'
+        assign pill_count = pill_count | plus: 1
+      when 'benefit'
+        assign benefit_count = benefit_count | plus: 1
+      when 'payment_badge'
+        assign badge_count = badge_count | plus: 1
+      when 'gallery_image'
+        if block.settings.image != blank
+          assign gallery_block_count = gallery_block_count | plus: 1
+        endif
+      when 'buybox_faq'
+        assign bfaq_count = bfaq_count | plus: 1
+    endcase
+  endfor
+
+  comment
+    The gallery reads the product's own media first — that is what Shopify
+    uses everywhere else, so it has to win. Gallery-image blocks are the
+    fallback for a product whose media is not up yet; they disappear on
+    their own the moment real media exists.
+  endcomment
+  assign use_gallery_blocks = false
+  assign gallery_count = gallery_media.size
+  if gallery_count == 0 and gallery_block_count > 0
+    assign use_gallery_blocks = true
+    assign gallery_count = gallery_block_count
+  endif
+
+  assign has_compare_at = false
+  if eis_variant.compare_at_price > eis_variant.price
+    assign has_compare_at = true
+  endif
+
+  comment
+    Filters can't be chained inside an image_tag argument, so alt text and the
+    sizes hint are worked out up front.
+  endcomment
+  assign image_alt = eis_product.title
+  assign hero_alt = image_alt | escape
+  assign img_sizes ='(min-width: ' | append: section.settings.content_width | append: 'px) ' | append: section.settings.content_width | append: 'px, 100vw'
+-%}
+
+{% render 'sol-fonts' %}
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    --sol-maroon: {{ section.settings.color_maroon }};
+    --sol-maroon-deep: {{ section.settings.color_maroon_deep }};
+    --sol-gold: {{ section.settings.color_gold }};
+    --sol-cream: {{ section.settings.color_cream }};
+    --sol-ink: {{ section.settings.color_text }};
+    --sol-muted: {{ section.settings.color_muted }};
+    --sol-green: {{ section.settings.color_green }};
+    --sol-line: {{ section.settings.color_border }};
+    --sol-max: {{ section.settings.content_width }}px;
+    --sol-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --sol-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
+  }
+
+  .sol-hero {
+    max-width: var(--sol-max);
+    margin: 0 auto;
+    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_x }}px {{ section.settings.padding_bottom }}px;
+    background: #fff;
+    font-family: var(--sol-sans);
+    color: var(--sol-ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  .sol-hero *, .sol-sticky * { box-sizing: border-box; }
+  #shopify-section-{{ section.id }} { background: #fff; }
+
+  /* The two column wrappers exist only so desktop can flow the buy box
+     independently of the gallery. display:contents means they generate no
+     box, so on mobile the children lay out exactly as if the wrappers were
+     not there — that is what keeps the mobile fingerprint identical. */
+  .sol-hero__media,
+  .sol-hero__buy { display: contents; }
+
+
+  /* ---------- gallery ---------- */
+  .sol-hero__stage {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #dde7c2;
+  }
+  .sol-hero__slides { display: block; }
+  .sol-hero__slide { display: none; }
+  .sol-hero__slide[data-active] { display: block; }
+  .sol-hero__slide img,
+  .sol-hero__slide svg,
+  .sol-hero__slide video,
+  .sol-hero__slide iframe {
+    display: block;
+    width: 100%;
+    /* Square at every width, whatever the source image is. contain letterboxes
+       a non-square photo against the stage rather than cropping it, so a 4:5
+       or 16:9 upload still shows whole. */
+    aspect-ratio: 1 / 1;
+    height: auto;
+    object-fit: contain;
+    object-position: {{ section.settings.image_position }};
+  }
+  .sol-hero__pills {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .sol-hero__pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,.94);
+    border-radius: 999px;
+    padding: 6px 11px 6px 7px;
+    max-width: 172px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.25);
+  }
+  .sol-hero__pill-icon {
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    background: var(--sol-maroon);
+    color: #edf3d6;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+  }
+  .sol-hero__pill-text { font-size: 9.5px; line-height: 1.25; font-weight: 500; color: var(--sol-ink); }
+  .sol-hero__nav {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    display: flex;
+    gap: 8px;
+    z-index: 2;
+  }
+  .sol-hero__nav button {
+    width: 30px;
+    height: 30px;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(255,255,255,.9);
+    color: var(--sol-ink);
+    font-size: 13px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .sol-hero__thumbs {
+    display: flex;
+    gap: 7px;
+    margin-top: 9px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    /* no bar: the arrows on the main image drive this row, and a half-thumb
+       at the edge is what tells people it keeps going */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .sol-hero__thumbs::-webkit-scrollbar { display: none; }
+  .sol-hero__thumb {
+    flex: 0 0 calc((100% - ({{ section.settings.thumb_columns }} - 1) * 7px) / {{ section.settings.thumb_columns }});
+    scroll-snap-align: start;
+    aspect-ratio: 1;
+    border-radius: 8px;
+    border: 1px solid var(--sol-line);
+    overflow: hidden;
+    background: #150606;
+    padding: 0;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .sol-hero__thumb[aria-current="true"] { border: 2px solid var(--sol-maroon); }
+  .sol-hero__thumb { position: relative; }
+  /* Marks a thumbnail whose slide is a video. Drawn rather than an icon file
+     so it inherits the gallery's own colours and costs no extra request. */
+  .sol-hero__thumb-play {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgba(21, 6, 6, .62);
+    border: 1px solid rgba(246, 231, 200, .85);
+    pointer-events: none;
+  }
+  .sol-hero__thumb-play::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 0;
+    height: 0;
+    border-left: 7px solid #edf3d6;
+    border-top: 4.5px solid transparent;
+    border-bottom: 4.5px solid transparent;
+    transform: translateX(1px);
+  }
+  .sol-hero__thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
+
+  /* ---------- rating ---------- */
+  .sol-hero__rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: {{ section.settings.rating_gap }}px;
+    flex-wrap: wrap;
+    font-family: 'Manrope', var(--sol-sans);
+  }
+  .sol-stars { display: flex; gap: 2px; }
+  .sol-stars i {
+    font-style: normal;
+    font-size: {{ section.settings.rating_star_size }}px;
+    line-height: 1;
+    color: {{ section.settings.color_star }};
+    display: inline-block;
+    text-shadow: 0 0 8px {{ section.settings.color_star | color_modify: 'alpha', 0.7 }};
+    animation: eisStarPulse 2s ease-in-out infinite;
+  }
+  .sol-stars i:nth-child(1) { animation-delay: 0s; }
+  .sol-stars i:nth-child(2) { animation-delay: .15s; }
+  .sol-stars i:nth-child(3) { animation-delay: .3s; }
+  .sol-stars i:nth-child(4) { animation-delay: .45s; }
+  .sol-stars i:nth-child(5) { animation-delay: .6s; }
+  @keyframes eisStarPulse {
+    0%, 100% { transform: scale(1); filter: brightness(1); }
+    50% { transform: scale(1.2); filter: brightness(1.4); }
+  }
+  /* A pulsing row is decoration, not information — hold it still for anyone
+     who has asked the OS for less motion. */
+  @media (prefers-reduced-motion: reduce) {
+    .sol-stars i { animation: none; }
+  }
+  .sol-hero__rating-text {
+    font-size: {{ section.settings.rating_text_size }}px;
+    font-weight: 400;
+    color: {{ section.settings.color_rating_text }};
+    white-space: nowrap;
+  }
+  .sol-hero__rating-text strong { font-weight: 600; }
+  .sol-hero__rating-count { font-size: 12px; color: #8A7A63; width: 100%; }
+
+  /* Stars + text sit on one line down to 375px. Below that the row would wrap
+     and the copy would drop under the stars, so step both down instead. */
+  @media (max-width: 389px) {
+    .sol-hero__rating { gap: 6px; }
+    .sol-stars i { font-size: {{ section.settings.rating_star_size | times: 0.9 | round: 1 }}px; }
+    .sol-hero__rating-text { font-size: {{ section.settings.rating_text_size | times: 0.94 | round: 1 }}px; }
+  }
+  @media (max-width: 339px) {
+    .sol-hero__rating { gap: 5px; }
+    .sol-stars i { font-size: {{ section.settings.rating_star_size | times: 0.78 | round: 1 }}px; }
+    .sol-hero__rating-text { font-size: {{ section.settings.rating_text_size | times: 0.84 | round: 1 }}px; }
+  }
+
+  /* The review card lower down reuses .sol-stars; keep those small, still and
+     green rather than inheriting the hero row's gold pulse. */
+  .sol-hero__review .sol-stars i {
+    width: 15px;
+    height: 15px;
+    font-size: 10px;
+    color: #fff;
+    background: var(--sol-green);
+    text-shadow: none;
+    animation: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ---------- copy ---------- */
+  .sol-hero__title {
+    font-family: var(--sol-serif);
+    font-size: 31px;
+    line-height: 1.12;
+    font-weight: 600;
+    color: #2c4a2a;
+    text-align: center;
+    margin: {{ section.settings.title_gap }}px 0 12px;
+  }
+  .sol-hero__subtitle { font-size: 14px; line-height: 1.5; color: var(--sol-muted); margin: {{ section.settings.subtitle_gap }}px 0 0; }
+
+  /* ---------- doctors' choice badge ---------- */
+  .sol-docs { display: flex; justify-content: center; width: 100%; padding: 6px 0; margin-top: {{ section.settings.doctors_gap }}px; }
+  .sol-docs__pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: {{ section.settings.doctors_bg }};
+    border: 1.5px solid {{ section.settings.doctors_border }};
+    border-radius: 50px;
+    padding: 5px 14px 5px 6px;
+    font-family: 'Manrope', var(--sol-sans);
+    max-width: 100%;
+  }
+  .sol-docs__avatars { display: flex; align-items: center; flex-shrink: 0; }
+  .sol-docs__avatars img {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    border: 2px solid #fff;
+    margin-left: -8px;
+    display: block;
+  }
+  .sol-docs__avatars img:first-child { margin-left: 0; }
+  .sol-docs__text { display: flex; flex-direction: column; align-items: flex-start; gap: 1px; white-space: nowrap; }
+  .sol-docs__stars { display: inline-flex; align-items: center; gap: 1px; margin-left: 38px; }
+  .sol-docs__stars span { color: #F5A623; font-size: 11px; line-height: 1; }
+  .sol-docs__row { display: flex; align-items: center; gap: 6px; }
+  .sol-docs__count { font-size: 13px; font-weight: 700; color: {{ section.settings.doctors_ink }}; }
+  .sol-docs__label { font-size: 13px; font-weight: 500; color: {{ section.settings.doctors_label_ink }}; }
+  .sol-docs__verified {
+    font-size: 10px;
+    background: {{ section.settings.doctors_ink }};
+    color: #fff;
+    border-radius: 50px;
+    padding: 2px 7px;
+    font-weight: 600;
+    letter-spacing: .3px;
+  }
+  /* The pill is one unbreakable line; below ~360px it would push past the
+     gutter, so shrink it rather than let it overflow. */
+  @media (max-width: 359px) {
+    .sol-docs__pill { gap: 8px; padding: 4px 11px 4px 5px; }
+    .sol-docs__avatars img { width: 30px; height: 30px; }
+    .sol-docs__stars { margin-left: 32px; }
+    .sol-docs__count, .sol-docs__label { font-size: 12px; }
+  }
+
+  .sol-hero__benefits {
+    background: var(--sol-cream);
+    border: 1px solid #EFE0C9;
+    border-radius: 12px;
+    padding: 16px;
+    /* Without the bottom margin the cream edge butted straight into the
+       offer ladder the bundle app injects below. 24px at every width: the
+       same value the offers heading already uses, and enough to survive
+       collapsing against the button's own 14px top margin, which a 16px
+       bottom margin would not have. */
+    margin: 16px 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .sol-hero__benefit { display: flex; gap: 11px; align-items: flex-start; }
+  .sol-hero__check {
+    width: 19px;
+    height: 19px;
+    border-radius: 999px;
+    background: var(--sol-green);
+    color: #fff;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    margin-top: 1px;
+  }
+  .sol-hero__benefit-text { font-size: 13px; line-height: 1.45; }
+  .sol-hero__benefit-text span { color: var(--sol-muted); }
+
+  /* ---------- price + offers ---------- */
+  .sol-hero__price { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+  .sol-hero__price-now { font-size: 26px; font-weight: 700; color: var(--sol-maroon); font-family: var(--sol-serif); }
+  .sol-hero__price-was { font-size: 14px; color: #A79684; text-decoration: line-through; }
+  .sol-hero__price-save {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    color: #14260f;
+    background: var(--sol-gold);
+    border-radius: 4px;
+    padding: 3px 8px;
+  }
+  .sol-hero__price-unit { font-size: 11.5px; color: #8A7A63; width: 100%; }
+
+  .sol-hero__offers-title {
+    font-family: var(--sol-serif);
+    font-size: 21px;
+    font-weight: 600;
+    color: var(--sol-ink);
+    margin: 24px 0 12px;
+  }
+  .sol-hero__app-block + .sol-hero__app-block { margin-top: 12px; }
+  .sol-hero__slot-empty {
+    border: 1px dashed var(--sol-gold);
+    border-radius: 11px;
+    background: #FDF9F1;
+    padding: 18px 16px;
+    text-align: center;
+  }
+  .sol-hero__slot-empty b { display: block; font-size: 13px; margin-bottom: 6px; color: var(--sol-maroon); }
+  .sol-hero__slot-empty span { font-size: 11.5px; line-height: 1.5; color: var(--sol-muted); }
+
+  /* ---------- stock + cart ---------- */
+  .sol-hero__stock {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 16px;
+    font-size: 11.5px;
+    font-weight: 500;
+    color: var(--sol-ink);
+  }
+  .sol-dot { color: var(--sol-green); font-size: 14px; line-height: 1; }
+  @media (prefers-reduced-motion: no-preference) {
+    .sol-dot--pulse { animation: eisPulse 2s infinite; }
+  }
+  @keyframes eisPulse { 0%, 100% { opacity: 1 } 50% { opacity: .35 } }
+  .sol-hero__stock--out .sol-dot { color: #B0413A; }
+
+  .sol-btn {
+    display: block;
+    width: 100%;
+    border: 0;
+    background: #b7ce2e;
+    color: #2c4a2a;
+    font-family: var(--sol-sans);
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-align: center;
+    padding: 19px;
+    border-radius: 10px;
+    margin-top: 14px;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(123,19,21,.28);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .sol-btn:hover { background: #b7ce2e; }
+  .sol-btn[disabled] { background: #c43d2e; box-shadow: none; cursor: not-allowed; }
+
+  /* ---------- social proof row ---------- */
+  /* .sol-sp is already taken by the sol-social-proof section, whose styles
+     are page-wide — hence the sol-hsp prefix and the explicit background. */
+  .sol-hsp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: {{ section.settings.sp_gap }}px;
+    /* No bottom padding: the space under this row is the title's title_gap,
+       so one setting controls the gap instead of two stacked values. */
+    padding: 0;
+    background: transparent;
+    font-family: 'Manrope', var(--sol-sans);
+  }
+  .sol-hsp__row { display: flex; justify-content: center; align-items: center; gap: 12px; flex-wrap: nowrap; width: 100%; max-width: 100%; }
+  .sol-hsp__avatars { display: flex; align-items: center; flex-shrink: 0; }
+  .sol-hsp__avatars img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2.5px solid {{ section.settings.sp_accent }};
+    object-fit: cover;
+    margin-left: -10px;
+    display: block;
+    transition: transform .3s ease;
+  }
+  .sol-hsp__avatars img:first-child { margin-left: 0; }
+  .sol-hsp__avatars img:hover { transform: scale(1.1); z-index: 10; position: relative; }
+  .sol-hsp__text { display: flex; align-items: center; gap: 6px; row-gap: 2px; font-size: 17px; font-weight: 600; color: #333; flex-wrap: wrap; white-space: nowrap; }
+  .sol-hsp__count { font-weight: 800; color: {{ section.settings.sp_accent }}; font-size: 18px; font-variant-numeric: tabular-nums; }
+  .sol-hsp__dot { color: #ccc; font-size: 16px; margin: 0 2px; }
+  .sol-hsp__stars { display: inline-flex; align-items: center; gap: 1px; }
+  .sol-hsp__stars span { color: {{ section.settings.sp_accent }}; font-size: 18px; line-height: 1; }
+  .sol-hsp__rating { font-weight: 700; color: #333; font-size: 17px; margin-left: 3px; }
+  .sol-hsp__score { display: inline-flex; align-items: center; gap: 3px; flex-basis: 100%; }
+  /* The pasted design is one unbroken line, which needs ~505px of column.
+     The buy box is capped at 480px, so that line can never fit at any
+     viewport — the stars and rating always take their own row, and the
+     separator dot that divided them goes away with it. */
+  .sol-hsp__dot { display: none; }
+  @media (max-width: 429px) {
+    .sol-hsp__row { gap: 9px; }
+    .sol-hsp__avatars img { width: 38px; height: 38px; border-width: 2px; margin-left: -9px; }
+    .sol-hsp__text { font-size: 14px; gap: 4px; }
+    .sol-hsp__count { font-size: 15px; }
+    .sol-hsp__stars span { font-size: 14px; }
+    .sol-hsp__rating { font-size: 14px; }
+  }
+  @media (max-width: 359px) {
+    .sol-hsp__avatars img { width: 33px; height: 33px; margin-left: -8px; }
+    .sol-hsp__text { font-size: 12.5px; }
+    .sol-hsp__count { font-size: 13.5px; }
+    .sol-hsp__stars span { font-size: 12.5px; }
+    .sol-hsp__rating { font-size: 12.5px; }
+  }
+
+  /* ---------- payment methods ---------- */
+  .sol-pm { margin-top: 6px; }
+  .sol-pm__row { display: flex; align-items: center; justify-content: space-between; gap: 3px; }
+  .sol-pm__tile {
+    flex: 1 1 0;
+    min-width: 0;
+    aspect-ratio: 3 / 2;
+    border: 1px solid var(--sol-line);
+    border-radius: 5px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    overflow: hidden;
+  }
+  .sol-pm__tile svg, .sol-pm__tile img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .sol-pm__note { font-size: 11px; color: var(--sol-muted); text-align: center; margin: 7px 0 0; }
+
+  /* ---------- low stock + delivery ---------- */
+  /* ---------- Cashfree money-back promise ---------- */
+  /* sol-mbp prefix: section styles are page-wide, so the class names have to
+     be unique across every section on the template, not just this one. */
+  .sol-mbp { margin-top: 14px; }
+  .sol-mbp__banner {
+    background: linear-gradient(135deg, #E8E0F4 0%, #DDD3F0 100%);
+    border-radius: 12px;
+    padding: 16px 18px;
+    position: relative;
+  }
+  .sol-mbp__badge {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    background: #C9B8E8;
+    color: #2D1A6E;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .sol-mbp__header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .sol-mbp__logo {
+    width: 36px;
+    height: 36px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .1);
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+  .sol-mbp__logo svg { width: 22px; height: 22px; }
+  .sol-mbp__brand { font-size: 15px; font-weight: 700; color: #2D1A6E; margin: 0 0 1px; }
+  .sol-mbp__promise { font-size: 20px; font-weight: 700; color: #1A0E45; line-height: 1.2; margin: 0; }
+  .sol-mbp__verified {
+    font-size: 12px;
+    color: #2D1A6E;
+    margin: 4px 0 0;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .sol-mbp__tick {
+    width: 14px;
+    height: 14px;
+    background: #6C3FC4;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .sol-mbp__tick svg { width: 9px; height: 9px; fill: none; stroke: #fff; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+  .sol-mbp__refund {
+    background: #F0EAF8;
+    border-radius: 10px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #C9B8E8;
+  }
+  .sol-mbp__refund-icon {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #6C3FC4 0%, #5A2DAF 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .sol-mbp__refund-icon svg { width: 18px; height: 18px; fill: none; stroke: #fff; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+  .sol-mbp__refund-text { color: #2D1A6E; font-size: 13px; font-weight: 500; }
+  .sol-mbp__refund-text p { margin: 0; }
+  /* Shopify's richtext editor rewrites <b> as <strong>, so match both. */
+  .sol-mbp__refund-text b,
+  .sol-mbp__refund-text strong { color: #6C3FC4; font-weight: 700; }
+  @media (max-width: 640px) {
+    .sol-mbp__banner { border-radius: 10px; padding: 12px 14px; }
+    .sol-mbp__badge { top: 10px; right: 12px; padding: 3px 10px; font-size: 10px; border-radius: 10px; }
+    .sol-mbp__header { gap: 8px; margin-bottom: 10px; }
+    .sol-mbp__logo { width: 30px; height: 30px; }
+    .sol-mbp__logo svg { width: 18px; height: 18px; }
+    .sol-mbp__brand { font-size: 12px; }
+    .sol-mbp__promise { font-size: 15px; }
+    .sol-mbp__verified { font-size: 9px; margin-top: 2px; gap: 3px; white-space: nowrap; }
+    .sol-mbp__tick { width: 11px; height: 11px; }
+    .sol-mbp__tick svg { width: 6px; height: 6px; }
+    .sol-mbp__refund { border-radius: 8px; padding: 9px 11px; gap: 8px; }
+    .sol-mbp__refund-icon { width: 26px; height: 26px; }
+    .sol-mbp__refund-icon svg { width: 14px; height: 14px; }
+    .sol-mbp__refund-text { font-size: 10px; line-height: 1.3; }
+  }
+
+  .sol-stockbar { margin-top: 16px; }
+  .sol-stockbar__head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 6px; }
+  .sol-stockbar__label { font-size: 13px; font-weight: 700; color: #A11B1B; }
+  .sol-stockbar__pct { font-size: 11.5px; color: var(--sol-muted); }
+  .sol-stockbar__track { height: 9px; border-radius: 999px; background: #F0E4E4; overflow: hidden; }
+  .sol-stockbar__fill {
+    height: 100%;
+    width: {{ section.settings.stock_percent }}%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #D63232, #A11B1B);
+    animation: eisStockPulse 2.2s ease-in-out infinite;
+  }
+  @keyframes eisStockPulse { 0%, 100% { opacity: 1; } 50% { opacity: .62; } }
+  @media (prefers-reduced-motion: reduce) { .sol-stockbar__fill { animation: none; } }
+  .sol-deliv {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 11px;
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--sol-ink);
+  }
+  .sol-deliv__icon {
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    background: var(--sol-green);
+    color: #fff;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+  }
+  .sol-deliv b { font-weight: 700; }
+  .sol-deliv__note { display: block; font-size: 12px; color: var(--sol-muted); margin-top: 1px; }
+
+  /* ---------- counterfeit warning ---------- */
+  .sol-warn {
+    background: #FDF2F2;
+    border: 2px dashed #D37373;
+    padding: 16px;
+    border-radius: 4px;
+    margin: 15px 0 0;
+    font-family: var(--sol-sans);
+  }
+  .sol-warn__head {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    color: #A94442;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: .5px;
+  }
+  .sol-warn__icon {
+    background: #A94442;
+    color: #fff;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+    font-size: 12px;
+    flex: none;
+  }
+  .sol-warn__body p { margin: 0 0 8px; font-size: 14px; line-height: 1.5; color: #834040; }
+  .sol-warn__body p:last-child { margin-bottom: 0; }
+  .sol-warn__body strong { color: #A94442; }
+  .sol-warn__body a { color: #834040; text-decoration: underline; font-weight: 500; }
+
+  /* ---------- buy-box FAQ ---------- */
+  /* Full-bleed cream: pull back out through the hero's side padding so the
+     background runs the width of the buy box, then put the padding back on
+     so the cards still line up with everything above them. */
+  .sol-bfaq {
+    margin: 16px -{{ section.settings.padding_x }}px 0;
+    padding: 16px {{ section.settings.padding_x }}px 0;
+    background: var(--sol-cream);
+    border: 0;
+    border-radius: 0;
+  }
+  .sol-bfaq__title {
+    font-family: var(--sol-serif);
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--sol-maroon);
+    margin: 2px 0 12px;
+    text-align: center;
+  }
+  .sol-bfaq__item {
+    background: #fff;
+    border: 1px solid #EFE0C9;
+    border-radius: 11px;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  .sol-bfaq__item:last-child { margin-bottom: 0; }
+  .sol-bfaq__item summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 15px;
+    cursor: pointer;
+    list-style: none;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--sol-ink);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .sol-bfaq__item summary::-webkit-details-marker { display: none; }
+  .sol-bfaq__sign {
+    flex: none;
+    width: 18px;
+    text-align: center;
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--sol-maroon);
+  }
+  .sol-bfaq__sign::after { content: '+'; }
+  .sol-bfaq__item[open] .sol-bfaq__sign::after { content: '\00D7'; }
+  .sol-bfaq__answer { padding: 0 15px 14px; }
+  .sol-bfaq__answer p { margin: 0 0 8px; font-size: 13.5px; line-height: 1.55; color: var(--sol-muted); }
+  .sol-bfaq__answer p:last-child { margin-bottom: 0; }
+  @media (max-width: 359px) {
+    .sol-bfaq__item summary { padding: 12px 12px; font-size: 14px; }
+    .sol-bfaq__answer { padding: 0 12px 12px; }
+  }
+
+  .sol-pay { display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; margin-top: 14px; }
+  .sol-pay span {
+    border: 1px solid var(--sol-line);
+    border-radius: 4px;
+    padding: 4px 7px;
+    font-size: 8px;
+    font-weight: 700;
+    color: var(--sol-muted);
+    letter-spacing: .04em;
+  }
+  .sol-pay span.is-highlight { border-color: var(--sol-green); color: var(--sol-green); }
+  .sol-hero__cod {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 10px;
+    font-size: 11.5px;
+    font-weight: 500;
+    color: var(--sol-green);
+  }
+
+  .sol-hero__guarantee {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    border: 1px solid #EFE0C9;
+    border-radius: 10px;
+    padding: 13px;
+    margin-top: 14px;
+    background: var(--sol-cream);
+  }
+  .sol-hero__guarantee-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 999px;
+    background: var(--sol-gold);
+    color: #14260f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex: none;
+  }
+  .sol-hero__guarantee b { font-size: 12.5px; display: block; }
+  .sol-hero__guarantee a { font-size: 11px; color: var(--sol-maroon); }
+
+  /* ---------- hero review ---------- */
+  .sol-hero__review { border: 1px solid #EFE3D2; border-radius: 11px; padding: 14px; margin-top: 14px; }
+  .sol-hero__review .sol-stars { margin-bottom: 9px; }
+  .sol-hero__review-quote { font-size: 13px; line-height: 1.5; color: #3B322C; }
+  .sol-hero__review-by { display: flex; align-items: center; gap: 9px; margin-top: 11px; }
+  .sol-hero__avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    flex: none;
+    overflow: hidden;
+    background: repeating-linear-gradient(135deg, #EDE1CE 0 5px, #F9F1E4 5px 10px);
+  }
+  .sol-hero__avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .sol-hero__review-name-row { display: flex; align-items: center; gap: 5px; }
+  .sol-hero__review-name { font-size: 12px; font-weight: 700; }
+  .sol-hero__google { width: 14px; height: 14px; flex: none; display: block; }
+  .sol-hero__review-meta { font-size: 10.5px; color: var(--sol-green); }
+
+  /* ---------- sticky bar ---------- */
+  .sol-sticky {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 40;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+  }
+  .sol-sticky__inner {
+    width: 100%;
+    max-width: var(--sol-max);
+    background: rgba(255,255,255,.98);
+    border-top: 1px solid #EFE0C9;
+    padding: 11px 14px;
+    padding-bottom: calc(11px + env(safe-area-inset-bottom));
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    box-shadow: 0 -8px 22px rgba(59,14,15,.1);
+    pointer-events: auto;
+    transform: translateY(120%);
+    transition: transform .25s ease;
+    font-family: var(--sol-sans);
+  }
+  @media (prefers-reduced-motion: reduce) { .sol-sticky__inner { transition: none; } }
+  .sol-sticky.is-visible .sol-sticky__inner { transform: translateY(0); }
+  .sol-sticky__row { display: contents; }
+  /* The thumbnail costs 57px that the title and rating need. Above 390px
+     there is room for both; below it the copy wins. */
+  @media (max-width: 389px) {
+    .sol-sticky__thumb {
+      display: block;
+      width: 40px;
+      height: 40px;
+    }
+  }
+  .sol-sticky__thumb {
+    width: 46px;
+    height: 46px;
+    border-radius: 9px;
+    overflow: hidden;
+    background: #150606;
+    flex: none;
+    align-self: center;
+  }
+  .sol-sticky__thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .sol-sticky__copy { flex: 1; min-width: 0; }
+  .sol-sticky__name {
+    font-size: 13.5px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--sol-ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .sol-sticky__price { font-size: 11px; color: #8A7A63; }
+  .sol-sticky__price s { color: #B7A692; }
+  .sol-sticky__rating {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    margin-top: 1px;
+    min-width: 0;
+  }
+  .sol-sticky__rating i {
+    font-style: normal;
+    font-size: 10px;
+    line-height: 1;
+    color: {{ section.settings.color_star }};
+    letter-spacing: 0;
+    flex: none;
+  }
+  .sol-sticky__rating span {
+    font-size: 10px;
+    line-height: 1.25;
+    color: #6A5B4D;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* a flex item won't shrink past its own text without this, and would
+       run out under the button instead of ellipsising */
+    min-width: 0;
+  }
+  @media (max-width: 389px) {
+    .sol-sticky__rating i { font-size: 9px; }
+    .sol-sticky__rating span { font-size: 9.5px; }
+  }
+  .sol-sticky__btn {
+    position: relative;
+    overflow: hidden;
+    background: #b7ce2e;
+    color: #2c4a2a;
+    border: 0;
+    font-family: var(--sol-sans);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .07em;
+    padding: 15px 16px;
+    border-radius: 9px;
+    cursor: pointer;
+    flex: none;
+    align-self: center;
+    white-space: nowrap;
+    animation: eisCtaPulse 2.6s ease-in-out infinite;
+    transition: background .2s ease, transform .2s cubic-bezier(.34,1.56,.64,1);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .sol-sticky__btn:hover { background: #b7ce2e; }
+  .sol-sticky__btn:active { transform: scale(.96); }
+  .sol-sticky__btn[disabled] { background: #c43d2e; cursor: not-allowed; animation: none; }
+  .sol-sticky__sheen {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 40%;
+    background: linear-gradient(90deg, rgba(255,247,230,0), rgba(255,247,230,.28), rgba(255,247,230,0));
+    animation: eisCtaSheen 3.4s ease-in-out infinite;
+    pointer-events: none;
+  }
+  .sol-sticky__btn span:not(.sol-sticky__sheen) { position: relative; }
+  @keyframes eisCtaPulse {
+    0%, 100% { box-shadow: 0 5px 14px rgba(123,19,21,.30), 0 0 0 0 rgba(201,162,74,0); }
+    50% { box-shadow: 0 7px 20px rgba(123,19,21,.38), 0 0 0 5px rgba(201,162,74,.22); }
+  }
+  @keyframes eisCtaSheen {
+    0% { transform: translateX(-130%) skewX(-18deg); }
+    55% { transform: translateX(240%) skewX(-18deg); }
+    100% { transform: translateX(240%) skewX(-18deg); }
+  }
+  /* The pulse and sheen are decoration; hold them still on request. */
+  @media (prefers-reduced-motion: reduce) {
+    .sol-sticky__btn { animation: none; transition: none; }
+    .sol-sticky__sheen { animation: none; opacity: 0; }
+  }
+  {%- if section.settings.sticky_on_desktop %}
+  /* Desktop drops the thumbnail and lets the title carry the bar. */
+  @media (min-width: 750px) {
+    .sol-sticky__inner { max-width: 1240px; padding: 14px 28px; gap: 22px; }
+    .sol-sticky__inner .sol-sticky__thumb { width: 54px; height: 54px; border-radius: 10px; }
+    .sol-sticky__name { font-family: var(--sol-serif); font-size: 19px; font-weight: 600; line-height: 1.2; color: var(--sol-maroon); }
+    .sol-sticky__rating i { font-size: 12px; }
+    .sol-sticky__rating span { font-size: 12px; }
+    .sol-sticky__btn { font-size: 15px; letter-spacing: .13em; padding: 19px 42px; border-radius: 10px; }
+    .sol-sticky__btn:hover { transform: translateY(-2px) scale(1.02); }
+    .sol-sticky__btn:active { transform: translateY(0) scale(.98); }
+  }
+  {%- else %}
+  @media (min-width: 750px) { .sol-sticky { display: none; } }
+  {%- endif %}
+
+  /* ---------- larger screens: same layout, a touch more air ---------- */
+  @media (min-width: 560px) {
+    .sol-hero__title { font-size: 34px; }
+    .sol-hero__subtitle { font-size: 15px; }
+    .sol-hero__benefit-text { font-size: 13.5px; }
+  }
+
+  {% render 'sol-hero-desktop' %}
+{% endstyle %}
+
+<div class="sol-hero" id="EisHero-{{ section.id }}" data-sol-hero>
+  {%- if eis_product == blank -%}
+    <div class="sol-hero__slot-empty">
+      <b>No product selected</b>
+      <span>Open this section in the theme customizer and pick a product, or add the section to a product template.</span>
+    </div>
+  {%- else -%}
+
+    {%- comment -%} ---------- gallery ---------- {%- endcomment -%}
+    <div class="sol-hero__media">
+    <div class="sol-hero__stage">
+      {%- if pill_count > 0 -%}
+        <div class="sol-hero__pills">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'feature_pill' -%}
+              <div class="sol-hero__pill" {{ block.shopify_attributes }}>
+                <div class="sol-hero__pill-icon" aria-hidden="true">{{ block.settings.icon }}</div>
+                <div class="sol-hero__pill-text">{{ block.settings.text }}</div>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      <div class="sol-hero__slides" data-sol-slides>
+        {%- if use_gallery_blocks -%}
+          {%- assign slide_i = 0 -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'gallery_image' and block.settings.image != blank -%}
+              <div class="sol-hero__slide" data-sol-slide="{{ slide_i }}" {% if slide_i == 0 %}data-active{% endif %} {{ block.shopify_attributes }}>
+                {{
+                  block.settings.image
+                  | image_url: width: 1080
+                  | image_tag:
+                    widths: '360, 480, 720, 900, 1080',
+                    sizes: img_sizes,
+                    loading: 'lazy',
+                    alt: hero_alt
+                }}
+              </div>
+              {%- assign slide_i = slide_i | plus: 1 -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- elsif gallery_media.size > 0 -%}
+          {%- for media in gallery_media -%}
+            {%- liquid
+              # only the first frame is part of the initial paint
+              if forloop.first
+                assign img_loading = 'eager'
+                assign img_priority = 'high'
+              else
+                assign img_loading = 'lazy'
+                assign img_priority = 'auto'
+              endif
+              assign slide_alt = media.alt | default: image_alt | escape
+            -%}
+            <div
+              class="sol-hero__slide"
+              data-sol-slide="{{ forloop.index0 }}"
+              data-media-type="{{ media.media_type }}"
+              {% if forloop.first %}data-active{% endif %}
+            >
+              {%- case media.media_type -%}
+                {%- when 'video' -%}
+                  {%- comment -%}
+                    Shopify's own filter rather than a hand-rolled <video>: it
+                    picks the right source from media.sources, which carries
+                    several encodings, and writes the poster. Muted so autoplay
+                    is allowed at all, looping and chrome-free so it reads as
+                    an animation rather than something to press play on.
+                  {%- endcomment -%}
+                  {{
+                    media
+                    | video_tag:
+                      image_size: '1080x',
+                      autoplay: true,
+                      loop: true,
+                      muted: true,
+                      playsinline: true,
+                      controls: false
+                  }}
+                {%- when 'external_video' -%}
+                  {{ media | external_video_tag: loading: 'lazy' }}
+                {%- else -%}
+                  {%- comment -%}
+                    Covers image and 3D model alike: every media type carries a
+                    preview_image, so an unsupported type still shows a frame
+                    instead of a hole.
+                  {%- endcomment -%}
+                  {{
+                    media.preview_image
+                    | image_url: width: 1080
+                    | image_tag:
+                      widths: '360, 480, 720, 900, 1080',
+                      sizes: img_sizes,
+                      loading: img_loading,
+                      fetchpriority: img_priority,
+                      alt: slide_alt
+                  }}
+              {%- endcase -%}
+            </div>
+          {%- endfor -%}
+        {%- elsif hero_image != blank -%}
+          <div class="sol-hero__slide" data-sol-slide="0" data-active>
+            {{
+              hero_image
+              | image_url: width: 1080
+              | image_tag:
+                widths: '360, 480, 720, 900, 1080',
+                sizes: img_sizes,
+                loading: 'eager',
+                fetchpriority: 'high',
+                alt: hero_alt
+            }}
+          </div>
+        {%- else -%}
+          <div class="sol-hero__slide" data-sol-slide="0" data-active>
+            {{ 'product-1' | placeholder_svg_tag: 'sol-placeholder' }}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- if gallery_count > 1 -%}
+        <div class="sol-hero__nav">
+          <button type="button" data-sol-prev aria-label="Previous image">&lsaquo;</button>
+          <button type="button" data-sol-next aria-label="Next image">&rsaquo;</button>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- if gallery_count > 1 -%}
+      <div class="sol-hero__thumbs" role="group" aria-label="Product images">
+        {%- if use_gallery_blocks -%}
+          {%- assign thumb_i = 0 -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'gallery_image' and block.settings.image != blank -%}
+              <button
+                type="button"
+                class="sol-hero__thumb"
+                data-sol-thumb="{{ thumb_i }}"
+                aria-current="{% if thumb_i == 0 %}true{% else %}false{% endif %}"
+                aria-label="Show image {{ thumb_i | plus: 1 }}"
+              >
+                {{ block.settings.image | image_url: width: 200 | image_tag: widths: '100, 160, 200', sizes: '20vw', loading: 'lazy', alt: '' }}
+              </button>
+              {%- assign thumb_i = thumb_i | plus: 1 -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- else -%}
+          {%- for media in gallery_media -%}
+            <button
+              type="button"
+              class="sol-hero__thumb"
+              data-sol-thumb="{{ forloop.index0 }}"
+              aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
+              aria-label="{% if media.media_type == 'image' %}Show image {{ forloop.index }}{% else %}Show video {{ forloop.index }}{% endif %}"
+            >
+              {{ media.preview_image | image_url: width: 200 | image_tag: widths: '100, 160, 200', sizes: '20vw', loading: 'lazy', alt: '' }}
+              {%- unless media.media_type == 'image' -%}
+                <span class="sol-hero__thumb-play" aria-hidden="true"></span>
+              {%- endunless -%}
+            </button>
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} ---------- rating ---------- {%- endcomment -%}
+    {%- if section.settings.show_rating -%}
+      <div class="sol-hero__rating">
+        <div class="sol-stars" aria-hidden="true">
+          {%- for i in (1..section.settings.rating_stars) -%}<i>★</i>{%- endfor -%}
+        </div>
+        {%- if section.settings.rating_text != blank -%}
+          <div class="sol-hero__rating-text">{{ section.settings.rating_text }}</div>
+        {%- endif -%}
+        {%- if section.settings.rating_count_text != blank -%}
+          <div class="sol-hero__rating-count">{{ section.settings.rating_count_text }}</div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    </div>{%- comment -%} /.sol-hero__media {%- endcomment -%}
+
+    <div class="sol-hero__buy">
+    {%- capture eis_row_social_proof -%}
+    {%- comment -%} ---------- social proof row ---------- {%- endcomment -%}
+    {%- if section.settings.show_social_proof -%}
+      <div class="sol-hsp">
+        <div class="sol-hsp__row">
+          <div class="sol-hsp__avatars">
+            {%- for i in (1..3) -%}
+              {%- liquid
+                case i
+                  when 1
+                    assign sp_img = section.settings.sp_avatar_1
+                    assign sp_url = section.settings.sp_avatar_url_1
+                  when 2
+                    assign sp_img = section.settings.sp_avatar_2
+                    assign sp_url = section.settings.sp_avatar_url_2
+                  else
+                    assign sp_img = section.settings.sp_avatar_3
+                    assign sp_url = section.settings.sp_avatar_url_3
+                endcase
+              -%}
+              {%- if sp_img != blank -%}
+                {{ sp_img | image_url: width: 120 | image_tag: loading: 'lazy', alt: '', width: 60, height: 60, sizes: '44px' }}
+              {%- elsif sp_url != blank -%}
+                <img src="{{ sp_url }}" alt="" width="60" height="60" loading="lazy">
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+          <div class="sol-hsp__text">
+            <span
+              class="sol-hsp__count"
+              data-sol-count
+              data-from="{{ section.settings.sp_count_from }}"
+              data-to="{{ section.settings.sp_count_to }}"
+            >{{ section.settings.sp_count_to }}</span>
+            <span>{{ section.settings.sp_label }}</span>
+            <span class="sol-hsp__dot" aria-hidden="true">&bull;</span>
+            <span class="sol-hsp__score">
+              <span class="sol-hsp__stars" aria-hidden="true">
+                {%- for i in (1..5) -%}<span>&#9733;</span>{%- endfor -%}
+              </span>
+              <span class="sol-hsp__rating">{{ section.settings.sp_rating }}</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+    {%- endcapture -%}
+
+    {%- comment -%} ---------- social-proof counter bar (above title) ---------- {%- endcomment -%}
+    <style>
+      #sp-{{ section.id }} .social-proof-wrapper { display:flex !important; flex-direction:column; align-items:center; justify-content:center; width:100%; padding:12px 0 0; font-family:"Manrope",-apple-system,sans-serif; }
+      #sp-{{ section.id }} .sp-row1 { display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:4px; flex-wrap:nowrap; white-space:nowrap; }
+      #sp-{{ section.id }} .sp-avatars { display:flex; align-items:center; }
+      #sp-{{ section.id }} .sp-avatars img { width:38px; height:38px; border-radius:50%; border:2.5px solid #9CAE01; object-fit:cover; margin-left:-10px; }
+      #sp-{{ section.id }} .sp-avatars img:first-child { margin-left:0; }
+      #sp-{{ section.id }} .sp-count-inline { display:flex; align-items:center; gap:5px; font-size:14px; font-weight:600; color:#333; white-space:nowrap; }
+      #sp-{{ section.id }} .sp-count { font-weight:800; color:#9CAE01; font-size:14px; }
+      #sp-{{ section.id }} .sp-row2 { display:flex; align-items:center; justify-content:center; gap:4px; }
+      #sp-{{ section.id }} .sp-stars { display:inline-flex; align-items:center; gap:1px; }
+      #sp-{{ section.id }} .sp-star { color:#9CAE01; font-size:14px; line-height:1; }
+      #sp-{{ section.id }} .sp-rating { font-weight:700; color:#333; font-size:14px; margin-left:2px; }
+    </style>
+    <div id="sp-{{ section.id }}">
+      <div class="social-proof-wrapper">
+        <div class="sp-row1">
+          <div class="sp-avatars">
+            <img src="https://cdn.shopify.com/s/files/1/0779/1601/2763/files/m4.jpg?v=1788725451" alt="Customer">
+            <img src="https://cdn.shopify.com/s/files/1/0779/1601/2763/files/ChatGPT_Image_Sep_6_2026_09_19_05_PM.png?v=1788709775" alt="Customer">
+            <img src="https://cdn.shopify.com/s/files/1/0779/1601/2763/files/ChatGPT_Image_Sep_6_2026_08_10_42_PM.png?v=1788705668" alt="Customer">
+          </div>
+          <div class="sp-count-inline"><span class="sp-count" id="sp-counter-{{ section.id }}">10000</span><span>+ Happy Customers</span></div>
+        </div>
+        <div class="sp-row2"><span class="sp-stars"><span class="sp-star">&#9733;</span><span class="sp-star">&#9733;</span><span class="sp-star">&#9733;</span><span class="sp-star">&#9733;</span><span class="sp-star">&#9733;</span></span><span class="sp-rating">4.8/5</span></div>
+      </div>
+    </div>
+    <script>
+      (function(){
+        var startFrom = 10000, target = 36243, dur = 2000, pause = 10000;
+        function ease(t){ return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
+        function run(){
+          var c = document.getElementById("sp-counter-{{ section.id }}");
+          if (!c) return;
+          var t0 = performance.now();
+          function step(now){
+            var p = Math.min((now - t0) / dur, 1);
+            c.textContent = Math.floor(startFrom + ease(p) * (target - startFrom)).toLocaleString("en-US");
+            if (p < 1) { requestAnimationFrame(step); }
+            else { c.textContent = target.toLocaleString("en-US"); setTimeout(run, pause); }
+          }
+          requestAnimationFrame(step);
+        }
+        setTimeout(run, 500);
+      })();
+    </script>
+
+    {%- comment -%} ---------- title ---------- {%- endcomment -%}
+    {%- assign has_title_block = false -%}
+    {%- for hb in section.blocks -%}{%- if hb.type == 'title' -%}{%- assign has_title_block = true -%}{%- endif -%}{%- endfor -%}
+    {%- assign heading = section.settings.heading | default: eis_product.title -%}
+    {%- unless has_title_block -%}<h1 class="sol-hero__title">{{ heading | newline_to_br }}</h1>{%- endunless -%}
+    {%- if section.settings.subheading != blank -%}
+      <p class="sol-hero__subtitle">{{ section.settings.subheading }}</p>
+    {%- endif -%}
+
+    {%- comment -%} ---------- doctors badge (below title) ---------- {%- endcomment -%}
+    <div class="doctors-choice-wrapper">
+      <div class="doctors-choice-inner">
+        <div class="dc-avatars"><img src="https://cdn.shopify.com/s/files/1/0975/8287/4990/files/doctor_1.jpg?v=1772787524" alt="Doctor"><img src="https://cdn.shopify.com/s/files/1/0975/8287/4990/files/doctor_2.jpg?v=1772787523" alt="Doctor"></div>
+        <div class="dc-text"><span class="dc-stars"><span class="dc-star">&#9733;</span><span class="dc-star">&#9733;</span><span class="dc-star">&#9733;</span><span class="dc-star">&#9733;</span><span class="dc-star">&#9733;</span></span><div class="dc-bottom-row"><span class="dc-count">1,192+</span><span class="dc-label">Doctors&#39; Choice</span><span class="dc-badge">&#10003; Verified</span></div></div>
+      </div>
+    </div>
+    <style>
+      .doctors-choice-wrapper { display:flex; justify-content:center; width:100%; padding:6px 0 0; }
+      .doctors-choice-inner { display:inline-flex; align-items:center; gap:10px; background:#f0f4ff; border:1.5px solid #c5d3f0; border-radius:50px; padding:5px 14px 5px 6px; font-family:"Manrope",-apple-system,sans-serif; }
+      .dc-avatars { display:flex; align-items:center; }
+      .dc-avatars img { width:34px; height:34px; border-radius:50%; object-fit:cover; object-position:center top; border:2px solid #fff; margin-left:-8px; }
+      .dc-avatars img:first-child { margin-left:0; }
+      .dc-text { display:flex; flex-direction:column; align-items:flex-start; gap:1px; white-space:nowrap; }
+      .dc-stars { display:inline-flex; align-items:center; gap:1px; margin-left:38px; }
+      .dc-star { color:#f5a623; font-size:11px; line-height:1; }
+      .dc-bottom-row { display:flex; align-items:center; gap:6px; }
+      .dc-count { font-size:13px; font-weight:700; color:#1a3a7a; }
+      .dc-label { font-size:13px; font-weight:500; color:#3a5aa8; }
+      .dc-badge { font-size:10px; background:#1a3a7a; color:#fff; border-radius:50px; padding:2px 7px; font-weight:600; letter-spacing:0.3px; }
+    </style>
+
+    {%- comment -%} ---------- doctors' choice badge (legacy toggle) ---------- {%- endcomment -%}
+    {%- if section.settings.show_doctors -%}
+      <div class="sol-docs">
+        <div class="sol-docs__pill">
+          <div class="sol-docs__avatars">
+            {%- for i in (1..2) -%}
+              {%- if i == 1 -%}
+                {%- assign doc_img = section.settings.doctor_image_1 -%}
+                {%- assign doc_url = section.settings.doctor_image_url_1 -%}
+              {%- else -%}
+                {%- assign doc_img = section.settings.doctor_image_2 -%}
+                {%- assign doc_url = section.settings.doctor_image_url_2 -%}
+              {%- endif -%}
+              {%- if doc_img != blank -%}
+                {{ doc_img | image_url: width: 96 | image_tag: loading: 'lazy', alt: '', width: 48, height: 48, sizes: '34px' }}
+              {%- elsif doc_url != blank -%}
+                <img src="{{ doc_url }}" alt="" width="48" height="48" loading="lazy">
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+          <div class="sol-docs__text">
+            <span class="sol-docs__stars" aria-hidden="true">
+              {%- for i in (1..5) -%}<span>&#9733;</span>{%- endfor -%}
+            </span>
+            <div class="sol-docs__row">
+              {%- if section.settings.doctors_count != blank -%}
+                <span class="sol-docs__count">{{ section.settings.doctors_count }}</span>
+              {%- endif -%}
+              {%- if section.settings.doctors_label != blank -%}
+                <span class="sol-docs__label">{{ section.settings.doctors_label }}</span>
+              {%- endif -%}
+              {%- if section.settings.doctors_badge != blank -%}
+                <span class="sol-docs__verified">{{ section.settings.doctors_badge }}</span>
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- capture eis_row_benefits -%}
+    {%- comment -%} ---------- benefit bullets ---------- {%- endcomment -%}
+    {%- if benefit_count > 0 -%}
+      <div class="sol-hero__benefits">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'benefit' -%}
+            <div class="sol-hero__benefit" {{ block.shopify_attributes }}>
+              <div class="sol-hero__check" aria-hidden="true">✓</div>
+              <div class="sol-hero__benefit-text">
+                <strong>{{ block.settings.title }}</strong> <span>{{ block.settings.text }}</span>
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+    {%- endcapture -%}
+
+    {%- comment -%} ---------- price ---------- {%- endcomment -%}
+    {%- if section.settings.show_price -%}
+      <div class="sol-hero__price">
+        <span class="sol-hero__price-now">{{ eis_variant.price | money }}</span>
+        {%- if has_compare_at -%}
+          <s class="sol-hero__price-was">{{ eis_variant.compare_at_price | money }}</s>
+          {%- assign saved = eis_variant.compare_at_price | minus: eis_variant.price | times: 100.0 | divided_by: eis_variant.compare_at_price | round -%}
+          <span class="sol-hero__price-save">SAVE {{ saved }}%</span>
+        {%- endif -%}
+        {%- if section.settings.price_note != blank -%}
+          <span class="sol-hero__price-unit">{{ section.settings.price_note }}</span>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} ---------- stock line ---------- {%- endcomment -%}
+    {%- if section.settings.show_stock -%}
+      {%- if eis_product.available -%}
+        <div class="sol-hero__stock">
+          <span class="sol-dot sol-dot--pulse" aria-hidden="true">●</span>
+          {{ section.settings.stock_text }}
+        </div>
+      {%- else -%}
+        <div class="sol-hero__stock sol-hero__stock--out">
+          <span class="sol-dot" aria-hidden="true">●</span>
+          {{ section.settings.out_of_stock_text }}
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- capture eis_row_atc -%}
+    {%- comment -%}
+      ---------- fallback Add to Cart ----------
+      Off by default: MoonBundle owns the buy button. Turn on only if the app
+      block isn't in use.
+    {%- endcomment -%}
+    {%- if section.settings.show_fallback_atc -%}
+      <form
+        method="post"
+        action="{{ routes.cart_add_url }}"
+        data-sol-form
+        {% if eis_variant == blank or eis_product.available == false %}data-unavailable{% endif %}
+      >
+        <input type="hidden" name="id" value="{{ eis_variant.id }}">
+        <input type="hidden" name="quantity" value="1">
+        {%- comment -%}
+          Without JS the form posts normally and the browser has to land
+          somewhere, so send it back to this page — the closest thing to the
+          fetch path, which does not navigate at all.
+        {%- endcomment -%}
+        <input type="hidden" name="return_to" value="{{ eis_product.url }}">
+        <button
+          type="submit"
+          class="sol-btn"
+          data-sol-atc
+          {% unless eis_product.available %}disabled{% endunless %}
+        >
+          {%- if eis_product.available -%}{{ section.settings.atc_label }}{%- else -%}{{ section.settings.sold_out_label }}{%- endif -%}
+        </button>
+      </form>
+    {%- endif -%}
+    {%- endcapture -%}
+
+    {%- capture eis_row_payment_methods -%}
+    {%- comment -%} ---------- payment methods ---------- {%- endcomment -%}
+    {%- if section.settings.show_pay_marks -%}
+      {%- assign pay_marks = section.settings.pay_marks | split: ',' -%}
+      <div class="sol-pm">
+        <div class="sol-pm__row">
+          {%- for raw_mark in pay_marks -%}
+            {%- assign pay_mark = raw_mark | strip -%}
+            {%- if pay_mark != blank -%}
+              <span class="sol-pm__tile">{% render 'sol-pay-mark', mark: pay_mark %}</span>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+        {%- if section.settings.pay_note != blank -%}
+          <p class="sol-pm__note">{{ section.settings.pay_note }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+    {%- endcapture -%}
+
+    {%- capture eis_row_money_back -%}
+    {%- comment -%} ---------- Cashfree money-back promise ---------- {%- endcomment -%}
+    {%- if section.settings.show_money_back -%}
+      <div class="sol-mbp">
+        <div class="sol-mbp__banner">
+          {%- if section.settings.mbp_badge != blank -%}
+            <div class="sol-mbp__badge">{{ section.settings.mbp_badge }}</div>
+          {%- endif -%}
+          <div class="sol-mbp__header">
+            <div class="sol-mbp__logo">
+              <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                <path d="M18 6 L18 18 L30 18" fill="none" stroke="#21BF73" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 12 L12 24 L24 24" fill="none" stroke="#F5A623" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <p class="sol-mbp__brand">{{ section.settings.mbp_brand }}</p>
+              <p class="sol-mbp__promise">{{ section.settings.mbp_promise }}</p>
+              {%- if section.settings.mbp_verified != blank -%}
+                <p class="sol-mbp__verified">
+                  <span class="sol-mbp__tick" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><polyline points="5 13 9 17 19 7"/></svg>
+                  </span>
+                  {{ section.settings.mbp_verified }}
+                </p>
+              {%- endif -%}
+            </div>
+          </div>
+          <div class="sol-mbp__refund">
+            <div class="sol-mbp__refund-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><polyline points="5 13 9 17 19 7"/></svg>
+            </div>
+            <div class="sol-mbp__refund-text">{{ section.settings.mbp_refund_text }}</div>
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+    {%- endcapture -%}
+
+    {%- capture eis_row_stockbar -%}
+    {%- comment -%} ---------- low stock bar + delivery estimate ---------- {%- endcomment -%}
+    {%- if section.settings.show_stockbar -%}
+      <div class="sol-stockbar">
+        <div class="sol-stockbar__head">
+          <span class="sol-stockbar__label">{{ section.settings.stock_label }}</span>
+          {%- if section.settings.stock_note != blank -%}
+            <span class="sol-stockbar__pct">{{ section.settings.stock_note }}</span>
+          {%- endif -%}
+        </div>
+        <div
+          class="sol-stockbar__track"
+          role="progressbar"
+          aria-valuenow="{{ section.settings.stock_percent }}"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-label="{{ section.settings.stock_label | escape }}"
+        >
+          <div class="sol-stockbar__fill"></div>
+        </div>
+      </div>
+    {%- endif -%}
+    {%- endcapture -%}
+
+    {%- capture eis_row_delivery -%}
+    {%- if section.settings.show_delivery -%}
+      {%- comment -%}
+        Liquid renders the server-side estimate so the line is never blank;
+        the script below recomputes it on the viewer's own clock, because a
+        cached page would otherwise show a stale date.
+      {%- endcomment -%}
+      {%- assign now_seconds = 'now' | date: '%s' | plus: 0 -%}
+      {%- assign min_days = section.settings.delivery_min_days -%}
+      {%- assign max_days = section.settings.delivery_max_days -%}
+      {%- assign from_seconds = min_days | times: 86400 | plus: now_seconds -%}
+      {%- assign to_seconds = max_days | times: 86400 | plus: now_seconds -%}
+      <div
+        class="sol-deliv"
+        data-sol-delivery
+        data-min-days="{{ min_days }}"
+        data-max-days="{{ max_days }}"
+      >
+        <span class="sol-deliv__icon" aria-hidden="true">&#10003;</span>
+        <span>
+          {{ section.settings.delivery_label }}
+          <b data-sol-delivery-range>{{ from_seconds | date: '%a, %-d %b' }} &ndash; {{ to_seconds | date: '%a, %-d %b' }}</b>
+          {%- if section.settings.delivery_note != blank -%}
+            <span class="sol-deliv__note">{{ section.settings.delivery_note }}</span>
+          {%- endif -%}
+        </span>
+      </div>
+    {%- endif -%}
+    {%- endcapture -%}
+
+    {%- comment -%} ---------- counterfeit warning ---------- {%- endcomment -%}
+    {%- if section.settings.show_warning -%}
+      <div class="sol-warn">
+        <div class="sol-warn__head">
+          <span class="sol-warn__icon" aria-hidden="true">!</span>
+          <span>{{ section.settings.warning_title }}</span>
+        </div>
+        <div class="sol-warn__body">{{ section.settings.warning_body }}</div>
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} ---------- independently draggable buy-box rows ---------- {%- endcomment -%}
+    {%- capture eis_guarantee -%}<details class="g90">
+  <summary class="g90__head">
+    <svg class="g90__ic" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 4l15 5.5v11.5c0 11-6.5 18.5-15 22.5-8.5-4-15-11.5-15-22.5V9.5L24 4z" fill="#364811"/><path d="M17 24l4.8 4.8L31.5 19" stroke="#e0a526" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="g90__title">90-Day Money-Back Guarantee</span>
+    <span class="g90__plus" aria-hidden="true"></span>
+  </summary>
+  <p class="g90__more">Try SOLVANNO risk-free for a full <strong>90 days</strong>. If you don't feel lighter, clearer and more energised, email us and we'll refund every cent &mdash; no questions, no return needed.</p>
+</details>
+<style>
+  .g90 { background:#fafaf5; border:1.5px dashed #9cae01; border-radius:11px; padding:7px 12px; font-family:"DM Sans",-apple-system,sans-serif; }
+  .g90__head { display:flex; align-items:center; gap:9px; cursor:pointer; list-style:none; -webkit-tap-highlight-color:transparent; }
+  .g90__head::-webkit-details-marker { display:none; }
+  .g90__ic { flex:none; width:24px; height:24px; transform-origin:center; animation:g90pulse 2.6s ease-in-out infinite; }
+  @keyframes g90pulse { 0%,100% { transform:scale(1); } 50% { transform:scale(1.1); } }
+  .g90__title { flex:1; font-family:"Playfair Display",Georgia,serif; font-size:14px; color:#364811; line-height:1.1; }
+  .g90__plus { flex:none; width:16px; height:16px; position:relative; }
+  .g90__plus::before, .g90__plus::after { content:""; position:absolute; background:#9cae01; border-radius:2px; transition:transform .25s ease, opacity .25s ease; }
+  .g90__plus::before { top:7px; left:1px; width:14px; height:2px; }
+  .g90__plus::after { top:1px; left:7px; width:2px; height:14px; }
+  .g90[open] .g90__plus::after { transform:rotate(90deg); opacity:0; }
+  .g90__more { margin:7px 0 1px; font-size:11.5px; line-height:1.5; color:#545a48; }
+  .g90__more strong { color:#b45832; }
+  @media (prefers-reduced-motion: reduce) { .g90__ic { animation:none; } }
+</style>{%- endcapture -%}
+    {%- capture eis_low_stock -%}<div class="sol-lowstock" data-start="{{ section.settings.low_stock_start | default: 40 }}" data-floor="{{ section.settings.low_stock_floor | default: 3 }}">
+  <div class="sol-lowstock__row"><span class="sol-lowstock__label">{{ section.settings.low_stock_label | default: "Low stock &mdash; selling fast" }}</span><span class="sol-lowstock__count">Only <b data-ls-count>{{ section.settings.low_stock_start | default: 40 }}</b> left</span></div>
+  <div class="sol-lowstock__track"><i data-ls-bar></i></div>
+</div>
+<style>
+  .sol-lowstock{font-family:"DM Sans",-apple-system,sans-serif;}
+  .sol-lowstock__row{display:flex;justify-content:space-between;align-items:baseline;margin:0 0 6px;}
+  .sol-lowstock__label{font-size:12px;font-weight:600;color:#c43d2e;}
+  .sol-lowstock__count{font-size:12px;color:#545a48;}
+  .sol-lowstock__count b{color:#c43d2e;font-weight:700;}
+  .sol-lowstock__track{height:8px;background:#efe3e0;border-radius:999px;overflow:hidden;}
+  .sol-lowstock__track i{display:block;height:100%;width:100%;border-radius:999px;background:linear-gradient(90deg,#e0a526,#c43d2e);transition:width .6s ease;}
+</style>
+<script>
+  (function(){
+    var boxes = document.querySelectorAll(".sol-lowstock");
+    for (var b = 0; b < boxes.length; b++) {
+      (function(box){
+        if (box.dataset.lsInit) return;
+        box.dataset.lsInit = "1";
+        var start = parseInt(box.dataset.start, 10) || 40;
+        var floor = parseInt(box.dataset.floor, 10) || 3;
+        var countEl = box.querySelector("[data-ls-count]");
+        var bar = box.querySelector("[data-ls-bar]");
+        var n = start;
+        function render(){ countEl.textContent = n; bar.style.width = Math.max(6, (n / start * 100)) + "%"; }
+        render();
+        var mid = Math.round(start * 0.8);
+        var t1 = setInterval(function(){
+          if (n > mid) { n = n - 1; render(); } else { clearInterval(t1); slow(); }
+        }, 260);
+        function slow(){
+          var t2 = setInterval(function(){
+            if (n > floor) { n = n - 1; render(); } else { clearInterval(t2); }
+          }, 3800);
+        }
+      })(boxes[b]);
+    }
+  })();
+</script>{%- endcapture -%}
+    {%- capture eis_delivery_warning -%}<!-- Estimated Delivery + Geo Flag -->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;600&display=swap');
+  .stock-delivery-wrapper{text-align:center;width:100%;font-family:'Manrope',-apple-system,sans-serif;padding:8px 0;}
+  .estimated-delivery{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-size:14px;font-weight:500;color:#555;}
+  .country-flag{width:20px;height:15px;border-radius:2px;object-fit:cover;display:none;}
+</style>
+<div class="stock-delivery-wrapper">
+  <div class="estimated-delivery">
+    <img id="visitor-flag" class="country-flag" alt="flag">
+    <span id="estimated-delivery-window"></span>
+  </div>
+</div>
+<script>
+  (function(){
+    var today = new Date();
+    var startDate = new Date(today); startDate.setDate(today.getDate() + 4);
+    var endDate = new Date(today); endDate.setDate(today.getDate() + 10);
+    var showYear = startDate.getFullYear() !== endDate.getFullYear();
+    var formatOptions = showYear
+      ? { day: 'numeric', month: 'short', year: 'numeric' }
+      : { day: 'numeric', month: 'short' };
+    var startFormatted = startDate.toLocaleDateString('en-IN', formatOptions);
+    var endFormatted = endDate.toLocaleDateString('en-IN', formatOptions);
+    var win = document.getElementById('estimated-delivery-window');
+    if (win) win.textContent = 'Estimated delivery between ' + startFormatted + ' and ' + endFormatted;
+    fetch('/browsing_context_suggestions.json')
+      .then(function(res){ return res.json(); })
+      .then(function(data){
+        var dv = data && data.detected_values;
+        var code = (dv && dv.country && dv.country.handle ? dv.country.handle : '').toLowerCase();
+        if (code) {
+          var flag = document.getElementById('visitor-flag');
+          if (flag) { flag.src = 'https://flagcdn.com/w40/' + code + '.png'; flag.alt = code.toUpperCase() + ' flag'; flag.style.display = 'inline-block'; }
+        }
+      })
+      .catch(function(){});
+  })();
+</script>{%- endcapture -%}
+    {%- capture eis_warning -%}<div class="stock-warning-box">
+  <div class="stock-warning-header"><span class="stock-icon">!</span><span class="stock-title">WARNING: Unauthorized Sellers Detected</span></div>
+  <p class="stock-text">Solvanno has sold out <span class="stock-underline">12 times</span> in the past year due to high demand. Unfortunately, this has led to <strong>counterfeit versions appearing on Amazon and eBay</strong> with incorrect ingredient dosages that can be harmful to your liver.</p>
+  <p class="stock-text" style="margin-top: 8px;">We're the only authorized seller &mdash; shipped direct with lab-verified ingredients. Take advantage of the current discount before we sell out again. Subscribing protects you from future stockouts.</p>
+  <p class="stock-text" style="margin-top: 8px;"><strong>PS:</strong> Only available here, don't buy <a href="#" class="stock-link">fakes on Amazon, eBay, or any other site</a>.</p>
+</div>
+<style>
+  .stock-warning-box{background-color:#fdf2f2;border:2px dashed #d37373;padding:16px;border-radius:4px;margin:15px 0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;}
+  .stock-warning-header{display:flex;align-items:center;margin-bottom:8px;color:#a94442;font-weight:bold;text-transform:uppercase;font-size:14px;letter-spacing:0.5px;}
+  .stock-icon{background-color:#a94442;color:white;width:18px;height:18px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-right:8px;font-size:12px;}
+  .stock-text{margin:0;font-size:14px;line-height:1.5;color:#834040;}
+  .stock-underline{text-decoration:underline;font-weight:500;}
+  .stock-link{color:#834040;text-decoration:underline;font-weight:500;}
+  .stock-text strong{color:#a94442;}
+</style>{%- endcapture -%}
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'title' -%}
+          <h1 class="sol-hero__title" {{ block.shopify_attributes }}>{{ block.settings.heading | default: section.settings.heading | default: eis_product.title | newline_to_br }}</h1>
+        {%- when 'benefits_row' -%}
+          <div class="sol-hero__movable-row" {{ block.shopify_attributes }}>{{ eis_row_benefits }}</div>
+        {%- when 'add_to_cart_row' -%}
+          <div class="sol-hero__movable-row" {{ block.shopify_attributes }}>{{ eis_row_atc }}</div>
+          <div class="sol-hero__slot sol-hero__slot--guarantee" style="margin-top: {{ section.settings.slot_guarantee_mt }}px; margin-bottom: {{ section.settings.slot_guarantee_mb }}px;">{%- if section.settings.slot_guarantee != blank -%}{{ section.settings.slot_guarantee }}{%- else -%}{{ eis_guarantee }}{%- endif -%}</div>
+        {%- when 'payment_methods_row' -%}
+          <div class="sol-hero__movable-row" {{ block.shopify_attributes }}>{{ eis_row_payment_methods }}</div>
+          <div class="sol-hero__slot sol-hero__slot--warning" style="margin-top: {{ section.settings.slot_warning_mt }}px; margin-bottom: {{ section.settings.slot_warning_mb }}px;">{%- if section.settings.slot_warning != blank -%}{{ section.settings.slot_warning }}{%- else -%}{{ eis_warning }}{%- endif -%}</div>
+        {%- when 'social_proof_row' -%}
+          {%- comment -%} 36243 reviews now render above the title; block kept valid but hidden here {%- endcomment -%}
+          <div class="sol-hero__movable-row" {{ block.shopify_attributes }} hidden></div>
+        {%- when 'money_back_row' -%}
+          <div class="sol-hero__movable-row" {{ block.shopify_attributes }}>{{ eis_row_money_back }}</div>
+        {%- when 'stockbar_row' -%}
+          <div class="sol-hero__movable-row" {{ block.shopify_attributes }} style="margin-top: {{ section.settings.slot_stock_mt }}px; margin-bottom: {{ section.settings.slot_stock_mb }}px;">{%- if section.settings.slot_stock != blank -%}{{ section.settings.slot_stock }}{%- else -%}{{ eis_low_stock }}{%- endif -%}</div>
+        {%- when 'delivery_row' -%}
+          <div class="sol-hero__movable-row" {{ block.shopify_attributes }} style="margin-top: {{ section.settings.slot_delivery_mt }}px; margin-bottom: {{ section.settings.slot_delivery_mb }}px;">{%- if section.settings.slot_delivery != blank -%}{{ section.settings.slot_delivery }}{%- else -%}{{ eis_delivery_warning }}{%- endif -%}</div>
+        {%- when 'custom_liquid' -%}
+          {%- if block.settings.custom_liquid != blank -%}
+            <div class="sol-hero__custom-liquid sol-hero__movable-row" {{ block.shopify_attributes }}>
+              {{ block.settings.custom_liquid }}
+            </div>
+          {%- endif -%}
+        {%- when 'below_social_proof_liquid' -%}
+          {%- if block.settings.custom_liquid != blank -%}
+            <div class="sol-hero__below-social-proof sol-hero__movable-row" {{ block.shopify_attributes }}>
+              {{ block.settings.custom_liquid }}
+            </div>
+          {%- endif -%}
+      {%- endcase -%}
+    {%- endfor -%}
+
+    </div>{%- comment -%} /.sol-hero__buy {%- endcomment -%}
+
+    {%- comment -%}
+      ---------- buy-box FAQ ----------
+      Plain <details>, so every answer is closed on load and stays reachable
+      with JavaScript off.
+    {%- endcomment -%}
+    {%- if bfaq_count > 0 -%}
+      <div class="sol-bfaq">
+        {%- if section.settings.bfaq_title != blank -%}
+          <h2 class="sol-bfaq__title">{{ section.settings.bfaq_title }}</h2>
+        {%- endif -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'buybox_faq' -%}
+            <details class="sol-bfaq__item" {{ block.shopify_attributes }}>
+              <summary>
+                <span>{{ block.settings.question }}</span>
+                <span class="sol-bfaq__sign" aria-hidden="true"></span>
+              </summary>
+              <div class="sol-bfaq__answer">{{ block.settings.answer }}</div>
+            </details>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- comment -%}
+      ---------- trust marks (desktop column) ----------
+      Fixed rather than block-driven: this section is already at the maximum
+      number of schema settings Shopify accepts, and adding two more made the
+      whole file fail to upload with no error returned. The phone layout takes
+      these from the sol-trust-badges section, which stays editable; only these
+      desktop copies are hard-coded. Keep the two in step by hand.
+    {%- endcomment -%}
+    <div class="sol-hero__marks" aria-hidden="true">
+      <div class="sol-hero__mark">
+        <div class="sol-hero__mark-icon">&#9673;</div>
+        <div class="sol-hero__mark-label">80%<br>SILYMARIN</div>
+      </div>
+      <div class="sol-hero__mark">
+        <div class="sol-hero__mark-icon">&#9889;</div>
+        <div class="sol-hero__mark-label">THIRD-PARTY<br>LAB TESTED</div>
+      </div>
+      <div class="sol-hero__mark">
+        <div class="sol-hero__mark-icon">&#10003;</div>
+        <div class="sol-hero__mark-label">90-DAY<br>GUARANTEE</div>
+      </div>
+    </div>
+
+    {%- comment -%} ---------- payment badges + COD ---------- {%- endcomment -%}
+    {%- if badge_count > 0 -%}
+      <div class="sol-pay">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'payment_badge' -%}
+            <span class="{% if block.settings.highlight %}is-highlight{% endif %}" {{ block.shopify_attributes }}>
+              {{- block.settings.label -}}
+            </span>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.cod_text != blank -%}
+      <div class="sol-hero__cod">
+        <span aria-hidden="true">✓</span>{{ section.settings.cod_text }}
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} ---------- guarantee strip ---------- {%- endcomment -%}
+    {%- if section.settings.show_guarantee -%}
+      <div class="sol-hero__guarantee">
+        <div class="sol-hero__guarantee-icon" aria-hidden="true">{{ section.settings.guarantee_icon }}</div>
+        <div>
+          <b>{{ section.settings.guarantee_title }}</b>
+          {%- if section.settings.guarantee_link_text != blank -%}
+            <a href="{{ section.settings.guarantee_link | default: '#guarantee' }}">
+              {{- section.settings.guarantee_link_text -}}
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} ---------- hero review card ---------- {%- endcomment -%}
+    {%- if section.settings.show_review -%}
+      <div class="sol-hero__review">
+        <div class="sol-stars" aria-hidden="true">
+          {%- for i in (1..section.settings.review_stars) -%}<i>★</i>{%- endfor -%}
+        </div>
+        <div class="sol-hero__review-quote">{{ section.settings.review_quote }}</div>
+        <div class="sol-hero__review-by">
+          <div class="sol-hero__avatar">
+            {%- if section.settings.review_avatar != blank -%}
+              {{ section.settings.review_avatar | image_url: width: 80 | image_tag: widths: '56, 80', sizes: '28px', loading: 'lazy', alt: '' }}
+            {%- endif -%}
+          </div>
+          <div>
+            <div class="sol-hero__review-name-row">
+              <div class="sol-hero__review-name">{{ section.settings.review_name }}</div>
+              {%- if section.settings.review_google -%}
+                <svg class="sol-hero__google" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Google review">
+                  <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+                  <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+                  <path fill="#FBBC05" d="M10.53 28.59a14.5 14.5 0 0 1 0-9.18l-7.98-6.19a24.0 24.0 0 0 0 0 21.56l7.98-6.19z"/>
+                  <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+                </svg>
+              {%- endif -%}
+            </div>
+            <div class="sol-hero__review-meta">{{ section.settings.review_meta }}</div>
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+
+  {%- endif -%}
+</div>
+
+{%- comment -%} ---------- sticky bar ---------- {%- endcomment -%}
+{%- if section.settings.show_sticky and eis_product != blank -%}
+  <div
+    class="sol-sticky"
+    data-sol-sticky
+    data-reveal-at="{{ section.settings.sticky_reveal_at }}"
+    data-reveal-mode="{{ section.settings.sticky_reveal_mode }}"
+    data-action="{{ section.settings.sticky_action }}"
+    data-offers="EisOffers-{{ section.id }}"
+    data-hero="EisHero-{{ section.id }}"
+  >
+    <div class="sol-sticky__inner">
+      <div class="sol-sticky__thumb">
+        {%- if sticky_image != blank -%}
+          {{ sticky_image | image_url: width: 120 | image_tag: widths: '80, 120', sizes: '40px', loading: 'lazy', alt: '' }}
+        {%- endif -%}
+      </div>
+      <div class="sol-sticky__copy">
+        <div class="sol-sticky__name">{{ section.settings.sticky_title | default: eis_product.title }}</div>
+        {%- if section.settings.sticky_show_price -%}
+          <div class="sol-sticky__price">
+            {{ eis_variant.price | money }}
+            {%- if has_compare_at %} <s>{{ eis_variant.compare_at_price | money }}</s>{% endif -%}
+          </div>
+        {%- endif -%}
+        {%- comment -%}
+          The buy box's rating, from the same settings so the two can't drift.
+          sticky_rating_text overrides it where the full sentence is too wide
+          for this bar.
+        {%- endcomment -%}
+        {%- if section.settings.sticky_show_rating -%}
+          {%- assign sticky_rating = section.settings.sticky_rating_text | default: section.settings.rating_text -%}
+          {%- if sticky_rating != blank -%}
+            <div class="sol-sticky__rating">
+              <i aria-hidden="true">{% for i in (1..section.settings.rating_stars) %}&#9733;{% endfor %}</i>
+              <span>{{ sticky_rating }}</span>
+            </div>
+          {%- endif -%}
+        {%- endif -%}
+      </div>
+      <button
+        type="button"
+        class="sol-sticky__btn"
+        data-sol-sticky-btn
+        data-variant-id="{{ eis_variant.id }}"
+        {% unless eis_product.available %}disabled{% endunless %}
+      >
+        <span class="sol-sticky__sheen" aria-hidden="true"></span>
+        <span>{%- if eis_product.available -%}{{ section.settings.sticky_label }}{%- else -%}{{ section.settings.sold_out_label }}{%- endif -%}</span>
+      </button>
+    </div>
+  </div>
+{%- endif -%}
+
+<script>
+  (function () {
+    var root = document.getElementById('EisHero-{{ section.id }}');
+    var sticky = document.querySelector('[data-sol-sticky][data-offers="EisOffers-{{ section.id }}"]');
+    if (!root) return;
+
+    /* ---- gallery ---- */
+    var slides = root.querySelectorAll('[data-sol-slide]');
+    var thumbs = root.querySelectorAll('[data-sol-thumb]');
+    var index = 0;
+    var motionOK = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function show(next) {
+      if (!slides.length) return;
+      index = (next + slides.length) % slides.length;
+      for (var i = 0; i < slides.length; i++) {
+        if (i === index) {
+          slides[i].setAttribute('data-active', '');
+        } else {
+          slides[i].removeAttribute('data-active');
+        }
+      }
+      for (var t = 0; t < thumbs.length; t++) {
+        thumbs[t].setAttribute('aria-current', t === index ? 'true' : 'false');
+      }
+      warm(index + 1);
+      warm(index - 1);
+      playActive();
+      trackThumb();
+    }
+
+    /* Every video is marked autoplay so it still runs with JS disabled, which
+       left to itself would have several slides decoding at once. Only the one
+       on screen plays; a reduced-motion preference stops all of them. */
+    function playActive() {
+      for (var i = 0; i < slides.length; i++) {
+        var video = slides[i].querySelector('video');
+        if (!video) continue;
+        if (i === index && motionOK) {
+          var playing = video.play();
+          /* Browsers reject play() for reasons outside our control — a data
+             saver, a power-saving mode. An unhandled rejection is noisy and
+             there is nothing to recover, so swallow it. */
+          if (playing && playing.catch) playing.catch(function () {});
+        } else {
+          video.pause();
+        }
+      }
+    }
+
+    /* Slides are display:none, so a lazy image in one is never in the viewport
+       and does not start downloading until the customer lands on it — which on
+       a heavy frame reads as a broken slide. Flipping the neighbours to eager
+       fetches them in the background: an eager image loads whether or not it is
+       displayed, so the next slide is usually ready before it is asked for. */
+    function warm(i) {
+      /* Deliberately does not wrap the way show() does: from the first slide
+         that would warm the last one, and the last slide is exactly where a
+         heavy frame tends to sit. */
+      if (i < 0 || i >= slides.length) return;
+      var slide = slides[i];
+      var img = slide.querySelector('img');
+      if (img && img.getAttribute('loading') === 'lazy') {
+        img.setAttribute('loading', 'eager');
+      }
+    }
+
+    /* The thumb row scrolls, so the active thumb can sit off-screen after the
+       arrows move the main image. Scroll the row itself rather than calling
+       scrollIntoView, which would drag the whole page along with it. */
+    var thumbRow = root.querySelector('.sol-hero__thumbs');
+    var smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function trackThumb() {
+      if (!thumbRow || !thumbs[index]) return;
+      var t = thumbs[index];
+      var left = t.offsetLeft - (thumbRow.clientWidth - t.offsetWidth) / 2;
+      left = Math.max(0, Math.min(left, thumbRow.scrollWidth - thumbRow.clientWidth));
+      if (thumbRow.scrollTo) {
+        thumbRow.scrollTo({ left: left, behavior: smooth ? 'smooth' : 'auto' });
+      } else {
+        thumbRow.scrollLeft = left;
+      }
+    }
+
+    for (var t = 0; t < thumbs.length; t++) {
+      (function (el) {
+        el.addEventListener('click', function () {
+          show(parseInt(el.getAttribute('data-sol-thumb'), 10));
+        });
+      })(thumbs[t]);
+    }
+
+    var prev = root.querySelector('[data-sol-prev]');
+    var next = root.querySelector('[data-sol-next]');
+    if (prev) prev.addEventListener('click', function () { show(index - 1); });
+    if (next) next.addEventListener('click', function () { show(index + 1); });
+
+    /* The first slide is marked active by Liquid, so show() has not run yet.
+       Settle the videos once on load, which is what stops a video first slide
+       from playing when the visitor asked for reduced motion. */
+    playActive();
+
+    /* ---- swipe ---- */
+    var stage = root.querySelector('.sol-hero__stage');
+    if (stage && slides.length > 1) {
+      var startX = null;
+      stage.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
+      stage.addEventListener('touchend', function (e) {
+        if (startX === null) return;
+        var dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 40) show(dx < 0 ? index + 1 : index - 1);
+        startX = null;
+      }, { passive: true });
+    }
+
+    /* ---- add to cart (AJAX; never navigates) ----
+       The customer keeps their place on the page. Nothing here opens a cart:
+       the drawer is the bundle app's, and it reacts to the events below. */
+    function notifyCartUpdated() {
+      /* Themes and cart-drawer apps each listen for their own name, and an
+         event nobody hears costs nothing, so fire the common ones. */
+      ['cart:refresh', 'cart:update', 'cart-update'].forEach(function (name) {
+        document.dispatchEvent(
+          new CustomEvent(name, { bubbles: true, detail: { source: 'sol-hero' } })
+        );
+      });
+    }
+
+    function addToCart(variantId, button) {
+      if (!variantId) return;
+      var original = button.innerHTML;
+      button.disabled = true;
+      button.innerHTML = {{ section.settings.adding_label | json }};
+      fetch('{{ routes.cart_add_url }}', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ items: [{ id: Number(variantId), quantity: 1 }] })
+      })
+        .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
+        .then(function (r) {
+          if (!r.ok) throw new Error(r.data && r.data.description ? r.data.description : 'Add to cart failed');
+          button.innerHTML = {{ section.settings.added_label | json }};
+          notifyCartUpdated();
+          /* Back to the normal label so a second bottle is one click away. */
+          window.setTimeout(function () {
+            button.disabled = false;
+            button.innerHTML = original;
+          }, 1800);
+        })
+        .catch(function (err) {
+          button.disabled = false;
+          button.innerHTML = original;
+          /* Slow or flaky network: fall back to a normal form post, which
+             adds the item and returns to this page via return_to. */
+          var form = root.querySelector('[data-sol-form]');
+          if (form) { form.removeAttribute('data-sol-form'); form.submit(); return; }
+          window.alert(err.message);
+        });
+    }
+
+    var form = root.querySelector('[data-sol-form]');
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        if (!form.hasAttribute('data-sol-form')) return;
+        e.preventDefault();
+        var btn = form.querySelector('[data-sol-atc]');
+        addToCart(form.querySelector('input[name="id"]').value, btn);
+      });
+    }
+
+    /* ---- social proof counter ---- */
+    var counter = root.querySelector('[data-sol-count]');
+    if (counter && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      var cFrom = parseInt(counter.getAttribute('data-from'), 10);
+      var cTo = parseInt(counter.getAttribute('data-to'), 10);
+      var COUNT_MS = 2000;
+      var PAUSE_MS = 10000;
+
+      if (!isNaN(cFrom) && !isNaN(cTo) && cTo > cFrom) {
+        var fmt = function (n) {
+          try { return n.toLocaleString('en-IN'); } catch (e) { return String(n); }
+        };
+
+        var runCount = function () {
+          var startTime = null;
+          var step = function (now) {
+            if (startTime === null) startTime = now;
+            var progress = Math.min((now - startTime) / COUNT_MS, 1);
+            /* easeOutExpo: fast off the mark, then settles */
+            var eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+            counter.textContent = fmt(Math.floor(cFrom + eased * (cTo - cFrom)));
+            if (progress < 1) {
+              window.requestAnimationFrame(step);
+            } else {
+              counter.textContent = fmt(cTo);
+              window.setTimeout(runCount, PAUSE_MS);
+            }
+          };
+          window.requestAnimationFrame(step);
+        };
+
+        /* Only start once the row is actually on screen, so the first run
+           isn't spent before anybody scrolls down to it. */
+        if (window.IntersectionObserver) {
+          var seen = false;
+          var io = new IntersectionObserver(function (entries) {
+            for (var i = 0; i < entries.length; i++) {
+              if (entries[i].isIntersecting && !seen) { seen = true; io.disconnect(); runCount(); }
+            }
+          }, { threshold: 0.4 });
+          io.observe(counter);
+        } else {
+          window.setTimeout(runCount, 500);
+        }
+      }
+    }
+
+    /* ---- delivery estimate on the viewer's own clock ---- */
+    var deliv = root.querySelector('[data-sol-delivery]');
+    if (deliv) {
+      var out = deliv.querySelector('[data-sol-delivery-range]');
+      var minD = parseInt(deliv.getAttribute('data-min-days'), 10);
+      var maxD = parseInt(deliv.getAttribute('data-max-days'), 10);
+      if (out && !isNaN(minD) && !isNaN(maxD)) {
+        var dayLabel = function (offset) {
+          var d = new Date();
+          d.setDate(d.getDate() + offset);
+          try {
+            return d.toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short' });
+          } catch (e) {
+            return d.toDateString().slice(0, 10);
+          }
+        };
+        out.textContent = dayLabel(minD) + ' \u2013 ' + dayLabel(maxD);
+      }
+    }
+
+    /* ---- sticky bar ---- */
+    if (sticky) {
+      var revealAt = parseInt(sticky.getAttribute('data-reveal-at'), 10) || 620;
+      var action = sticky.getAttribute('data-action');
+      var revealMode = sticky.getAttribute('data-reveal-mode');
+      var ticking = false;
+
+      /* The buy box ends with its FAQ, so that is the anchor. With the FAQ
+         switched off, fall back to the whole hero. */
+      var revealAnchor = root.querySelector('.sol-bfaq') || root;
+
+      function update() {
+        var show;
+        if (revealMode === 'after_buy_box') {
+          show = revealAnchor.getBoundingClientRect().bottom <= 0;
+        } else {
+          var y = window.scrollY || document.documentElement.scrollTop;
+          show = y > revealAt;
+        }
+        sticky.classList.toggle('is-visible', show);
+        ticking = false;
+      }
+      window.addEventListener('scroll', function () {
+        if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
+      }, { passive: true });
+      update();
+
+      var stickyBtn = sticky.querySelector('[data-sol-sticky-btn]');
+      if (stickyBtn) {
+        stickyBtn.addEventListener('click', function () {
+          if (action === 'add_to_cart') {
+            addToCart(stickyBtn.getAttribute('data-variant-id'), stickyBtn);
+            return;
+          }
+
+          var target = null;
+          if (action === 'scroll_to_atc') {
+            /* Send them back to the real buy button, and focus it so the
+               keyboard path lands in the same place as the tap. */
+            target = root.querySelector('[data-sol-atc]');
+          }
+          if (!target) target = document.getElementById(sticky.getAttribute('data-offers'));
+          if (!target) return;
+
+          var smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          target.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'center' });
+          if (action === 'scroll_to_atc' && target.focus) {
+            window.setTimeout(function () { target.focus({ preventScroll: true }); }, smooth ? 450 : 0);
+          }
+        });
+      }
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "SOL — Product hero",
+  "tag": "section",
+  "class": "sol-section sol-section--hero",
+  "max_blocks": 24,
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product",
+      "info": "Leave empty on a product template to use the current product."
+    },
+    {
+      "type": "header",
+      "content": "Gallery"
+    },
+    {
+      "type": "image_picker",
+      "id": "featured_image",
+      "label": "Fallback / sticky-bar image",
+      "info": "Optional. Used when the product has no images, and for the sticky bar thumbnail."
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Main image focus",
+      "options": [
+        {
+          "value": "center center",
+          "label": "Centre"
+        },
+        {
+          "value": "70% center",
+          "label": "Right of centre"
+        },
+        {
+          "value": "30% center",
+          "label": "Left of centre"
+        }
+      ],
+      "default": "70% center"
+    },
+    {
+      "type": "range",
+      "id": "thumb_columns",
+      "label": "Thumbnails in view",
+      "info": "The row scrolls. A half thumbnail at the edge (4.5, 5.5) is what tells people there are more images.",
+      "min": 3,
+      "max": 7,
+      "step": 0.5,
+      "default": 4.5
+    },
+    {
+      "type": "header",
+      "content": "Rating"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "label": "Show rating row",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "rating_stars",
+      "label": "Filled stars",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating text",
+      "default": "Rated <strong>4.8 / 5.0</strong> | 'Excellent'"
+    },
+    {
+      "type": "text",
+      "id": "rating_count_text",
+      "label": "Second line",
+      "info": "Optional. Leave empty to keep the rating on one line."
+    },
+    {
+      "type": "range",
+      "id": "rating_star_size",
+      "label": "Star size",
+      "min": 12,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "rating_text_size",
+      "label": "Rating text size",
+      "min": 11,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "rating_gap",
+      "label": "Space above the row",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "color_star",
+      "label": "Stars",
+      "default": "#FFD700"
+    },
+    {
+      "type": "color",
+      "id": "color_rating_text",
+      "label": "Rating text",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Doctors' choice badge"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_doctors",
+      "label": "Show the badge",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "doctor_image_1",
+      "label": "Doctor photo 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "doctor_image_2",
+      "label": "Doctor photo 2"
+    },
+    {
+      "type": "text",
+      "id": "doctor_image_url_1",
+      "label": "Doctor photo 1 fallback URL",
+      "info": "Used only while no image is picked above."
+    },
+    {
+      "type": "text",
+      "id": "doctor_image_url_2",
+      "label": "Doctor photo 2 fallback URL",
+      "info": "Used only while no image is picked above."
+    },
+    {
+      "type": "text",
+      "id": "doctors_count",
+      "label": "Count",
+      "default": "1,192+"
+    },
+    {
+      "type": "text",
+      "id": "doctors_label",
+      "label": "Label",
+      "default": "Doctors' Choice"
+    },
+    {
+      "type": "text",
+      "id": "doctors_badge",
+      "label": "Verified tag",
+      "default": "\u2713 Verified"
+    },
+    {
+      "type": "range",
+      "id": "doctors_gap",
+      "label": "Space above the badge",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "color",
+      "id": "doctors_bg",
+      "label": "Badge background",
+      "default": "#F0F4FF"
+    },
+    {
+      "type": "color",
+      "id": "doctors_border",
+      "label": "Badge border",
+      "default": "#C5D3F0"
+    },
+    {
+      "type": "color",
+      "id": "doctors_ink",
+      "label": "Badge count / tag",
+      "default": "#1A3A7A"
+    },
+    {
+      "type": "color",
+      "id": "doctors_label_ink",
+      "label": "Badge label",
+      "default": "#3A5AA8"
+    },
+    {
+      "type": "header",
+      "content": "Title"
+    },
+    {
+      "type": "range",
+      "id": "title_gap",
+      "label": "Space above the title",
+      "min": 0,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "subtitle_gap",
+      "label": "Space below the title",
+      "min": 0,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Code slots — edit any block's HTML"
+    },
+    {
+      "type": "paragraph",
+      "content": "Each block has its own code field. Leave a field blank to keep its default. Margins are in px."
+    },
+    { "type": "header", "content": "Code slot — 90-Day Guarantee (below cart)" },
+    { "type": "liquid", "id": "slot_guarantee", "label": "Guarantee — custom code (blank = default badge)" },
+    { "type": "range", "id": "slot_guarantee_mt", "label": "Guarantee — space above", "min": 0, "max": 60, "step": 2, "unit": "px", "default": 10 },
+    { "type": "range", "id": "slot_guarantee_mb", "label": "Guarantee — space below", "min": 0, "max": 60, "step": 2, "unit": "px", "default": 6 },
+    { "type": "header", "content": "Code slot — Delivery" },
+    { "type": "liquid", "id": "slot_delivery", "label": "Delivery — custom code (blank = default)" },
+    { "type": "range", "id": "slot_delivery_mt", "label": "Delivery — space above", "min": 0, "max": 60, "step": 2, "unit": "px", "default": 0 },
+    { "type": "range", "id": "slot_delivery_mb", "label": "Delivery — space below", "min": 0, "max": 60, "step": 2, "unit": "px", "default": 0 },
+    { "type": "header", "content": "Code slot — Low stock bar" },
+    { "type": "liquid", "id": "slot_stock", "label": "Low stock bar — custom code (blank = animated bar)" },
+    { "type": "range", "id": "low_stock_start", "label": "Starting units", "min": 5, "max": 99, "step": 1, "default": 40 },
+    { "type": "range", "id": "low_stock_floor", "label": "Stops falling at", "min": 1, "max": 20, "step": 1, "default": 3 },
+    { "type": "text", "id": "low_stock_label", "label": "Low stock label", "default": "Low stock — selling fast" },
+    { "type": "range", "id": "slot_stock_mt", "label": "Almost sold out — space above", "min": 0, "max": 60, "step": 2, "unit": "px", "default": 0 },
+    { "type": "range", "id": "slot_stock_mb", "label": "Almost sold out — space below", "min": 0, "max": 60, "step": 2, "unit": "px", "default": 0 },
+    { "type": "header", "content": "Code slot — Warning (below payment)" },
+    { "type": "liquid", "id": "slot_warning", "label": "Warning — custom code (blank = default warning)" },
+    { "type": "range", "id": "slot_warning_mt", "label": "Warning — space above", "min": 0, "max": 60, "step": 2, "unit": "px", "default": 6 },
+    { "type": "range", "id": "slot_warning_mb", "label": "Warning — space below", "min": 0, "max": 60, "step": 2, "unit": "px", "default": 6 },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Line breaks are kept. Leave empty to use the product title.",
+      "default": "15-in-1 Ayurvedic\nPain Relief Oil"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Sub-heading",
+      "default": "Instant long lasting relief for joint pain, backache, knee pain & leg cramps — without the side effects."
+    },
+    {
+      "type": "header",
+      "content": "Price"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_price",
+      "label": "Show price",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "price_note",
+      "label": "Note under price",
+      "default": "1 Bottle · 200ml · inclusive of all taxes"
+    },
+    {
+      "type": "header",
+      "content": "Offer ladder (MoonBundle)"
+    },
+    {
+      "type": "paragraph",
+      "content": "Add your MoonBundle app block to this section — it renders under the heading below and controls offer selection and Add to Cart."
+    },
+    {
+      "type": "text",
+      "id": "offers_heading",
+      "label": "Offers heading",
+      "default": "Choose Your Supply"
+    },
+    {
+      "type": "header",
+      "content": "Stock"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stock",
+      "label": "Show stock line",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "stock_text",
+      "label": "In stock text",
+      "default": "IN STOCK — DELIVERY IN 3–5 DAYS ACROSS INDIA 🇮🇳"
+    },
+    {
+      "type": "text",
+      "id": "out_of_stock_text",
+      "label": "Out of stock text",
+      "default": "OUT OF STOCK — back in a few days"
+    },
+    {
+      "type": "header",
+      "content": "Fallback Add to Cart"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_fallback_atc",
+      "label": "Show a native Add to Cart button",
+      "default": false,
+      "info": "Leave off while MoonBundle handles the buy button, so customers don't see two."
+    },
+    {
+      "type": "text",
+      "id": "atc_label",
+      "label": "Button label",
+      "default": "ADD TO CART"
+    },
+    {
+      "type": "text",
+      "id": "added_label",
+      "label": "Added-to-cart label",
+      "default": "ADDED \u2713",
+      "info": "Shown on the button for a moment after a successful add."
+    },
+    {
+      "type": "text",
+      "id": "sold_out_label",
+      "label": "Sold out label",
+      "default": "SOLD OUT"
+    },
+    {
+      "type": "text",
+      "id": "adding_label",
+      "label": "Label while adding",
+      "default": "ADDING…",
+      "info": "Shown on the button between the tap and the cart page loading."
+    },
+    {
+      "type": "header",
+      "content": "Social proof row"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social_proof",
+      "label": "Show the social proof row",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "sp_avatar_1",
+      "label": "Customer photo 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "sp_avatar_2",
+      "label": "Customer photo 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "sp_avatar_3",
+      "label": "Customer photo 3"
+    },
+    {
+      "type": "text",
+      "id": "sp_avatar_url_1",
+      "label": "Customer photo 1 fallback URL",
+      "info": "Used only while no image is picked above."
+    },
+    {
+      "type": "text",
+      "id": "sp_avatar_url_2",
+      "label": "Customer photo 2 fallback URL"
+    },
+    {
+      "type": "text",
+      "id": "sp_avatar_url_3",
+      "label": "Customer photo 3 fallback URL"
+    },
+    {
+      "type": "number",
+      "id": "sp_count_from",
+      "label": "Count animates from",
+      "default": 10000
+    },
+    {
+      "type": "number",
+      "id": "sp_count_to",
+      "label": "Count animates to",
+      "default": 36000,
+      "info": "The final number is what shows with animation off, so keep it the honest one."
+    },
+    {
+      "type": "text",
+      "id": "sp_label",
+      "label": "Label after the count",
+      "default": "+ Happy Customers"
+    },
+    {
+      "type": "text",
+      "id": "sp_rating",
+      "label": "Rating",
+      "default": "4.9/5"
+    },
+    {
+      "type": "color",
+      "id": "sp_accent",
+      "label": "Accent",
+      "default": "#7e8c1a"
+    },
+    {
+      "type": "range",
+      "id": "sp_gap",
+      "label": "Space above the row",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 22
+    },
+    {
+      "type": "header",
+      "content": "Payment methods"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pay_marks",
+      "label": "Show the payment method row",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "pay_marks",
+      "label": "Marks, in order",
+      "default": "gpay, phonepe, paytm, bhim, amazonpay, visa, mastercard, rupay, amex",
+      "info": "Comma-separated. Available: gpay, phonepe, paytm, bhim, amazonpay, visa, mastercard, rupay, amex."
+    },
+    {
+      "type": "text",
+      "id": "pay_note",
+      "label": "Note under the row",
+      "default": "UPI, cards & Cash on Delivery accepted"
+    },
+    {
+      "type": "header",
+      "content": "Money back promise"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_money_back",
+      "label": "Show the money back banner",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "mbp_badge",
+      "label": "Corner badge",
+      "info": "Leave empty to hide it.",
+      "default": "On Prepaid Orders"
+    },
+    {
+      "type": "text",
+      "id": "mbp_brand",
+      "label": "Provider",
+      "default": "Cashfree Payments"
+    },
+    {
+      "type": "text",
+      "id": "mbp_promise",
+      "label": "Headline",
+      "default": "Money Back Promise"
+    },
+    {
+      "type": "text",
+      "id": "mbp_verified",
+      "label": "Verified line",
+      "info": "Leave empty to hide it.",
+      "default": "Elite Indian Store is a verified business"
+    },
+    {
+      "type": "richtext",
+      "id": "mbp_refund_text",
+      "label": "Refund line",
+      "info": "Bold text is highlighted in purple.",
+      "default": "<p>Get <b>100% refund</b> on non-delivery or defects</p>"
+    },
+    {
+      "type": "header",
+      "content": "Low stock bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stockbar",
+      "label": "Show the stock bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "stock_label",
+      "label": "Stock label",
+      "default": "Almost sold out"
+    },
+    {
+      "type": "text",
+      "id": "stock_note",
+      "label": "Note on the right",
+      "default": "Selling fast"
+    },
+    {
+      "type": "range",
+      "id": "stock_percent",
+      "label": "Bar fill",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 7
+    },
+    {
+      "type": "header",
+      "content": "Delivery estimate"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_delivery",
+      "label": "Show the delivery estimate",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "delivery_label",
+      "label": "Lead-in text",
+      "default": "Order today, delivered"
+    },
+    {
+      "type": "range",
+      "id": "delivery_min_days",
+      "label": "Earliest",
+      "min": 1,
+      "max": 21,
+      "step": 1,
+      "unit": "d",
+      "default": 2
+    },
+    {
+      "type": "text",
+      "id": "delivery_note",
+      "label": "Note under the dates",
+      "default": "2\u20135 days depending on your location"
+    },
+    {
+      "type": "range",
+      "id": "delivery_max_days",
+      "label": "Latest",
+      "min": 1,
+      "max": 30,
+      "step": 1,
+      "unit": "d",
+      "default": 5
+    },
+    {
+      "type": "header",
+      "content": "Counterfeit warning"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_warning",
+      "label": "Show the warning box",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "warning_title",
+      "label": "Title",
+      "default": "Warning: Unauthorised Sellers Detected"
+    },
+    {
+      "type": "richtext",
+      "id": "warning_body",
+      "label": "Body",
+      "default": "<p>SOL Pain Relief Oil has sold out <u>12 times</u> in the past year due to high demand. Unfortunately, this has led to <strong>counterfeit versions appearing on Amazon, Flipkart and other websites</strong> with diluted formulations that don't work and may irritate the skin.</p><p>We're the only authorised seller — shipped direct from us, from the same GMP-certified batch, quality-verified. Take advantage of the current discount before we sell out again.</p><p>We are also the <strong>only seller who replaces a bottle you're not happy with</strong> — something you will never get from an unauthorised seller.</p><p><strong>PS:</strong> Only available here. Please don't buy fakes on Amazon, Flipkart, or any other site.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Buy-box FAQ"
+    },
+    {
+      "type": "text",
+      "id": "bfaq_title",
+      "label": "Heading",
+      "default": "Quick Answers",
+      "info": "Leave empty to hide the heading. Add \"Buy-box FAQ\" blocks below to fill this out."
+    },
+    {
+      "type": "header",
+      "content": "Cash on Delivery"
+    },
+    {
+      "type": "text",
+      "id": "cod_text",
+      "label": "COD line",
+      "default": "Cash on Delivery available across India"
+    },
+    {
+      "type": "header",
+      "content": "Guarantee strip"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_guarantee",
+      "label": "Show guarantee strip",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "guarantee_icon",
+      "label": "Icon character",
+      "default": "✷"
+    },
+    {
+      "type": "text",
+      "id": "guarantee_title",
+      "label": "Title",
+      "default": "7-Day Money Back Guarantee"
+    },
+    {
+      "type": "text",
+      "id": "guarantee_link_text",
+      "label": "Link text",
+      "default": "Click here to learn more"
+    },
+    {
+      "type": "url",
+      "id": "guarantee_link",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Hero review"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_review",
+      "label": "Show review card",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "review_stars",
+      "label": "Stars",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "textarea",
+      "id": "review_quote",
+      "label": "Quote",
+      "default": "\"My knee pain after standing all day at the shop was the worst part of my evening. Two weeks of nightly massage and I'm climbing stairs without holding the railing.\""
+    },
+    {
+      "type": "image_picker",
+      "id": "review_avatar",
+      "label": "Avatar"
+    },
+    {
+      "type": "text",
+      "id": "review_name",
+      "label": "Name",
+      "default": "Rakesh M."
+    },
+    {
+      "type": "checkbox",
+      "id": "review_google",
+      "label": "Show Google logo beside the name",
+      "default": true,
+      "info": "Only use this where the review genuinely comes from Google."
+    },
+    {
+      "type": "text",
+      "id": "review_meta",
+      "label": "Meta line",
+      "default": "✔ Verified | Purchased 14th August"
+    },
+    {
+      "type": "header",
+      "content": "Sticky bar"
+    },
+    {
+      "type": "image_picker",
+      "id": "sticky_image",
+      "label": "Sticky-bar image",
+      "info": "Optional. Uses the fallback or product image when left empty."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sticky",
+      "label": "Show sticky bar",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_on_desktop",
+      "label": "Also show on desktop",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "sticky_action",
+      "label": "Button action",
+      "options": [
+        {
+          "value": "scroll_to_offers",
+          "label": "Scroll to the offer ladder"
+        },
+        {
+          "value": "scroll_to_atc",
+          "label": "Scroll back to the Add to Cart button"
+        },
+        {
+          "value": "add_to_cart",
+          "label": "Add to cart, then go to cart"
+        }
+      ],
+      "default": "scroll_to_atc",
+      "info": "Keep this on 'Scroll to the offer ladder' while MoonBundle owns the buy button."
+    },
+    {
+      "type": "select",
+      "id": "sticky_reveal_mode",
+      "label": "Show the bar",
+      "options": [
+        { "value": "after_buy_box", "label": "Once the buy box has scrolled past" },
+        { "value": "pixels", "label": "After a set scroll distance" }
+      ],
+      "default": "after_buy_box"
+    },
+    {
+      "type": "range",
+      "id": "sticky_reveal_at",
+      "label": "Scroll distance",
+      "info": "Only used when the bar shows after a set distance.",
+      "min": 200,
+      "max": 1200,
+      "step": 20,
+      "unit": "px",
+      "default": 620
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_show_rating",
+      "label": "Show the rating line",
+      "default": true,
+      "info": "Uses the same rating text as the buy box."
+    },
+    {
+      "type": "text",
+      "id": "sticky_rating_text",
+      "label": "Rating text in the bar",
+      "info": "Leave empty to reuse the buy box's wording. The bar is narrow, so a shorter form usually fits better."
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_show_price",
+      "label": "Show the price",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "sticky_label",
+      "label": "Button label",
+      "default": "SELECT OFFER"
+    },
+    {
+      "type": "text",
+      "id": "sticky_title",
+      "label": "Sticky title",
+      "info": "Leave empty to use the product title.",
+      "default": "15-in-1 Ayurvedic Pain Relief Oil"
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color",
+      "id": "color_maroon",
+      "label": "Maroon",
+      "default": "#2f6b2e"
+    },
+    {
+      "type": "color",
+      "id": "color_maroon_deep",
+      "label": "Deep maroon",
+      "default": "#1e3a16"
+    },
+    {
+      "type": "color",
+      "id": "color_gold",
+      "label": "Gold",
+      "default": "#9cae01"
+    },
+    {
+      "type": "color",
+      "id": "color_cream",
+      "label": "Cream",
+      "default": "#f3f7e4"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Text",
+      "default": "#17271b"
+    },
+    {
+      "type": "color",
+      "id": "color_muted",
+      "label": "Muted text",
+      "default": "#5a6b4e"
+    },
+    {
+      "type": "color",
+      "id": "color_green",
+      "label": "Verified green",
+      "default": "#1E7A4D"
+    },
+    {
+      "type": "color",
+      "id": "color_border",
+      "label": "Border",
+      "default": "#dde7c2"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "Content width",
+      "min": 400,
+      "max": 720,
+      "step": 20,
+      "unit": "px",
+      "default": 480
+    },
+    {
+      "type": "range",
+      "id": "padding_x",
+      "label": "Side padding",
+      "info": "The gutter down both sides of the buy box. 0 runs the gallery edge to edge.",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "info": "The gap between the announcement bar and the gallery. 0 sits the gallery straight under the bar.",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "title",
+      "name": "Product title",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Title override (blank = product/section title)" }
+      ]
+    },
+    {
+      "type": "custom_liquid",
+      "name": "Custom Liquid / HTML",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "custom_liquid",
+          "label": "Custom liquid"
+        }
+      ]
+    },
+    {
+      "type": "below_social_proof_liquid",
+      "name": "Custom Liquid / HTML (2)",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "custom_liquid",
+          "label": "Custom liquid"
+        }
+      ]
+    },
+    {
+      "type": "social_proof_row",
+      "name": "Customer social proof",
+      "settings": []
+    },
+    {
+      "type": "money_back_row",
+      "name": "Money Back Promise",
+      "settings": []
+    },
+    {
+      "type": "stockbar_row",
+      "name": "Almost sold out",
+      "settings": []
+    },
+    {
+      "type": "delivery_row",
+      "name": "Delivery estimate",
+      "settings": []
+    },
+    {
+      "type": "benefits_row",
+      "name": "Benefits card",
+      "settings": []
+    },
+    {
+      "type": "add_to_cart_row",
+      "name": "Add to cart button",
+      "settings": []
+    },
+    {
+      "type": "payment_methods_row",
+      "name": "Payment methods",
+      "settings": []
+    },
+    {
+      "type": "buybox_faq",
+      "name": "Buy-box FAQ",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Who is it for?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Anyone living with joint, knee, back, shoulder or muscle pain.</p>"
+        }
+      ]
+    },
+    {
+      "type": "gallery_image",
+      "name": "Gallery image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "paragraph",
+          "content": "Only used while the product itself has no media. Add photos to the product and they take over automatically."
+        }
+      ]
+    },
+    {
+      "type": "feature_pill",
+      "name": "Image pill",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon character",
+          "default": "✦"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Fast-absorbing, non-greasy"
+        }
+      ]
+    },
+    {
+      "type": "benefit",
+      "name": "Benefit bullet",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Bold lead",
+          "default": "Fast-absorbing relief."
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Soaks into the muscle — it doesn't just sit on the skin like a balm."
+        }
+      ]
+    },
+    {
+      "type": "payment_badge",
+      "name": "Payment badge",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "UPI"
+        },
+        {
+          "type": "checkbox",
+          "id": "highlight",
+          "label": "Highlight in green",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SOL — Product hero",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Fast-absorbing relief.",
+            "text": "Soaks into the muscle — it doesn't just sit on the skin like a balm."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Eases stiffness.",
+            "text": "Loosens tight, aching joints so you move freely again."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Built for long days.",
+            "text": "Reduces the ache from all-day standing, sitting, or work."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "15+ Ayurvedic herbs, no chemicals.",
+            "text": "Gentle enough for nightly use."
+          }
+        },
+        {
+          "type": "payment_badge",
+          "settings": {
+            "label": "UPI"
+          }
+        },
+        {
+          "type": "payment_badge",
+          "settings": {
+            "label": "RuPay"
+          }
+        },
+        {
+          "type": "payment_badge",
+          "settings": {
+            "label": "VISA"
+          }
+        },
+        {
+          "type": "payment_badge",
+          "settings": {
+            "label": "MASTERCARD"
+          }
+        },
+        {
+          "type": "payment_badge",
+          "settings": {
+            "label": "PAYTM"
+          }
+        },
+        {
+          "type": "payment_badge",
+          "settings": {
+            "label": "COD",
+            "highlight": true
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
