@@ -103,7 +103,8 @@
      Re-rendering wholesale would restart every <img> and flash the grid.
      ========================================================= */
 
-  var REROLL_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>';
+  var REGEN_ICON  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>';
+  var UPLOAD_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg>';
   var WARN_ICON   = '<svg class="warn" viewBox="0 0 24 24" fill="none" stroke="#e5675f" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>';
 
   function cardFor(stage, item) {
@@ -128,9 +129,10 @@
     // Footer actions
     foot.innerHTML = '';
     if (item.state === 'done') {
-      foot.appendChild(actionBtn('ibtn', REROLL_ICON + ' Re-roll', function () { reroll(stage, item.id); }));
+      foot.appendChild(actionBtn('ibtn', REGEN_ICON + ' Regenerate', function () { regenerate(stage, item.id); }));
+      foot.appendChild(actionBtn('ibtn', UPLOAD_ICON + ' Replace', function () { replaceOne(stage, item.id); }));
     } else if (item.state === 'failed') {
-      foot.appendChild(actionBtn('ibtn retry', REROLL_ICON + ' Retry', function () { retry(stage, item.id); }));
+      foot.appendChild(actionBtn('ibtn retry', REGEN_ICON + ' Retry', function () { retry(stage, item.id); }));
     }
 
     var sig = item.state + '|' + (item.localPath || '') + '|' + (item.version || '') + '|' + (item.error || '');
@@ -538,14 +540,60 @@
     }
   }
 
-  function reroll(stage, id) {
-    toast('Re-rolling ' + id + '…', 'gen');
-    singleJob(stage, id, function () { return window.api.reroll(stage, id); }, id + ' re-rolled');
+  function regenerate(stage, id) {
+    toast('Regenerating ' + id + '…', 'gen');
+    singleJob(stage, id, function () { return window.api.regenerate(stage, id); }, id + ' regenerated');
   }
   function retry(stage, id) {
     toast('Retrying ' + id + '…', 'gen');
     singleJob(stage, id, function () { return window.api.retry(stage, id); }, id + ' recovered');
   }
+
+  /* ---- Replace one finished asset with the user's own file ----
+     An upload, not a generation: nothing is billed and no job is polled. */
+
+  var pendingReplace = null;
+
+  function replaceOne(stage, id) {
+    var it = itemById(stage, id);
+    if (!it) return;
+    pendingReplace = { stage: stage, id: id };
+    var input = $('fi-replace');
+    // Frames take a still; a motion tile holds a clip.
+    input.accept = stage === 'motion' ? 'video/*' : 'image/*';
+    toast('Replacing ' + id + ' — pick ' +
+          (stage === 'motion' ? 'a video' : 'an image (.png / .jpg)'), 'gen');
+    input.click();
+  }
+
+  on($('fi-replace'), 'change', async function (e) {
+    var file = e.target.files && e.target.files[0];
+    e.target.value = '';
+    var target = pendingReplace;
+    pendingReplace = null;
+    if (!file || !target) return;
+
+    var it = itemById(target.stage, target.id);
+    if (!it) return;
+    var prev = { state: it.state, localPath: it.localPath, version: it.version };
+    it.state = 'generating';
+    paintCard(target.stage, it);
+    try {
+      var r = await window.api.replaceAsset(target.stage, target.id, file);
+      it.state = 'done';
+      it.localPath = r.localPath;
+      it.version = r.version || Date.now();
+      it.creditsConsumed = 0;          // a replacement costs nothing
+      it.error = null;
+      paintCard(target.stage, it);
+      toast(target.id + ' replaced ✓', 'ok');
+      estMotion();                     // a replaced frame can unblock Stage 2
+    } catch (err) {
+      Object.assign(it, prev);         // put the tile back as it was
+      paintCard(target.stage, it);
+      fail(err);
+    }
+  });
 
   /* =========================================================
      Logs

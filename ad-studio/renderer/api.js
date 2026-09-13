@@ -117,8 +117,19 @@
     //     localPath?, creditsConsumed?, error?, balance?}
     job: function (jobId) { return get('/jobs/' + encodeURIComponent(jobId)); },
 
-    reroll: function (stage, itemId) { return post('/jobs/reroll', { stage: stage, itemId: itemId }); },
-    retry:  function (stage, itemId) { return post('/jobs/retry',  { stage: stage, itemId: itemId }); },
+    regenerate: function (stage, itemId) { return post('/jobs/regenerate', { stage: stage, itemId: itemId }); },
+    retry:      function (stage, itemId) { return post('/jobs/retry',      { stage: stage, itemId: itemId }); },
+
+    // Swap one finished asset for a file the user supplies. This is an upload, not a
+    // generation: it bills nothing and returns the new local path directly.
+    // -> {localPath, version?}
+    replaceAsset: function (stage, itemId, file) {
+      var fd_ = new FormData();
+      fd_.append('stage', stage);
+      fd_.append('itemId', itemId);
+      fd_.append('file', file);
+      return form('/upload/replace', fd_);
+    },
 
     // -- run persistence --
     saveRun:   function (runState) { return post('/run/save', runState); },

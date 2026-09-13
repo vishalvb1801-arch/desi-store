@@ -33,7 +33,7 @@ renderer prefixes `/outputs/` itself, so `outputs/` must be served as a static r
 - Serve `outputs/` **and** the renderer files with
   `Cache-Control: no-cache, no-store, must-revalidate`.
 - Return a `version` (any changing value — mtime or timestamp) alongside `localPath`. The
-  renderer appends it as `?v=` so a re-roll that overwrites the same path still repaints.
+  renderer appends it as `?v=` so a regenerate that overwrites the same path still repaints.
 
 ## Routes
 
@@ -63,6 +63,12 @@ its input immediately and keeps no copy.
 | `POST /api/upload/anchor` | multipart `file` | `{name, width, height, localPath, version?}` |
 | `POST /api/upload/packshot` | multipart `file` | `{name, width, height, localPath, version?}` |
 | `POST /api/upload/frames` | multipart `files` (repeated) | `{count, items:[{id,label?,localPath,version?}]}` |
+| `POST /api/upload/replace` | multipart `file` + `stage` + `itemId` | `{localPath, version?}` |
+
+`/upload/replace` backs the per-tile **Replace** action: it swaps one finished asset for a
+file the user picks (an image on a frame tile, a video on a motion tile). It is an upload, not a
+generation — bill nothing, start no job, and return the new local path directly. Write it to a
+fresh path, or return a changed `version`, so the cache-buster forces a repaint.
 
 `/upload/frames` is Option 2 and receives **either** a single `.zip` **or** N image files.
 Expand a zip server-side and return the frames in playback order (sort entries naturally —
@@ -75,7 +81,7 @@ Expand a zip server-side and return the frames in playback order (sort entries n
 | `POST /api/generate/motion` | `{model,res,dur,asp,sound}` | `{items:[{id, jobId, label?}]}` |
 | `POST /api/generate/song` | `{model,vocal,style,lyrics}` | `{jobId}` |
 | `GET /api/jobs/:jobId` | — | see below |
-| `POST /api/jobs/reroll` | `{stage,itemId}` | `{jobId}` |
+| `POST /api/jobs/regenerate` | `{stage,itemId}` | `{jobId}` |
 | `POST /api/jobs/retry` | `{stage,itemId}` | `{jobId}` |
 
 Motion settings arrive as the raw control values: `model` is `kling`\|`veo`, `res` is
