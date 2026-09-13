@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bug 2: stale UI. Belt-and-braces with the server's no-cache headers so a rebuild
+     never leaves a stale shell behind. Asset URLs are additionally cache-busted in api.js. -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>kie Ad Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand"><span class="glyph">k</span> kie Ad Studio</div>
+  <button class="keydot" id="keydot" title="API key settings"><span class="d"></span> <span id="keydot-label">Checking key…</span></button>
+  <div class="spacer"></div>
+  <div class="credits">
+    <div class="cr"><span class="k">Balance</span><span class="v" id="bal">—</span></div>
+    <div class="cr"><span class="k">This run</span><span class="v spend" id="spend">+0</span></div>
+  </div>
+  <button class="tbtn" id="btn-save">Save run</button>
+  <button class="tbtn" id="btn-download">Download all</button>
+</div>
+
+<div class="wrap">
+  <div class="nav">
+    <button class="on" data-v="frames">Frames <span class="badge">Stage 1</span></button>
+    <button data-v="motion">Motion <span class="badge">Stage 2</span></button>
+    <button data-v="song">Song <span class="badge">Stage 3</span></button>
+    <button data-v="logs">Logs</button>
+  </div>
+
+  <!-- ===== FRAMES / STAGE 1 ===== -->
+  <section class="view on" id="v-frames">
+    <div class="loaderrow">
+      <button class="loadbtn" id="btn-frame-prompts">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+        Load frame prompts (.json)</button>
+      <span class="chip" id="chip-frames" hidden>
+        <b id="chip-frames-name"></b>
+        <span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>loaded</span>
+        <span class="mono" id="chip-frames-count"></span>
+        <span class="ok" id="chip-frames-anchor" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>anchor</span>
+      </span>
+    </div>
+
+    <!-- Option 1 — generate -->
+    <div class="option">
+      <div class="opthead"><span class="optnum">Option 1</span><h4>Generate</h4><span class="optsub">anchor + packshot → kie generates the frames</span></div>
+      <div class="uprow">
+        <div class="upload">
+          <div class="thumb" id="th-anchor"><span class="ph">anchor</span></div>
+          <div class="up-meta">
+            <div class="up-title">Character anchor
+              <span class="loaded" id="badge-anchor" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>loaded</span>
+            </div>
+            <div class="up-sub" id="sub-anchor">no file yet</div>
+            <div class="up-actions">
+              <button class="mini" data-upload="anchor">Choose</button>
+              <button class="mini" data-view="anchor" hidden>View</button>
+            </div>
+          </div>
+        </div>
+        <div class="upload">
+          <div class="thumb" id="th-packshot"><span class="ph">packshot</span></div>
+          <div class="up-meta">
+            <div class="up-title">Packshot
+              <span class="loaded" id="badge-packshot" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>loaded</span>
+            </div>
+            <div class="up-sub" id="sub-packshot">no file yet</div>
+            <div class="up-actions">
+              <button class="mini" data-upload="packshot">Choose</button>
+              <button class="mini" data-view="packshot" hidden>View</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="estimate">
+        <span class="lead">Estimate before you spend</span>
+        <span class="calc" id="fcalc">load prompts to estimate</span>
+        <span class="tot" id="ftot"></span>
+        <button class="go" id="go-frames" disabled>Generate frames</button>
+      </div>
+    </div>
+
+    <div class="ordiv"><span>or</span></div>
+
+    <!-- Option 2 — bring your own -->
+    <div class="option">
+      <div class="opthead"><span class="optnum alt">Option 2</span><h4>Upload your own images / frames</h4><span class="optsub">skip generation — bring frames you already have</span></div>
+      <div class="dropzone" id="dz-frames">
+        <svg class="di" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg>
+        <div class="dt">Drop a ZIP of frames, or individual images</div>
+        <div class="ds">the whole set at once, or one file at a time — in playback order</div>
+        <div class="formats"><span class="fmt">.zip</span><span class="fmt">.png</span><span class="fmt">.jpg</span><span class="fmt">.webp</span><span class="fmt">any image</span></div>
+        <div><button class="choose" id="btn-own-frames">Choose files</button></div>
+      </div>
+    </div>
+
+    <div class="gridwrap">
+      <div class="gridhead" id="frames-head">Frames</div>
+      <div class="grid" id="grid-frames"></div>
+      <div class="emptygrid" id="empty-frames">No frames yet — generate with Option 1, or upload your own with Option 2.</div>
+    </div>
+  </section>
+
+  <!-- ===== MOTION / STAGE 2 ===== -->
+  <section class="view" id="v-motion">
+    <div class="loaderrow">
+      <button class="loadbtn" id="btn-motion-prompts">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+        Load motion prompts (.json)</button>
+      <span class="chip" id="chip-motion" hidden>
+        <b id="chip-motion-name"></b>
+        <span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>loaded</span>
+        <span class="mono" id="chip-motion-count"></span>
+      </span>
+    </div>
+
+    <div class="controls">
+      <div class="field"><label>Model</label>
+        <div class="sel"><select id="m-model">
+          <option value="kling">Kling 3.0</option>
+          <option value="veo">Veo 3.1 — talking-head</option>
+        </select></div>
+      </div>
+      <div class="field" id="f-res"><label>Resolution</label>
+        <div class="sel"><select id="m-res">
+          <option value="std">Standard</option>
+          <option value="pro" selected>Pro</option>
+          <option value="4k">4K</option>
+        </select></div>
+      </div>
+      <div class="field"><label>Duration</label>
+        <div class="sel"><select id="m-dur"><option value="5">5s</option><option value="10">10s</option></select></div>
+      </div>
+      <div class="field"><label>Aspect</label>
+        <div class="sel"><select id="m-asp"><option>9:16</option><option>1:1</option><option>16:9</option></select></div>
+      </div>
+      <div class="field"><label>Sound</label>
+        <div class="toggle"><button class="sw" id="m-sound" aria-pressed="false"><span class="knob"></span></button><span class="sw-label" id="m-sound-lbl">Off</span></div>
+      </div>
+    </div>
+
+    <div class="estimate m">
+      <span class="lead">Estimate before you spend</span>
+      <span class="calc" id="mcalc">load prompts to estimate</span>
+      <span class="tot" id="mtot"></span>
+      <button class="go" id="go-motion" disabled>Animate frames</button>
+    </div>
+    <div class="grid" id="grid-motion"></div>
+    <div class="emptygrid" id="empty-motion">No clips yet — load motion prompts, then animate the Stage 1 frames.</div>
+    <div class="hint"><b>Frames come from Stage 1</b> — generated or your own upload.</div>
+  </section>
+
+  <!-- ===== SONG / STAGE 3 ===== -->
+  <section class="view" id="v-song">
+    <div class="suno">
+      <div class="head"><span class="num">3</span><h3>Song — Suno</h3><span class="meta">only for Suno-type ads · English accent only · Indian accent → ElevenLabs (outside the app)</span></div>
+      <div class="toprow">
+        <button class="loadbtn" id="btn-song-prompt">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+          Load Suno prompt (.json)</button>
+        <div class="field"><label>Model</label><div class="sel"><select id="s-model"><option>V4_5</option><option>V4</option><option>V5</option></select></div></div>
+        <div class="field"><label>Vocal</label><div class="sel"><select id="s-vocal"><option>auto</option><option>female</option><option>male</option></select></div></div>
+        <button class="go" id="go-song">Generate song</button>
+      </div>
+      <span class="chip" id="chip-song" hidden><b id="chip-song-name"></b><span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>loaded</span></span>
+      <div class="inpwrap" style="margin-top:14px"><label>Style / tempo</label><input class="inp" id="s-style" placeholder="e.g. slow cinematic emotional ballad, ~75 BPM"></div>
+      <div class="inpwrap"><label>Lyrics (rhyming, from the skill)</label><textarea class="ta" id="s-lyrics" placeholder="Paste the rhyming lyrics, or load a Suno prompt file"></textarea>
+        <div class="note">For Suno-type ads only. The skill delivers a <b>suno-prompt.json</b> (style + rhyming lyrics). English by default; the song generates on kie Suno — download and sync to your visuals in the edit.</div>
+      </div>
+      <div class="songout" id="song-out" hidden>
+        <span class="loaded"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>saved locally</span>
+        <audio id="song-audio" controls preload="none"></audio>
+        <span class="chip"><span class="mono" id="song-cr">0 cr</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LOGS ===== -->
+  <section class="view" id="v-logs">
+    <div class="logtabs">
+      <button class="on" data-l="video">Per video</button>
+      <button data-l="item">Per item</button>
+    </div>
+    <div id="log-video">
+      <table><thead><tr><th>Video</th><th>Assets</th><th>Status</th><th class="num">Credits</th></tr></thead><tbody id="tb-video"></tbody></table>
+      <div class="logfoot">Total spent this session: <b id="foot-video">0 cr</b></div>
+    </div>
+    <div id="log-item" style="display:none">
+      <table><thead><tr><th>Item</th><th>Stage</th><th>Model</th><th>Status</th><th class="num">Credits</th></tr></thead><tbody id="tb-item"></tbody></table>
+      <div class="logfoot">Reads aren’t billed · Total: <b id="foot-item">0 cr</b></div>
+    </div>
+  </section>
+</div>
+
+<div id="toast"><svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg><span id="toast-msg"></span></div>
+
+<!-- Settings: the API key is typed here once and handed straight to the main process.
+     It is never stored in the renderer, never written to localStorage, never re-read back. -->
+<div class="modal" id="settings" hidden>
+  <div class="sheet">
+    <h3>kie API key</h3>
+    <p>Stored in the OS keychain by the main process. The key is write-only from this window — it is sent once and never read back into the UI.</p>
+    <div class="inpwrap"><label>API key</label><input class="inp" id="key-input" type="password" placeholder="paste your kie API key" autocomplete="off"></div>
+    <div class="sheetfoot">
+      <button class="tbtn" id="key-cancel">Cancel</button>
+      <button class="go" id="key-save" style="margin-left:0">Save key</button>
+    </div>
+  </div>
+</div>
+
+<!-- Hidden file inputs driven by the visible buttons above. -->
+<input type="file" id="fi-frame-prompts" accept=".json,application/json" hidden>
+<input type="file" id="fi-motion-prompts" accept=".json,application/json" hidden>
+<input type="file" id="fi-song-prompt" accept=".json,application/json" hidden>
+<input type="file" id="fi-anchor" accept="image/*" hidden>
+<input type="file" id="fi-packshot" accept="image/*" hidden>
+<input type="file" id="fi-own-frames" accept=".zip,application/zip,image/*" multiple hidden>
+
+<script src="api.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
