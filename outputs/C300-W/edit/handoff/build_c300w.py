@@ -33,7 +33,7 @@ SHOTS = [
     (128.50, 132.30, 36, "trim"),  (132.30, 137.10, 37, "trim"),
     (137.10, 142.62, 56, "slow"),  (142.62, 147.78, 40, "slow"),
     (147.78, 151.96, 41, "slow"),  (151.96, 155.45, 42, "trim"),
-    (155.45, 158.60, 43, "freeze", 1.9),
+    (155.45, 158.60, 43, "freeze", 1.2),
     (158.60, 161.86, 44, "trim"),  (161.86, 166.50, 45, "trim"),
     (166.50, 169.27, 46, "trim"),  (169.27, 177.10, 47, "slow"),
     (177.10, 181.20, 48, "trim"),  (181.20, 185.33, 49, "slow"),
@@ -307,10 +307,12 @@ def render(work):
             assert dur <= SRC + 1e-6 or clip == 0, (clip, dur)
             pre = f"setpts=PTS-STARTPTS,fps={FPS}"
         out = f"{work}/s{i:02d}.mp4"
+        (files_a if i < xf_idx else files_b).append(out)
+        if os.path.exists(out):          # shot cache: delete a file to re-render it
+            continue
         run(["ffmpeg", "-v", "error", "-y", "-i", f"clips/clip_{clip}.mp4", "-an",
              "-vf", f"{pre},{vf_tail},trim=end_frame={n},setpts=PTS-STARTPTS",
              "-c:v", "libx264", "-crf", "12", "-preset", "fast", "-pix_fmt", "yuv420p", "-r", str(FPS), out])
-        (files_a if i < xf_idx else files_b).append(out)
     for name, fl in (("a", files_a), ("b", files_b)):
         open(f"{work}/{name}.txt", "w").write("".join(f"file '{os.path.abspath(f)}'\n" for f in fl))
         run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", f"{work}/{name}.txt", "-c", "copy", f"{work}/{name}.mp4"])
