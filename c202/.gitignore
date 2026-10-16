@@ -1,0 +1,5 @@
+# media + intermediates stay out of git (inputs live in Drive; final MP4 > GitHub's 100 MB limit)
+src/
+input/
+work/
+out/*.mp4

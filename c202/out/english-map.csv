@@ -1,0 +1,42 @@
+line_no,english_line,segment_start,segment_end,source_clip,clip_in,clip_out,speed
+1-2,"I read my wife's WhatsApp while she was fast asleep / I shouldn't have, but I knew something was wrong and it was running deep",0.0,4.404,clip_01.mp4,0.25,4.958,1.036
+2-3,"I shouldn't have, but I knew something was wrong and it was running deep / For weeks she'd been somewhere else, at dinner, in the car",4.404,8.775,clip_02.mp4,0.0,4.958,1.141
+3-5,"For weeks she'd been somewhere else, at dinner, in the car / Fourteen years together and she'd never felt so far / One message to her best friend Mira lit up in the dark",8.775,17.084,clip_04.mp4,0.0,4.917,0.593
+5-6,"One message to her best friend Mira lit up in the dark / ""He's 44, he moves like he's 70, there's nothing, not a spark""",17.084,21.288,clip_05.mp4,0.0,4.208,0.993
+6-7,"""He's 44, he moves like he's 70, there's nothing, not a spark"" / I put the phone back where it was and lay there on the floor",21.288,25.659,clip_06.mp4,1.625,5.042,0.877
+7-9,"I put the phone back where it was and lay there on the floor / And waited for the morning like I'd never waited before / The worst part wasn't that she said it, it was that she was right",25.659,34.301,clip_07.mp4,0.0,5.0,0.575
+9-10,"The worst part wasn't that she said it, it was that she was right / Three years of back pain, eleven hours at a desk, two hours standing in the local every night",34.301,41.174,clip_08.mp4,0.417,4.958,0.69
+10-11,"Three years of back pain, eleven hours at a desk, two hours standing in the local every night / I'd come home and hit the floor, too tired to talk, too sore to hold her tight",41.174,46.28,clip_09.mp4,0.0,4.875,0.967
+11-12,"I'd come home and hit the floor, too tired to talk, too sore to hold her tight / At my cousin's sangeet I sat on a plastic chair",46.28,52.819,clip_10.mp4,0.042,4.583,0.728
+12-14,"At my cousin's sangeet I sat on a plastic chair / While she danced with everyone and I just wasn't there / Our anniversary dinner, I cancelled, said that I was tired, I was always tired",52.819,59.993,clip_11.mp4,0.0,4.958,0.698
+14-15,"Our anniversary dinner, I cancelled, said that I was tired, I was always tired / Painkillers every night, sprays that smell like a hospital ward",59.993,64.264,clip_12.mp4,0.0,4.0,1.104
+15-16,"Painkillers every night, sprays that smell like a hospital ward / Balms that burned for ten minutes, physio at 800 a session, more than I could afford",64.264,69.303,clip_13.mp4,0.0,5.042,1.001
+16-17,"Balms that burned for ten minutes, physio at 800 a session, more than I could afford / Thousands of rupees gone and nothing left to show",69.303,74.341,clip_14.mp4,0.083,5.042,0.993
+17-18,"Thousands of rupees gone and nothing left to show / It took my sleep, then it took my fire",74.341,76.777,clip_15.mp4,0.042,3.792,1.586
+18-20,"It took my sleep, then it took my fire / It took the man she used to admire / Pain don't just hurt your back, it's true",76.777,85.085,clip_16.mp4,0.0,4.833,0.575
+20-21,"Pain don't just hurt your back, it's true / It took my sleep, my strength, then it took her too",85.085,93.46,clip_17.mp4,0.0,4.958,0.59
+21,"It took my sleep, my strength, then it took her too",93.46,98.332,clip_18.mp4,0.25,5.042,1.011
+21-22,"It took my sleep, my strength, then it took her too / There was an uncle in Building C, 55 at least",98.332,103.17,clip_19.mp4,0.0,4.208,0.997
+22,"There was an uncle in Building C, 55 at least",103.17,106.84,clip_20.mp4,1.208,4.042,0.858
+22-24,"There was an uncle in Building C, 55 at least / Smashing shuttles every morning like his back was 25 / While I watched him from my balcony, barely half alive",106.84,111.378,clip_21.mp4,0.0,4.542,1.001
+24,"While I watched him from my balcony, barely half alive",111.378,115.916,clip_22.mp4,1.208,4.667,0.87
+24-25,"While I watched him from my balcony, barely half alive / One day inside the lift I asked him, ""Uncle, what are you using?""",115.916,119.886,clip_23.mp4,0.583,5.042,1.163
+25-26,"One day inside the lift I asked him, ""Uncle, what are you using?"" / He laughed, went up to his flat, came back with a small amber bottle in his hand",119.886,123.89,clip_24.mp4,1.0,5.0,0.931
+27,"""Warm it, rub it, throw the sprays out, understand?""",123.89,126.426,clip_25.mp4,0.0,2.542,1.008
+27-29,"""Warm it, rub it, throw the sprays out, understand?"" / That night she watched me warm it in my palms and didn't say a word / No burning, no hospital smell, it just went deep right where it hurt",126.426,131.932,clip_26.mp4,0.75,4.875,0.839
+29-30,"No burning, no hospital smell, it just went deep right where it hurt / Night three, I slept straight through, the first time in months",131.932,136.236,clip_27.mp4,0.083,4.292,0.988
+30-31,"Night three, I slept straight through, the first time in months / Week two, I got out of bed without that groan, not once",136.236,141.274,clip_28.mp4,0.25,5.042,0.955
+31-32,"Week two, I got out of bed without that groan, not once / Week four, I took the station stairs two at a time",141.274,145.679,clip_29.mp4,0.5,5.0,1.093
+32-33,"Week four, I took the station stairs two at a time / Month two, I asked her out to walk on Marine Drive, and she took my hand this time",145.679,150.217,clip_30.mp4,0.0,5.042,1.11
+33-34,"Month two, I asked her out to walk on Marine Drive, and she took my hand this time / A few Sundays later I was making chai at dawn",150.217,157.124,clip_31.mp4,0.0,4.958,0.72
+34-35,A few Sundays later I was making chai at dawn / She was on the phone with Mira and I heard her going on,157.124,162.596,clip_32.mp4,0.125,4.792,0.873
+35,She was on the phone with Mira and I heard her going on,162.596,164.731,clip_33.mp4,0.25,2.583,1.091
+35-37,"She was on the phone with Mira and I heard her going on / ""I don't know what's happened Mira, he's the man I married again"" / It gave me back my sleep, it gave me back my fire",164.731,172.673,clip_34.mp4,0.25,4.792,0.626
+37-38,"It gave me back my sleep, it gave me back my fire / I'm the man again that she used to admire",172.673,177.711,clip_35.mp4,0.083,5.042,0.995
+38-39,I'm the man again that she used to admire / It's called EIS Ayurvedic Pain Relief Oil,177.711,181.648,clip_36.mp4,0.625,4.125,0.996
+39-40,"It's called EIS Ayurvedic Pain Relief Oil / 15-plus Ayurvedic herbs, Mahanarayan, Nirgundi, Ashwagandha in warm til oil",181.648,184.418,clip_37.mp4,0.583,3.792,1.274
+40,"15-plus Ayurvedic herbs, Mahanarayan, Nirgundi, Ashwagandha in warm til oil",184.418,189.89,clip_38.mp4,0.0,4.917,0.89
+41,"Sprays and balm sit on the skin, massaged in warm it works into the muscle and the joint",189.89,192.626,clip_39.mp4,0.625,2.833,0.845
+41-42,"Sprays and balm sit on the skin, massaged in warm it works into the muscle and the joint / Calms the inflammation, loosens the knot, that's the point",192.626,197.497,clip_40.mp4,0.125,4.958,1.005
+42-44,"Calms the inflammation, loosens the knot, that's the point / Real Indians already sleeping through the night / Order today, pay cash when it arrives, start tonight",197.497,200.6,clip_41.mp4,0.25,4.958,1.621
+44,"Order today, pay cash when it arrives, start tonight",200.6,205.639,clip_42.mp4,0.208,5.042,1.011

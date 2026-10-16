@@ -1,0 +1,132 @@
+[Script Info]
+Title: C202 Hinglish - The Man She Married Again
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+YCbCr Matrix: TV.709
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Lyric,Montserrat ExtraBold,64,&H00DCF3FF,&H00DCF3FF,&H26241C7B,&H00000000,0,0,0,0,100,100,0,0,3,0,0,2,60,60,520,1
+Style: Box,Arial,20,&H26241C7B,&H00000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,7,0,0,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:02.08,0:00:05.92,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 217 1258 l 863 1258 b 875 1258 885 1268 885 1280 l 885 1394 b 885 1406 875 1416 863 1416 l 217 1416 b 205 1416 195 1406 195 1394 l 195 1280 b 195 1268 205 1258 217 1258{\p0}
+Dialogue: 1,0:00:02.08,0:00:05.92,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Raat ko woh so rahi thi,\Nmaine uska WhatsApp khola
+Dialogue: 0,0:00:06.33,0:00:10.33,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 203 1258 l 877 1258 b 889 1258 899 1268 899 1280 l 899 1394 b 899 1406 889 1416 877 1416 l 203 1416 b 191 1416 181 1406 181 1394 l 181 1280 b 181 1268 191 1258 203 1258{\p0}
+Dialogue: 1,0:00:06.33,0:00:10.33,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Galat tha, par dil keh raha tha,\Nkuch toh hai jo usne nahi bola
+Dialogue: 0,0:00:10.66,0:00:14.51,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 224 1258 l 856 1258 b 868 1258 878 1268 878 1280 l 878 1394 b 878 1406 868 1416 856 1416 l 224 1416 b 212 1416 202 1406 202 1394 l 202 1280 b 202 1268 212 1258 224 1258{\p0}
+Dialogue: 1,0:00:10.66,0:00:14.51,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Weeks se woh kahin aur thi,\Ndinner pe, car mein bhi
+Dialogue: 0,0:00:15.20,0:00:18.41,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 230 1258 l 850 1258 b 862 1258 872 1268 872 1280 l 872 1394 b 872 1406 862 1416 850 1416 l 230 1416 b 218 1416 208 1406 208 1394 l 208 1280 b 208 1268 218 1258 230 1258{\p0}
+Dialogue: 1,0:00:15.20,0:00:18.41,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Fourteen years saath,\Npar itni door kabhi nahi lagi
+Dialogue: 0,0:00:19.23,0:00:23.25,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 236 1258 l 844 1258 b 856 1258 866 1268 866 1280 l 866 1394 b 866 1406 856 1416 844 1416 l 236 1416 b 224 1416 214 1406 214 1394 l 214 1280 b 214 1268 224 1258 236 1258{\p0}
+Dialogue: 1,0:00:19.23,0:00:23.25,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Meera ko ek message,\Nandhere mein screen jo jali
+Dialogue: 0,0:00:23.78,0:00:26.53,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 272 1258 l 808 1258 b 820 1258 830 1268 830 1280 l 830 1394 b 830 1406 820 1416 808 1416 l 272 1416 b 260 1416 250 1406 250 1394 l 250 1280 b 250 1268 260 1258 272 1258{\p0}
+Dialogue: 1,0:00:23.78,0:00:26.53,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}"Forty-four ka hai,\Nseventy jaisa chalta hai,
+Dialogue: 0,0:00:26.53,0:00:27.99,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 249 1322 l 831 1322 b 843 1322 853 1332 853 1344 l 853 1394 b 853 1406 843 1416 831 1416 l 249 1416 b 237 1416 227 1406 227 1394 l 227 1344 b 227 1332 237 1322 249 1322{\p0}
+Dialogue: 1,0:00:26.53,0:00:27.99,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}koi spark nahi, kuch nahi"
+Dialogue: 0,0:00:28.32,0:00:31.78,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 276 1258 l 804 1258 b 816 1258 826 1268 826 1280 l 826 1394 b 826 1406 816 1416 804 1416 l 276 1416 b 264 1416 254 1406 254 1394 l 254 1280 b 254 1268 264 1258 276 1258{\p0}
+Dialogue: 1,0:00:28.32,0:00:31.78,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Phone wahin rakh diya,\Naur floor pe let gaya
+Dialogue: 0,0:00:32.08,0:00:35.52,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 245 1258 l 835 1258 b 847 1258 857 1268 857 1280 l 857 1394 b 857 1406 847 1416 835 1416 l 245 1416 b 233 1416 223 1406 223 1394 l 223 1280 b 223 1268 233 1258 245 1258{\p0}
+Dialogue: 1,0:00:32.08,0:00:35.52,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Morning ka itna wait,\Nmaine pehle kabhi na kiya
+Dialogue: 0,0:00:36.42,0:00:40.36,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 229 1258 l 851 1258 b 863 1258 873 1268 873 1280 l 873 1394 b 873 1406 863 1416 851 1416 l 229 1416 b 217 1416 207 1406 207 1394 l 207 1280 b 207 1268 217 1258 229 1258{\p0}
+Dialogue: 1,0:00:36.42,0:00:40.36,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Bura yeh nahi ki usne kaha,\Nbura yeh tha ki woh sahi thi
+Dialogue: 0,0:00:40.68,0:00:42.70,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 255 1258 l 825 1258 b 838 1258 847 1268 847 1280 l 847 1394 b 847 1406 838 1416 825 1416 l 255 1416 b 242 1416 233 1406 233 1394 l 233 1280 b 233 1268 242 1258 255 1258{\p0}
+Dialogue: 1,0:00:40.68,0:00:42.70,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Three years ka back pain,\Neleven hours desk pe,
+Dialogue: 0,0:00:42.70,0:00:44.87,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 223 1258 l 857 1258 b 869 1258 879 1268 879 1280 l 879 1394 b 879 1406 869 1416 857 1416 l 223 1416 b 211 1416 201 1406 201 1394 l 201 1280 b 201 1268 211 1258 223 1258{\p0}
+Dialogue: 1,0:00:42.70,0:00:44.87,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}two hours local mein khade,\Nhar raat yahi thi
+Dialogue: 0,0:00:44.87,0:00:47.28,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 241 1258 l 839 1258 b 851 1258 861 1268 861 1280 l 861 1394 b 861 1406 851 1416 839 1416 l 241 1416 b 229 1416 219 1406 219 1394 l 219 1280 b 219 1268 229 1258 241 1258{\p0}
+Dialogue: 1,0:00:44.87,0:00:47.28,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Ghar aake seedha floor pe,\Nna baat karne ki energy,
+Dialogue: 0,0:00:47.28,0:00:49.09,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 310 1258 l 770 1258 b 783 1258 792 1268 792 1280 l 792 1394 b 792 1406 783 1416 770 1416 l 310 1416 b 297 1416 288 1406 288 1394 l 288 1280 b 288 1268 297 1258 310 1258{\p0}
+Dialogue: 1,0:00:47.28,0:00:49.09,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}na usko hug karne\Nki strength bachi thi
+Dialogue: 0,0:00:49.29,0:00:51.31,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 209 1258 l 871 1258 b 883 1258 893 1268 893 1280 l 893 1394 b 893 1406 883 1416 871 1416 l 209 1416 b 197 1416 187 1406 187 1394 l 187 1280 b 187 1268 197 1258 209 1258{\p0}
+Dialogue: 1,0:00:49.29,0:00:51.31,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Cousin ke sangeet mein main\Nplastic chair pe baitha raha
+Dialogue: 0,0:00:51.31,0:00:53.84,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 170 1258 l 910 1258 b 922 1258 932 1268 932 1280 l 932 1394 b 932 1406 922 1416 910 1416 l 170 1416 b 158 1416 148 1406 148 1394 l 148 1280 b 148 1268 158 1258 170 1258{\p0}
+Dialogue: 1,0:00:51.31,0:00:53.84,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Woh sabke saath naachi, main\Nwahan hoke bhi wahan nahi raha
+Dialogue: 0,0:00:53.84,0:00:55.47,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 189 1322 l 891 1322 b 903 1322 913 1332 913 1344 l 913 1394 b 913 1406 903 1416 891 1416 l 189 1416 b 177 1416 167 1406 167 1394 l 167 1344 b 167 1332 177 1322 189 1322{\p0}
+Dialogue: 1,0:00:53.84,0:00:55.47,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Anniversary dinner cancel kiya,
+Dialogue: 0,0:00:55.47,0:00:58.12,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 170 1258 l 910 1258 b 922 1258 932 1268 932 1280 l 932 1394 b 932 1406 922 1416 910 1416 l 170 1416 b 158 1416 148 1406 148 1394 l 148 1280 b 148 1268 158 1258 170 1258{\p0}
+Dialogue: 1,0:00:55.47,0:00:58.12,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}bola thak gaya hoon,\Nmain hamesha thaka hi rehta tha
+Dialogue: 0,0:00:58.12,0:01:01.56,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 216 1258 l 864 1258 b 877 1258 886 1268 886 1280 l 886 1394 b 886 1406 877 1416 864 1416 l 216 1416 b 203 1416 194 1406 194 1394 l 194 1280 b 194 1268 203 1258 216 1258{\p0}
+Dialogue: 1,0:00:58.12,0:01:01.56,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Har raat painkillers, sprays\Njinki smell hospital ward jaisi
+Dialogue: 0,0:01:01.56,0:01:03.05,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 253 1322 l 827 1322 b 840 1322 849 1332 849 1344 l 849 1394 b 849 1406 840 1416 827 1416 l 253 1416 b 240 1416 231 1406 231 1394 l 231 1344 b 231 1332 240 1322 253 1322{\p0}
+Dialogue: 1,0:01:01.56,0:01:03.05,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Balm jo ten minutes jalte,
+Dialogue: 0,0:01:03.05,0:01:05.89,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 212 1258 l 868 1258 b 880 1258 890 1268 890 1280 l 890 1394 b 890 1406 880 1416 868 1416 l 212 1416 b 200 1416 190 1406 190 1394 l 190 1280 b 190 1268 200 1258 212 1258{\p0}
+Dialogue: 1,0:01:03.05,0:01:05.89,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}physio eight hundred ka ek\Nsession, pocket pe bhaari aisi
+Dialogue: 0,0:01:05.89,0:01:08.72,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 240 1258 l 840 1258 b 852 1258 862 1268 862 1280 l 862 1394 b 862 1406 852 1416 840 1416 l 240 1416 b 228 1416 218 1406 218 1394 l 218 1280 b 218 1268 228 1258 240 1258{\p0}
+Dialogue: 1,0:01:05.89,0:01:08.72,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Thousands of rupees gaye,\Naur haath mein kuch nahi
+Dialogue: 0,0:01:08.93,0:01:13.42,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 300 1258 l 780 1258 b 792 1258 802 1268 802 1280 l 802 1394 b 802 1406 792 1416 780 1416 l 300 1416 b 288 1416 278 1406 278 1394 l 278 1280 b 278 1268 288 1258 300 1258{\p0}
+Dialogue: 1,0:01:08.93,0:01:13.42,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Pehle neend le gaya,\Nphir le gaya mera fire
+Dialogue: 0,0:01:13.42,0:01:17.72,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 265 1258 l 815 1258 b 827 1258 837 1268 837 1280 l 837 1394 b 837 1406 827 1416 815 1416 l 265 1416 b 253 1416 243 1406 243 1394 l 243 1280 b 243 1268 253 1258 265 1258{\p0}
+Dialogue: 1,0:01:13.42,0:01:17.72,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Le gaya woh aadmi,\Njise woh karti thi admire
+Dialogue: 0,0:01:18.12,0:01:22.24,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 265 1258 l 815 1258 b 827 1258 837 1268 837 1280 l 837 1394 b 837 1406 827 1416 815 1416 l 265 1416 b 253 1416 243 1406 243 1394 l 243 1280 b 243 1268 253 1258 265 1258{\p0}
+Dialogue: 1,0:01:18.12,0:01:22.24,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Dard sirf kamar mein\Nnahi rehta, sach hai yaar
+Dialogue: 0,0:01:22.43,0:01:27.99,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 215 1258 l 865 1258 b 877 1258 887 1268 887 1280 l 887 1394 b 887 1406 877 1416 865 1416 l 215 1416 b 203 1416 193 1406 193 1394 l 193 1280 b 193 1268 203 1258 215 1258{\p0}
+Dialogue: 1,0:01:22.43,0:01:27.99,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Neend, strength, sab le gaya,\Naur le gaya uska pyaar
+Dialogue: 0,0:01:36.43,0:01:40.73,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 202 1258 l 878 1258 b 890 1258 900 1268 900 1280 l 900 1394 b 900 1406 890 1416 878 1416 l 202 1416 b 190 1416 180 1406 180 1394 l 180 1280 b 180 1268 190 1258 202 1258{\p0}
+Dialogue: 1,0:01:36.43,0:01:40.73,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Building C mein ek uncle the,\Nfifty-five ke toh honge at least
+Dialogue: 0,0:01:40.95,0:01:42.57,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 192 1322 l 888 1322 b 900 1322 910 1332 910 1344 l 910 1394 b 910 1406 900 1416 888 1416 l 192 1416 b 180 1416 170 1406 170 1394 l 170 1344 b 170 1332 180 1322 192 1322{\p0}
+Dialogue: 1,0:01:40.95,0:01:42.57,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Har subah shuttle smash karte,
+Dialogue: 0,0:01:42.57,0:01:44.92,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 219 1258 l 861 1258 b 873 1258 883 1268 883 1280 l 883 1394 b 883 1406 873 1416 861 1416 l 219 1416 b 207 1416 197 1406 197 1394 l 197 1280 b 197 1268 207 1258 219 1258{\p0}
+Dialogue: 1,0:01:42.57,0:01:44.92,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}jaise back ho twenty-five ka,\Nfull speed
+Dialogue: 0,0:01:45.25,0:01:49.50,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 204 1258 l 876 1258 b 888 1258 898 1268 898 1280 l 898 1394 b 898 1406 888 1416 876 1416 l 204 1416 b 192 1416 182 1406 182 1394 l 182 1280 b 182 1268 192 1258 204 1258{\p0}
+Dialogue: 1,0:01:45.25,0:01:49.50,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Main balcony se dekhta rehta,\Naadha zinda, bilkul weak
+Dialogue: 0,0:01:49.83,0:01:53.64,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 228 1258 l 852 1258 b 864 1258 874 1268 874 1280 l 874 1394 b 874 1406 864 1416 852 1416 l 228 1416 b 216 1416 206 1406 206 1394 l 206 1280 b 206 1268 216 1258 228 1258{\p0}
+Dialogue: 1,0:01:49.83,0:01:53.64,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Ek din lift mein poochh liya,\N"Uncle, kya use karte ho?"
+Dialogue: 0,0:01:53.84,0:01:55.72,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 181 226 l 899 226 b 912 226 921 236 921 248 l 921 298 b 921 310 912 320 899 320 l 181 320 b 168 320 159 310 159 298 l 159 248 b 159 236 168 226 181 226{\p0}
+Dialogue: 1,0:01:53.84,0:01:55.72,Lyric,,0,0,0,,{\an8\pos(540,240)\bord0\shad0}Hans ke upar gaye, laut ke aaye,
+Dialogue: 0,0:01:55.72,0:01:57.90,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 314 226 l 766 226 b 778 226 788 236 788 248 l 788 362 b 788 374 778 384 766 384 l 314 384 b 302 384 292 374 292 362 l 292 248 b 292 236 302 226 314 226{\p0}
+Dialogue: 1,0:01:55.72,0:01:57.90,Lyric,,0,0,0,,{\an8\pos(540,240)\bord0\shad0}haath mein chhoti\Nsi amber bottle leke
+Dialogue: 0,0:01:58.20,0:02:00.68,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 267 226 l 813 226 b 825 226 835 236 835 248 l 835 362 b 835 374 825 384 813 384 l 267 384 b 255 384 245 374 245 362 l 245 248 b 245 236 255 226 267 226{\p0}
+Dialogue: 1,0:01:58.20,0:02:00.68,Lyric,,0,0,0,,{\an8\pos(540,240)\bord0\shad0}"Warm karo, sone se\Nten minutes pehle malo,
+Dialogue: 0,0:02:00.68,0:02:02.28,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 240 226 l 840 226 b 852 226 862 236 862 248 l 862 298 b 862 310 852 320 840 320 l 240 320 b 228 320 218 310 218 298 l 218 248 b 218 236 228 226 240 226{\p0}
+Dialogue: 1,0:02:00.68,0:02:02.28,Lyric,,0,0,0,,{\an8\pos(540,240)\bord0\shad0}sprays phenk do, samjhe?"
+Dialogue: 0,0:02:04.02,0:02:07.91,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 158 226 l 922 226 b 935 226 944 236 944 248 l 944 362 b 944 374 935 384 922 384 l 158 384 b 145 384 136 374 136 362 l 136 248 b 136 236 145 226 158 226{\p0}
+Dialogue: 1,0:02:04.02,0:02:07.91,Lyric,,0,0,0,,{\an8\pos(540,240)\bord0\shad0}Us raat woh chup chaap dekhti\Nrahi, maine palms mein warm kiya
+Dialogue: 0,0:02:07.91,0:02:09.35,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 181 1032 l 899 1032 b 912 1032 921 1042 921 1054 l 921 1104 b 921 1116 912 1126 899 1126 l 181 1126 b 168 1126 159 1116 159 1104 l 159 1054 b 159 1042 168 1032 181 1032{\p0}
+Dialogue: 1,0:02:07.91,0:02:09.35,Lyric,,0,0,0,,{\an2\pos(540,1110)\bord0\shad0}Na burning, na hospital ki smell,
+Dialogue: 0,0:02:09.35,0:02:12.05,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 242 968 l 838 968 b 850 968 860 978 860 990 l 860 1104 b 860 1116 850 1126 838 1126 l 242 1126 b 230 1126 220 1116 220 1104 l 220 990 b 220 978 230 968 242 968{\p0}
+Dialogue: 1,0:02:09.35,0:02:12.05,Lyric,,0,0,0,,{\an2\pos(540,1110)\bord0\shad0}seedha deep andar,\Njahan dard tha wahin gaya
+Dialogue: 0,0:02:12.05,0:02:15.25,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 212 1258 l 868 1258 b 880 1258 890 1268 890 1280 l 890 1394 b 890 1406 880 1416 868 1416 l 212 1416 b 200 1416 190 1406 190 1394 l 190 1280 b 190 1268 200 1258 212 1258{\p0}
+Dialogue: 1,0:02:12.05,0:02:15.25,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Night three poori neend aayi,\Nmonths ke baad pehli baar
+Dialogue: 0,0:02:15.25,0:02:17.95,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 236 1258 l 844 1258 b 856 1258 866 1268 866 1280 l 866 1394 b 866 1406 856 1416 844 1416 l 236 1416 b 224 1416 214 1406 214 1394 l 214 1280 b 214 1268 224 1258 236 1258{\p0}
+Dialogue: 1,0:02:15.25,0:02:17.95,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Week two bed se utha,\Nbina groan kiye, na ek baar
+Dialogue: 0,0:02:17.95,0:02:20.67,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 238 1258 l 842 1258 b 854 1258 864 1268 864 1280 l 864 1394 b 864 1406 854 1416 842 1416 l 238 1416 b 226 1416 216 1406 216 1394 l 216 1280 b 216 1268 226 1258 238 1258{\p0}
+Dialogue: 1,0:02:17.95,0:02:20.67,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Week four station ki stairs,\Ntwo at a time chadha
+Dialogue: 0,0:02:21.12,0:02:23.38,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 260 1258 l 820 1258 b 833 1258 842 1268 842 1280 l 842 1394 b 842 1406 833 1416 820 1416 l 260 1416 b 247 1416 238 1406 238 1394 l 238 1280 b 238 1268 247 1258 260 1258{\p0}
+Dialogue: 1,0:02:21.12,0:02:23.38,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Month two mein poocha,\N"Marine Drive pe walk?"
+Dialogue: 0,0:02:23.38,0:02:25.78,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 213 1322 l 867 1322 b 879 1322 889 1332 889 1344 l 889 1394 b 889 1406 879 1416 867 1416 l 213 1416 b 201 1416 191 1406 191 1394 l 191 1344 b 191 1332 201 1322 213 1322{\p0}
+Dialogue: 1,0:02:23.38,0:02:25.78,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Aur is baar usne haath pakda
+Dialogue: 0,0:02:28.10,0:02:32.16,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 197 1258 l 883 1258 b 895 1258 905 1268 905 1280 l 905 1394 b 905 1406 895 1416 883 1416 l 197 1416 b 185 1416 175 1406 175 1394 l 175 1280 b 175 1268 185 1258 197 1258{\p0}
+Dialogue: 1,0:02:28.10,0:02:32.16,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Kuch Sundays baad, subah\Nsubah main chai bana raha tha
+Dialogue: 0,0:02:32.38,0:02:36.44,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 227 1258 l 853 1258 b 865 1258 875 1268 875 1280 l 875 1394 b 875 1406 865 1416 853 1416 l 227 1416 b 215 1416 205 1406 205 1394 l 205 1280 b 205 1268 215 1258 227 1258{\p0}
+Dialogue: 1,0:02:32.38,0:02:36.44,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Woh Meera se phone pe thi,\Naur main sun raha tha
+Dialogue: 0,0:02:36.68,0:02:38.52,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 249 1322 l 831 1322 b 843 1322 853 1332 853 1344 l 853 1394 b 853 1406 843 1416 831 1416 l 249 1416 b 237 1416 227 1406 227 1394 l 227 1344 b 227 1332 237 1322 249 1322{\p0}
+Dialogue: 1,0:02:36.68,0:02:38.52,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}"Pata nahi kya hua Meera,
+Dialogue: 0,0:02:38.52,0:02:43.17,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 229 1258 l 851 1258 b 863 1258 873 1268 873 1280 l 873 1394 b 873 1406 863 1416 851 1416 l 229 1416 b 217 1416 207 1406 207 1394 l 207 1280 b 207 1268 217 1258 229 1258{\p0}
+Dialogue: 1,0:02:38.52,0:02:43.17,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}mujhe wapas mil gaya woh,\Njisse shaadi ki thi"
+Dialogue: 0,0:02:44.35,0:02:48.73,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 274 1258 l 806 1258 b 818 1258 828 1268 828 1280 l 828 1394 b 828 1406 818 1416 806 1416 l 274 1416 b 262 1416 252 1406 252 1394 l 252 1280 b 252 1268 262 1258 274 1258{\p0}
+Dialogue: 1,0:02:44.35,0:02:48.73,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Wapas mili meri neend,\Nwapas mila mera fire
+Dialogue: 0,0:02:48.73,0:02:53.50,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 258 1258 l 822 1258 b 834 1258 844 1268 844 1280 l 844 1394 b 844 1406 834 1416 822 1416 l 258 1416 b 246 1416 236 1406 236 1394 l 236 1280 b 236 1268 246 1258 258 1258{\p0}
+Dialogue: 1,0:02:48.73,0:02:53.50,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Phir se main wahi aadmi,\Njise woh karti hai admire
+Dialogue: 0,0:02:55.23,0:02:59.98,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 273 176 l 807 176 b 819 176 829 186 829 198 l 829 312 b 829 324 819 334 807 334 l 273 334 b 261 334 251 324 251 312 l 251 198 b 251 186 261 176 273 176{\p0}
+Dialogue: 1,0:02:55.23,0:02:59.98,Lyric,,0,0,0,,{\an8\pos(540,190)\bord0\shad0}Naam hai EIS Ayurvedic\NPain Relief Oil
+Dialogue: 0,0:03:00.33,0:03:02.90,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 211 226 l 869 226 b 881 226 891 236 891 248 l 891 362 b 891 374 881 384 869 384 l 211 384 b 199 384 189 374 189 362 l 189 248 b 189 236 199 226 211 226{\p0}
+Dialogue: 1,0:03:00.33,0:03:02.90,Lyric,,0,0,0,,{\an8\pos(540,240)\bord0\shad0}Fifteen-plus Ayurvedic herbs,\NMahanarayan,
+Dialogue: 0,0:03:02.90,0:03:05.52,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 263 226 l 817 226 b 830 226 839 236 839 248 l 839 362 b 839 374 830 384 817 384 l 263 384 b 250 384 241 374 241 362 l 241 248 b 241 236 250 226 263 226{\p0}
+Dialogue: 1,0:03:02.90,0:03:05.52,Lyric,,0,0,0,,{\an8\pos(540,240)\bord0\shad0}Nirgundi, Ashwagandha,\Nwarm til oil mein
+Dialogue: 0,0:03:05.52,0:03:08.00,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 164 1322 l 916 1322 b 928 1322 938 1332 938 1344 l 938 1394 b 938 1406 928 1416 916 1416 l 164 1416 b 152 1416 142 1406 142 1394 l 142 1344 b 142 1332 152 1322 164 1322{\p0}
+Dialogue: 1,0:03:05.52,0:03:08.00,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Sprays aur balm skin pe reh jaate,
+Dialogue: 0,0:03:08.00,0:03:10.72,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 254 1258 l 826 1258 b 838 1258 848 1268 848 1280 l 848 1394 b 848 1406 838 1416 826 1416 l 254 1416 b 242 1416 232 1406 232 1394 l 232 1280 b 232 1268 242 1258 254 1258{\p0}
+Dialogue: 1,0:03:08.00,0:03:10.72,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}warm massage se yeh\Nmuscle aur joint tak jaata
+Dialogue: 0,0:03:10.96,0:03:16.30,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 256 1258 l 824 1258 b 836 1258 846 1268 846 1280 l 846 1394 b 846 1406 836 1416 824 1416 l 256 1416 b 244 1416 234 1406 234 1394 l 234 1280 b 234 1268 244 1258 256 1258{\p0}
+Dialogue: 1,0:03:10.96,0:03:16.30,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}Inflammation calm karta,\Nknot ko loose karta,
+Dialogue: 0,0:03:16.30,0:03:17.72,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 339 1322 l 741 1322 b 753 1322 763 1332 763 1344 l 763 1394 b 763 1406 753 1416 741 1416 l 339 1416 b 327 1416 317 1406 317 1394 l 317 1344 b 317 1332 327 1322 339 1322{\p0}
+Dialogue: 1,0:03:16.30,0:03:17.72,Lyric,,0,0,0,,{\an2\pos(540,1400)\bord0\shad0}bas yahi hai point
+Dialogue: 0,0:03:18.70,0:03:22.89,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 246 968 l 834 968 b 846 968 856 978 856 990 l 856 1104 b 856 1116 846 1126 834 1126 l 246 1126 b 234 1126 224 1116 224 1104 l 224 990 b 224 978 234 968 246 968{\p0}
+Dialogue: 1,0:03:18.70,0:03:22.89,Lyric,,0,0,0,,{\an2\pos(540,1110)\bord0\shad0}Real Indians already raat\Nbhar chain se so rahe hain
+Dialogue: 0,0:03:23.26,0:03:28.05,Box,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\p1}m 182 226 l 898 226 b 910 226 920 236 920 248 l 920 362 b 920 374 910 384 898 384 l 182 384 b 170 384 160 374 160 362 l 160 248 b 160 236 170 226 182 226{\p0}
+Dialogue: 1,0:03:23.26,0:03:28.05,Lyric,,0,0,0,,{\an8\pos(540,240)\bord0\shad0}Aaj order karo, cash on delivery,\Ntonight se start karo
