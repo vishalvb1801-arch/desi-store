@@ -1,0 +1,61 @@
+line,start,end,clips,action
+01,0.000,5.800,clip_1,slow ×1.150
+02,5.800,8.840,clip_2,trim to first 3.03s
+03,8.840,11.300,clip_3,trim to first 2.47s
+04,11.300,21.280,clip_4,slow ×1.5 + hold last frame 2.40s
+05,21.280,24.720,clip_5,trim to first 3.47s
+06,24.720,30.920,clip_6,slow ×1.230
+07,30.920,35.660,clip_7,trim to first 4.73s
+08,35.660,47.320,clip_8,slow ×1.5 + hold last frame 4.10s
+09,47.320,49.820,clip_9,trim to first 2.50s
+10,49.820,52.640,clip_10,trim to first 2.80s
+11,52.640,55.560,clip_11,trim to first 2.93s
+12,55.560,58.420,clip_12,trim to first 2.87s
+13,58.420,62.040,clip_13,trim to first 3.60s
+14,62.040,69.200,clip_14,slow ×1.421
+15,69.200,72.400,clip_15,trim to first 3.20s
+16,72.400,82.760,clip_16,slow ×1.5 + hold last frame 2.80s
+17,82.760,85.260,clip_17,trim to first 2.50s
+18,85.260,89.220,clip_18,trim to first 3.97s
+19,89.220,92.380,clip_19,trim to first 3.13s
+20,92.380,98.580,clip_20,slow ×1.230
+21,98.580,102.080,clip_21,trim to first 3.50s
+22,102.080,106.080,clip_22,trim to first 4.00s
+23,106.080,110.200,clip_23,trim to first 4.13s
+24,110.200,116.160,clip_24,slow ×1.183
+25,116.160,118.900,clip_25,trim to first 2.73s
+26,118.900,122.140,clip_26,trim to first 3.23s
+27,122.140,124.920,clip_27,trim to first 2.80s
+28,124.920,127.560,clip_28,trim to first 2.63s
+29,127.560,130.500,clip_29,trim to first 2.93s
+30,130.500,133.240,clip_30,trim to first 2.73s
+31,133.240,138.600,clip_31,slow ×1.064
+32,138.600,141.500,clip_32,trim to first 2.90s
+33,141.500,146.540,clip_33,trim to first 5.03s
+34,146.540,149.320,clip_34,trim to first 2.80s
+35,149.320,152.180,clip_35,trim to first 2.83s
+36,152.180,154.800,clip_36,trim to first 2.63s
+37,154.800,159.860,clip_37,slow ×1.005
+38,159.860,162.680,clip_38,trim to first 2.80s
+39,162.680,165.220,clip_39,trim to first 2.57s
+40,165.220,167.980,clip_40,trim to first 2.73s
+41,167.980,170.960,clip_41,trim to first 3.00s
+42,170.960,173.640,clip_42,trim to first 2.67s
+43,173.640,176.260,clip_43,trim to first 2.63s
+44,176.260,179.080,clip_44,trim to first 2.80s
+45,179.080,181.840,clip_45,trim to first 2.77s
+46,181.840,186.600,clip_46,trim to first 4.77s
+47,186.600,189.320,clip_47,trim to first 2.73s
+48,189.320,191.980,clip_48,trim to first 2.63s
+49,191.980,194.460,clip_49,trim to first 2.50s
+50,194.460,196.760,clip_50,trim to first 2.30s
+51,196.760,199.540,clip_51,trim to first 2.77s
+52,199.540,199.940,clip_52,trim to first 0.40s
+53,199.940,201.900,clip_53+clip_54,clip_53: trim to first 0.97s; clip_54: trim to first 1.00s
+54,201.900,205.480,clip_55,trim to first 3.57s
+55,205.480,208.340,clip_56,trim to first 2.87s
+56,208.340,210.720,clip_57,trim to first 2.40s
+57,210.720,216.820,clip_58,slow ×1.210
+58,216.820,222.020,clip_59,slow ×1.031
+59,222.020,225.060,clip_60,trim to first 3.03s
+60,225.060,228.049,clip_61,trim to first 3.00s

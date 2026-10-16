@@ -1,0 +1,402 @@
+[Script Info]
+Title: C299-B EIS sung story captions
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+YCbCr Matrix: TV.709
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Box,Montserrat ExtraBold,64,&H0037A5D4,&H00E0F4FF,&H002B1F7A,&H002B1F7A,0,0,0,0,100,100,0,0,3,14,0,5,60,60,0,1
+Style: Over,Montserrat ExtraBold,64,&H00E0F4FF,&HFF000000,&HFF000000,&HFF000000,0,0,0,0,100,100,0,0,1,0,0,5,60,60,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:03.22,0:00:03.98,Box,L01,0,0,0,,{\an5\pos(540,1300)}{\k52}I {\k24}caught
+Dialogue: 1,0:00:03.22,0:00:03.98,Over,L01,0,0,0,,{\an5\pos(540,1300)}{\k52}{\k124}I {\k1}caught
+Dialogue: 0,0:00:03.98,0:00:04.78,Box,L01,0,0,0,,{\an5\pos(540,1300)}{\k22}my {\k30}wife {\k28}cheating
+Dialogue: 1,0:00:03.98,0:00:04.78,Over,L01,0,0,0,,{\an5\pos(540,1300)}{\k22}{\k30}my {\k128}wife {\k1}cheating
+Dialogue: 0,0:00:04.78,0:00:05.80,Box,L01,0,0,0,,{\an5\pos(540,1300)}{\k26}with {\k14}her {\k20}gym {\k42}trainer.
+Dialogue: 1,0:00:04.78,0:00:05.80,Over,L01,0,0,0,,{\an5\pos(540,1300)}{\k26}{\k14}with {\k20}her {\k142}gym {\k1}trainer.
+Dialogue: 0,0:00:05.80,0:00:07.36,Box,L02,0,0,0,,{\an5\pos(540,1300)}{\k72}He {\k18}was {\k66}twenty-nine.
+Dialogue: 1,0:00:05.80,0:00:07.36,Over,L02,0,0,0,,{\an5\pos(540,1300)}{\k72}{\k18}He {\k166}was {\k1}twenty-nine.
+Dialogue: 0,0:00:07.36,0:00:08.83,Box,L02,0,0,0,,{\an5\pos(540,1300)}{\k62}I {\k18}was {\k67}forty-six.
+Dialogue: 1,0:00:07.36,0:00:08.83,Over,L02,0,0,0,,{\an5\pos(540,1300)}{\k62}{\k18}I {\k167}was {\k1}forty-six.
+Dialogue: 0,0:00:08.84,0:00:10.20,Box,L03,0,0,0,,{\an2\pos(540,1436)}{\k58}And {\k16}the {\k22}only {\k40}reason
+Dialogue: 1,0:00:08.84,0:00:10.20,Over,L03,0,0,0,,{\an2\pos(540,1436)}{\k58}{\k16}And {\k22}the {\k140}only {\k1}reason
+Dialogue: 0,0:00:10.20,0:00:11.30,Box,L03,0,0,0,,{\an2\pos(540,1436)}{\k18}I {\k24}didn't {\k16}fall {\k52}apart...
+Dialogue: 1,0:00:10.20,0:00:11.30,Over,L03,0,0,0,,{\an2\pos(540,1436)}{\k18}{\k24}I {\k16}didn't {\k152}fall {\k1}apart...
+Dialogue: 0,0:00:11.30,0:00:13.44,Box,L04,0,0,0,,{\an5\pos(540,1300)}{\k150}was {\k20}what {\k16}my {\k28}elder
+Dialogue: 1,0:00:11.30,0:00:13.44,Over,L04,0,0,0,,{\an5\pos(540,1300)}{\k150}{\k20}was {\k16}what {\k128}my {\k1}elder
+Dialogue: 0,0:00:13.44,0:00:13.96,Box,L04,0,0,0,,{\an5\pos(540,1300)}{\k26}brother {\k26}flew
+Dialogue: 1,0:00:13.44,0:00:13.96,Over,L04,0,0,0,,{\an5\pos(540,1300)}{\k26}{\k126}brother {\k1}flew
+Dialogue: 0,0:00:13.96,0:00:14.84,Box,L04,0,0,0,,{\an5\pos(540,1300)}{\k24}in {\k16}from {\k48}Kerala
+Dialogue: 1,0:00:13.96,0:00:14.84,Over,L04,0,0,0,,{\an5\pos(540,1300)}{\k24}{\k16}in {\k148}from {\k1}Kerala
+Dialogue: 0,0:00:14.84,0:00:16.44,Box,L04,0,0,0,,{\an5\pos(540,1300)}{\k10}to {\k70}show {\k80}me.
+Dialogue: 1,0:00:14.84,0:00:16.44,Over,L04,0,0,0,,{\an5\pos(540,1300)}{\k10}{\k70}to {\k180}show {\k1}me.
+Dialogue: 0,0:00:21.28,0:00:22.74,Box,L05,0,0,0,,{\an5\pos(540,1300)}{\k52}Left {\k52}office {\k42}early
+Dialogue: 1,0:00:21.28,0:00:22.74,Over,L05,0,0,0,,{\an5\pos(540,1300)}{\k52}{\k52}Left {\k142}office {\k1}early
+Dialogue: 0,0:00:22.74,0:00:24.67,Box,L05,0,0,0,,{\an5\pos(540,1300)}{\k32}on {\k12}a {\k38}Thursday {\k111}afternoon
+Dialogue: 1,0:00:22.74,0:00:24.67,Over,L05,0,0,0,,{\an5\pos(540,1300)}{\k32}{\k12}on {\k38}a {\k211}Thursday {\k1}afternoon
+Dialogue: 0,0:00:24.72,0:00:26.06,Box,L06,0,0,0,,{\an5\pos(540,1300)}{\k88}Heard {\k46}laughing
+Dialogue: 1,0:00:24.72,0:00:26.06,Over,L06,0,0,0,,{\an5\pos(540,1300)}{\k88}{\k146}Heard {\k1}laughing
+Dialogue: 0,0:00:26.06,0:00:27.08,Box,L06,0,0,0,,{\an5\pos(540,1300)}{\k28}from {\k14}the {\k60}bedroom,
+Dialogue: 1,0:00:26.06,0:00:27.08,Over,L06,0,0,0,,{\an5\pos(540,1300)}{\k28}{\k14}from {\k160}the {\k1}bedroom,
+Dialogue: 0,0:00:27.08,0:00:28.10,Box,L06,0,0,0,,{\an5\pos(540,1300)}{\k42}there {\k20}they {\k40}were,
+Dialogue: 1,0:00:27.08,0:00:28.10,Over,L06,0,0,0,,{\an5\pos(540,1300)}{\k42}{\k20}there {\k140}they {\k1}were,
+Dialogue: 0,0:00:28.10,0:00:30.13,Box,L06,0,0,0,,{\an5\pos(540,1300)}{\k94}in {\k26}our {\k83}room
+Dialogue: 1,0:00:28.10,0:00:30.13,Over,L06,0,0,0,,{\an5\pos(540,1300)}{\k94}{\k26}in {\k183}our {\k1}room
+Dialogue: 0,0:00:30.92,0:00:32.24,Box,L07,0,0,0,,{\an5\pos(540,1300)}{\k56}I {\k42}didn't {\k34}shout,
+Dialogue: 1,0:00:30.92,0:00:32.24,Over,L07,0,0,0,,{\an5\pos(540,1300)}{\k56}{\k42}I {\k134}didn't {\k1}shout,
+Dialogue: 0,0:00:32.24,0:00:32.90,Box,L07,0,0,0,,{\an5\pos(540,1300)}{\k20}not {\k46}yet,
+Dialogue: 1,0:00:32.24,0:00:32.90,Over,L07,0,0,0,,{\an5\pos(540,1300)}{\k20}{\k146}not {\k1}yet,
+Dialogue: 0,0:00:32.90,0:00:34.12,Box,L07,0,0,0,,{\an5\pos(540,1300)}{\k44}sat {\k28}in {\k18}my {\k32}car
+Dialogue: 1,0:00:32.90,0:00:34.12,Over,L07,0,0,0,,{\an5\pos(540,1300)}{\k44}{\k28}sat {\k18}in {\k132}my {\k1}car
+Dialogue: 0,0:00:34.12,0:00:34.72,Box,L07,0,0,0,,{\an5\pos(540,1300)}{\k24}till {\k14}the {\k22}sky
+Dialogue: 1,0:00:34.12,0:00:34.72,Over,L07,0,0,0,,{\an5\pos(540,1300)}{\k24}{\k14}till {\k122}the {\k1}sky
+Dialogue: 0,0:00:34.72,0:00:35.66,Box,L07,0,0,0,,{\an5\pos(540,1300)}{\k38}went {\k56}black
+Dialogue: 1,0:00:34.72,0:00:35.66,Over,L07,0,0,0,,{\an5\pos(540,1300)}{\k38}{\k156}went {\k1}black
+Dialogue: 0,0:00:35.66,0:00:38.16,Box,L08,0,0,0,,{\an5\pos(540,1300)}{\k128}Then {\k22}the {\k48}bathroom {\k52}mirror
+Dialogue: 1,0:00:35.66,0:00:38.16,Over,L08,0,0,0,,{\an5\pos(540,1300)}{\k128}{\k22}Then {\k48}the {\k152}bathroom {\k1}mirror
+Dialogue: 0,0:00:38.16,0:00:40.47,Box,L08,0,0,0,,{\an5\pos(540,1300)}{\k68}finally {\k72}stared {\k91}back
+Dialogue: 1,0:00:38.16,0:00:40.47,Over,L08,0,0,0,,{\an5\pos(540,1300)}{\k68}{\k72}finally {\k191}stared {\k1}back
+Dialogue: 0,0:00:47.32,0:00:48.78,Box,L09,0,0,0,,{\an5\pos(540,1300)}{\k56}Forty-six, {\k56}but {\k12}I {\k22}moved
+Dialogue: 1,0:00:47.32,0:00:48.78,Over,L09,0,0,0,,{\an5\pos(540,1300)}{\k56}{\k56}Forty-six, {\k12}but {\k122}I {\k1}moved
+Dialogue: 0,0:00:48.78,0:00:49.82,Box,L09,0,0,0,,{\an5\pos(540,1300)}{\k28}like {\k76}seventy
+Dialogue: 1,0:00:48.78,0:00:49.82,Over,L09,0,0,0,,{\an5\pos(540,1300)}{\k28}{\k176}like {\k1}seventy
+Dialogue: 0,0:00:49.82,0:00:50.88,Box,L10,0,0,0,,{\an5\pos(540,1300)}{\k28}Back {\k22}went {\k20}at {\k36}forty-three
+Dialogue: 1,0:00:49.82,0:00:50.88,Over,L10,0,0,0,,{\an5\pos(540,1300)}{\k28}{\k22}Back {\k20}went {\k136}at {\k1}forty-three
+Dialogue: 0,0:00:50.88,0:00:51.72,Box,L10,0,0,0,,{\an5\pos(540,1300)}{\k34}and {\k22}never {\k28}came
+Dialogue: 1,0:00:50.88,0:00:51.72,Over,L10,0,0,0,,{\an5\pos(540,1300)}{\k34}{\k22}and {\k128}never {\k1}came
+Dialogue: 0,0:00:51.72,0:00:52.64,Box,L10,0,0,0,,{\an5\pos(540,1300)}{\k36}back {\k28}to {\k28}me
+Dialogue: 1,0:00:51.72,0:00:52.64,Over,L10,0,0,0,,{\an5\pos(540,1300)}{\k36}{\k28}back {\k128}to {\k1}me
+Dialogue: 0,0:00:52.64,0:00:53.46,Box,L11,0,0,0,,{\an5\pos(540,1300)}{\k44}Eleven {\k38}hours
+Dialogue: 1,0:00:52.64,0:00:53.46,Over,L11,0,0,0,,{\an5\pos(540,1300)}{\k44}{\k138}Eleven {\k1}hours
+Dialogue: 0,0:00:53.46,0:00:54.22,Box,L11,0,0,0,,{\an5\pos(540,1300)}{\k28}at {\k16}a {\k32}desk,
+Dialogue: 1,0:00:53.46,0:00:54.22,Over,L11,0,0,0,,{\an5\pos(540,1300)}{\k28}{\k16}at {\k132}a {\k1}desk,
+Dialogue: 0,0:00:54.22,0:00:54.70,Box,L11,0,0,0,,{\an5\pos(540,1300)}{\k16}two {\k32}standing
+Dialogue: 1,0:00:54.22,0:00:54.70,Over,L11,0,0,0,,{\an5\pos(540,1300)}{\k16}{\k132}two {\k1}standing
+Dialogue: 0,0:00:54.70,0:00:55.56,Box,L11,0,0,0,,{\an5\pos(540,1300)}{\k34}in {\k10}the {\k42}train
+Dialogue: 1,0:00:54.70,0:00:55.56,Over,L11,0,0,0,,{\an5\pos(540,1300)}{\k34}{\k10}in {\k142}the {\k1}train
+Dialogue: 0,0:00:55.56,0:00:56.08,Box,L12,0,0,0,,{\an5\pos(540,1300)}{\k26}Walking {\k26}bent
+Dialogue: 1,0:00:55.56,0:00:56.08,Over,L12,0,0,0,,{\an5\pos(540,1300)}{\k26}{\k126}Walking {\k1}bent
+Dialogue: 0,0:00:56.08,0:00:56.80,Box,L12,0,0,0,,{\an5\pos(540,1300)}{\k28}like {\k14}my {\k30}father,
+Dialogue: 1,0:00:56.08,0:00:56.80,Over,L12,0,0,0,,{\an5\pos(540,1300)}{\k28}{\k14}like {\k130}my {\k1}father,
+Dialogue: 0,0:00:56.80,0:00:57.62,Box,L12,0,0,0,,{\an5\pos(540,1300)}{\k32}every {\k50}morning
+Dialogue: 1,0:00:56.80,0:00:57.62,Over,L12,0,0,0,,{\an5\pos(540,1300)}{\k32}{\k150}every {\k1}morning
+Dialogue: 0,0:00:57.62,0:00:58.42,Box,L12,0,0,0,,{\an5\pos(540,1300)}{\k18}the {\k30}same {\k32}pain
+Dialogue: 1,0:00:57.62,0:00:58.42,Over,L12,0,0,0,,{\an5\pos(540,1300)}{\k18}{\k30}the {\k132}same {\k1}pain
+Dialogue: 0,0:00:58.42,0:00:59.42,Box,L13,0,0,0,,{\an5\pos(540,1300)}{\k54}Watched {\k2}my {\k44}cousin's
+Dialogue: 1,0:00:58.42,0:00:59.42,Over,L13,0,0,0,,{\an5\pos(540,1300)}{\k54}{\k2}Watched {\k144}my {\k1}cousin's
+Dialogue: 0,0:00:59.42,0:01:01.18,Box,L13,0,0,0,,{\an5\pos(540,1300)}{\k72}sangeet {\k78}from {\k26}a
+Dialogue: 1,0:00:59.42,0:01:01.18,Over,L13,0,0,0,,{\an5\pos(540,1300)}{\k72}{\k78}sangeet {\k126}from {\k1}a
+Dialogue: 0,0:01:01.18,0:01:02.04,Box,L13,0,0,0,,{\an5\pos(540,1300)}{\k38}plastic {\k48}chair
+Dialogue: 1,0:01:01.18,0:01:02.04,Over,L13,0,0,0,,{\an5\pos(540,1300)}{\k38}{\k148}plastic {\k1}chair
+Dialogue: 0,0:01:02.04,0:01:04.94,Box,L14,0,0,0,,{\an5\pos(540,1300)}{\k194}Standing {\k38}in {\k16}that {\k42}mirror,
+Dialogue: 1,0:01:02.04,0:01:04.94,Over,L14,0,0,0,,{\an5\pos(540,1300)}{\k194}{\k38}Standing {\k16}in {\k142}that {\k1}mirror,
+Dialogue: 0,0:01:04.94,0:01:05.66,Box,L14,0,0,0,,{\an5\pos(540,1300)}{\k24}I {\k24}knew {\k24}why
+Dialogue: 1,0:01:04.94,0:01:05.66,Over,L14,0,0,0,,{\an5\pos(540,1300)}{\k24}{\k24}I {\k124}knew {\k1}why
+Dialogue: 0,0:01:05.66,0:01:06.77,Box,L14,0,0,0,,{\an5\pos(540,1300)}{\k22}she {\k32}wasn't {\k57}there
+Dialogue: 1,0:01:05.66,0:01:06.77,Over,L14,0,0,0,,{\an5\pos(540,1300)}{\k22}{\k32}she {\k157}wasn't {\k1}there
+Dialogue: 0,0:01:09.20,0:01:10.38,Box,L15,0,0,0,,{\an5\pos(540,1300)}{\k68}Painkillers, {\k50}sprays
+Dialogue: 1,0:01:09.20,0:01:10.38,Over,L15,0,0,0,,{\an5\pos(540,1300)}{\k68}{\k150}Painkillers, {\k1}sprays
+Dialogue: 0,0:01:10.38,0:01:10.94,Box,L15,0,0,0,,{\an5\pos(540,1300)}{\k6}and {\k50}balms,
+Dialogue: 1,0:01:10.38,0:01:10.94,Over,L15,0,0,0,,{\an5\pos(540,1300)}{\k6}{\k150}and {\k1}balms,
+Dialogue: 0,0:01:10.94,0:01:11.28,Box,L15,0,0,0,,{\an5\pos(540,1300)}{\k17}eight {\k17}hundred
+Dialogue: 1,0:01:10.94,0:01:11.28,Over,L15,0,0,0,,{\an5\pos(540,1300)}{\k17}{\k117}eight {\k1}hundred
+Dialogue: 0,0:01:11.28,0:01:12.40,Box,L15,0,0,0,,{\an5\pos(540,1300)}{\k46}every {\k66}session
+Dialogue: 1,0:01:11.28,0:01:12.40,Over,L15,0,0,0,,{\an5\pos(540,1300)}{\k46}{\k166}every {\k1}session
+Dialogue: 0,0:01:12.40,0:01:15.10,Box,L16,0,0,0,,{\an5\pos(540,1300)}{\k168}Doctor {\k30}never {\k34}looked {\k38}up,
+Dialogue: 1,0:01:12.40,0:01:15.10,Over,L16,0,0,0,,{\an5\pos(540,1300)}{\k168}{\k30}Doctor {\k34}never {\k138}looked {\k1}up,
+Dialogue: 0,0:01:15.10,0:01:16.40,Box,L16,0,0,0,,{\an5\pos(540,1300)}{\k64}"It's {\k14}your {\k52}age,"
+Dialogue: 1,0:01:15.10,0:01:16.40,Over,L16,0,0,0,,{\an5\pos(540,1300)}{\k64}{\k14}"It's {\k152}your {\k1}age,"
+Dialogue: 0,0:01:16.40,0:01:17.91,Box,L16,0,0,0,,{\an5\pos(540,1300)}{\k42}that {\k24}was {\k14}his {\k71}lesson
+Dialogue: 1,0:01:16.40,0:01:17.91,Over,L16,0,0,0,,{\an5\pos(540,1300)}{\k42}{\k24}that {\k14}was {\k171}his {\k1}lesson
+Dialogue: 0,0:01:22.76,0:01:24.12,Box,L17,0,0,0,,{\an5\pos(540,1300)}{\k68}Forty-six, {\k68}moving
+Dialogue: 1,0:01:22.76,0:01:24.12,Over,L17,0,0,0,,{\an5\pos(540,1300)}{\k68}{\k168}Forty-six, {\k1}moving
+Dialogue: 0,0:01:24.12,0:01:25.23,Box,L17,0,0,0,,{\an5\pos(540,1300)}{\k26}like {\k85}seventy
+Dialogue: 1,0:01:24.12,0:01:25.23,Over,L17,0,0,0,,{\an5\pos(540,1300)}{\k26}{\k185}like {\k1}seventy
+Dialogue: 0,0:01:25.26,0:01:26.38,Box,L18,0,0,0,,{\an5\pos(540,1300)}{\k56}The {\k28}mirror {\k28}showed
+Dialogue: 1,0:01:25.26,0:01:26.38,Over,L18,0,0,0,,{\an5\pos(540,1300)}{\k56}{\k28}The {\k128}mirror {\k1}showed
+Dialogue: 0,0:01:26.38,0:01:27.54,Box,L18,0,0,0,,{\an5\pos(540,1300)}{\k20}a {\k18}man {\k38}I {\k40}didn't
+Dialogue: 1,0:01:26.38,0:01:27.54,Over,L18,0,0,0,,{\an5\pos(540,1300)}{\k20}{\k18}a {\k38}man {\k140}I {\k1}didn't
+Dialogue: 0,0:01:27.54,0:01:28.47,Box,L18,0,0,0,,{\an5\pos(540,1300)}{\k11}want {\k11}to {\k71}be
+Dialogue: 1,0:01:27.54,0:01:28.47,Over,L18,0,0,0,,{\an5\pos(540,1300)}{\k11}{\k11}want {\k171}to {\k1}be
+Dialogue: 0,0:01:29.22,0:01:30.46,Box,L19,0,0,0,,{\an5\pos(540,1300)}{\k56}She {\k52}didn't {\k16}even
+Dialogue: 1,0:01:29.22,0:01:30.46,Over,L19,0,0,0,,{\an5\pos(540,1300)}{\k56}{\k52}She {\k116}didn't {\k1}even
+Dialogue: 0,0:01:30.46,0:01:31.12,Box,L19,0,0,0,,{\an5\pos(540,1300)}{\k42}hide {\k24}it,
+Dialogue: 1,0:01:30.46,0:01:31.12,Over,L19,0,0,0,,{\an5\pos(540,1300)}{\k42}{\k124}hide {\k1}it,
+Dialogue: 0,0:01:31.12,0:01:32.38,Box,L19,0,0,0,,{\an5\pos(540,1300)}{\k48}didn't {\k16}even {\k62}try
+Dialogue: 1,0:01:31.12,0:01:32.38,Over,L19,0,0,0,,{\an5\pos(540,1300)}{\k48}{\k16}didn't {\k162}even {\k1}try
+Dialogue: 0,0:01:32.38,0:01:34.22,Box,L20,0,0,0,,{\an5\pos(540,1300)}{\k124}The {\k36}pain {\k24}took
+Dialogue: 1,0:01:32.38,0:01:34.22,Over,L20,0,0,0,,{\an5\pos(540,1300)}{\k124}{\k36}The {\k124}pain {\k1}took
+Dialogue: 0,0:01:34.22,0:01:35.00,Box,L20,0,0,0,,{\an5\pos(540,1300)}{\k28}my {\k50}body,
+Dialogue: 1,0:01:34.22,0:01:35.00,Over,L20,0,0,0,,{\an5\pos(540,1300)}{\k28}{\k150}my {\k1}body,
+Dialogue: 0,0:01:35.00,0:01:35.60,Box,L20,0,0,0,,{\an5\pos(540,1300)}{\k18}then {\k18}it {\k24}took
+Dialogue: 1,0:01:35.00,0:01:35.60,Over,L20,0,0,0,,{\an5\pos(540,1300)}{\k18}{\k18}then {\k124}it {\k1}took
+Dialogue: 0,0:01:35.60,0:01:36.65,Box,L20,0,0,0,,{\an5\pos(540,1300)}{\k26}my {\k79}pride
+Dialogue: 1,0:01:35.60,0:01:36.65,Over,L20,0,0,0,,{\an5\pos(540,1300)}{\k26}{\k179}my {\k1}pride
+Dialogue: 0,0:01:38.58,0:01:39.50,Box,L21,0,0,0,,{\an5\pos(540,1300)}{\k56}I {\k36}called
+Dialogue: 1,0:01:38.58,0:01:39.50,Over,L21,0,0,0,,{\an5\pos(540,1300)}{\k56}{\k136}I {\k1}called
+Dialogue: 0,0:01:39.50,0:01:40.70,Box,L21,0,0,0,,{\an5\pos(540,1300)}{\k20}my {\k44}brother {\k56}Ajay,
+Dialogue: 1,0:01:39.50,0:01:40.70,Over,L21,0,0,0,,{\an5\pos(540,1300)}{\k20}{\k44}my {\k156}brother {\k1}Ajay,
+Dialogue: 0,0:01:40.70,0:01:42.08,Box,L21,0,0,0,,{\an5\pos(540,1300)}{\k50}Kerala {\k18}twenty {\k70}years
+Dialogue: 1,0:01:40.70,0:01:42.08,Over,L21,0,0,0,,{\an5\pos(540,1300)}{\k50}{\k18}Kerala {\k170}twenty {\k1}years
+Dialogue: 0,0:01:42.08,0:01:43.78,Box,L22,0,0,0,,{\an5\pos(540,1300)}{\k118}"I'm {\k10}on {\k16}the {\k26}next
+Dialogue: 1,0:01:42.08,0:01:43.78,Over,L22,0,0,0,,{\an5\pos(540,1300)}{\k118}{\k10}"I'm {\k16}on {\k126}the {\k1}next
+Dialogue: 0,0:01:43.78,0:01:45.04,Box,L22,0,0,0,,{\an5\pos(540,1300)}{\k42}flight, {\k36}don't {\k48}argue,"
+Dialogue: 1,0:01:43.78,0:01:45.04,Over,L22,0,0,0,,{\an5\pos(540,1300)}{\k42}{\k36}flight, {\k148}don't {\k1}argue,"
+Dialogue: 0,0:01:45.04,0:01:46.08,Box,L22,0,0,0,,{\an5\pos(540,1300)}{\k18}and {\k16}he {\k20}was {\k50}here
+Dialogue: 1,0:01:45.04,0:01:46.08,Over,L22,0,0,0,,{\an5\pos(540,1300)}{\k18}{\k16}and {\k20}he {\k150}was {\k1}here
+Dialogue: 0,0:01:46.08,0:01:47.46,Box,L23,0,0,0,,{\an5\pos(540,1300)}{\k44}Got {\k28}off {\k22}the {\k44}plane,
+Dialogue: 1,0:01:46.08,0:01:47.46,Over,L23,0,0,0,,{\an5\pos(540,1300)}{\k44}{\k28}Got {\k22}off {\k144}the {\k1}plane,
+Dialogue: 0,0:01:47.46,0:01:48.54,Box,L23,0,0,0,,{\an5\pos(540,1300)}{\k26}no {\k46}hug, {\k36}hands
+Dialogue: 1,0:01:47.46,0:01:48.54,Over,L23,0,0,0,,{\an5\pos(540,1300)}{\k26}{\k46}no {\k136}hug, {\k1}hands
+Dialogue: 0,0:01:48.54,0:01:50.20,Box,L23,0,0,0,,{\an5\pos(540,1300)}{\k24}on {\k28}my {\k68}shoulders, {\k46}true
+Dialogue: 1,0:01:48.54,0:01:50.20,Over,L23,0,0,0,,{\an5\pos(540,1300)}{\k24}{\k28}on {\k68}my {\k146}shoulders, {\k1}true
+Dialogue: 0,0:01:50.20,0:01:52.08,Box,L24,0,0,0,,{\an5\pos(540,1300)}{\k88}"Rohit, {\k52}you're {\k12}not {\k36}staying
+Dialogue: 1,0:01:50.20,0:01:52.08,Over,L24,0,0,0,,{\an5\pos(540,1300)}{\k88}{\k52}"Rohit, {\k12}you're {\k136}not {\k1}staying
+Dialogue: 0,0:01:52.08,0:01:52.96,Box,L24,0,0,0,,{\an5\pos(540,1300)}{\k28}like {\k60}this.
+Dialogue: 1,0:01:52.08,0:01:52.96,Over,L24,0,0,0,,{\an5\pos(540,1300)}{\k28}{\k160}like {\k1}this.
+Dialogue: 0,0:01:52.96,0:01:54.74,Box,L24,0,0,0,,{\an5\pos(540,1300)}{\k116}We've {\k24}got {\k38}work
+Dialogue: 1,0:01:52.96,0:01:54.74,Over,L24,0,0,0,,{\an5\pos(540,1300)}{\k116}{\k24}We've {\k138}got {\k1}work
+Dialogue: 0,0:01:54.74,0:01:55.59,Box,L24,0,0,0,,{\an5\pos(540,1300)}{\k28}to {\k57}do."
+Dialogue: 1,0:01:54.74,0:01:55.59,Over,L24,0,0,0,,{\an5\pos(540,1300)}{\k28}{\k157}to {\k1}do."
+Dialogue: 0,0:01:56.16,0:01:57.44,Box,L25,0,0,0,,{\an5\pos(540,330)}{\k52}Three {\k24}days {\k52}later,
+Dialogue: 1,0:01:56.16,0:01:57.44,Over,L25,0,0,0,,{\an5\pos(540,330)}{\k52}{\k24}Three {\k152}days {\k1}later,
+Dialogue: 0,0:01:57.44,0:01:58.12,Box,L25,0,0,0,,{\an5\pos(540,330)}{\k14}an {\k24}amber {\k30}bottle
+Dialogue: 1,0:01:57.44,0:01:58.12,Over,L25,0,0,0,,{\an5\pos(540,330)}{\k14}{\k24}an {\k130}amber {\k1}bottle
+Dialogue: 0,0:01:58.12,0:01:58.90,Box,L25,0,0,0,,{\an5\pos(540,330)}{\k26}on {\k10}the {\k42}shelf
+Dialogue: 1,0:01:58.12,0:01:58.90,Over,L25,0,0,0,,{\an5\pos(540,330)}{\k26}{\k10}on {\k142}the {\k1}shelf
+Dialogue: 0,0:01:58.90,0:01:59.72,Box,L26,0,0,0,,{\an5\pos(540,1300)}{\k16}"Those {\k32}men {\k34}smashing
+Dialogue: 1,0:01:58.90,0:01:59.72,Over,L26,0,0,0,,{\an5\pos(540,1300)}{\k16}{\k32}"Those {\k134}men {\k1}smashing
+Dialogue: 0,0:01:59.72,0:02:00.90,Box,L26,0,0,0,,{\an5\pos(540,1300)}{\k54}shuttles {\k16}at {\k48}sixty,
+Dialogue: 1,0:01:59.72,0:02:00.90,Over,L26,0,0,0,,{\an5\pos(540,1300)}{\k54}{\k16}shuttles {\k148}at {\k1}sixty,
+Dialogue: 0,0:02:00.90,0:02:01.20,Box,L26,0,0,0,,{\an5\pos(540,1300)}{\k12}they {\k18}look
+Dialogue: 1,0:02:00.90,0:02:01.20,Over,L26,0,0,0,,{\an5\pos(540,1300)}{\k12}{\k118}they {\k1}look
+Dialogue: 0,0:02:01.20,0:02:02.14,Box,L26,0,0,0,,{\an5\pos(540,1300)}{\k26}after {\k68}themselves"
+Dialogue: 1,0:02:01.20,0:02:02.14,Over,L26,0,0,0,,{\an5\pos(540,1300)}{\k26}{\k168}after {\k1}themselves"
+Dialogue: 0,0:02:02.14,0:02:02.90,Box,L27,0,0,0,,{\an5\pos(540,330)}{\k6}I {\k26}said, {\k44}"Bhai,
+Dialogue: 1,0:02:02.14,0:02:02.90,Over,L27,0,0,0,,{\an5\pos(540,330)}{\k6}{\k26}I {\k144}said, {\k1}"Bhai,
+Dialogue: 0,0:02:02.90,0:02:04.22,Box,L27,0,0,0,,{\an5\pos(540,330)}{\k34}I {\k18}need {\k80}painkillers,
+Dialogue: 1,0:02:02.90,0:02:04.22,Over,L27,0,0,0,,{\an5\pos(540,330)}{\k34}{\k18}I {\k180}need {\k1}painkillers,
+Dialogue: 0,0:02:04.22,0:02:04.92,Box,L27,0,0,0,,{\an5\pos(540,330)}{\k16}not {\k54}oil"
+Dialogue: 1,0:02:04.22,0:02:04.92,Over,L27,0,0,0,,{\an5\pos(540,330)}{\k16}{\k154}not {\k1}oil"
+Dialogue: 0,0:02:04.92,0:02:05.18,Box,L28,0,0,0,,{\an5\pos(540,1300)}{\k8}He {\k18}said,
+Dialogue: 1,0:02:04.92,0:02:05.18,Over,L28,0,0,0,,{\an5\pos(540,1300)}{\k8}{\k118}He {\k1}said,
+Dialogue: 0,0:02:05.18,0:02:06.34,Box,L28,0,0,0,,{\an5\pos(540,1300)}{\k38}"Pills {\k26}just {\k28}hide {\k24}it,
+Dialogue: 1,0:02:05.18,0:02:06.34,Over,L28,0,0,0,,{\an5\pos(540,1300)}{\k38}{\k26}"Pills {\k28}just {\k124}hide {\k1}it,
+Dialogue: 0,0:02:06.34,0:02:06.88,Box,L28,0,0,0,,{\an5\pos(540,1300)}{\k36}sprays {\k18}sit
+Dialogue: 1,0:02:06.34,0:02:06.88,Over,L28,0,0,0,,{\an5\pos(540,1300)}{\k36}{\k118}sprays {\k1}sit
+Dialogue: 0,0:02:06.88,0:02:07.56,Box,L28,0,0,0,,{\an5\pos(540,1300)}{\k18}on {\k10}the {\k40}skin
+Dialogue: 1,0:02:06.88,0:02:07.56,Over,L28,0,0,0,,{\an5\pos(540,1300)}{\k18}{\k10}on {\k140}the {\k1}skin
+Dialogue: 0,0:02:07.56,0:02:08.78,Box,L29,0,0,0,,{\an5\pos(540,330)}{\k30}In {\k52}Kerala {\k12}we {\k28}warm
+Dialogue: 1,0:02:07.56,0:02:08.78,Over,L29,0,0,0,,{\an5\pos(540,330)}{\k30}{\k52}In {\k12}Kerala {\k128}we {\k1}warm
+Dialogue: 0,0:02:08.78,0:02:09.54,Box,L29,0,0,0,,{\an5\pos(540,330)}{\k14}it {\k16}in {\k12}our {\k34}palms
+Dialogue: 1,0:02:08.78,0:02:09.54,Over,L29,0,0,0,,{\an5\pos(540,330)}{\k14}{\k16}it {\k12}in {\k134}our {\k1}palms
+Dialogue: 0,0:02:09.54,0:02:10.50,Box,L29,0,0,0,,{\an5\pos(540,330)}{\k18}and {\k26}work {\k26}it {\k26}in
+Dialogue: 1,0:02:09.54,0:02:10.50,Over,L29,0,0,0,,{\an5\pos(540,330)}{\k18}{\k26}and {\k26}work {\k126}it {\k1}in
+Dialogue: 0,0:02:10.50,0:02:11.88,Box,L30,0,0,0,,{\an5\pos(540,330)}{\k24}Ten {\k30}minutes {\k38}every {\k46}night,
+Dialogue: 1,0:02:10.50,0:02:11.88,Over,L30,0,0,0,,{\an5\pos(540,330)}{\k24}{\k30}Ten {\k38}minutes {\k146}every {\k1}night,
+Dialogue: 0,0:02:11.88,0:02:12.44,Box,L30,0,0,0,,{\an5\pos(540,330)}{\k10}four {\k46}weeks,
+Dialogue: 1,0:02:11.88,0:02:12.44,Over,L30,0,0,0,,{\an5\pos(540,330)}{\k10}{\k146}four {\k1}weeks,
+Dialogue: 0,0:02:12.44,0:02:13.24,Box,L30,0,0,0,,{\an5\pos(540,330)}{\k26}that's {\k12}the {\k42}deal
+Dialogue: 1,0:02:12.44,0:02:13.24,Over,L30,0,0,0,,{\an5\pos(540,330)}{\k26}{\k12}that's {\k142}the {\k1}deal
+Dialogue: 0,0:02:13.24,0:02:14.74,Box,L31,0,0,0,,{\an5\pos(540,330)}{\k62}EIS {\k72}Ayurvedic {\k16}Pain
+Dialogue: 1,0:02:13.24,0:02:14.74,Over,L31,0,0,0,,{\an5\pos(540,330)}{\k62}{\k72}EIS {\k116}Ayurvedic {\k1}Pain
+Dialogue: 0,0:02:14.74,0:02:15.58,Box,L31,0,0,0,,{\an5\pos(540,330)}{\k36}Relief {\k48}Oil,
+Dialogue: 1,0:02:14.74,0:02:15.58,Over,L31,0,0,0,,{\an5\pos(540,330)}{\k36}{\k148}Relief {\k1}Oil,
+Dialogue: 0,0:02:15.58,0:02:16.36,Box,L31,0,0,0,,{\an5\pos(540,330)}{\k28}fifteen {\k50}herbs
+Dialogue: 1,0:02:15.58,0:02:16.36,Over,L31,0,0,0,,{\an5\pos(540,330)}{\k28}{\k150}fifteen {\k1}herbs
+Dialogue: 0,0:02:16.36,0:02:17.45,Box,L31,0,0,0,,{\an5\pos(540,330)}{\k20}in {\k22}pure {\k67}til
+Dialogue: 1,0:02:16.36,0:02:17.45,Over,L31,0,0,0,,{\an5\pos(540,330)}{\k20}{\k22}in {\k167}pure {\k1}til
+Dialogue: 0,0:02:18.60,0:02:19.50,Box,L32,0,0,0,,{\an5\pos(540,1300)}{\k52}First {\k38}night,
+Dialogue: 1,0:02:18.60,0:02:19.50,Over,L32,0,0,0,,{\an5\pos(540,1300)}{\k52}{\k138}First {\k1}night,
+Dialogue: 0,0:02:19.50,0:02:20.50,Box,L32,0,0,0,,{\an5\pos(540,1300)}{\k16}the {\k34}warmth {\k22}went {\k28}deep
+Dialogue: 1,0:02:19.50,0:02:20.50,Over,L32,0,0,0,,{\an5\pos(540,1300)}{\k16}{\k34}the {\k22}warmth {\k128}went {\k1}deep
+Dialogue: 0,0:02:20.50,0:02:21.50,Box,L32,0,0,0,,{\an5\pos(540,1300)}{\k30}into {\k22}my {\k48}back
+Dialogue: 1,0:02:20.50,0:02:21.50,Over,L32,0,0,0,,{\an5\pos(540,1300)}{\k30}{\k22}into {\k148}my {\k1}back
+Dialogue: 0,0:02:21.50,0:02:22.14,Box,L33,0,0,0,,{\an5\pos(540,1300)}{\k20}Night {\k44}three,
+Dialogue: 1,0:02:21.50,0:02:22.14,Over,L33,0,0,0,,{\an5\pos(540,1300)}{\k20}{\k144}Night {\k1}three,
+Dialogue: 0,0:02:22.14,0:02:23.52,Box,L33,0,0,0,,{\an5\pos(540,1300)}{\k16}I {\k32}slept {\k38}straight {\k52}through,
+Dialogue: 1,0:02:22.14,0:02:23.52,Over,L33,0,0,0,,{\an5\pos(540,1300)}{\k16}{\k32}I {\k38}slept {\k152}straight {\k1}through,
+Dialogue: 0,0:02:23.52,0:02:25.17,Box,L33,0,0,0,,{\an5\pos(540,1300)}{\k44}first {\k28}time {\k28}like {\k65}that
+Dialogue: 1,0:02:23.52,0:02:25.17,Over,L33,0,0,0,,{\an5\pos(540,1300)}{\k44}{\k28}first {\k28}time {\k165}like {\k1}that
+Dialogue: 0,0:02:26.54,0:02:27.50,Box,L34,0,0,0,,{\an5\pos(540,1300)}{\k52}Week {\k44}one,
+Dialogue: 1,0:02:26.54,0:02:27.50,Over,L34,0,0,0,,{\an5\pos(540,1300)}{\k52}{\k144}Week {\k1}one,
+Dialogue: 0,0:02:27.50,0:02:28.10,Box,L34,0,0,0,,{\an5\pos(540,1300)}{\k22}out {\k18}of {\k20}bed
+Dialogue: 1,0:02:27.50,0:02:28.10,Over,L34,0,0,0,,{\an5\pos(540,1300)}{\k22}{\k18}out {\k120}of {\k1}bed
+Dialogue: 0,0:02:28.10,0:02:29.32,Box,L34,0,0,0,,{\an5\pos(540,1300)}{\k42}without {\k32}a {\k48}groan
+Dialogue: 1,0:02:28.10,0:02:29.32,Over,L34,0,0,0,,{\an5\pos(540,1300)}{\k42}{\k32}without {\k148}a {\k1}groan
+Dialogue: 0,0:02:29.32,0:02:30.00,Box,L35,0,0,0,,{\an5\pos(540,1300)}{\k26}Week {\k42}two,
+Dialogue: 1,0:02:29.32,0:02:30.00,Over,L35,0,0,0,,{\an5\pos(540,1300)}{\k26}{\k142}Week {\k1}two,
+Dialogue: 0,0:02:30.00,0:02:31.02,Box,L35,0,0,0,,{\an5\pos(540,1300)}{\k14}my {\k26}son {\k32}said, {\k30}"Papa,
+Dialogue: 1,0:02:30.00,0:02:31.02,Over,L35,0,0,0,,{\an5\pos(540,1300)}{\k14}{\k26}my {\k32}son {\k130}said, {\k1}"Papa,
+Dialogue: 0,0:02:31.02,0:02:32.18,Box,L35,0,0,0,,{\an5\pos(540,1300)}{\k18}you're {\k28}walking {\k70}strong"
+Dialogue: 1,0:02:31.02,0:02:32.18,Over,L35,0,0,0,,{\an5\pos(540,1300)}{\k18}{\k28}you're {\k170}walking {\k1}strong"
+Dialogue: 0,0:02:32.18,0:02:32.78,Box,L36,0,0,0,,{\an5\pos(540,1300)}{\k22}Week {\k38}three,
+Dialogue: 1,0:02:32.18,0:02:32.78,Over,L36,0,0,0,,{\an5\pos(540,1300)}{\k22}{\k138}Week {\k1}three,
+Dialogue: 0,0:02:32.78,0:02:33.98,Box,L36,0,0,0,,{\an5\pos(540,1300)}{\k40}station {\k66}stairs {\k14}two
+Dialogue: 1,0:02:32.78,0:02:33.98,Over,L36,0,0,0,,{\an5\pos(540,1300)}{\k40}{\k66}station {\k114}stairs {\k1}two
+Dialogue: 0,0:02:33.98,0:02:34.80,Box,L36,0,0,0,,{\an5\pos(540,1300)}{\k26}at {\k14}a {\k42}time
+Dialogue: 1,0:02:33.98,0:02:34.80,Over,L36,0,0,0,,{\an5\pos(540,1300)}{\k26}{\k14}at {\k142}a {\k1}time
+Dialogue: 0,0:02:34.80,0:02:35.48,Box,L37,0,0,0,,{\an5\pos(540,1300)}{\k22}Week {\k46}four,
+Dialogue: 1,0:02:34.80,0:02:35.48,Over,L37,0,0,0,,{\an5\pos(540,1300)}{\k22}{\k146}Week {\k1}four,
+Dialogue: 0,0:02:35.48,0:02:36.20,Box,L37,0,0,0,,{\an5\pos(540,1300)}{\k28}joined {\k12}a {\k32}gym,
+Dialogue: 1,0:02:35.48,0:02:36.20,Over,L37,0,0,0,,{\an5\pos(540,1300)}{\k28}{\k12}joined {\k132}a {\k1}gym,
+Dialogue: 0,0:02:36.20,0:02:36.92,Box,L37,0,0,0,,{\an5\pos(540,1300)}{\k24}not {\k48}hers,
+Dialogue: 1,0:02:36.20,0:02:36.92,Over,L37,0,0,0,,{\an5\pos(540,1300)}{\k24}{\k148}not {\k1}hers,
+Dialogue: 0,0:02:36.92,0:02:37.48,Box,L37,0,0,0,,{\an5\pos(540,1300)}{\k14}and {\k10}I {\k32}laughed
+Dialogue: 1,0:02:36.92,0:02:37.48,Over,L37,0,0,0,,{\an5\pos(540,1300)}{\k14}{\k10}and {\k132}I {\k1}laughed
+Dialogue: 0,0:02:37.48,0:02:38.47,Box,L37,0,0,0,,{\an5\pos(540,1300)}{\k26}this {\k73}time
+Dialogue: 1,0:02:37.48,0:02:38.47,Over,L37,0,0,0,,{\an5\pos(540,1300)}{\k26}{\k173}this {\k1}time
+Dialogue: 0,0:02:39.86,0:02:41.02,Box,L38,0,0,0,,{\an5\pos(540,1300)}{\k52}Week {\k64}six,
+Dialogue: 1,0:02:39.86,0:02:41.02,Over,L38,0,0,0,,{\an5\pos(540,1300)}{\k52}{\k164}Week {\k1}six,
+Dialogue: 0,0:02:41.02,0:02:41.72,Box,L38,0,0,0,,{\an5\pos(540,1300)}{\k35}the {\k35}bandhgala
+Dialogue: 1,0:02:41.02,0:02:41.72,Over,L38,0,0,0,,{\an5\pos(540,1300)}{\k35}{\k135}the {\k1}bandhgala
+Dialogue: 0,0:02:41.72,0:02:42.68,Box,L38,0,0,0,,{\an5\pos(540,1300)}{\k16}I {\k24}never {\k56}wore
+Dialogue: 1,0:02:41.72,0:02:42.68,Over,L38,0,0,0,,{\an5\pos(540,1300)}{\k16}{\k24}I {\k156}never {\k1}wore
+Dialogue: 0,0:02:42.68,0:02:43.50,Box,L39,0,0,0,,{\an5\pos(540,1300)}{\k36}It {\k46}fit,
+Dialogue: 1,0:02:42.68,0:02:43.50,Over,L39,0,0,0,,{\an5\pos(540,1300)}{\k36}{\k146}It {\k1}fit,
+Dialogue: 0,0:02:43.50,0:02:44.18,Box,L39,0,0,0,,{\an5\pos(540,1300)}{\k20}and {\k12}I {\k36}couldn't
+Dialogue: 1,0:02:43.50,0:02:44.18,Over,L39,0,0,0,,{\an5\pos(540,1300)}{\k20}{\k12}and {\k136}I {\k1}couldn't
+Dialogue: 0,0:02:44.18,0:02:45.22,Box,L39,0,0,0,,{\an5\pos(540,1300)}{\k18}speak {\k86}anymore
+Dialogue: 1,0:02:44.18,0:02:45.22,Over,L39,0,0,0,,{\an5\pos(540,1300)}{\k18}{\k186}speak {\k1}anymore
+Dialogue: 0,0:02:45.22,0:02:46.34,Box,L40,0,0,0,,{\an5\pos(540,1300)}{\k46}'Cause {\k18}I {\k48}finally
+Dialogue: 1,0:02:45.22,0:02:46.34,Over,L40,0,0,0,,{\an5\pos(540,1300)}{\k46}{\k18}'Cause {\k148}I {\k1}finally
+Dialogue: 0,0:02:46.34,0:02:47.71,Box,L40,0,0,0,,{\an5\pos(540,1300)}{\k40}felt {\k32}like {\k65}me
+Dialogue: 1,0:02:46.34,0:02:47.71,Over,L40,0,0,0,,{\an5\pos(540,1300)}{\k40}{\k32}felt {\k165}like {\k1}me
+Dialogue: 0,0:02:47.98,0:02:49.44,Box,L41,0,0,0,,{\an5\pos(540,1300)}{\k52}A {\k28}friend {\k20}brought {\k46}Priya,
+Dialogue: 1,0:02:47.98,0:02:49.44,Over,L41,0,0,0,,{\an5\pos(540,1300)}{\k52}{\k28}A {\k20}friend {\k146}brought {\k1}Priya,
+Dialogue: 0,0:02:49.44,0:02:50.10,Box,L41,0,0,0,,{\an5\pos(540,1300)}{\k14}and {\k12}the {\k40}divorce
+Dialogue: 1,0:02:49.44,0:02:50.10,Over,L41,0,0,0,,{\an5\pos(540,1300)}{\k14}{\k12}and {\k140}the {\k1}divorce
+Dialogue: 0,0:02:50.10,0:02:50.96,Box,L41,0,0,0,,{\an5\pos(540,1300)}{\k30}came {\k56}fast
+Dialogue: 1,0:02:50.10,0:02:50.96,Over,L41,0,0,0,,{\an5\pos(540,1300)}{\k30}{\k156}came {\k1}fast
+Dialogue: 0,0:02:50.96,0:02:51.54,Box,L42,0,0,0,,{\an5\pos(540,1300)}{\k12}Then {\k12}a {\k34}sangeet
+Dialogue: 1,0:02:50.96,0:02:51.54,Over,L42,0,0,0,,{\an5\pos(540,1300)}{\k12}{\k12}Then {\k134}a {\k1}sangeet
+Dialogue: 0,0:02:51.54,0:02:52.22,Box,L42,0,0,0,,{\an5\pos(540,1300)}{\k20}dance {\k48}floor,
+Dialogue: 1,0:02:51.54,0:02:52.22,Over,L42,0,0,0,,{\an5\pos(540,1300)}{\k20}{\k148}dance {\k1}floor,
+Dialogue: 0,0:02:52.22,0:02:52.80,Box,L42,0,0,0,,{\an5\pos(540,1300)}{\k16}not {\k14}a {\k28}plastic
+Dialogue: 1,0:02:52.22,0:02:52.80,Over,L42,0,0,0,,{\an5\pos(540,1300)}{\k16}{\k14}not {\k128}a {\k1}plastic
+Dialogue: 0,0:02:52.80,0:02:53.64,Box,L42,0,0,0,,{\an5\pos(540,1300)}{\k28}chair {\k16}at {\k40}last
+Dialogue: 1,0:02:52.80,0:02:53.64,Over,L42,0,0,0,,{\an5\pos(540,1300)}{\k28}{\k16}chair {\k140}at {\k1}last
+Dialogue: 0,0:02:53.64,0:02:54.84,Box,L43,0,0,0,,{\an5\pos(540,1300)}{\k24}My {\k30}wife {\k30}walked {\k36}in,
+Dialogue: 1,0:02:53.64,0:02:54.84,Over,L43,0,0,0,,{\an5\pos(540,1300)}{\k24}{\k30}My {\k30}wife {\k136}walked {\k1}in,
+Dialogue: 0,0:02:54.84,0:02:55.44,Box,L43,0,0,0,,{\an5\pos(540,1300)}{\k60}same {\k1}trainer
+Dialogue: 1,0:02:54.84,0:02:55.44,Over,L43,0,0,0,,{\an5\pos(540,1300)}{\k60}{\k100}same {\k1}trainer
+Dialogue: 0,0:02:55.44,0:02:56.26,Box,L43,0,0,0,,{\an5\pos(540,1300)}{\k22}by {\k16}her {\k44}side
+Dialogue: 1,0:02:55.44,0:02:56.26,Over,L43,0,0,0,,{\an5\pos(540,1300)}{\k22}{\k16}by {\k144}her {\k1}side
+Dialogue: 0,0:02:56.26,0:02:56.80,Box,L44,0,0,0,,{\an5\pos(540,1300)}{\k12}In {\k10}the {\k32}saree
+Dialogue: 1,0:02:56.26,0:02:56.80,Over,L44,0,0,0,,{\an5\pos(540,1300)}{\k12}{\k10}In {\k132}the {\k1}saree
+Dialogue: 0,0:02:56.80,0:02:57.24,Box,L44,0,0,0,,{\an5\pos(540,1300)}{\k20}I {\k24}bought
+Dialogue: 1,0:02:56.80,0:02:57.24,Over,L44,0,0,0,,{\an5\pos(540,1300)}{\k20}{\k124}I {\k1}bought
+Dialogue: 0,0:02:57.24,0:02:57.88,Box,L44,0,0,0,,{\an5\pos(540,1300)}{\k20}her {\k32}on {\k12}our
+Dialogue: 1,0:02:57.24,0:02:57.88,Over,L44,0,0,0,,{\an5\pos(540,1300)}{\k20}{\k32}her {\k112}on {\k1}our
+Dialogue: 0,0:02:57.88,0:02:59.08,Box,L44,0,0,0,,{\an5\pos(540,1300)}{\k44}anniversary {\k76}night
+Dialogue: 1,0:02:57.88,0:02:59.08,Over,L44,0,0,0,,{\an5\pos(540,1300)}{\k44}{\k176}anniversary {\k1}night
+Dialogue: 0,0:02:59.08,0:03:00.20,Box,L45,0,0,0,,{\an5\pos(540,1300)}{\k40}Halfway {\k18}through {\k20}the {\k34}song,
+Dialogue: 1,0:02:59.08,0:03:00.20,Over,L45,0,0,0,,{\an5\pos(540,1300)}{\k40}{\k18}Halfway {\k20}through {\k134}the {\k1}song,
+Dialogue: 0,0:03:00.20,0:03:00.88,Box,L45,0,0,0,,{\an5\pos(540,1300)}{\k12}she {\k18}was {\k38}staring,
+Dialogue: 1,0:03:00.20,0:03:00.88,Over,L45,0,0,0,,{\an5\pos(540,1300)}{\k12}{\k18}she {\k138}was {\k1}staring,
+Dialogue: 0,0:03:00.88,0:03:01.84,Box,L45,0,0,0,,{\an5\pos(540,1300)}{\k30}couldn't {\k26}turn {\k40}around
+Dialogue: 1,0:03:00.88,0:03:01.84,Over,L45,0,0,0,,{\an5\pos(540,1300)}{\k30}{\k26}couldn't {\k140}turn {\k1}around
+Dialogue: 0,0:03:01.84,0:03:02.92,Box,L46,0,0,0,,{\an2\pos(540,1436)}{\k38}Mouth {\k20}half {\k50}open,
+Dialogue: 1,0:03:01.84,0:03:02.92,Over,L46,0,0,0,,{\an2\pos(540,1436)}{\k38}{\k20}Mouth {\k150}half {\k1}open,
+Dialogue: 0,0:03:02.92,0:03:03.72,Box,L46,0,0,0,,{\an2\pos(540,1436)}{\k24}like {\k36}she'd {\k20}seen
+Dialogue: 1,0:03:02.92,0:03:03.72,Over,L46,0,0,0,,{\an2\pos(540,1436)}{\k24}{\k36}like {\k120}she'd {\k1}seen
+Dialogue: 0,0:03:03.72,0:03:05.07,Box,L46,0,0,0,,{\an2\pos(540,1436)}{\k14}a {\k28}ghost {\k30}in {\k63}town
+Dialogue: 1,0:03:03.72,0:03:05.07,Over,L46,0,0,0,,{\an2\pos(540,1436)}{\k14}{\k28}a {\k30}ghost {\k163}in {\k1}town
+Dialogue: 0,0:03:06.60,0:03:07.60,Box,L47,0,0,0,,{\an5\pos(540,1300)}{\k40}In {\k16}the {\k44}washroom,
+Dialogue: 1,0:03:06.60,0:03:07.60,Over,L47,0,0,0,,{\an5\pos(540,1300)}{\k40}{\k16}In {\k144}the {\k1}washroom,
+Dialogue: 0,0:03:07.60,0:03:08.54,Box,L47,0,0,0,,{\an5\pos(540,1300)}{\k14}a {\k30}man, {\k50}fifties,
+Dialogue: 1,0:03:07.60,0:03:08.54,Over,L47,0,0,0,,{\an5\pos(540,1300)}{\k14}{\k30}a {\k150}man, {\k1}fifties,
+Dialogue: 0,0:03:08.54,0:03:09.32,Box,L47,0,0,0,,{\an5\pos(540,1300)}{\k14}hand {\k22}on {\k12}his {\k30}back
+Dialogue: 1,0:03:08.54,0:03:09.32,Over,L47,0,0,0,,{\an5\pos(540,1300)}{\k14}{\k22}hand {\k12}on {\k130}his {\k1}back
+Dialogue: 0,0:03:09.32,0:03:10.04,Box,L48,0,0,0,,{\an5\pos(540,1300)}{\k42}"Sorry, {\k14}I {\k16}have
+Dialogue: 1,0:03:09.32,0:03:10.04,Over,L48,0,0,0,,{\an5\pos(540,1300)}{\k42}{\k14}"Sorry, {\k116}I {\k1}have
+Dialogue: 0,0:03:10.04,0:03:10.48,Box,L48,0,0,0,,{\an5\pos(540,1300)}{\k12}to {\k32}ask,
+Dialogue: 1,0:03:10.04,0:03:10.48,Over,L48,0,0,0,,{\an5\pos(540,1300)}{\k12}{\k132}to {\k1}ask,
+Dialogue: 0,0:03:10.48,0:03:11.24,Box,L48,0,0,0,,{\an5\pos(540,1300)}{\k8}you {\k20}can't {\k8}be {\k40}forty,
+Dialogue: 1,0:03:10.48,0:03:11.24,Over,L48,0,0,0,,{\an5\pos(540,1300)}{\k8}{\k20}you {\k8}can't {\k140}be {\k1}forty,
+Dialogue: 0,0:03:11.24,0:03:11.98,Box,L48,0,0,0,,{\an5\pos(540,1300)}{\k10}not {\k26}like {\k38}that"
+Dialogue: 1,0:03:11.24,0:03:11.98,Over,L48,0,0,0,,{\an5\pos(540,1300)}{\k10}{\k26}not {\k138}like {\k1}that"
+Dialogue: 0,0:03:11.98,0:03:12.56,Box,L49,0,0,0,,{\an5\pos(540,330)}{\k18}I {\k22}told {\k18}him
+Dialogue: 1,0:03:11.98,0:03:12.56,Over,L49,0,0,0,,{\an5\pos(540,330)}{\k18}{\k22}I {\k118}told {\k1}him
+Dialogue: 0,0:03:12.56,0:03:13.24,Box,L49,0,0,0,,{\an5\pos(540,330)}{\k16}'bout {\k14}the {\k38}bottle,
+Dialogue: 1,0:03:12.56,0:03:13.24,Over,L49,0,0,0,,{\an5\pos(540,330)}{\k16}{\k14}'bout {\k138}the {\k1}bottle,
+Dialogue: 0,0:03:13.24,0:03:14.46,Box,L49,0,0,0,,{\an5\pos(540,330)}{\k14}ten {\k40}minutes {\k34}every {\k34}night
+Dialogue: 1,0:03:13.24,0:03:14.46,Over,L49,0,0,0,,{\an5\pos(540,330)}{\k14}{\k40}ten {\k34}minutes {\k134}every {\k1}night
+Dialogue: 0,0:03:14.46,0:03:14.86,Box,L50,0,0,0,,{\an5\pos(540,1300)}{\k12}He {\k28}ordered
+Dialogue: 1,0:03:14.46,0:03:14.86,Over,L50,0,0,0,,{\an5\pos(540,1300)}{\k12}{\k128}He {\k1}ordered
+Dialogue: 0,0:03:14.86,0:03:15.48,Box,L50,0,0,0,,{\an5\pos(540,1300)}{\k18}at {\k12}the {\k32}sink,
+Dialogue: 1,0:03:14.86,0:03:15.48,Over,L50,0,0,0,,{\an5\pos(540,1300)}{\k18}{\k12}at {\k132}the {\k1}sink,
+Dialogue: 0,0:03:15.48,0:03:16.36,Box,L50,0,0,0,,{\an5\pos(540,1300)}{\k10}cash {\k18}on {\k60}delivery,
+Dialogue: 1,0:03:15.48,0:03:16.36,Over,L50,0,0,0,,{\an5\pos(540,1300)}{\k10}{\k18}cash {\k160}on {\k1}delivery,
+Dialogue: 0,0:03:16.36,0:03:16.76,Box,L50,0,0,0,,{\an5\pos(540,1300)}{\k14}that {\k26}night
+Dialogue: 1,0:03:16.36,0:03:16.76,Over,L50,0,0,0,,{\an5\pos(540,1300)}{\k14}{\k126}that {\k1}night
+Dialogue: 0,0:03:16.76,0:03:17.52,Box,L51,0,0,0,,{\an5\pos(540,1300)}{\k14}I {\k26}walked {\k36}out,
+Dialogue: 1,0:03:16.76,0:03:17.52,Over,L51,0,0,0,,{\an5\pos(540,1300)}{\k14}{\k26}I {\k136}walked {\k1}out,
+Dialogue: 0,0:03:17.52,0:03:18.30,Box,L51,0,0,0,,{\an5\pos(540,1300)}{\k28}she {\k20}was {\k30}standing
+Dialogue: 1,0:03:17.52,0:03:18.30,Over,L51,0,0,0,,{\an5\pos(540,1300)}{\k28}{\k20}she {\k130}was {\k1}standing
+Dialogue: 0,0:03:18.30,0:03:19.19,Box,L51,0,0,0,,{\an5\pos(540,1300)}{\k26}there {\k63}alone
+Dialogue: 1,0:03:18.30,0:03:19.19,Over,L51,0,0,0,,{\an5\pos(540,1300)}{\k26}{\k163}there {\k1}alone
+Dialogue: 0,0:03:19.54,0:03:19.94,Box,L52,0,0,0,,{\an5\pos(540,1300)}{\k40}Rohit
+Dialogue: 0,0:03:19.96,0:03:20.38,Box,L53,0,0,0,,{\an5\pos(540,1300)}{\k2}I {\k2}didn't {\k38}say
+Dialogue: 1,0:03:19.96,0:03:20.38,Over,L53,0,0,0,,{\an5\pos(540,1300)}{\k2}{\k2}I {\k138}didn't {\k1}say
+Dialogue: 0,0:03:20.38,0:03:20.88,Box,L53,0,0,0,,{\an5\pos(540,1300)}{\k14}a {\k36}word,
+Dialogue: 1,0:03:20.38,0:03:20.88,Over,L53,0,0,0,,{\an5\pos(540,1300)}{\k14}{\k136}a {\k1}word,
+Dialogue: 0,0:03:20.88,0:03:21.83,Box,L53,0,0,0,,{\an5\pos(540,1300)}{\k20}walked {\k30}past {\k45}her
+Dialogue: 1,0:03:20.88,0:03:21.83,Over,L53,0,0,0,,{\an5\pos(540,1300)}{\k20}{\k30}walked {\k145}past {\k1}her
+Dialogue: 0,0:03:21.90,0:03:23.04,Box,L54,0,0,0,,{\an5\pos(540,1300)}{\k26}She {\k42}didn't {\k32}leave {\k14}'cause
+Dialogue: 1,0:03:21.90,0:03:23.04,Over,L54,0,0,0,,{\an5\pos(540,1300)}{\k26}{\k42}She {\k32}didn't {\k114}leave {\k1}'cause
+Dialogue: 0,0:03:23.04,0:03:23.76,Box,L54,0,0,0,,{\an5\pos(540,1300)}{\k26}I {\k24}got {\k22}old,
+Dialogue: 1,0:03:23.04,0:03:23.76,Over,L54,0,0,0,,{\an5\pos(540,1300)}{\k26}{\k24}I {\k122}got {\k1}old,
+Dialogue: 0,0:03:23.76,0:03:24.18,Box,L54,0,0,0,,{\an5\pos(540,1300)}{\k16}she {\k26}wanted
+Dialogue: 1,0:03:23.76,0:03:24.18,Over,L54,0,0,0,,{\an5\pos(540,1300)}{\k16}{\k126}she {\k1}wanted
+Dialogue: 0,0:03:24.18,0:03:25.48,Box,L54,0,0,0,,{\an5\pos(540,1300)}{\k20}a {\k34}shortcut {\k76}ride
+Dialogue: 1,0:03:24.18,0:03:25.48,Over,L54,0,0,0,,{\an5\pos(540,1300)}{\k20}{\k34}a {\k176}shortcut {\k1}ride
+Dialogue: 0,0:03:25.48,0:03:26.10,Box,L55,0,0,0,,{\an5\pos(540,1300)}{\k18}Pain {\k22}was {\k22}never
+Dialogue: 1,0:03:25.48,0:03:26.10,Over,L55,0,0,0,,{\an5\pos(540,1300)}{\k18}{\k22}Pain {\k122}was {\k1}never
+Dialogue: 0,0:03:26.10,0:03:26.80,Box,L55,0,0,0,,{\an5\pos(540,1300)}{\k26}my {\k44}age,
+Dialogue: 1,0:03:26.10,0:03:26.80,Over,L55,0,0,0,,{\an5\pos(540,1300)}{\k26}{\k144}my {\k1}age,
+Dialogue: 0,0:03:26.80,0:03:27.24,Box,L55,0,0,0,,{\an5\pos(540,1300)}{\k14}I {\k12}just {\k18}let
+Dialogue: 1,0:03:26.80,0:03:27.24,Over,L55,0,0,0,,{\an5\pos(540,1300)}{\k14}{\k12}I {\k118}just {\k1}let
+Dialogue: 0,0:03:27.24,0:03:28.34,Box,L55,0,0,0,,{\an5\pos(540,1300)}{\k12}it {\k16}steal {\k20}my {\k62}pride
+Dialogue: 1,0:03:27.24,0:03:28.34,Over,L55,0,0,0,,{\an5\pos(540,1300)}{\k12}{\k16}it {\k20}steal {\k162}my {\k1}pride
+Dialogue: 0,0:03:28.34,0:03:29.14,Box,L56,0,0,0,,{\an5\pos(540,1300)}{\k40}Strong, {\k40}awake,
+Dialogue: 1,0:03:28.34,0:03:29.14,Over,L56,0,0,0,,{\an5\pos(540,1300)}{\k40}{\k140}Strong, {\k1}awake,
+Dialogue: 0,0:03:29.14,0:03:30.10,Box,L56,0,0,0,,{\an5\pos(540,1300)}{\k40}alive, {\k56}forty-six,
+Dialogue: 1,0:03:29.14,0:03:30.10,Over,L56,0,0,0,,{\an5\pos(540,1300)}{\k40}{\k156}alive, {\k1}forty-six,
+Dialogue: 0,0:03:30.10,0:03:30.72,Box,L56,0,0,0,,{\an5\pos(540,1300)}{\k20}and {\k12}I {\k30}choose
+Dialogue: 1,0:03:30.10,0:03:30.72,Over,L56,0,0,0,,{\an5\pos(540,1300)}{\k20}{\k12}and {\k130}I {\k1}choose
+Dialogue: 0,0:03:30.72,0:03:31.70,Box,L57,0,0,0,,{\an2\pos(540,1436)}{\k42}To {\k22}be {\k16}the {\k18}man
+Dialogue: 1,0:03:30.72,0:03:31.70,Over,L57,0,0,0,,{\an2\pos(540,1436)}{\k42}{\k22}To {\k16}be {\k118}the {\k1}man
+Dialogue: 0,0:03:31.70,0:03:32.42,Box,L57,0,0,0,,{\an2\pos(540,1436)}{\k16}she {\k36}should've {\k20}been
+Dialogue: 1,0:03:31.70,0:03:32.42,Over,L57,0,0,0,,{\an2\pos(540,1436)}{\k16}{\k36}she {\k120}should've {\k1}been
+Dialogue: 0,0:03:32.42,0:03:33.87,Box,L57,0,0,0,,{\an2\pos(540,1436)}{\k52}terrified {\k30}to {\k63}lose
+Dialogue: 1,0:03:32.42,0:03:33.87,Over,L57,0,0,0,,{\an2\pos(540,1436)}{\k52}{\k30}terrified {\k163}to {\k1}lose
+Dialogue: 0,0:03:36.82,0:03:37.78,Box,L58,0,0,0,,{\an5\pos(540,1300)}{\k40}EIS {\k40}Ayurvedic {\k16}Pain
+Dialogue: 1,0:03:36.82,0:03:37.78,Over,L58,0,0,0,,{\an5\pos(540,1300)}{\k40}{\k40}EIS {\k116}Ayurvedic {\k1}Pain
+Dialogue: 0,0:03:37.78,0:03:38.66,Box,L58,0,0,0,,{\an5\pos(540,1300)}{\k30}Relief {\k58}Oil.
+Dialogue: 1,0:03:37.78,0:03:38.66,Over,L58,0,0,0,,{\an5\pos(540,1300)}{\k30}{\k158}Relief {\k1}Oil.
+Dialogue: 0,0:03:38.66,0:03:39.82,Box,L58,0,0,0,,{\an5\pos(540,1300)}{\k40}Fifteen {\k40}herbs {\k16}in {\k20}pure
+Dialogue: 1,0:03:38.66,0:03:39.82,Over,L58,0,0,0,,{\an5\pos(540,1300)}{\k40}{\k40}Fifteen {\k16}herbs {\k120}in {\k1}pure
+Dialogue: 0,0:03:39.82,0:03:40.40,Box,L58,0,0,0,,{\an5\pos(540,1300)}{\k24}til {\k34}oil.
+Dialogue: 1,0:03:39.82,0:03:40.40,Over,L58,0,0,0,,{\an5\pos(540,1300)}{\k24}{\k134}til {\k1}oil.
+Dialogue: 0,0:03:40.40,0:03:41.89,Box,L58,0,0,0,,{\an5\pos(540,1300)}{\k24}Ten {\k34}minutes {\k24}before {\k67}bed.
+Dialogue: 1,0:03:40.40,0:03:41.89,Over,L58,0,0,0,,{\an5\pos(540,1300)}{\k24}{\k34}Ten {\k24}minutes {\k167}before {\k1}bed.
+Dialogue: 0,0:03:42.02,0:03:43.06,Box,L59,0,0,0,,{\an5\pos(540,1300)}{\k40}Fifty {\k22}percent {\k42}off,
+Dialogue: 1,0:03:42.02,0:03:43.06,Over,L59,0,0,0,,{\an5\pos(540,1300)}{\k40}{\k22}Fifty {\k142}percent {\k1}off,
+Dialogue: 0,0:03:43.06,0:03:43.80,Box,L59,0,0,0,,{\an5\pos(540,1300)}{\k18}cash {\k16}on {\k40}delivery,
+Dialogue: 1,0:03:43.06,0:03:43.80,Over,L59,0,0,0,,{\an5\pos(540,1300)}{\k18}{\k16}cash {\k140}on {\k1}delivery,
+Dialogue: 0,0:03:43.80,0:03:44.48,Box,L59,0,0,0,,{\an5\pos(540,1300)}{\k36}thirty-day {\k32}money-back
+Dialogue: 1,0:03:43.80,0:03:44.48,Over,L59,0,0,0,,{\an5\pos(540,1300)}{\k36}{\k132}thirty-day {\k1}money-back
+Dialogue: 0,0:03:44.48,0:03:45.06,Box,L59,0,0,0,,{\an5\pos(540,1300)}{\k58}guarantee.
+Dialogue: 0,0:03:45.06,0:03:46.32,Box,L60,0,0,0,,{\an5\pos(620,1300)}{\k30}Ten {\k26}minutes {\k14}a {\k56}night.
+Dialogue: 1,0:03:45.06,0:03:46.32,Over,L60,0,0,0,,{\an5\pos(620,1300)}{\k30}{\k26}Ten {\k14}minutes {\k156}a {\k1}night.
+Dialogue: 0,0:03:46.32,0:03:47.00,Box,L60,0,0,0,,{\an5\pos(620,1300)}{\k40}That's {\k6}all {\k12}it {\k10}took
+Dialogue: 1,0:03:46.32,0:03:47.00,Over,L60,0,0,0,,{\an5\pos(620,1300)}{\k40}{\k6}That's {\k12}all {\k110}it {\k1}took
+Dialogue: 0,0:03:47.00,0:03:47.59,Box,L60,0,0,0,,{\an5\pos(620,1300)}{\k14}for {\k45}me.
+Dialogue: 1,0:03:47.00,0:03:47.59,Over,L60,0,0,0,,{\an5\pos(620,1300)}{\k14}{\k145}for {\k1}me.
