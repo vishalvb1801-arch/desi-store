@@ -1,0 +1,221 @@
+[Script Info]
+Title: C299-B v2 captions (EIS crimson box, gold keyword)
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+YCbCr Matrix: TV.709
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Box,Montserrat ExtraBold,64,&H00E0F4FF,&H00E0F4FF,&H00080A77,&H00080A77,0,0,0,0,100,100,0,0,3,14,0,5,60,60,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.26,0:00:00.50,Box,L01,0,0,0,,{\an5\pos(540,1300)}I {\c&H0037A5D4}caught{\c&H00E0F4FF}
+Dialogue: 0,0:00:00.50,0:00:01.28,Box,L01,0,0,0,,{\an5\pos(540,1300)}my wife {\c&H0037A5D4}cheating{\c&H00E0F4FF}
+Dialogue: 0,0:00:01.28,0:00:02.40,Box,L01,0,0,0,,{\an5\pos(540,1300)}with her gym {\c&H0037A5D4}trainer.{\c&H00E0F4FF}
+Dialogue: 0,0:00:02.46,0:00:03.86,Box,L02,0,0,0,,{\an5\pos(540,1300)}He was {\c&H0037A5D4}twenty-nine.{\c&H00E0F4FF}
+Dialogue: 0,0:00:03.86,0:00:05.40,Box,L02,0,0,0,,{\an5\pos(540,1300)}I was {\c&H0037A5D4}forty-six.{\c&H00E0F4FF}
+Dialogue: 0,0:00:05.40,0:00:06.70,Box,L03,0,0,0,,{\an2\pos(540,1436)}And the only {\c&H0037A5D4}reason{\c&H00E0F4FF}
+Dialogue: 0,0:00:06.70,0:00:08.30,Box,L03,0,0,0,,{\an2\pos(540,1436)}I didn't fall {\c&H0037A5D4}apart...{\c&H00E0F4FF}
+Dialogue: 0,0:00:08.38,0:00:09.94,Box,L04,0,0,0,,{\an5\pos(540,1300)}was what my {\c&H0037A5D4}elder{\c&H00E0F4FF}
+Dialogue: 0,0:00:09.94,0:00:10.48,Box,L04,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}brother{\c&H00E0F4FF} flew
+Dialogue: 0,0:00:10.48,0:00:11.32,Box,L04,0,0,0,,{\an5\pos(540,1300)}in from {\c&H0037A5D4}Kerala{\c&H00E0F4FF}
+Dialogue: 0,0:00:11.32,0:00:12.14,Box,L04,0,0,0,,{\an5\pos(540,1300)}to show {\c&H0037A5D4}me.{\c&H00E0F4FF}
+Dialogue: 0,0:00:12.14,0:00:14.16,Box,L05,0,0,0,,{\an5\pos(540,1300)}Left {\c&H0037A5D4}office{\c&H00E0F4FF} early on
+Dialogue: 0,0:00:14.16,0:00:16.28,Box,L05,0,0,0,,{\an5\pos(540,1300)}a Thursday {\c&H0037A5D4}afternoon{\c&H00E0F4FF}
+Dialogue: 0,0:00:16.60,0:00:17.16,Box,L06,0,0,0,,{\an5\pos(540,1300)}Heard {\c&H0037A5D4}laughing{\c&H00E0F4FF}
+Dialogue: 0,0:00:17.16,0:00:18.22,Box,L06,0,0,0,,{\an5\pos(540,1300)}from the {\c&H0037A5D4}bedroom,{\c&H00E0F4FF}
+Dialogue: 0,0:00:18.22,0:00:19.20,Box,L06,0,0,0,,{\an5\pos(540,1300)}there they {\c&H0037A5D4}were,{\c&H00E0F4FF}
+Dialogue: 0,0:00:19.20,0:00:21.69,Box,L06,0,0,0,,{\an5\pos(540,1300)}in our {\c&H0037A5D4}room{\c&H00E0F4FF}
+Dialogue: 0,0:00:22.06,0:00:23.34,Box,L07,0,0,0,,{\an5\pos(540,1300)}I didn't {\c&H0037A5D4}shout,{\c&H00E0F4FF}
+Dialogue: 0,0:00:23.34,0:00:24.29,Box,L07,0,0,0,,{\an5\pos(540,1300)}not {\c&H0037A5D4}yet,{\c&H00E0F4FF}
+Dialogue: 0,0:00:24.29,0:00:25.22,Box,L07,0,0,0,,{\an5\pos(540,1300)}sat in my {\c&H0037A5D4}car{\c&H00E0F4FF}
+Dialogue: 0,0:00:25.22,0:00:25.84,Box,L07,0,0,0,,{\an5\pos(540,1300)}till the {\c&H0037A5D4}sky{\c&H00E0F4FF}
+Dialogue: 0,0:00:25.84,0:00:27.17,Box,L07,0,0,0,,{\an5\pos(540,1300)}went {\c&H0037A5D4}black{\c&H00E0F4FF}
+Dialogue: 0,0:00:27.48,0:00:28.76,Box,L08,0,0,0,,{\an5\pos(540,1300)}Then the {\c&H0037A5D4}bathroom{\c&H00E0F4FF}
+Dialogue: 0,0:00:28.76,0:00:30.02,Box,L08,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}mirror{\c&H00E0F4FF} finally
+Dialogue: 0,0:00:30.02,0:00:32.03,Box,L08,0,0,0,,{\an5\pos(540,1300)}stared {\c&H0037A5D4}back{\c&H00E0F4FF}
+Dialogue: 0,0:00:32.66,0:00:34.54,Box,L09,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}Forty-six,{\c&H00E0F4FF} but I moved
+Dialogue: 0,0:00:34.54,0:00:35.53,Box,L09,0,0,0,,{\an5\pos(540,1300)}like {\c&H0037A5D4}seventy{\c&H00E0F4FF}
+Dialogue: 0,0:00:35.54,0:00:36.06,Box,L10,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}Back{\c&H00E0F4FF} went
+Dialogue: 0,0:00:36.06,0:00:36.62,Box,L10,0,0,0,,{\an5\pos(540,1300)}at {\c&H0037A5D4}forty-three{\c&H00E0F4FF}
+Dialogue: 0,0:00:36.62,0:00:37.48,Box,L10,0,0,0,,{\an5\pos(540,1300)}and {\c&H0037A5D4}never{\c&H00E0F4FF} came
+Dialogue: 0,0:00:37.48,0:00:38.50,Box,L10,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}back{\c&H00E0F4FF} to me
+Dialogue: 0,0:00:38.59,0:00:39.26,Box,L11,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}Eleven{\c&H00E0F4FF} hours
+Dialogue: 0,0:00:39.26,0:00:39.88,Box,L11,0,0,0,,{\an5\pos(540,1300)}at a {\c&H0037A5D4}desk,{\c&H00E0F4FF}
+Dialogue: 0,0:00:39.88,0:00:40.54,Box,L11,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}two{\c&H00E0F4FF} standing
+Dialogue: 0,0:00:40.54,0:00:41.30,Box,L11,0,0,0,,{\an5\pos(540,1300)}in the {\c&H0037A5D4}train{\c&H00E0F4FF}
+Dialogue: 0,0:00:41.30,0:00:41.84,Box,L12,0,0,0,,{\an5\pos(540,1300)}Walking {\c&H0037A5D4}bent{\c&H00E0F4FF}
+Dialogue: 0,0:00:41.84,0:00:42.56,Box,L12,0,0,0,,{\an5\pos(540,1300)}like my {\c&H0037A5D4}father,{\c&H00E0F4FF}
+Dialogue: 0,0:00:42.56,0:00:43.38,Box,L12,0,0,0,,{\an5\pos(540,1300)}every {\c&H0037A5D4}morning{\c&H00E0F4FF}
+Dialogue: 0,0:00:43.38,0:00:44.16,Box,L12,0,0,0,,{\an5\pos(540,1300)}the same {\c&H0037A5D4}pain{\c&H00E0F4FF}
+Dialogue: 0,0:00:44.16,0:00:45.14,Box,L13,0,0,0,,{\an5\pos(540,1300)}Watched my {\c&H0037A5D4}cousin's{\c&H00E0F4FF}
+Dialogue: 0,0:00:45.14,0:00:46.92,Box,L13,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}sangeet{\c&H00E0F4FF} from a
+Dialogue: 0,0:00:46.92,0:00:48.23,Box,L13,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}plastic{\c&H00E0F4FF} chair
+Dialogue: 0,0:00:49.57,0:00:50.10,Box,L14,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}Standing{\c&H00E0F4FF} in
+Dialogue: 0,0:00:50.10,0:00:50.92,Box,L14,0,0,0,,{\an5\pos(540,1300)}that {\c&H0037A5D4}mirror,{\c&H00E0F4FF}
+Dialogue: 0,0:00:50.92,0:00:51.40,Box,L14,0,0,0,,{\an5\pos(540,1300)}I {\c&H0037A5D4}knew{\c&H00E0F4FF} why
+Dialogue: 0,0:00:51.40,0:00:52.69,Box,L14,0,0,0,,{\an5\pos(540,1300)}she {\c&H0037A5D4}wasn't{\c&H00E0F4FF} there
+Dialogue: 0,0:00:55.05,0:00:55.64,Box,L15,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}Painkillers,{\c&H00E0F4FF}
+Dialogue: 0,0:00:55.64,0:00:56.58,Box,L15,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}sprays{\c&H00E0F4FF} and balms,
+Dialogue: 0,0:00:56.58,0:00:56.78,Box,L15,0,0,0,,{\an5\pos(540,1300)}eight {\c&H0037A5D4}hundred{\c&H00E0F4FF}
+Dialogue: 0,0:00:56.78,0:00:58.49,Box,L15,0,0,0,,{\an5\pos(540,1300)}every {\c&H0037A5D4}session{\c&H00E0F4FF}
+Dialogue: 0,0:00:59.16,0:01:00.12,Box,L16,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}Doctor{\c&H00E0F4FF} never
+Dialogue: 0,0:01:00.12,0:01:00.86,Box,L16,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}looked{\c&H00E0F4FF} up,
+Dialogue: 0,0:01:00.86,0:01:02.57,Box,L16,0,0,0,,{\an5\pos(540,1300)}"It's your {\c&H0037A5D4}age,"{\c&H00E0F4FF}
+Dialogue: 0,0:01:02.57,0:01:05.06,Box,L16,0,0,0,,{\an5\pos(540,1300)}that was his {\c&H0037A5D4}lesson{\c&H00E0F4FF}
+Dialogue: 0,0:01:05.06,0:01:06.42,Box,L17,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}Forty-six,{\c&H00E0F4FF} moving
+Dialogue: 0,0:01:06.42,0:01:07.50,Box,L17,0,0,0,,{\an5\pos(540,1300)}like {\c&H0037A5D4}seventy{\c&H00E0F4FF}
+Dialogue: 0,0:01:07.52,0:01:08.70,Box,L18,0,0,0,,{\an5\pos(540,1300)}The {\c&H0037A5D4}mirror{\c&H00E0F4FF} showed
+Dialogue: 0,0:01:08.70,0:01:09.08,Box,L18,0,0,0,,{\an5\pos(540,1300)}a {\c&H0037A5D4}man{\c&H00E0F4FF}
+Dialogue: 0,0:01:09.08,0:01:10.04,Box,L18,0,0,0,,{\an5\pos(540,1300)}I didn't {\c&H0037A5D4}want{\c&H00E0F4FF}
+Dialogue: 0,0:01:10.04,0:01:11.40,Box,L18,0,0,0,,{\an5\pos(540,1300)}to be
+Dialogue: 0,0:01:11.42,0:01:12.76,Box,L19,0,0,0,,{\an5\pos(540,1300)}She didn't {\c&H0037A5D4}even{\c&H00E0F4FF}
+Dialogue: 0,0:01:12.76,0:01:13.46,Box,L19,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}hide{\c&H00E0F4FF} it,
+Dialogue: 0,0:01:13.46,0:01:15.87,Box,L19,0,0,0,,{\an5\pos(540,1300)}didn't {\c&H0037A5D4}even{\c&H00E0F4FF} try
+Dialogue: 0,0:01:15.93,0:01:16.54,Box,L20,0,0,0,,{\an5\pos(540,1300)}The {\c&H0037A5D4}pain{\c&H00E0F4FF} took
+Dialogue: 0,0:01:16.54,0:01:17.28,Box,L20,0,0,0,,{\an5\pos(540,1300)}my {\c&H0037A5D4}body,{\c&H00E0F4FF}
+Dialogue: 0,0:01:17.28,0:01:17.92,Box,L20,0,0,0,,{\an5\pos(540,1300)}then it {\c&H0037A5D4}took{\c&H00E0F4FF}
+Dialogue: 0,0:01:17.92,0:01:20.11,Box,L20,0,0,0,,{\an5\pos(540,1300)}my {\c&H0037A5D4}pride{\c&H00E0F4FF}
+Dialogue: 0,0:01:21.47,0:01:21.84,Box,L21,0,0,0,,{\an5\pos(540,1300)}I {\c&H0037A5D4}called{\c&H00E0F4FF}
+Dialogue: 0,0:01:21.84,0:01:23.00,Box,L21,0,0,0,,{\an5\pos(540,1300)}my {\c&H0037A5D4}brother{\c&H00E0F4FF} Ajay,
+Dialogue: 0,0:01:23.00,0:01:24.67,Box,L21,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}Kerala{\c&H00E0F4FF} twenty years
+Dialogue: 0,0:01:24.73,0:01:26.08,Box,L22,0,0,0,,{\an5\pos(540,1300)}"I'm on the {\c&H0037A5D4}next{\c&H00E0F4FF}
+Dialogue: 0,0:01:26.08,0:01:27.36,Box,L22,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}flight,{\c&H00E0F4FF} don't argue,"
+Dialogue: 0,0:01:27.36,0:01:28.70,Box,L22,0,0,0,,{\an5\pos(540,1300)}and he was {\c&H0037A5D4}here{\c&H00E0F4FF}
+Dialogue: 0,0:01:28.77,0:01:29.76,Box,L23,0,0,0,,{\an5\pos(540,1300)}Got off the {\c&H0037A5D4}plane,{\c&H00E0F4FF}
+Dialogue: 0,0:01:29.76,0:01:30.50,Box,L23,0,0,0,,{\an5\pos(540,1300)}no {\c&H0037A5D4}hug,{\c&H00E0F4FF}
+Dialogue: 0,0:01:30.50,0:01:32.04,Box,L23,0,0,0,,{\an5\pos(540,1300)}hands on my {\c&H0037A5D4}shoulders,{\c&H00E0F4FF}
+Dialogue: 0,0:01:32.04,0:01:32.83,Box,L23,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}true{\c&H00E0F4FF}
+Dialogue: 0,0:01:32.91,0:01:34.02,Box,L24,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}"Rohit,{\c&H00E0F4FF} you're not
+Dialogue: 0,0:01:34.02,0:01:35.70,Box,L24,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}staying{\c&H00E0F4FF} like this.
+Dialogue: 0,0:01:36.24,0:01:37.08,Box,L24,0,0,0,,{\an5\pos(540,1300)}We've got {\c&H0037A5D4}work{\c&H00E0F4FF}
+Dialogue: 0,0:01:37.08,0:01:38.06,Box,L24,0,0,0,,{\an5\pos(540,1300)}to do."
+Dialogue: 0,0:01:38.89,0:01:39.74,Box,L25,0,0,0,,{\an5\pos(540,330)}{\c&H0037A5D4}Three{\c&H00E0F4FF} days later,
+Dialogue: 0,0:01:39.74,0:01:40.44,Box,L25,0,0,0,,{\an5\pos(540,330)}an amber {\c&H0037A5D4}bottle{\c&H00E0F4FF}
+Dialogue: 0,0:01:40.44,0:01:41.20,Box,L25,0,0,0,,{\an5\pos(540,330)}on the {\c&H0037A5D4}shelf{\c&H00E0F4FF}
+Dialogue: 0,0:01:41.22,0:01:42.00,Box,L26,0,0,0,,{\an5\pos(540,1300)}"Those men {\c&H0037A5D4}smashing{\c&H00E0F4FF}
+Dialogue: 0,0:01:42.00,0:01:43.22,Box,L26,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}shuttles{\c&H00E0F4FF} at sixty,
+Dialogue: 0,0:01:43.22,0:01:43.52,Box,L26,0,0,0,,{\an5\pos(540,1300)}they {\c&H0037A5D4}look{\c&H00E0F4FF}
+Dialogue: 0,0:01:43.52,0:01:44.43,Box,L26,0,0,0,,{\an5\pos(540,1300)}after {\c&H0037A5D4}themselves"{\c&H00E0F4FF}
+Dialogue: 0,0:01:44.44,0:01:45.49,Box,L27,0,0,0,,{\an5\pos(540,330)}I {\c&H0037A5D4}said,{\c&H00E0F4FF} "Bhai,
+Dialogue: 0,0:01:45.49,0:01:46.52,Box,L27,0,0,0,,{\an5\pos(540,330)}I need {\c&H0037A5D4}painkillers,{\c&H00E0F4FF}
+Dialogue: 0,0:01:46.52,0:01:47.20,Box,L27,0,0,0,,{\an5\pos(540,330)}not {\c&H0037A5D4}oil"{\c&H00E0F4FF}
+Dialogue: 0,0:01:47.22,0:01:47.52,Box,L28,0,0,0,,{\an5\pos(540,1300)}He {\c&H0037A5D4}said,{\c&H00E0F4FF}
+Dialogue: 0,0:01:47.52,0:01:48.64,Box,L28,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}"Pills{\c&H00E0F4FF} just hide it,
+Dialogue: 0,0:01:48.64,0:01:49.18,Box,L28,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}sprays{\c&H00E0F4FF} sit
+Dialogue: 0,0:01:49.18,0:01:50.10,Box,L28,0,0,0,,{\an5\pos(540,1300)}on the {\c&H0037A5D4}skin{\c&H00E0F4FF}
+Dialogue: 0,0:01:50.15,0:01:51.10,Box,L29,0,0,0,,{\an5\pos(540,330)}In {\c&H0037A5D4}Kerala{\c&H00E0F4FF} we warm
+Dialogue: 0,0:01:51.10,0:01:51.84,Box,L29,0,0,0,,{\an5\pos(540,330)}it in our {\c&H0037A5D4}palms{\c&H00E0F4FF}
+Dialogue: 0,0:01:51.84,0:01:52.77,Box,L29,0,0,0,,{\an5\pos(540,330)}and {\c&H0037A5D4}work{\c&H00E0F4FF} it in
+Dialogue: 0,0:01:52.82,0:01:53.36,Box,L30,0,0,0,,{\an5\pos(540,330)}{\c&H0037A5D4}Ten{\c&H00E0F4FF} minutes
+Dialogue: 0,0:01:53.36,0:01:54.16,Box,L30,0,0,0,,{\an5\pos(540,330)}every {\c&H0037A5D4}night,{\c&H00E0F4FF}
+Dialogue: 0,0:01:54.16,0:01:54.74,Box,L30,0,0,0,,{\an5\pos(540,330)}{\c&H0037A5D4}four{\c&H00E0F4FF} weeks,
+Dialogue: 0,0:01:54.74,0:01:55.56,Box,L30,0,0,0,,{\an5\pos(540,330)}that's the {\c&H0037A5D4}deal{\c&H00E0F4FF}
+Dialogue: 0,0:01:55.56,0:01:56.86,Box,L31,0,0,0,,{\an5\pos(540,330)}{\c&H0037A5D4}EIS{\c&H00E0F4FF} Ayurvedic
+Dialogue: 0,0:01:56.86,0:01:57.90,Box,L31,0,0,0,,{\an5\pos(540,330)}{\c&H0037A5D4}Pain Relief Oil,{\c&H00E0F4FF}
+Dialogue: 0,0:01:57.90,0:01:58.51,Box,L31,0,0,0,,{\an5\pos(540,330)}{\c&H0037A5D4}fifteen{\c&H00E0F4FF} herbs
+Dialogue: 0,0:01:58.51,0:02:00.14,Box,L31,0,0,0,,{\an5\pos(540,330)}in pure {\c&H0037A5D4}til{\c&H00E0F4FF}
+Dialogue: 0,0:02:01.21,0:02:01.82,Box,L32,0,0,0,,{\an5\pos(540,1300)}First {\c&H0037A5D4}night,{\c&H00E0F4FF}
+Dialogue: 0,0:02:01.82,0:02:02.80,Box,L32,0,0,0,,{\an5\pos(540,1300)}the {\c&H0037A5D4}warmth{\c&H00E0F4FF} went deep
+Dialogue: 0,0:02:02.80,0:02:03.77,Box,L32,0,0,0,,{\an5\pos(540,1300)}into my {\c&H0037A5D4}back{\c&H00E0F4FF}
+Dialogue: 0,0:02:03.78,0:02:04.46,Box,L33,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}Night{\c&H00E0F4FF} three,
+Dialogue: 0,0:02:04.46,0:02:04.94,Box,L33,0,0,0,,{\an5\pos(540,1300)}I {\c&H0037A5D4}slept{\c&H00E0F4FF}
+Dialogue: 0,0:02:04.94,0:02:05.84,Box,L33,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}straight{\c&H00E0F4FF} through,
+Dialogue: 0,0:02:05.84,0:02:07.73,Box,L33,0,0,0,,{\an5\pos(540,1300)}first {\c&H0037A5D4}time{\c&H00E0F4FF} like that
+Dialogue: 0,0:02:09.27,0:02:09.78,Box,L34,0,0,0,,{\an5\pos(540,1300)}Week {\c&H0037A5D4}one,{\c&H00E0F4FF}
+Dialogue: 0,0:02:09.78,0:02:10.40,Box,L34,0,0,0,,{\an5\pos(540,1300)}out of {\c&H0037A5D4}bed{\c&H00E0F4FF}
+Dialogue: 0,0:02:10.40,0:02:11.63,Box,L34,0,0,0,,{\an5\pos(540,1300)}without a {\c&H0037A5D4}groan{\c&H00E0F4FF}
+Dialogue: 0,0:02:11.66,0:02:12.30,Box,L35,0,0,0,,{\an5\pos(540,1300)}Week {\c&H0037A5D4}two,{\c&H00E0F4FF}
+Dialogue: 0,0:02:12.30,0:02:13.34,Box,L35,0,0,0,,{\an5\pos(540,1300)}my {\c&H0037A5D4}son{\c&H00E0F4FF} said, "Papa,
+Dialogue: 0,0:02:13.34,0:02:14.47,Box,L35,0,0,0,,{\an5\pos(540,1300)}you're walking {\c&H0037A5D4}strong"{\c&H00E0F4FF}
+Dialogue: 0,0:02:14.48,0:02:15.08,Box,L36,0,0,0,,{\an5\pos(540,1300)}Week {\c&H0037A5D4}three,{\c&H00E0F4FF}
+Dialogue: 0,0:02:15.08,0:02:16.30,Box,L36,0,0,0,,{\an5\pos(540,1300)}station {\c&H0037A5D4}stairs{\c&H00E0F4FF} two
+Dialogue: 0,0:02:16.30,0:02:17.07,Box,L36,0,0,0,,{\an5\pos(540,1300)}at a {\c&H0037A5D4}time{\c&H00E0F4FF}
+Dialogue: 0,0:02:17.10,0:02:17.78,Box,L37,0,0,0,,{\an5\pos(540,1300)}Week {\c&H0037A5D4}four,{\c&H00E0F4FF}
+Dialogue: 0,0:02:17.78,0:02:18.52,Box,L37,0,0,0,,{\an5\pos(540,1300)}joined a {\c&H0037A5D4}gym,{\c&H00E0F4FF}
+Dialogue: 0,0:02:18.52,0:02:19.22,Box,L37,0,0,0,,{\an5\pos(540,1300)}not {\c&H0037A5D4}hers,{\c&H00E0F4FF}
+Dialogue: 0,0:02:19.22,0:02:19.78,Box,L37,0,0,0,,{\an5\pos(540,1300)}and I {\c&H0037A5D4}laughed{\c&H00E0F4FF}
+Dialogue: 0,0:02:19.78,0:02:21.31,Box,L37,0,0,0,,{\an5\pos(540,1300)}this {\c&H0037A5D4}time{\c&H00E0F4FF}
+Dialogue: 0,0:02:22.57,0:02:23.36,Box,L38,0,0,0,,{\an5\pos(540,1300)}Week {\c&H0037A5D4}six,{\c&H00E0F4FF}
+Dialogue: 0,0:02:23.36,0:02:24.02,Box,L38,0,0,0,,{\an5\pos(540,1300)}the {\c&H0037A5D4}bandhgala{\c&H00E0F4FF}
+Dialogue: 0,0:02:24.02,0:02:24.76,Box,L38,0,0,0,,{\an5\pos(540,1300)}I never {\c&H0037A5D4}wore{\c&H00E0F4FF}
+Dialogue: 0,0:02:24.76,0:02:25.82,Box,L39,0,0,0,,{\an5\pos(540,1300)}It {\c&H0037A5D4}fit,{\c&H00E0F4FF}
+Dialogue: 0,0:02:25.82,0:02:26.48,Box,L39,0,0,0,,{\an5\pos(540,1300)}and I {\c&H0037A5D4}couldn't{\c&H00E0F4FF}
+Dialogue: 0,0:02:26.48,0:02:27.87,Box,L39,0,0,0,,{\an5\pos(540,1300)}speak {\c&H0037A5D4}anymore{\c&H00E0F4FF}
+Dialogue: 0,0:02:27.95,0:02:28.64,Box,L40,0,0,0,,{\an5\pos(540,1300)}'Cause I {\c&H0037A5D4}finally{\c&H00E0F4FF}
+Dialogue: 0,0:02:28.64,0:02:30.27,Box,L40,0,0,0,,{\an5\pos(540,1300)}felt like {\c&H0037A5D4}me{\c&H00E0F4FF}
+Dialogue: 0,0:02:30.36,0:02:31.06,Box,L41,0,0,0,,{\an5\pos(540,1300)}A {\c&H0037A5D4}friend{\c&H00E0F4FF}
+Dialogue: 0,0:02:31.06,0:02:31.74,Box,L41,0,0,0,,{\an5\pos(540,1300)}brought {\c&H0037A5D4}Priya,{\c&H00E0F4FF}
+Dialogue: 0,0:02:31.74,0:02:32.40,Box,L41,0,0,0,,{\an5\pos(540,1300)}and the {\c&H0037A5D4}divorce{\c&H00E0F4FF}
+Dialogue: 0,0:02:32.40,0:02:33.23,Box,L41,0,0,0,,{\an5\pos(540,1300)}came {\c&H0037A5D4}fast{\c&H00E0F4FF}
+Dialogue: 0,0:02:33.26,0:02:33.86,Box,L42,0,0,0,,{\an5\pos(540,1300)}Then a {\c&H0037A5D4}sangeet{\c&H00E0F4FF}
+Dialogue: 0,0:02:33.86,0:02:34.54,Box,L42,0,0,0,,{\an5\pos(540,1300)}dance {\c&H0037A5D4}floor,{\c&H00E0F4FF}
+Dialogue: 0,0:02:34.54,0:02:35.38,Box,L42,0,0,0,,{\an5\pos(540,1300)}not a {\c&H0037A5D4}plastic{\c&H00E0F4FF} chair
+Dialogue: 0,0:02:35.38,0:02:35.96,Box,L42,0,0,0,,{\an5\pos(540,1300)}at {\c&H0037A5D4}last{\c&H00E0F4FF}
+Dialogue: 0,0:02:35.96,0:02:37.14,Box,L43,0,0,0,,{\an5\pos(540,1300)}My wife {\c&H0037A5D4}walked{\c&H00E0F4FF} in,
+Dialogue: 0,0:02:37.14,0:02:37.74,Box,L43,0,0,0,,{\an5\pos(540,1300)}same {\c&H0037A5D4}trainer{\c&H00E0F4FF}
+Dialogue: 0,0:02:37.74,0:02:38.50,Box,L43,0,0,0,,{\an5\pos(540,1300)}by her {\c&H0037A5D4}side{\c&H00E0F4FF}
+Dialogue: 0,0:02:38.56,0:02:39.10,Box,L44,0,0,0,,{\an5\pos(540,1300)}In the {\c&H0037A5D4}saree{\c&H00E0F4FF}
+Dialogue: 0,0:02:39.10,0:02:39.56,Box,L44,0,0,0,,{\an5\pos(540,1300)}I {\c&H0037A5D4}bought{\c&H00E0F4FF}
+Dialogue: 0,0:02:39.56,0:02:40.20,Box,L44,0,0,0,,{\an5\pos(540,1300)}her on {\c&H0037A5D4}our{\c&H00E0F4FF}
+Dialogue: 0,0:02:40.20,0:02:41.36,Box,L44,0,0,0,,{\an5\pos(540,1300)}anniversary {\c&H0037A5D4}night{\c&H00E0F4FF}
+Dialogue: 0,0:02:41.36,0:02:42.00,Box,L45,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}Halfway{\c&H00E0F4FF} through
+Dialogue: 0,0:02:42.00,0:02:42.50,Box,L45,0,0,0,,{\an5\pos(540,1300)}the {\c&H0037A5D4}song,{\c&H00E0F4FF}
+Dialogue: 0,0:02:42.50,0:02:43.18,Box,L45,0,0,0,,{\an5\pos(540,1300)}she was {\c&H0037A5D4}staring,{\c&H00E0F4FF}
+Dialogue: 0,0:02:43.18,0:02:44.10,Box,L45,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}couldn't{\c&H00E0F4FF} turn around
+Dialogue: 0,0:02:44.10,0:02:45.22,Box,L46,0,0,0,,{\an2\pos(540,1436)}{\c&H0037A5D4}Mouth{\c&H00E0F4FF} half open,
+Dialogue: 0,0:02:45.22,0:02:46.04,Box,L46,0,0,0,,{\an2\pos(540,1436)}like {\c&H0037A5D4}she'd{\c&H00E0F4FF} seen
+Dialogue: 0,0:02:46.04,0:02:47.85,Box,L46,0,0,0,,{\an2\pos(540,1436)}a {\c&H0037A5D4}ghost{\c&H00E0F4FF} in town
+Dialogue: 0,0:02:49.28,0:02:49.92,Box,L47,0,0,0,,{\an5\pos(540,1300)}In the {\c&H0037A5D4}washroom,{\c&H00E0F4FF}
+Dialogue: 0,0:02:49.92,0:02:50.88,Box,L47,0,0,0,,{\an5\pos(540,1300)}a man, {\c&H0037A5D4}fifties,{\c&H00E0F4FF}
+Dialogue: 0,0:02:50.88,0:02:51.60,Box,L47,0,0,0,,{\an5\pos(540,1300)}hand on his {\c&H0037A5D4}back{\c&H00E0F4FF}
+Dialogue: 0,0:02:51.66,0:02:52.34,Box,L48,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}"Sorry,{\c&H00E0F4FF} I have
+Dialogue: 0,0:02:52.34,0:02:52.78,Box,L48,0,0,0,,{\an5\pos(540,1300)}to {\c&H0037A5D4}ask,{\c&H00E0F4FF}
+Dialogue: 0,0:02:52.78,0:02:53.54,Box,L48,0,0,0,,{\an5\pos(540,1300)}you can't be {\c&H0037A5D4}forty,{\c&H00E0F4FF}
+Dialogue: 0,0:02:53.54,0:02:54.20,Box,L48,0,0,0,,{\an5\pos(540,1300)}not like that"
+Dialogue: 0,0:02:54.20,0:02:54.88,Box,L49,0,0,0,,{\an5\pos(540,330)}I {\c&H0037A5D4}told{\c&H00E0F4FF} him
+Dialogue: 0,0:02:54.88,0:02:55.56,Box,L49,0,0,0,,{\an5\pos(540,330)}'bout the {\c&H0037A5D4}bottle,{\c&H00E0F4FF}
+Dialogue: 0,0:02:55.56,0:02:56.12,Box,L49,0,0,0,,{\an5\pos(540,330)}{\c&H0037A5D4}ten{\c&H00E0F4FF} minutes
+Dialogue: 0,0:02:56.12,0:02:56.73,Box,L49,0,0,0,,{\an5\pos(540,330)}every {\c&H0037A5D4}night{\c&H00E0F4FF}
+Dialogue: 0,0:02:56.76,0:02:57.18,Box,L50,0,0,0,,{\an5\pos(540,1300)}He {\c&H0037A5D4}ordered{\c&H00E0F4FF}
+Dialogue: 0,0:02:57.18,0:02:57.73,Box,L50,0,0,0,,{\an5\pos(540,1300)}at the {\c&H0037A5D4}sink,{\c&H00E0F4FF}
+Dialogue: 0,0:02:57.76,0:02:58.66,Box,L50,0,0,0,,{\an5\pos(540,1300)}cash on {\c&H0037A5D4}delivery,{\c&H00E0F4FF}
+Dialogue: 0,0:02:58.66,0:02:59.06,Box,L50,0,0,0,,{\an5\pos(540,1300)}that {\c&H0037A5D4}night{\c&H00E0F4FF}
+Dialogue: 0,0:02:59.06,0:02:59.84,Box,L51,0,0,0,,{\an5\pos(540,1300)}I {\c&H0037A5D4}walked{\c&H00E0F4FF} out,
+Dialogue: 0,0:02:59.84,0:03:00.62,Box,L51,0,0,0,,{\an5\pos(540,1300)}she was {\c&H0037A5D4}standing{\c&H00E0F4FF}
+Dialogue: 0,0:03:00.62,0:03:01.60,Box,L51,0,0,0,,{\an5\pos(540,1300)}there {\c&H0037A5D4}alone{\c&H00E0F4FF}
+Dialogue: 0,0:03:01.93,0:03:02.28,Box,L52,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}Rohit{\c&H00E0F4FF}
+Dialogue: 0,0:03:02.28,0:03:02.66,Box,L53,0,0,0,,{\an5\pos(540,1300)}I didn't {\c&H0037A5D4}say{\c&H00E0F4FF}
+Dialogue: 0,0:03:02.66,0:03:03.17,Box,L53,0,0,0,,{\an5\pos(540,1300)}a {\c&H0037A5D4}word,{\c&H00E0F4FF}
+Dialogue: 0,0:03:03.22,0:03:04.33,Box,L53,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}walked{\c&H00E0F4FF} past her
+Dialogue: 0,0:03:04.42,0:03:05.20,Box,L54,0,0,0,,{\an5\pos(540,1300)}She didn't {\c&H0037A5D4}leave{\c&H00E0F4FF}
+Dialogue: 0,0:03:05.20,0:03:06.10,Box,L54,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}'cause{\c&H00E0F4FF} I got old,
+Dialogue: 0,0:03:06.10,0:03:06.48,Box,L54,0,0,0,,{\an5\pos(540,1300)}she {\c&H0037A5D4}wanted{\c&H00E0F4FF}
+Dialogue: 0,0:03:06.48,0:03:07.80,Box,L54,0,0,0,,{\an5\pos(540,1300)}a {\c&H0037A5D4}shortcut{\c&H00E0F4FF} ride
+Dialogue: 0,0:03:07.82,0:03:08.40,Box,L55,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}Pain{\c&H00E0F4FF} was never
+Dialogue: 0,0:03:08.40,0:03:09.12,Box,L55,0,0,0,,{\an5\pos(540,1300)}my {\c&H0037A5D4}age,{\c&H00E0F4FF}
+Dialogue: 0,0:03:09.12,0:03:09.56,Box,L55,0,0,0,,{\an5\pos(540,1300)}I just {\c&H0037A5D4}let{\c&H00E0F4FF}
+Dialogue: 0,0:03:09.56,0:03:10.60,Box,L55,0,0,0,,{\an5\pos(540,1300)}it {\c&H0037A5D4}steal{\c&H00E0F4FF} my pride
+Dialogue: 0,0:03:10.62,0:03:11.44,Box,L56,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}Strong,{\c&H00E0F4FF} awake,
+Dialogue: 0,0:03:11.44,0:03:12.42,Box,L56,0,0,0,,{\an5\pos(540,1300)}alive, {\c&H0037A5D4}forty-six,{\c&H00E0F4FF}
+Dialogue: 0,0:03:12.42,0:03:13.00,Box,L56,0,0,0,,{\an5\pos(540,1300)}and I {\c&H0037A5D4}choose{\c&H00E0F4FF}
+Dialogue: 0,0:03:13.00,0:03:14.00,Box,L57,0,0,0,,{\an2\pos(540,1436)}To be the {\c&H0037A5D4}man{\c&H00E0F4FF}
+Dialogue: 0,0:03:14.00,0:03:14.94,Box,L57,0,0,0,,{\an2\pos(540,1436)}she {\c&H0037A5D4}should've{\c&H00E0F4FF} been
+Dialogue: 0,0:03:14.94,0:03:17.49,Box,L57,0,0,0,,{\an2\pos(540,1436)}{\c&H0037A5D4}terrified{\c&H00E0F4FF} to lose
+Dialogue: 0,0:03:19.02,0:03:19.90,Box,L58,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}EIS{\c&H00E0F4FF} Ayurvedic
+Dialogue: 0,0:03:19.90,0:03:21.15,Box,L58,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}Pain Relief Oil.{\c&H00E0F4FF}
+Dialogue: 0,0:03:21.15,0:03:21.78,Box,L58,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}Fifteen{\c&H00E0F4FF} herbs
+Dialogue: 0,0:03:21.78,0:03:22.93,Box,L58,0,0,0,,{\an5\pos(540,1300)}in pure {\c&H0037A5D4}til{\c&H00E0F4FF} oil.
+Dialogue: 0,0:03:22.93,0:03:23.30,Box,L58,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}Ten{\c&H00E0F4FF} minutes
+Dialogue: 0,0:03:23.30,0:03:24.47,Box,L58,0,0,0,,{\an5\pos(540,1300)}before {\c&H0037A5D4}bed.{\c&H00E0F4FF}
+Dialogue: 0,0:03:24.56,0:03:25.36,Box,L59,0,0,0,,{\an5\pos(540,1300)}Fifty {\c&H0037A5D4}percent{\c&H00E0F4FF} off,
+Dialogue: 0,0:03:25.36,0:03:26.12,Box,L59,0,0,0,,{\an5\pos(540,1300)}cash on {\c&H0037A5D4}delivery,{\c&H00E0F4FF}
+Dialogue: 0,0:03:26.12,0:03:26.48,Box,L59,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}thirty-day{\c&H00E0F4FF}
+Dialogue: 0,0:03:26.48,0:03:27.53,Box,L59,0,0,0,,{\an5\pos(540,1300)}{\c&H0037A5D4}money-back{\c&H00E0F4FF} guarantee.
+Dialogue: 0,0:03:27.63,0:03:28.38,Box,L60,0,0,0,,{\an5\pos(620,1300)}Ten minutes a {\c&H0037A5D4}night.{\c&H00E0F4FF}
+Dialogue: 0,0:03:28.38,0:03:29.30,Box,L60,0,0,0,,{\an5\pos(620,1300)}{\c&H0037A5D4}That's{\c&H00E0F4FF} all it took
+Dialogue: 0,0:03:29.30,0:03:30.13,Box,L60,0,0,0,,{\an5\pos(620,1300)}for {\c&H0037A5D4}me.{\c&H00E0F4FF}
