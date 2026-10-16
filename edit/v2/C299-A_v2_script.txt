@@ -1,0 +1,343 @@
+C299-A v2 — EIS Ayurvedic Pain Relief Oil — sung-story ad (Kavita)
+Script with v2 timings (C299-A_v2.mp4, 3:36.70, 1080x1920, 30 fps)
+Captions: cream text on crimson #770A08 box; the word being sung turns gold.
+
+Format: LINE | start–end | clip
+        Lyric
+        > on-screen caption phrases (time in, position)
+
+
+== HOOK ==
+01 | 0:00.00–0:04.33 | clip 1
+        I caught my husband cheating with a girl half his age.
+        > I caught my husband   (0:00.70, y 1300)
+        > cheating with a girl   (0:02.26, y 1300)
+        > half his age.   (0:03.38, y 1300)
+02 | 0:04.33–0:08.07 | clip 2
+        She was twenty-six. He was fifty.
+        > She was twenty-six.   (0:04.33, y 1300)
+        > He was fifty.   (0:06.08, y 1300)
+03 | 0:08.07–0:10.33 | clip 3
+        And the only reason I didn't break...
+        > And the only reason   (0:08.07, y 1450)
+        > I didn't break...   (0:09.40, y 1450)
+04 | 0:10.33–0:14.40 | clip 4
+        was what my sister flew in from Kerala to show me.
+        > was what my sister   (0:10.33, y 1300)
+        > flew in from Kerala   (0:11.94, y 1300)
+        > to show me.   (0:13.28, y 1300)
+
+== TRIGGER EVENT ==
+05 | 0:14.40–0:17.37 | clip 5
+        Came home early on a Thursday afternoon
+        > Came home early   (0:14.40, y 1300)
+        > on a Thursday afternoon   (0:15.48, y 1300)
+06 | 0:17.37–0:21.63 | clip 6
+        Heard laughing up the stairs, there they were, in our room
+        > Heard laughing   (0:17.37, y 1300)
+        > up the stairs,   (0:18.38, y 1300)
+        > there they were,   (0:19.38, y 1300)
+        > in our room   (0:20.14, y 1300)
+07 | 0:21.63–0:27.47 | clip 7
+        I didn't scream, not yet, sat downstairs till the sky went black
+        > I didn't scream,   (0:21.63, y 1300)
+        > not yet,   (0:23.24, y 1300)
+        > sat downstairs   (0:23.82, y 1300)
+        > till the sky   (0:25.18, y 1300)
+        > went black   (0:26.20, y 1300)
+
+== AGITATE ==
+08 | 0:27.47–0:31.67 | clip 8
+        Then the bathroom mirror finally stared back
+        > Then the bathroom   (0:27.47, y 1300)
+        > mirror finally stared back   (0:28.48, y 1300)
+09 | 0:31.67–0:34.07 | clip 9
+        Forty-seven, but I moved like seventy
+        > Forty-seven,   (0:31.67, y 1450)
+        > but I moved   (0:32.40, y 1450)
+        > like seventy   (0:33.26, y 1450)
+10 | 0:34.07–0:37.57 | clip 10
+        Knees went at forty-four, then my back gave up on me
+        > Knees went at forty-four,   (0:34.07, y 1300)
+        > then my back   (0:36.02, y 1300)
+        > gave up on me   (0:36.74, y 1300)
+11 | 0:37.57–0:41.23 | clip 11
+        Held the railing every stair, couldn't sit down to pray
+        > Held the railing   (0:37.57, y 1300)
+        > every stair,   (0:38.58, y 1300)
+        > couldn't sit down   (0:39.40, y 1300)
+        > to pray   (0:40.58, y 1300)
+12 | 0:41.23–0:44.03 | clip 12
+        Watched my niece's mehendi from a plastic chair all day
+        > Watched my niece's   (0:41.23, y 1300)
+        > mehendi   (0:42.34, y 1300)
+        > from a plastic chair   (0:42.62, y 1300)
+        > all day   (0:43.56, y 1300)
+13 | 0:44.03–0:46.83 | clip 13
+        Stopped wearing sarees, couldn't bend to pleat
+        > Stopped wearing sarees,   (0:44.03, y 1300)
+        > couldn't bend to pleat   (0:45.70, y 1300)
+14 | 0:46.83–0:51.63 | clip 14
+        Standing in that mirror, I knew why he'd cheat
+        > Standing in that mirror,   (0:46.83, y 1300)
+        > I knew   (0:48.60, y 1300)
+        > why he'd cheat   (0:49.18, y 1300)
+15 | 0:51.63–0:56.07 | clip 15
+        Painkillers, sprays and balms, eight hundred every session
+        > Painkillers,   (0:51.63, y 1300)
+        > sprays and balms,   (0:52.24, y 1300)
+        > eight hundred   (0:53.70, y 1300)
+        > every session   (0:54.04, y 1300)
+16 | 0:56.07–1:01.70 | clip 16
+        Doctor never looked up, "It's your age," that was his lesson
+        > Doctor never looked up,   (0:56.07, y 1300)
+        > "It's your age,"   (0:58.32, y 1300)
+        > that was his lesson   (1:00.00, y 1300)
+17 | 1:01.70–1:06.73 | clip 17
+        Forty-seven, moving like seventy
+        > Forty-seven,   (1:01.70, y 1300)
+        > moving like seventy   (1:04.54, y 1300)
+18 | 1:06.73–1:10.43 | clip 18
+        The mirror showed a woman I didn't want to be
+        > The mirror showed   (1:06.73, y 1300)
+        > a woman   (1:07.70, y 1300)
+        > I didn't want to be   (1:08.36, y 1300)
+19 | 1:10.43–1:14.43 | clip 19
+        He didn't even hide it, didn't even try
+        > He didn't even hide it,   (1:10.43, y 1300)
+        > didn't even try   (1:12.66, y 1300)
+20 | 1:14.43–1:18.23 | clip 20
+        The pain took my body, then it took my pride
+        > The pain took my body,   (1:14.43, y 1300)
+        > then it took my pride   (1:16.58, y 1300)
+
+== DISCOVERY ==
+21 | 1:18.23–1:22.73 | clip 21
+        I called my sister Shalini, Kerala twenty years
+        > I called my sister   (1:18.23, y 1300)
+        > Shalini, Kerala   (1:20.36, y 1300)
+        > twenty years   (1:21.94, y 1300)
+22 | 1:22.73–1:27.13 | clip 22
+        "I'm on the next flight, don't argue," she said through my tears
+        > "I'm on the next   (1:22.73, y 1300)
+        > flight, don't argue,"   (1:24.22, y 1300)
+        > she said   (1:25.40, y 1300)
+        > through my tears   (1:26.08, y 1300)
+23 | 1:27.13–1:30.83 | clip 23
+        Got off the plane, no hug, hands on my shoulders, true
+        > Got off the plane,   (1:27.13, y 1300)
+        > no hug,   (1:28.24, y 1300)
+        > hands on my shoulders,   (1:29.32, y 1300)
+        > true   (1:30.56, y 1300)
+24 | 1:30.83–1:35.53 | clip 24
+        "Kavita, you're not staying like this. We've got work to do."
+        > "Kavita, you're not   (1:30.83, y 1300)
+        > staying like this.   (1:32.20, y 1300)
+        > We've got   (1:33.20, y 1300)
+        > work to do."   (1:33.84, y 1300)
+25 | 1:35.53–1:37.80 | clip 25
+        Three days later, an amber bottle on the shelf
+        > Three days later,   (1:35.53, y 620)
+        > an amber bottle   (1:36.26, y 620)
+        > on the shelf   (1:36.88, y 620)
+26 | 1:37.80–1:40.07 | clip 26
+        "Those women dancing at sixty, they look after themselves"
+        > "Those women   (1:37.80, y 1300)
+        > dancing at sixty,   (1:38.26, y 1300)
+        > they look   (1:39.26, y 1300)
+        > after themselves"   (1:39.52, y 1300)
+27 | 1:40.07–1:42.30 | clip 27
+        I said, "I need painkillers, not oil"
+        > I said,   (1:40.07, y 1300)
+        > "I need painkillers,   (1:40.66, y 1300)
+        > not oil"   (1:41.54, y 1300)
+28 | 1:42.30–1:44.30 | clip 28
+        She said, "Pills just hide it, sprays sit on the skin
+        > She said,   (1:42.30, y 1300)
+        > "Pills just hide it,   (1:42.50, y 1300)
+        > sprays sit   (1:43.40, y 1300)
+        > on the skin   (1:43.84, y 1300)
+29 | 1:44.30–1:47.20 | clip 29
+        In Kerala we warm it in our palms and work it in
+        > In Kerala   (1:44.30, y 1300)
+        > we warm it   (1:45.34, y 1300)
+        > in our palms   (1:45.78, y 1300)
+        > and work it in   (1:46.46, y 1300)
+30 | 1:47.20–1:49.97 | clip 30
+        Ten minutes every night, four weeks, that's the deal
+        > Ten minutes every night,   (1:47.20, y 1300)
+        > four weeks,   (1:48.64, y 1300)
+        > that's the deal   (1:49.32, y 1300)
+
+== MECHANISM / PRODUCT ==
+31 | 1:49.97–1:54.77 | clip 31
+        EIS Ayurvedic Pain Relief Oil, fifteen herbs in pure til
+        > EIS Ayurvedic   (1:49.97, y 210)
+        > Pain Relief Oil,   (1:50.58, y 210)
+        > fifteen herbs   (1:51.32, y 210)
+        > in pure til   (1:52.06, y 210)
+
+== TRANSFORMATION ==
+32 | 1:54.77–1:57.63 | clip 32
+        First night, the warmth went deep into my knee
+        > First night,   (1:54.77, y 1300)
+        > the warmth went   (1:55.34, y 1300)
+        > deep into my knee   (1:56.02, y 1300)
+33 | 1:57.63–2:00.23 | clip 33
+        Night three, I slept straight through, finally
+        > Night three,   (1:57.63, y 1300)
+        > I slept straight through,   (1:58.26, y 1300)
+        > finally   (1:59.24, y 1300)
+34 | 2:00.23–2:03.23 | clip 34
+        Week one, no railing, week two, cross-legged to pray
+        > Week one,   (2:00.23, y 1300)
+        > no railing,   (2:00.80, y 1300)
+        > week two,   (2:01.52, y 1300)
+        > cross-legged to pray   (2:02.18, y 1300)
+35 | 2:03.23–2:05.63 | clip 35
+        My daughter called, "Mumma, you sound different today"
+        > My daughter called,   (2:03.23, y 1300)
+        > "Mumma, you sound   (2:04.02, y 1300)
+        > different today"   (2:04.54, y 1300)
+36 | 2:05.63–2:08.23 | clip 36
+        Week three, morning walks out on Carter Road
+        > Week three,   (2:05.63, y 1300)
+        > morning walks out   (2:06.22, y 1300)
+        > on Carter Road   (2:06.88, y 1300)
+37 | 2:08.23–2:11.23 | clip 37
+        Week four, yoga, and I laughed out loud
+        > Week four, yoga,   (2:08.23, y 1300)
+        > and I laughed   (2:09.46, y 1300)
+        > out loud   (2:10.48, y 1300)
+38 | 2:11.23–2:16.10 | clip 38
+        Week six, the silk saree I never wore
+        > Week six,   (2:11.23, y 1300)
+        > the silk saree   (2:13.28, y 1300)
+        > I never wore   (2:14.36, y 1300)
+39 | 2:16.10–2:19.73 | clip 39
+        Pleated it myself and cried on the bedroom floor
+        > Pleated it myself   (2:16.10, y 1300)
+        > and cried   (2:17.06, y 1300)
+        > on the bedroom floor   (2:18.02, y 1300)
+40 | 2:19.73–2:23.73 | clip 40
+        'Cause I finally felt like me
+        > 'Cause I finally   (2:19.73, y 1300)
+        > felt like me   (2:21.48, y 1300)
+
+== MIRRORED PAYOFF ==
+41 | 2:23.73–2:27.47 | clip 41
+        A friend brought Vikram, and the divorce came fast
+        > A friend brought Vikram,   (2:23.73, y 1300)
+        > and the divorce   (2:25.40, y 1300)
+        > came fast   (2:26.22, y 1300)
+42 | 2:27.47–2:30.20 | clip 42
+        Then a Bandra rooftop dinner, I looked up from my glass
+        > Then a Bandra   (2:27.47, y 1300)
+        > rooftop dinner,   (2:27.96, y 1300)
+        > I looked up   (2:28.86, y 1300)
+        > from my glass   (2:29.48, y 1300)
+43 | 2:30.20–2:33.03 | clip 43
+        My husband walked in, same girl on his arm
+        > My husband walked in,   (2:30.20, y 1300)
+        > same girl   (2:31.56, y 1300)
+        > on his arm   (2:32.12, y 1300)
+44 | 2:33.03–2:36.23 | clip 44
+        In the blue shirt I bought him for Diwali, all that charm
+        > In the blue shirt   (2:33.03, y 1300)
+        > I bought him   (2:33.86, y 1300)
+        > for Diwali,   (2:34.70, y 1300)
+        > all that charm   (2:35.32, y 1300)
+45 | 2:36.23–2:39.17 | clip 45
+        Halfway through dinner, he was staring, couldn't turn around
+        > Halfway through dinner,   (2:36.23, y 1300)
+        > he was staring,   (2:37.42, y 1300)
+        > couldn't turn around   (2:38.38, y 1300)
+46 | 2:39.17–2:43.13 | clip 46
+        Mouth half open, like he'd seen a ghost in town
+        > Mouth half open,   (2:39.17, y 1450)
+        > like he'd seen   (2:40.38, y 1450)
+        > a ghost in town   (2:41.24, y 1450)
+47 | 2:43.13–2:45.87 | clip 47
+        In the washroom, a woman, fifties, hand on her back
+        > In the washroom,   (2:43.13, y 1300)
+        > a woman, fifties,   (2:43.94, y 1300)
+        > hand on her back   (2:45.10, y 1300)
+48 | 2:45.87–2:49.23 | clip 48
+        "Sorry, I have to ask, you can't be forty, not like that"
+        > "Sorry,   (2:45.87, y 1300)
+        > I have to ask,   (2:46.40, y 1300)
+        > you can't be forty,   (2:47.40, y 1300)
+        > not like that"   (2:48.46, y 1300)
+49 | 2:49.23–2:51.27 | clip 49
+        I told her 'bout the bottle, ten minutes every night
+        > I told her   (2:49.23, y 1300)
+        > 'bout the bottle,   (2:49.80, y 1300)
+        > ten minutes every night   (2:50.40, y 1300)
+50 | 2:51.27–2:54.23 | clip 50
+        She ordered at the sink, cash on delivery, that night
+        > She ordered   (2:51.27, y 1300)
+        > at the sink,   (2:51.82, y 1300)
+        > cash on delivery,   (2:52.56, y 1300)
+        > that night   (2:53.14, y 1300)
+51 | 2:54.23–2:56.43 | clip 51
+        I walked out, he was standing there alone
+        > I walked out,   (2:54.23, y 1300)
+        > he was standing   (2:55.18, y 1300)
+        > there alone   (2:55.72, y 1300)
+52 | 2:56.43–2:58.63 | clip 52
+        "Kavita, you look... what did you do?"
+        > "Kavita, you look...   (2:56.43, y 1300)
+        > what did you do?"   (2:57.84, y 1300)
+53 | 2:58.63–3:01.83 | clip 53
+        I didn't say a word, walked past him, back to my own
+        > I didn't   (2:58.63, y 1300)
+        > say a word,   (2:59.00, y 1300)
+        > walked past him,   (2:59.68, y 1300)
+        > back to my own   (3:00.70, y 1300)
+54 | 3:01.83–3:08.30 | clip 54
+        He didn't leave 'cause I got old, he couldn't handle a woman his age
+        > He didn't leave   (3:01.83, y 1300)
+        > 'cause I got old,   (3:03.26, y 1300)
+        > he couldn't handle   (3:05.02, y 1300)
+        > a woman his age   (3:06.48, y 1300)
+55 | 3:08.30–3:12.17 | clip 55
+        Pain was never my age, now I've turned the page
+        > Pain was never   (3:08.30, y 1300)
+        > my age,   (3:09.28, y 1300)
+        > now I've turned the page   (3:10.38, y 1300)
+56 | 3:12.17–3:15.97 | clip 56
+        Strong, awake, alive, forty-seven, and I choose
+        > Strong, awake,   (3:12.17, y 1300)
+        > alive, forty-seven,   (3:13.36, y 1300)
+        > and I choose   (3:14.90, y 1300)
+57 | 3:15.97–3:21.07 | clip 57
+        To be the woman he should've been terrified to lose
+        > To be the woman   (3:15.97, y 1450)
+        > he should've been   (3:17.34, y 1450)
+        > terrified to lose   (3:18.74, y 1450)
+
+== CTA ==
+58 | 3:21.07–3:27.97 | clip 58 + clip 31 (clean-label hero)
+        EIS Ayurvedic Pain Relief Oil. Fifteen herbs in pure til oil. Ten minutes before bed.
+        > EIS Ayurvedic   (3:21.07, y 1300)
+        > Pain Relief Oil.   (3:22.28, y 1300)
+        > Fifteen herbs   (3:23.13, y 210)
+        > in pure til oil.   (3:24.64, y 210)
+        > Ten minutes   (3:25.68, y 210)
+        > before bed.   (3:26.50, y 210)
+59 | 3:27.97–3:33.40 | clip 59
+        Fifty percent off, cash on delivery, thirty-day money-back guarantee.
+        > Fifty percent off,   (3:27.97, y 810)
+        > cash on delivery,   (3:29.02, y 810)
+        > thirty-day   (3:30.50, y 810)
+        > money-back guarantee.   (3:31.24, y 810)
+60 | 3:33.40–3:36.70 | clip 60
+        Ten minutes a night. That's all it took for me.
+        > Ten minutes a night.   (3:33.40, y 1300)
+        > That's all   (3:34.74, y 1300)
+        > it took for me.   (3:35.38, y 1300)
+
+Notes:
+- Instrumental gaps trimmed on the beat (see C299-A_v2_changes.csv).
+- Line 31's first word 'EIS' is sung but was not detected by speech recognition; the line starts at 'Ayurvedic'.
+- Line 58 switches from Kavita holding the bottle to the clean-label hero shot at 'Fifteen herbs'.
