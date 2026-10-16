@@ -1,0 +1,8 @@
+# C299-A edit: source media and large renders stay out of git
+input/
+edit/*.mp4
+edit/work/*.mp4
+edit/work/*.wav
+edit/work/seg/
+edit/work/fonts/
+edit/work/__pycache__/

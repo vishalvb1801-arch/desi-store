@@ -1,0 +1,542 @@
+[
+ {
+  "line": "01",
+  "ntok": 11,
+  "nmatch": 11,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 0.7,
+  "words": "i caught my husband cheating with a girl half his age"
+ },
+ {
+  "line": "02",
+  "ntok": 7,
+  "nmatch": 7,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 4.42,
+  "words": "she was twenty six he was fifty"
+ },
+ {
+  "line": "03",
+  "ntok": 7,
+  "nmatch": 7,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 8.08,
+  "words": "and the only reason i didn't break"
+ },
+ {
+  "line": "04",
+  "ntok": 11,
+  "nmatch": 11,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 10.34,
+  "words": "was what my sister flew in from kerala to show me"
+ },
+ {
+  "line": "05",
+  "ntok": 7,
+  "nmatch": 7,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 15.92,
+  "words": "came home early on a thursday afternoon"
+ },
+ {
+  "line": "06",
+  "ntok": 11,
+  "nmatch": 11,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 19.42,
+  "words": "heard laughing up the stairs there they were in our room"
+ },
+ {
+  "line": "07",
+  "ntok": 12,
+  "nmatch": 12,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 23.68,
+  "words": "i didn't scream not yet sat downstairs till the sky went black"
+ },
+ {
+  "line": "08",
+  "ntok": 7,
+  "nmatch": 7,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 29.04,
+  "words": "then the bathroom mirror finally stared back"
+ },
+ {
+  "line": "09",
+  "ntok": 7,
+  "nmatch": 7,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 34.400000000000006,
+  "words": "forty seven but i moved like seventy"
+ },
+ {
+  "line": "10",
+  "ntok": 12,
+  "nmatch": 12,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 37.12,
+  "words": "knees went at forty four then my back gave up on me"
+ },
+ {
+  "line": "11",
+  "ntok": 10,
+  "nmatch": 10,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 40.6,
+  "words": "held the railing every stair couldn't sit down to pray"
+ },
+ {
+  "line": "12",
+  "ntok": 10,
+  "nmatch": 10,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 44.26,
+  "words": "watched my niece hendy from a plastic chair all day"
+ },
+ {
+  "line": "13",
+  "ntok": 7,
+  "nmatch": 7,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 47.08,
+  "words": "stopped wearing saris couldn't bend to pleat"
+ },
+ {
+  "line": "14",
+  "ntok": 9,
+  "nmatch": 7,
+  "frac": 0.7777777777777778,
+  "first_idx": 0,
+  "start": 49.86,
+  "words": "standing in that mirror i knew _ _ cheat"
+ },
+ {
+  "line": "15",
+  "ntok": 8,
+  "nmatch": 7,
+  "frac": 0.875,
+  "first_idx": 0,
+  "start": 54.680000000000014,
+  "words": "painkillers sprays and _ eight hundred every session"
+ },
+ {
+  "line": "16",
+  "ntok": 11,
+  "nmatch": 11,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 58.66,
+  "words": "doctor never looked up it's your age that was his lesson"
+ },
+ {
+  "line": "17",
+  "ntok": 5,
+  "nmatch": 5,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 64.74,
+  "words": "forty seven moving like seventy"
+ },
+ {
+  "line": "18",
+  "ntok": 10,
+  "nmatch": 9,
+  "frac": 0.9,
+  "first_idx": 0,
+  "start": 69.78,
+  "words": "the mirror showed a woman i didn't wanna _ be"
+ },
+ {
+  "line": "19",
+  "ntok": 8,
+  "nmatch": 8,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 73.48,
+  "words": "he didn't even hide it didn't even try"
+ },
+ {
+  "line": "20",
+  "ntok": 10,
+  "nmatch": 10,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 77.46,
+  "words": "the pain took my body then it took my pride"
+ },
+ {
+  "line": "21",
+  "ntok": 8,
+  "nmatch": 8,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 81.28,
+  "words": "i called my sister shalini kerala twenty years"
+ },
+ {
+  "line": "22",
+  "ntok": 12,
+  "nmatch": 12,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 85.78,
+  "words": "i'm on the next flight don't argue she said through my tears"
+ },
+ {
+  "line": "23",
+  "ntok": 11,
+  "nmatch": 11,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 90.16,
+  "words": "got off the plane no hug hands on my shoulders true"
+ },
+ {
+  "line": "24",
+  "ntok": 11,
+  "nmatch": 11,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 93.88,
+  "words": "kavita you're not staying like this we've got work to do"
+ },
+ {
+  "line": "25",
+  "ntok": 9,
+  "nmatch": 9,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 101.06,
+  "words": "three days later an amber bottle on the shelf"
+ },
+ {
+  "line": "26",
+  "ntok": 9,
+  "nmatch": 9,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 103.58,
+  "words": "those women dancing at sixty they look after themselves"
+ },
+ {
+  "line": "27",
+  "ntok": 7,
+  "nmatch": 7,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 106.1,
+  "words": "i said i need painkillers not oil"
+ },
+ {
+  "line": "28",
+  "ntok": 11,
+  "nmatch": 11,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 107.98,
+  "words": "she said pills just hide it spray sit on the skin"
+ },
+ {
+  "line": "29",
+  "ntok": 12,
+  "nmatch": 12,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 110.4,
+  "words": "in kerala we warm it in our palms and work it in"
+ },
+ {
+  "line": "30",
+  "ntok": 9,
+  "nmatch": 9,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 113.24,
+  "words": "ten minutes every night four weeks that's the deals"
+ },
+ {
+  "line": "31",
+  "ntok": 10,
+  "nmatch": 8,
+  "frac": 0.8,
+  "first_idx": 1,
+  "start": 116.0,
+  "words": "_ ayurvedic pain relief oil fifteen herbs _ pure till"
+ },
+ {
+  "line": "32",
+  "ntok": 9,
+  "nmatch": 9,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 120.39999999999999,
+  "words": "first night the warmth went deep into my knee"
+ },
+ {
+  "line": "33",
+  "ntok": 7,
+  "nmatch": 7,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 123.12,
+  "words": "night three i slept straight through finally"
+ },
+ {
+  "line": "34",
+  "ntok": 10,
+  "nmatch": 10,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 125.74,
+  "words": "week one no railing week two cross legged to pray"
+ },
+ {
+  "line": "35",
+  "ntok": 8,
+  "nmatch": 7,
+  "frac": 0.875,
+  "first_idx": 0,
+  "start": 129.26,
+  "words": "my daughter called _ you sound different today"
+ },
+ {
+  "line": "36",
+  "ntok": 8,
+  "nmatch": 8,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 131.2,
+  "words": "week three morning walks out on carter road"
+ },
+ {
+  "line": "37",
+  "ntok": 8,
+  "nmatch": 8,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 133.86,
+  "words": "week four yoga and i laughed out loud"
+ },
+ {
+  "line": "38",
+  "ntok": 8,
+  "nmatch": 8,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 137.28,
+  "words": "week six the silk sari i never wore"
+ },
+ {
+  "line": "39",
+  "ntok": 9,
+  "nmatch": 9,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 141.66,
+  "words": "pleaded it myself and cried on the bedroom floor"
+ },
+ {
+  "line": "40",
+  "ntok": 6,
+  "nmatch": 6,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 145.78,
+  "words": "cause i finally felt like me"
+ },
+ {
+  "line": "41",
+  "ntok": 9,
+  "nmatch": 9,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 149.77999999999997,
+  "words": "a friend brought vikram and the divorce came fast"
+ },
+ {
+  "line": "42",
+  "ntok": 11,
+  "nmatch": 10,
+  "frac": 0.9090909090909091,
+  "first_idx": 0,
+  "start": 153.12,
+  "words": "then a _ rooftop dinner i looked up from my glass"
+ },
+ {
+  "line": "43",
+  "ntok": 9,
+  "nmatch": 9,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 156.24,
+  "words": "my husband walked in same girl on his arm"
+ },
+ {
+  "line": "44",
+  "ntok": 12,
+  "nmatch": 12,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 159.06,
+  "words": "in the blue shirt i bought him for diwali all that charm"
+ },
+ {
+  "line": "45",
+  "ntok": 9,
+  "nmatch": 9,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 162.26,
+  "words": "halfway through dinner he was staring couldn't turn around"
+ },
+ {
+  "line": "46",
+  "ntok": 10,
+  "nmatch": 10,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 165.2,
+  "words": "mouth half open like he'd seen a ghost in town"
+ },
+ {
+  "line": "47",
+  "ntok": 10,
+  "nmatch": 9,
+  "frac": 0.9,
+  "first_idx": 0,
+  "start": 168.88000000000002,
+  "words": "in the washroom a woman _ hand on her back"
+ },
+ {
+  "line": "48",
+  "ntok": 12,
+  "nmatch": 12,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 171.92,
+  "words": "sorry i have to ask you can't be forty not like that"
+ },
+ {
+  "line": "49",
+  "ntok": 10,
+  "nmatch": 10,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 175.26,
+  "words": "i told her about the bottle ten minutes every night"
+ },
+ {
+  "line": "50",
+  "ntok": 10,
+  "nmatch": 10,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 177.3,
+  "words": "she ordered at the sink cash on delivery that night"
+ },
+ {
+  "line": "51",
+  "ntok": 8,
+  "nmatch": 8,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 180.06,
+  "words": "i walked out he was standing there alone"
+ },
+ {
+  "line": "52",
+  "ntok": 7,
+  "nmatch": 7,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 182.46,
+  "words": "kavita you look what did you do"
+ },
+ {
+  "line": "53",
+  "ntok": 12,
+  "nmatch": 12,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 184.66,
+  "words": "i didn't say a word walked past him back to my own"
+ },
+ {
+  "line": "54",
+  "ntok": 14,
+  "nmatch": 14,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 187.88,
+  "words": "he didn't leave cause i got old he couldn't handle a woman his age"
+ },
+ {
+  "line": "55",
+  "ntok": 10,
+  "nmatch": 10,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 194.34,
+  "words": "pain was never my age now i've turned the page"
+ },
+ {
+  "line": "56",
+  "ntok": 8,
+  "nmatch": 8,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 198.2,
+  "words": "strong awake alive forty seven and i choose"
+ },
+ {
+  "line": "57",
+  "ntok": 10,
+  "nmatch": 10,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 202.02,
+  "words": "to be the woman he should been terrified to lose"
+ },
+ {
+  "line": "58",
+  "ntok": 15,
+  "nmatch": 15,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 218.5,
+  "words": "eis ayurvedic pain relief oil fifteen herbs in pure till oil ten minutes before bed"
+ },
+ {
+  "line": "59",
+  "ntok": 11,
+  "nmatch": 10,
+  "frac": 0.9090909090909091,
+  "first_idx": 0,
+  "start": 225.22,
+  "words": "fifty _ off cash on delivery thirty day money back guarantee"
+ },
+ {
+  "line": "60",
+  "ntok": 10,
+  "nmatch": 10,
+  "frac": 1.0,
+  "first_idx": 0,
+  "start": 230.56,
+  "words": "ten minutes a night that's all it took for me"
+ }
+]

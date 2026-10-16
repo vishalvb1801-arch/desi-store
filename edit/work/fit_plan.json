@@ -1,0 +1,542 @@
+[
+ {
+  "line": 1,
+  "frames": 133,
+  "T": 4.433333333333334,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/01.mp4"
+ },
+ {
+  "line": 2,
+  "frames": 109,
+  "T": 3.6333333333333333,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/02.mp4"
+ },
+ {
+  "line": 3,
+  "frames": 68,
+  "T": 2.2666666666666666,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/03.mp4"
+ },
+ {
+  "line": 4,
+  "frames": 168,
+  "T": 5.6,
+  "factor": 1.1107438016528923,
+  "action": "slow",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/04.mp4"
+ },
+ {
+  "line": 5,
+  "frames": 105,
+  "T": 3.5,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/05.mp4"
+ },
+ {
+  "line": 6,
+  "frames": 127,
+  "T": 4.233333333333333,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/06.mp4"
+ },
+ {
+  "line": 7,
+  "frames": 161,
+  "T": 5.366666666666666,
+  "factor": 1.0644628099173552,
+  "action": "slow",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/07.mp4"
+ },
+ {
+  "line": 8,
+  "frames": 161,
+  "T": 5.366666666666666,
+  "factor": 1.0644628099173552,
+  "action": "slow",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/08.mp4"
+ },
+ {
+  "line": 9,
+  "frames": 82,
+  "T": 2.7333333333333334,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/09.mp4"
+ },
+ {
+  "line": 10,
+  "frames": 104,
+  "T": 3.466666666666667,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/10.mp4"
+ },
+ {
+  "line": 11,
+  "frames": 110,
+  "T": 3.6666666666666665,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/11.mp4"
+ },
+ {
+  "line": 12,
+  "frames": 84,
+  "T": 2.8,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/12.mp4"
+ },
+ {
+  "line": 13,
+  "frames": 84,
+  "T": 2.8,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/13.mp4"
+ },
+ {
+  "line": 14,
+  "frames": 144,
+  "T": 4.8,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/14.mp4"
+ },
+ {
+  "line": 15,
+  "frames": 120,
+  "T": 4.0,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/15.mp4"
+ },
+ {
+  "line": 16,
+  "frames": 182,
+  "T": 6.066666666666666,
+  "factor": 1.2033057851239668,
+  "action": "slow",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/16.mp4"
+ },
+ {
+  "line": 17,
+  "frames": 151,
+  "T": 5.033333333333333,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/17.mp4"
+ },
+ {
+  "line": 18,
+  "frames": 111,
+  "T": 3.7,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/18.mp4"
+ },
+ {
+  "line": 19,
+  "frames": 120,
+  "T": 4.0,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/19.mp4"
+ },
+ {
+  "line": 20,
+  "frames": 114,
+  "T": 3.8,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/20.mp4"
+ },
+ {
+  "line": 21,
+  "frames": 135,
+  "T": 4.5,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/21.mp4"
+ },
+ {
+  "line": 22,
+  "frames": 132,
+  "T": 4.4,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/22.mp4"
+ },
+ {
+  "line": 23,
+  "frames": 111,
+  "T": 3.7,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/23.mp4"
+ },
+ {
+  "line": 24,
+  "frames": 216,
+  "T": 7.2,
+  "factor": 1.428099173553719,
+  "action": "slow",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/24.mp4"
+ },
+ {
+  "line": 25,
+  "frames": 75,
+  "T": 2.5,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/25.mp4"
+ },
+ {
+  "line": 26,
+  "frames": 76,
+  "T": 2.533333333333333,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/26.mp4"
+ },
+ {
+  "line": 27,
+  "frames": 56,
+  "T": 1.8666666666666667,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/27.mp4"
+ },
+ {
+  "line": 28,
+  "frames": 73,
+  "T": 2.433333333333333,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/28.mp4"
+ },
+ {
+  "line": 29,
+  "frames": 85,
+  "T": 2.8333333333333335,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/29.mp4"
+ },
+ {
+  "line": 30,
+  "frames": 83,
+  "T": 2.7666666666666666,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/30.mp4"
+ },
+ {
+  "line": 31,
+  "frames": 132,
+  "T": 4.4,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/31.mp4"
+ },
+ {
+  "line": 32,
+  "frames": 82,
+  "T": 2.7333333333333334,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/32.mp4"
+ },
+ {
+  "line": 33,
+  "frames": 78,
+  "T": 2.6,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/33.mp4"
+ },
+ {
+  "line": 34,
+  "frames": 106,
+  "T": 3.533333333333333,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/34.mp4"
+ },
+ {
+  "line": 35,
+  "frames": 58,
+  "T": 1.9333333333333333,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/35.mp4"
+ },
+ {
+  "line": 36,
+  "frames": 80,
+  "T": 2.6666666666666665,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/36.mp4"
+ },
+ {
+  "line": 37,
+  "frames": 102,
+  "T": 3.4,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/37.mp4"
+ },
+ {
+  "line": 38,
+  "frames": 132,
+  "T": 4.4,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/38.mp4"
+ },
+ {
+  "line": 39,
+  "frames": 129,
+  "T": 4.3,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/39.mp4"
+ },
+ {
+  "line": 40,
+  "frames": 120,
+  "T": 4.0,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/40.mp4"
+ },
+ {
+  "line": 41,
+  "frames": 101,
+  "T": 3.3666666666666667,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/41.mp4"
+ },
+ {
+  "line": 42,
+  "frames": 93,
+  "T": 3.1,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/42.mp4"
+ },
+ {
+  "line": 43,
+  "frames": 85,
+  "T": 2.8333333333333335,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/43.mp4"
+ },
+ {
+  "line": 44,
+  "frames": 96,
+  "T": 3.2,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/44.mp4"
+ },
+ {
+  "line": 45,
+  "frames": 88,
+  "T": 2.933333333333333,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/45.mp4"
+ },
+ {
+  "line": 46,
+  "frames": 110,
+  "T": 3.6666666666666665,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/46.mp4"
+ },
+ {
+  "line": 47,
+  "frames": 92,
+  "T": 3.066666666666667,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/47.mp4"
+ },
+ {
+  "line": 48,
+  "frames": 100,
+  "T": 3.3333333333333335,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/48.mp4"
+ },
+ {
+  "line": 49,
+  "frames": 61,
+  "T": 2.033333333333333,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/49.mp4"
+ },
+ {
+  "line": 50,
+  "frames": 83,
+  "T": 2.7666666666666666,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/50.mp4"
+ },
+ {
+  "line": 51,
+  "frames": 72,
+  "T": 2.4,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/51.mp4"
+ },
+ {
+  "line": 52,
+  "frames": 66,
+  "T": 2.2,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/52.mp4"
+ },
+ {
+  "line": 53,
+  "frames": 96,
+  "T": 3.2,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/53.mp4"
+ },
+ {
+  "line": 54,
+  "frames": 194,
+  "T": 6.466666666666667,
+  "factor": 1.2826446280991735,
+  "action": "slow",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/54.mp4"
+ },
+ {
+  "line": 55,
+  "frames": 116,
+  "T": 3.8666666666666667,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/55.mp4"
+ },
+ {
+  "line": 56,
+  "frames": 115,
+  "T": 3.8333333333333335,
+  "factor": 1.0,
+  "action": "trim",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/56.mp4"
+ },
+ {
+  "line": 57,
+  "frames": 494,
+  "T": 16.466666666666665,
+  "factor": 1.5,
+  "action": "slow+hold",
+  "hold": 8.904166666666665,
+  "out": "/home/user/desi-store/edit/work/seg/57.mp4"
+ },
+ {
+  "line": 58,
+  "frames": 202,
+  "T": 6.733333333333333,
+  "factor": 1.3355371900826445,
+  "action": "slow",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/58.mp4"
+ },
+ {
+  "line": 59,
+  "frames": 160,
+  "T": 5.333333333333333,
+  "factor": 1.0578512396694213,
+  "action": "slow",
+  "hold": 0.0,
+  "out": "/home/user/desi-store/edit/work/seg/59.mp4"
+ },
+ {
+  "line": 60,
+  "frames": 284,
+  "T": 9.466666666666667,
+  "factor": 1.5,
+  "action": "slow+hold",
+  "hold": 1.9041666666666668,
+  "out": "/home/user/desi-store/edit/work/seg/60.mp4"
+ }
+]
