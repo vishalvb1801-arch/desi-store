@@ -38,7 +38,7 @@
   {
    "id": "seg02",
    "role": "body",
-   "line": "(instrumental)",
+   "line": "I kept this close, so close to my heart",
    "vo": {
     "file": "vo.mp3",
     "in": 11.0,
@@ -304,7 +304,7 @@
   {
    "id": "seg16",
    "role": "body",
-   "line": "(instrumental)",
+   "line": "Afraid of what comes into view",
    "vo": {
     "file": "vo.mp3",
     "in": 61.4,
@@ -475,7 +475,7 @@
   {
    "id": "seg25",
    "role": "body",
-   "line": "(instrumental)",
+   "line": "And I need you to see me true",
    "vo": {
     "file": "vo.mp3",
     "in": 91.0,
@@ -570,7 +570,7 @@
   {
    "id": "seg30",
    "role": "body",
-   "line": "And the colour left your face",
+   "line": "You found a letter on the table / And the colour left your face",
    "vo": {
     "file": "vo.mp3",
     "in": 102.0,
@@ -665,7 +665,7 @@
   {
    "id": "seg35",
    "role": "body",
-   "line": "(instrumental)",
+   "line": "And I cannot hide from it, my friend",
    "vo": {
     "file": "vo.mp3",
     "in": 128.5,
@@ -837,7 +837,7 @@
   {
    "id": "seg44",
    "role": "body",
-   "line": "(instrumental)",
+   "line": "It's because I don't know how to lie",
    "vo": {
     "file": "vo.mp3",
     "in": 166.5,
@@ -875,7 +875,7 @@
   {
    "id": "seg46",
    "role": "body",
-   "line": "(instrumental)",
+   "line": "Please hear me before we say goodbye",
    "vo": {
     "file": "vo.mp3",
     "in": 177.1,
@@ -1504,11 +1504,33 @@
    "y": 0.12
   },
   {
+   "id": "mech1b",
+   "type": "text",
+   "segment": "seg39",
+   "start": 0.0,
+   "end": 4.18,
+   "text": "Tablets mask it.\nSprays sit on the skin.",
+   "style": "headline",
+   "x": 0.5,
+   "y": 0.12
+  },
+  {
    "id": "massage1",
    "type": "text",
    "segment": "seg40",
    "start": 0.14,
    "end": 3.49,
+   "text": "10 minutes of warm\nmassage before bed",
+   "style": "headline",
+   "x": 0.5,
+   "y": 0.12
+  },
+  {
+   "id": "massage1b",
+   "type": "text",
+   "segment": "seg41",
+   "start": 0.0,
+   "end": 3.15,
    "text": "10 minutes of warm\nmassage before bed",
    "style": "headline",
    "x": 0.5,

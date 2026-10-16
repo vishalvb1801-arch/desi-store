@@ -168,8 +168,11 @@ def frame(t):
 def build_plan():
     segs = []
     # seg01 = hook: shots 1+2
+    spans = [(p[0], c[1], p[1].replace("*", "")) for p, c in zip(PHRASES, caption_items())]
+
     def seg_line(s, e):
-        return " / ".join(p[1].replace("*", "") for p in PHRASES if s - 0.01 <= p[0] < e - 0.01) or "(instrumental)"
+        hit = [t for a, b, t in spans if a < e - 0.05 and b > s + 0.3]
+        return " / ".join(hit) or ("(intro)" if s < 1 else "(instrumental)")
     groups = [[0, 1]] + [[i] for i in range(2, len(SHOTS))]
     seg_of_shot = {}
     for gi, g in enumerate(groups):
@@ -207,12 +210,17 @@ def build_plan():
             t = e
     ovs = []
     for oid, st, en, text, style, x, y in OVERLAYS:
-        sg = locate(st)
-        s0 = sg["vo"]["in"]
         pstyle = {"Hook": "headline", "Title": "headline", "Gold": "sub", "Offer": "price", "Sub": "sub"}[style]
-        ovs.append({"id": oid, "type": "text", "segment": sg["id"], "start": round(st - s0, 2),
-                    "end": round(min(en, sg["vo"]["out"]) - s0, 2), "text": text.replace("\\N", "\n"),
-                    "style": pstyle, "x": 0.5, "y": round(y / 1920, 2)})
+        t, part = st, 0
+        en = min(en, segs[-1]["vo"]["out"])
+        while t < en - 1e-6:   # split an overlay across segment cuts (ids get a/b suffixes)
+            sg = locate(t)
+            s0, s1 = sg["vo"]["in"], sg["vo"]["out"]
+            e = min(en, s1)
+            ovs.append({"id": oid if part == 0 else f"{oid}{chr(97 + part)}", "type": "text", "segment": sg["id"],
+                        "start": round(t - s0, 2), "end": round(e - s0, 2), "text": text.replace("\\N", "\n"),
+                        "style": pstyle, "x": 0.5, "y": round(y / 1920, 2)})
+            t, part = e, part + 1
     sg = segs[-1]
     ovs.append({"id": "logo", "type": "image", "file": "logo.png", "segment": sg["id"],
                 "start": round(LOGO[1] - sg["vo"]["in"], 2), "end": round(sg["vo"]["out"] - sg["vo"]["in"], 2),

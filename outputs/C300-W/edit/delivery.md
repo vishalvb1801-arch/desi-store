@@ -1,6 +1,6 @@
 # C300-W — "Just Tired" (Wife version) · EIS Ayurvedic Pain Relief Oil · FINAL (cut to B.mp3 as sung)
 
-**Deliverable:** `renders/C300-W-final.mp4`. That file isn't in git; the delivery link is in the reply. Specs: 1080×1920, 30 fps, H.264 CRF 20 preset slow, AAC 192 kbps, +faststart. Duration __DUR__ s against B.mp3's 229.04 s. One file only: no SFX, no music bed, no other versions.
+**Deliverable:** `renders/C300-W-final.mp4`. That file isn't in git. At 116 MB it is too large to upload through the Drive connector, so it was handed over as a download in the chat. `edit-plan.json` and this file are in Drive › C300 › B. Specs: 1080×1920, 30 fps, H.264 CRF 20 preset slow, AAC 192 kbps, +faststart. Duration 229.03 s against B.mp3's 229.04 s. One file only: no SFX, no music bed, no other versions.
 **Audio:** B.mp3, unedited, 0.00 to the end. The song sings different lyrics from the original C300-W lyric sheet, so every caption follows what B.mp3 actually sings (`handoff/transcript.json`, whisper medium.en). The onsets were cross-checked against a second whisper pass and the vocal-band energy.
 **Plan:** `edit-plan.json` v1 has 56 segments and V1 only. The validator passes; its warnings are listed below. `handoff/build_c300w.py` renders the MP4, and `handoff/c300w.ass` holds the captions and text overlays.
 
@@ -42,7 +42,27 @@
 - **CTA:** EIS logo (the Supabase URL; Drive has no EIS logo), "50% OFF TODAY" (gold, top) and "CASH ON DELIVERY · 30-day guarantee" (y 0.85). The text bands don't overlap the captions.
 
 ## QA
-__QA__
+- **ffprobe:**
+  - Video: h264, 1080×1920, 30/1 fps, 6871 frames, 229.033 s, ~3.86 Mb/s.
+  - Audio: AAC 44.1 kHz, 193 kb/s, 229.02 s.
+  - Both streams start at 0.000. File size 116.3 MB, faststart.
+- **Black frames:** `blackdetect` (d ≥ 0.04 s, pix_th 0.10) found 0 black segments, and 0 frames have YMAX ≤ 20, so there are no fully black frames.
+- **Stills checked by eye** at 3.0, 9.0, 27.5, 70, 104.5, 128.7 (crossfade), 139.5 (reveal), 145, 153.5, 155.6–158.5 (clip_43 freeze), 171 and 176.8 (morph), 195.5 (quilt), 214, 224 and 228.9 (CTA):
+  - Every visible label is clean: EIS / ESSENCE OF NATURE / Ayurvedic / PAIN RELIEF OIL / 15+ AYURVEDIC HERBS.
+  - Captions are readable. No captions show under the hook.
+  - The morph is intact on a hard cut.
+  - The overlays, captions, logo and CTA lines don't collide.
+- **Lyric sync spot-check:**
+
+  | time | sung | caption on screen | clip |
+  |---|---|---|---|
+  | 27.6 s | "You ask me, how" | "You ask me, how was your day, ji?" | clip_7 |
+  | 69.9 s | "of holding what" | "Tired of holding what I can't undo" | clip_19 |
+  | 104.9 s | "the color left" | "And the colour left your face" | clip_31 |
+  | 135.7 s | "to break your" | "I never meant to break your trust" | clip_37 |
+  | 213.2 s | "can hold my hand for" | "If you can hold my hand for one more moment" | clip_49 |
+
+  All in sync.
 
 ## Validator warnings (expected)
 - seg45 (clip_47 morph, 7.8 s) and seg56 (CTA, 7.0 s) have one shot each. That's by design: the morph plays in full, and the end card is a single push-in.
