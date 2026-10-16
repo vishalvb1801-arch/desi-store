@@ -1,0 +1,2209 @@
+{
+ "source": "media/vo.mp3",
+ "model": "faster-whisper medium.en (int8, cpu)",
+ "language": "en",
+ "duration": 229.041625,
+ "segments": [
+  {
+   "start": 5.76,
+   "end": 23.08,
+   "text": "I kept this close, so close to my heart Every evening I come home smiling"
+  },
+  {
+   "start": 23.08,
+   "end": 29.92,
+   "text": "And I set my face like nothing's wrong You ask me, how was your day, ji?"
+  },
+  {
+   "start": 30.46,
+   "end": 36.92,
+   "text": "And I say, fine, though I know it's not There is a room inside my chest"
+  },
+  {
+   "start": 36.92,
+   "end": 43.5,
+   "text": "Where I keep the words I never said I wanted peace, I wanted time"
+  },
+  {
+   "start": 43.5,
+   "end": 51.74,
+   "text": "I thought the truth could wait a while But the silence has a way tonight"
+  },
+  {
+   "start": 51.74,
+   "end": 58.84,
+   "text": "And it follows me from room to room I stand at the edge of my own reply"
+  },
+  {
+   "start": 59.66,
+   "end": 68.62,
+   "text": "Afraid of what comes into view I'm just tired, ji"
+  },
+  {
+   "start": 68.62,
+   "end": 74.62,
+   "text": "Tired of holding what I can't undo I'm just tired, ji"
+  },
+  {
+   "start": 75.58,
+   "end": 81.72,
+   "text": "Tired of pretending I can choose As you hear my voice shake a little"
+  },
+  {
+   "start": 82.54,
+   "end": 87.98,
+   "text": "It's because I'm finally letting through I'm just tired, ji"
+  },
+  {
+   "start": 89.26,
+   "end": 93.26,
+   "text": "And I need you to see me true"
+  },
+  {
+   "start": 100.86,
+   "end": 107.12,
+   "text": "You found a letter on the table And the color left your face"
+  },
+  {
+   "start": 107.12,
+   "end": 113.76,
+   "text": "I saw the hurt before the question It was standing in the space"
+  },
+  {
+   "start": 113.76,
+   "end": 120.38,
+   "text": "I meant to tell you in the morning But my courage failed again"
+  },
+  {
+   "start": 121.04,
+   "end": 128.46,
+   "text": "Now the truth is in the light And I cannot hide from it, my friend"
+  },
+  {
+   "start": 132.28,
+   "end": 140.38,
+   "text": "I never meant to break your trust I never meant to turn away"
+  },
+  {
+   "start": 140.38,
+   "end": 144.94,
+   "text": "But carrying this alone has worn my voice away"
+  },
+  {
+   "start": 147.82,
+   "end": 155.58,
+   "text": "I'm just tired, ji Tired of living half a life"
+  },
+  {
+   "start": 155.58,
+   "end": 161.88,
+   "text": "I'm just tired, ji Tired of cutting true to size"
+  },
+  {
+   "start": 161.88,
+   "end": 169.28,
+   "text": "If my eyes look like they are begging It's because I don't know how to lie"
+  },
+  {
+   "start": 169.28,
+   "end": 177.12,
+   "text": "I'm just tired, ji Please hear me before we say goodbye"
+  },
+  {
+   "start": 181.32,
+   "end": 188.68,
+   "text": "Maybe love can hold the fracture Maybe truth can let us stay"
+  },
+  {
+   "start": 188.68,
+   "end": 194.96,
+   "text": "If we walk through this together We may find a kinder way"
+  },
+  {
+   "start": 197.82,
+   "end": 205.34,
+   "text": "I'm just tired, ji But I am still here by your side"
+  },
+  {
+   "start": 205.9,
+   "end": 211.82,
+   "text": "I'm just tired, ji And I wanna make this right"
+  },
+  {
+   "start": 211.82,
+   "end": 219.26,
+   "text": "If you can hold my hand for one more moment We can learn to breathe again tonight"
+  },
+  {
+   "start": 219.26,
+   "end": 227.04,
+   "text": "I'm just tired, ji Stay with me now, let us begin again"
+  }
+ ],
+ "words": [
+  {
+   "word": "I",
+   "start": 5.76,
+   "end": 6.64,
+   "prob": 0.156
+  },
+  {
+   "word": "kept",
+   "start": 6.64,
+   "end": 7.52,
+   "prob": 0.943
+  },
+  {
+   "word": "this",
+   "start": 7.52,
+   "end": 8.0,
+   "prob": 0.992
+  },
+  {
+   "word": "close,",
+   "start": 8.0,
+   "end": 8.5,
+   "prob": 0.917
+  },
+  {
+   "word": "so",
+   "start": 8.8,
+   "end": 8.88,
+   "prob": 0.984
+  },
+  {
+   "word": "close",
+   "start": 8.88,
+   "end": 9.26,
+   "prob": 0.999
+  },
+  {
+   "word": "to",
+   "start": 9.26,
+   "end": 9.54,
+   "prob": 0.994
+  },
+  {
+   "word": "my",
+   "start": 9.54,
+   "end": 9.82,
+   "prob": 0.998
+  },
+  {
+   "word": "heart",
+   "start": 9.82,
+   "end": 12.08,
+   "prob": 0.999
+  },
+  {
+   "word": "Every",
+   "start": 12.08,
+   "end": 20.74,
+   "prob": 0.813
+  },
+  {
+   "word": "evening",
+   "start": 20.74,
+   "end": 21.28,
+   "prob": 0.997
+  },
+  {
+   "word": "I",
+   "start": 21.28,
+   "end": 21.66,
+   "prob": 0.846
+  },
+  {
+   "word": "come",
+   "start": 21.66,
+   "end": 21.92,
+   "prob": 0.943
+  },
+  {
+   "word": "home",
+   "start": 21.92,
+   "end": 22.32,
+   "prob": 0.999
+  },
+  {
+   "word": "smiling",
+   "start": 22.32,
+   "end": 23.08,
+   "prob": 0.942
+  },
+  {
+   "word": "And",
+   "start": 23.08,
+   "end": 23.44,
+   "prob": 0.012
+  },
+  {
+   "word": "I",
+   "start": 23.44,
+   "end": 24.04,
+   "prob": 0.886
+  },
+  {
+   "word": "set",
+   "start": 24.04,
+   "end": 24.38,
+   "prob": 0.051
+  },
+  {
+   "word": "my",
+   "start": 24.38,
+   "end": 24.78,
+   "prob": 0.993
+  },
+  {
+   "word": "face",
+   "start": 24.78,
+   "end": 25.3,
+   "prob": 0.998
+  },
+  {
+   "word": "like",
+   "start": 25.3,
+   "end": 25.7,
+   "prob": 0.979
+  },
+  {
+   "word": "nothing's",
+   "start": 25.7,
+   "end": 26.42,
+   "prob": 0.958
+  },
+  {
+   "word": "wrong",
+   "start": 26.42,
+   "end": 26.86,
+   "prob": 0.999
+  },
+  {
+   "word": "You",
+   "start": 26.86,
+   "end": 27.4,
+   "prob": 0.369
+  },
+  {
+   "word": "ask",
+   "start": 27.4,
+   "end": 27.82,
+   "prob": 0.451
+  },
+  {
+   "word": "me,",
+   "start": 27.82,
+   "end": 28.12,
+   "prob": 0.996
+  },
+  {
+   "word": "how",
+   "start": 28.2,
+   "end": 28.4,
+   "prob": 0.252
+  },
+  {
+   "word": "was",
+   "start": 28.4,
+   "end": 28.72,
+   "prob": 0.897
+  },
+  {
+   "word": "your",
+   "start": 28.72,
+   "end": 28.92,
+   "prob": 0.97
+  },
+  {
+   "word": "day,",
+   "start": 28.92,
+   "end": 29.24,
+   "prob": 0.894
+  },
+  {
+   "word": "ji?",
+   "start": 29.66,
+   "end": 29.92,
+   "prob": 0.432
+  },
+  {
+   "word": "And",
+   "start": 30.46,
+   "end": 30.76,
+   "prob": 0.968
+  },
+  {
+   "word": "I",
+   "start": 30.76,
+   "end": 30.96,
+   "prob": 0.988
+  },
+  {
+   "word": "say,",
+   "start": 30.96,
+   "end": 31.26,
+   "prob": 0.98
+  },
+  {
+   "word": "fine,",
+   "start": 31.52,
+   "end": 31.88,
+   "prob": 0.847
+  },
+  {
+   "word": "though",
+   "start": 32.02,
+   "end": 32.24,
+   "prob": 0.987
+  },
+  {
+   "word": "I",
+   "start": 32.24,
+   "end": 32.46,
+   "prob": 0.985
+  },
+  {
+   "word": "know",
+   "start": 32.46,
+   "end": 32.68,
+   "prob": 0.999
+  },
+  {
+   "word": "it's",
+   "start": 32.68,
+   "end": 33.12,
+   "prob": 0.996
+  },
+  {
+   "word": "not",
+   "start": 33.12,
+   "end": 33.6,
+   "prob": 0.999
+  },
+  {
+   "word": "There",
+   "start": 33.6,
+   "end": 34.08,
+   "prob": 0.89
+  },
+  {
+   "word": "is",
+   "start": 34.08,
+   "end": 34.54,
+   "prob": 0.994
+  },
+  {
+   "word": "a",
+   "start": 34.54,
+   "end": 34.88,
+   "prob": 0.929
+  },
+  {
+   "word": "room",
+   "start": 34.88,
+   "end": 35.22,
+   "prob": 0.999
+  },
+  {
+   "word": "inside",
+   "start": 35.22,
+   "end": 35.84,
+   "prob": 0.997
+  },
+  {
+   "word": "my",
+   "start": 35.84,
+   "end": 36.32,
+   "prob": 0.998
+  },
+  {
+   "word": "chest",
+   "start": 36.32,
+   "end": 36.92,
+   "prob": 1.0
+  },
+  {
+   "word": "Where",
+   "start": 36.92,
+   "end": 37.24,
+   "prob": 0.909
+  },
+  {
+   "word": "I",
+   "start": 37.24,
+   "end": 37.44,
+   "prob": 0.997
+  },
+  {
+   "word": "keep",
+   "start": 37.44,
+   "end": 37.78,
+   "prob": 0.996
+  },
+  {
+   "word": "the",
+   "start": 37.78,
+   "end": 38.1,
+   "prob": 0.998
+  },
+  {
+   "word": "words",
+   "start": 38.1,
+   "end": 38.52,
+   "prob": 0.999
+  },
+  {
+   "word": "I",
+   "start": 38.52,
+   "end": 38.96,
+   "prob": 0.977
+  },
+  {
+   "word": "never",
+   "start": 38.96,
+   "end": 39.48,
+   "prob": 0.974
+  },
+  {
+   "word": "said",
+   "start": 39.48,
+   "end": 40.12,
+   "prob": 0.999
+  },
+  {
+   "word": "I",
+   "start": 40.12,
+   "end": 40.74,
+   "prob": 0.991
+  },
+  {
+   "word": "wanted",
+   "start": 40.74,
+   "end": 41.1,
+   "prob": 0.991
+  },
+  {
+   "word": "peace,",
+   "start": 41.1,
+   "end": 41.8,
+   "prob": 0.997
+  },
+  {
+   "word": "I",
+   "start": 42.1,
+   "end": 42.44,
+   "prob": 0.999
+  },
+  {
+   "word": "wanted",
+   "start": 42.44,
+   "end": 42.84,
+   "prob": 0.999
+  },
+  {
+   "word": "time",
+   "start": 42.84,
+   "end": 43.5,
+   "prob": 0.999
+  },
+  {
+   "word": "I",
+   "start": 43.5,
+   "end": 44.06,
+   "prob": 0.966
+  },
+  {
+   "word": "thought",
+   "start": 44.06,
+   "end": 44.38,
+   "prob": 0.997
+  },
+  {
+   "word": "the",
+   "start": 44.38,
+   "end": 44.76,
+   "prob": 0.984
+  },
+  {
+   "word": "truth",
+   "start": 44.76,
+   "end": 45.16,
+   "prob": 0.999
+  },
+  {
+   "word": "could",
+   "start": 45.16,
+   "end": 45.54,
+   "prob": 0.992
+  },
+  {
+   "word": "wait",
+   "start": 45.54,
+   "end": 45.98,
+   "prob": 0.995
+  },
+  {
+   "word": "a",
+   "start": 45.98,
+   "end": 46.34,
+   "prob": 0.917
+  },
+  {
+   "word": "while",
+   "start": 46.34,
+   "end": 47.02,
+   "prob": 1.0
+  },
+  {
+   "word": "But",
+   "start": 47.02,
+   "end": 48.84,
+   "prob": 0.977
+  },
+  {
+   "word": "the",
+   "start": 48.84,
+   "end": 49.1,
+   "prob": 0.992
+  },
+  {
+   "word": "silence",
+   "start": 49.1,
+   "end": 49.72,
+   "prob": 0.998
+  },
+  {
+   "word": "has",
+   "start": 49.72,
+   "end": 50.38,
+   "prob": 0.998
+  },
+  {
+   "word": "a",
+   "start": 50.38,
+   "end": 50.74,
+   "prob": 0.781
+  },
+  {
+   "word": "way",
+   "start": 50.74,
+   "end": 50.96,
+   "prob": 0.902
+  },
+  {
+   "word": "tonight",
+   "start": 50.96,
+   "end": 51.74,
+   "prob": 0.991
+  },
+  {
+   "word": "And",
+   "start": 51.74,
+   "end": 52.18,
+   "prob": 0.013
+  },
+  {
+   "word": "it",
+   "start": 52.18,
+   "end": 52.38,
+   "prob": 0.896
+  },
+  {
+   "word": "follows",
+   "start": 52.38,
+   "end": 52.84,
+   "prob": 0.992
+  },
+  {
+   "word": "me",
+   "start": 52.84,
+   "end": 53.52,
+   "prob": 0.994
+  },
+  {
+   "word": "from",
+   "start": 53.52,
+   "end": 53.96,
+   "prob": 0.963
+  },
+  {
+   "word": "room",
+   "start": 53.96,
+   "end": 54.38,
+   "prob": 0.992
+  },
+  {
+   "word": "to",
+   "start": 54.38,
+   "end": 54.72,
+   "prob": 0.995
+  },
+  {
+   "word": "room",
+   "start": 54.72,
+   "end": 55.3,
+   "prob": 0.986
+  },
+  {
+   "word": "I",
+   "start": 55.3,
+   "end": 55.66,
+   "prob": 0.801
+  },
+  {
+   "word": "stand",
+   "start": 55.66,
+   "end": 56.1,
+   "prob": 0.998
+  },
+  {
+   "word": "at",
+   "start": 56.1,
+   "end": 56.36,
+   "prob": 0.997
+  },
+  {
+   "word": "the",
+   "start": 56.36,
+   "end": 56.64,
+   "prob": 0.999
+  },
+  {
+   "word": "edge",
+   "start": 56.64,
+   "end": 56.96,
+   "prob": 0.998
+  },
+  {
+   "word": "of",
+   "start": 56.96,
+   "end": 57.22,
+   "prob": 0.996
+  },
+  {
+   "word": "my",
+   "start": 57.22,
+   "end": 57.54,
+   "prob": 0.999
+  },
+  {
+   "word": "own",
+   "start": 57.54,
+   "end": 57.88,
+   "prob": 0.999
+  },
+  {
+   "word": "reply",
+   "start": 57.88,
+   "end": 58.84,
+   "prob": 0.992
+  },
+  {
+   "word": "Afraid",
+   "start": 59.66,
+   "end": 60.3,
+   "prob": 0.96
+  },
+  {
+   "word": "of",
+   "start": 60.3,
+   "end": 60.58,
+   "prob": 0.996
+  },
+  {
+   "word": "what",
+   "start": 60.58,
+   "end": 60.88,
+   "prob": 0.998
+  },
+  {
+   "word": "comes",
+   "start": 60.88,
+   "end": 61.42,
+   "prob": 0.998
+  },
+  {
+   "word": "into",
+   "start": 61.42,
+   "end": 62.2,
+   "prob": 0.994
+  },
+  {
+   "word": "view",
+   "start": 62.2,
+   "end": 63.12,
+   "prob": 0.999
+  },
+  {
+   "word": "I'm",
+   "start": 63.12,
+   "end": 65.66,
+   "prob": 0.967
+  },
+  {
+   "word": "just",
+   "start": 65.66,
+   "end": 66.48,
+   "prob": 0.987
+  },
+  {
+   "word": "tired,",
+   "start": 66.48,
+   "end": 67.52,
+   "prob": 0.995
+  },
+  {
+   "word": "ji",
+   "start": 67.96,
+   "end": 68.62,
+   "prob": 0.283
+  },
+  {
+   "word": "Tired",
+   "start": 68.62,
+   "end": 69.56,
+   "prob": 0.721
+  },
+  {
+   "word": "of",
+   "start": 69.56,
+   "end": 69.82,
+   "prob": 0.998
+  },
+  {
+   "word": "holding",
+   "start": 69.82,
+   "end": 70.44,
+   "prob": 0.884
+  },
+  {
+   "word": "what",
+   "start": 70.44,
+   "end": 70.94,
+   "prob": 0.981
+  },
+  {
+   "word": "I",
+   "start": 70.94,
+   "end": 71.32,
+   "prob": 0.985
+  },
+  {
+   "word": "can't",
+   "start": 71.32,
+   "end": 72.02,
+   "prob": 0.971
+  },
+  {
+   "word": "undo",
+   "start": 72.02,
+   "end": 72.46,
+   "prob": 0.999
+  },
+  {
+   "word": "I'm",
+   "start": 72.46,
+   "end": 72.9,
+   "prob": 0.985
+  },
+  {
+   "word": "just",
+   "start": 72.9,
+   "end": 73.2,
+   "prob": 0.995
+  },
+  {
+   "word": "tired,",
+   "start": 73.2,
+   "end": 74.1,
+   "prob": 1.0
+  },
+  {
+   "word": "ji",
+   "start": 74.1,
+   "end": 74.62,
+   "prob": 0.985
+  },
+  {
+   "word": "Tired",
+   "start": 75.58,
+   "end": 76.2,
+   "prob": 0.998
+  },
+  {
+   "word": "of",
+   "start": 76.2,
+   "end": 76.38,
+   "prob": 0.999
+  },
+  {
+   "word": "pretending",
+   "start": 76.38,
+   "end": 77.08,
+   "prob": 0.983
+  },
+  {
+   "word": "I",
+   "start": 77.08,
+   "end": 77.56,
+   "prob": 0.983
+  },
+  {
+   "word": "can",
+   "start": 77.56,
+   "end": 77.96,
+   "prob": 0.998
+  },
+  {
+   "word": "choose",
+   "start": 77.96,
+   "end": 78.62,
+   "prob": 0.752
+  },
+  {
+   "word": "As",
+   "start": 78.62,
+   "end": 78.9,
+   "prob": 0.948
+  },
+  {
+   "word": "you",
+   "start": 78.9,
+   "end": 79.04,
+   "prob": 0.991
+  },
+  {
+   "word": "hear",
+   "start": 79.04,
+   "end": 79.44,
+   "prob": 0.995
+  },
+  {
+   "word": "my",
+   "start": 79.44,
+   "end": 79.98,
+   "prob": 0.996
+  },
+  {
+   "word": "voice",
+   "start": 79.98,
+   "end": 80.6,
+   "prob": 1.0
+  },
+  {
+   "word": "shake",
+   "start": 80.6,
+   "end": 81.36,
+   "prob": 0.894
+  },
+  {
+   "word": "a",
+   "start": 81.36,
+   "end": 81.72,
+   "prob": 0.945
+  },
+  {
+   "word": "little",
+   "start": 81.72,
+   "end": 81.72,
+   "prob": 0.359
+  },
+  {
+   "word": "It's",
+   "start": 82.22,
+   "end": 82.84,
+   "prob": 0.41
+  },
+  {
+   "word": "because",
+   "start": 82.84,
+   "end": 83.3,
+   "prob": 0.769
+  },
+  {
+   "word": "I'm",
+   "start": 83.3,
+   "end": 83.94,
+   "prob": 0.964
+  },
+  {
+   "word": "finally",
+   "start": 83.94,
+   "end": 84.66,
+   "prob": 0.986
+  },
+  {
+   "word": "letting",
+   "start": 84.66,
+   "end": 85.26,
+   "prob": 0.923
+  },
+  {
+   "word": "through",
+   "start": 85.26,
+   "end": 85.86,
+   "prob": 0.988
+  },
+  {
+   "word": "I'm",
+   "start": 85.86,
+   "end": 86.2,
+   "prob": 0.814
+  },
+  {
+   "word": "just",
+   "start": 86.2,
+   "end": 86.52,
+   "prob": 0.991
+  },
+  {
+   "word": "tired,",
+   "start": 86.52,
+   "end": 87.48,
+   "prob": 0.982
+  },
+  {
+   "word": "ji",
+   "start": 87.92,
+   "end": 88.54,
+   "prob": 0.118
+  },
+  {
+   "word": "And",
+   "start": 88.86,
+   "end": 89.48,
+   "prob": 0.699
+  },
+  {
+   "word": "I",
+   "start": 89.48,
+   "end": 89.8,
+   "prob": 0.978
+  },
+  {
+   "word": "need",
+   "start": 89.8,
+   "end": 90.44,
+   "prob": 0.999
+  },
+  {
+   "word": "you",
+   "start": 90.44,
+   "end": 91.08,
+   "prob": 0.991
+  },
+  {
+   "word": "to",
+   "start": 91.08,
+   "end": 91.38,
+   "prob": 0.993
+  },
+  {
+   "word": "see",
+   "start": 91.38,
+   "end": 92.02,
+   "prob": 0.998
+  },
+  {
+   "word": "me",
+   "start": 92.02,
+   "end": 92.78,
+   "prob": 0.98
+  },
+  {
+   "word": "true",
+   "start": 92.78,
+   "end": 93.4,
+   "prob": 0.672
+  },
+  {
+   "word": "You",
+   "start": 100.46,
+   "end": 101.08,
+   "prob": 0.67
+  },
+  {
+   "word": "found",
+   "start": 101.08,
+   "end": 101.38,
+   "prob": 0.992
+  },
+  {
+   "word": "a",
+   "start": 101.38,
+   "end": 101.66,
+   "prob": 0.323
+  },
+  {
+   "word": "letter",
+   "start": 101.66,
+   "end": 102.0,
+   "prob": 0.998
+  },
+  {
+   "word": "on",
+   "start": 102.0,
+   "end": 102.78,
+   "prob": 0.998
+  },
+  {
+   "word": "the",
+   "start": 102.78,
+   "end": 103.12,
+   "prob": 0.987
+  },
+  {
+   "word": "table",
+   "start": 103.12,
+   "end": 103.84,
+   "prob": 0.999
+  },
+  {
+   "word": "And",
+   "start": 103.84,
+   "end": 104.7,
+   "prob": 0.792
+  },
+  {
+   "word": "the",
+   "start": 104.7,
+   "end": 105.0,
+   "prob": 0.988
+  },
+  {
+   "word": "color",
+   "start": 105.0,
+   "end": 105.32,
+   "prob": 0.755
+  },
+  {
+   "word": "left",
+   "start": 105.32,
+   "end": 105.94,
+   "prob": 0.995
+  },
+  {
+   "word": "your",
+   "start": 105.94,
+   "end": 106.26,
+   "prob": 0.996
+  },
+  {
+   "word": "face",
+   "start": 106.26,
+   "end": 107.12,
+   "prob": 1.0
+  },
+  {
+   "word": "I",
+   "start": 107.12,
+   "end": 107.72,
+   "prob": 0.083
+  },
+  {
+   "word": "saw",
+   "start": 107.72,
+   "end": 108.02,
+   "prob": 0.869
+  },
+  {
+   "word": "the",
+   "start": 108.02,
+   "end": 108.26,
+   "prob": 0.991
+  },
+  {
+   "word": "hurt",
+   "start": 108.26,
+   "end": 108.6,
+   "prob": 0.979
+  },
+  {
+   "word": "before",
+   "start": 108.6,
+   "end": 109.16,
+   "prob": 0.994
+  },
+  {
+   "word": "the",
+   "start": 109.16,
+   "end": 109.72,
+   "prob": 0.995
+  },
+  {
+   "word": "question",
+   "start": 109.72,
+   "end": 110.54,
+   "prob": 0.996
+  },
+  {
+   "word": "It",
+   "start": 110.54,
+   "end": 111.32,
+   "prob": 0.446
+  },
+  {
+   "word": "was",
+   "start": 111.32,
+   "end": 111.52,
+   "prob": 0.998
+  },
+  {
+   "word": "standing",
+   "start": 111.52,
+   "end": 112.14,
+   "prob": 0.983
+  },
+  {
+   "word": "in",
+   "start": 112.14,
+   "end": 112.68,
+   "prob": 0.998
+  },
+  {
+   "word": "the",
+   "start": 112.68,
+   "end": 112.94,
+   "prob": 0.986
+  },
+  {
+   "word": "space",
+   "start": 112.94,
+   "end": 113.76,
+   "prob": 0.998
+  },
+  {
+   "word": "I",
+   "start": 113.76,
+   "end": 114.14,
+   "prob": 0.973
+  },
+  {
+   "word": "meant",
+   "start": 114.14,
+   "end": 114.4,
+   "prob": 0.971
+  },
+  {
+   "word": "to",
+   "start": 114.4,
+   "end": 114.7,
+   "prob": 0.998
+  },
+  {
+   "word": "tell",
+   "start": 114.7,
+   "end": 115.22,
+   "prob": 0.998
+  },
+  {
+   "word": "you",
+   "start": 115.22,
+   "end": 115.74,
+   "prob": 0.996
+  },
+  {
+   "word": "in",
+   "start": 115.74,
+   "end": 116.16,
+   "prob": 0.985
+  },
+  {
+   "word": "the",
+   "start": 116.16,
+   "end": 116.48,
+   "prob": 0.999
+  },
+  {
+   "word": "morning",
+   "start": 116.48,
+   "end": 117.2,
+   "prob": 0.96
+  },
+  {
+   "word": "But",
+   "start": 117.2,
+   "end": 117.98,
+   "prob": 0.928
+  },
+  {
+   "word": "my",
+   "start": 117.98,
+   "end": 118.28,
+   "prob": 0.995
+  },
+  {
+   "word": "courage",
+   "start": 118.28,
+   "end": 118.78,
+   "prob": 0.999
+  },
+  {
+   "word": "failed",
+   "start": 118.78,
+   "end": 119.44,
+   "prob": 0.993
+  },
+  {
+   "word": "again",
+   "start": 119.44,
+   "end": 120.38,
+   "prob": 0.997
+  },
+  {
+   "word": "Now",
+   "start": 120.88,
+   "end": 121.36,
+   "prob": 0.955
+  },
+  {
+   "word": "the",
+   "start": 121.36,
+   "end": 121.6,
+   "prob": 0.987
+  },
+  {
+   "word": "truth",
+   "start": 121.6,
+   "end": 121.9,
+   "prob": 0.997
+  },
+  {
+   "word": "is",
+   "start": 121.9,
+   "end": 122.32,
+   "prob": 0.997
+  },
+  {
+   "word": "in",
+   "start": 122.32,
+   "end": 122.86,
+   "prob": 0.999
+  },
+  {
+   "word": "the",
+   "start": 122.86,
+   "end": 123.18,
+   "prob": 0.991
+  },
+  {
+   "word": "light",
+   "start": 123.18,
+   "end": 123.64,
+   "prob": 0.964
+  },
+  {
+   "word": "And",
+   "start": 123.64,
+   "end": 124.72,
+   "prob": 0.958
+  },
+  {
+   "word": "I",
+   "start": 124.72,
+   "end": 124.92,
+   "prob": 0.988
+  },
+  {
+   "word": "cannot",
+   "start": 124.92,
+   "end": 125.32,
+   "prob": 0.948
+  },
+  {
+   "word": "hide",
+   "start": 125.32,
+   "end": 126.04,
+   "prob": 0.999
+  },
+  {
+   "word": "from",
+   "start": 126.04,
+   "end": 126.42,
+   "prob": 0.998
+  },
+  {
+   "word": "it,",
+   "start": 126.42,
+   "end": 126.96,
+   "prob": 0.999
+  },
+  {
+   "word": "my",
+   "start": 127.14,
+   "end": 127.52,
+   "prob": 0.995
+  },
+  {
+   "word": "friend",
+   "start": 127.52,
+   "end": 128.46,
+   "prob": 0.998
+  },
+  {
+   "word": "I",
+   "start": 132.28,
+   "end": 133.44,
+   "prob": 0.112
+  },
+  {
+   "word": "never",
+   "start": 133.44,
+   "end": 134.6,
+   "prob": 0.691
+  },
+  {
+   "word": "meant",
+   "start": 134.6,
+   "end": 135.28,
+   "prob": 0.967
+  },
+  {
+   "word": "to",
+   "start": 135.28,
+   "end": 135.64,
+   "prob": 0.985
+  },
+  {
+   "word": "break",
+   "start": 135.64,
+   "end": 136.04,
+   "prob": 0.976
+  },
+  {
+   "word": "your",
+   "start": 136.04,
+   "end": 136.38,
+   "prob": 0.955
+  },
+  {
+   "word": "trust",
+   "start": 136.38,
+   "end": 137.14,
+   "prob": 0.998
+  },
+  {
+   "word": "I",
+   "start": 137.14,
+   "end": 137.5,
+   "prob": 0.549
+  },
+  {
+   "word": "never",
+   "start": 137.5,
+   "end": 137.96,
+   "prob": 0.989
+  },
+  {
+   "word": "meant",
+   "start": 137.96,
+   "end": 138.62,
+   "prob": 0.995
+  },
+  {
+   "word": "to",
+   "start": 138.62,
+   "end": 138.94,
+   "prob": 0.996
+  },
+  {
+   "word": "turn",
+   "start": 138.94,
+   "end": 139.52,
+   "prob": 0.997
+  },
+  {
+   "word": "away",
+   "start": 139.52,
+   "end": 140.38,
+   "prob": 0.991
+  },
+  {
+   "word": "But",
+   "start": 140.38,
+   "end": 140.8,
+   "prob": 0.787
+  },
+  {
+   "word": "carrying",
+   "start": 140.8,
+   "end": 141.28,
+   "prob": 0.97
+  },
+  {
+   "word": "this",
+   "start": 141.28,
+   "end": 142.0,
+   "prob": 0.996
+  },
+  {
+   "word": "alone",
+   "start": 142.0,
+   "end": 142.74,
+   "prob": 0.498
+  },
+  {
+   "word": "has",
+   "start": 142.74,
+   "end": 143.08,
+   "prob": 0.926
+  },
+  {
+   "word": "worn",
+   "start": 143.08,
+   "end": 143.58,
+   "prob": 0.988
+  },
+  {
+   "word": "my",
+   "start": 143.58,
+   "end": 143.98,
+   "prob": 0.997
+  },
+  {
+   "word": "voice",
+   "start": 143.98,
+   "end": 144.48,
+   "prob": 1.0
+  },
+  {
+   "word": "away",
+   "start": 144.48,
+   "end": 145.06,
+   "prob": 0.995
+  },
+  {
+   "word": "I'm",
+   "start": 147.82,
+   "end": 148.98,
+   "prob": 0.971
+  },
+  {
+   "word": "just",
+   "start": 148.98,
+   "end": 149.7,
+   "prob": 0.991
+  },
+  {
+   "word": "tired,",
+   "start": 149.7,
+   "end": 150.84,
+   "prob": 0.996
+  },
+  {
+   "word": "ji",
+   "start": 151.28,
+   "end": 151.96,
+   "prob": 0.378
+  },
+  {
+   "word": "Tired",
+   "start": 151.96,
+   "end": 152.9,
+   "prob": 0.731
+  },
+  {
+   "word": "of",
+   "start": 152.9,
+   "end": 153.14,
+   "prob": 0.998
+  },
+  {
+   "word": "living",
+   "start": 153.14,
+   "end": 153.76,
+   "prob": 0.981
+  },
+  {
+   "word": "half",
+   "start": 153.76,
+   "end": 154.28,
+   "prob": 0.938
+  },
+  {
+   "word": "a",
+   "start": 154.28,
+   "end": 154.64,
+   "prob": 0.583
+  },
+  {
+   "word": "life",
+   "start": 154.64,
+   "end": 155.58,
+   "prob": 0.997
+  },
+  {
+   "word": "I'm",
+   "start": 155.58,
+   "end": 156.2,
+   "prob": 0.788
+  },
+  {
+   "word": "just",
+   "start": 156.2,
+   "end": 156.56,
+   "prob": 0.951
+  },
+  {
+   "word": "tired,",
+   "start": 156.56,
+   "end": 157.48,
+   "prob": 0.983
+  },
+  {
+   "word": "ji",
+   "start": 157.96,
+   "end": 158.6,
+   "prob": 0.16
+  },
+  {
+   "word": "Tired",
+   "start": 158.6,
+   "end": 159.58,
+   "prob": 0.653
+  },
+  {
+   "word": "of",
+   "start": 159.58,
+   "end": 159.82,
+   "prob": 0.996
+  },
+  {
+   "word": "cutting",
+   "start": 159.82,
+   "end": 160.32,
+   "prob": 0.922
+  },
+  {
+   "word": "true",
+   "start": 160.32,
+   "end": 160.84,
+   "prob": 0.327
+  },
+  {
+   "word": "to",
+   "start": 160.84,
+   "end": 161.26,
+   "prob": 0.946
+  },
+  {
+   "word": "size",
+   "start": 161.26,
+   "end": 161.88,
+   "prob": 0.975
+  },
+  {
+   "word": "If",
+   "start": 161.88,
+   "end": 162.22,
+   "prob": 0.94
+  },
+  {
+   "word": "my",
+   "start": 162.22,
+   "end": 162.52,
+   "prob": 0.998
+  },
+  {
+   "word": "eyes",
+   "start": 162.52,
+   "end": 163.08,
+   "prob": 0.997
+  },
+  {
+   "word": "look",
+   "start": 163.08,
+   "end": 163.62,
+   "prob": 0.98
+  },
+  {
+   "word": "like",
+   "start": 163.62,
+   "end": 164.0,
+   "prob": 0.997
+  },
+  {
+   "word": "they",
+   "start": 164.0,
+   "end": 164.48,
+   "prob": 0.991
+  },
+  {
+   "word": "are",
+   "start": 164.48,
+   "end": 164.94,
+   "prob": 0.973
+  },
+  {
+   "word": "begging",
+   "start": 164.94,
+   "end": 165.42,
+   "prob": 0.893
+  },
+  {
+   "word": "It's",
+   "start": 165.42,
+   "end": 166.22,
+   "prob": 0.96
+  },
+  {
+   "word": "because",
+   "start": 166.22,
+   "end": 166.84,
+   "prob": 0.996
+  },
+  {
+   "word": "I",
+   "start": 166.84,
+   "end": 167.28,
+   "prob": 0.981
+  },
+  {
+   "word": "don't",
+   "start": 167.28,
+   "end": 167.66,
+   "prob": 0.998
+  },
+  {
+   "word": "know",
+   "start": 167.66,
+   "end": 168.16,
+   "prob": 0.995
+  },
+  {
+   "word": "how",
+   "start": 168.16,
+   "end": 168.52,
+   "prob": 0.997
+  },
+  {
+   "word": "to",
+   "start": 168.52,
+   "end": 168.8,
+   "prob": 0.999
+  },
+  {
+   "word": "lie",
+   "start": 168.8,
+   "end": 169.28,
+   "prob": 0.997
+  },
+  {
+   "word": "I'm",
+   "start": 169.28,
+   "end": 169.58,
+   "prob": 0.983
+  },
+  {
+   "word": "just",
+   "start": 169.58,
+   "end": 169.86,
+   "prob": 0.996
+  },
+  {
+   "word": "tired,",
+   "start": 169.86,
+   "end": 170.82,
+   "prob": 0.999
+  },
+  {
+   "word": "ji",
+   "start": 171.3,
+   "end": 172.24,
+   "prob": 0.989
+  },
+  {
+   "word": "Please",
+   "start": 172.24,
+   "end": 173.16,
+   "prob": 0.993
+  },
+  {
+   "word": "hear",
+   "start": 173.16,
+   "end": 173.76,
+   "prob": 0.978
+  },
+  {
+   "word": "me",
+   "start": 173.76,
+   "end": 174.4,
+   "prob": 0.998
+  },
+  {
+   "word": "before",
+   "start": 174.4,
+   "end": 175.02,
+   "prob": 0.815
+  },
+  {
+   "word": "we",
+   "start": 175.02,
+   "end": 175.6,
+   "prob": 0.986
+  },
+  {
+   "word": "say",
+   "start": 175.6,
+   "end": 176.06,
+   "prob": 0.998
+  },
+  {
+   "word": "goodbye",
+   "start": 176.06,
+   "end": 177.12,
+   "prob": 0.985
+  },
+  {
+   "word": "Maybe",
+   "start": 181.32,
+   "end": 182.44,
+   "prob": 0.002
+  },
+  {
+   "word": "love",
+   "start": 182.44,
+   "end": 183.56,
+   "prob": 0.516
+  },
+  {
+   "word": "can",
+   "start": 183.56,
+   "end": 183.84,
+   "prob": 0.976
+  },
+  {
+   "word": "hold",
+   "start": 183.84,
+   "end": 184.44,
+   "prob": 0.993
+  },
+  {
+   "word": "the",
+   "start": 184.44,
+   "end": 184.74,
+   "prob": 0.987
+  },
+  {
+   "word": "fracture",
+   "start": 184.74,
+   "end": 185.34,
+   "prob": 0.97
+  },
+  {
+   "word": "Maybe",
+   "start": 185.34,
+   "end": 186.26,
+   "prob": 0.557
+  },
+  {
+   "word": "truth",
+   "start": 186.26,
+   "end": 186.76,
+   "prob": 0.972
+  },
+  {
+   "word": "can",
+   "start": 186.76,
+   "end": 187.22,
+   "prob": 0.995
+  },
+  {
+   "word": "let",
+   "start": 187.22,
+   "end": 187.66,
+   "prob": 0.996
+  },
+  {
+   "word": "us",
+   "start": 187.66,
+   "end": 187.94,
+   "prob": 0.998
+  },
+  {
+   "word": "stay",
+   "start": 187.94,
+   "end": 188.68,
+   "prob": 0.998
+  },
+  {
+   "word": "If",
+   "start": 188.68,
+   "end": 189.32,
+   "prob": 0.96
+  },
+  {
+   "word": "we",
+   "start": 189.32,
+   "end": 189.6,
+   "prob": 0.998
+  },
+  {
+   "word": "walk",
+   "start": 189.6,
+   "end": 190.22,
+   "prob": 0.997
+  },
+  {
+   "word": "through",
+   "start": 190.22,
+   "end": 190.56,
+   "prob": 0.989
+  },
+  {
+   "word": "this",
+   "start": 190.56,
+   "end": 191.14,
+   "prob": 0.996
+  },
+  {
+   "word": "together",
+   "start": 191.14,
+   "end": 191.86,
+   "prob": 0.999
+  },
+  {
+   "word": "We",
+   "start": 191.86,
+   "end": 192.58,
+   "prob": 0.939
+  },
+  {
+   "word": "may",
+   "start": 192.58,
+   "end": 192.9,
+   "prob": 0.992
+  },
+  {
+   "word": "find",
+   "start": 192.9,
+   "end": 193.68,
+   "prob": 0.999
+  },
+  {
+   "word": "a",
+   "start": 193.68,
+   "end": 193.92,
+   "prob": 0.993
+  },
+  {
+   "word": "kinder",
+   "start": 193.92,
+   "end": 194.8,
+   "prob": 0.994
+  },
+  {
+   "word": "way",
+   "start": 194.8,
+   "end": 195.36,
+   "prob": 0.999
+  },
+  {
+   "word": "I'm",
+   "start": 197.82,
+   "end": 198.94,
+   "prob": 0.959
+  },
+  {
+   "word": "just",
+   "start": 198.94,
+   "end": 199.78,
+   "prob": 0.995
+  },
+  {
+   "word": "tired,",
+   "start": 199.78,
+   "end": 200.84,
+   "prob": 0.956
+  },
+  {
+   "word": "ji",
+   "start": 201.28,
+   "end": 201.6,
+   "prob": 0.389
+  },
+  {
+   "word": "But",
+   "start": 201.6,
+   "end": 202.42,
+   "prob": 0.678
+  },
+  {
+   "word": "I",
+   "start": 202.42,
+   "end": 202.86,
+   "prob": 0.974
+  },
+  {
+   "word": "am",
+   "start": 202.86,
+   "end": 203.1,
+   "prob": 0.813
+  },
+  {
+   "word": "still",
+   "start": 203.1,
+   "end": 203.62,
+   "prob": 0.998
+  },
+  {
+   "word": "here",
+   "start": 203.62,
+   "end": 203.9,
+   "prob": 0.991
+  },
+  {
+   "word": "by",
+   "start": 203.9,
+   "end": 204.32,
+   "prob": 0.994
+  },
+  {
+   "word": "your",
+   "start": 204.32,
+   "end": 204.78,
+   "prob": 0.994
+  },
+  {
+   "word": "side",
+   "start": 204.78,
+   "end": 205.34,
+   "prob": 1.0
+  },
+  {
+   "word": "I'm",
+   "start": 205.75,
+   "end": 206.22,
+   "prob": 0.636
+  },
+  {
+   "word": "just",
+   "start": 206.22,
+   "end": 206.56,
+   "prob": 0.968
+  },
+  {
+   "word": "tired,",
+   "start": 206.56,
+   "end": 207.46,
+   "prob": 0.856
+  },
+  {
+   "word": "ji",
+   "start": 207.9,
+   "end": 208.48,
+   "prob": 0.235
+  },
+  {
+   "word": "And",
+   "start": 208.48,
+   "end": 209.12,
+   "prob": 0.571
+  },
+  {
+   "word": "I",
+   "start": 209.12,
+   "end": 209.62,
+   "prob": 0.976
+  },
+  {
+   "word": "wanna",
+   "start": 209.62,
+   "end": 210.4,
+   "prob": 0.83
+  },
+  {
+   "word": "make",
+   "start": 210.4,
+   "end": 210.94,
+   "prob": 0.993
+  },
+  {
+   "word": "this",
+   "start": 210.94,
+   "end": 211.34,
+   "prob": 0.996
+  },
+  {
+   "word": "right",
+   "start": 211.34,
+   "end": 211.82,
+   "prob": 0.997
+  },
+  {
+   "word": "If",
+   "start": 211.82,
+   "end": 212.08,
+   "prob": 0.939
+  },
+  {
+   "word": "you",
+   "start": 212.08,
+   "end": 212.2,
+   "prob": 0.994
+  },
+  {
+   "word": "can",
+   "start": 212.2,
+   "end": 212.44,
+   "prob": 0.92
+  },
+  {
+   "word": "hold",
+   "start": 212.44,
+   "end": 212.78,
+   "prob": 0.993
+  },
+  {
+   "word": "my",
+   "start": 212.78,
+   "end": 213.18,
+   "prob": 0.996
+  },
+  {
+   "word": "hand",
+   "start": 213.18,
+   "end": 213.62,
+   "prob": 0.995
+  },
+  {
+   "word": "for",
+   "start": 213.62,
+   "end": 213.94,
+   "prob": 0.932
+  },
+  {
+   "word": "one",
+   "start": 213.94,
+   "end": 214.32,
+   "prob": 0.995
+  },
+  {
+   "word": "more",
+   "start": 214.32,
+   "end": 214.62,
+   "prob": 0.992
+  },
+  {
+   "word": "moment",
+   "start": 214.62,
+   "end": 215.32,
+   "prob": 0.998
+  },
+  {
+   "word": "We",
+   "start": 215.32,
+   "end": 216.12,
+   "prob": 0.961
+  },
+  {
+   "word": "can",
+   "start": 216.12,
+   "end": 216.4,
+   "prob": 0.997
+  },
+  {
+   "word": "learn",
+   "start": 216.4,
+   "end": 217.0,
+   "prob": 0.997
+  },
+  {
+   "word": "to",
+   "start": 217.0,
+   "end": 217.28,
+   "prob": 0.955
+  },
+  {
+   "word": "breathe",
+   "start": 217.28,
+   "end": 217.74,
+   "prob": 0.863
+  },
+  {
+   "word": "again",
+   "start": 217.74,
+   "end": 218.4,
+   "prob": 0.978
+  },
+  {
+   "word": "tonight",
+   "start": 218.4,
+   "end": 219.26,
+   "prob": 0.995
+  },
+  {
+   "word": "I'm",
+   "start": 219.26,
+   "end": 219.58,
+   "prob": 0.983
+  },
+  {
+   "word": "just",
+   "start": 219.58,
+   "end": 219.84,
+   "prob": 0.997
+  },
+  {
+   "word": "tired,",
+   "start": 219.84,
+   "end": 220.78,
+   "prob": 0.999
+  },
+  {
+   "word": "ji",
+   "start": 221.28,
+   "end": 222.08,
+   "prob": 0.993
+  },
+  {
+   "word": "Stay",
+   "start": 222.08,
+   "end": 223.14,
+   "prob": 0.991
+  },
+  {
+   "word": "with",
+   "start": 223.14,
+   "end": 223.58,
+   "prob": 0.999
+  },
+  {
+   "word": "me",
+   "start": 223.58,
+   "end": 223.9,
+   "prob": 0.997
+  },
+  {
+   "word": "now,",
+   "start": 223.9,
+   "end": 224.38,
+   "prob": 0.977
+  },
+  {
+   "word": "let",
+   "start": 224.6,
+   "end": 224.82,
+   "prob": 0.952
+  },
+  {
+   "word": "us",
+   "start": 224.82,
+   "end": 225.32,
+   "prob": 0.993
+  },
+  {
+   "word": "begin",
+   "start": 225.32,
+   "end": 225.9,
+   "prob": 0.998
+  },
+  {
+   "word": "again",
+   "start": 225.9,
+   "end": 227.04,
+   "prob": 0.996
+  }
+ ]
+}
