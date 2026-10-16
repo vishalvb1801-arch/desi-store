@@ -13,7 +13,7 @@ Old = C299-B_final.mp4 (3:48.07). New = C299-B_v2.mp4 (3:30.13).
 | n7 | End after "for me." | "for me." ends 3:47.32; file ran to 3:48.05 | Video and audio end 0.50 s after it, at 3:30.1, on clip_61's own frame (no fade to black; 0.25 s audio fade-out only) |
 | n8 | Badminton-trio flash before the kitchen | 2:01.9–2:02.1 (0.27 s) | clip_26 now stops before its group-laughing shot; empty court extended to 1.46 s (1:43.0–1:44.4), then the kitchen at 1:44.4 |
 | n9 | Wide-bandhgala flash after "felt like me" | 2:47.7–2:48.0 (0.23 s) | clip_40 stops inside its close-up; close-up runs 2:28.8–2:30.3 (1.45 s). The v1 crossfade into line 40 is now a hard cut |
-| n10 | Dance jump-cuts, "Then a sangeet… chair at last" | 2:51.0–2:53.6, 4 dance cuts + 2-frame tail | One dance shot (clip_42's close dance, 1 continuous take) 2:33.2–2:34.7 (1.43 s) for "Then a sangeet, dance floor, not"; empty chair 2:34.7–2:35.9 (1.27 s) for "a plastic chair at last" — "chair at last" alone is only 0.83 s, so the chair starts one word earlier to reach ≥ 1.2 s |
+| n10 | Dance jump-cuts, "Then a sangeet… chair at last" | 2:51.0–2:53.6, 4 dance cuts + 2-frame tail | One dance shot (clip_42's close dance, 1 continuous take) 2:33.2–2:34.7 (1.43 s) for "Then a sangeet, dance floor, not"; empty chair 2:34.7–2:35.9 (1.27 s) for "a plastic chair at last" — "chair at last" alone is only 0.83 s, so the chair starts one word earlier to reach ≥ 1.2 s. The chair uses only its clean frames (×1.6) plus a 0.27 s hold on the last one, because the dancer's leg re-enters the frame right after |
 | n11 | Gate-wide flash before "In the saree" | 2:56.0–2:56.3 (0.3 s) | Walk-in shot extended to the cut: 2:35.9–2:38.5 (2.57 s), then "In the saree" |
 | n12 | Phone insert too short | 3:16.1–3:16.8 (0.7 s) | Washroom 2:56.7–2:57.7 (1.00 s, "He ordered at the sink,"); phone 2:57.7–2:59.1 (1.33 s, "cash on delivery, that night") |
 | n13 | Hallway-couple flash, "Rohit / I didn't say" | 3:19.5–3:19.9 (0.4 s) | clip_52 now runs from the end of "alone" through "Rohit… I didn't say a word": 3:01.6–3:03.2 (1.57 s); party walk-past for "walked past her" 3:03.2–3:04.3. clip_54 dropped (same set-up as clip_53 — a 1 s split would be a jump cut) |
@@ -66,7 +66,7 @@ Old = C299-B_final.mp4 (3:48.07). New = C299-B_v2.mp4 (3:30.13).
 | 39 | It fit, and I couldn't speak anymore | 2:42.7 | 2:24.8 | clip_39 [0–74] ×1.01, 3.10s |
 | 40 | 'Cause I finally felt like me | 2:45.2 | 2:27.9 | clip_40 [0–58] ×0.99, 2.40s |
 | 41 | A friend brought Priya, and the divorce came fast | 2:48.0 | 2:30.3 | clip_41 [0–71] ×1.00, 2.97s |
-| 42 | Then a sangeet dance floor, not a plastic chair at last | 2:51.0 | 2:33.2 | clip_42 [84–121] ×0.93, 1.43s; clip_42 [60–79] ×1.60, 1.27s |
+| 42 | Then a sangeet dance floor, not a plastic chair at last | 2:51.0 | 2:33.2 | clip_42 [84–121] ×0.93, 1.43s; clip_42 [60–75] ×1.60, 1.27s (+0.27s hold) |
 | 43 | My wife walked in, same trainer by her side | 2:53.6 | 2:35.9 | clip_43 [0–56] ×1.10, 2.57s |
 | 44 | In the saree I bought her on our anniversary night | 2:56.3 | 2:38.5 | clip_44 [0–68] ×1.00, 2.83s |
 | 45 | Halfway through the song, she was staring, couldn't turn around | 2:59.1 | 2:41.3 | clip_45 [0–66] ×1.01, 2.77s |
