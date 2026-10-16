@@ -6,3 +6,9 @@ edit/work/*.wav
 edit/work/seg/
 edit/work/fonts/
 edit/work/__pycache__/
+edit/v2/*.mp4
+edit/v2/*.wav
+edit/v2/*.mp3
+edit/v2/*.npy
+edit/v2/stems/
+edit/v2/seg/

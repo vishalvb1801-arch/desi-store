@@ -1,0 +1,17 @@
+item,old (C299-A_final.mp4),new (C299-A_v2.mp4),change
+a1,3:26.56–3:38.63 (12.07 s between 'lose' and 'EIS'),3:20.52–3:21.05 (0.53 s),"Removed 3:26.84–3:38.38 = 23 beats (11.54 s), phase-locked, 100 ms crossfade. 'Lose' is a held C5 note + run to 3:34.85 on the vocal stem; it is released with a 0.39 s fade on the vocal stem only (3:26.50–3:26.89), instrumental untouched. Close-up freeze 3:29.5–3:38.5 gone: line 57 is now 5.1 s on its 5.04 s clip (1.01×)."
+a2,3:53.77–4:00.04 outro (frozen from 3:58.1),ends 3:36.69,"Cut 0.50 s after 'me.' (vocal ends 3:53.77). 120 ms audio tail fade; picture runs to the last frame, no fade to black."
+a3,1:38.20–1:41.58 (3.38 s after 'work to do.'),1:35.16–1:35.54 (0.39 s),"Removed 1:38.39–1:41.39 = 6 beats (3.00 s), 100 ms crossfade."
+a4,0:13.94–0:16.43 (2.49 s after 'show me.'),0:13.94–0:14.39 (0.45 s),"Removed 0:14.16–0:16.21 = 4 beats / 1 bar (2.04 s), lands cleanly on the beat."
+a4,0:33.18–0:34.72 (1.54 s after 'stared back'),0:31.14–0:31.68 (0.54 s),"Removed 0:33.47–0:34.47 = 2 beats (1.00 s), lands cleanly on the beat."
+a5,2:25.77–2:25.97 crossfade into 'Cause I finally',hard cut at 2:19.73,6-frame dissolve removed; line 39 no longer runs under line 40.
+a6,0:36.90–0:37.13 closer mirror (clip 9 after its in-clip cut at 2.50 s),line 9: 0:31.67–0:34.07,"line now ends before the in-clip cut (tighter timing), sliver never reached"
+a6,0:43.81–0:44.27 reused stairs wide (clip 11 after its cut at 3.21 s),line 11: 0:37.57–0:41.23,tail shot dropped; preceding shot slowed to 1.14× to fill
+a6,1:55.78–1:56.00 alternate knee rub (clip 30 after its cut at 2.54 s),line 30: 1:47.20–1:49.97,tail shot dropped; preceding shot slowed to 1.09× to fill
+a6,2:08.90–2:09.27 praying hands close-up (clip 34 after its cut at 3.17 s),line 34: 2:00.23–2:03.23,"line now ends before the in-clip cut (tighter timing), sliver never reached"
+a6,2:51.83–2:51.93 phone with 'BIS' label (clip 47 after its cut at 2.96 s),line 47: 2:43.13–2:45.87,"line now ends before the in-clip cut (tighter timing), sliver never reached"
+a6,3:04.51–3:04.67 husband close-up (clip 52 after its cut at 2.04 s),line 52: 2:56.43–2:58.63,tail shot dropped; preceding shot slowed to 1.08× to fill
+a6,3:07.67–3:07.87 Vikram close-up (clip 53 after its cut at 3.00 s),line 53: 2:58.63–3:01.83,tail shot dropped; preceding shot slowed to 1.07× to fill
+a6 (extra),line 5 tail after in-clip cut,,same fix applied: dropped 0.67s tail shot after in-clip cut at 2.29s; slowed to 1.29x
+a6 (extra),line 35 tail after in-clip cut,,same fix applied: dropped 0.07s tail shot after in-clip cut at 2.33s; slowed to 1.03x
+a7,"3:41.17–3:45.23 bottle close-up with misspelled label ('Ayyvabeic', 'PAIN RELEFF')",3:23.13–3:27.97,"Replaced with the clean-label hero shot (clip 31, the 1:56 shot, source 0.6–5.04 s at 1.09×). Clip 58's clean opening shot is kept up to 'Fifteen herbs'. Captions there sit above the cap (y 210)."
