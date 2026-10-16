@@ -1,0 +1,78 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Cap,Poppins,58,&H00E0F4FF,&H00E0F4FF,&H00080A77,&H00080A77,-1,0,0,0,100,100,0,0,3,14,0,5,40,40,0,1
+Style: Hook,Poppins,82,&H00E0F4FF,&H00E0F4FF,&H00080A77,&H00080A77,-1,0,0,0,100,100,1,0,3,18,0,5,40,40,0,1
+Style: Title,Poppins,62,&H00E0F4FF,&H00E0F4FF,&H00080A77,&H00080A77,-1,0,0,0,100,100,0,0,3,16,0,5,40,40,0,1
+Style: Gold,Poppins,56,&H003AA2D4,&H003AA2D4,&H00080A77,&H00080A77,-1,0,0,0,100,100,0,0,3,14,0,5,40,40,0,1
+Style: Offer,Poppins,80,&H003AA2D4,&H003AA2D4,&H00080A77,&H00080A77,-1,0,0,0,100,100,1,0,3,18,0,5,40,40,0,1
+Style: Sub,Poppins,46,&H00E0F4FF,&H00E0F4FF,&H00080A77,&H00080A77,-1,0,0,0,100,100,0,0,3,14,0,5,30,30,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:07.00,0:00:11.82,Cap,,0,0,0,,{\pos(540,1382)}I kept this close,\Nso close to my {\c&H3AA2D4&}heart{\c&HE0F4FF&}
+Dialogue: 0,0:00:20.30,0:00:23.00,Cap,,0,0,0,,{\pos(540,1382)}Every evening I\Ncome home {\c&H3AA2D4&}smiling{\c&HE0F4FF&}
+Dialogue: 0,0:00:23.00,0:00:26.80,Cap,,0,0,0,,{\pos(540,1382)}And I set my face\Nlike {\c&H3AA2D4&}nothing's wrong{\c&HE0F4FF&}
+Dialogue: 0,0:00:26.80,0:00:29.92,Cap,,0,0,0,,{\pos(540,1382)}You ask me, how\Nwas your day, {\c&H3AA2D4&}ji{\c&HE0F4FF&}?
+Dialogue: 0,0:00:30.45,0:00:33.50,Cap,,0,0,0,,{\pos(540,1382)}And I say {\c&H3AA2D4&}fine{\c&HE0F4FF&}, though\NI know it's not
+Dialogue: 0,0:00:33.50,0:00:36.84,Cap,,0,0,0,,{\pos(540,1382)}There is a {\c&H3AA2D4&}room{\c&HE0F4FF&}\Ninside my chest
+Dialogue: 0,0:00:36.90,0:00:40.10,Cap,,0,0,0,,{\pos(540,1382)}Where I keep the\Nwords I {\c&H3AA2D4&}never said{\c&HE0F4FF&}
+Dialogue: 0,0:00:40.10,0:00:43.45,Cap,,0,0,0,,{\pos(540,1382)}I wanted {\c&H3AA2D4&}peace{\c&HE0F4FF&},\NI wanted time
+Dialogue: 0,0:00:43.45,0:00:47.42,Cap,,0,0,0,,{\pos(540,1382)}I thought the {\c&H3AA2D4&}truth{\c&HE0F4FF&}\Ncould wait a while
+Dialogue: 0,0:00:48.00,0:00:51.70,Cap,,0,0,0,,{\pos(540,1382)}But the {\c&H3AA2D4&}silence{\c&HE0F4FF&}\Nhas a way tonight
+Dialogue: 0,0:00:51.70,0:00:55.20,Cap,,0,0,0,,{\pos(540,1382)}And it follows me\Nfrom {\c&H3AA2D4&}room to room{\c&HE0F4FF&}
+Dialogue: 0,0:00:55.20,0:00:59.24,Cap,,0,0,0,,{\pos(540,1382)}I stand at the {\c&H3AA2D4&}edge{\c&HE0F4FF&}\Nof my own reply
+Dialogue: 0,0:00:59.60,0:01:03.52,Cap,,0,0,0,,{\pos(540,1382)}{\c&H3AA2D4&}Afraid{\c&HE0F4FF&} of what\Ncomes into view
+Dialogue: 0,0:01:04.85,0:01:08.65,Cap,,0,0,0,,{\pos(540,1382)}I'm just {\c&H3AA2D4&}tired{\c&HE0F4FF&}, ji
+Dialogue: 0,0:01:08.65,0:01:12.46,Cap,,0,0,0,,{\pos(540,1382)}Tired of holding\Nwhat I {\c&H3AA2D4&}can't undo{\c&HE0F4FF&}
+Dialogue: 0,0:01:12.46,0:01:15.10,Cap,,0,0,0,,{\pos(540,1382)}I'm just {\c&H3AA2D4&}tired{\c&HE0F4FF&}, ji
+Dialogue: 0,0:01:15.40,0:01:18.60,Cap,,0,0,0,,{\pos(540,1382)}Tired of {\c&H3AA2D4&}pretending{\c&HE0F4FF&}\NI can choose
+Dialogue: 0,0:01:18.60,0:01:22.04,Cap,,0,0,0,,{\pos(540,1382)}As you hear my voice\N{\c&H3AA2D4&}shake{\c&HE0F4FF&} a little
+Dialogue: 0,0:01:22.04,0:01:25.66,Cap,,0,0,0,,{\pos(540,1382)}It's because I'm\N{\c&H3AA2D4&}finally{\c&HE0F4FF&} letting through
+Dialogue: 0,0:01:25.84,0:01:28.54,Cap,,0,0,0,,{\pos(540,1382)}I'm just {\c&H3AA2D4&}tired{\c&HE0F4FF&}, ji
+Dialogue: 0,0:01:28.54,0:01:33.80,Cap,,0,0,0,,{\pos(540,1382)}And I need you\Nto {\c&H3AA2D4&}see me true{\c&HE0F4FF&}
+Dialogue: 0,0:01:40.85,0:01:43.83,Cap,,0,0,0,,{\pos(540,1382)}You found a {\c&H3AA2D4&}letter{\c&HE0F4FF&}\Non the table
+Dialogue: 0,0:01:43.83,0:01:47.05,Cap,,0,0,0,,{\pos(540,1382)}And the {\c&H3AA2D4&}colour{\c&HE0F4FF&}\Nleft your face
+Dialogue: 0,0:01:47.05,0:01:50.50,Cap,,0,0,0,,{\pos(540,1382)}I saw the {\c&H3AA2D4&}hurt{\c&HE0F4FF&}\Nbefore the question
+Dialogue: 0,0:01:50.50,0:01:53.75,Cap,,0,0,0,,{\pos(540,1382)}It was standing\Nin the {\c&H3AA2D4&}space{\c&HE0F4FF&}
+Dialogue: 0,0:01:53.75,0:01:57.10,Cap,,0,0,0,,{\pos(540,1382)}I meant to {\c&H3AA2D4&}tell you{\c&HE0F4FF&}\Nin the morning
+Dialogue: 0,0:01:57.10,0:02:00.22,Cap,,0,0,0,,{\pos(540,1382)}But my {\c&H3AA2D4&}courage{\c&HE0F4FF&}\Nfailed again
+Dialogue: 0,0:02:00.22,0:02:03.67,Cap,,0,0,0,,{\pos(540,1382)}Now the {\c&H3AA2D4&}truth{\c&HE0F4FF&}\Nis in the light
+Dialogue: 0,0:02:03.67,0:02:08.86,Cap,,0,0,0,,{\pos(540,1382)}And I cannot {\c&H3AA2D4&}hide{\c&HE0F4FF&}\Nfrom it, my friend
+Dialogue: 0,0:02:12.30,0:02:17.10,Cap,,0,0,0,,{\pos(540,1382)}I never meant to\Nbreak your {\c&H3AA2D4&}trust{\c&HE0F4FF&}
+Dialogue: 0,0:02:17.10,0:02:20.35,Cap,,0,0,0,,{\pos(540,1382)}I never meant\Nto {\c&H3AA2D4&}turn away{\c&HE0F4FF&}
+Dialogue: 0,0:02:20.35,0:02:22.62,Cap,,0,0,0,,{\pos(540,1382)}But carrying\Nthis {\c&H3AA2D4&}alone{\c&HE0F4FF&}
+Dialogue: 0,0:02:22.62,0:02:25.48,Cap,,0,0,0,,{\pos(540,1382)}has worn my {\c&H3AA2D4&}voice{\c&HE0F4FF&} away
+Dialogue: 0,0:02:27.78,0:02:31.96,Cap,,0,0,0,,{\pos(540,1382)}I'm just {\c&H3AA2D4&}tired{\c&HE0F4FF&}, ji
+Dialogue: 0,0:02:31.96,0:02:35.45,Cap,,0,0,0,,{\pos(540,1382)}Tired of living\N{\c&H3AA2D4&}half a life{\c&HE0F4FF&}
+Dialogue: 0,0:02:35.45,0:02:38.60,Cap,,0,0,0,,{\pos(540,1382)}I'm just {\c&H3AA2D4&}tired{\c&HE0F4FF&}, ji
+Dialogue: 0,0:02:38.60,0:02:41.86,Cap,,0,0,0,,{\pos(540,1382)}Tired of cutting\Ntruth to {\c&H3AA2D4&}size{\c&HE0F4FF&}
+Dialogue: 0,0:02:41.86,0:02:45.40,Cap,,0,0,0,,{\pos(540,1382)}If my eyes look like\Nthey are {\c&H3AA2D4&}begging{\c&HE0F4FF&}
+Dialogue: 0,0:02:45.40,0:02:49.27,Cap,,0,0,0,,{\pos(540,1382)}It's because I don't\Nknow how to {\c&H3AA2D4&}lie{\c&HE0F4FF&}
+Dialogue: 0,0:02:49.27,0:02:52.00,Cap,,0,0,0,,{\pos(540,1382)}I'm just {\c&H3AA2D4&}tired{\c&HE0F4FF&}, ji
+Dialogue: 0,0:02:52.00,0:02:57.52,Cap,,0,0,0,,{\pos(540,1382)}Please {\c&H3AA2D4&}hear me{\c&HE0F4FF&} before\Nwe say goodbye
+Dialogue: 0,0:03:01.20,0:03:05.33,Cap,,0,0,0,,{\pos(540,1382)}Maybe {\c&H3AA2D4&}love{\c&HE0F4FF&} can\Nhold the fracture
+Dialogue: 0,0:03:05.33,0:03:08.63,Cap,,0,0,0,,{\pos(540,1382)}Maybe {\c&H3AA2D4&}truth{\c&HE0F4FF&} can\Nlet us stay
+Dialogue: 0,0:03:08.63,0:03:11.82,Cap,,0,0,0,,{\pos(540,1382)}If we walk through\Nthis {\c&H3AA2D4&}together{\c&HE0F4FF&}
+Dialogue: 0,0:03:11.82,0:03:15.80,Cap,,0,0,0,,{\pos(540,1382)}We may find\Na {\c&H3AA2D4&}kinder{\c&HE0F4FF&} way
+Dialogue: 0,0:03:17.90,0:03:21.62,Cap,,0,0,0,,{\pos(540,1382)}I'm just {\c&H3AA2D4&}tired{\c&HE0F4FF&}, ji
+Dialogue: 0,0:03:21.62,0:03:25.32,Cap,,0,0,0,,{\pos(540,1382)}But I am still\Nhere by {\c&H3AA2D4&}your side{\c&HE0F4FF&}
+Dialogue: 0,0:03:25.80,0:03:28.43,Cap,,0,0,0,,{\pos(540,1382)}I'm just {\c&H3AA2D4&}tired{\c&HE0F4FF&}, ji
+Dialogue: 0,0:03:28.43,0:03:31.82,Cap,,0,0,0,,{\pos(540,1382)}And I wanna\N{\c&H3AA2D4&}make this right{\c&HE0F4FF&}
+Dialogue: 0,0:03:31.82,0:03:35.28,Cap,,0,0,0,,{\pos(540,1382)}If you can {\c&H3AA2D4&}hold my hand{\c&HE0F4FF&}\Nfor one more moment
+Dialogue: 0,0:03:35.28,0:03:39.22,Cap,,0,0,0,,{\pos(540,1382)}We can learn to\N{\c&H3AA2D4&}breathe{\c&HE0F4FF&} again tonight
+Dialogue: 0,0:03:39.22,0:03:42.03,Cap,,0,0,0,,{\pos(540,1382)}I'm just {\c&H3AA2D4&}tired{\c&HE0F4FF&}, ji
+Dialogue: 0,0:03:42.03,0:03:47.20,Cap,,0,0,0,,{\pos(540,1382)}Stay with me now,\Nlet us {\c&H3AA2D4&}begin again{\c&HE0F4FF&}
+Dialogue: 1,0:00:00.00,0:00:07.00,Hook,,0,0,0,,{\pos(540,300)\fad(200,150)}SHE WAS HIDING\NSOMETHING
+Dialogue: 1,0:02:17.30,0:02:22.62,Title,,0,0,0,,{\pos(540,215)\fad(200,150)}EIS AYURVEDIC\NPAIN RELIEF OIL
+Dialogue: 1,0:02:17.80,0:02:22.62,Gold,,0,0,0,,{\pos(540,1625)\fad(200,150)}15+ Ayurvedic herbs
+Dialogue: 1,0:02:22.80,0:02:31.96,Title,,0,0,0,,{\pos(540,230)\fad(200,150)}Tablets mask it.\NSprays sit on the skin.
+Dialogue: 1,0:02:32.10,0:02:38.60,Title,,0,0,0,,{\pos(540,230)\fad(200,150)}10 minutes of warm\Nmassage before bed
+Dialogue: 1,0:03:42.20,0:03:49.04,Offer,,0,0,0,,{\pos(540,335)\fad(200,0)}50% OFF TODAY
+Dialogue: 1,0:03:42.40,0:03:49.04,Sub,,0,0,0,,{\pos(540,1640)\fad(200,0)}CASH ON DELIVERY · 30-day guarantee

@@ -1,0 +1,1569 @@
+{
+ "project": "C300-W",
+ "brand": "EIS",
+ "version": 1,
+ "output": {
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "crf": 20,
+  "loudnessLUFS": -14
+ },
+ "segments": [
+  {
+   "id": "seg01",
+   "role": "hook",
+   "line": "I kept this close, so close to my heart",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 0.0,
+    "out": 11.0
+   },
+   "shots": [
+    {
+     "clip": "clip_1",
+     "fit": "slow",
+     "duration": 5.76
+    },
+    {
+     "clip": "clip_2",
+     "fit": "slow",
+     "duration": 5.24
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg02",
+   "role": "body",
+   "line": "(instrumental)",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 11.0,
+    "out": 15.7
+   },
+   "shots": [
+    {
+     "clip": "clip_3",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg03",
+   "role": "body",
+   "line": "(instrumental)",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 15.7,
+    "out": 20.3
+   },
+   "shots": [
+    {
+     "clip": "clip_4",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg04",
+   "role": "body",
+   "line": "Every evening I come home smiling",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 20.3,
+    "out": 23.0
+   },
+   "shots": [
+    {
+     "clip": "clip_5",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg05",
+   "role": "body",
+   "line": "And I set my face like nothing's wrong",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 23.0,
+    "out": 26.8
+   },
+   "shots": [
+    {
+     "clip": "clip_6",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg06",
+   "role": "body",
+   "line": "You ask me, how was your day, ji?",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 26.8,
+    "out": 30.45
+   },
+   "shots": [
+    {
+     "clip": "clip_7",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg07",
+   "role": "body",
+   "line": "And I say fine, though I know it's not",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 30.45,
+    "out": 33.5
+   },
+   "shots": [
+    {
+     "clip": "clip_8",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg08",
+   "role": "body",
+   "line": "There is a room inside my chest",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 33.5,
+    "out": 36.9
+   },
+   "shots": [
+    {
+     "clip": "clip_9",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg09",
+   "role": "body",
+   "line": "Where I keep the words I never said",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 36.9,
+    "out": 40.1
+   },
+   "shots": [
+    {
+     "clip": "clip_10",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg10",
+   "role": "body",
+   "line": "I wanted peace, I wanted time",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 40.1,
+    "out": 43.45
+   },
+   "shots": [
+    {
+     "clip": "clip_11",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg11",
+   "role": "body",
+   "line": "I thought the truth could wait a while",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 43.45,
+    "out": 48.0
+   },
+   "shots": [
+    {
+     "clip": "clip_12",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg12",
+   "role": "body",
+   "line": "But the silence has a way tonight",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 48.0,
+    "out": 51.7
+   },
+   "shots": [
+    {
+     "clip": "clip_13",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg13",
+   "role": "body",
+   "line": "And it follows me from room to room",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 51.7,
+    "out": 55.2
+   },
+   "shots": [
+    {
+     "clip": "clip_14",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg14",
+   "role": "body",
+   "line": "I stand at the edge of my own reply",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 55.2,
+    "out": 59.6
+   },
+   "shots": [
+    {
+     "clip": "clip_15",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg15",
+   "role": "body",
+   "line": "Afraid of what comes into view",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 59.6,
+    "out": 61.4
+   },
+   "shots": [
+    {
+     "clip": "clip_16",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg16",
+   "role": "body",
+   "line": "(instrumental)",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 61.4,
+    "out": 64.85
+   },
+   "shots": [
+    {
+     "clip": "clip_17",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg17",
+   "role": "body",
+   "line": "I'm just tired, ji",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 64.85,
+    "out": 68.65
+   },
+   "shots": [
+    {
+     "clip": "clip_18",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg18",
+   "role": "body",
+   "line": "Tired of holding what I can't undo",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 68.65,
+    "out": 72.46
+   },
+   "shots": [
+    {
+     "clip": "clip_19",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg19",
+   "role": "body",
+   "line": "I'm just tired, ji",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 72.46,
+    "out": 75.4
+   },
+   "shots": [
+    {
+     "clip": "clip_20",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg20",
+   "role": "body",
+   "line": "Tired of pretending I can choose",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 75.4,
+    "out": 78.6
+   },
+   "shots": [
+    {
+     "clip": "clip_21",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg21",
+   "role": "body",
+   "line": "As you hear my voice shake a little",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 78.6,
+    "out": 82.04
+   },
+   "shots": [
+    {
+     "clip": "clip_22",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg22",
+   "role": "body",
+   "line": "It's because I'm finally letting through",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 82.04,
+    "out": 85.84
+   },
+   "shots": [
+    {
+     "clip": "clip_23",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg23",
+   "role": "body",
+   "line": "I'm just tired, ji",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 85.84,
+    "out": 88.54
+   },
+   "shots": [
+    {
+     "clip": "clip_24",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg24",
+   "role": "body",
+   "line": "And I need you to see me true",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 88.54,
+    "out": 91.0
+   },
+   "shots": [
+    {
+     "clip": "clip_25",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg25",
+   "role": "body",
+   "line": "(instrumental)",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 91.0,
+    "out": 94.2
+   },
+   "shots": [
+    {
+     "clip": "clip_26",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg26",
+   "role": "body",
+   "line": "(instrumental)",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 94.2,
+    "out": 96.7
+   },
+   "shots": [
+    {
+     "clip": "clip_27",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg27",
+   "role": "body",
+   "line": "(instrumental)",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 96.7,
+    "out": 98.9
+   },
+   "shots": [
+    {
+     "clip": "clip_28",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg28",
+   "role": "body",
+   "line": "(instrumental)",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 98.9,
+    "out": 100.85
+   },
+   "shots": [
+    {
+     "clip": "clip_29",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg29",
+   "role": "body",
+   "line": "You found a letter on the table",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 100.85,
+    "out": 102.0
+   },
+   "shots": [
+    {
+     "clip": "clip_30",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg30",
+   "role": "body",
+   "line": "And the colour left your face",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 102.0,
+    "out": 107.05
+   },
+   "shots": [
+    {
+     "clip": "clip_31",
+     "fit": "slow"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg31",
+   "role": "body",
+   "line": "I saw the hurt before the question / It was standing in the space",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 107.05,
+    "out": 113.75
+   },
+   "shots": [
+    {
+     "clip": "clip_32",
+     "fit": "slow"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg32",
+   "role": "body",
+   "line": "I meant to tell you in the morning / But my courage failed again",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 113.75,
+    "out": 120.22
+   },
+   "shots": [
+    {
+     "clip": "clip_33",
+     "fit": "slow"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg33",
+   "role": "body",
+   "line": "Now the truth is in the light",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 120.22,
+    "out": 123.67
+   },
+   "shots": [
+    {
+     "clip": "clip_34",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg34",
+   "role": "body",
+   "line": "And I cannot hide from it, my friend",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 123.67,
+    "out": 128.5
+   },
+   "shots": [
+    {
+     "clip": "clip_35",
+     "fit": "slow"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg35",
+   "role": "body",
+   "line": "(instrumental)",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 128.5,
+    "out": 132.3
+   },
+   "shots": [
+    {
+     "clip": "clip_36",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "crossfade",
+    "durationSec": 0.4
+   }
+  },
+  {
+   "id": "seg36",
+   "role": "body",
+   "line": "I never meant to break your trust",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 132.3,
+    "out": 137.1
+   },
+   "shots": [
+    {
+     "clip": "clip_37",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg37",
+   "role": "body",
+   "line": "I never meant to turn away / But carrying this alone",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 137.1,
+    "out": 142.62
+   },
+   "shots": [
+    {
+     "clip": "clip_56",
+     "fit": "slow"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg38",
+   "role": "body",
+   "line": "has worn my voice away",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 142.62,
+    "out": 147.78
+   },
+   "shots": [
+    {
+     "clip": "clip_40",
+     "fit": "slow"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg39",
+   "role": "body",
+   "line": "I'm just tired, ji",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 147.78,
+    "out": 151.96
+   },
+   "shots": [
+    {
+     "clip": "clip_41",
+     "fit": "slow"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg40",
+   "role": "body",
+   "line": "Tired of living half a life",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 151.96,
+    "out": 155.45
+   },
+   "shots": [
+    {
+     "clip": "clip_42",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg41",
+   "role": "body",
+   "line": "I'm just tired, ji",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 155.45,
+    "out": 158.6
+   },
+   "shots": [
+    {
+     "clip": "clip_43",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg42",
+   "role": "body",
+   "line": "Tired of cutting truth to size",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 158.6,
+    "out": 161.86
+   },
+   "shots": [
+    {
+     "clip": "clip_44",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg43",
+   "role": "body",
+   "line": "If my eyes look like they are begging / It's because I don't know how to lie",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 161.86,
+    "out": 166.5
+   },
+   "shots": [
+    {
+     "clip": "clip_45",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg44",
+   "role": "body",
+   "line": "(instrumental)",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 166.5,
+    "out": 169.27
+   },
+   "shots": [
+    {
+     "clip": "clip_46",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg45",
+   "role": "body",
+   "line": "I'm just tired, ji / Please hear me before we say goodbye",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 169.27,
+    "out": 177.1
+   },
+   "shots": [
+    {
+     "clip": "clip_47",
+     "fit": "slow"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg46",
+   "role": "body",
+   "line": "(instrumental)",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 177.1,
+    "out": 181.2
+   },
+   "shots": [
+    {
+     "clip": "clip_48",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg47",
+   "role": "body",
+   "line": "Maybe love can hold the fracture",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 181.2,
+    "out": 185.33
+   },
+   "shots": [
+    {
+     "clip": "clip_49",
+     "fit": "slow"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg48",
+   "role": "body",
+   "line": "Maybe truth can let us stay",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 185.33,
+    "out": 188.63
+   },
+   "shots": [
+    {
+     "clip": "clip_50",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg49",
+   "role": "body",
+   "line": "If we walk through this together",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 188.63,
+    "out": 191.82
+   },
+   "shots": [
+    {
+     "clip": "clip_51",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg50",
+   "role": "body",
+   "line": "We may find a kinder way",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 191.82,
+    "out": 197.9
+   },
+   "shots": [
+    {
+     "clip": "clip_52",
+     "fit": "slow"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg51",
+   "role": "body",
+   "line": "I'm just tired, ji",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 197.9,
+    "out": 201.62
+   },
+   "shots": [
+    {
+     "clip": "clip_53",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg52",
+   "role": "body",
+   "line": "But I am still here by your side / I'm just tired, ji",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 201.62,
+    "out": 208.43
+   },
+   "shots": [
+    {
+     "clip": "clip_54",
+     "fit": "slow"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg53",
+   "role": "body",
+   "line": "And I wanna make this right",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 208.43,
+    "out": 211.82
+   },
+   "shots": [
+    {
+     "clip": "clip_51",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg54",
+   "role": "body",
+   "line": "If you can hold my hand for one more moment",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 211.82,
+    "out": 215.28
+   },
+   "shots": [
+    {
+     "clip": "clip_49",
+     "fit": "trim"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg55",
+   "role": "body",
+   "line": "We can learn to breathe again tonight / I'm just tired, ji",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 215.28,
+    "out": 222.03
+   },
+   "shots": [
+    {
+     "clip": "clip_55",
+     "fit": "slow"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  },
+  {
+   "id": "seg56",
+   "role": "cta",
+   "line": "Stay with me now, let us begin again",
+   "vo": {
+    "file": "vo.mp3",
+    "in": 222.03,
+    "out": 229.04
+   },
+   "shots": [
+    {
+     "clip": "clip_56",
+     "fit": "slow"
+    }
+   ],
+   "transitionIn": {
+    "type": "cut"
+   }
+  }
+ ],
+ "captions": {
+  "enabled": true,
+  "style": {
+   "font": "Poppins-Bold",
+   "fallbackFont": "NotoSansDevanagari-Bold",
+   "size": 58,
+   "color": "#FFF4E0",
+   "strokeColor": "#770A08",
+   "strokeWidth": 14,
+   "y": 0.72,
+   "maxCharsPerLine": 44,
+   "highlightColor": "#D4A23A"
+  },
+  "items": [
+   {
+    "segment": "seg01",
+    "start": 7.0,
+    "end": 11.0,
+    "text": "I kept this close,\nso close to my *heart*"
+   },
+   {
+    "segment": "seg02",
+    "start": 0.0,
+    "end": 0.82,
+    "text": "I kept this close,\nso close to my *heart*"
+   },
+   {
+    "segment": "seg04",
+    "start": 0.0,
+    "end": 2.7,
+    "text": "Every evening I\ncome home *smiling*"
+   },
+   {
+    "segment": "seg05",
+    "start": 0.0,
+    "end": 3.8,
+    "text": "And I set my face\nlike *nothing's wrong*"
+   },
+   {
+    "segment": "seg06",
+    "start": 0.0,
+    "end": 3.12,
+    "text": "You ask me, how\nwas your day, *ji*?"
+   },
+   {
+    "segment": "seg07",
+    "start": 0.0,
+    "end": 3.05,
+    "text": "And I say *fine*, though\nI know it's not"
+   },
+   {
+    "segment": "seg08",
+    "start": 0.0,
+    "end": 3.34,
+    "text": "There is a *room*\ninside my chest"
+   },
+   {
+    "segment": "seg09",
+    "start": 0.0,
+    "end": 3.2,
+    "text": "Where I keep the\nwords I *never said*"
+   },
+   {
+    "segment": "seg10",
+    "start": 0.0,
+    "end": 3.35,
+    "text": "I wanted *peace*,\nI wanted time"
+   },
+   {
+    "segment": "seg11",
+    "start": 0.0,
+    "end": 3.97,
+    "text": "I thought the *truth*\ncould wait a while"
+   },
+   {
+    "segment": "seg12",
+    "start": 0.0,
+    "end": 3.7,
+    "text": "But the *silence*\nhas a way tonight"
+   },
+   {
+    "segment": "seg13",
+    "start": 0.0,
+    "end": 3.5,
+    "text": "And it follows me\nfrom *room to room*"
+   },
+   {
+    "segment": "seg14",
+    "start": 0.0,
+    "end": 4.04,
+    "text": "I stand at the *edge*\nof my own reply"
+   },
+   {
+    "segment": "seg15",
+    "start": 0.0,
+    "end": 1.8,
+    "text": "*Afraid* of what\ncomes into view"
+   },
+   {
+    "segment": "seg16",
+    "start": 0.0,
+    "end": 2.12,
+    "text": "*Afraid* of what\ncomes into view"
+   },
+   {
+    "segment": "seg17",
+    "start": 0.0,
+    "end": 3.8,
+    "text": "I'm just *tired*, ji"
+   },
+   {
+    "segment": "seg18",
+    "start": 0.0,
+    "end": 3.81,
+    "text": "Tired of holding\nwhat I *can't undo*"
+   },
+   {
+    "segment": "seg19",
+    "start": 0.0,
+    "end": 2.64,
+    "text": "I'm just *tired*, ji"
+   },
+   {
+    "segment": "seg20",
+    "start": 0.0,
+    "end": 3.2,
+    "text": "Tired of *pretending*\nI can choose"
+   },
+   {
+    "segment": "seg21",
+    "start": 0.0,
+    "end": 3.44,
+    "text": "As you hear my voice\n*shake* a little"
+   },
+   {
+    "segment": "seg22",
+    "start": 0.0,
+    "end": 3.62,
+    "text": "It's because I'm\n*finally* letting through"
+   },
+   {
+    "segment": "seg23",
+    "start": 0.0,
+    "end": 2.7,
+    "text": "I'm just *tired*, ji"
+   },
+   {
+    "segment": "seg24",
+    "start": 0.0,
+    "end": 2.46,
+    "text": "And I need you\nto *see me true*"
+   },
+   {
+    "segment": "seg25",
+    "start": 0.0,
+    "end": 2.8,
+    "text": "And I need you\nto *see me true*"
+   },
+   {
+    "segment": "seg29",
+    "start": 0.0,
+    "end": 1.15,
+    "text": "You found a *letter*\non the table"
+   },
+   {
+    "segment": "seg30",
+    "start": 0.0,
+    "end": 1.83,
+    "text": "You found a *letter*\non the table"
+   },
+   {
+    "segment": "seg30",
+    "start": 1.83,
+    "end": 5.05,
+    "text": "And the *colour*\nleft your face"
+   },
+   {
+    "segment": "seg31",
+    "start": 0.0,
+    "end": 3.45,
+    "text": "I saw the *hurt*\nbefore the question"
+   },
+   {
+    "segment": "seg31",
+    "start": 3.45,
+    "end": 6.7,
+    "text": "It was standing\nin the *space*"
+   },
+   {
+    "segment": "seg32",
+    "start": 0.0,
+    "end": 3.35,
+    "text": "I meant to *tell you*\nin the morning"
+   },
+   {
+    "segment": "seg32",
+    "start": 3.35,
+    "end": 6.47,
+    "text": "But my *courage*\nfailed again"
+   },
+   {
+    "segment": "seg33",
+    "start": 0.0,
+    "end": 3.45,
+    "text": "Now the *truth*\nis in the light"
+   },
+   {
+    "segment": "seg34",
+    "start": 0.0,
+    "end": 4.83,
+    "text": "And I cannot *hide*\nfrom it, my friend"
+   },
+   {
+    "segment": "seg35",
+    "start": 0.0,
+    "end": 0.36,
+    "text": "And I cannot *hide*\nfrom it, my friend"
+   },
+   {
+    "segment": "seg36",
+    "start": 0.0,
+    "end": 4.8,
+    "text": "I never meant to\nbreak your *trust*"
+   },
+   {
+    "segment": "seg37",
+    "start": 0.0,
+    "end": 3.25,
+    "text": "I never meant\nto *turn away*"
+   },
+   {
+    "segment": "seg37",
+    "start": 3.25,
+    "end": 5.52,
+    "text": "But carrying\nthis *alone*"
+   },
+   {
+    "segment": "seg38",
+    "start": 0.0,
+    "end": 2.86,
+    "text": "has worn my *voice* away"
+   },
+   {
+    "segment": "seg39",
+    "start": 0.0,
+    "end": 4.18,
+    "text": "I'm just *tired*, ji"
+   },
+   {
+    "segment": "seg40",
+    "start": 0.0,
+    "end": 3.49,
+    "text": "Tired of living\n*half a life*"
+   },
+   {
+    "segment": "seg41",
+    "start": 0.0,
+    "end": 3.15,
+    "text": "I'm just *tired*, ji"
+   },
+   {
+    "segment": "seg42",
+    "start": 0.0,
+    "end": 3.26,
+    "text": "Tired of cutting\ntruth to *size*"
+   },
+   {
+    "segment": "seg43",
+    "start": 0.0,
+    "end": 3.54,
+    "text": "If my eyes look like\nthey are *begging*"
+   },
+   {
+    "segment": "seg43",
+    "start": 3.54,
+    "end": 4.64,
+    "text": "It's because I don't\nknow how to *lie*"
+   },
+   {
+    "segment": "seg44",
+    "start": 0.0,
+    "end": 2.77,
+    "text": "It's because I don't\nknow how to *lie*"
+   },
+   {
+    "segment": "seg45",
+    "start": 0.0,
+    "end": 2.73,
+    "text": "I'm just *tired*, ji"
+   },
+   {
+    "segment": "seg45",
+    "start": 2.73,
+    "end": 7.83,
+    "text": "Please *hear me* before\nwe say goodbye"
+   },
+   {
+    "segment": "seg46",
+    "start": 0.0,
+    "end": 0.42,
+    "text": "Please *hear me* before\nwe say goodbye"
+   },
+   {
+    "segment": "seg47",
+    "start": 0.0,
+    "end": 4.13,
+    "text": "Maybe *love* can\nhold the fracture"
+   },
+   {
+    "segment": "seg48",
+    "start": 0.0,
+    "end": 3.3,
+    "text": "Maybe *truth* can\nlet us stay"
+   },
+   {
+    "segment": "seg49",
+    "start": 0.0,
+    "end": 3.19,
+    "text": "If we walk through\nthis *together*"
+   },
+   {
+    "segment": "seg50",
+    "start": 0.0,
+    "end": 3.98,
+    "text": "We may find\na *kinder* way"
+   },
+   {
+    "segment": "seg51",
+    "start": 0.0,
+    "end": 3.72,
+    "text": "I'm just *tired*, ji"
+   },
+   {
+    "segment": "seg52",
+    "start": 0.0,
+    "end": 3.7,
+    "text": "But I am still\nhere by *your side*"
+   },
+   {
+    "segment": "seg52",
+    "start": 4.18,
+    "end": 6.81,
+    "text": "I'm just *tired*, ji"
+   },
+   {
+    "segment": "seg53",
+    "start": 0.0,
+    "end": 3.39,
+    "text": "And I wanna\n*make this right*"
+   },
+   {
+    "segment": "seg54",
+    "start": 0.0,
+    "end": 3.46,
+    "text": "If you can *hold my hand*\nfor one more moment"
+   },
+   {
+    "segment": "seg55",
+    "start": 0.0,
+    "end": 3.94,
+    "text": "We can learn to\n*breathe* again tonight"
+   },
+   {
+    "segment": "seg55",
+    "start": 3.94,
+    "end": 6.75,
+    "text": "I'm just *tired*, ji"
+   },
+   {
+    "segment": "seg56",
+    "start": 0.0,
+    "end": 5.17,
+    "text": "Stay with me now,\nlet us *begin again*"
+   }
+  ]
+ },
+ "overlays": [
+  {
+   "id": "hook1",
+   "type": "text",
+   "segment": "seg01",
+   "start": 0.0,
+   "end": 7.0,
+   "text": "SHE WAS HIDING\nSOMETHING",
+   "style": "headline",
+   "x": 0.5,
+   "y": 0.16
+  },
+  {
+   "id": "product1",
+   "type": "text",
+   "segment": "seg37",
+   "start": 0.2,
+   "end": 5.52,
+   "text": "EIS AYURVEDIC\nPAIN RELIEF OIL",
+   "style": "headline",
+   "x": 0.5,
+   "y": 0.11
+  },
+  {
+   "id": "product2",
+   "type": "text",
+   "segment": "seg37",
+   "start": 0.7,
+   "end": 5.52,
+   "text": "15+ Ayurvedic herbs",
+   "style": "sub",
+   "x": 0.5,
+   "y": 0.85
+  },
+  {
+   "id": "mech1",
+   "type": "text",
+   "segment": "seg38",
+   "start": 0.18,
+   "end": 5.16,
+   "text": "Tablets mask it.\nSprays sit on the skin.",
+   "style": "headline",
+   "x": 0.5,
+   "y": 0.12
+  },
+  {
+   "id": "massage1",
+   "type": "text",
+   "segment": "seg40",
+   "start": 0.14,
+   "end": 3.49,
+   "text": "10 minutes of warm\nmassage before bed",
+   "style": "headline",
+   "x": 0.5,
+   "y": 0.12
+  },
+  {
+   "id": "cta1",
+   "type": "text",
+   "segment": "seg56",
+   "start": 0.17,
+   "end": 7.01,
+   "text": "50% OFF TODAY",
+   "style": "price",
+   "x": 0.5,
+   "y": 0.17
+  },
+  {
+   "id": "cta2",
+   "type": "text",
+   "segment": "seg56",
+   "start": 0.37,
+   "end": 7.01,
+   "text": "CASH ON DELIVERY · 30-day guarantee",
+   "style": "sub",
+   "x": 0.5,
+   "y": 0.85
+  },
+  {
+   "id": "logo",
+   "type": "image",
+   "file": "logo.png",
+   "segment": "seg56",
+   "start": 0.17,
+   "end": 7.01,
+   "x": 0.5,
+   "y": 0.08,
+   "scale": 0.18
+  }
+ ],
+ "music": {
+  "file": "music.mp3",
+  "gainDb": -18,
+  "duckUnderVO": true,
+  "fadeInSec": 0.5,
+  "fadeOutSec": 1.0,
+  "enabled": false
+ },
+ "sfx": [],
+ "variations": [
+  {
+   "name": "V1",
+   "layers": {
+    "music": false,
+    "overlays": "all"
+   }
+  }
+ ]
+}
