@@ -1,0 +1,2380 @@
+{
+  "project": "C300-H",
+  "brand": "EIS",
+  "version": 1,
+  "output": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "crf": 18,
+    "loudnessLUFS": -14
+  },
+  "segments": [
+    {
+      "id": "seg01",
+      "role": "hook",
+      "line": "My wife shut the bedroom door on our anniversary night",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 0.0,
+        "out": 3.68
+      },
+      "shots": [
+        {
+          "clip": "clip_1",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg02",
+      "role": "body",
+      "line": "Wore the red saree from our wedding, whispered \"No excuses tonight\"",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 3.68,
+        "out": 7.04
+      },
+      "shots": [
+        {
+          "clip": "clip_2",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg03",
+      "role": "body",
+      "line": "But I'd been hiding something, something I couldn't let her see",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 7.04,
+        "out": 10.26
+      },
+      "shots": [
+        {
+          "clip": "clip_3",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg04",
+      "role": "body",
+      "line": "So I said the only words that kept her far away from me",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 10.26,
+        "out": 13.68
+      },
+      "shots": [
+        {
+          "clip": "clip_4",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg05",
+      "role": "body",
+      "line": "\"I'm just tired, jaan… it's been a long day\"",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 13.68,
+        "out": 20.06
+      },
+      "shots": [
+        {
+          "clip": "clip_5",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg06",
+      "role": "body",
+      "line": "Ten-forty on the clock, she smiled, and then she said \"okay\"",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 20.06,
+        "out": 23.6
+      },
+      "shots": [
+        {
+          "clip": "clip_6",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg07",
+      "role": "body",
+      "line": "But that \"okay\" was hiding a question she would carry every day",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 23.6,
+        "out": 27.14
+      },
+      "shots": [
+        {
+          "clip": "clip_7",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg08",
+      "role": "body",
+      "line": "She switched off the lamp and turned the other way",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 27.14,
+        "out": 29.98
+      },
+      "shots": [
+        {
+          "clip": "clip_8",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg09",
+      "role": "body",
+      "line": "And I lay beside the woman I have loved for twenty-four years",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 29.98,
+        "out": 33.96
+      },
+      "shots": [
+        {
+          "clip": "clip_9",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg10",
+      "role": "body",
+      "line": "Two feet away, listening to a sound I still can hear",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 33.96,
+        "out": 37.02
+      },
+      "shots": [
+        {
+          "clip": "clip_10",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg11",
+      "role": "body",
+      "line": "Her pretending to be sleeping, so I wouldn't see her tears",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 37.02,
+        "out": 40.22
+      },
+      "shots": [
+        {
+          "clip": "clip_11",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg12",
+      "role": "body",
+      "line": "Nobody tells you it's not one night… it's the first of a hundred like that",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 40.22,
+        "out": 44.84
+      },
+      "shots": [
+        {
+          "clip": "clip_12",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg13",
+      "role": "body",
+      "line": "I kept one secret in my glovebox, another in my office drawer",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 44.84,
+        "out": 49.06
+      },
+      "shots": [
+        {
+          "clip": "clip_13",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg14",
+      "role": "body",
+      "line": "And every night by ten-fifteen, I was \"too tired\" once more",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 49.06,
+        "out": 52.28
+      },
+      "shots": [
+        {
+          "clip": "clip_14",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg15",
+      "role": "body",
+      "line": "Sat out my nephew's wedding while she danced and looked at my chair",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 52.28,
+        "out": 55.88
+      },
+      "shots": [
+        {
+          "clip": "clip_15",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg16",
+      "role": "body",
+      "line": "And I couldn't tell her why I wasn't standing there",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 55.88,
+        "out": 58.7
+      },
+      "shots": [
+        {
+          "clip": "clip_16",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg17",
+      "role": "body",
+      "line": "Then at 2 AM I'd slip out of our bed and shut the door",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 58.7,
+        "out": 61.9
+      },
+      "shots": [
+        {
+          "clip": "clip_17",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg18",
+      "role": "body",
+      "line": "Out on the balcony, my phone glowing… and she saw",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 61.9,
+        "out": 64.94
+      },
+      "shots": [
+        {
+          "clip": "clip_18",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg19",
+      "role": "body",
+      "line": "I'm just tired, jaan…",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 64.94,
+        "out": 71.56
+      },
+      "shots": [
+        {
+          "clip": "clip_19",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg20",
+      "role": "body",
+      "line": "Same three words every night, under the bedroom light",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 71.56,
+        "out": 77.96
+      },
+      "shots": [
+        {
+          "clip": "clip_20",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg21",
+      "role": "body",
+      "line": "I'm just tired, jaan…",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 77.96,
+        "out": 82.54
+      },
+      "shots": [
+        {
+          "clip": "clip_21",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg22",
+      "role": "body",
+      "line": "But I'm tired… of lying 'bout why",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 82.54,
+        "out": 91.44
+      },
+      "shots": [
+        {
+          "clip": "clip_3",
+          "fit": "slow",
+          "duration": 4.45
+        },
+        {
+          "clip": "clip_22",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg23",
+      "role": "body",
+      "line": "Then one Sunday I came home early, heard her on the phone",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 91.44,
+        "out": 95.32
+      },
+      "shots": [
+        {
+          "clip": "clip_23",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg24",
+      "role": "body",
+      "line": "Crying to her sister Neelu, saying things I'd never known",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 95.32,
+        "out": 98.66
+      },
+      "shots": [
+        {
+          "clip": "clip_24",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg25",
+      "role": "body",
+      "line": "\"Eight months, Neelu… he won't touch me, won't even hold my hand",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 98.66,
+        "out": 101.92
+      },
+      "shots": [
+        {
+          "clip": "clip_25",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg26",
+      "role": "body",
+      "line": "I've dyed my greys, I've lost six kilos, and I still don't understand",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 101.92,
+        "out": 105.16
+      },
+      "shots": [
+        {
+          "clip": "clip_26",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg27",
+      "role": "body",
+      "line": "He's on that balcony at 2 AM, on his phone… and I know who",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 105.16,
+        "out": 108.59
+      },
+      "shots": [
+        {
+          "clip": "clip_27",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg28",
+      "role": "body",
+      "line": "There's someone else, Neelu… what else could he be doing at two?\"",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 108.59,
+        "out": 111.94
+      },
+      "shots": [
+        {
+          "clip": "clip_28",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg29",
+      "role": "body",
+      "line": "And I stood there in that hallway, watching my little lie grow",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 111.94,
+        "out": 115.18
+      },
+      "shots": [
+        {
+          "clip": "clip_29",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg30",
+      "role": "body",
+      "line": "Into something worse than the truth… and the worst was yet to show",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 115.18,
+        "out": 118.64
+      },
+      "shots": [
+        {
+          "clip": "clip_30",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg31",
+      "role": "body",
+      "line": "She scrolled through every message, every call, and found no name",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 118.64,
+        "out": 121.88
+      },
+      "shots": [
+        {
+          "clip": "clip_33",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg32",
+      "role": "body",
+      "line": "Just what I'd typed at 2 AM… and it wasn't who she'd blamed",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 121.88,
+        "out": 125.3
+      },
+      "shots": [
+        {
+          "clip": "clip_34",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg33",
+      "role": "body",
+      "line": "\"Back pain only at night\"… \"How do I hide it from my wife?\"",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 125.3,
+        "out": 128.88
+      },
+      "shots": [
+        {
+          "clip": "clip_35",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg34",
+      "role": "body",
+      "line": "She stood there in the doorway, held that phone up to my face",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 128.88,
+        "out": 131.96
+      },
+      "shots": [
+        {
+          "clip": "clip_36",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg35",
+      "role": "body",
+      "line": "Said \"Is THIS her? Is this the other woman?\" and she fell in my embrace",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 131.96,
+        "out": 135.3
+      },
+      "shots": [
+        {
+          "clip": "clip_37",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg36",
+      "role": "body",
+      "line": "'Cause in my head, the truth made me less of a man",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 135.3,
+        "out": 137.3
+      },
+      "shots": [
+        {
+          "clip": "clip_38",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg37",
+      "role": "body",
+      "line": "Than the lie that nearly took her… but she already had a plan",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 137.3,
+        "out": 139.76
+      },
+      "shots": [
+        {
+          "clip": "clip_39",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg38",
+      "role": "body",
+      "line": "Next morning she called her mother back in Nashik on the phone",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 139.76,
+        "out": 143.6
+      },
+      "shots": [
+        {
+          "clip": "clip_40",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg39",
+      "role": "body",
+      "line": "Ma said \"Your Papa's back went at fifty… and there's something I never told",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 143.6,
+        "out": 146.96
+      },
+      "shots": [
+        {
+          "clip": "clip_41",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg40",
+      "role": "body",
+      "line": "What I did for him each night, ten minutes, before he'd sleep\"",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 146.96,
+        "out": 149.94
+      },
+      "shots": [
+        {
+          "clip": "clip_42",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg41",
+      "role": "body",
+      "line": "That night there was something on my pillow, and a promise she would keep",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 149.94,
+        "out": 153.66
+      },
+      "shots": [
+        {
+          "clip": "clip_43",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg42",
+      "role": "body",
+      "line": "An amber bottle: EIS Ayurvedic Pain Relief Oil, fifteen herbs inside",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 153.66,
+        "out": 158.72
+      },
+      "shots": [
+        {
+          "clip": "clip_44",
+          "fit": "hold"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg43",
+      "role": "body",
+      "line": "I laughed, \"Another oil?\" She said \"Lie down. Turn over. Then decide.\"",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 158.72,
+        "out": 163.7
+      },
+      "shots": [
+        {
+          "clip": "clip_45",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg44",
+      "role": "body",
+      "line": "She said \"It's not your age, jaan… it's what your tablets never reach",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 163.7,
+        "out": 168.64
+      },
+      "shots": [
+        {
+          "clip": "clip_46",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg45",
+      "role": "body",
+      "line": "Inflammation, locked in deep, where sprays just sit up on the skin",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 168.64,
+        "out": 171.96
+      },
+      "shots": [
+        {
+          "clip": "clip_47",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg46",
+      "role": "body",
+      "line": "Warm massage works the stiffness loose, so fifteen herbs can settle in",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 171.96,
+        "out": 175.66
+      },
+      "shots": [
+        {
+          "clip": "clip_48",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg47",
+      "role": "body",
+      "line": "Mahanarayan, Nirgundi, Ashwagandha, camphor, mint\"",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 175.66,
+        "out": 180.22
+      },
+      "shots": [
+        {
+          "clip": "clip_49",
+          "fit": "hold"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg48",
+      "role": "body",
+      "line": "Night one, her hands on my back, first time she'd touched me in a year",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 180.22,
+        "out": 184.5
+      },
+      "shots": [
+        {
+          "clip": "clip_50",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg49",
+      "role": "body",
+      "line": "Night three, I slept straight through… and woke to find her watching me in tears",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 184.5,
+        "out": 189.54
+      },
+      "shots": [
+        {
+          "clip": "clip_51",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg50",
+      "role": "body",
+      "line": "Week six, back on morning walks, standing tall, and Friday was near",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 189.54,
+        "out": 194.74
+      },
+      "shots": [
+        {
+          "clip": "clip_52",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg51",
+      "role": "body",
+      "line": "That Friday I stayed up, didn't fall asleep at ten",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 194.74,
+        "out": 198.66
+      },
+      "shots": [
+        {
+          "clip": "clip_53",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg52",
+      "role": "body",
+      "line": "She came out in that red saree, nervous like our first night again",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 198.66,
+        "out": 202.66
+      },
+      "shots": [
+        {
+          "clip": "clip_54",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg53",
+      "role": "body",
+      "line": "She whispered \"Tired?\" and I gave the answer she'd waited eight months for",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 202.66,
+        "out": 206.62
+      },
+      "shots": [
+        {
+          "clip": "clip_55",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg54",
+      "role": "body",
+      "line": "\"Not tonight, jaan… not ever again\"",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 206.62,
+        "out": 209.72
+      },
+      "shots": [
+        {
+          "clip": "clip_56",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg55",
+      "role": "body",
+      "line": "She switched off the lamp, and this time she turned my way",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 209.72,
+        "out": 215.2
+      },
+      "shots": [
+        {
+          "clip": "clip_57",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg56",
+      "role": "body",
+      "line": "\"I'm not tired, jaan\"… no more lying 'bout why",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 215.2,
+        "out": 219.93
+      },
+      "shots": [
+        {
+          "clip": "clip_58",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg57",
+      "role": "body",
+      "line": "To every man two feet from his wife",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 219.93,
+        "out": 222.68
+      },
+      "shots": [
+        {
+          "clip": "clip_59",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg58",
+      "role": "body",
+      "line": "Saying \"just tired\" every night",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 222.68,
+        "out": 224.62
+      },
+      "shots": [
+        {
+          "clip": "clip_60",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg59",
+      "role": "body",
+      "line": "She doesn't think you're tired… she thinks it's her",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 224.62,
+        "out": 228.7
+      },
+      "shots": [
+        {
+          "clip": "clip_61",
+          "fit": "hold"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg60",
+      "role": "cta",
+      "line": "Tell her why.",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 228.7,
+        "out": 235.05
+      },
+      "shots": [
+        {
+          "clip": "clip_49",
+          "fit": "trim",
+          "duration": 2.8
+        },
+        {
+          "clip": "clip_44",
+          "fit": "hold"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    }
+  ],
+  "captions": {
+    "enabled": true,
+    "style": {
+      "font": "Montserrat-ExtraBold",
+      "fallbackFont": "NotoSansDevanagari-Bold",
+      "size": 72,
+      "color": "#FFFFFF",
+      "strokeColor": "#000000",
+      "strokeWidth": 6,
+      "y": 0.72,
+      "maxCharsPerLine": 22,
+      "highlightColor": "#FFD400"
+    },
+    "items": [
+      {
+        "segment": "seg02",
+        "start": 0.0,
+        "end": 0.98,
+        "text": "Wore the *red saree*"
+      },
+      {
+        "segment": "seg02",
+        "start": 0.98,
+        "end": 1.84,
+        "text": "from our wedding"
+      },
+      {
+        "segment": "seg02",
+        "start": 1.84,
+        "end": 2.76,
+        "text": "whispered No excuses"
+      },
+      {
+        "segment": "seg02",
+        "start": 2.76,
+        "end": 3.36,
+        "text": "tonight"
+      },
+      {
+        "segment": "seg03",
+        "start": 0.0,
+        "end": 1.14,
+        "text": "But I'd been hiding"
+      },
+      {
+        "segment": "seg03",
+        "start": 1.14,
+        "end": 2.32,
+        "text": "something, something I"
+      },
+      {
+        "segment": "seg03",
+        "start": 2.32,
+        "end": 3.22,
+        "text": "couldn't let her see"
+      },
+      {
+        "segment": "seg04",
+        "start": 0.0,
+        "end": 1.3,
+        "text": "So I said the only"
+      },
+      {
+        "segment": "seg04",
+        "start": 1.3,
+        "end": 2.24,
+        "text": "words that kept her"
+      },
+      {
+        "segment": "seg04",
+        "start": 2.24,
+        "end": 3.42,
+        "text": "far away from me"
+      },
+      {
+        "segment": "seg05",
+        "start": 0.0,
+        "end": 1.3,
+        "text": "I'm just *tired*, jaan…"
+      },
+      {
+        "segment": "seg05",
+        "start": 1.3,
+        "end": 4.58,
+        "text": "it's been a long day…"
+      },
+      {
+        "segment": "seg05",
+        "start": 4.58,
+        "end": 6.38,
+        "text": "it's been a long day"
+      },
+      {
+        "segment": "seg06",
+        "start": 0.0,
+        "end": 1.4,
+        "text": "Ten-forty on"
+      },
+      {
+        "segment": "seg06",
+        "start": 1.4,
+        "end": 2.28,
+        "text": "the clock, she smiled"
+      },
+      {
+        "segment": "seg06",
+        "start": 2.28,
+        "end": 3.54,
+        "text": "and then she said okay"
+      },
+      {
+        "segment": "seg07",
+        "start": 0.0,
+        "end": 1.1,
+        "text": "But that okay was"
+      },
+      {
+        "segment": "seg07",
+        "start": 1.1,
+        "end": 2.04,
+        "text": "hiding a question she"
+      },
+      {
+        "segment": "seg07",
+        "start": 2.04,
+        "end": 3.54,
+        "text": "would carry every day"
+      },
+      {
+        "segment": "seg08",
+        "start": 0.0,
+        "end": 1.02,
+        "text": "She switched off"
+      },
+      {
+        "segment": "seg08",
+        "start": 1.02,
+        "end": 1.86,
+        "text": "the lamp and turned"
+      },
+      {
+        "segment": "seg08",
+        "start": 1.86,
+        "end": 2.84,
+        "text": "the other way"
+      },
+      {
+        "segment": "seg09",
+        "start": 0.0,
+        "end": 1.48,
+        "text": "And I lay beside"
+      },
+      {
+        "segment": "seg09",
+        "start": 1.48,
+        "end": 2.72,
+        "text": "the woman I have loved"
+      },
+      {
+        "segment": "seg09",
+        "start": 2.72,
+        "end": 3.98,
+        "text": "for twenty-four years"
+      },
+      {
+        "segment": "seg10",
+        "start": 0.0,
+        "end": 1.06,
+        "text": "Two feet away"
+      },
+      {
+        "segment": "seg10",
+        "start": 1.06,
+        "end": 2.1,
+        "text": "listening to a sound"
+      },
+      {
+        "segment": "seg10",
+        "start": 2.1,
+        "end": 3.06,
+        "text": "I still can hear"
+      },
+      {
+        "segment": "seg11",
+        "start": 0.0,
+        "end": 1.06,
+        "text": "Her pretending to"
+      },
+      {
+        "segment": "seg11",
+        "start": 1.06,
+        "end": 2.18,
+        "text": "be sleeping, so I"
+      },
+      {
+        "segment": "seg11",
+        "start": 2.18,
+        "end": 3.2,
+        "text": "wouldn't see her tears"
+      },
+      {
+        "segment": "seg12",
+        "start": 0.0,
+        "end": 1.28,
+        "text": "Nobody tells you it's"
+      },
+      {
+        "segment": "seg12",
+        "start": 1.28,
+        "end": 2.28,
+        "text": "not one night… it's"
+      },
+      {
+        "segment": "seg12",
+        "start": 2.28,
+        "end": 3.42,
+        "text": "the first of a hundred"
+      },
+      {
+        "segment": "seg12",
+        "start": 3.42,
+        "end": 4.62,
+        "text": "like that"
+      },
+      {
+        "segment": "seg13",
+        "start": 0.0,
+        "end": 1.62,
+        "text": "I kept one secret in"
+      },
+      {
+        "segment": "seg13",
+        "start": 1.62,
+        "end": 2.94,
+        "text": "my glovebox, another"
+      },
+      {
+        "segment": "seg13",
+        "start": 2.94,
+        "end": 4.22,
+        "text": "in my office drawer"
+      },
+      {
+        "segment": "seg14",
+        "start": 0.0,
+        "end": 1.12,
+        "text": "And every night by"
+      },
+      {
+        "segment": "seg14",
+        "start": 1.12,
+        "end": 2.18,
+        "text": "ten-fifteen, I was too"
+      },
+      {
+        "segment": "seg14",
+        "start": 2.18,
+        "end": 3.22,
+        "text": "*tired* once more"
+      },
+      {
+        "segment": "seg15",
+        "start": 0.0,
+        "end": 0.66,
+        "text": "Sat out my"
+      },
+      {
+        "segment": "seg15",
+        "start": 0.66,
+        "end": 1.64,
+        "text": "nephew's wedding while"
+      },
+      {
+        "segment": "seg15",
+        "start": 1.64,
+        "end": 2.7,
+        "text": "she danced and looked"
+      },
+      {
+        "segment": "seg15",
+        "start": 2.7,
+        "end": 3.6,
+        "text": "at my chair"
+      },
+      {
+        "segment": "seg16",
+        "start": 0.0,
+        "end": 1.02,
+        "text": "And I couldn't tell"
+      },
+      {
+        "segment": "seg16",
+        "start": 1.02,
+        "end": 1.98,
+        "text": "her why I wasn't"
+      },
+      {
+        "segment": "seg16",
+        "start": 1.98,
+        "end": 2.82,
+        "text": "standing there"
+      },
+      {
+        "segment": "seg17",
+        "start": 0.0,
+        "end": 1.02,
+        "text": "Then at *2 AM*"
+      },
+      {
+        "segment": "seg17",
+        "start": 1.02,
+        "end": 2.2,
+        "text": "I'd slip out of our"
+      },
+      {
+        "segment": "seg17",
+        "start": 2.2,
+        "end": 3.2,
+        "text": "bed and shut the door"
+      },
+      {
+        "segment": "seg18",
+        "start": 0.0,
+        "end": 1.24,
+        "text": "Out on the balcony"
+      },
+      {
+        "segment": "seg18",
+        "start": 1.24,
+        "end": 2.22,
+        "text": "my phone glowing…"
+      },
+      {
+        "segment": "seg18",
+        "start": 2.22,
+        "end": 3.04,
+        "text": "and she saw"
+      },
+      {
+        "segment": "seg19",
+        "start": 0.0,
+        "end": 3.67,
+        "text": "I'm just *tired*"
+      },
+      {
+        "segment": "seg19",
+        "start": 3.67,
+        "end": 5.3,
+        "text": "jaan…"
+      },
+      {
+        "segment": "seg20",
+        "start": 0.0,
+        "end": 2.14,
+        "text": "Same three words every"
+      },
+      {
+        "segment": "seg20",
+        "start": 2.14,
+        "end": 3.48,
+        "text": "night, under the"
+      },
+      {
+        "segment": "seg20",
+        "start": 3.48,
+        "end": 4.86,
+        "text": "bedroom light"
+      },
+      {
+        "segment": "seg21",
+        "start": 0.0,
+        "end": 2.76,
+        "text": "I'm just"
+      },
+      {
+        "segment": "seg21",
+        "start": 2.76,
+        "end": 4.58,
+        "text": "*tired*, jaan…"
+      },
+      {
+        "segment": "seg22",
+        "start": 0.0,
+        "end": 2.62,
+        "text": "But"
+      },
+      {
+        "segment": "seg22",
+        "start": 2.62,
+        "end": 5.34,
+        "text": "I'm *tired*…"
+      },
+      {
+        "segment": "seg22",
+        "start": 5.34,
+        "end": 7.66,
+        "text": "of lying 'bout why"
+      },
+      {
+        "segment": "seg23",
+        "start": 0.0,
+        "end": 1.42,
+        "text": "Then one Sunday"
+      },
+      {
+        "segment": "seg23",
+        "start": 1.42,
+        "end": 2.68,
+        "text": "I came home early"
+      },
+      {
+        "segment": "seg23",
+        "start": 2.68,
+        "end": 3.88,
+        "text": "heard her on the phone"
+      },
+      {
+        "segment": "seg24",
+        "start": 0.0,
+        "end": 1.24,
+        "text": "Crying to her sister"
+      },
+      {
+        "segment": "seg24",
+        "start": 1.24,
+        "end": 2.18,
+        "text": "Neelu, saying"
+      },
+      {
+        "segment": "seg24",
+        "start": 2.18,
+        "end": 3.34,
+        "text": "things I'd never known"
+      },
+      {
+        "segment": "seg25",
+        "start": 0.0,
+        "end": 0.98,
+        "text": "*Eight months*, Neelu…"
+      },
+      {
+        "segment": "seg25",
+        "start": 0.98,
+        "end": 1.86,
+        "text": "he won't touch me"
+      },
+      {
+        "segment": "seg25",
+        "start": 1.86,
+        "end": 2.5,
+        "text": "won't even"
+      },
+      {
+        "segment": "seg25",
+        "start": 2.5,
+        "end": 3.26,
+        "text": "hold my hand"
+      },
+      {
+        "segment": "seg26",
+        "start": 0.0,
+        "end": 0.82,
+        "text": "I've dyed my greys"
+      },
+      {
+        "segment": "seg26",
+        "start": 0.82,
+        "end": 1.44,
+        "text": "I've lost six"
+      },
+      {
+        "segment": "seg26",
+        "start": 1.44,
+        "end": 2.44,
+        "text": "kilos, and I still"
+      },
+      {
+        "segment": "seg26",
+        "start": 2.44,
+        "end": 3.24,
+        "text": "don't understand"
+      },
+      {
+        "segment": "seg27",
+        "start": 0.0,
+        "end": 1.14,
+        "text": "He's on that balcony"
+      },
+      {
+        "segment": "seg27",
+        "start": 1.14,
+        "end": 2.34,
+        "text": "at *2 AM*, on his"
+      },
+      {
+        "segment": "seg27",
+        "start": 2.34,
+        "end": 3.43,
+        "text": "phone… and I know who"
+      },
+      {
+        "segment": "seg28",
+        "start": 0.0,
+        "end": 0.91,
+        "text": "There's someone else"
+      },
+      {
+        "segment": "seg28",
+        "start": 0.91,
+        "end": 2.25,
+        "text": "Neelu… what else could"
+      },
+      {
+        "segment": "seg28",
+        "start": 2.25,
+        "end": 3.35,
+        "text": "he be doing at two?"
+      },
+      {
+        "segment": "seg29",
+        "start": 0.0,
+        "end": 1.2,
+        "text": "And I stood there in"
+      },
+      {
+        "segment": "seg29",
+        "start": 1.2,
+        "end": 2.02,
+        "text": "that hallway, watching"
+      },
+      {
+        "segment": "seg29",
+        "start": 2.02,
+        "end": 3.24,
+        "text": "my little lie grow"
+      },
+      {
+        "segment": "seg30",
+        "start": 0.0,
+        "end": 0.92,
+        "text": "Into something worse"
+      },
+      {
+        "segment": "seg30",
+        "start": 0.92,
+        "end": 1.76,
+        "text": "than the truth…"
+      },
+      {
+        "segment": "seg30",
+        "start": 1.76,
+        "end": 2.52,
+        "text": "and the worst"
+      },
+      {
+        "segment": "seg30",
+        "start": 2.52,
+        "end": 3.46,
+        "text": "was yet to show"
+      },
+      {
+        "segment": "seg31",
+        "start": 0.0,
+        "end": 0.98,
+        "text": "She scrolled through"
+      },
+      {
+        "segment": "seg31",
+        "start": 0.98,
+        "end": 1.72,
+        "text": "every message"
+      },
+      {
+        "segment": "seg31",
+        "start": 1.72,
+        "end": 2.42,
+        "text": "every call"
+      },
+      {
+        "segment": "seg31",
+        "start": 2.42,
+        "end": 3.24,
+        "text": "and found no name"
+      },
+      {
+        "segment": "seg32",
+        "start": 0.0,
+        "end": 1.04,
+        "text": "Just what I'd typed at"
+      },
+      {
+        "segment": "seg32",
+        "start": 1.04,
+        "end": 2.64,
+        "text": "*2 AM*… and it wasn't"
+      },
+      {
+        "segment": "seg32",
+        "start": 2.64,
+        "end": 3.42,
+        "text": "who she'd blamed"
+      },
+      {
+        "segment": "seg33",
+        "start": 0.0,
+        "end": 1.1,
+        "text": "*Back pain* only"
+      },
+      {
+        "segment": "seg33",
+        "start": 1.1,
+        "end": 2.2,
+        "text": "at night… How do I"
+      },
+      {
+        "segment": "seg33",
+        "start": 2.2,
+        "end": 3.58,
+        "text": "hide it from my wife?"
+      },
+      {
+        "segment": "seg34",
+        "start": 0.0,
+        "end": 1.16,
+        "text": "She stood there in the"
+      },
+      {
+        "segment": "seg34",
+        "start": 1.16,
+        "end": 1.94,
+        "text": "doorway, held that"
+      },
+      {
+        "segment": "seg34",
+        "start": 1.94,
+        "end": 3.08,
+        "text": "phone up to my face"
+      },
+      {
+        "segment": "seg35",
+        "start": 0.0,
+        "end": 0.78,
+        "text": "Said Is THIS her?"
+      },
+      {
+        "segment": "seg35",
+        "start": 0.78,
+        "end": 1.64,
+        "text": "Is this the other"
+      },
+      {
+        "segment": "seg35",
+        "start": 1.64,
+        "end": 2.44,
+        "text": "woman? and she fell"
+      },
+      {
+        "segment": "seg35",
+        "start": 2.44,
+        "end": 3.34,
+        "text": "in my embrace"
+      },
+      {
+        "segment": "seg36",
+        "start": 0.0,
+        "end": 0.76,
+        "text": "'Cause in my head"
+      },
+      {
+        "segment": "seg36",
+        "start": 0.76,
+        "end": 1.38,
+        "text": "the truth made me"
+      },
+      {
+        "segment": "seg36",
+        "start": 1.38,
+        "end": 2.0,
+        "text": "less of a man"
+      },
+      {
+        "segment": "seg37",
+        "start": 0.0,
+        "end": 1.44,
+        "text": "Than the lie… but"
+      },
+      {
+        "segment": "seg37",
+        "start": 1.44,
+        "end": 2.46,
+        "text": "she already had a plan"
+      },
+      {
+        "segment": "seg38",
+        "start": 0.0,
+        "end": 1.44,
+        "text": "Next morning she"
+      },
+      {
+        "segment": "seg38",
+        "start": 1.44,
+        "end": 2.54,
+        "text": "called her mother back"
+      },
+      {
+        "segment": "seg38",
+        "start": 2.54,
+        "end": 3.84,
+        "text": "in Nashik on the phone"
+      },
+      {
+        "segment": "seg39",
+        "start": 0.0,
+        "end": 1.02,
+        "text": "Ma said Your Papa's"
+      },
+      {
+        "segment": "seg39",
+        "start": 1.02,
+        "end": 1.92,
+        "text": "back went at fifty…"
+      },
+      {
+        "segment": "seg39",
+        "start": 1.92,
+        "end": 2.56,
+        "text": "and there's something"
+      },
+      {
+        "segment": "seg39",
+        "start": 2.56,
+        "end": 3.36,
+        "text": "I never told"
+      },
+      {
+        "segment": "seg40",
+        "start": 0.0,
+        "end": 0.74,
+        "text": "What I did"
+      },
+      {
+        "segment": "seg40",
+        "start": 0.74,
+        "end": 1.57,
+        "text": "for him each night"
+      },
+      {
+        "segment": "seg40",
+        "start": 1.57,
+        "end": 2.42,
+        "text": "ten minutes, before"
+      },
+      {
+        "segment": "seg40",
+        "start": 2.42,
+        "end": 2.98,
+        "text": "he'd sleep"
+      },
+      {
+        "segment": "seg41",
+        "start": 0.0,
+        "end": 0.84,
+        "text": "That night there"
+      },
+      {
+        "segment": "seg41",
+        "start": 0.84,
+        "end": 1.74,
+        "text": "was something on my"
+      },
+      {
+        "segment": "seg41",
+        "start": 1.74,
+        "end": 2.86,
+        "text": "pillow, and a promise"
+      },
+      {
+        "segment": "seg41",
+        "start": 2.86,
+        "end": 3.72,
+        "text": "she would keep"
+      },
+      {
+        "segment": "seg42",
+        "start": 0.0,
+        "end": 1.42,
+        "text": "An amber bottle"
+      },
+      {
+        "segment": "seg42",
+        "start": 1.42,
+        "end": 2.58,
+        "text": "*EIS* Ayurvedic"
+      },
+      {
+        "segment": "seg42",
+        "start": 2.58,
+        "end": 3.75,
+        "text": "Pain Relief Oil"
+      },
+      {
+        "segment": "seg42",
+        "start": 3.75,
+        "end": 5.06,
+        "text": "*fifteen herbs* inside"
+      },
+      {
+        "segment": "seg43",
+        "start": 0.0,
+        "end": 1.14,
+        "text": "I laughed, Another"
+      },
+      {
+        "segment": "seg43",
+        "start": 1.14,
+        "end": 2.08,
+        "text": "oil? She said Lie"
+      },
+      {
+        "segment": "seg43",
+        "start": 2.08,
+        "end": 3.28,
+        "text": "down. Turn over."
+      },
+      {
+        "segment": "seg43",
+        "start": 3.28,
+        "end": 4.68,
+        "text": "Then decide."
+      },
+      {
+        "segment": "seg44",
+        "start": 0.0,
+        "end": 1.48,
+        "text": "She said It's not"
+      },
+      {
+        "segment": "seg44",
+        "start": 1.48,
+        "end": 2.56,
+        "text": "your age, jaan…"
+      },
+      {
+        "segment": "seg44",
+        "start": 2.56,
+        "end": 3.74,
+        "text": "it's what your"
+      },
+      {
+        "segment": "seg44",
+        "start": 3.74,
+        "end": 4.94,
+        "text": "*tablets* never reach"
+      },
+      {
+        "segment": "seg45",
+        "start": 0.0,
+        "end": 0.88,
+        "text": "*Inflammation*"
+      },
+      {
+        "segment": "seg45",
+        "start": 0.88,
+        "end": 1.6,
+        "text": "locked in deep"
+      },
+      {
+        "segment": "seg45",
+        "start": 1.6,
+        "end": 2.42,
+        "text": "where sprays just sit"
+      },
+      {
+        "segment": "seg45",
+        "start": 2.42,
+        "end": 3.32,
+        "text": "up on the skin"
+      },
+      {
+        "segment": "seg46",
+        "start": 0.0,
+        "end": 0.86,
+        "text": "*Warm massage*"
+      },
+      {
+        "segment": "seg46",
+        "start": 0.86,
+        "end": 1.7,
+        "text": "works the stiffness"
+      },
+      {
+        "segment": "seg46",
+        "start": 1.7,
+        "end": 2.62,
+        "text": "loose, so fifteen"
+      },
+      {
+        "segment": "seg46",
+        "start": 2.62,
+        "end": 3.7,
+        "text": "herbs can settle in"
+      },
+      {
+        "segment": "seg47",
+        "start": 0.0,
+        "end": 0.9,
+        "text": "Mahanarayan"
+      },
+      {
+        "segment": "seg47",
+        "start": 0.9,
+        "end": 2.59,
+        "text": "Nirgundi, Ashwagandha"
+      },
+      {
+        "segment": "seg47",
+        "start": 2.59,
+        "end": 4.16,
+        "text": "camphor, mint"
+      },
+      {
+        "segment": "seg48",
+        "start": 0.0,
+        "end": 1.2,
+        "text": "Night one"
+      },
+      {
+        "segment": "seg48",
+        "start": 1.2,
+        "end": 2.26,
+        "text": "her hands on my"
+      },
+      {
+        "segment": "seg48",
+        "start": 2.26,
+        "end": 3.06,
+        "text": "back, first time she'd"
+      },
+      {
+        "segment": "seg48",
+        "start": 3.06,
+        "end": 4.28,
+        "text": "touched me in a year"
+      },
+      {
+        "segment": "seg49",
+        "start": 0.0,
+        "end": 1.54,
+        "text": "Night three, I slept"
+      },
+      {
+        "segment": "seg49",
+        "start": 1.54,
+        "end": 2.54,
+        "text": "straight through…"
+      },
+      {
+        "segment": "seg49",
+        "start": 2.54,
+        "end": 3.82,
+        "text": "and woke to find her"
+      },
+      {
+        "segment": "seg49",
+        "start": 3.82,
+        "end": 5.04,
+        "text": "watching me in tears"
+      },
+      {
+        "segment": "seg50",
+        "start": 0.0,
+        "end": 1.08,
+        "text": "*Week six*, back"
+      },
+      {
+        "segment": "seg50",
+        "start": 1.08,
+        "end": 1.96,
+        "text": "on morning walks"
+      },
+      {
+        "segment": "seg50",
+        "start": 1.96,
+        "end": 3.76,
+        "text": "standing tall, and"
+      },
+      {
+        "segment": "seg50",
+        "start": 3.76,
+        "end": 5.2,
+        "text": "Friday was near"
+      },
+      {
+        "segment": "seg51",
+        "start": 0.0,
+        "end": 1.44,
+        "text": "That Friday"
+      },
+      {
+        "segment": "seg51",
+        "start": 1.44,
+        "end": 2.74,
+        "text": "I stayed up, didn't"
+      },
+      {
+        "segment": "seg51",
+        "start": 2.74,
+        "end": 3.92,
+        "text": "fall asleep at ten"
+      },
+      {
+        "segment": "seg52",
+        "start": 0.0,
+        "end": 0.96,
+        "text": "She came out"
+      },
+      {
+        "segment": "seg52",
+        "start": 0.96,
+        "end": 2.08,
+        "text": "in that *red saree*"
+      },
+      {
+        "segment": "seg52",
+        "start": 2.08,
+        "end": 3.0,
+        "text": "nervous like our"
+      },
+      {
+        "segment": "seg52",
+        "start": 3.0,
+        "end": 4.0,
+        "text": "first night again"
+      },
+      {
+        "segment": "seg53",
+        "start": 0.0,
+        "end": 1.02,
+        "text": "She whispered *Tired*?"
+      },
+      {
+        "segment": "seg53",
+        "start": 1.02,
+        "end": 2.02,
+        "text": "and I gave the"
+      },
+      {
+        "segment": "seg53",
+        "start": 2.02,
+        "end": 3.12,
+        "text": "answer she'd waited"
+      },
+      {
+        "segment": "seg53",
+        "start": 3.12,
+        "end": 3.96,
+        "text": "*eight months* for"
+      },
+      {
+        "segment": "seg54",
+        "start": 0.0,
+        "end": 1.22,
+        "text": "Not tonight, jaan…"
+      },
+      {
+        "segment": "seg54",
+        "start": 1.22,
+        "end": 3.1,
+        "text": "not ever again"
+      },
+      {
+        "segment": "seg55",
+        "start": 0.0,
+        "end": 2.02,
+        "text": "She switched off the"
+      },
+      {
+        "segment": "seg55",
+        "start": 2.02,
+        "end": 4.14,
+        "text": "lamp, and this time"
+      },
+      {
+        "segment": "seg55",
+        "start": 4.14,
+        "end": 5.48,
+        "text": "she turned my way"
+      },
+      {
+        "segment": "seg56",
+        "start": 0.0,
+        "end": 1.54,
+        "text": "I'm *not tired*"
+      },
+      {
+        "segment": "seg56",
+        "start": 1.54,
+        "end": 3.29,
+        "text": "jaan… no more"
+      },
+      {
+        "segment": "seg56",
+        "start": 3.29,
+        "end": 4.73,
+        "text": "lying 'bout why"
+      },
+      {
+        "segment": "seg57",
+        "start": 0.0,
+        "end": 1.51,
+        "text": "To every man two"
+      },
+      {
+        "segment": "seg57",
+        "start": 1.51,
+        "end": 2.75,
+        "text": "feet from his wife"
+      },
+      {
+        "segment": "seg58",
+        "start": 0.0,
+        "end": 1.14,
+        "text": "Saying just *tired*"
+      },
+      {
+        "segment": "seg58",
+        "start": 1.14,
+        "end": 1.94,
+        "text": "every night"
+      },
+      {
+        "segment": "seg59",
+        "start": 0.0,
+        "end": 1.32,
+        "text": "She doesn't think"
+      },
+      {
+        "segment": "seg59",
+        "start": 1.32,
+        "end": 3.12,
+        "text": "you're *tired*… she"
+      },
+      {
+        "segment": "seg59",
+        "start": 3.12,
+        "end": 4.08,
+        "text": "thinks it's her"
+      },
+      {
+        "segment": "seg60",
+        "start": 0.0,
+        "end": 2.22,
+        "text": "Tell her why."
+      }
+    ]
+  },
+  "overlays": [
+    {
+      "id": "hook1",
+      "type": "text",
+      "segment": "seg01",
+      "start": 0.0,
+      "end": 3.68,
+      "text": "I lied to her\nevery night",
+      "style": "headline",
+      "x": 0.5,
+      "y": 0.16
+    },
+    {
+      "id": "cta1",
+      "type": "text",
+      "segment": "seg60",
+      "start": 1.0,
+      "end": 6.35,
+      "text": "ORDER NOW · COD",
+      "style": "cta",
+      "x": 0.5,
+      "y": 0.1
+    },
+    {
+      "id": "logo",
+      "type": "image",
+      "file": "logo.png",
+      "segment": "seg60",
+      "start": 1.0,
+      "end": 6.35,
+      "x": 0.5,
+      "y": 0.88,
+      "scale": 0.35
+    }
+  ],
+  "music": {
+    "file": "music.mp3",
+    "gainDb": -18,
+    "duckUnderVO": true,
+    "fadeInSec": 0.5,
+    "fadeOutSec": 1.0,
+    "enabled": false
+  },
+  "sfx": [
+    {
+      "file": "shimmer.wav",
+      "segment": "seg42",
+      "at": 0.0,
+      "gainDb": -8
+    }
+  ],
+  "variations": [
+    {
+      "name": "V1",
+      "layers": {
+        "music": false,
+        "overlays": "all"
+      }
+    }
+  ]
+}

@@ -1,0 +1,602 @@
+[
+ {
+  "n": 1,
+  "first": 0.0,
+  "last": 3.68,
+  "words": "My wife shut the bedroom door on our anniversary night",
+  "in": 0.0,
+  "out": 3.68,
+  "dur": 3.68,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 2,
+  "first": 3.68,
+  "last": 7.04,
+  "words": "Wore the red sari from our wedding, whispered no excuses tonight",
+  "in": 3.68,
+  "out": 7.04,
+  "dur": 3.36,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 3,
+  "first": 7.04,
+  "last": 10.26,
+  "words": "But I've been hiding something, something I couldn't let her see",
+  "in": 7.04,
+  "out": 10.26,
+  "dur": 3.22,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 4,
+  "first": 10.26,
+  "last": 13.68,
+  "words": "So I said the only words that kept her far away from me",
+  "in": 10.26,
+  "out": 13.68,
+  "dur": 3.42,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 5,
+  "first": 13.68,
+  "last": 20.06,
+  "words": "I'm just tired, John, it's been a long day It's been a long day",
+  "in": 13.68,
+  "out": 20.06,
+  "dur": 6.38,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 6,
+  "first": 20.06,
+  "last": 23.6,
+  "words": "10 .40 on the clock, she smiled and then she said okay",
+  "in": 20.06,
+  "out": 23.6,
+  "dur": 3.54,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 7,
+  "first": 23.6,
+  "last": 27.14,
+  "words": "But that okay was hiding questions she would carry every day",
+  "in": 23.6,
+  "out": 27.14,
+  "dur": 3.54,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 8,
+  "first": 27.14,
+  "last": 29.98,
+  "words": "She switched off the lamp and turned the other way",
+  "in": 27.14,
+  "out": 29.98,
+  "dur": 2.84,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 9,
+  "first": 29.98,
+  "last": 33.96,
+  "words": "And I lay beside the woman I have loved for 24 years",
+  "in": 29.98,
+  "out": 33.96,
+  "dur": 3.98,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 10,
+  "first": 33.96,
+  "last": 37.02,
+  "words": "Two feet away, listening to a sound I still can hear",
+  "in": 33.96,
+  "out": 37.02,
+  "dur": 3.06,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 11,
+  "first": 37.02,
+  "last": 40.22,
+  "words": "Her pretending to be sleeping so I wouldn't see her tears",
+  "in": 37.02,
+  "out": 40.22,
+  "dur": 3.2,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 12,
+  "first": 40.22,
+  "last": 44.56,
+  "words": "Nobody tells you it's not one night, it's the first of a hundred like that",
+  "in": 40.22,
+  "out": 44.84,
+  "dur": 4.62,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 13,
+  "first": 45.12,
+  "last": 49.06,
+  "words": "I kept one secret in my glove box, another in my office drawer",
+  "in": 44.84,
+  "out": 49.06,
+  "dur": 4.22,
+  "gapBefore": 0.56
+ },
+ {
+  "n": 14,
+  "first": 49.06,
+  "last": 52.28,
+  "words": "And every night by 10 .15 I was too tired once more",
+  "in": 49.06,
+  "out": 52.28,
+  "dur": 3.22,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 15,
+  "first": 52.28,
+  "last": 55.88,
+  "words": "Sat out my nephew's wedding while she danced and looked at my chair",
+  "in": 52.28,
+  "out": 55.88,
+  "dur": 3.6,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 16,
+  "first": 55.88,
+  "last": 58.7,
+  "words": "And I couldn't tell her why I wasn't standing there",
+  "in": 55.88,
+  "out": 58.7,
+  "dur": 2.82,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 17,
+  "first": 58.7,
+  "last": 61.9,
+  "words": "Then at 2am I'd slip out of our bed and shut the door",
+  "in": 58.7,
+  "out": 61.9,
+  "dur": 3.2,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 18,
+  "first": 61.9,
+  "last": 64.94,
+  "words": "Out on the balcony, my phone glowing and she saw",
+  "in": 61.9,
+  "out": 64.94,
+  "dur": 3.04,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 19,
+  "first": 64.94,
+  "last": 69.74,
+  "words": "I'm just tired, young",
+  "in": 64.94,
+  "out": 71.56,
+  "dur": 6.62,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 20,
+  "first": 71.86,
+  "last": 75.92,
+  "words": "Same three words every night Under the bedroom light",
+  "in": 71.56,
+  "out": 77.96,
+  "dur": 6.4,
+  "gapBefore": 2.12
+ },
+ {
+  "n": 21,
+  "first": 78.26,
+  "last": 82.54,
+  "words": "I'm just tired, young",
+  "in": 77.96,
+  "out": 82.54,
+  "dur": 4.58,
+  "gapBefore": 2.34
+ },
+ {
+  "n": 22,
+  "first": 82.54,
+  "last": 89.7,
+  "words": "But I'm tired of lyin' bout why",
+  "in": 82.54,
+  "out": 91.44,
+  "dur": 8.9,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 23,
+  "first": 91.74,
+  "last": 95.32,
+  "words": "Then one Sunday I came home early Heard her on the phone",
+  "in": 91.44,
+  "out": 95.32,
+  "dur": 3.88,
+  "gapBefore": 2.04
+ },
+ {
+  "n": 24,
+  "first": 95.32,
+  "last": 98.66,
+  "words": "crying to her sister Neelu Sayin' things I'd never known",
+  "in": 95.32,
+  "out": 98.66,
+  "dur": 3.34,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 25,
+  "first": 98.66,
+  "last": 101.9,
+  "words": "Eight months Neelu, he won't touch me Won't even hold my hand,",
+  "in": 98.66,
+  "out": 101.92,
+  "dur": 3.26,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 26,
+  "first": 101.94,
+  "last": 105.16,
+  "words": "I've dyed my grays I've lost six kilos and I still don't understand",
+  "in": 101.92,
+  "out": 105.16,
+  "dur": 3.24,
+  "gapBefore": 0.04
+ },
+ {
+  "n": 27,
+  "first": 105.16,
+  "last": 108.54,
+  "words": "He's on that balcony at 2am on his phone And I know who,",
+  "in": 105.16,
+  "out": 108.59,
+  "dur": 3.43,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 28,
+  "first": 108.64,
+  "last": 111.94,
+  "words": "there's someone else Neelu What else could he be doin' it to?",
+  "in": 108.59,
+  "out": 111.94,
+  "dur": 3.35,
+  "gapBefore": 0.1
+ },
+ {
+  "n": 29,
+  "first": 111.94,
+  "last": 115.18,
+  "words": "And I stood there in that hallway watching my little lie grow",
+  "in": 111.94,
+  "out": 115.18,
+  "dur": 3.24,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 30,
+  "first": 115.18,
+  "last": 118.64,
+  "words": "into something worse than the truth And the worst was yet to show",
+  "in": 115.18,
+  "out": 118.64,
+  "dur": 3.46,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 33,
+  "first": 118.64,
+  "last": 121.88,
+  "words": "she scrolled through every message every call and found no name",
+  "in": 118.64,
+  "out": 121.88,
+  "dur": 3.24,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 34,
+  "first": 121.88,
+  "last": 125.3,
+  "words": "Just what I typed at 2 a .m. And it wasn't who she blamed",
+  "in": 121.88,
+  "out": 125.3,
+  "dur": 3.42,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 35,
+  "first": 125.3,
+  "last": 128.7,
+  "words": "back pain only at night How do I hide it from my wife?",
+  "in": 125.3,
+  "out": 128.88,
+  "dur": 3.58,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 36,
+  "first": 129.06,
+  "last": 131.96,
+  "words": "She stood there in the doorway held that phone up to my face",
+  "in": 128.88,
+  "out": 131.96,
+  "dur": 3.08,
+  "gapBefore": 0.36
+ },
+ {
+  "n": 37,
+  "first": 131.96,
+  "last": 135.3,
+  "words": "said is this her is this the other woman and She fell in my embrace",
+  "in": 131.96,
+  "out": 135.3,
+  "dur": 3.34,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 38,
+  "first": 135.3,
+  "last": 137.3,
+  "words": "cuz in my head the truth made me less of a man",
+  "in": 135.3,
+  "out": 137.3,
+  "dur": 2.0,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 39,
+  "first": 137.3,
+  "last": 139.76,
+  "words": "than the lie But she already had a plan",
+  "in": 137.3,
+  "out": 139.76,
+  "dur": 2.46,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 40,
+  "first": 139.76,
+  "last": 143.6,
+  "words": "Next morning she called her mother Back in Nashik on the phone",
+  "in": 139.76,
+  "out": 143.6,
+  "dur": 3.84,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 41,
+  "first": 143.6,
+  "last": 146.96,
+  "words": "Ma said Your papa's back when at 50 and there's something I never told",
+  "in": 143.6,
+  "out": 146.96,
+  "dur": 3.36,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 42,
+  "first": 146.96,
+  "last": 149.94,
+  "words": "What I did for him each night 10 minutes before he'd sleep",
+  "in": 146.96,
+  "out": 149.94,
+  "dur": 2.98,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 43,
+  "first": 149.94,
+  "last": 153.66,
+  "words": "That night there was something on my pillow And I promised she would keep",
+  "in": 149.94,
+  "out": 153.66,
+  "dur": 3.72,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 44,
+  "first": 153.66,
+  "last": 158.72,
+  "words": "An amber bottle, VSR, Vedic pain relief oil 15 herbs inside",
+  "in": 153.66,
+  "out": 158.72,
+  "dur": 5.06,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 45,
+  "first": 158.72,
+  "last": 162.9,
+  "words": "I laughed, another oil, she said lie down Turn over then decide",
+  "in": 158.72,
+  "out": 163.7,
+  "dur": 4.98,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 46,
+  "first": 164.0,
+  "last": 168.64,
+  "words": "She said it's not your age John It's what your tablets never reach",
+  "in": 163.7,
+  "out": 168.64,
+  "dur": 4.94,
+  "gapBefore": 1.1
+ },
+ {
+  "n": 47,
+  "first": 168.64,
+  "last": 171.96,
+  "words": "Inflammation locked in deep Where sprays just sit up on the skin",
+  "in": 168.64,
+  "out": 171.96,
+  "dur": 3.32,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 48,
+  "first": 171.96,
+  "last": 175.66,
+  "words": "Warm massage works the stiffness loose So fifteen herbs can settle in",
+  "in": 171.96,
+  "out": 175.66,
+  "dur": 3.7,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 49,
+  "first": 175.66,
+  "last": 179.32,
+  "words": "Mahanaraya nirgun dai Ashwagandha camp ferment",
+  "in": 175.66,
+  "out": 180.22,
+  "dur": 4.56,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 50,
+  "first": 180.52,
+  "last": 184.5,
+  "words": "Night won her hands on my back First time she touched me in a year",
+  "in": 180.22,
+  "out": 184.5,
+  "dur": 4.28,
+  "gapBefore": 1.2
+ },
+ {
+  "n": 51,
+  "first": 184.5,
+  "last": 189.54,
+  "words": "Night three I slept straight through And woke to find her watching me in tears",
+  "in": 184.5,
+  "out": 189.54,
+  "dur": 5.04,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 52,
+  "first": 189.54,
+  "last": 194.38,
+  "words": "Week six back on morning walks Standing tall and Friday was near",
+  "in": 189.54,
+  "out": 194.74,
+  "dur": 5.2,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 53,
+  "first": 195.1,
+  "last": 198.66,
+  "words": "That Friday I stayed up, didn't fall asleep at 10",
+  "in": 194.74,
+  "out": 198.66,
+  "dur": 3.92,
+  "gapBefore": 0.72
+ },
+ {
+  "n": 54,
+  "first": 198.66,
+  "last": 202.66,
+  "words": "She came out in that red saree, nervous like our first night Again",
+  "in": 198.66,
+  "out": 202.66,
+  "dur": 4.0,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 55,
+  "first": 202.66,
+  "last": 206.62,
+  "words": "she whispered tired and I gave the answer She'd waited eight months for",
+  "in": 202.66,
+  "out": 206.62,
+  "dur": 3.96,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 56,
+  "first": 206.62,
+  "last": 209.36,
+  "words": "not tonight, John Not ever again",
+  "in": 206.62,
+  "out": 209.72,
+  "dur": 3.1,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 57,
+  "first": 210.08,
+  "last": 215.2,
+  "words": "She switched off the lamp And this time she turned my way,",
+  "in": 209.72,
+  "out": 215.2,
+  "dur": 5.48,
+  "gapBefore": 0.72
+ },
+ {
+  "n": 58,
+  "first": 215.2,
+  "last": 219.76,
+  "words": "I'm not tired, John No more lyin' bout why",
+  "in": 215.2,
+  "out": 219.93,
+  "dur": 4.73,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 59,
+  "first": 220.1,
+  "last": 222.68,
+  "words": "To every man two feet from his wife",
+  "in": 219.93,
+  "out": 222.68,
+  "dur": 2.75,
+  "gapBefore": 0.34
+ },
+ {
+  "n": 60,
+  "first": 222.68,
+  "last": 224.62,
+  "words": "saying just tired every night",
+  "in": 222.68,
+  "out": 224.62,
+  "dur": 1.94,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 61,
+  "first": 224.62,
+  "last": 228.7,
+  "words": "she doesn't think you're tired she thinks it's her",
+  "in": 224.62,
+  "out": 228.7,
+  "dur": 4.08,
+  "gapBefore": 0.0
+ },
+ {
+  "n": 62,
+  "first": 228.7,
+  "last": 230.42,
+  "words": "tell her why",
+  "in": 228.7,
+  "out": 235.05,
+  "dur": 6.35,
+  "gapBefore": 0.0
+ }
+]
