@@ -1,0 +1,5 @@
+# Ad edit source media (lives in Google Drive, not git)
+outputs/*/edit/*.zip
+outputs/*/edit/clips/
+outputs/*/edit/media/
+outputs/*/renders/
