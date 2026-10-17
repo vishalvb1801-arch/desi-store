@@ -1,9 +1,9 @@
 # C302 A — delivery (edit-plan v1)
 
-**Status: STOPPED before render.** Your brief says to stop if any [P] clip fails QC, and 7 of the 9 do.
-I also found that the song doesn't sing lines 50–59 (the whole CTA). `edit-plan.json` is built and passes
-the validator, and the renderer is tested, so once the clips and song below are fixed, the render is one command.
-**No MP4 was made, and nothing was copied back to Drive.**
+**Status: rendered as-is on request (2026-10-17)** → `renders/C302-A-V1.mp4` (4:16, 215 MB). It still has the blockers below:
+the garbled labels on clip_25 / 26 / 28 / 31 / 60 are visible, and the song ends without the CTA lines.
+Checks: 1080x1920 at 30 fps, H.264 High, yuv420p, AAC 48 kHz; video 256.167 s vs audio 256.149 s (under 1 frame); −14.0 LUFS, true peak −0.9 dBTP after AAC encoding;
+blackdetect (d=0.05) found 0 black frames; moov before mdat (faststart). Not copied to Drive: no Drive for desktop here, and the Drive connector can't upload a file this size.
 
 ## Blockers
 
