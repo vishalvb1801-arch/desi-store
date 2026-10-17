@@ -1,0 +1,5 @@
+{
+  "_note": "Renderer-only settings (not part of the app contract). captionY moves the caption pill off the bottle label on [P] shots; logo scale in the plan = fraction of frame width.",
+  "captionY": {"clip_28": 0.90, "clip_31": 0.90, "clip_38": 0.92, "clip_39": 0.91, "clip_60": 0.19},
+  "headlineSize": 84, "priceSize": 112, "ctaSize": 50
+}

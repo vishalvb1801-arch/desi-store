@@ -1,0 +1,2436 @@
+{
+  "project": "C302 A",
+  "brand": "EIS",
+  "version": 1,
+  "output": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "crf": 18,
+    "loudnessLUFS": -14
+  },
+  "segments": [
+    {
+      "id": "seg01",
+      "role": "hook",
+      "line": "My best friend Kunal walked into the Diwali night,",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 8.77,
+        "out": 13.53
+      },
+      "shots": [
+        {
+          "clip": "clip_1",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg02",
+      "role": "hook",
+      "line": "Priya on his arm, lifting her up in the camera light. And me?",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 14.05,
+        "out": 19.93
+      },
+      "shots": [
+        {
+          "clip": "clip_2",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg03",
+      "role": "hook",
+      "line": "I couldn't even bend to touch my nani's feet.",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 23.17,
+        "out": 27.57
+      },
+      "shots": [
+        {
+          "clip": "clip_3",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg04",
+      "role": "hook",
+      "line": "The only reason I held my head up on that street",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 28.35,
+        "out": 32.75
+      },
+      "shots": [
+        {
+          "clip": "clip_4",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg05",
+      "role": "hook",
+      "line": "was what my tailor gave me just the week before. So let me take it back to the start.",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 32.75,
+        "out": 41.67
+      },
+      "shots": [
+        {
+          "clip": "clip_5",
+          "fit": "slow",
+          "duration": 5.1
+        },
+        {
+          "clip": "clip_21",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg06",
+      "role": "body",
+      "line": "Me and Priya, six long years, never did get wed, \"Let's wait till you're settled,\" that's all she ever said. And I believed her. Gave that girl my twenties whole,",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 47.11,
+        "out": 61.15
+      },
+      "shots": [
+        {
+          "clip": "clip_6",
+          "fit": "slow",
+          "duration": 8.0
+        },
+        {
+          "clip": "clip_1",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg07",
+      "role": "body",
+      "line": "paid her EMIs, double shifts, drove her papa, played my role.",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 61.37,
+        "out": 65.69
+      },
+      "shots": [
+        {
+          "clip": "clip_7",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg08",
+      "role": "body",
+      "line": "Planned every birthday while she \"needed space,\"",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 66.09,
+        "out": 70.31
+      },
+      "shots": [
+        {
+          "clip": "clip_8",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg09",
+      "role": "body",
+      "line": "and how'd she pay me back? With my best friend's face. Kunal. My best friend since school.",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 70.31,
+        "out": 77.63
+      },
+      "shots": [
+        {
+          "clip": "clip_51",
+          "fit": "trim",
+          "duration": 3.6
+        },
+        {
+          "clip": "clip_9",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg10",
+      "role": "body",
+      "line": "Found out through his own sister in my DMs: \"Bhai, I thought you should know.\"",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 77.63,
+        "out": 83.46
+      },
+      "shots": [
+        {
+          "clip": "clip_10",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg11",
+      "role": "body",
+      "line": "Three months later, she moved out the door.",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 83.46,
+        "out": 87.11
+      },
+      "shots": [
+        {
+          "clip": "clip_11",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg12",
+      "role": "body",
+      "line": "Four months on, I wasn't missing her anymore, I missed who I thought she was.",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 87.11,
+        "out": 93.47
+      },
+      "shots": [
+        {
+          "clip": "clip_12",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg13",
+      "role": "body",
+      "line": "Mostly I was in pain, the kind no sleep could fix,",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 96.79,
+        "out": 100.78
+      },
+      "shots": [
+        {
+          "clip": "clip_13",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg14",
+      "role": "body",
+      "line": "thirty-six, but in the mirror I looked fifty, no tricks.",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 100.78,
+        "out": 105.65
+      },
+      "shots": [
+        {
+          "clip": "clip_14",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg15",
+      "role": "body",
+      "line": "Twelve-hour days on my bike, my back locked every dawn,",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 106.07,
+        "out": 110.02
+      },
+      "shots": [
+        {
+          "clip": "clip_15",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg16",
+      "role": "body",
+      "line": "my knees cracked on the stairs, every bit of me was gone.",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 110.02,
+        "out": 114.76
+      },
+      "shots": [
+        {
+          "clip": "clip_16",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg17",
+      "role": "body",
+      "line": "I tried it all: physio, the gym at six a.m.,",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 114.76,
+        "out": 119.77
+      },
+      "shots": [
+        {
+          "clip": "clip_17",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg18",
+      "role": "body",
+      "line": "the belts, the sprays, the balms, I bought every one of them.",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 120.07,
+        "out": 124.51
+      },
+      "shots": [
+        {
+          "clip": "clip_18",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg19",
+      "role": "body",
+      "line": "Painkillers till my stomach burned, the ache came right back.",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 125.35,
+        "out": 128.98
+      },
+      "shots": [
+        {
+          "clip": "clip_19",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg20",
+      "role": "body",
+      "line": "My body gave up on me the same way Priya did, just like that.",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 128.98,
+        "out": 135.49
+      },
+      "shots": [
+        {
+          "clip": "clip_20",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg21",
+      "role": "body",
+      "line": "Then I'm at Iqbal chacha's for my Diwali kurta fit,",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 141.25,
+        "out": 145.55
+      },
+      "shots": [
+        {
+          "clip": "clip_21",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg22",
+      "role": "body",
+      "line": "twelve years he's stitched my clothes, he knows me every bit.",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 145.95,
+        "out": 150.29
+      },
+      "shots": [
+        {
+          "clip": "clip_22",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg23",
+      "role": "body",
+      "line": "Mid-measurement he says, \"Stand straight.\" I can't. He stops.",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 150.87,
+        "out": 154.24
+      },
+      "shots": [
+        {
+          "clip": "clip_29",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg24",
+      "role": "body",
+      "line": "\"What's going on with you?\" Right there, tears dropped.",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 154.24,
+        "out": 158.2
+      },
+      "shots": [
+        {
+          "clip": "clip_24",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg25",
+      "role": "body",
+      "line": "Under his counter, he pulled out a bottle with herbs on it.",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 158.2,
+        "out": 161.66
+      },
+      "shots": [
+        {
+          "clip": "clip_25",
+          "fit": "hold"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg26",
+      "role": "body",
+      "line": "\"My client who's a physiotherapist put me onto this.",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 161.66,
+        "out": 165.14
+      },
+      "shots": [
+        {
+          "clip": "clip_26",
+          "fit": "hold"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg27",
+      "role": "body",
+      "line": "Not those sprays, not the YouTube nuskhe, no, fifteen Ayurvedic herbs in warm til oil, it goes in deep and slow.",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 165.14,
+        "out": 172.1
+      },
+      "shots": [
+        {
+          "clip": "clip_27",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg28",
+      "role": "body",
+      "line": "\"Chacha, I'm not spending more on something that does nothing.\"",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 172.1,
+        "out": 175.91
+      },
+      "shots": [
+        {
+          "clip": "clip_28",
+          "fit": "hold"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg29",
+      "role": "body",
+      "line": "He looked me dead in the eyes: \"If it doesn't work, your stitching's free for a year.\"",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 176.13,
+        "out": 181.13
+      },
+      "shots": [
+        {
+          "clip": "clip_29",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg30",
+      "role": "body",
+      "line": "Twelve years, never one rupee off.",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 181.41,
+        "out": 184.13
+      },
+      "shots": [
+        {
+          "clip": "clip_30",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg31",
+      "role": "body",
+      "line": "So I took it home, rubbed it in every night before bed.",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 184.87,
+        "out": 188.66
+      },
+      "shots": [
+        {
+          "clip": "clip_31",
+          "fit": "hold"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg32",
+      "role": "body",
+      "line": "A week in, I texted him, \"Why is this working?\" I said,",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 188.66,
+        "out": 192.39
+      },
+      "shots": [
+        {
+          "clip": "clip_32",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg33",
+      "role": "body",
+      "line": "\"when nothing else did?\" And he wrote back: \"Because it was never just your back.",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 192.39,
+        "out": 199.46
+      },
+      "shots": [
+        {
+          "clip": "clip_33",
+          "fit": "trim",
+          "duration": 3.62
+        },
+        {
+          "clip": "clip_16",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg34",
+      "role": "body",
+      "line": "Twelve hours on that bike and all that stress, your muscles stayed tight, inflamed, a mess.",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 199.46,
+        "out": 204.8
+      },
+      "shots": [
+        {
+          "clip": "clip_34",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg35",
+      "role": "body",
+      "line": "Sprays sit on the skin, an hour later they're gone,",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 204.8,
+        "out": 207.08
+      },
+      "shots": [
+        {
+          "clip": "clip_35",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg36",
+      "role": "body",
+      "line": "warm oil massaged in slow gets down where it's wrong. No oil fixes your whole life, that's true,",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 207.08,
+        "out": 211.9
+      },
+      "shots": [
+        {
+          "clip": "clip_36",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg37",
+      "role": "body",
+      "line": "but sleeping without pain is a good start for you.\"",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 211.9,
+        "out": 215.23
+      },
+      "shots": [
+        {
+          "clip": "clip_13",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg38",
+      "role": "body",
+      "line": "It's called EIS Ayurvedic Pain Relief Oil,",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 215.83,
+        "out": 220.4
+      },
+      "shots": [
+        {
+          "clip": "clip_38",
+          "fit": "hold"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg39",
+      "role": "body",
+      "line": "Mahanarayan, Nirgundi, Ashwagandha,",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 221.05,
+        "out": 224.17
+      },
+      "shots": [
+        {
+          "clip": "clip_39",
+          "fit": "hold"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg40",
+      "role": "body",
+      "line": "Week one, I slept straight through the night. Week two, the morning stiffness started feeling light.",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 224.93,
+        "out": 234.31
+      },
+      "shots": [
+        {
+          "clip": "clip_37",
+          "fit": "slow",
+          "duration": 4.4
+        },
+        {
+          "clip": "clip_40",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg41",
+      "role": "body",
+      "line": "Week three, the stairs stopped scaring me.",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 234.31,
+        "out": 238.61
+      },
+      "shots": [
+        {
+          "clip": "clip_41",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg42",
+      "role": "body",
+      "line": "A month in, cross-legged at puja, I got up free, didn't even hold the wall.",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 238.89,
+        "out": 245.92
+      },
+      "shots": [
+        {
+          "clip": "clip_32",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg43",
+      "role": "body",
+      "line": "Six weeks in, the society match, twenty overs, played it all. Not the old me.",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 245.92,
+        "out": 255.49
+      },
+      "shots": [
+        {
+          "clip": "clip_4",
+          "fit": "slow",
+          "duration": 4.8
+        },
+        {
+          "clip": "clip_14",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg44",
+      "role": "body",
+      "line": "The me I was supposed to be.",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 257.8,
+        "out": 262.25
+      },
+      "shots": [
+        {
+          "clip": "clip_44",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg45",
+      "role": "body",
+      "line": "Next society function, first one on the floor, in that same Diwali kurta, standing tall once more.",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 266.16,
+        "out": 274.28
+      },
+      "shots": [
+        {
+          "clip": "clip_45",
+          "fit": "slow"
+        },
+        {
+          "clip": "clip_52",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg46",
+      "role": "body",
+      "line": "Nothing extra. No belt. No painkiller.",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 274.28,
+        "out": 278.16
+      },
+      "shots": [
+        {
+          "clip": "clip_46",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg47",
+      "role": "body",
+      "line": "And there's Priya. Kunal next to her.",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 278.16,
+        "out": 283.85
+      },
+      "shots": [
+        {
+          "clip": "clip_47",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg48",
+      "role": "body",
+      "line": "My nani walks in, I bend, touch her feet, come up smooth.",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 283.85,
+        "out": 288.07
+      },
+      "shots": [
+        {
+          "clip": "clip_48",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg49",
+      "role": "body",
+      "line": "Priya's face changed,",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 288.61,
+        "out": 290.65
+      },
+      "shots": [
+        {
+          "clip": "clip_49",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg50",
+      "role": "cta",
+      "line": "that's a bonus, see,",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 290.65,
+        "out": 292.57
+      },
+      "shots": [
+        {
+          "clip": "clip_59",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg51",
+      "role": "cta",
+      "line": "but it's not for her anymore. It's for me.",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 292.57,
+        "out": 297.45
+      },
+      "shots": [
+        {
+          "clip": "clip_60",
+          "fit": "hold"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    }
+  ],
+  "captions": {
+    "enabled": true,
+    "style": {
+      "font": "Montserrat-Bold",
+      "fallbackFont": "NotoSansDevanagari-Bold",
+      "size": 60,
+      "color": "#FFF8EE",
+      "strokeColor": "#000000",
+      "strokeWidth": 0,
+      "y": 0.7,
+      "maxCharsPerLine": 22,
+      "highlightColor": "#E8B54A",
+      "box": {
+        "color": "#770A08",
+        "opacity": 0.88,
+        "radius": "pill",
+        "padX": 28,
+        "padY": 14,
+        "shadow": true
+      }
+    },
+    "items": [
+      {
+        "segment": "seg01",
+        "start": 0.0,
+        "end": 2.33,
+        "text": "My best friend *Kunal*"
+      },
+      {
+        "segment": "seg01",
+        "start": 2.33,
+        "end": 3.31,
+        "text": "walked into the"
+      },
+      {
+        "segment": "seg01",
+        "start": 3.31,
+        "end": 4.76,
+        "text": "*Diwali* night"
+      },
+      {
+        "segment": "seg02",
+        "start": 0.0,
+        "end": 1.55,
+        "text": "*Priya* on his arm"
+      },
+      {
+        "segment": "seg02",
+        "start": 1.55,
+        "end": 2.57,
+        "text": "lifting her up in"
+      },
+      {
+        "segment": "seg02",
+        "start": 2.57,
+        "end": 4.35,
+        "text": "the *camera* light"
+      },
+      {
+        "segment": "seg02",
+        "start": 4.35,
+        "end": 5.88,
+        "text": "And *me*?"
+      },
+      {
+        "segment": "seg03",
+        "start": 0.0,
+        "end": 1.39,
+        "text": "I couldn't"
+      },
+      {
+        "segment": "seg03",
+        "start": 1.39,
+        "end": 2.83,
+        "text": "even *bend* to touch"
+      },
+      {
+        "segment": "seg03",
+        "start": 2.83,
+        "end": 4.4,
+        "text": "my nani's *feet*"
+      },
+      {
+        "segment": "seg04",
+        "start": 0.0,
+        "end": 1.65,
+        "text": "The only *reason*"
+      },
+      {
+        "segment": "seg04",
+        "start": 1.65,
+        "end": 3.07,
+        "text": "I held my *head* up"
+      },
+      {
+        "segment": "seg04",
+        "start": 3.07,
+        "end": 4.4,
+        "text": "on that *street*"
+      },
+      {
+        "segment": "seg05",
+        "start": 0.0,
+        "end": 1.95,
+        "text": "was what my *tailor*"
+      },
+      {
+        "segment": "seg05",
+        "start": 1.95,
+        "end": 3.19,
+        "text": "gave me just"
+      },
+      {
+        "segment": "seg05",
+        "start": 3.19,
+        "end": 5.17,
+        "text": "the week *before*"
+      },
+      {
+        "segment": "seg05",
+        "start": 5.17,
+        "end": 6.89,
+        "text": "So let me take it"
+      },
+      {
+        "segment": "seg05",
+        "start": 6.89,
+        "end": 8.92,
+        "text": "back to the *start*"
+      },
+      {
+        "segment": "seg06",
+        "start": 0.0,
+        "end": 1.41,
+        "text": "Me and *Priya*"
+      },
+      {
+        "segment": "seg06",
+        "start": 1.41,
+        "end": 2.59,
+        "text": "six long *years*"
+      },
+      {
+        "segment": "seg06",
+        "start": 2.59,
+        "end": 4.99,
+        "text": "never did get *wed*"
+      },
+      {
+        "segment": "seg06",
+        "start": 4.99,
+        "end": 6.13,
+        "text": "Let's wait till"
+      },
+      {
+        "segment": "seg06",
+        "start": 6.13,
+        "end": 6.98,
+        "text": "you're *settled*"
+      },
+      {
+        "segment": "seg06",
+        "start": 6.98,
+        "end": 7.83,
+        "text": "that's all"
+      },
+      {
+        "segment": "seg06",
+        "start": 7.83,
+        "end": 8.71,
+        "text": "she ever *said*"
+      },
+      {
+        "segment": "seg06",
+        "start": 8.71,
+        "end": 11.53,
+        "text": "And I *believed* her"
+      },
+      {
+        "segment": "seg06",
+        "start": 11.53,
+        "end": 12.41,
+        "text": "Gave that girl"
+      },
+      {
+        "segment": "seg06",
+        "start": 12.41,
+        "end": 14.04,
+        "text": "my *twenties* whole"
+      },
+      {
+        "segment": "seg07",
+        "start": 0.0,
+        "end": 1.47,
+        "text": "paid her *EMIs*"
+      },
+      {
+        "segment": "seg07",
+        "start": 1.47,
+        "end": 2.32,
+        "text": "double *shifts*"
+      },
+      {
+        "segment": "seg07",
+        "start": 2.32,
+        "end": 3.17,
+        "text": "drove her *papa*"
+      },
+      {
+        "segment": "seg07",
+        "start": 3.17,
+        "end": 4.32,
+        "text": "played my *role*"
+      },
+      {
+        "segment": "seg08",
+        "start": 0.0,
+        "end": 1.69,
+        "text": "Planned every *birthday*"
+      },
+      {
+        "segment": "seg08",
+        "start": 1.69,
+        "end": 2.54,
+        "text": "while she"
+      },
+      {
+        "segment": "seg08",
+        "start": 2.54,
+        "end": 4.22,
+        "text": "needed *space*"
+      },
+      {
+        "segment": "seg09",
+        "start": 0.0,
+        "end": 1.07,
+        "text": "and how'd she"
+      },
+      {
+        "segment": "seg09",
+        "start": 1.07,
+        "end": 1.97,
+        "text": "*pay* me back?"
+      },
+      {
+        "segment": "seg09",
+        "start": 1.97,
+        "end": 2.82,
+        "text": "With my best"
+      },
+      {
+        "segment": "seg09",
+        "start": 2.82,
+        "end": 3.67,
+        "text": "friend's *face*"
+      },
+      {
+        "segment": "seg09",
+        "start": 3.67,
+        "end": 5.19,
+        "text": "*Kunal*"
+      },
+      {
+        "segment": "seg09",
+        "start": 5.19,
+        "end": 6.39,
+        "text": "My best friend"
+      },
+      {
+        "segment": "seg09",
+        "start": 6.39,
+        "end": 7.32,
+        "text": "since *school*"
+      },
+      {
+        "segment": "seg10",
+        "start": 0.0,
+        "end": 1.49,
+        "text": "Found out through"
+      },
+      {
+        "segment": "seg10",
+        "start": 1.49,
+        "end": 2.34,
+        "text": "his own *sister*"
+      },
+      {
+        "segment": "seg10",
+        "start": 2.34,
+        "end": 3.83,
+        "text": "in my *DMs*"
+      },
+      {
+        "segment": "seg10",
+        "start": 3.83,
+        "end": 4.98,
+        "text": "Bhai, I thought"
+      },
+      {
+        "segment": "seg10",
+        "start": 4.98,
+        "end": 5.83,
+        "text": "you should *know*"
+      },
+      {
+        "segment": "seg11",
+        "start": 0.0,
+        "end": 1.4,
+        "text": "Three *months* later"
+      },
+      {
+        "segment": "seg11",
+        "start": 1.4,
+        "end": 2.25,
+        "text": "she moved"
+      },
+      {
+        "segment": "seg11",
+        "start": 2.25,
+        "end": 3.65,
+        "text": "out the *door*"
+      },
+      {
+        "segment": "seg12",
+        "start": 0.0,
+        "end": 1.45,
+        "text": "Four months on"
+      },
+      {
+        "segment": "seg12",
+        "start": 1.45,
+        "end": 2.59,
+        "text": "I wasn't *missing* her"
+      },
+      {
+        "segment": "seg12",
+        "start": 2.59,
+        "end": 3.44,
+        "text": "*anymore*"
+      },
+      {
+        "segment": "seg12",
+        "start": 3.44,
+        "end": 4.81,
+        "text": "I missed who"
+      },
+      {
+        "segment": "seg12",
+        "start": 4.81,
+        "end": 6.36,
+        "text": "I *thought* she was"
+      },
+      {
+        "segment": "seg13",
+        "start": 0.0,
+        "end": 1.31,
+        "text": "Mostly I was"
+      },
+      {
+        "segment": "seg13",
+        "start": 1.31,
+        "end": 2.16,
+        "text": "in *pain*"
+      },
+      {
+        "segment": "seg13",
+        "start": 2.16,
+        "end": 3.07,
+        "text": "the kind no *sleep*"
+      },
+      {
+        "segment": "seg13",
+        "start": 3.07,
+        "end": 3.99,
+        "text": "could fix"
+      },
+      {
+        "segment": "seg14",
+        "start": 0.0,
+        "end": 1.06,
+        "text": "*thirty-six*"
+      },
+      {
+        "segment": "seg14",
+        "start": 1.06,
+        "end": 2.42,
+        "text": "but in the *mirror*"
+      },
+      {
+        "segment": "seg14",
+        "start": 2.42,
+        "end": 3.62,
+        "text": "I looked *fifty*"
+      },
+      {
+        "segment": "seg14",
+        "start": 3.62,
+        "end": 4.87,
+        "text": "no tricks"
+      },
+      {
+        "segment": "seg15",
+        "start": 0.0,
+        "end": 1.4,
+        "text": "Twelve-hour days"
+      },
+      {
+        "segment": "seg15",
+        "start": 1.4,
+        "end": 2.25,
+        "text": "on my *bike*"
+      },
+      {
+        "segment": "seg15",
+        "start": 2.25,
+        "end": 3.1,
+        "text": "my back *locked*"
+      },
+      {
+        "segment": "seg15",
+        "start": 3.1,
+        "end": 3.95,
+        "text": "every dawn"
+      },
+      {
+        "segment": "seg16",
+        "start": 0.0,
+        "end": 1.94,
+        "text": "my knees *cracked*"
+      },
+      {
+        "segment": "seg16",
+        "start": 1.94,
+        "end": 3.04,
+        "text": "on the *stairs*"
+      },
+      {
+        "segment": "seg16",
+        "start": 3.04,
+        "end": 3.89,
+        "text": "every bit of me"
+      },
+      {
+        "segment": "seg16",
+        "start": 3.89,
+        "end": 4.74,
+        "text": "was *gone*"
+      },
+      {
+        "segment": "seg17",
+        "start": 0.0,
+        "end": 1.9,
+        "text": "I tried it all"
+      },
+      {
+        "segment": "seg17",
+        "start": 1.9,
+        "end": 2.94,
+        "text": "*physio*"
+      },
+      {
+        "segment": "seg17",
+        "start": 2.94,
+        "end": 5.01,
+        "text": "the *gym* at six a.m."
+      },
+      {
+        "segment": "seg18",
+        "start": 0.0,
+        "end": 1.89,
+        "text": "the belts, the *sprays*"
+      },
+      {
+        "segment": "seg18",
+        "start": 1.89,
+        "end": 2.74,
+        "text": "the *balms*"
+      },
+      {
+        "segment": "seg18",
+        "start": 2.74,
+        "end": 3.59,
+        "text": "I bought every"
+      },
+      {
+        "segment": "seg18",
+        "start": 3.59,
+        "end": 4.44,
+        "text": "one of them"
+      },
+      {
+        "segment": "seg19",
+        "start": 0.0,
+        "end": 0.85,
+        "text": "*Painkillers*"
+      },
+      {
+        "segment": "seg19",
+        "start": 0.85,
+        "end": 1.93,
+        "text": "till my stomach *burned*"
+      },
+      {
+        "segment": "seg19",
+        "start": 1.93,
+        "end": 2.78,
+        "text": "the ache came"
+      },
+      {
+        "segment": "seg19",
+        "start": 2.78,
+        "end": 3.63,
+        "text": "right *back*"
+      },
+      {
+        "segment": "seg20",
+        "start": 0.0,
+        "end": 1.82,
+        "text": "My body *gave up*"
+      },
+      {
+        "segment": "seg20",
+        "start": 1.82,
+        "end": 3.32,
+        "text": "on me the same"
+      },
+      {
+        "segment": "seg20",
+        "start": 3.32,
+        "end": 4.6,
+        "text": "way *Priya* did"
+      },
+      {
+        "segment": "seg20",
+        "start": 4.6,
+        "end": 6.51,
+        "text": "just like that"
+      },
+      {
+        "segment": "seg21",
+        "start": 0.0,
+        "end": 1.11,
+        "text": "Then I'm at"
+      },
+      {
+        "segment": "seg21",
+        "start": 1.11,
+        "end": 2.25,
+        "text": "*Iqbal* chacha's"
+      },
+      {
+        "segment": "seg21",
+        "start": 2.25,
+        "end": 3.14,
+        "text": "for my *Diwali*"
+      },
+      {
+        "segment": "seg21",
+        "start": 3.14,
+        "end": 4.3,
+        "text": "kurta fit"
+      },
+      {
+        "segment": "seg22",
+        "start": 0.0,
+        "end": 0.94,
+        "text": "*twelve* years"
+      },
+      {
+        "segment": "seg22",
+        "start": 0.94,
+        "end": 1.79,
+        "text": "he's *stitched*"
+      },
+      {
+        "segment": "seg22",
+        "start": 1.79,
+        "end": 2.64,
+        "text": "my clothes"
+      },
+      {
+        "segment": "seg22",
+        "start": 2.64,
+        "end": 3.49,
+        "text": "he knows me"
+      },
+      {
+        "segment": "seg22",
+        "start": 3.49,
+        "end": 4.34,
+        "text": "every *bit*"
+      },
+      {
+        "segment": "seg23",
+        "start": 0.0,
+        "end": 1.27,
+        "text": "Mid-measurement"
+      },
+      {
+        "segment": "seg23",
+        "start": 1.27,
+        "end": 2.37,
+        "text": "he says Stand *straight*"
+      },
+      {
+        "segment": "seg23",
+        "start": 2.37,
+        "end": 3.37,
+        "text": "I *can't* He stops"
+      },
+      {
+        "segment": "seg24",
+        "start": 0.0,
+        "end": 1.06,
+        "text": "What's going on"
+      },
+      {
+        "segment": "seg24",
+        "start": 1.06,
+        "end": 1.91,
+        "text": "with *you*?"
+      },
+      {
+        "segment": "seg24",
+        "start": 1.91,
+        "end": 3.0,
+        "text": "Right there"
+      },
+      {
+        "segment": "seg24",
+        "start": 3.0,
+        "end": 3.96,
+        "text": "*tears* dropped"
+      },
+      {
+        "segment": "seg25",
+        "start": 0.0,
+        "end": 0.91,
+        "text": "Under his *counter*"
+      },
+      {
+        "segment": "seg25",
+        "start": 0.91,
+        "end": 1.76,
+        "text": "he pulled out"
+      },
+      {
+        "segment": "seg25",
+        "start": 1.76,
+        "end": 2.61,
+        "text": "a *bottle*"
+      },
+      {
+        "segment": "seg25",
+        "start": 2.61,
+        "end": 3.46,
+        "text": "with *herbs* on it"
+      },
+      {
+        "segment": "seg26",
+        "start": 0.0,
+        "end": 1.08,
+        "text": "My client who's a"
+      },
+      {
+        "segment": "seg26",
+        "start": 1.08,
+        "end": 2.06,
+        "text": "*physiotherapist*"
+      },
+      {
+        "segment": "seg26",
+        "start": 2.06,
+        "end": 3.48,
+        "text": "put me onto *this*"
+      },
+      {
+        "segment": "seg27",
+        "start": 0.0,
+        "end": 0.9,
+        "text": "Not those *sprays*"
+      },
+      {
+        "segment": "seg27",
+        "start": 0.9,
+        "end": 1.75,
+        "text": "not the YouTube"
+      },
+      {
+        "segment": "seg27",
+        "start": 1.75,
+        "end": 2.6,
+        "text": "*nuskhe*, no"
+      },
+      {
+        "segment": "seg27",
+        "start": 2.6,
+        "end": 3.56,
+        "text": "*fifteen* Ayurvedic"
+      },
+      {
+        "segment": "seg27",
+        "start": 3.56,
+        "end": 4.41,
+        "text": "*herbs*"
+      },
+      {
+        "segment": "seg27",
+        "start": 4.41,
+        "end": 5.26,
+        "text": "in warm *til oil*"
+      },
+      {
+        "segment": "seg27",
+        "start": 5.26,
+        "end": 6.11,
+        "text": "it goes in"
+      },
+      {
+        "segment": "seg27",
+        "start": 6.11,
+        "end": 6.96,
+        "text": "*deep* and slow"
+      },
+      {
+        "segment": "seg28",
+        "start": 0.0,
+        "end": 0.85,
+        "text": "Chacha, I'm not"
+      },
+      {
+        "segment": "seg28",
+        "start": 0.85,
+        "end": 1.7,
+        "text": "*spending* more"
+      },
+      {
+        "segment": "seg28",
+        "start": 1.7,
+        "end": 2.55,
+        "text": "on something"
+      },
+      {
+        "segment": "seg28",
+        "start": 2.55,
+        "end": 3.81,
+        "text": "that does *nothing*"
+      },
+      {
+        "segment": "seg29",
+        "start": 0.0,
+        "end": 1.15,
+        "text": "He looked me"
+      },
+      {
+        "segment": "seg29",
+        "start": 1.15,
+        "end": 2.17,
+        "text": "*dead* in the eyes"
+      },
+      {
+        "segment": "seg29",
+        "start": 2.17,
+        "end": 3.02,
+        "text": "If it doesn't work"
+      },
+      {
+        "segment": "seg29",
+        "start": 3.02,
+        "end": 3.87,
+        "text": "your *stitching's*"
+      },
+      {
+        "segment": "seg29",
+        "start": 3.87,
+        "end": 5.0,
+        "text": "*free* for a year"
+      },
+      {
+        "segment": "seg30",
+        "start": 0.0,
+        "end": 1.02,
+        "text": "*Twelve* years"
+      },
+      {
+        "segment": "seg30",
+        "start": 1.02,
+        "end": 1.87,
+        "text": "never one"
+      },
+      {
+        "segment": "seg30",
+        "start": 1.87,
+        "end": 2.72,
+        "text": "*rupee* off"
+      },
+      {
+        "segment": "seg31",
+        "start": 0.0,
+        "end": 1.24,
+        "text": "So I took it *home*"
+      },
+      {
+        "segment": "seg31",
+        "start": 1.24,
+        "end": 2.09,
+        "text": "*rubbed* it in"
+      },
+      {
+        "segment": "seg31",
+        "start": 2.09,
+        "end": 2.94,
+        "text": "every night"
+      },
+      {
+        "segment": "seg31",
+        "start": 2.94,
+        "end": 3.79,
+        "text": "before *bed*"
+      },
+      {
+        "segment": "seg32",
+        "start": 0.0,
+        "end": 0.86,
+        "text": "A *week* in"
+      },
+      {
+        "segment": "seg32",
+        "start": 0.86,
+        "end": 1.74,
+        "text": "I *texted* him"
+      },
+      {
+        "segment": "seg32",
+        "start": 1.74,
+        "end": 2.88,
+        "text": "Why is this *working*?"
+      },
+      {
+        "segment": "seg32",
+        "start": 2.88,
+        "end": 3.73,
+        "text": "I said"
+      },
+      {
+        "segment": "seg33",
+        "start": 0.0,
+        "end": 0.85,
+        "text": "when *nothing*"
+      },
+      {
+        "segment": "seg33",
+        "start": 0.85,
+        "end": 1.7,
+        "text": "else did?"
+      },
+      {
+        "segment": "seg33",
+        "start": 1.7,
+        "end": 3.75,
+        "text": "And he *wrote* back"
+      },
+      {
+        "segment": "seg33",
+        "start": 3.75,
+        "end": 5.93,
+        "text": "Because it was never"
+      },
+      {
+        "segment": "seg33",
+        "start": 5.93,
+        "end": 7.07,
+        "text": "just your *back*"
+      },
+      {
+        "segment": "seg34",
+        "start": 0.0,
+        "end": 1.09,
+        "text": "*Twelve* hours"
+      },
+      {
+        "segment": "seg34",
+        "start": 1.09,
+        "end": 1.94,
+        "text": "on that bike"
+      },
+      {
+        "segment": "seg34",
+        "start": 1.94,
+        "end": 2.79,
+        "text": "and all that *stress*"
+      },
+      {
+        "segment": "seg34",
+        "start": 2.79,
+        "end": 3.64,
+        "text": "your muscles"
+      },
+      {
+        "segment": "seg34",
+        "start": 3.64,
+        "end": 4.49,
+        "text": "stayed *tight*"
+      },
+      {
+        "segment": "seg34",
+        "start": 4.49,
+        "end": 5.34,
+        "text": "*inflamed*, a mess"
+      },
+      {
+        "segment": "seg35",
+        "start": 0.0,
+        "end": 0.76,
+        "text": "*Sprays* sit on the skin"
+      },
+      {
+        "segment": "seg35",
+        "start": 0.76,
+        "end": 1.52,
+        "text": "an hour later"
+      },
+      {
+        "segment": "seg35",
+        "start": 1.52,
+        "end": 2.28,
+        "text": "they're *gone*"
+      },
+      {
+        "segment": "seg36",
+        "start": 0.0,
+        "end": 0.98,
+        "text": "warm *oil* massaged in"
+      },
+      {
+        "segment": "seg36",
+        "start": 0.98,
+        "end": 1.83,
+        "text": "slow gets down"
+      },
+      {
+        "segment": "seg36",
+        "start": 1.83,
+        "end": 2.68,
+        "text": "where it's *wrong*"
+      },
+      {
+        "segment": "seg36",
+        "start": 2.68,
+        "end": 3.76,
+        "text": "No oil fixes your"
+      },
+      {
+        "segment": "seg36",
+        "start": 3.76,
+        "end": 4.82,
+        "text": "*whole* life that's true"
+      },
+      {
+        "segment": "seg37",
+        "start": 0.0,
+        "end": 0.85,
+        "text": "but *sleeping* without"
+      },
+      {
+        "segment": "seg37",
+        "start": 0.85,
+        "end": 2.1,
+        "text": "pain is a *good*"
+      },
+      {
+        "segment": "seg37",
+        "start": 2.1,
+        "end": 3.33,
+        "text": "start for you"
+      },
+      {
+        "segment": "seg38",
+        "start": 0.0,
+        "end": 2.01,
+        "text": "It's called *EIS*"
+      },
+      {
+        "segment": "seg38",
+        "start": 2.01,
+        "end": 2.86,
+        "text": "*Ayurvedic*"
+      },
+      {
+        "segment": "seg38",
+        "start": 2.86,
+        "end": 4.57,
+        "text": "Pain Relief *Oil*"
+      },
+      {
+        "segment": "seg39",
+        "start": 0.0,
+        "end": 1.01,
+        "text": "*Mahanarayan*"
+      },
+      {
+        "segment": "seg39",
+        "start": 1.01,
+        "end": 1.86,
+        "text": "*Nirgundi*"
+      },
+      {
+        "segment": "seg39",
+        "start": 1.86,
+        "end": 3.12,
+        "text": "*Ashwagandha*"
+      },
+      {
+        "segment": "seg40",
+        "start": 0.0,
+        "end": 1.67,
+        "text": "Week one"
+      },
+      {
+        "segment": "seg40",
+        "start": 1.67,
+        "end": 2.97,
+        "text": "I *slept* straight"
+      },
+      {
+        "segment": "seg40",
+        "start": 2.97,
+        "end": 4.77,
+        "text": "through the *night*"
+      },
+      {
+        "segment": "seg40",
+        "start": 4.77,
+        "end": 6.37,
+        "text": "Week two"
+      },
+      {
+        "segment": "seg40",
+        "start": 6.37,
+        "end": 7.47,
+        "text": "the morning *stiffness*"
+      },
+      {
+        "segment": "seg40",
+        "start": 7.47,
+        "end": 8.53,
+        "text": "started feeling"
+      },
+      {
+        "segment": "seg40",
+        "start": 8.53,
+        "end": 9.38,
+        "text": "*light*"
+      },
+      {
+        "segment": "seg41",
+        "start": 0.0,
+        "end": 2.03,
+        "text": "Week three"
+      },
+      {
+        "segment": "seg41",
+        "start": 2.03,
+        "end": 2.91,
+        "text": "the *stairs* stopped"
+      },
+      {
+        "segment": "seg41",
+        "start": 2.91,
+        "end": 4.3,
+        "text": "*scaring* me"
+      },
+      {
+        "segment": "seg42",
+        "start": 0.0,
+        "end": 1.81,
+        "text": "A *month* in"
+      },
+      {
+        "segment": "seg42",
+        "start": 1.81,
+        "end": 2.85,
+        "text": "cross-legged"
+      },
+      {
+        "segment": "seg42",
+        "start": 2.85,
+        "end": 3.7,
+        "text": "at *puja*"
+      },
+      {
+        "segment": "seg42",
+        "start": 3.7,
+        "end": 4.55,
+        "text": "I got up *free*"
+      },
+      {
+        "segment": "seg42",
+        "start": 4.55,
+        "end": 5.93,
+        "text": "didn't even"
+      },
+      {
+        "segment": "seg42",
+        "start": 5.93,
+        "end": 7.03,
+        "text": "hold the *wall*"
+      },
+      {
+        "segment": "seg43",
+        "start": 0.0,
+        "end": 1.9,
+        "text": "Six *weeks* in"
+      },
+      {
+        "segment": "seg43",
+        "start": 1.9,
+        "end": 4.08,
+        "text": "the society *match*"
+      },
+      {
+        "segment": "seg43",
+        "start": 4.08,
+        "end": 5.3,
+        "text": "twenty *overs*"
+      },
+      {
+        "segment": "seg43",
+        "start": 5.3,
+        "end": 6.5,
+        "text": "played it *all*"
+      },
+      {
+        "segment": "seg43",
+        "start": 6.5,
+        "end": 9.57,
+        "text": "Not the *old* me"
+      },
+      {
+        "segment": "seg44",
+        "start": 0.0,
+        "end": 2.28,
+        "text": "The me I was"
+      },
+      {
+        "segment": "seg44",
+        "start": 2.28,
+        "end": 4.45,
+        "text": "*supposed* to be"
+      },
+      {
+        "segment": "seg45",
+        "start": 0.0,
+        "end": 1.94,
+        "text": "Next society function"
+      },
+      {
+        "segment": "seg45",
+        "start": 1.94,
+        "end": 2.94,
+        "text": "*first* one"
+      },
+      {
+        "segment": "seg45",
+        "start": 2.94,
+        "end": 3.79,
+        "text": "on the *floor*"
+      },
+      {
+        "segment": "seg45",
+        "start": 3.79,
+        "end": 5.06,
+        "text": "in that same"
+      },
+      {
+        "segment": "seg45",
+        "start": 5.06,
+        "end": 6.42,
+        "text": "*Diwali* kurta"
+      },
+      {
+        "segment": "seg45",
+        "start": 6.42,
+        "end": 7.27,
+        "text": "standing *tall*"
+      },
+      {
+        "segment": "seg45",
+        "start": 7.27,
+        "end": 8.12,
+        "text": "once more"
+      },
+      {
+        "segment": "seg46",
+        "start": 0.0,
+        "end": 1.42,
+        "text": "Nothing *extra*"
+      },
+      {
+        "segment": "seg46",
+        "start": 1.42,
+        "end": 2.56,
+        "text": "No *belt*"
+      },
+      {
+        "segment": "seg46",
+        "start": 2.56,
+        "end": 3.88,
+        "text": "No *painkiller*"
+      },
+      {
+        "segment": "seg47",
+        "start": 0.0,
+        "end": 2.46,
+        "text": "And there's *Priya*"
+      },
+      {
+        "segment": "seg47",
+        "start": 2.46,
+        "end": 5.69,
+        "text": "*Kunal* next to her"
+      },
+      {
+        "segment": "seg48",
+        "start": 0.0,
+        "end": 1.55,
+        "text": "My *nani* walks in"
+      },
+      {
+        "segment": "seg48",
+        "start": 1.55,
+        "end": 2.4,
+        "text": "I bend"
+      },
+      {
+        "segment": "seg48",
+        "start": 2.4,
+        "end": 3.25,
+        "text": "touch her *feet*"
+      },
+      {
+        "segment": "seg48",
+        "start": 3.25,
+        "end": 4.22,
+        "text": "come up *smooth*"
+      },
+      {
+        "segment": "seg49",
+        "start": 0.0,
+        "end": 2.04,
+        "text": "Priya's face *changed*"
+      },
+      {
+        "segment": "seg50",
+        "start": 0.0,
+        "end": 1.92,
+        "text": "that's a *bonus*, see"
+      },
+      {
+        "segment": "seg51",
+        "start": 0.0,
+        "end": 0.95,
+        "text": "but it's not"
+      },
+      {
+        "segment": "seg51",
+        "start": 0.95,
+        "end": 2.45,
+        "text": "for her *anymore*"
+      },
+      {
+        "segment": "seg51",
+        "start": 2.45,
+        "end": 4.88,
+        "text": "It's for *me*"
+      }
+    ]
+  },
+  "overlays": [
+    {
+      "id": "hook1",
+      "type": "text",
+      "segment": "seg01",
+      "start": 0.0,
+      "end": 4.76,
+      "text": "SHE CHOSE MY\n*BEST FRIEND*",
+      "style": "headline",
+      "x": 0.5,
+      "y": 0.16
+    },
+    {
+      "id": "hook1_seg02",
+      "type": "text",
+      "segment": "seg02",
+      "start": 0.0,
+      "end": 5.88,
+      "text": "SHE CHOSE MY\n*BEST FRIEND*",
+      "style": "headline",
+      "x": 0.5,
+      "y": 0.16
+    },
+    {
+      "id": "hook1_seg03",
+      "type": "text",
+      "segment": "seg03",
+      "start": 0.0,
+      "end": 4.4,
+      "text": "SHE CHOSE MY\n*BEST FRIEND*",
+      "style": "headline",
+      "x": 0.5,
+      "y": 0.16
+    },
+    {
+      "id": "hook1_seg04",
+      "type": "text",
+      "segment": "seg04",
+      "start": 0.0,
+      "end": 4.4,
+      "text": "SHE CHOSE MY\n*BEST FRIEND*",
+      "style": "headline",
+      "x": 0.5,
+      "y": 0.16
+    },
+    {
+      "id": "hook1_seg05",
+      "type": "text",
+      "segment": "seg05",
+      "start": 0.0,
+      "end": 8.92,
+      "text": "SHE CHOSE MY\n*BEST FRIEND*",
+      "style": "headline",
+      "x": 0.5,
+      "y": 0.16
+    },
+    {
+      "id": "cta_seg50",
+      "type": "text",
+      "segment": "seg50",
+      "start": 0.0,
+      "end": 1.92,
+      "text": "50% OFF · CASH ON DELIVERY",
+      "style": "cta",
+      "x": 0.5,
+      "y": 0.1
+    },
+    {
+      "id": "price_seg50",
+      "type": "text",
+      "segment": "seg50",
+      "start": 0.0,
+      "end": 1.92,
+      "text": "₹999",
+      "style": "price",
+      "x": 0.5,
+      "y": 0.8
+    },
+    {
+      "id": "logo_seg50",
+      "type": "image",
+      "file": "logo.png",
+      "segment": "seg50",
+      "start": 0.0,
+      "end": 1.92,
+      "x": 0.5,
+      "y": 0.88,
+      "scale": 0.18
+    },
+    {
+      "id": "cta_seg51",
+      "type": "text",
+      "segment": "seg51",
+      "start": 0.0,
+      "end": 4.88,
+      "text": "50% OFF · CASH ON DELIVERY",
+      "style": "cta",
+      "x": 0.5,
+      "y": 0.1
+    },
+    {
+      "id": "price_seg51",
+      "type": "text",
+      "segment": "seg51",
+      "start": 0.0,
+      "end": 4.88,
+      "text": "₹999",
+      "style": "price",
+      "x": 0.5,
+      "y": 0.8
+    },
+    {
+      "id": "logo_seg51",
+      "type": "image",
+      "file": "logo.png",
+      "segment": "seg51",
+      "start": 0.0,
+      "end": 4.88,
+      "x": 0.5,
+      "y": 0.88,
+      "scale": 0.18
+    }
+  ],
+  "music": {
+    "file": "music.mp3",
+    "gainDb": -18,
+    "duckUnderVO": true,
+    "fadeInSec": 0.5,
+    "fadeOutSec": 1.0,
+    "enabled": false
+  },
+  "sfx": [],
+  "variations": [
+    {
+      "name": "V1",
+      "layers": {
+        "music": false,
+        "overlays": "all"
+      }
+    }
+  ]
+}
