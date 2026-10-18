@@ -1,0 +1,3010 @@
+[
+ {
+  "line": 1,
+  "text": "I saw you in bed with my best friend, my eyes were open wide",
+  "words": [
+   {
+    "w": "I",
+    "s": 0.0,
+    "e": 0.14,
+    "matched": true
+   },
+   {
+    "w": "saw",
+    "s": 0.14,
+    "e": 0.38,
+    "matched": true
+   },
+   {
+    "w": "you",
+    "s": 0.38,
+    "e": 0.6,
+    "matched": true
+   },
+   {
+    "w": "in",
+    "s": 0.6,
+    "e": 0.84,
+    "matched": true
+   },
+   {
+    "w": "bed",
+    "s": 0.84,
+    "e": 0.96,
+    "matched": true
+   },
+   {
+    "w": "with",
+    "s": 0.96,
+    "e": 1.16,
+    "matched": true
+   },
+   {
+    "w": "my",
+    "s": 1.16,
+    "e": 1.4,
+    "matched": true
+   },
+   {
+    "w": "best",
+    "s": 1.4,
+    "e": 1.64,
+    "matched": true
+   },
+   {
+    "w": "friend,",
+    "s": 1.64,
+    "e": 1.92,
+    "matched": true
+   },
+   {
+    "w": "my",
+    "s": 2.02,
+    "e": 2.3,
+    "matched": true
+   },
+   {
+    "w": "eyes",
+    "s": 2.3,
+    "e": 2.58,
+    "matched": true
+   },
+   {
+    "w": "were",
+    "s": 2.58,
+    "e": 2.84,
+    "matched": true
+   },
+   {
+    "w": "open",
+    "s": 2.84,
+    "e": 3.24,
+    "matched": true
+   },
+   {
+    "w": "wide",
+    "s": 3.24,
+    "e": 3.7,
+    "matched": true
+   }
+  ],
+  "start": 0.0,
+  "end": 3.7
+ },
+ {
+  "line": 2,
+  "text": "Where was I? Awake all night in pain, while he was by your side",
+  "words": [
+   {
+    "w": "Where",
+    "s": 4.24,
+    "e": 4.38,
+    "matched": true
+   },
+   {
+    "w": "was",
+    "s": 4.38,
+    "e": 4.56,
+    "matched": true
+   },
+   {
+    "w": "I?",
+    "s": 4.56,
+    "e": 4.82,
+    "matched": true
+   },
+   {
+    "w": "Awake",
+    "s": 4.82,
+    "e": 5.16,
+    "matched": true
+   },
+   {
+    "w": "all",
+    "s": 5.16,
+    "e": 5.42,
+    "matched": true
+   },
+   {
+    "w": "night",
+    "s": 5.42,
+    "e": 5.7,
+    "matched": true
+   },
+   {
+    "w": "in",
+    "s": 5.7,
+    "e": 5.96,
+    "matched": true
+   },
+   {
+    "w": "pain,",
+    "s": 5.96,
+    "e": 6.3,
+    "matched": true
+   },
+   {
+    "w": "while",
+    "s": 6.3,
+    "e": 6.6,
+    "matched": true
+   },
+   {
+    "w": "he",
+    "s": 6.6,
+    "e": 6.86,
+    "matched": true
+   },
+   {
+    "w": "was",
+    "s": 6.86,
+    "e": 7.08,
+    "matched": true
+   },
+   {
+    "w": "by",
+    "s": 7.08,
+    "e": 7.36,
+    "matched": true
+   },
+   {
+    "w": "your",
+    "s": 7.36,
+    "e": 7.58,
+    "matched": true
+   },
+   {
+    "w": "side",
+    "s": 7.58,
+    "e": 8.0,
+    "matched": true
+   }
+  ],
+  "start": 4.24,
+  "end": 8.0
+ },
+ {
+  "line": 3,
+  "text": "You're telling me about your day, I'm pressing on my spine",
+  "words": [
+   {
+    "w": "You're",
+    "s": 8.68,
+    "e": 8.86,
+    "matched": true
+   },
+   {
+    "w": "telling",
+    "s": 8.86,
+    "e": 9.06,
+    "matched": true
+   },
+   {
+    "w": "me",
+    "s": 9.06,
+    "e": 9.5,
+    "matched": true
+   },
+   {
+    "w": "about",
+    "s": 9.5,
+    "e": 9.92,
+    "matched": true
+   },
+   {
+    "w": "your",
+    "s": 9.92,
+    "e": 10.18,
+    "matched": true
+   },
+   {
+    "w": "day,",
+    "s": 10.18,
+    "e": 10.6,
+    "matched": true
+   },
+   {
+    "w": "I'm",
+    "s": 10.6,
+    "e": 10.96,
+    "matched": true
+   },
+   {
+    "w": "pressing",
+    "s": 10.96,
+    "e": 11.3,
+    "matched": true
+   },
+   {
+    "w": "on",
+    "s": 11.3,
+    "e": 11.6,
+    "matched": true
+   },
+   {
+    "w": "my",
+    "s": 11.6,
+    "e": 11.82,
+    "matched": true
+   },
+   {
+    "w": "spine",
+    "s": 11.82,
+    "e": 12.26,
+    "matched": true
+   }
+  ],
+  "start": 8.68,
+  "end": 12.26
+ },
+ {
+  "line": 4,
+  "text": "You ask me \"Did you hear me?\", I say \"Sorry\u2026 I'm fine\"",
+  "words": [
+   {
+    "w": "You",
+    "s": 12.84,
+    "e": 13.1,
+    "matched": true
+   },
+   {
+    "w": "ask",
+    "s": 13.1,
+    "e": 13.3,
+    "matched": true
+   },
+   {
+    "w": "me",
+    "s": 13.3,
+    "e": 13.54,
+    "matched": true
+   },
+   {
+    "w": "\"Did",
+    "s": 13.54,
+    "e": 13.68,
+    "matched": true
+   },
+   {
+    "w": "you",
+    "s": 13.68,
+    "e": 13.94,
+    "matched": true
+   },
+   {
+    "w": "hear",
+    "s": 13.94,
+    "e": 14.24,
+    "matched": true
+   },
+   {
+    "w": "me?\",",
+    "s": 14.24,
+    "e": 14.5,
+    "matched": true
+   },
+   {
+    "w": "I",
+    "s": 14.58,
+    "e": 14.8,
+    "matched": true
+   },
+   {
+    "w": "say",
+    "s": 14.8,
+    "e": 15.1,
+    "matched": true
+   },
+   {
+    "w": "\"Sorry\u2026",
+    "s": 15.1,
+    "e": 15.56,
+    "matched": true
+   },
+   {
+    "w": "I'm",
+    "s": 15.56,
+    "e": 16.06,
+    "matched": true
+   },
+   {
+    "w": "fine\"",
+    "s": 16.06,
+    "e": 16.36,
+    "matched": true
+   }
+  ],
+  "start": 12.84,
+  "end": 16.36
+ },
+ {
+  "line": 5,
+  "text": "You're leaning for a goodnight kiss, my shoulder pulls me away",
+  "words": [
+   {
+    "w": "You're",
+    "s": 17.06,
+    "e": 17.4,
+    "matched": true
+   },
+   {
+    "w": "leaning",
+    "s": 17.4,
+    "e": 17.6,
+    "matched": true
+   },
+   {
+    "w": "for",
+    "s": 17.6,
+    "e": 18.06,
+    "matched": true
+   },
+   {
+    "w": "a",
+    "s": 18.06,
+    "e": 18.34,
+    "matched": true
+   },
+   {
+    "w": "goodnight",
+    "s": 18.34,
+    "e": 18.76,
+    "matched": true
+   },
+   {
+    "w": "kiss,",
+    "s": 18.76,
+    "e": 19.1,
+    "matched": true
+   },
+   {
+    "w": "my",
+    "s": 19.22,
+    "e": 19.42,
+    "matched": true
+   },
+   {
+    "w": "shoulder",
+    "s": 19.42,
+    "e": 19.8,
+    "matched": true
+   },
+   {
+    "w": "pulls",
+    "s": 19.8,
+    "e": 20.16,
+    "matched": true
+   },
+   {
+    "w": "me",
+    "s": 20.16,
+    "e": 20.36,
+    "matched": true
+   },
+   {
+    "w": "away",
+    "s": 20.36,
+    "e": 20.82,
+    "matched": true
+   }
+  ],
+  "start": 17.06,
+  "end": 20.82
+ },
+ {
+  "line": 6,
+  "text": "We said we'd leave at seven, but my knees just made me stay",
+  "words": [
+   {
+    "w": "We",
+    "s": 21.32,
+    "e": 21.52,
+    "matched": true
+   },
+   {
+    "w": "said",
+    "s": 21.52,
+    "e": 21.8,
+    "matched": true
+   },
+   {
+    "w": "we'd",
+    "s": 21.8,
+    "e": 22.14,
+    "matched": true
+   },
+   {
+    "w": "leave",
+    "s": 22.14,
+    "e": 22.4,
+    "matched": true
+   },
+   {
+    "w": "at",
+    "s": 22.4,
+    "e": 22.74,
+    "matched": true
+   },
+   {
+    "w": "seven,",
+    "s": 22.74,
+    "e": 22.98,
+    "matched": true
+   },
+   {
+    "w": "but",
+    "s": 22.98,
+    "e": 23.3,
+    "matched": true
+   },
+   {
+    "w": "my",
+    "s": 23.3,
+    "e": 23.64,
+    "matched": true
+   },
+   {
+    "w": "knees",
+    "s": 23.64,
+    "e": 23.98,
+    "matched": true
+   },
+   {
+    "w": "just",
+    "s": 23.98,
+    "e": 24.28,
+    "matched": true
+   },
+   {
+    "w": "made",
+    "s": 24.28,
+    "e": 24.54,
+    "matched": true
+   },
+   {
+    "w": "me",
+    "s": 24.54,
+    "e": 24.76,
+    "matched": true
+   },
+   {
+    "w": "stay",
+    "s": 24.76,
+    "e": 25.14,
+    "matched": true
+   }
+  ],
+  "start": 21.32,
+  "end": 25.14
+ },
+ {
+  "line": 7,
+  "text": "Your jacket's gone, I'm still in bed, another night slips by",
+  "words": [
+   {
+    "w": "Your",
+    "s": 25.62,
+    "e": 25.9,
+    "matched": true
+   },
+   {
+    "w": "jacket's",
+    "s": 25.9,
+    "e": 26.38,
+    "matched": true
+   },
+   {
+    "w": "gone,",
+    "s": 26.38,
+    "e": 26.6,
+    "matched": true
+   },
+   {
+    "w": "I'm",
+    "s": 26.66,
+    "e": 26.84,
+    "matched": true
+   },
+   {
+    "w": "still",
+    "s": 26.84,
+    "e": 27.14,
+    "matched": true
+   },
+   {
+    "w": "in",
+    "s": 27.14,
+    "e": 27.46,
+    "matched": true
+   },
+   {
+    "w": "bed,",
+    "s": 27.46,
+    "e": 27.78,
+    "matched": true
+   },
+   {
+    "w": "another",
+    "s": 27.9,
+    "e": 28.32,
+    "matched": true
+   },
+   {
+    "w": "night",
+    "s": 28.32,
+    "e": 28.64,
+    "matched": true
+   },
+   {
+    "w": "slips",
+    "s": 28.64,
+    "e": 28.96,
+    "matched": true
+   },
+   {
+    "w": "by",
+    "s": 28.96,
+    "e": 29.44,
+    "matched": true
+   }
+  ],
+  "start": 25.62,
+  "end": 29.44
+ },
+ {
+  "line": 8,
+  "text": "I scroll through \"pain relief at night\" till two, and wonder why",
+  "words": [
+   {
+    "w": "I",
+    "s": 29.44,
+    "e": 30.1,
+    "matched": true
+   },
+   {
+    "w": "scroll",
+    "s": 30.1,
+    "e": 30.4,
+    "matched": true
+   },
+   {
+    "w": "through",
+    "s": 30.4,
+    "e": 30.7,
+    "matched": true
+   },
+   {
+    "w": "\"pain",
+    "s": 30.7,
+    "e": 31.0,
+    "matched": true
+   },
+   {
+    "w": "relief",
+    "s": 31.0,
+    "e": 31.32,
+    "matched": true
+   },
+   {
+    "w": "at",
+    "s": 31.32,
+    "e": 31.64,
+    "matched": true
+   },
+   {
+    "w": "night\"",
+    "s": 31.64,
+    "e": 32.0,
+    "matched": true
+   },
+   {
+    "w": "till",
+    "s": 32.0,
+    "e": 32.26,
+    "matched": true
+   },
+   {
+    "w": "two,",
+    "s": 32.26,
+    "e": 32.84,
+    "matched": true
+   },
+   {
+    "w": "and",
+    "s": 33.44,
+    "e": 33.88,
+    "matched": true
+   },
+   {
+    "w": "wonder",
+    "s": 33.88,
+    "e": 34.32,
+    "matched": true
+   },
+   {
+    "w": "why",
+    "s": 34.32,
+    "e": 35.02,
+    "matched": true
+   }
+  ],
+  "start": 29.44,
+  "end": 35.02
+ },
+ {
+  "line": 9,
+  "text": "You say you're tired of reaching for someone never there",
+  "words": [
+   {
+    "w": "You",
+    "s": 37.38,
+    "e": 38.1,
+    "matched": true
+   },
+   {
+    "w": "say",
+    "s": 38.1,
+    "e": 38.54,
+    "matched": true
+   },
+   {
+    "w": "you're",
+    "s": 38.54,
+    "e": 38.82,
+    "matched": true
+   },
+   {
+    "w": "tired",
+    "s": 38.82,
+    "e": 39.5,
+    "matched": true
+   },
+   {
+    "w": "of",
+    "s": 39.5,
+    "e": 39.86,
+    "matched": true
+   },
+   {
+    "w": "reaching",
+    "s": 39.86,
+    "e": 40.34,
+    "matched": true
+   },
+   {
+    "w": "for",
+    "s": 40.34,
+    "e": 40.86,
+    "matched": true
+   },
+   {
+    "w": "someone",
+    "s": 40.86,
+    "e": 41.34,
+    "matched": true
+   },
+   {
+    "w": "never",
+    "s": 41.34,
+    "e": 41.74,
+    "matched": true
+   },
+   {
+    "w": "there",
+    "s": 41.74,
+    "e": 42.34,
+    "matched": true
+   }
+  ],
+  "start": 37.38,
+  "end": 42.34
+ },
+ {
+  "line": 10,
+  "text": "You say it's over, I look up, he's waiting on the stairs",
+  "words": [
+   {
+    "w": "You",
+    "s": 42.34,
+    "e": 42.92,
+    "matched": true
+   },
+   {
+    "w": "say",
+    "s": 42.92,
+    "e": 43.36,
+    "matched": true
+   },
+   {
+    "w": "it's",
+    "s": 43.36,
+    "e": 43.7,
+    "matched": true
+   },
+   {
+    "w": "over,",
+    "s": 43.7,
+    "e": 44.06,
+    "matched": true
+   },
+   {
+    "w": "I",
+    "s": 44.12,
+    "e": 44.38,
+    "matched": true
+   },
+   {
+    "w": "look",
+    "s": 44.38,
+    "e": 44.54,
+    "matched": true
+   },
+   {
+    "w": "up,",
+    "s": 44.54,
+    "e": 44.9,
+    "matched": true
+   },
+   {
+    "w": "he's",
+    "s": 44.98,
+    "e": 45.28,
+    "matched": true
+   },
+   {
+    "w": "waiting",
+    "s": 45.28,
+    "e": 45.64,
+    "matched": true
+   },
+   {
+    "w": "on",
+    "s": 45.64,
+    "e": 46.06,
+    "matched": true
+   },
+   {
+    "w": "the",
+    "s": 46.06,
+    "e": 46.22,
+    "matched": true
+   },
+   {
+    "w": "stairs",
+    "s": 46.22,
+    "e": 46.76,
+    "matched": true
+   }
+  ],
+  "start": 42.34,
+  "end": 46.76
+ },
+ {
+  "line": 11,
+  "text": "I ask if we can talk this through, you say you made your choice",
+  "words": [
+   {
+    "w": "I",
+    "s": 46.76,
+    "e": 47.34,
+    "matched": true
+   },
+   {
+    "w": "ask",
+    "s": 47.34,
+    "e": 47.64,
+    "matched": true
+   },
+   {
+    "w": "if",
+    "s": 47.64,
+    "e": 47.88,
+    "matched": true
+   },
+   {
+    "w": "we",
+    "s": 47.88,
+    "e": 48.12,
+    "matched": true
+   },
+   {
+    "w": "can",
+    "s": 48.12,
+    "e": 48.34,
+    "matched": true
+   },
+   {
+    "w": "talk",
+    "s": 48.34,
+    "e": 48.66,
+    "matched": true
+   },
+   {
+    "w": "this",
+    "s": 48.66,
+    "e": 48.9,
+    "matched": true
+   },
+   {
+    "w": "through,",
+    "s": 48.9,
+    "e": 49.2,
+    "matched": true
+   },
+   {
+    "w": "you",
+    "s": 49.2,
+    "e": 49.46,
+    "matched": true
+   },
+   {
+    "w": "say",
+    "s": 49.46,
+    "e": 49.74,
+    "matched": true
+   },
+   {
+    "w": "you",
+    "s": 49.74,
+    "e": 50.06,
+    "matched": true
+   },
+   {
+    "w": "made",
+    "s": 50.06,
+    "e": 50.3,
+    "matched": true
+   },
+   {
+    "w": "your",
+    "s": 50.3,
+    "e": 50.48,
+    "matched": true
+   },
+   {
+    "w": "choice",
+    "s": 50.48,
+    "e": 50.98,
+    "matched": true
+   }
+  ],
+  "start": 46.76,
+  "end": 50.98
+ },
+ {
+  "line": 12,
+  "text": "You roll your suitcase out the door, I can't find my voice",
+  "words": [
+   {
+    "w": "You",
+    "s": 50.98,
+    "e": 51.56,
+    "matched": true
+   },
+   {
+    "w": "roll",
+    "s": 51.56,
+    "e": 51.88,
+    "matched": true
+   },
+   {
+    "w": "your",
+    "s": 51.88,
+    "e": 52.14,
+    "matched": true
+   },
+   {
+    "w": "suitcase",
+    "s": 52.14,
+    "e": 52.58,
+    "matched": true
+   },
+   {
+    "w": "out",
+    "s": 52.58,
+    "e": 52.98,
+    "matched": true
+   },
+   {
+    "w": "the",
+    "s": 52.98,
+    "e": 53.16,
+    "matched": true
+   },
+   {
+    "w": "door,",
+    "s": 53.16,
+    "e": 53.62,
+    "matched": true
+   },
+   {
+    "w": "I",
+    "s": 53.62,
+    "e": 54.5,
+    "matched": true
+   },
+   {
+    "w": "can't",
+    "s": 54.5,
+    "e": 54.88,
+    "matched": true
+   },
+   {
+    "w": "find",
+    "s": 54.88,
+    "e": 55.28,
+    "matched": true
+   },
+   {
+    "w": "my",
+    "s": 55.28,
+    "e": 55.68,
+    "matched": true
+   },
+   {
+    "w": "voice",
+    "s": 55.68,
+    "e": 56.18,
+    "matched": true
+   }
+  ],
+  "start": 50.98,
+  "end": 56.18
+ },
+ {
+  "line": 13,
+  "text": "I'm scrolling through your pictures, you're out with him, so carefree",
+  "words": [
+   {
+    "w": "I'm",
+    "s": 63.62,
+    "e": 64.18,
+    "matched": true
+   },
+   {
+    "w": "scrolling",
+    "s": 64.18,
+    "e": 64.74,
+    "matched": true
+   },
+   {
+    "w": "through",
+    "s": 64.74,
+    "e": 65.24,
+    "matched": true
+   },
+   {
+    "w": "your",
+    "s": 65.24,
+    "e": 65.48,
+    "matched": true
+   },
+   {
+    "w": "pictures,",
+    "s": 65.48,
+    "e": 65.88,
+    "matched": true
+   },
+   {
+    "w": "you're",
+    "s": 66.0,
+    "e": 66.2,
+    "matched": true
+   },
+   {
+    "w": "out",
+    "s": 66.2,
+    "e": 66.38,
+    "matched": true
+   },
+   {
+    "w": "with",
+    "s": 66.38,
+    "e": 66.58,
+    "matched": true
+   },
+   {
+    "w": "him,",
+    "s": 66.58,
+    "e": 66.82,
+    "matched": true
+   },
+   {
+    "w": "so",
+    "s": 66.82,
+    "e": 67.08,
+    "matched": true
+   },
+   {
+    "w": "carefree",
+    "s": 67.08,
+    "e": 67.78,
+    "matched": true
+   }
+  ],
+  "start": 63.62,
+  "end": 67.78
+ },
+ {
+  "line": 14,
+  "text": "I wince just tying up my shoes, when did this become me?",
+  "words": [
+   {
+    "w": "I",
+    "s": 68.54,
+    "e": 68.82,
+    "matched": true
+   },
+   {
+    "w": "wince",
+    "s": 68.82,
+    "e": 69.02,
+    "matched": true
+   },
+   {
+    "w": "just",
+    "s": 69.02,
+    "e": 69.28,
+    "matched": true
+   },
+   {
+    "w": "tying",
+    "s": 69.28,
+    "e": 69.66,
+    "matched": true
+   },
+   {
+    "w": "up",
+    "s": 69.66,
+    "e": 70.0,
+    "matched": true
+   },
+   {
+    "w": "my",
+    "s": 70.0,
+    "e": 70.26,
+    "matched": true
+   },
+   {
+    "w": "shoes,",
+    "s": 70.26,
+    "e": 70.78,
+    "matched": true
+   },
+   {
+    "w": "when",
+    "s": 70.94,
+    "e": 71.16,
+    "matched": true
+   },
+   {
+    "w": "did",
+    "s": 71.16,
+    "e": 71.38,
+    "matched": true
+   },
+   {
+    "w": "this",
+    "s": 71.38,
+    "e": 71.6,
+    "matched": true
+   },
+   {
+    "w": "become",
+    "s": 71.6,
+    "e": 72.02,
+    "matched": true
+   },
+   {
+    "w": "me?",
+    "s": 72.02,
+    "e": 72.58,
+    "matched": true
+   }
+  ],
+  "start": 68.54,
+  "end": 72.58
+ },
+ {
+  "line": 15,
+  "text": "The boss says, \"Too many sick days, Raj, we're letting you go\"",
+  "words": [
+   {
+    "w": "The",
+    "s": 72.96,
+    "e": 73.08,
+    "matched": true
+   },
+   {
+    "w": "boss",
+    "s": 73.08,
+    "e": 73.36,
+    "matched": true
+   },
+   {
+    "w": "says,",
+    "s": 73.36,
+    "e": 73.76,
+    "matched": true
+   },
+   {
+    "w": "\"Too",
+    "s": 73.76,
+    "e": 74.08,
+    "matched": true
+   },
+   {
+    "w": "many",
+    "s": 74.08,
+    "e": 74.4,
+    "matched": true
+   },
+   {
+    "w": "sick",
+    "s": 74.4,
+    "e": 74.72,
+    "matched": true
+   },
+   {
+    "w": "days,",
+    "s": 74.72,
+    "e": 75.16,
+    "matched": true
+   },
+   {
+    "w": "Raj,",
+    "s": 75.34,
+    "e": 75.5,
+    "matched": true
+   },
+   {
+    "w": "we're",
+    "s": 75.5,
+    "e": 75.78,
+    "matched": true
+   },
+   {
+    "w": "letting",
+    "s": 75.78,
+    "e": 76.0,
+    "matched": true
+   },
+   {
+    "w": "you",
+    "s": 76.0,
+    "e": 76.22,
+    "matched": true
+   },
+   {
+    "w": "go\"",
+    "s": 76.22,
+    "e": 76.68,
+    "matched": true
+   }
+  ],
+  "start": 72.96,
+  "end": 76.68
+ },
+ {
+  "line": 16,
+  "text": "I pack my desk into a box and carry it home slow",
+  "words": [
+   {
+    "w": "I",
+    "s": 77.08,
+    "e": 77.36,
+    "matched": true
+   },
+   {
+    "w": "pack",
+    "s": 77.36,
+    "e": 77.6,
+    "matched": true
+   },
+   {
+    "w": "my",
+    "s": 77.6,
+    "e": 77.86,
+    "matched": true
+   },
+   {
+    "w": "desk",
+    "s": 77.86,
+    "e": 78.14,
+    "matched": true
+   },
+   {
+    "w": "into",
+    "s": 78.14,
+    "e": 78.56,
+    "matched": true
+   },
+   {
+    "w": "a",
+    "s": 78.56,
+    "e": 78.92,
+    "matched": true
+   },
+   {
+    "w": "box",
+    "s": 78.92,
+    "e": 79.16,
+    "matched": true
+   },
+   {
+    "w": "and",
+    "s": 79.16,
+    "e": 79.5,
+    "matched": true
+   },
+   {
+    "w": "carry",
+    "s": 79.5,
+    "e": 79.84,
+    "matched": true
+   },
+   {
+    "w": "it",
+    "s": 79.84,
+    "e": 80.16,
+    "matched": true
+   },
+   {
+    "w": "home",
+    "s": 80.16,
+    "e": 80.34,
+    "matched": true
+   },
+   {
+    "w": "slow",
+    "s": 80.34,
+    "e": 80.88,
+    "matched": true
+   }
+  ],
+  "start": 77.08,
+  "end": 80.88
+ },
+ {
+  "line": 17,
+  "text": "I go home to my Nani's house, she sees me wince and stop",
+  "words": [
+   {
+    "w": "I",
+    "s": 82.06,
+    "e": 82.62,
+    "matched": true
+   },
+   {
+    "w": "go",
+    "s": 82.62,
+    "e": 82.94,
+    "matched": true
+   },
+   {
+    "w": "home",
+    "s": 82.94,
+    "e": 83.18,
+    "matched": true
+   },
+   {
+    "w": "to",
+    "s": 83.18,
+    "e": 83.44,
+    "matched": true
+   },
+   {
+    "w": "my",
+    "s": 83.44,
+    "e": 83.72,
+    "matched": true
+   },
+   {
+    "w": "Nani's",
+    "s": 83.72,
+    "e": 84.24,
+    "matched": true
+   },
+   {
+    "w": "house,",
+    "s": 84.24,
+    "e": 84.46,
+    "matched": true
+   },
+   {
+    "w": "she",
+    "s": 84.66,
+    "e": 84.74,
+    "matched": true
+   },
+   {
+    "w": "sees",
+    "s": 84.74,
+    "e": 85.1,
+    "matched": true
+   },
+   {
+    "w": "me",
+    "s": 85.1,
+    "e": 85.36,
+    "matched": true
+   },
+   {
+    "w": "wince",
+    "s": 85.36,
+    "e": 85.52,
+    "matched": true
+   },
+   {
+    "w": "and",
+    "s": 85.52,
+    "e": 85.88,
+    "matched": true
+   },
+   {
+    "w": "stop",
+    "s": 85.88,
+    "e": 86.18,
+    "matched": true
+   }
+  ],
+  "start": 82.06,
+  "end": 86.18
+ },
+ {
+  "line": 18,
+  "text": "She says, \"EIS Pain Relief Oil. Every night, just warm a drop\"",
+  "words": [
+   {
+    "w": "She",
+    "s": 86.18,
+    "e": 86.68,
+    "matched": true
+   },
+   {
+    "w": "says,",
+    "s": 86.68,
+    "e": 86.96,
+    "matched": true
+   },
+   {
+    "w": "\"EIS",
+    "s": 86.96,
+    "e": 87.42,
+    "matched": true
+   },
+   {
+    "w": "Pain",
+    "s": 87.42,
+    "e": 87.76,
+    "matched": true
+   },
+   {
+    "w": "Relief",
+    "s": 87.76,
+    "e": 88.2,
+    "matched": true
+   },
+   {
+    "w": "Oil.",
+    "s": 88.2,
+    "e": 88.54,
+    "matched": true
+   },
+   {
+    "w": "Every",
+    "s": 88.54,
+    "e": 88.92,
+    "matched": true
+   },
+   {
+    "w": "night,",
+    "s": 88.92,
+    "e": 89.34,
+    "matched": true
+   },
+   {
+    "w": "just",
+    "s": 89.52,
+    "e": 89.58,
+    "matched": true
+   },
+   {
+    "w": "warm",
+    "s": 89.58,
+    "e": 89.96,
+    "matched": true
+   },
+   {
+    "w": "a",
+    "s": 89.96,
+    "e": 90.12,
+    "matched": true
+   },
+   {
+    "w": "drop\"",
+    "s": 90.12,
+    "e": 90.46,
+    "matched": true
+   }
+  ],
+  "start": 86.18,
+  "end": 90.46
+ },
+ {
+  "line": 19,
+  "text": "She warms it in her palms and rubs it deep into my knee",
+  "words": [
+   {
+    "w": "She",
+    "s": 90.46,
+    "e": 91.2,
+    "matched": true
+   },
+   {
+    "w": "warms",
+    "s": 91.2,
+    "e": 91.66,
+    "matched": true
+   },
+   {
+    "w": "it",
+    "s": 91.66,
+    "e": 91.86,
+    "matched": true
+   },
+   {
+    "w": "in",
+    "s": 91.86,
+    "e": 92.02,
+    "matched": true
+   },
+   {
+    "w": "her",
+    "s": 92.02,
+    "e": 92.16,
+    "matched": true
+   },
+   {
+    "w": "palms",
+    "s": 92.16,
+    "e": 92.62,
+    "matched": true
+   },
+   {
+    "w": "and",
+    "s": 92.62,
+    "e": 92.84,
+    "matched": true
+   },
+   {
+    "w": "rubs",
+    "s": 92.84,
+    "e": 93.24,
+    "matched": true
+   },
+   {
+    "w": "it",
+    "s": 93.24,
+    "e": 93.38,
+    "matched": true
+   },
+   {
+    "w": "deep",
+    "s": 93.38,
+    "e": 93.7,
+    "matched": true
+   },
+   {
+    "w": "into",
+    "s": 93.7,
+    "e": 94.08,
+    "matched": true
+   },
+   {
+    "w": "my",
+    "s": 94.08,
+    "e": 94.34,
+    "matched": true
+   },
+   {
+    "w": "knee",
+    "s": 94.34,
+    "e": 94.67,
+    "matched": true
+   }
+  ],
+  "start": 90.46,
+  "end": 94.67
+ },
+ {
+  "line": 20,
+  "text": "Fifteen Ayurvedic herbs inside, Mahanarayan, Nirgundi",
+  "words": [
+   {
+    "w": "Fifteen",
+    "s": 95.38,
+    "e": 96.04,
+    "matched": true
+   },
+   {
+    "w": "Ayurvedic",
+    "s": 96.04,
+    "e": 97.04,
+    "matched": true
+   },
+   {
+    "w": "herbs",
+    "s": 97.04,
+    "e": 97.42,
+    "matched": true
+   },
+   {
+    "w": "inside,",
+    "s": 97.42,
+    "e": 98.22,
+    "matched": true
+   },
+   {
+    "w": "Mahanarayan,",
+    "s": 98.22,
+    "e": 99.91,
+    "matched": true
+   },
+   {
+    "w": "Nirgundi",
+    "s": 99.91,
+    "e": 101.6,
+    "matched": true
+   }
+  ],
+  "start": 95.38,
+  "end": 101.6
+ },
+ {
+  "line": 21,
+  "text": "It soaks in past the skin, right down to where it's sore",
+  "words": [
+   {
+    "w": "It",
+    "s": 101.6,
+    "e": 101.88,
+    "matched": true
+   },
+   {
+    "w": "soaks",
+    "s": 101.88,
+    "e": 102.34,
+    "matched": true
+   },
+   {
+    "w": "in",
+    "s": 102.34,
+    "e": 102.52,
+    "matched": true
+   },
+   {
+    "w": "past",
+    "s": 102.52,
+    "e": 102.76,
+    "matched": true
+   },
+   {
+    "w": "the",
+    "s": 102.76,
+    "e": 103.0,
+    "matched": true
+   },
+   {
+    "w": "skin,",
+    "s": 103.0,
+    "e": 103.48,
+    "matched": true
+   },
+   {
+    "w": "right",
+    "s": 103.48,
+    "e": 104.06,
+    "matched": true
+   },
+   {
+    "w": "down",
+    "s": 104.06,
+    "e": 104.38,
+    "matched": true
+   },
+   {
+    "w": "to",
+    "s": 104.38,
+    "e": 104.64,
+    "matched": true
+   },
+   {
+    "w": "where",
+    "s": 104.64,
+    "e": 104.86,
+    "matched": true
+   },
+   {
+    "w": "it's",
+    "s": 104.86,
+    "e": 105.2,
+    "matched": true
+   },
+   {
+    "w": "sore",
+    "s": 105.2,
+    "e": 105.54,
+    "matched": true
+   }
+  ],
+  "start": 101.6,
+  "end": 105.54
+ },
+ {
+  "line": 22,
+  "text": "It calms the swelling, warms the joint, I read and read some more",
+  "words": [
+   {
+    "w": "It",
+    "s": 105.54,
+    "e": 106.2,
+    "matched": true
+   },
+   {
+    "w": "calms",
+    "s": 106.2,
+    "e": 106.62,
+    "matched": true
+   },
+   {
+    "w": "the",
+    "s": 106.62,
+    "e": 106.74,
+    "matched": true
+   },
+   {
+    "w": "swelling,",
+    "s": 106.74,
+    "e": 107.12,
+    "matched": true
+   },
+   {
+    "w": "warms",
+    "s": 107.12,
+    "e": 107.58,
+    "matched": true
+   },
+   {
+    "w": "the",
+    "s": 107.58,
+    "e": 107.7,
+    "matched": true
+   },
+   {
+    "w": "joint,",
+    "s": 107.7,
+    "e": 108.14,
+    "matched": true
+   },
+   {
+    "w": "I",
+    "s": 108.14,
+    "e": 108.46,
+    "matched": true
+   },
+   {
+    "w": "read",
+    "s": 108.46,
+    "e": 108.76,
+    "matched": true
+   },
+   {
+    "w": "and",
+    "s": 108.76,
+    "e": 108.96,
+    "matched": true
+   },
+   {
+    "w": "read",
+    "s": 108.96,
+    "e": 109.18,
+    "matched": true
+   },
+   {
+    "w": "some",
+    "s": 109.18,
+    "e": 109.46,
+    "matched": true
+   },
+   {
+    "w": "more",
+    "s": 109.46,
+    "e": 110.14,
+    "matched": true
+   }
+  ],
+  "start": 105.54,
+  "end": 110.14
+ },
+ {
+  "line": 23,
+  "text": "Week 1, I warm it every night, and sleep straight through till dawn",
+  "words": [
+   {
+    "w": "Week",
+    "s": 110.14,
+    "e": 110.54,
+    "matched": true
+   },
+   {
+    "w": "1,",
+    "s": 110.54,
+    "e": 110.86,
+    "matched": true
+   },
+   {
+    "w": "I",
+    "s": 111.12,
+    "e": 111.12,
+    "matched": true
+   },
+   {
+    "w": "warm",
+    "s": 111.12,
+    "e": 111.42,
+    "matched": true
+   },
+   {
+    "w": "it",
+    "s": 111.42,
+    "e": 111.7,
+    "matched": true
+   },
+   {
+    "w": "every",
+    "s": 111.7,
+    "e": 112.0,
+    "matched": true
+   },
+   {
+    "w": "night,",
+    "s": 112.0,
+    "e": 112.46,
+    "matched": true
+   },
+   {
+    "w": "and",
+    "s": 112.46,
+    "e": 112.66,
+    "matched": true
+   },
+   {
+    "w": "sleep",
+    "s": 112.66,
+    "e": 112.9,
+    "matched": true
+   },
+   {
+    "w": "straight",
+    "s": 112.9,
+    "e": 113.2,
+    "matched": true
+   },
+   {
+    "w": "through",
+    "s": 113.2,
+    "e": 113.44,
+    "matched": true
+   },
+   {
+    "w": "till",
+    "s": 113.44,
+    "e": 113.74,
+    "matched": true
+   },
+   {
+    "w": "dawn",
+    "s": 113.74,
+    "e": 114.22,
+    "matched": true
+   }
+  ],
+  "start": 110.14,
+  "end": 114.22
+ },
+ {
+  "line": 24,
+  "text": "I make my list, I tick one off, then one more thing is done",
+  "words": [
+   {
+    "w": "I",
+    "s": 114.22,
+    "e": 114.76,
+    "matched": true
+   },
+   {
+    "w": "make",
+    "s": 114.76,
+    "e": 115.06,
+    "matched": true
+   },
+   {
+    "w": "my",
+    "s": 115.06,
+    "e": 115.36,
+    "matched": true
+   },
+   {
+    "w": "list,",
+    "s": 115.36,
+    "e": 115.66,
+    "matched": true
+   },
+   {
+    "w": "I",
+    "s": 115.8,
+    "e": 115.9,
+    "matched": true
+   },
+   {
+    "w": "tick",
+    "s": 115.9,
+    "e": 116.16,
+    "matched": true
+   },
+   {
+    "w": "one",
+    "s": 116.16,
+    "e": 116.42,
+    "matched": true
+   },
+   {
+    "w": "off,",
+    "s": 116.42,
+    "e": 116.7,
+    "matched": true
+   },
+   {
+    "w": "then",
+    "s": 116.7,
+    "e": 116.96,
+    "matched": true
+   },
+   {
+    "w": "one",
+    "s": 116.96,
+    "e": 117.26,
+    "matched": true
+   },
+   {
+    "w": "more",
+    "s": 117.26,
+    "e": 117.46,
+    "matched": true
+   },
+   {
+    "w": "thing",
+    "s": 117.46,
+    "e": 117.74,
+    "matched": true
+   },
+   {
+    "w": "is",
+    "s": 117.74,
+    "e": 118.08,
+    "matched": true
+   },
+   {
+    "w": "done",
+    "s": 118.08,
+    "e": 119.2,
+    "matched": true
+   }
+  ],
+  "start": 114.22,
+  "end": 119.2
+ },
+ {
+  "line": 25,
+  "text": "Week 2, I'm taking on the things I used to leave for another day",
+  "words": [
+   {
+    "w": "Week",
+    "s": 129.02,
+    "e": 129.56,
+    "matched": true
+   },
+   {
+    "w": "2,",
+    "s": 129.56,
+    "e": 130.1,
+    "matched": true
+   },
+   {
+    "w": "I'm",
+    "s": 130.14,
+    "e": 130.44,
+    "matched": true
+   },
+   {
+    "w": "taking",
+    "s": 130.44,
+    "e": 130.74,
+    "matched": true
+   },
+   {
+    "w": "on",
+    "s": 130.74,
+    "e": 131.16,
+    "matched": true
+   },
+   {
+    "w": "the",
+    "s": 131.16,
+    "e": 131.36,
+    "matched": true
+   },
+   {
+    "w": "things",
+    "s": 131.36,
+    "e": 131.58,
+    "matched": true
+   },
+   {
+    "w": "I",
+    "s": 131.58,
+    "e": 131.76,
+    "matched": true
+   },
+   {
+    "w": "used",
+    "s": 131.76,
+    "e": 131.88,
+    "matched": true
+   },
+   {
+    "w": "to",
+    "s": 131.88,
+    "e": 132.1,
+    "matched": true
+   },
+   {
+    "w": "leave",
+    "s": 132.1,
+    "e": 132.22,
+    "matched": true
+   },
+   {
+    "w": "for",
+    "s": 132.22,
+    "e": 132.46,
+    "matched": true
+   },
+   {
+    "w": "another",
+    "s": 132.46,
+    "e": 132.78,
+    "matched": true
+   },
+   {
+    "w": "day",
+    "s": 132.78,
+    "e": 133.36,
+    "matched": true
+   }
+  ],
+  "start": 129.02,
+  "end": 133.36
+ },
+ {
+  "line": 26,
+  "text": "I sketch the plan for my own business, push my doubts away",
+  "words": [
+   {
+    "w": "I",
+    "s": 133.36,
+    "e": 134.02,
+    "matched": true
+   },
+   {
+    "w": "sketch",
+    "s": 134.02,
+    "e": 134.32,
+    "matched": true
+   },
+   {
+    "w": "the",
+    "s": 134.32,
+    "e": 134.56,
+    "matched": true
+   },
+   {
+    "w": "plan",
+    "s": 134.56,
+    "e": 134.84,
+    "matched": true
+   },
+   {
+    "w": "for",
+    "s": 134.84,
+    "e": 135.08,
+    "matched": true
+   },
+   {
+    "w": "my",
+    "s": 135.08,
+    "e": 135.46,
+    "matched": true
+   },
+   {
+    "w": "own",
+    "s": 135.46,
+    "e": 135.76,
+    "matched": true
+   },
+   {
+    "w": "business,",
+    "s": 135.76,
+    "e": 136.14,
+    "matched": true
+   },
+   {
+    "w": "push",
+    "s": 136.32,
+    "e": 136.5,
+    "matched": true
+   },
+   {
+    "w": "my",
+    "s": 136.5,
+    "e": 136.82,
+    "matched": true
+   },
+   {
+    "w": "doubts",
+    "s": 136.82,
+    "e": 137.06,
+    "matched": true
+   },
+   {
+    "w": "away",
+    "s": 137.06,
+    "e": 137.64,
+    "matched": true
+   }
+  ],
+  "start": 133.36,
+  "end": 137.64
+ },
+ {
+  "line": 27,
+  "text": "Week 3, I'm working on my body, Nani claps, \"Ready? Here we go\"",
+  "words": [
+   {
+    "w": "Week",
+    "s": 137.64,
+    "e": 138.32,
+    "matched": true
+   },
+   {
+    "w": "3,",
+    "s": 138.32,
+    "e": 138.66,
+    "matched": true
+   },
+   {
+    "w": "I'm",
+    "s": 138.8,
+    "e": 139.02,
+    "matched": true
+   },
+   {
+    "w": "working",
+    "s": 139.02,
+    "e": 139.32,
+    "matched": true
+   },
+   {
+    "w": "on",
+    "s": 139.32,
+    "e": 139.62,
+    "matched": true
+   },
+   {
+    "w": "my",
+    "s": 139.62,
+    "e": 139.82,
+    "matched": true
+   },
+   {
+    "w": "body,",
+    "s": 139.82,
+    "e": 140.04,
+    "matched": true
+   },
+   {
+    "w": "Nani",
+    "s": 140.14,
+    "e": 140.32,
+    "matched": true
+   },
+   {
+    "w": "claps,",
+    "s": 140.32,
+    "e": 140.76,
+    "matched": true
+   },
+   {
+    "w": "\"Ready?",
+    "s": 140.92,
+    "e": 141.06,
+    "matched": true
+   },
+   {
+    "w": "Here",
+    "s": 141.22,
+    "e": 141.3,
+    "matched": true
+   },
+   {
+    "w": "we",
+    "s": 141.3,
+    "e": 141.48,
+    "matched": true
+   },
+   {
+    "w": "go\"",
+    "s": 141.48,
+    "e": 141.94,
+    "matched": true
+   }
+  ],
+  "start": 137.64,
+  "end": 141.94
+ },
+ {
+  "line": 28,
+  "text": "One more squat, my knees don't scream, I'm laughing, bending low",
+  "words": [
+   {
+    "w": "One",
+    "s": 141.94,
+    "e": 142.9,
+    "matched": true
+   },
+   {
+    "w": "more",
+    "s": 142.9,
+    "e": 143.14,
+    "matched": true
+   },
+   {
+    "w": "squat,",
+    "s": 143.14,
+    "e": 143.46,
+    "matched": true
+   },
+   {
+    "w": "my",
+    "s": 143.54,
+    "e": 143.7,
+    "matched": true
+   },
+   {
+    "w": "knees",
+    "s": 143.7,
+    "e": 143.98,
+    "matched": true
+   },
+   {
+    "w": "don't",
+    "s": 143.98,
+    "e": 144.26,
+    "matched": true
+   },
+   {
+    "w": "scream,",
+    "s": 144.26,
+    "e": 144.58,
+    "matched": true
+   },
+   {
+    "w": "I'm",
+    "s": 144.58,
+    "e": 145.32,
+    "matched": true
+   },
+   {
+    "w": "laughing,",
+    "s": 145.32,
+    "e": 145.32,
+    "matched": true
+   },
+   {
+    "w": "bending",
+    "s": 145.48,
+    "e": 145.66,
+    "matched": true
+   },
+   {
+    "w": "low",
+    "s": 145.66,
+    "e": 146.22,
+    "matched": true
+   }
+  ],
+  "start": 141.94,
+  "end": 146.22
+ },
+ {
+  "line": 29,
+  "text": "One morning, I walk in tall, the gym feels like my home",
+  "words": [
+   {
+    "w": "One",
+    "s": 146.92,
+    "e": 147.24,
+    "matched": true
+   },
+   {
+    "w": "morning,",
+    "s": 147.24,
+    "e": 147.72,
+    "matched": true
+   },
+   {
+    "w": "I",
+    "s": 147.72,
+    "e": 148.08,
+    "matched": true
+   },
+   {
+    "w": "walk",
+    "s": 148.08,
+    "e": 148.32,
+    "matched": true
+   },
+   {
+    "w": "in",
+    "s": 148.32,
+    "e": 148.5,
+    "matched": true
+   },
+   {
+    "w": "tall,",
+    "s": 148.5,
+    "e": 148.86,
+    "matched": true
+   },
+   {
+    "w": "the",
+    "s": 148.86,
+    "e": 149.1,
+    "matched": true
+   },
+   {
+    "w": "gym",
+    "s": 149.1,
+    "e": 149.34,
+    "matched": true
+   },
+   {
+    "w": "feels",
+    "s": 149.34,
+    "e": 149.64,
+    "matched": true
+   },
+   {
+    "w": "like",
+    "s": 149.64,
+    "e": 149.92,
+    "matched": true
+   },
+   {
+    "w": "my",
+    "s": 149.92,
+    "e": 150.2,
+    "matched": true
+   },
+   {
+    "w": "home",
+    "s": 150.2,
+    "e": 150.68,
+    "matched": true
+   }
+  ],
+  "start": 146.92,
+  "end": 150.68
+ },
+ {
+  "line": 30,
+  "text": "A girl walks up and smiles at me, she asks, \"You train alone?\"",
+  "words": [
+   {
+    "w": "A",
+    "s": 150.68,
+    "e": 151.2,
+    "matched": true
+   },
+   {
+    "w": "girl",
+    "s": 151.2,
+    "e": 151.52,
+    "matched": true
+   },
+   {
+    "w": "walks",
+    "s": 151.52,
+    "e": 151.82,
+    "matched": true
+   },
+   {
+    "w": "up",
+    "s": 151.82,
+    "e": 152.1,
+    "matched": true
+   },
+   {
+    "w": "and",
+    "s": 152.1,
+    "e": 152.28,
+    "matched": true
+   },
+   {
+    "w": "smiles",
+    "s": 152.28,
+    "e": 152.6,
+    "matched": true
+   },
+   {
+    "w": "at",
+    "s": 152.6,
+    "e": 152.82,
+    "matched": true
+   },
+   {
+    "w": "me,",
+    "s": 152.82,
+    "e": 153.04,
+    "matched": true
+   },
+   {
+    "w": "she",
+    "s": 153.04,
+    "e": 153.32,
+    "matched": true
+   },
+   {
+    "w": "asks,",
+    "s": 153.32,
+    "e": 153.66,
+    "matched": true
+   },
+   {
+    "w": "\"You",
+    "s": 153.82,
+    "e": 153.84,
+    "matched": true
+   },
+   {
+    "w": "train",
+    "s": 153.84,
+    "e": 154.24,
+    "matched": true
+   },
+   {
+    "w": "alone?\"",
+    "s": 154.24,
+    "e": 154.8,
+    "matched": true
+   }
+  ],
+  "start": 150.68,
+  "end": 154.8
+ },
+ {
+  "line": 31,
+  "text": "My first big order comes in, I launched my shop last week",
+  "words": [
+   {
+    "w": "My",
+    "s": 154.8,
+    "e": 155.48,
+    "matched": true
+   },
+   {
+    "w": "first",
+    "s": 155.48,
+    "e": 155.84,
+    "matched": true
+   },
+   {
+    "w": "big",
+    "s": 155.84,
+    "e": 156.16,
+    "matched": true
+   },
+   {
+    "w": "order",
+    "s": 156.16,
+    "e": 156.38,
+    "matched": true
+   },
+   {
+    "w": "comes",
+    "s": 156.38,
+    "e": 156.88,
+    "matched": true
+   },
+   {
+    "w": "in,",
+    "s": 156.88,
+    "e": 157.28,
+    "matched": true
+   },
+   {
+    "w": "I",
+    "s": 157.28,
+    "e": 157.64,
+    "matched": true
+   },
+   {
+    "w": "launched",
+    "s": 157.64,
+    "e": 157.96,
+    "matched": true
+   },
+   {
+    "w": "my",
+    "s": 157.96,
+    "e": 158.26,
+    "matched": true
+   },
+   {
+    "w": "shop",
+    "s": 158.26,
+    "e": 158.48,
+    "matched": true
+   },
+   {
+    "w": "last",
+    "s": 158.48,
+    "e": 158.8,
+    "matched": true
+   },
+   {
+    "w": "week",
+    "s": 158.8,
+    "e": 159.28,
+    "matched": true
+   }
+  ],
+  "start": 154.8,
+  "end": 159.28
+ },
+ {
+  "line": 32,
+  "text": "Week 4, we're laughing, walking hand in hand along the street",
+  "words": [
+   {
+    "w": "Week",
+    "s": 159.28,
+    "e": 159.78,
+    "matched": true
+   },
+   {
+    "w": "4,",
+    "s": 159.78,
+    "e": 160.12,
+    "matched": true
+   },
+   {
+    "w": "we're",
+    "s": 160.12,
+    "e": 160.46,
+    "matched": true
+   },
+   {
+    "w": "laughing,",
+    "s": 160.46,
+    "e": 160.78,
+    "matched": true
+   },
+   {
+    "w": "walking",
+    "s": 160.92,
+    "e": 161.32,
+    "matched": true
+   },
+   {
+    "w": "hand",
+    "s": 161.32,
+    "e": 161.72,
+    "matched": true
+   },
+   {
+    "w": "in",
+    "s": 161.72,
+    "e": 161.96,
+    "matched": true
+   },
+   {
+    "w": "hand",
+    "s": 161.96,
+    "e": 162.3,
+    "matched": true
+   },
+   {
+    "w": "along",
+    "s": 162.3,
+    "e": 162.76,
+    "matched": true
+   },
+   {
+    "w": "the",
+    "s": 162.76,
+    "e": 163.04,
+    "matched": true
+   },
+   {
+    "w": "street",
+    "s": 163.04,
+    "e": 163.52,
+    "matched": true
+   }
+  ],
+  "start": 159.28,
+  "end": 163.52
+ },
+ {
+  "line": 33,
+  "text": "You stop and stare, say \"Is that you?\" I smile, \"I'm doing fine\"",
+  "words": [
+   {
+    "w": "You",
+    "s": 163.52,
+    "e": 164.02,
+    "matched": true
+   },
+   {
+    "w": "stop",
+    "s": 164.02,
+    "e": 164.38,
+    "matched": true
+   },
+   {
+    "w": "and",
+    "s": 164.38,
+    "e": 164.66,
+    "matched": true
+   },
+   {
+    "w": "stare,",
+    "s": 164.66,
+    "e": 164.92,
+    "matched": true
+   },
+   {
+    "w": "say",
+    "s": 164.92,
+    "e": 165.24,
+    "matched": true
+   },
+   {
+    "w": "\"Is",
+    "s": 165.4,
+    "e": 165.4,
+    "matched": true
+   },
+   {
+    "w": "that",
+    "s": 165.4,
+    "e": 165.6,
+    "matched": true
+   },
+   {
+    "w": "you?\"",
+    "s": 165.6,
+    "e": 165.98,
+    "matched": true
+   },
+   {
+    "w": "I",
+    "s": 166.06,
+    "e": 166.18,
+    "matched": true
+   },
+   {
+    "w": "smile,",
+    "s": 166.18,
+    "e": 166.54,
+    "matched": true
+   },
+   {
+    "w": "\"I'm",
+    "s": 166.64,
+    "e": 166.88,
+    "matched": true
+   },
+   {
+    "w": "doing",
+    "s": 166.88,
+    "e": 167.08,
+    "matched": true
+   },
+   {
+    "w": "fine\"",
+    "s": 167.08,
+    "e": 167.88,
+    "matched": true
+   }
+  ],
+  "start": 163.52,
+  "end": 167.88
+ },
+ {
+  "line": 34,
+  "text": "\"Hope you're doing well.\" We laugh and walk away, her hand in mine",
+  "words": [
+   {
+    "w": "\"Hope",
+    "s": 167.88,
+    "e": 168.64,
+    "matched": true
+   },
+   {
+    "w": "you're",
+    "s": 168.64,
+    "e": 169.0,
+    "matched": true
+   },
+   {
+    "w": "doing",
+    "s": 169.0,
+    "e": 169.22,
+    "matched": true
+   },
+   {
+    "w": "well.\"",
+    "s": 169.22,
+    "e": 169.68,
+    "matched": true
+   },
+   {
+    "w": "We",
+    "s": 169.76,
+    "e": 169.92,
+    "matched": true
+   },
+   {
+    "w": "laugh",
+    "s": 169.92,
+    "e": 170.24,
+    "matched": true
+   },
+   {
+    "w": "and",
+    "s": 170.24,
+    "e": 170.56,
+    "matched": true
+   },
+   {
+    "w": "walk",
+    "s": 170.56,
+    "e": 170.82,
+    "matched": true
+   },
+   {
+    "w": "away,",
+    "s": 170.82,
+    "e": 171.3,
+    "matched": true
+   },
+   {
+    "w": "her",
+    "s": 171.5,
+    "e": 171.6,
+    "matched": true
+   },
+   {
+    "w": "hand",
+    "s": 171.6,
+    "e": 172.2,
+    "matched": true
+   },
+   {
+    "w": "in",
+    "s": 172.2,
+    "e": 172.5,
+    "matched": true
+   },
+   {
+    "w": "mine",
+    "s": 172.5,
+    "e": 173.28,
+    "matched": true
+   }
+  ],
+  "start": 167.88,
+  "end": 173.28
+ },
+ {
+  "line": 35,
+  "text": "Now I see what's right in front of me, and what I want my life to be",
+  "words": [
+   {
+    "w": "Now",
+    "s": 180.34,
+    "e": 180.92,
+    "matched": true
+   },
+   {
+    "w": "I",
+    "s": 180.92,
+    "e": 181.14,
+    "matched": true
+   },
+   {
+    "w": "see",
+    "s": 181.14,
+    "e": 181.5,
+    "matched": true
+   },
+   {
+    "w": "what's",
+    "s": 181.5,
+    "e": 181.84,
+    "matched": true
+   },
+   {
+    "w": "right",
+    "s": 181.84,
+    "e": 182.12,
+    "matched": true
+   },
+   {
+    "w": "in",
+    "s": 182.12,
+    "e": 182.4,
+    "matched": true
+   },
+   {
+    "w": "front",
+    "s": 182.4,
+    "e": 182.54,
+    "matched": true
+   },
+   {
+    "w": "of",
+    "s": 182.54,
+    "e": 182.78,
+    "matched": true
+   },
+   {
+    "w": "me,",
+    "s": 182.78,
+    "e": 183.02,
+    "matched": true
+   },
+   {
+    "w": "and",
+    "s": 183.02,
+    "e": 183.2,
+    "matched": true
+   },
+   {
+    "w": "what",
+    "s": 183.2,
+    "e": 183.32,
+    "matched": true
+   },
+   {
+    "w": "I",
+    "s": 183.32,
+    "e": 183.46,
+    "matched": true
+   },
+   {
+    "w": "want",
+    "s": 183.46,
+    "e": 183.66,
+    "matched": true
+   },
+   {
+    "w": "my",
+    "s": 183.66,
+    "e": 183.92,
+    "matched": true
+   },
+   {
+    "w": "life",
+    "s": 183.92,
+    "e": 184.2,
+    "matched": true
+   },
+   {
+    "w": "to",
+    "s": 184.2,
+    "e": 184.42,
+    "matched": true
+   },
+   {
+    "w": "be",
+    "s": 184.42,
+    "e": 184.84,
+    "matched": true
+   }
+  ],
+  "start": 180.34,
+  "end": 184.84
+ },
+ {
+  "line": 36,
+  "text": "I'm making plans and keeping them, I'm moving like I'm free",
+  "words": [
+   {
+    "w": "I'm",
+    "s": 184.84,
+    "e": 185.64,
+    "matched": true
+   },
+   {
+    "w": "making",
+    "s": 185.64,
+    "e": 185.92,
+    "matched": true
+   },
+   {
+    "w": "plans",
+    "s": 185.92,
+    "e": 186.38,
+    "matched": true
+   },
+   {
+    "w": "and",
+    "s": 186.38,
+    "e": 186.62,
+    "matched": true
+   },
+   {
+    "w": "keeping",
+    "s": 186.62,
+    "e": 186.94,
+    "matched": true
+   },
+   {
+    "w": "them,",
+    "s": 186.94,
+    "e": 187.42,
+    "matched": true
+   },
+   {
+    "w": "I'm",
+    "s": 187.54,
+    "e": 187.8,
+    "matched": true
+   },
+   {
+    "w": "moving",
+    "s": 187.8,
+    "e": 188.08,
+    "matched": true
+   },
+   {
+    "w": "like",
+    "s": 188.08,
+    "e": 188.44,
+    "matched": true
+   },
+   {
+    "w": "I'm",
+    "s": 188.44,
+    "e": 188.82,
+    "matched": true
+   },
+   {
+    "w": "free",
+    "s": 188.82,
+    "e": 189.2,
+    "matched": true
+   }
+  ],
+  "start": 184.84,
+  "end": 189.2
+ },
+ {
+  "line": 37,
+  "text": "End the night with EIS, make a little room for me",
+  "words": [
+   {
+    "w": "End",
+    "s": 189.2,
+    "e": 190.1,
+    "matched": true
+   },
+   {
+    "w": "the",
+    "s": 190.1,
+    "e": 190.34,
+    "matched": true
+   },
+   {
+    "w": "night",
+    "s": 190.34,
+    "e": 190.6,
+    "matched": true
+   },
+   {
+    "w": "with",
+    "s": 190.6,
+    "e": 190.92,
+    "matched": true
+   },
+   {
+    "w": "EIS,",
+    "s": 190.92,
+    "e": 191.66,
+    "matched": true
+   },
+   {
+    "w": "make",
+    "s": 191.92,
+    "e": 192.26,
+    "matched": true
+   },
+   {
+    "w": "a",
+    "s": 192.26,
+    "e": 192.58,
+    "matched": true
+   },
+   {
+    "w": "little",
+    "s": 192.58,
+    "e": 192.86,
+    "matched": true
+   },
+   {
+    "w": "room",
+    "s": 192.86,
+    "e": 193.46,
+    "matched": true
+   },
+   {
+    "w": "for",
+    "s": 193.46,
+    "e": 193.78,
+    "matched": true
+   },
+   {
+    "w": "me",
+    "s": 193.78,
+    "e": 194.52,
+    "matched": true
+   }
+  ],
+  "start": 189.2,
+  "end": 194.52
+ }
+]

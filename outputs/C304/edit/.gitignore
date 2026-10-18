@@ -1,0 +1,7 @@
+# heavy media stays out of git (lives in Drive)
+*.mp4
+*.mp3
+*.wav
+media/fonts/
+media/logo_src.png
+reference/

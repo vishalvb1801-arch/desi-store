@@ -1,0 +1,33 @@
+{
+ "skips": [
+  [
+   35.05,
+   37.63,
+   34.93,
+   37.71
+  ],
+  [
+   56.45,
+   64.15,
+   56.33,
+   64.23
+  ],
+  [
+   119.69,
+   129.43,
+   119.57,
+   129.51
+  ],
+  [
+   173.67,
+   180.58,
+   173.55,
+   180.66
+  ]
+ ],
+ "last_vocal": 194.6,
+ "dropped": {
+  "48": "garbled small label text (\"Ayurvedic\" script mangled, 15+ badge reads \"0997\")",
+  "49": "garbled small label text (\"Ayurvedic\" script mangled, \"250 ml\"); bottle also turns to the back panel"
+ }
+}

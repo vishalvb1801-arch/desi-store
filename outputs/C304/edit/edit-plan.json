@@ -1,0 +1,1865 @@
+{
+  "project": "C304",
+  "brand": "EIS",
+  "version": 1,
+  "output": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "crf": 18,
+    "loudnessLUFS": -14
+  },
+  "segments": [
+    {
+      "id": "seg01",
+      "role": "hook",
+      "line": "I saw you in bed with my best friend, my eyes were open wide",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 0.0,
+        "out": 3.97
+      },
+      "shots": [
+        {
+          "clip": "clip_1",
+          "fit": "trim",
+          "duration": 0.95
+        },
+        {
+          "clip": "clip_2",
+          "fit": "trim",
+          "duration": 1.02
+        },
+        {
+          "clip": "clip_3",
+          "fit": "trim",
+          "duration": 0.86
+        },
+        {
+          "clip": "clip_4",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg02",
+      "role": "hook",
+      "line": "Where was I? Awake all night in pain, while he was by your side",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 3.97,
+        "out": 8.16
+      },
+      "shots": [
+        {
+          "clip": "clip_5",
+          "fit": "trim",
+          "duration": 0.84
+        },
+        {
+          "clip": "clip_6",
+          "fit": "trim",
+          "duration": 1.49
+        },
+        {
+          "clip": "clip_7",
+          "fit": "trim",
+          "duration": 1.06
+        },
+        {
+          "clip": "clip_8",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg03",
+      "role": "body",
+      "line": "You're telling me about your day, I'm pressing on my spine",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 8.16,
+        "out": 12.92
+      },
+      "shots": [
+        {
+          "clip": "clip_9",
+          "fit": "trim",
+          "duration": 2.43
+        },
+        {
+          "clip": "clip_10",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg04",
+      "role": "body",
+      "line": "You ask me \"Did you hear me?\", I say \"Sorry… I'm fine\"",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 12.92,
+        "out": 16.99
+      },
+      "shots": [
+        {
+          "clip": "clip_11",
+          "fit": "trim",
+          "duration": 1.61
+        },
+        {
+          "clip": "clip_12",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg05",
+      "role": "body",
+      "line": "You're leaning for a goodnight kiss, my shoulder pulls me away",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 16.99,
+        "out": 21.34
+      },
+      "shots": [
+        {
+          "clip": "clip_13",
+          "fit": "trim",
+          "duration": 2.17
+        },
+        {
+          "clip": "clip_14",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg06",
+      "role": "body",
+      "line": "We said we'd leave at seven, but my knees just made me stay",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 21.34,
+        "out": 25.3
+      },
+      "shots": [
+        {
+          "clip": "clip_15",
+          "fit": "trim",
+          "duration": 1.63
+        },
+        {
+          "clip": "clip_16",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg07",
+      "role": "body",
+      "line": "Your jacket's gone, I'm still in bed, another night slips by",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 25.3,
+        "out": 29.56
+      },
+      "shots": [
+        {
+          "clip": "clip_17",
+          "fit": "trim",
+          "duration": 2.52
+        },
+        {
+          "clip": "clip_18",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg08",
+      "role": "body",
+      "line": "I scroll through \"pain relief at night\" till two, and wonder why",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 29.56,
+        "out": 35.05
+      },
+      "shots": [
+        {
+          "clip": "clip_19",
+          "fit": "trim",
+          "duration": 2.43
+        },
+        {
+          "clip": "clip_20",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg09",
+      "role": "body",
+      "line": "You say you're tired of reaching for someone never there",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 37.63,
+        "out": 42.33
+      },
+      "shots": [
+        {
+          "clip": "clip_21",
+          "fit": "trim",
+          "duration": 2.22
+        },
+        {
+          "clip": "clip_22",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg10",
+      "role": "body",
+      "line": "You say it's over, I look up, he's waiting on the stairs",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 42.33,
+        "out": 46.83
+      },
+      "shots": [
+        {
+          "clip": "clip_23",
+          "fit": "slow",
+          "duration": 2.56
+        },
+        {
+          "clip": "clip_24",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg11",
+      "role": "body",
+      "line": "I ask if we can talk this through, you say you made your choice",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 46.83,
+        "out": 51.16
+      },
+      "shots": [
+        {
+          "clip": "clip_25",
+          "fit": "trim",
+          "duration": 2.37
+        },
+        {
+          "clip": "clip_26",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg12",
+      "role": "body",
+      "line": "You roll your suitcase out the door, I can't find my voice",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 51.16,
+        "out": 56.45
+      },
+      "shots": [
+        {
+          "clip": "clip_27",
+          "fit": "slow",
+          "duration": 2.46
+        },
+        {
+          "clip": "clip_28",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg13",
+      "role": "body",
+      "line": "I'm scrolling through your pictures, you're out with him, so carefree",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 64.15,
+        "out": 68.2
+      },
+      "shots": [
+        {
+          "clip": "clip_29",
+          "fit": "trim",
+          "duration": 1.8
+        },
+        {
+          "clip": "clip_30",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg14",
+      "role": "body",
+      "line": "I wince just tying up my shoes, when did this become me?",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 68.2,
+        "out": 72.6
+      },
+      "shots": [
+        {
+          "clip": "clip_31",
+          "fit": "slow",
+          "duration": 2.69
+        },
+        {
+          "clip": "clip_32",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg15",
+      "role": "body",
+      "line": "The boss says, \"Too many sick days, Raj, we're letting you go\"",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 72.6,
+        "out": 77.2
+      },
+      "shots": [
+        {
+          "clip": "clip_33",
+          "fit": "slow",
+          "duration": 2.55
+        },
+        {
+          "clip": "clip_34",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg16",
+      "role": "body",
+      "line": "I pack my desk into a box and carry it home slow",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 77.2,
+        "out": 81.86
+      },
+      "shots": [
+        {
+          "clip": "clip_35",
+          "fit": "trim",
+          "duration": 2.29
+        },
+        {
+          "clip": "clip_36",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg17",
+      "role": "body",
+      "line": "I go home to my Nani's house, she sees me wince and stop",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 81.86,
+        "out": 86.28
+      },
+      "shots": [
+        {
+          "clip": "clip_37",
+          "fit": "trim",
+          "duration": 2.62
+        },
+        {
+          "clip": "clip_38",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg18",
+      "role": "body",
+      "line": "She says, \"EIS Pain Relief Oil. Every night, just warm a drop\"",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 86.28,
+        "out": 90.59
+      },
+      "shots": [
+        {
+          "clip": "clip_39",
+          "fit": "slow",
+          "duration": 3.3
+        },
+        {
+          "clip": "clip_40",
+          "fit": "hold"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg19",
+      "role": "body",
+      "line": "She warms it in her palms and rubs it deep into my knee",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 90.59,
+        "out": 95.02
+      },
+      "shots": [
+        {
+          "clip": "clip_41",
+          "fit": "trim",
+          "duration": 2.25
+        },
+        {
+          "clip": "clip_42",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg20",
+      "role": "body",
+      "line": "Fifteen Ayurvedic herbs inside, Mahanarayan, Nirgundi",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 95.02,
+        "out": 101.65
+      },
+      "shots": [
+        {
+          "clip": "clip_43",
+          "fit": "hold",
+          "duration": 3.19
+        },
+        {
+          "clip": "clip_44",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg21",
+      "role": "body",
+      "line": "It soaks in past the skin, right down to where it's sore",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 101.65,
+        "out": 105.8
+      },
+      "shots": [
+        {
+          "clip": "clip_45",
+          "fit": "trim",
+          "duration": 1.83
+        },
+        {
+          "clip": "clip_46",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg22",
+      "role": "body",
+      "line": "It calms the swelling, warms the joint, I read and read some more",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 105.8,
+        "out": 110.26
+      },
+      "shots": [
+        {
+          "clip": "clip_47",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg23",
+      "role": "body",
+      "line": "Week 1, I warm it every night, and sleep straight through till dawn",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 110.26,
+        "out": 114.32
+      },
+      "shots": [
+        {
+          "clip": "clip_50",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg24",
+      "role": "body",
+      "line": "I make my list, I tick one off, then one more thing is done",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 114.32,
+        "out": 119.69
+      },
+      "shots": [
+        {
+          "clip": "clip_51",
+          "fit": "trim",
+          "duration": 2.38
+        },
+        {
+          "clip": "clip_52",
+          "fit": "slow"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg25",
+      "role": "body",
+      "line": "Week 2, I'm taking on the things I used to leave for another day",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 129.43,
+        "out": 133.53
+      },
+      "shots": [
+        {
+          "clip": "clip_53",
+          "fit": "trim",
+          "duration": 2.15
+        },
+        {
+          "clip": "clip_54",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg26",
+      "role": "body",
+      "line": "I sketch the plan for my own business, push my doubts away",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 133.53,
+        "out": 137.76
+      },
+      "shots": [
+        {
+          "clip": "clip_55",
+          "fit": "trim",
+          "duration": 2.22
+        },
+        {
+          "clip": "clip_56",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg27",
+      "role": "body",
+      "line": "Week 3, I'm working on my body, Nani claps, \"Ready? Here we go\"",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 137.76,
+        "out": 142.18
+      },
+      "shots": [
+        {
+          "clip": "clip_57",
+          "fit": "trim",
+          "duration": 2.27
+        },
+        {
+          "clip": "clip_58",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg28",
+      "role": "body",
+      "line": "One more squat, my knees don't scream, I'm laughing, bending low",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 142.18,
+        "out": 146.69
+      },
+      "shots": [
+        {
+          "clip": "clip_59",
+          "fit": "slow",
+          "duration": 3.47
+        },
+        {
+          "clip": "clip_60",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg29",
+      "role": "body",
+      "line": "One morning, I walk in tall, the gym feels like my home",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 146.69,
+        "out": 150.8
+      },
+      "shots": [
+        {
+          "clip": "clip_61",
+          "fit": "trim",
+          "duration": 2.17
+        },
+        {
+          "clip": "clip_62",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg30",
+      "role": "body",
+      "line": "A girl walks up and smiles at me, she asks, \"You train alone?\"",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 150.8,
+        "out": 155.02
+      },
+      "shots": [
+        {
+          "clip": "clip_63",
+          "fit": "trim",
+          "duration": 2.24
+        },
+        {
+          "clip": "clip_64",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg31",
+      "role": "body",
+      "line": "My first big order comes in, I launched my shop last week",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 155.02,
+        "out": 159.55
+      },
+      "shots": [
+        {
+          "clip": "clip_65",
+          "fit": "trim",
+          "duration": 2.26
+        },
+        {
+          "clip": "clip_66",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg32",
+      "role": "body",
+      "line": "Week 4, we're laughing, walking hand in hand along the street",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 159.55,
+        "out": 163.84
+      },
+      "shots": [
+        {
+          "clip": "clip_67",
+          "fit": "trim",
+          "duration": 2.17
+        },
+        {
+          "clip": "clip_68",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg33",
+      "role": "body",
+      "line": "You stop and stare, say \"Is that you?\" I smile, \"I'm doing fine\"",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 163.84,
+        "out": 168.04
+      },
+      "shots": [
+        {
+          "clip": "clip_69",
+          "fit": "trim",
+          "duration": 2.13
+        },
+        {
+          "clip": "clip_70",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg34",
+      "role": "body",
+      "line": "\"Hope you're doing well.\" We laugh and walk away, her hand in mine",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 168.04,
+        "out": 173.67
+      },
+      "shots": [
+        {
+          "clip": "clip_71",
+          "fit": "slow",
+          "duration": 3.3
+        },
+        {
+          "clip": "clip_72",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg35",
+      "role": "body",
+      "line": "Now I see what's right in front of me, and what I want my life to be",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 180.58,
+        "out": 184.96
+      },
+      "shots": [
+        {
+          "clip": "clip_73",
+          "fit": "trim",
+          "duration": 2.44
+        },
+        {
+          "clip": "clip_74",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg36",
+      "role": "body",
+      "line": "I'm making plans and keeping them, I'm moving like I'm free",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 184.96,
+        "out": 189.39
+      },
+      "shots": [
+        {
+          "clip": "clip_75",
+          "fit": "slow",
+          "duration": 2.5
+        },
+        {
+          "clip": "clip_76",
+          "fit": "trim"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    },
+    {
+      "id": "seg37",
+      "role": "cta",
+      "line": "End the night with EIS, make a little room for me",
+      "vo": {
+        "file": "vo.mp3",
+        "in": 189.39,
+        "out": 196.2
+      },
+      "shots": [
+        {
+          "clip": "clip_77",
+          "fit": "hold",
+          "duration": 2.86
+        },
+        {
+          "clip": "clip_78",
+          "fit": "hold"
+        }
+      ],
+      "transitionIn": {
+        "type": "cut"
+      }
+    }
+  ],
+  "captions": {
+    "enabled": true,
+    "style": {
+      "font": "Montserrat-Bold",
+      "fallbackFont": "NotoSansDevanagari-Bold",
+      "size": 60,
+      "color": "#FFF8EE",
+      "strokeColor": "#000000",
+      "strokeWidth": 0,
+      "y": 0.7,
+      "maxCharsPerLine": 22,
+      "highlightColor": "#E8B54A",
+      "box": {
+        "color": "#770A08",
+        "opacity": 0.88,
+        "radius": "pill",
+        "padX": 28,
+        "padY": 14,
+        "shadow": true
+      }
+    },
+    "items": [
+      {
+        "segment": "seg01",
+        "start": 0.0,
+        "end": 0.91,
+        "text": "I saw you in *bed*"
+      },
+      {
+        "segment": "seg01",
+        "start": 0.91,
+        "end": 1.97,
+        "text": "with my *best friend*,"
+      },
+      {
+        "segment": "seg01",
+        "start": 1.97,
+        "end": 3.97,
+        "text": "my eyes were *open wide*"
+      },
+      {
+        "segment": "seg02",
+        "start": 0.15,
+        "end": 1.14,
+        "text": "Where was I? *Awake*"
+      },
+      {
+        "segment": "seg02",
+        "start": 1.14,
+        "end": 2.28,
+        "text": "all night in *pain*,"
+      },
+      {
+        "segment": "seg02",
+        "start": 2.28,
+        "end": 3.13,
+        "text": "while *he* was"
+      },
+      {
+        "segment": "seg02",
+        "start": 3.13,
+        "end": 4.19,
+        "text": "by your side"
+      },
+      {
+        "segment": "seg03",
+        "start": 0.15,
+        "end": 1.29,
+        "text": "You're telling me"
+      },
+      {
+        "segment": "seg03",
+        "start": 1.29,
+        "end": 2.39,
+        "text": "about your *day*,"
+      },
+      {
+        "segment": "seg03",
+        "start": 2.39,
+        "end": 3.24,
+        "text": "I'm *pressing*"
+      },
+      {
+        "segment": "seg03",
+        "start": 3.24,
+        "end": 4.76,
+        "text": "on my spine"
+      },
+      {
+        "segment": "seg04",
+        "start": 0.0,
+        "end": 0.85,
+        "text": "You ask me"
+      },
+      {
+        "segment": "seg04",
+        "start": 0.85,
+        "end": 1.7,
+        "text": "\"Did you *hear* me?\""
+      },
+      {
+        "segment": "seg04",
+        "start": 1.7,
+        "end": 2.59,
+        "text": "I say \"Sorry…"
+      },
+      {
+        "segment": "seg04",
+        "start": 2.59,
+        "end": 4.07,
+        "text": "I'm *fine*\""
+      },
+      {
+        "segment": "seg05",
+        "start": 0.07,
+        "end": 0.92,
+        "text": "You're *leaning*"
+      },
+      {
+        "segment": "seg05",
+        "start": 0.92,
+        "end": 2.18,
+        "text": "for a goodnight *kiss*,"
+      },
+      {
+        "segment": "seg05",
+        "start": 2.18,
+        "end": 3.03,
+        "text": "my *shoulder*"
+      },
+      {
+        "segment": "seg05",
+        "start": 3.03,
+        "end": 4.35,
+        "text": "pulls me away"
+      },
+      {
+        "segment": "seg06",
+        "start": 0.0,
+        "end": 1.01,
+        "text": "We said we'd leave"
+      },
+      {
+        "segment": "seg06",
+        "start": 1.01,
+        "end": 1.86,
+        "text": "at *seven*,"
+      },
+      {
+        "segment": "seg06",
+        "start": 1.86,
+        "end": 2.71,
+        "text": "but my *knees*"
+      },
+      {
+        "segment": "seg06",
+        "start": 2.71,
+        "end": 3.96,
+        "text": "just made me stay"
+      },
+      {
+        "segment": "seg07",
+        "start": 0.15,
+        "end": 1.31,
+        "text": "Your *jacket's* gone,"
+      },
+      {
+        "segment": "seg07",
+        "start": 1.31,
+        "end": 2.55,
+        "text": "I'm still in *bed*,"
+      },
+      {
+        "segment": "seg07",
+        "start": 2.55,
+        "end": 3.4,
+        "text": "another *night*"
+      },
+      {
+        "segment": "seg07",
+        "start": 3.4,
+        "end": 4.26,
+        "text": "slips by"
+      },
+      {
+        "segment": "seg08",
+        "start": 0.0,
+        "end": 1.09,
+        "text": "I scroll through"
+      },
+      {
+        "segment": "seg08",
+        "start": 1.09,
+        "end": 2.39,
+        "text": "\"*pain relief* at night\""
+      },
+      {
+        "segment": "seg08",
+        "start": 2.39,
+        "end": 3.83,
+        "text": "till *two*,"
+      },
+      {
+        "segment": "seg08",
+        "start": 3.83,
+        "end": 5.49,
+        "text": "and *wonder why*"
+      },
+      {
+        "segment": "seg09",
+        "start": 0.0,
+        "end": 1.82,
+        "text": "You say you're *tired*"
+      },
+      {
+        "segment": "seg09",
+        "start": 1.82,
+        "end": 3.18,
+        "text": "of reaching for"
+      },
+      {
+        "segment": "seg09",
+        "start": 3.18,
+        "end": 4.7,
+        "text": "someone *never there*"
+      },
+      {
+        "segment": "seg10",
+        "start": 0.01,
+        "end": 1.74,
+        "text": "You say it's *over*,"
+      },
+      {
+        "segment": "seg10",
+        "start": 1.74,
+        "end": 2.6,
+        "text": "I look up,"
+      },
+      {
+        "segment": "seg10",
+        "start": 2.6,
+        "end": 3.45,
+        "text": "he's *waiting*"
+      },
+      {
+        "segment": "seg10",
+        "start": 3.45,
+        "end": 4.5,
+        "text": "on the stairs"
+      },
+      {
+        "segment": "seg11",
+        "start": 0.0,
+        "end": 1.46,
+        "text": "I ask if we can"
+      },
+      {
+        "segment": "seg11",
+        "start": 1.46,
+        "end": 2.32,
+        "text": "*talk* this through,"
+      },
+      {
+        "segment": "seg11",
+        "start": 2.32,
+        "end": 3.42,
+        "text": "you say you made"
+      },
+      {
+        "segment": "seg11",
+        "start": 3.42,
+        "end": 4.33,
+        "text": "your *choice*"
+      },
+      {
+        "segment": "seg12",
+        "start": 0.0,
+        "end": 1.37,
+        "text": "You roll your *suitcase*"
+      },
+      {
+        "segment": "seg12",
+        "start": 1.37,
+        "end": 2.41,
+        "text": "out the *door*,"
+      },
+      {
+        "segment": "seg12",
+        "start": 2.41,
+        "end": 5.29,
+        "text": "I can't find my *voice*"
+      },
+      {
+        "segment": "seg13",
+        "start": 0.0,
+        "end": 1.04,
+        "text": "I'm *scrolling* through"
+      },
+      {
+        "segment": "seg13",
+        "start": 1.04,
+        "end": 1.89,
+        "text": "your pictures,"
+      },
+      {
+        "segment": "seg13",
+        "start": 1.89,
+        "end": 2.74,
+        "text": "you're out with *him*,"
+      },
+      {
+        "segment": "seg13",
+        "start": 2.74,
+        "end": 4.05,
+        "text": "so *carefree*"
+      },
+      {
+        "segment": "seg14",
+        "start": 0.15,
+        "end": 1.41,
+        "text": "I *wince* just tying"
+      },
+      {
+        "segment": "seg14",
+        "start": 1.41,
+        "end": 2.69,
+        "text": "up my shoes,"
+      },
+      {
+        "segment": "seg14",
+        "start": 2.69,
+        "end": 3.54,
+        "text": "when did this"
+      },
+      {
+        "segment": "seg14",
+        "start": 3.54,
+        "end": 4.4,
+        "text": "*become me*?"
+      },
+      {
+        "segment": "seg15",
+        "start": 0.15,
+        "end": 1.11,
+        "text": "The *boss* says,"
+      },
+      {
+        "segment": "seg15",
+        "start": 1.11,
+        "end": 2.69,
+        "text": "\"Too many *sick days*,"
+      },
+      {
+        "segment": "seg15",
+        "start": 2.69,
+        "end": 3.54,
+        "text": "*Raj*, we're letting"
+      },
+      {
+        "segment": "seg15",
+        "start": 3.54,
+        "end": 4.6,
+        "text": "you go\""
+      },
+      {
+        "segment": "seg16",
+        "start": 0.0,
+        "end": 0.89,
+        "text": "I pack my *desk*"
+      },
+      {
+        "segment": "seg16",
+        "start": 0.89,
+        "end": 1.91,
+        "text": "into a *box*"
+      },
+      {
+        "segment": "seg16",
+        "start": 1.91,
+        "end": 2.91,
+        "text": "and carry it"
+      },
+      {
+        "segment": "seg16",
+        "start": 2.91,
+        "end": 4.66,
+        "text": "*home* slow"
+      },
+      {
+        "segment": "seg17",
+        "start": 0.15,
+        "end": 1.27,
+        "text": "I go home"
+      },
+      {
+        "segment": "seg17",
+        "start": 1.27,
+        "end": 2.72,
+        "text": "to my *Nani's* house,"
+      },
+      {
+        "segment": "seg17",
+        "start": 2.72,
+        "end": 3.57,
+        "text": "she sees me *wince*"
+      },
+      {
+        "segment": "seg17",
+        "start": 3.57,
+        "end": 4.42,
+        "text": "and stop"
+      },
+      {
+        "segment": "seg18",
+        "start": 0.0,
+        "end": 0.85,
+        "text": "She says,"
+      },
+      {
+        "segment": "seg18",
+        "start": 0.85,
+        "end": 2.21,
+        "text": "\"*EIS* Pain Relief Oil."
+      },
+      {
+        "segment": "seg18",
+        "start": 2.21,
+        "end": 3.19,
+        "text": "Every *night*,"
+      },
+      {
+        "segment": "seg18",
+        "start": 3.19,
+        "end": 4.31,
+        "text": "just *warm a drop*\""
+      },
+      {
+        "segment": "seg19",
+        "start": 0.0,
+        "end": 1.22,
+        "text": "She *warms* it"
+      },
+      {
+        "segment": "seg19",
+        "start": 1.22,
+        "end": 2.07,
+        "text": "in her *palms*"
+      },
+      {
+        "segment": "seg19",
+        "start": 2.07,
+        "end": 3.06,
+        "text": "and *rubs* it deep"
+      },
+      {
+        "segment": "seg19",
+        "start": 3.06,
+        "end": 4.43,
+        "text": "into my *knee*"
+      },
+      {
+        "segment": "seg20",
+        "start": 0.15,
+        "end": 1.97,
+        "text": "*Fifteen* Ayurvedic"
+      },
+      {
+        "segment": "seg20",
+        "start": 1.97,
+        "end": 3.15,
+        "text": "*herbs* inside,"
+      },
+      {
+        "segment": "seg20",
+        "start": 3.15,
+        "end": 4.84,
+        "text": "*Mahanarayan*,"
+      },
+      {
+        "segment": "seg20",
+        "start": 4.84,
+        "end": 6.63,
+        "text": "*Nirgundi*"
+      },
+      {
+        "segment": "seg21",
+        "start": 0.0,
+        "end": 0.85,
+        "text": "It *soaks* in"
+      },
+      {
+        "segment": "seg21",
+        "start": 0.85,
+        "end": 1.78,
+        "text": "past the skin,"
+      },
+      {
+        "segment": "seg21",
+        "start": 1.78,
+        "end": 2.94,
+        "text": "right down to"
+      },
+      {
+        "segment": "seg21",
+        "start": 2.94,
+        "end": 4.15,
+        "text": "where it's *sore*"
+      },
+      {
+        "segment": "seg22",
+        "start": 0.0,
+        "end": 0.85,
+        "text": "It *calms*"
+      },
+      {
+        "segment": "seg22",
+        "start": 0.85,
+        "end": 1.7,
+        "text": "the swelling,"
+      },
+      {
+        "segment": "seg22",
+        "start": 1.7,
+        "end": 2.55,
+        "text": "*warms* the joint,"
+      },
+      {
+        "segment": "seg22",
+        "start": 2.55,
+        "end": 3.4,
+        "text": "I *read* and read"
+      },
+      {
+        "segment": "seg22",
+        "start": 3.4,
+        "end": 4.46,
+        "text": "some more"
+      },
+      {
+        "segment": "seg23",
+        "start": 0.0,
+        "end": 0.85,
+        "text": "*Week 1*,"
+      },
+      {
+        "segment": "seg23",
+        "start": 0.85,
+        "end": 2.15,
+        "text": "I warm it every *night*,"
+      },
+      {
+        "segment": "seg23",
+        "start": 2.15,
+        "end": 3.0,
+        "text": "and *sleep* straight"
+      },
+      {
+        "segment": "seg23",
+        "start": 3.0,
+        "end": 4.06,
+        "text": "through till *dawn*"
+      },
+      {
+        "segment": "seg24",
+        "start": 0.0,
+        "end": 1.43,
+        "text": "I make my *list*,"
+      },
+      {
+        "segment": "seg24",
+        "start": 1.43,
+        "end": 2.33,
+        "text": "I *tick* one off,"
+      },
+      {
+        "segment": "seg24",
+        "start": 2.33,
+        "end": 3.37,
+        "text": "then one more thing"
+      },
+      {
+        "segment": "seg24",
+        "start": 3.37,
+        "end": 5.37,
+        "text": "is *done*"
+      },
+      {
+        "segment": "seg25",
+        "start": 0.0,
+        "end": 0.85,
+        "text": "*Week 2*,"
+      },
+      {
+        "segment": "seg25",
+        "start": 0.85,
+        "end": 1.7,
+        "text": "I'm *taking on*"
+      },
+      {
+        "segment": "seg25",
+        "start": 1.7,
+        "end": 2.62,
+        "text": "the things I used to"
+      },
+      {
+        "segment": "seg25",
+        "start": 2.62,
+        "end": 4.1,
+        "text": "leave for *another day*"
+      },
+      {
+        "segment": "seg26",
+        "start": 0.0,
+        "end": 1.26,
+        "text": "I *sketch* the plan"
+      },
+      {
+        "segment": "seg26",
+        "start": 1.26,
+        "end": 2.74,
+        "text": "for my own *business*,"
+      },
+      {
+        "segment": "seg26",
+        "start": 2.74,
+        "end": 4.23,
+        "text": "push my *doubts* away"
+      },
+      {
+        "segment": "seg27",
+        "start": 0.0,
+        "end": 1.51,
+        "text": "*Week 3*, I'm working"
+      },
+      {
+        "segment": "seg27",
+        "start": 1.51,
+        "end": 2.36,
+        "text": "on my *body*,"
+      },
+      {
+        "segment": "seg27",
+        "start": 2.36,
+        "end": 3.21,
+        "text": "*Nani* claps,"
+      },
+      {
+        "segment": "seg27",
+        "start": 3.21,
+        "end": 4.42,
+        "text": "\"Ready? *Here we go*\""
+      },
+      {
+        "segment": "seg28",
+        "start": 0.0,
+        "end": 1.31,
+        "text": "One more *squat*,"
+      },
+      {
+        "segment": "seg28",
+        "start": 1.31,
+        "end": 2.35,
+        "text": "my *knees* don't scream,"
+      },
+      {
+        "segment": "seg28",
+        "start": 2.35,
+        "end": 3.25,
+        "text": "I'm *laughing*,"
+      },
+      {
+        "segment": "seg28",
+        "start": 3.25,
+        "end": 4.51,
+        "text": "bending low"
+      },
+      {
+        "segment": "seg29",
+        "start": 0.15,
+        "end": 1.0,
+        "text": "One *morning*,"
+      },
+      {
+        "segment": "seg29",
+        "start": 1.0,
+        "end": 2.12,
+        "text": "I walk in *tall*,"
+      },
+      {
+        "segment": "seg29",
+        "start": 2.12,
+        "end": 2.97,
+        "text": "the *gym* feels"
+      },
+      {
+        "segment": "seg29",
+        "start": 2.97,
+        "end": 4.11,
+        "text": "like my home"
+      },
+      {
+        "segment": "seg30",
+        "start": 0.0,
+        "end": 1.25,
+        "text": "A *girl* walks up"
+      },
+      {
+        "segment": "seg30",
+        "start": 1.25,
+        "end": 2.19,
+        "text": "and *smiles* at me,"
+      },
+      {
+        "segment": "seg30",
+        "start": 2.19,
+        "end": 3.04,
+        "text": "she asks,"
+      },
+      {
+        "segment": "seg30",
+        "start": 3.04,
+        "end": 4.22,
+        "text": "\"You train *alone*?\""
+      },
+      {
+        "segment": "seg31",
+        "start": 0.0,
+        "end": 1.31,
+        "text": "My first big *order*"
+      },
+      {
+        "segment": "seg31",
+        "start": 1.31,
+        "end": 2.21,
+        "text": "comes in,"
+      },
+      {
+        "segment": "seg31",
+        "start": 2.21,
+        "end": 3.41,
+        "text": "I *launched* my shop"
+      },
+      {
+        "segment": "seg31",
+        "start": 3.41,
+        "end": 4.53,
+        "text": "last week"
+      },
+      {
+        "segment": "seg32",
+        "start": 0.0,
+        "end": 0.85,
+        "text": "*Week 4*,"
+      },
+      {
+        "segment": "seg32",
+        "start": 0.85,
+        "end": 1.7,
+        "text": "we're *laughing*,"
+      },
+      {
+        "segment": "seg32",
+        "start": 1.7,
+        "end": 2.7,
+        "text": "walking *hand in hand*"
+      },
+      {
+        "segment": "seg32",
+        "start": 2.7,
+        "end": 4.29,
+        "text": "along the street"
+      },
+      {
+        "segment": "seg33",
+        "start": 0.0,
+        "end": 1.03,
+        "text": "You stop and *stare*,"
+      },
+      {
+        "segment": "seg33",
+        "start": 1.03,
+        "end": 2.17,
+        "text": "say \"Is that *you*?\""
+      },
+      {
+        "segment": "seg33",
+        "start": 2.17,
+        "end": 3.02,
+        "text": "I smile,"
+      },
+      {
+        "segment": "seg33",
+        "start": 3.02,
+        "end": 4.2,
+        "text": "\"I'm *doing fine*\""
+      },
+      {
+        "segment": "seg34",
+        "start": 0.0,
+        "end": 0.91,
+        "text": "\"Hope you're"
+      },
+      {
+        "segment": "seg34",
+        "start": 0.91,
+        "end": 1.76,
+        "text": "doing *well*.\""
+      },
+      {
+        "segment": "seg34",
+        "start": 1.76,
+        "end": 2.61,
+        "text": "We *laugh*"
+      },
+      {
+        "segment": "seg34",
+        "start": 2.61,
+        "end": 3.46,
+        "text": "and walk away,"
+      },
+      {
+        "segment": "seg34",
+        "start": 3.46,
+        "end": 5.63,
+        "text": "her *hand in mine*"
+      },
+      {
+        "segment": "seg35",
+        "start": 0.0,
+        "end": 1.49,
+        "text": "Now I *see* what's right"
+      },
+      {
+        "segment": "seg35",
+        "start": 1.49,
+        "end": 2.39,
+        "text": "in front of me,"
+      },
+      {
+        "segment": "seg35",
+        "start": 2.39,
+        "end": 3.24,
+        "text": "and what I *want*"
+      },
+      {
+        "segment": "seg35",
+        "start": 3.24,
+        "end": 4.38,
+        "text": "my *life* to be"
+      },
+      {
+        "segment": "seg36",
+        "start": 0.0,
+        "end": 1.37,
+        "text": "I'm making *plans*"
+      },
+      {
+        "segment": "seg36",
+        "start": 1.37,
+        "end": 2.53,
+        "text": "and *keeping* them,"
+      },
+      {
+        "segment": "seg36",
+        "start": 2.53,
+        "end": 3.38,
+        "text": "I'm *moving*"
+      },
+      {
+        "segment": "seg36",
+        "start": 3.38,
+        "end": 4.43,
+        "text": "like I'm *free*"
+      },
+      {
+        "segment": "seg37",
+        "start": 0.0,
+        "end": 1.16,
+        "text": "End the night"
+      },
+      {
+        "segment": "seg37",
+        "start": 1.16,
+        "end": 2.48,
+        "text": "with *EIS*,"
+      },
+      {
+        "segment": "seg37",
+        "start": 2.48,
+        "end": 4.02,
+        "text": "make a little *room*"
+      },
+      {
+        "segment": "seg37",
+        "start": 4.02,
+        "end": 5.48,
+        "text": "for me"
+      }
+    ]
+  },
+  "overlays": [
+    {
+      "id": "hook1",
+      "type": "text",
+      "segment": "seg01",
+      "start": 0.0,
+      "end": 3.97,
+      "text": "My wife.\nMy best friend.",
+      "style": "headline",
+      "x": 0.5,
+      "y": 0.16
+    },
+    {
+      "id": "hook1b",
+      "type": "text",
+      "segment": "seg02",
+      "start": 0.0,
+      "end": 4.19,
+      "text": "My wife.\nMy best friend.",
+      "style": "headline",
+      "x": 0.5,
+      "y": 0.16
+    },
+    {
+      "id": "logo",
+      "type": "image",
+      "file": "logo.png",
+      "segment": "seg37",
+      "start": 2.86,
+      "end": 6.81,
+      "x": 0.84,
+      "y": 0.88,
+      "scale": 0.2
+    }
+  ],
+  "music": {
+    "file": "music.mp3",
+    "gainDb": -18,
+    "duckUnderVO": true,
+    "fadeInSec": 0.5,
+    "fadeOutSec": 1.0,
+    "enabled": false
+  },
+  "sfx": [],
+  "variations": [
+    {
+      "name": "V1",
+      "layers": {
+        "music": false,
+        "overlays": "all"
+      }
+    }
+  ]
+}
